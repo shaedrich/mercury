@@ -42,6 +42,8 @@ App.LocalNavMenuController = Em.ObjectController.extend({
 		this.set('currentMenuItem', this.get('menuRoot'));
 		this.set('parentItem', null);
 		this.injectParentPointersAndIndices();
+
+		this._super();
 	},
 
 	/**
@@ -56,7 +58,7 @@ App.LocalNavMenuController = Em.ObjectController.extend({
 	injectParentPointersAndIndices: function (): void {
 		// topLevel is almost a NavItem but it has no href or text
 		var topLevel: RootNavItem = this.get('menuRoot'),
-			children: Array<NavItem> = topLevel.children,
+			children: Array<NavItem> = topLevel.children || [],
 			i: number,
 			len = children.length;
 		for (i = 0; i < len; i++) {

@@ -21,9 +21,9 @@ App.ArticleView = Em.View.extend(App.AdsMixin, {
 	classNames: ['article-wrapper'],
 	templateName: 'article/index',
 	/**
-	* @description Ember does not natively support hashes in the URL, so we must support this functionality
-	* manually
-	*/
+	 * @description Ember does not natively support hashes in the URL, so we must support this functionality
+	 * manually
+	 */
 	jumpToAnchor: function (): void {
 		var hash = App.get('hash'),
 			prevHash: string;
@@ -44,10 +44,10 @@ App.ArticleView = Em.View.extend(App.AdsMixin, {
 	},
 
 	/**
-	* willInsertElement
-	* @description The article view is only inserted once, and then refreshed on new models. Use this hook to bind
-	* events for DOM manipulation
-	*/
+	 * willInsertElement
+	 * @description The article view is only inserted once, and then refreshed on new models. Use this hook to bind
+	 * events for DOM manipulation
+	 */
 	willInsertElement: function (): void {
 		Em.addObserver(this.get('controller'), 'article', this, this.onArticleChange);
 		// Trigger an article change once on insertion because the first insertion happens after article
@@ -72,6 +72,10 @@ App.ArticleView = Em.View.extend(App.AdsMixin, {
 				this.jumpToAnchor();
 				this.lazyLoadMedia(model.get('media'));
 				this.handleTables();
+
+				if (Wikia.Utils.Tracking) {
+					Wikia.Utils.Tracking.trackPageView();
+				}
 			}
 		});
 	},
@@ -116,11 +120,13 @@ App.ArticleView = Em.View.extend(App.AdsMixin, {
 	 */
 	loadTableOfContentsData: function () {
 		var headers: HeadersFromDom[] = this.$('h2').map((i: number, elem: HTMLElement): HeadersFromDom => {
-			return {
-				level: elem.tagName,
-				name: elem.textContent,
-				id: elem.id
-			};
+			if (elem.textContent) {
+				return {
+					level: elem.tagName,
+					name: elem.textContent,
+					id: elem.id
+				};
+			}
 		}).toArray();
 		this.get('controller').send('updateHeaders', headers);
 	},
@@ -151,7 +157,7 @@ App.ArticleView = Em.View.extend(App.AdsMixin, {
 	/**
 	 * @desc handles expanding long tables, code taken from WikiaMobile
 	 */
-	handleInfoboxes: function (){
+	handleInfoboxes: function () {
 		var shortClass = 'short',
 			$infoboxes = $('table[class*="infobox"] tbody'),
 			body = window.document.body,
@@ -159,16 +165,16 @@ App.ArticleView = Em.View.extend(App.AdsMixin, {
 
 		if ($infoboxes.length) {
 			$infoboxes
-				.filter(function(){
+				.filter(function () {
 					return this.rows.length > 6;
 				})
 				.addClass(shortClass)
 				.append('<tr class=infobox-expand><td colspan=2><svg viewBox="0 0 12 7" class="icon"><use xlink:href="#chevron"></use></svg></td></tr>')
-				.on('click', function(event){
+				.on('click', function (event) {
 					var $target = $(event.target),
 						$this = $(this);
 
-					if(!$target.is('a') && $this.toggleClass(shortClass).hasClass(shortClass)) {
+					if (!$target.is('a') && $this.toggleClass(shortClass).hasClass(shortClass)) {
 						scrollTo.apply($this.find('.infobox-expand')[0]);
 					}
 				});
@@ -178,7 +184,7 @@ App.ArticleView = Em.View.extend(App.AdsMixin, {
 	handleTables: function (): void {
 		var wrapper = document.createElement('div');
 		wrapper.className = 'article-table';
-		this.$('table:not(.infobox, .dirbox)')
+		this.$('table:not([class*=infobox], .dirbox)')
 			.wrap(wrapper)
 			.css('visibility', 'visible');
 	}

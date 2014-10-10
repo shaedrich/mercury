@@ -87,7 +87,8 @@ App.ArticleModel.reopenClass({
 
 			data = {
 				article: error.details,
-				cleanTitle: Wikia.Utils.String.normalize(model.title)
+				cleanTitle: Wikia.Utils.String.normalize(model.title),
+				error: error
 			}
 		} else if (source) {
 			if (source.details) {
@@ -131,6 +132,10 @@ App.ArticleModel.reopenClass({
 			if (source.topContributors) {
 				// Same issue: the response to the ajax should always be valid and not undefined
 				data.users = source.topContributors;
+			}
+
+			if (source.basePath) {
+				data.basePath = source.basePath;
 			}
 		}
 

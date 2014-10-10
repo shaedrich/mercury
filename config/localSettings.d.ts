@@ -14,13 +14,17 @@ interface LocalSettings {
 	port: number;
 	maxRequestsPerChild: number;
 	workerCount: number;
-	environment: string;
+	environment: any;
 	mediawikiHost: string;
-	gaId: string;
 	cache: CacheInterface;
 	proxyMaxRedirects: number;
 	wikiFallback: string;
 	apiBase: string;
 	workerDisconnectTimeout: number;
+	backendRequestTimeout: number;
 	loggers: LoggerInterface;
+	tracking: {
+		gaId: string;
+		quantserve: string;
+	}
 }

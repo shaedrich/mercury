@@ -19,18 +19,18 @@ import logger = require('../../lib/Logger');
  * @param callback
  * @param err
  */
-export function createFullArticle(getWikiInfo: boolean, params: any, callback: any) {
+export function createFullArticle(params: any, callback: any, getWikiInfo: boolean = false):void {
 	var requests = [
-			new MediaWiki.ArticleRequest(params.wiki).fetch(params.title, params.redirect)
+			new MediaWiki.ArticleRequest(params.wikiDomain).fetch(params.title, params.redirect)
 		];
 
 	logger.debug(params, 'Fetching article');
 
 	if (getWikiInfo) {
-		logger.debug({wiki: params.wiki}, 'Fetching wiki variables');
+		logger.debug({wiki: params.wikiDomain}, 'Fetching wiki variables');
 
 		requests.push(new MediaWiki.WikiRequest({
-			name: params.wiki
+			wikiDomain: params.wikiDomain
 		}).getWikiVariables());
 	}
 
@@ -50,7 +50,7 @@ export function handleRoute(request: Hapi.Request, reply: Function): void {
 		redirect: request.params.redirect
 	};
 
-	createFullArticle(false, data, (error: any, article: any) => {
+	createFullArticle(data, (error: any, article: any) => {
 		reply(error || article);
 	});
 }

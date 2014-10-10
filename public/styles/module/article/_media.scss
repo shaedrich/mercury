@@ -48,11 +48,6 @@ figcaption {
 	.video {
 		display: inline-block;
 		position: relative;
-
-		img {
-			max-width: none;
-			width: 330px;
-		}
 	}
 }
 
@@ -112,4 +107,8 @@ figcaption {
 	100% {
 		opacity: 1;
 	}
+}
+
+iframe {
+	max-width: 100%;
 }

@@ -3,7 +3,7 @@
 import util = require('util');
 import article = require('../article/index');
 import localSettings = require('../../../config/localSettings');
-import MediaWiki = require('../../lib/MediaWiki');
+import Utils = require('../../lib/Utils');
 
 function createWikiData (wiki: any) {
 	return util._extend(
@@ -38,19 +38,19 @@ function createArticleData (payload: any) {
 
 function createServerData () {
 	return {
-		mediawikiDomain: MediaWiki.getDomainName(),
+		mediawikiDomain: Utils.getWikiDomainName(localSettings),
 		apiBase: localSettings.apiBase
 	};
 }
 
 function index(params: any, next: Function): void {
-	article.createFullArticle(true, params, (error: any, article: any, wiki: any) => {
+	article.createFullArticle(params, (error: any, article: any, wiki: any) => {
 		next(error, {
 			server: createServerData(),
 			wiki: createWikiData(wiki),
 			article: createArticleData(article)
 		});
-	});
+	}, true);
 }
 
 export = index;
