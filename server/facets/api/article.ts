@@ -1,6 +1,7 @@
 import Article = require('../../lib/Article');
 import Caching = require('../../lib/Caching');
 import Utils = require('../../lib/Utils');
+import Logger = require('../../lib/Logger');
 import localSettings = require('../../../config/localSettings');
 import wrapResult = require('./presenters/wrapResult');
 
@@ -46,6 +47,13 @@ export function get (request: Hapi.Request,  reply: any): void {
 		redirect: request.params.redirect
 	}, (error: any, result: any): void => {
 		// TODO: Consider normalizing all error handling to Boom
+		if (!result || error) {
+			Logger.error({
+				domain: wikiDomain,
+				article: request.params.articleTitle,
+				error: error
+			}, 'api/article: result is undefined');
+		}
 		wrapResult(error, result);
 		Caching.setResponseCaching(reply(result).code(result.status), cachingTimes);
 	});
