@@ -31,7 +31,7 @@ var localSettings: LocalSettings = {
 	// By default send logs to local syslog only. Possible targets are [syslog, console, default]
 	// The value represent the minimum logging level
 	loggers: {
-		syslog: 'debug'
+		syslog: 'trace'
 	},
 	devboxDomain: Utils.stripDevboxDomain(process.env.HOST || process.env.LOGNAME),
 	maxRequestsPerChild: parseInt(process.env.MAX_REQUEST_PER_CHILD, 10) || 50000,
