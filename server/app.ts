@@ -44,6 +44,13 @@ plugins = [
 		options: {
 			cookieOptions: {
 				isSecure: false
+			},
+			skip (request: any, reply: any) {
+				if (request.state === null) {
+					Logger.error(request.info, 'request.state is null');
+					return true;
+				}
+				return false;
 			}
 		}
 	},
