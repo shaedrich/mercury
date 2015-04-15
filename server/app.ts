@@ -29,6 +29,7 @@ server.connection({
 	routes: {
 		state: {
 			failAction: 'log'
+
 		}
 	}
 });
@@ -47,7 +48,11 @@ plugins = [
 			},
 			skip (request: any, reply: any) {
 				if (request.state === null) {
-					Logger.error(request.info, 'request.state is null');
+					Logger.error({
+						info: request.info,
+						url: request.url,
+						headers: request.headers
+					}, 'request.state is null');
 					return true;
 				}
 				return false;
