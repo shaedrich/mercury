@@ -49,10 +49,10 @@ plugins = [
 			skip (request: any, reply: any) {
 				if (request.state === null) {
 					Logger.error({
-						info: request.info,
-						url: request.url,
-						headers: request.headers
-					}, 'request.state is null');
+						info: JSON.stringify(request.info),
+						url: JSON.stringify(request.url),
+						headers: JSON.stringify(request.headers)
+					}, 'request state is null');
 					return true;
 				}
 				return false;
