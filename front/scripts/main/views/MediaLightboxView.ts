@@ -205,11 +205,7 @@ App.MediaLightboxView = App.LightboxView.extend(App.ArticleContentMixin, App.Lig
 	},
 
 	click: function (event: MouseEvent): void {
-		var isImage = this.isCurrentMediaType('image'),
-			isVideo = this.isCurrentMediaType('video'),
-			isZoomed = this.get('isZoomed'),
-			isGallery = this.get('isGallery');
-		if ((isImage || isVideo) && !isZoomed && isGallery) {
+		if (this.isCurrentMediaType('image') && !this.get('isZoomed') && this.get('isGallery')) {
 			this.handleClick(event);
 		} else {
 			this._super(event);
@@ -305,6 +301,22 @@ App.MediaLightboxView = App.LightboxView.extend(App.ArticleContentMixin, App.Lig
 	}.property(),
 
 	/**
+	 * @method initVideoPlayer
+	 * @description Used to instantiate a provider specific video player
+	 */
+	initVideoPlayer: function (): void {
+		var currentMedia = this.get('controller.currentMedia');
+
+		if (currentMedia && currentMedia.type === 'video') {
+			Em.run.scheduleOnce('afterRender', this, (): void => {
+				var element = this.$('.lightbox-content-inner')[0];
+
+				this.set('videoPlayer', new Mercury.Modules.VideoLoader(element, currentMedia.embed));
+			});
+		}
+	},
+
+	/**
 	 * @desc used to animate image that is in article into a media lightbox
 	 */
 	animateMedia: function (image?: HTMLElement): void {
@@ -343,6 +355,7 @@ App.MediaLightboxView = App.LightboxView.extend(App.ArticleContentMixin, App.Lig
 		//disabled for now, we can make it better when we have time
 		//this.animateMedia(this.get('controller').get('element'));
 		this.resetZoom();
+		this.initVideoPlayer();
 
 		hammerInstance.get('pinch').set({
 			enable: true

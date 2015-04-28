@@ -1,9 +1,10 @@
 .wiki-title {
 	@extend %header-section-title;
-	font-size: $type-smallest;
+	@extend .subtext;
 	margin-bottom: rem-calc(20);
 
 	a {
+		color: $primary-color;
 		display: block;
 	}
 }
