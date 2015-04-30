@@ -108,11 +108,15 @@ App.MediaLightboxView = App.LightboxView.extend(App.LightboxMixin, {
 	},
 
 	click: function (event: MouseEvent): void {
+<<<<<<< HEAD
 		var isImage = this.isCurrentMediaType('image'),
 			isVideo = this.isCurrentMediaType('video'),
 			isGallery = this.get('isGallery');
 
 		if ((isImage || isVideo) && isGallery) {
+=======
+		if (this.isCurrentMediaType('image') && !this.get('isZoomed') && this.get('isGallery')) {
+>>>>>>> origin/master
 			this.handleClick(event);
 		} else {
 			this._super(event);
@@ -130,6 +134,22 @@ App.MediaLightboxView = App.LightboxView.extend(App.LightboxMixin, {
 			if (this.get('isGallery')) {
 				this.prevMedia();
 			}
+		}
+	},
+
+	/**
+	 * @method initVideoPlayer
+	 * @description Used to instantiate a provider specific video player
+	 */
+	initVideoPlayer: function (): void {
+		var currentMedia = this.get('controller.currentMedia');
+
+		if (currentMedia && currentMedia.type === 'video') {
+			Em.run.scheduleOnce('afterRender', this, (): void => {
+				var element = this.$('.lightbox-content-inner')[0];
+
+				this.set('videoPlayer', new Mercury.Modules.VideoLoader(element, currentMedia.embed));
+			});
 		}
 	},
 

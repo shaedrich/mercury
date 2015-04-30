@@ -1,3 +1,6 @@
 a {
 	@extend .touch-active;
+
+	text-decoration: none;
+	color: $anchor-color-normal;
 }
