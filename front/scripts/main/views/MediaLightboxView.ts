@@ -134,6 +134,22 @@ App.MediaLightboxView = App.LightboxView.extend(App.LightboxMixin, {
 	},
 
 	/**
+	 * @method initVideoPlayer
+	 * @description Used to instantiate a provider specific video player
+	 */
+	initVideoPlayer: function (): void {
+		var currentMedia = this.get('controller.currentMedia');
+
+		if (currentMedia && currentMedia.type === 'video') {
+			Em.run.scheduleOnce('afterRender', this, (): void => {
+				var element = this.$('.lightbox-content-inner')[0];
+
+				this.set('videoPlayer', new Mercury.Modules.VideoLoader(element, currentMedia.embed));
+			});
+		}
+	},
+
+	/**
 	 * @desc used to animate image that is in article into a media lightbox
 	 */
 	animateMedia: function (image?: HTMLElement): void {
@@ -165,5 +181,34 @@ App.MediaLightboxView = App.LightboxView.extend(App.LightboxMixin, {
 				$imageCopy.remove();
 			});
 		}
+<<<<<<< HEAD
+=======
+	},
+
+	didInsertElement: function (): void {
+		var hammerInstance = this.get('_hammerInstance');
+		//disabled for now, we can make it better when we have time
+		//this.animateMedia(this.get('controller').get('element'));
+		this.resetZoom();
+		this.initVideoPlayer();
+
+		hammerInstance.get('pinch').set({
+			enable: true
+		});
+
+		hammerInstance.get('pan').set({
+			direction: Hammer.DIRECTION_ALL
+		});
+
+		this._super();
+	},
+
+	willDestroyElement: function (): void {
+		this.get('_hammerInstance').get('pinch').set({
+			enable: false
+		});
+
+		this._super();
+>>>>>>> origin/master
 	}
 });
