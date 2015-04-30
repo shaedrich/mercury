@@ -134,6 +134,22 @@ App.MediaLightboxView = App.LightboxView.extend(App.LightboxMixin, {
 	},
 
 	/**
+	 * @method initVideoPlayer
+	 * @description Used to instantiate a provider specific video player
+	 */
+	initVideoPlayer: function (): void {
+		var currentMedia = this.get('controller.currentMedia');
+
+		if (currentMedia && currentMedia.type === 'video') {
+			Em.run.scheduleOnce('afterRender', this, (): void => {
+				var element = this.$('.lightbox-content-inner')[0];
+
+				this.set('videoPlayer', new Mercury.Modules.VideoLoader(element, currentMedia.embed));
+			});
+		}
+	},
+
+	/**
 	 * @desc used to animate image that is in article into a media lightbox
 	 */
 	animateMedia: function (image?: HTMLElement): void {

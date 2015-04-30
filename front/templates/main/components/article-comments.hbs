@@ -1,8 +1,8 @@
 {{#if commentsCount}}
-	<div {{action 'toggleComments'}} {{bind-attr class=':show-comments-btn :page-btn isCollapsed:collapsed'}}>
+	<button {{action 'toggleComments'}} {{bind-attr class=':show-comments-btn :page-btn isCollapsed:collapsed'}}>
 		{{i18n 'app.article-comments-label' count='commentsCount'}}
 		{{svg 'chevron' viewBox='0 0 12 7' class='icon chevron'}}
-	</div>
+	</button>
 {{/if}}
 {{#if showComments}}
 	{{#if model.comments}}
