@@ -3,6 +3,8 @@
 
 'use strict';
 
+declare var getGlobals : any;
+
 var parallaxWindow : JQuery = $('#js-parallax-window');
 
 $(function() : void {
@@ -84,9 +86,7 @@ function search() : void {
 	}
 
 	if (searchText) {
-		searchUrl = 'http://ja.wikia.com/Special:Search?search=';
-		searchUrl += searchText;
-		searchUrl += '&fulltext=Search&resultsLang=ja';
+		searchUrl = '/search?q=' + searchText;
 
 		window.location.href = searchUrl;
 	}

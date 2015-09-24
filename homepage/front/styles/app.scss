@@ -10,9 +10,19 @@ $visual-grid-opacity: .02;
 // Warnings for Bourbon deprecations
 $disable-warnings: true;
 
-// Bourbon, Neat and Bitters (http://bourbon.io/)
+// Bourbon (http://bourbon.io/)
 @import '../../vendor/bourbon/app/assets/stylesheets/bourbon';
-@import '../../vendor/bitters/app/assets/stylesheets/base';
+
+// Bitters (http://bitters.bourbon.io/)
+// tables stylesheet interferes with Google Custom Search CSS and
+// is not loaded
+@import '../../vendor/bitters/app/assets/stylesheets/variables';
+@import '../../vendor/bitters/app/assets/stylesheets/buttons';
+@import '../../vendor/bitters/app/assets/stylesheets/forms';
+@import '../../vendor/bitters/app/assets/stylesheets/lists';
+@import '../../vendor/bitters/app/assets/stylesheets/typography';
+
+// Neat (http://neat.bourbon.io/)
 @import '../../vendor/neat/app/assets/stylesheets/neat';
 
 // slick.js carousel

@@ -53,7 +53,7 @@ exports.getSignupUrl = function () {
 };
 
 // todo: look up this data in user session first
-exports.renderWithGlobalData = function (request, reply, data, view) {
+exports.renderWithGlobalData = function (request, reply, data, view, options) {
 	function renderView(loggedIn, userName) {
 		var combinedData = deepExtend(data, {
 			loggedIn: loggedIn,
@@ -62,7 +62,7 @@ exports.renderWithGlobalData = function (request, reply, data, view) {
 			signupUrl: localSettings.signupUrl
 		});
 
-		reply.view(view, combinedData);
+		reply.view(view, combinedData, options);
 	}
 
 	this.getLoginState(request).then(function (data) {
