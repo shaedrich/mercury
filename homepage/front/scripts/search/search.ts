@@ -38,8 +38,6 @@ function fillSearchTextBox() : void {
 }
 
 (function() : void {
-	console.log(mobileBreakpoint);
-
 	// Google custom search injection
 	// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
 	var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
