@@ -9,10 +9,12 @@ var util = require('../util');
 function globals(request, reply) {
 	var loginUrl = util.getLoginUrl(),
 		signupUrl = util.getSignupUrl(),
+		mobileBreakpoint = util.getMobileBreakpoint(),
 		script = 'function getGlobals () {' +
 			'	return { ' +
 			'		loginUrl: \''  + loginUrl + '\', ' +
-			'		signupUrl: \'' + signupUrl + '\' ' +
+			'		signupUrl: \'' + signupUrl + '\', ' +
+			'		mobileBreakpoint: \'' + mobileBreakpoint + '\' ' +
 			'}}\n';
 
 	return reply(script);

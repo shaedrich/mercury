@@ -5,7 +5,8 @@
 
 declare var getGlobals : any;
 
-var parallaxWindow : JQuery = $('#js-parallax-window');
+var parallaxWindow : JQuery = $('#js-parallax-window'),
+	mobileBreakpoint : number = getGlobals().mobileBreakpoint;
 
 $(function() : void {
 	if (parallaxWindow.length) {
@@ -60,7 +61,7 @@ $('.search-wikia').click(function(event) : void {
 });
 
 $('#loginIcon').click(function(event) : void {
-	if ($(document).width() < 710) {
+	if ($(document).width() < mobileBreakpoint) {
 		$('#userInfoToggle').toggle();
 	} else {
 		window.location.href = getGlobals().loginUrl;

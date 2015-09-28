@@ -2,6 +2,10 @@
 
 'use strict';
 
+declare var getGlobals : any;
+
+var mobileBreakpoint : number = getGlobals().mobileBreakpoint;
+
 function processArguments() : any {
 	var params : any = {},
 		parts : Array<string>;
@@ -24,27 +28,31 @@ function processArguments() : any {
 function fillSearchTextBox() : void {
 	var params : any = processArguments();
 
-	if ($(document).width() < 710) {
-		$('#searchWikiaTextMobile').val(decodeURIComponent(params.q) || '');
-	} else {
-		$('#searchWikiaText').val(decodeURIComponent(params.q) || '');
+	if (params.hasOwnProperty('q')) {
+		if ($(document).width() < mobileBreakpoint) {
+			$('#searchWikiaTextMobile').val(decodeURIComponent(params.q) || '');
+		} else {
+			$('#searchWikiaText').val(decodeURIComponent(params.q) || '');
+		}
 	}
 }
 
 (function() : void {
+	console.log(mobileBreakpoint);
+
 	// Google custom search injection
 	// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
-	var cx : string = '005745855109319432328:coaj7jf_wgs',
-		gcse : HTMLScriptElement = document.createElement('script'),
+	var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
+		googleCustomSearch : HTMLScriptElement = document.createElement('script'),
 		s : HTMLScriptElement;
 
-	gcse.type = 'text/javascript';
-	gcse.async = true;
-	gcse.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') +
-		'//www.google.com/cse/cse.js?cx=' + cx;
+	googleCustomSearch.type = 'text/javascript';
+	googleCustomSearch.async = true;
+	googleCustomSearch.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') +
+		'//www.google.com/cse/cse.js?cx=' + searchKey;
 
 	s = document.getElementsByTagName('script')[0];
-	s.parentNode.insertBefore(gcse, s);
+	s.parentNode.insertBefore(googleCustomSearch, s);
 
 	fillSearchTextBox();
 })();

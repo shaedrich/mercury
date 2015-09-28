@@ -52,6 +52,10 @@ exports.getSignupUrl = function () {
 	return localSettings.signupUrl;
 };
 
+exports.getMobileBreakpoint = function () {
+	return 710;
+};
+
 // todo: look up this data in user session first
 exports.renderWithGlobalData = function (request, reply, data, view, options) {
 	function renderView(loggedIn, userName) {

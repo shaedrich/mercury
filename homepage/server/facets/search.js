@@ -8,7 +8,8 @@ var util = require('../util');
 
 function companyInfo(request, reply) {
 	var data = {
-		title: 'ウィキア・ジャパン'
+		title: 'ウィキア・ジャパン',
+		loading: '検索結果ロード中'
 	};
 
 	util.renderWithGlobalData(request, reply, data, 'search', {layout: 'search'});
