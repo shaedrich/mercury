@@ -9,13 +9,15 @@ declare var getGlobals : any;
 
 	function processArguments() : any {
 		var params : any = {},
-			parts : Array<string>;
+			parts : Array<string>,
+			i,
+			nv;
 
 		if (location.search) {
 			parts = location.search.substring(1).split('&');
 
-			for (var i = 0; i < parts.length; i++) {
-				var nv = parts[i].split('=');
+			for (i = 0; i < parts.length; i++) {
+				nv = parts[i].split('=');
 				if (!nv[0]) {
 					continue;
 				}
@@ -39,8 +41,6 @@ declare var getGlobals : any;
 	}
 
 	function loadSearch() : void {
-		console.log(mobileBreakpoint);
-
 		// Google custom search injection
 		// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
 		var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
