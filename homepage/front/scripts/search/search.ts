@@ -10,8 +10,8 @@ declare var getGlobals : any;
 	function processArguments() : any {
 		var params : any = {},
 			parts : Array<string>,
-			i,
-			nv;
+			i : number,
+			nv : Array<string>;
 
 		if (location.search) {
 			parts = location.search.substring(1).split('&');
@@ -44,17 +44,11 @@ declare var getGlobals : any;
 		// Google custom search injection
 		// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
 		var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
-			googleCustomSearch : HTMLScriptElement = document.createElement('script'),
-			s : HTMLScriptElement;
+			url : string = (document.location.protocol === 'https:' ? 'https:' : 'http:') +
+				'//www.google.com/cse/cse.js?cx=' + searchKey;
 
-		googleCustomSearch.type = 'text/javascript';
-		googleCustomSearch.async = true;
-		googleCustomSearch.src = (document.location.protocol === 'https:' ? 'https:' : 'http:') +
-			'//www.google.com/cse/cse.js?cx=' + searchKey;
-
-		s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(googleCustomSearch, s);
-
+		$.getScript(url);
+		
 		fillSearchTextBox();
 	}
 
