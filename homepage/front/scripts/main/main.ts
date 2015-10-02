@@ -5,7 +5,7 @@
 
 declare var getGlobals : any;
 
-// TODO: Refactor into module. Only mobileBreakpoint needs to be global
+// TODO: Refactor into module. Only mobileBreakpoint needs to be global (see INT-217)
 var parallaxWindow : JQuery = $('#js-parallax-window'),
 	mobileBreakpoint : number = getGlobals().mobileBreakpoint;
 
