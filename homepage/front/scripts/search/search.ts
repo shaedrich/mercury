@@ -49,10 +49,9 @@ declare var getGlobals : any;
 				'//www.google.com/cse/cse.js?cx=' + searchKey;
 
 		$.getScript(url);
-		
+
 		fillSearchTextBox();
 	}
 
 	loadSearch();
 })();
-
