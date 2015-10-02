@@ -43,6 +43,7 @@ declare var getGlobals : any;
 	function loadSearch() : void {
 		// Google custom search injection
 		// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
+		// TODO: Consider keeping searchKey in separate config file as it is currently shared with Mercury
 		var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
 			googleCustomSearch : HTMLScriptElement = document.createElement('script'),
 			s : HTMLScriptElement;
