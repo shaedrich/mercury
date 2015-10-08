@@ -9,19 +9,19 @@ declare var getGlobals : any;
 
 	function processArguments() : any {
 		var params : any = {},
-			parts : Array<string>,
-			i : number,
-			nv : Array<string>;
+			argParts : Array<string>,
+			argValues : Array<string>,
+			i : number;
 
-		if (location.search) {
-			parts = location.search.substring(1).split('&');
+			if (location.search) {
+			argParts = location.search.substring(1).split('&');
 
-			for (i = 0; i < parts.length; i++) {
-				nv = parts[i].split('=');
-				if (!nv[0]) {
+			for (i = 0; i < argParts.length; i++) {
+				argValues = argParts[i].split('=');
+				if (!argValues[0]) {
 					continue;
 				}
-				params[nv[0]] = nv[1] || true;
+				params[argValues[0]] = argValues[1] || true;
 			}
 		}
 
