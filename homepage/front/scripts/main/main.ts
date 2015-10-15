@@ -5,6 +5,11 @@
 
 declare var getGlobals : any;
 
+// bigText JQuery plugin
+interface JQuery {
+	bigText(options: any): any;
+}
+
 // TODO: Refactor into module. Only mobileBreakpoint needs to be global (see INT-217)
 var parallaxWindow : JQuery = $('#js-parallax-window'),
 	mobileBreakpoint : number = getGlobals().mobileBreakpoint;
@@ -27,6 +32,13 @@ $(function() : void {
 		centerMode: false,
 		variableWidth: true
 	});
+
+	// Dynamically adjust text size to show community title without text break.
+	// bigText adjusts the size programatically and strips off css padding, so it is
+	// necessary to add it in explicitly afterwards
+	var headings = $('.grid-heading');
+	headings.bigText({maximumFontSize: 20, verticalAlign: 'top'});
+	headings.css({padding: '.1rem'});
 });
 
 function parallax() : void {
