@@ -7,14 +7,13 @@ class Globals {
 	cachedData: any;
 
 	constructor() {
-		this.loadGlobalData().then((data: any) => {
-			this.cachedData = data;
-		});
+		this.cachedData = null;
 	}
 
 	loadGlobalData() : RSVP.Promise {
 		return new RSVP.Promise((resolve, reject) : void => {
 			$.get( '/globals', (data) : void => {
+				this.cachedData = data;
 				resolve(data);
 			});
 		});
@@ -26,5 +25,9 @@ class Globals {
 
 	getSignupUrl() : string {
 		return this.cachedData ? this.cachedData.signupUrl : null;
+	}
+
+	getMobileBreakpoint() : number {
+		return this.cachedData ? this.cachedData.mobileBreakpoint : 710;
 	}
 }

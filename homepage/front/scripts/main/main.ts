@@ -4,18 +4,13 @@
 
 'use strict';
 
-declare var getGlobals : any;
-
 // bigText JQuery plugin
 interface JQuery {
 	bigText(options: any): any;
 }
 
-// TODO: Refactor into module. Only mobileBreakpoint needs to be global (see INT-217)
 var parallaxWindow : JQuery = $('#js-parallax-window'),
-	mobileBreakpoint : number = getGlobals().mobileBreakpoint;
-
-var globals : Globals;
+	globals : Globals;
 
 $(function() : void {
 	if (parallaxWindow.length) {
@@ -44,6 +39,7 @@ $(function() : void {
 	headings.css({padding: '.1rem'});
 
 	globals = new Globals();
+	globals.loadGlobalData();
 });
 
 function parallax() : void {
@@ -79,7 +75,7 @@ $('.search-wikia').click(function(event) : void {
 });
 
 $('#loginIcon').click(function(event) : void {
-	if ($(document).width() < mobileBreakpoint) {
+	if ($(document).width() < globals.getMobileBreakpoint()) {
 		$('#userInfoToggle').toggle();
 	} else {
 		window.location.href = globals.getLoginUrl();

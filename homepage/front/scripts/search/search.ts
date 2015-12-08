@@ -1,11 +1,11 @@
 /// <reference path="../../../../typings/jquery/jquery.d.ts" />
+/// <reference path="../main/globals.ts" />
 
 'use strict';
 
-declare var getGlobals : any;
-
 (function() : void {
-	var mobileBreakpoint : number = getGlobals().mobileBreakpoint;
+	var globals : Globals = new Globals(),
+		mobileBreakpoint : number;
 
 	function processArguments() : any {
 		var params : any = {},
@@ -41,16 +41,20 @@ declare var getGlobals : any;
 	}
 
 	function loadSearch() : void {
-		// Google custom search injection
-		// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
-		// TODO: Consider keeping searchKey in separate config file as it is currently shared with Mercury
-		var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
-			url : string = (document.location.protocol === 'https:' ? 'https:' : 'http:') +
-				'//www.google.com/cse/cse.js?cx=' + searchKey;
+		globals.loadGlobalData().then((data: any) => {
+			mobileBreakpoint = globals.getMobileBreakpoint();
 
-		$.getScript(url);
+			// Google custom search injection
+			// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
+			// TODO: Consider keeping searchKey in separate config file as it is currently shared with Mercury
+			var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
+				url : string = (document.location.protocol === 'https:' ? 'https:' : 'http:') +
+					'//www.google.com/cse/cse.js?cx=' + searchKey;
 
-		fillSearchTextBox();
+			$.getScript(url);
+
+			fillSearchTextBox();
+		});
 	}
 
 	loadSearch();
