@@ -8,7 +8,7 @@
         <li class="nav-link">
           <div class="search-bar">
             <form role="search" id="searchWikiaForm" class="search-wikia-form">
-              <input type="search" id="searchWikiaText" placeholder="すべてのウィキアで検索" />
+              <input type="search" id="searchWikiaText" placeholder="{{searchAllWikia}}" />
               <button type="button" id="searchWikia" class="search-wikia">
                 <img src="/images/search-icon.png" class="icon search">
               </button>
@@ -16,7 +16,11 @@
           </div>
         </li>
         <li class="nav-link more mobile-login">
-          <img src="/vendor/wikia-style-guide/gh-pages/assets/images/icons/icon_avatar.svg" class="icon login" id="loginIcon">
+          {{#if loggedIn}}
+            <img src="{{avatarUrl}}" class="icon avatar" id="loginIcon">
+          {{else}}
+            <img src="/vendor/wikia-style-guide/gh-pages/assets/images/icons/icon_avatar.svg" class="icon login" id="loginIcon">
+          {{/if}}
 
           <ul class="submenu">
             <li>
@@ -31,6 +35,13 @@
                 {{/if}}
             </li>
           </ul>
+        </li>
+        <li class="nav-link">
+          <div class="create-wikia">
+            <a href="http://www.wikia.com/Special:CreateNewWiki?uselang=ja" class="create-wikia-button">
+              {{createWikia}}
+            </a>
+          </div>
         </li>
       </ul>
     </nav>
@@ -49,7 +60,7 @@
 
 <div class="search-bar-mobile">
   <form role="search" id="searchWikiaFormMobile" class="search-wikia-form">
-    <input type="search" id="searchWikiaTextMobile" placeholder="すべてのウィキアで検索" />
+    <input type="search" id="searchWikiaTextMobile" placeholder="{{searchAllWikia}}" />
     <button type="button" id="searchWikiaMobile" class="search-wikia">
       <img src="/images/search-icon.png" class="icon search">
     </button>

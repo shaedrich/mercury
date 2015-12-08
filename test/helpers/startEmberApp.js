@@ -3,25 +3,18 @@
  * @description This file sets up the Ember app for testing. Depends on ember-qunit (managed by bower):
  * https://github.com/rpflorence/ember-qunit
  */
+var App = require('main/app').default,
+	karma_started = false;
 
-// Add this content to test application bootstrap
-// Writing this element to test runner DOM is required for Ember to bootstrap
-// properly
-document.write('<div class="article-content" id="preloadedContent">Test content</div><div id="ember-testing"></div>');
-
-__karma__.loaded = function() {};
-
-var App = window.App;
-
-var karma_started = false;
+__karma__.loaded = Em.K;
 
 App.rootElement = '#ember-testing';
 App.setupForTesting();
 App.injectTestHelpers();
 
 App.initializer({
-	name: "Test runner",
-	initialize: function(container, application) {
+	name: 'Test runner',
+	initialize: function (container, application) {
 		if (!karma_started) {
 			karma_started = true;
 			__karma__.start();
@@ -30,7 +23,27 @@ App.initializer({
 });
 
 setResolver(Em.DefaultResolver.create({
-	namespace: App
+	namespace: App,
+	resolve: function (fullName) {
+		var type = fullName.split(':')[0],
+			name = fullName.split(':')[1],
+			module;
+
+		if (type === 'route') {
+			module = 'main/routes/';
+		} else if (type === 'component') {
+			module = 'main/components/';
+		} else if (type === 'model') {
+			module = 'main/models/';
+		} else if (type === 'mixin') {
+			module = 'main/mixins/';
+		}
+
+		if (module) {
+			module = module + name.dasherize();
+			return require(module).default
+		}
+	}
 }));
 
 // Set deprecation warning method to Ember's version of noop to declutter test logs

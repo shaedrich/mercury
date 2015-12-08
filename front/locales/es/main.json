@@ -13,6 +13,7 @@
     "article-last-edit_plural_2":"Editado por última vez hace __count__ semanas",
     "article-categories-list-label":"Categorías",
     "article-top-contributors-label":"Principales editores de este artículo",
+    "article-error":"Lo sentimos, no pudimos cargar el artículo. Por favor, inténtelo de nuevo.",
     "side-nav-menu-label":"Menú",
     "navigation-back-label":"Atrás",
     "search-loading-msg":"Cargando resultados de la búsqueda...",
@@ -54,7 +55,7 @@
     "videos-label":"Vídeos",
     "photos-label":"Fotos",
     "pages-label":"Páginas",
-    "username-anonymous":"Un colaborador de Wikia",
+    "username-anonymous":"Un editor de Wikia",
     "smartbanner-store-ios":"En la App Store",
     "smartbanner-store-android":"En Google Play",
     "smartbanner-install-ios":"BAJAR",
@@ -97,7 +98,6 @@
     "curated-content-editor-no-articles-found":"No se encontraron artículos",
     "curated-content-editor-no-categories-found":"No se han encontrado categorías",
     "curated-content-editor-suggestions-loading":"Cargando...",
-    "curated-content-editor-error-inside-featured-content":"Arregla los errores dentro del contenido destacado.",
     "curated-content-editor-changes-saved":"Se han guardado tus cambios",
     "curated-content-editor-image-missing-error":"Proporciona una imagen",
     "curated-content-editor-missing-label-error":"Falta nombre para visualización",
@@ -136,7 +136,6 @@
     "curated-content-editor-remove-item-confirmation":"¿Estás seguro de que quieres borrar este elemento?",
     "curated-content-editor-general-section-error":"Arregla los errores en esta sección.",
     "curated-content-editor-add-items-message":"Agrega elementos a esta sección.",
-    "curated-content-editor-missing-items-error":"Las secciones no pueden estar vacías. Por favor agrega elementos a la sección.",
     "curated-content-editor-error-inside-items-message":"Arregla los errores dentro de los elementos.",
     "curated-content-editor-items-count":"__count__ elemento",
     "curated-content-editor-items-count_plural":"__count__ elementos",
@@ -145,12 +144,6 @@
     "curated-content-editor-new-featured-content":"Nuevo contenido destacado",
     "curated-content-editor-new-section":"Nueva sección",
     "curated-content-editor-new-category":"Nueva categoría"
-  },
-  "discussion":{
-    "share-default-title":"Discusión en __siteName__",
-    "sort-by-latest":"Más recientes",
-    "sort-by-trending":"Tendencias",
-    "number-of-posts":"__numberOfPosts__ publicaciones"
   },
   "userStatus":{
     "anon-cta":"__registerLink__ o __loginLink__",

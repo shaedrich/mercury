@@ -1,5 +1,6 @@
-/// <reference path="../../../../typings/jquery/jquery.d.ts" />
-/// <reference path="../../../../typings/slick/slick.d.ts" />
+/// <reference path="../../../typings/jquery/jquery.d.ts" />
+/// <reference path="../../../typings/slick/slick.d.ts" />
+/// <reference path="./globals.ts" />
 
 'use strict';
 
@@ -13,6 +14,8 @@ interface JQuery {
 // TODO: Refactor into module. Only mobileBreakpoint needs to be global (see INT-217)
 var parallaxWindow : JQuery = $('#js-parallax-window'),
 	mobileBreakpoint : number = getGlobals().mobileBreakpoint;
+
+var globals : Globals;
 
 $(function() : void {
 	if (parallaxWindow.length) {
@@ -39,6 +42,8 @@ $(function() : void {
 	var headings = $('.grid-heading');
 	headings.bigText({maximumFontSize: 20, verticalAlign: 'top'});
 	headings.css({padding: '.1rem'});
+
+	globals = new Globals();
 });
 
 function parallax() : void {
@@ -77,14 +82,14 @@ $('#loginIcon').click(function(event) : void {
 	if ($(document).width() < mobileBreakpoint) {
 		$('#userInfoToggle').toggle();
 	} else {
-		window.location.href = getGlobals().loginUrl;
+		window.location.href = globals.getLoginUrl();
 	}
 
 	event.preventDefault();
 });
 
 $('#whatIsWikia').click(function(event) : void {
-	window.location.href = '/beginners';
+	window.location.href = 'http://www.wikia.com/starwars/?uselang=ja';
 	event.preventDefault();
 });
 

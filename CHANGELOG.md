@@ -1,3 +1,209 @@
+## release-194 (2015-12-03 10:50 UTC)
+* [INT-248](https://wikia-inc.atlassian.net/browse/INT-248) Global rollout of section editor
+* [INT-188](https://wikia-inc.atlassian.net/browse/INT-188) INT-188 | Use common style for edit page / upload photo header
+* [XW-637](https://wikia-inc.atlassian.net/browse/XW-637) XW-637 | add mercury 'User-Agent' and 'X-Wikia-Internal-Request' headers for all MW requests
+* [XW-367](https://wikia-inc.atlassian.net/browse/XW-367) XW-367 | Disable animations for share header and site head
+* [XW-810](https://wikia-inc.atlassian.net/browse/XW-810) XW-810 | re-add tracking to share toolbar
+* [INT-275](https://wikia-inc.atlassian.net/browse/INT-275) Add press release
+* [INT-274](https://wikia-inc.atlassian.net/browse/INT-274) INT-274 | Add padding between image and text on company overview page
+* es6-server: XW-518 | ES6 server-side
+* [XW-521](https://wikia-inc.atlassian.net/browse/XW-521) XW-521 | Remove TS
+
+## release-193 hotfix 2 (2015-12-01 12:39 UTC)
+* release-193-hotfix2: Fix non-backtick tick
+
+## release-193 hotfix 1 (2015-12-01 11:17 UTC)
+* [SOC-1422](https://wikia-inc.atlassian.net/browse/SOC-1422) SOC-1422 | Discussion post and replies editor
+* [XW-602](https://wikia-inc.atlassian.net/browse/XW-602) XW-602 | Reset imageProperties before cropping image in Curated Content Editor
+* [SOC-952](https://wikia-inc.atlassian.net/browse/SOC-952) SOC-952 | Create reply method
+
+## release-193 (2015-12-01 11:01 UTC)
+* [INT-281](https://wikia-inc.atlassian.net/browse/INT-281) Change url for Star Wars banner button
+* [INT-272](https://wikia-inc.atlassian.net/browse/INT-272) INT-272 | Make sure nav is centered on screen
+* [INT-269](https://wikia-inc.atlassian.net/browse/INT-269) Separate tracking for intra and inter wiki search
+* [INT-278](https://wikia-inc.atlassian.net/browse/INT-278) Change text for Star Wars campaign button
+* [SOC-1451](https://wikia-inc.atlassian.net/browse/SOC-1451) SOC-1451 | Displaying deleted posts and replies
+* [XW-812](https://wikia-inc.atlassian.net/browse/XW-812) XW-812 Use indexOf instead of contains
+* [SOC-1580](https://wikia-inc.atlassian.net/browse/SOC-1580) SOC-1580 | Add Autolinker.js lib and use it to create anchors from ur…
+* [XW-728](https://wikia-inc.atlassian.net/browse/XW-728) XW-728 | add PAD slot to main pages
+* [XW-716](https://wikia-inc.atlassian.net/browse/XW-716) XW-716 | Setup UA account only once
+* fix-scripts-test-modules-task: Fix scripts-test-module task to compile only the files we want it to
+* [SOC-1647](https://wikia-inc.atlassian.net/browse/SOC-1647) SOC-1647 | Enable discussions on new wikias
+* remove-resolver-debug: Remove LOG_RESOLVER
+* [XW-799](https://wikia-inc.atlassian.net/browse/XW-799) XW-799 | Fix error handling for Babel
+* fix-eslint: Fix ESLint warnings
+* [SOC-1593](https://wikia-inc.atlassian.net/browse/SOC-1593) SOC-1593 | Fetching sorted posts in discussions
+* [INT-273](https://wikia-inc.atlassian.net/browse/INT-273) INT-273 | Switch top graphics on Japan HP for Star Wars campaign
+* [INT-264](https://wikia-inc.atlassian.net/browse/INT-264) INT-89, INT-244 | Test cases for mobile contribution
+* es6-front: XW-514 Move to ES6 from TS in our front code
+* es6-front-dev: Merge dev to es6-front
+* es6-front-unit-tests: XW-715 | Fix unit tests for ES6
+* es6-front-dev: Merge dev to es6-front
+* [XW-768](https://wikia-inc.atlassian.net/browse/XW-768) Xw 768 hot fix for ads
+* [XW-754](https://wikia-inc.atlassian.net/browse/XW-754) XW-754 fix bugs found while testing ES6
+* es6-front-dev: Merge latest dev to es6-front
+* [XW-747](https://wikia-inc.atlassian.net/browse/XW-747) Xw 747 fix errors
+* [XW-746](https://wikia-inc.atlassian.net/browse/XW-746) Use Clousure syntax for 2D array
+* [XW-744](https://wikia-inc.atlassian.net/browse/XW-744) XW-744 fix link component not transpiled to es5
+* es6-remove-gulp-typedoc: remove gulp-typedoc
+* es6-bogna: Fix bugs after migration to ES6
+* [XW-714](https://wikia-inc.atlassian.net/browse/XW-714) XW-714 | import M and Mercury functions
+* [XW-711](https://wikia-inc.atlassian.net/browse/XW-711) XW-711 | move linkComponent to initializer
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 | add imports and fix eslint warnings
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert Mercury modules to ES6
+* [XW-680](https://wikia-inc.atlassian.net/browse/XW-680) XW-680 | Convert auth to ES6 + modules
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 | convert helpers to modules
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 | convert models to modules
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 | convert controllers to modules
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 | convert components to modules
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 | convert mixins to modules
+* [XW-701](https://wikia-inc.atlassian.net/browse/XW-701) move to babel 6 and UMD for now
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert utils to ES6
+* [XW-699](https://wikia-inc.atlassian.net/browse/XW-699) XW-699 | fix ESLint comments
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 | Convert mixins to ES6
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert models to ES6
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert helpers to ES6
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert components to ES6 - fourth batch
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert components to ES6 - third batch
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert components to ES6 - second batch
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert components to ES6 - first batch
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert routes to ES6
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 Convert controllers to ES6
+* [XW-514](https://wikia-inc.atlassian.net/browse/XW-514) XW-514 ESLint fixes
+
+## release-192 (2015-11-26 12:07 UTC)
+* [SOC-1647](https://wikia-inc.atlassian.net/browse/SOC-1647) SOC-1647 | Enable disucssions on MW119
+* [ADEN-2598](https://wikia-inc.atlassian.net/browse/ADEN-2598) ADEN-2598 adding counter
+* [DAT-3436](https://wikia-inc.atlassian.net/browse/DAT-3436) DAT-3436 update wikia style guide version to use new blockquote styles
+* [SOC-1487](https://wikia-inc.atlassian.net/browse/SOC-1487) SOC-1487 Discussions Design Cleanup
+
+## release-191 (2015-11-24 10:52 UTC)
+* Merge pull request #1666 from RafalWilinski/patch-1: mediawikiDomain change
+* [INT-246](https://wikia-inc.atlassian.net/browse/INT-246) Mercury section editor rollout phase 1
+* [SOC-1582](https://wikia-inc.atlassian.net/browse/SOC-1582) SOC-1582 | Handling loading empty replies response on front end
+* [XW-159](https://wikia-inc.atlassian.net/browse/XW-159) XW-159 | add npm tasks
+
+## release-190 (2015-11-19 15:59 UTC)
+* [INT-218](https://wikia-inc.atlassian.net/browse/INT-218) Show avatar for logged in users for Japan HP
+* [DAT-3463](https://wikia-inc.atlassian.net/browse/DAT-3463) DAT-3463 Style context-links templates
+* transifex-testing: Add config file for Transifex testing
+* [ADEN-2559](https://wikia-inc.atlassian.net/browse/ADEN-2559) Aden 2559 close button delay
+
+## release-189 hotfix 1 (2015-11-18 13:00 UTC)
+* [XW-745](https://wikia-inc.atlassian.net/browse/XW-745) XW-745 | Non-portable infoboxes no longer show on Mercury in iOS
+
+## release-189 (2015-11-17 15:45 UTC)
+* [SOC-1566](https://wikia-inc.atlassian.net/browse/SOC-1566) SOC-1566 | Use WhoAmI service instead of Helios for access_token validation
+* [INT-254](https://wikia-inc.atlassian.net/browse/INT-254) Send user id to qualaroo
+* SOC: Enable discussions on starwars
+* [SOC-1551](https://wikia-inc.atlassian.net/browse/SOC-1551) SOC-1551 | Contributors count will be broken when we reach 1k contributors
+
+## release-188 hotfix 1 (2015-11-13 16:22 UTC)
+* [SOC-1476](https://wikia-inc.atlassian.net/browse/SOC-1476) Soc 1476 fix
+* sg-update: Style-Guide | Bump version to 1.7.4
+
+## release-188 (2015-11-13 12:49 UTC)
+* [SOC-1404](https://wikia-inc.atlassian.net/browse/SOC-1404) SOC-1404 As a designer, I want two colors from Theme Designer to be used in new Discussions
+* [ADEN-2595](https://wikia-inc.atlassian.net/browse/ADEN-2595) ADEN-2595 Disable all ads for logged in users
+* [SOC-1290](https://wikia-inc.atlassian.net/browse/SOC-1290) SOC-1290 Banner images for discussion desktop header
+* [SOC-1476](https://wikia-inc.atlassian.net/browse/SOC-1476) SOC-1476 | Move discussion translations to discussion.json file
+* [XW-665](https://wikia-inc.atlassian.net/browse/XW-665) Xw 665 add missing tests for tracking
+* [XW-669](https://wikia-inc.atlassian.net/browse/XW-669) XW-669 | Create separate validator for Mercury Curated Content Editor
+* [INT-195](https://wikia-inc.atlassian.net/browse/INT-195) Don't include domain name for google search tracking
+* [SOC-1266](https://wikia-inc.atlassian.net/browse/SOC-1266) SOC-1266 As a user, I want a dark theme for discussions for dark wikias
+
+## release-187 hotfix 2 (2015-11-04 17:04 UTC)
+* enable-discussions: Discussions | Enabling discussions on featured Wikias
+
+## release-187 hotfix 1 (2015-11-04 16:59 UTC)
+* [SOC-1574](https://wikia-inc.atlassian.net/browse/SOC-1574) SOC-1574 | Discussion post view fix
+
+## release-187 (2015-11-04 07:59 UTC)
+* [XW-658](https://wikia-inc.atlassian.net/browse/XW-658) XW-658 Replace new top bar with the classic one
+* [SOC-1558](https://wikia-inc.atlassian.net/browse/SOC-1558) SOC-1558 | 404 error when scrolling too quickly on cocktails discussions wiki
+* [SOC-1573](https://wikia-inc.atlassian.net/browse/SOC-1573) SOC-1573 | Discussion - new translations for JA
+* [SOC-1556](https://wikia-inc.atlassian.net/browse/SOC-1556) SOC-1556 | Discussions - Fix profileUrl for lazy loaded replies
+* [SOC-1546](https://wikia-inc.atlassian.net/browse/SOC-1546) SOC-1546 | Thread listing confusing clickable area
+* [SOC-1550](https://wikia-inc.atlassian.net/browse/SOC-1550) SOC-1550 | Discussions - fix grid on error pages
+* enabling-discussion-under-flag: Enabling discussion under flag
+* [SOC-1556](https://wikia-inc.atlassian.net/browse/SOC-1556) SOC-1556 | Discussions - fix author link on details page
+* [SOC-1225](https://wikia-inc.atlassian.net/browse/SOC-1225) SOC-1225 | Additional fixes after merge
+* [XW-584](https://wikia-inc.atlassian.net/browse/XW-584) XW-584 Fix article meta tags
+
+## release-186 (2015-11-03 07:59 UTC)
+* [XW-651](https://wikia-inc.atlassian.net/browse/XW-651) XW-651 Fix formatting in ES6 files
+* jsdoc-returns-void: Swap undefined with void in JSDoc
+* [SOC-1552](https://wikia-inc.atlassian.net/browse/SOC-1552) SOC-1552 | Can't upvote post that are lazy-loader
+
+## release-185 (2015-11-02 15:50 UTC)
+* eslint-tweaks: Tweak ESLint - fix typo, add more to .eslintignore
+* [SOC-1225](https://wikia-inc.atlassian.net/browse/SOC-1225) SOC-1225 | Localized social networks in ShareFeatureComponent
+* [XW-395](https://wikia-inc.atlassian.net/browse/XW-395) XW-395 | Remove deprecated /api/v1/* Mercury paths
+* [INT-217](https://wikia-inc.atlassian.net/browse/INT-217) Use promise to get globals
+* [SOC-1459](https://wikia-inc.atlassian.net/browse/SOC-1459) SOC-1459 | Translations for new Discussion strings
+* [XW-30](https://wikia-inc.atlassian.net/browse/XW-30) XW-30 Fetch only article details and adsContext not all main page on categories and sections
+* [XW-547](https://wikia-inc.atlassian.net/browse/XW-547) XW-547 | 'Full site' option persistent per session
+* [INT-245](https://wikia-inc.atlassian.net/browse/INT-245) Workaround for broken z-index in Safari
+* [XW-232](https://wikia-inc.atlassian.net/browse/XW-232) XW-232 | remove throbber on focus on title
+* [XW-601](https://wikia-inc.atlassian.net/browse/XW-601) XW-601 | Remove spinner delay
+* new-polish-i18n: i18n | New translations for auth and auth-front
+* [SEO-10](https://wikia-inc.atlassian.net/browse/SEO-10) Update html title
+* fix-for-uncaught-in-share-feature: Share Feature | Trigger this.attrs handlers only if they exist
+* removing-disc-console-warnings: Maintenance | Removing console warnings trigger from discussion code
+
+## release-184 (2015-10-28 07:59 UTC)
+* [SOC-1303](https://wikia-inc.atlassian.net/browse/SOC-1303) SOC-1303 Add i18n + apply styling fixes + add type
+
+## release-183 (2015-10-27 12:45 UTC)
+* create-eslintignore: Create .eslintignore; add more globals
+* [INT-231](https://wikia-inc.atlassian.net/browse/INT-231) Changed wording for Wikia Live to Romaji
+* [INT-170](https://wikia-inc.atlassian.net/browse/INT-170) we want users to be logged in to upload images on Mercury
+* [SOC-1450](https://wikia-inc.atlassian.net/browse/SOC-1450) SOC-1450 | The "view older replies" button stays highlighted after clicking it
+* [XW-618](https://wikia-inc.atlassian.net/browse/XW-618) XW-618 Fix page view tracking
+* track-app-rendered: Track the first didRender instead of didInsertElement
+* [SOC-1174](https://wikia-inc.atlassian.net/browse/SOC-1174) SOC-1174-fix | Fixed 404 after hitting view older replays button
+* [INT-195](https://wikia-inc.atlassian.net/browse/INT-195) GA tracking for google custom search
+* [INT-231](https://wikia-inc.atlassian.net/browse/INT-231) Remove some links from Japan HP footer in mobile view
+* [PI-](https://wikia-inc.atlassian.net/browse/PI-) Media Collections in Portable Infoboxes - MVP
+* [VE-1999](https://wikia-inc.atlassian.net/browse/VE-1999) Change image crop mode on portrait images
+* [VE-1998](https://wikia-inc.atlassian.net/browse/VE-1998) Make sure article videos are clickable
+* [INT-230](https://wikia-inc.atlassian.net/browse/INT-230) Add Create a wikia to nav (desktop only) for Japan homepage
+* [INT-217](https://wikia-inc.atlassian.net/browse/INT-217) Return front end globals for Japan HP via json file
+* [INT-234](https://wikia-inc.atlassian.net/browse/INT-234) Fixed position for Japan homepage nav on desktop
+* [VE-1960](https://wikia-inc.atlassian.net/browse/VE-1960) Mobile rendering of image collections
+
+## release-182 hotfix 1 (2015-10-26 14:32 UTC)
+* release-182-XW-618-hotfix: [HOTFIX] XW-618 Fix page view tracking
+
+## release-182 (2015-10-23 07:59 UTC)
+* [SOC-1425](https://wikia-inc.atlassian.net/browse/SOC-1425) SOC-1425 Hard-code community avatars for discussions
+* [XW-557](https://wikia-inc.atlassian.net/browse/XW-557) XW-557 Remove obsolete controllers
+* [XW-516](https://wikia-inc.atlassian.net/browse/XW-516) XW-516 | Move typings to JSDoc
+* [XW-474](https://wikia-inc.atlassian.net/browse/XW-474) XW-474 Clean up error handling
+
+## release-181 (2015-10-21 07:59 UTC)
+* [SOC-1276](https://wikia-inc.atlassian.net/browse/SOC-1276) SOC-1276 Truncate usernames and fix author properties
+* [SOC-1174](https://wikia-inc.atlassian.net/browse/SOC-1174) SOC-1174 | Unified discussion URL for front end calls
+* [SOC-1469](https://wikia-inc.atlassian.net/browse/SOC-1469) SOC-1469 | Iterate over replies only if they exist
+* [ADEN-2569](https://wikia-inc.atlassian.net/browse/ADEN-2569) ADEN-2569 Fix krux implementation
+* [ADEN-2486](https://wikia-inc.atlassian.net/browse/ADEN-2486) ADEN-2486 | Add Flite tag support for mercury
+
+## release-180 (2015-10-20 07:59 UTC)
+* [XW-512](https://wikia-inc.atlassian.net/browse/XW-512) XW-512 | Introduce ES6
+
+## release-179 (2015-10-19 07:59 UTC)
+* [INT-233](https://wikia-inc.atlassian.net/browse/INT-233) Refactored gulp tasks to work properly together with combine…
+* [SOC-1273](https://wikia-inc.atlassian.net/browse/SOC-1273) SOC-1273 Introduce discussionsSplashPageConfig app links in front end + App promotion component
+
+## release-178 (2015-10-16 10:53 UTC)
+* [SOC-1193](https://wikia-inc.atlassian.net/browse/SOC-1193) SOC-1193 As a user, I want to see a generic temporary error discussion page if the service is down
+
+## release-177 (2015-10-15 07:59 UTC)
+* [INT-200](https://wikia-inc.atlassian.net/browse/INT-200) Fix for text getting cut off in featured communities on Japa…
+* enable-discussions-on-staging: Maintenance | Enable discussion feature on all non-prod environments
+* [XW-523](https://wikia-inc.atlassian.net/browse/XW-523) XW-523 | Config for ESLint
+* [XW-544](https://wikia-inc.atlassian.net/browse/XW-544) XW-544 | update Mercury tasks
+
 ## release-176 (2015-10-14 07:59 UTC)
 * aden-2468-ox-bidder-on-mobile: ADEN-2468 Add mercury onLoad listener
 * aden-2406-sp-tracking-on-mobile: ADEN-2406 Added detection script and event listeners to track blocking

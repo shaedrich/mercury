@@ -13,6 +13,7 @@
     "article-last-edit_plural_2":"Zuletzt vor __count__ Wochen bearbeitet",
     "article-categories-list-label":"Kategorien",
     "article-top-contributors-label":"Top-Beitragende in diesem Artikel",
+    "article-error":"Sorry, wir konnten den Artikel nicht laden. Bitte versuche es noch einmal.",
     "side-nav-menu-label":"Menü",
     "navigation-back-label":"Zurück",
     "search-loading-msg":"Lade Suchergebnisse...",
@@ -97,7 +98,6 @@
     "curated-content-editor-no-articles-found":"Keine Artikel gefunden",
     "curated-content-editor-no-categories-found":"Keine Kategorien gefunden",
     "curated-content-editor-suggestions-loading":"Wird geladen…",
-    "curated-content-editor-error-inside-featured-content":"Bitte Fehler in empfohlenen Inhalten beheben.",
     "curated-content-editor-changes-saved":"Deine Änderungen wurden gespeichert.",
     "curated-content-editor-image-missing-error":"Bitte hinterlege ein Bild",
     "curated-content-editor-missing-label-error":"Anzeigenname fehlt",
@@ -136,7 +136,6 @@
     "curated-content-editor-remove-item-confirmation":"Bist du sicher, dass du diesen Eintrag löschen möchtest?",
     "curated-content-editor-general-section-error":"Bitte Fehler in diesem Abschnitt beheben.",
     "curated-content-editor-add-items-message":"Diesem Abschnitt bitte Einträge hinzufügen.",
-    "curated-content-editor-missing-items-error":"Abschnitte dürfen nicht leer sein. Bitte füge dem Abschnitt Einträge hinzu.",
     "curated-content-editor-error-inside-items-message":"Bitte Fehler in den Einträgen beheben.",
     "curated-content-editor-items-count":"__count__ Eintrag",
     "curated-content-editor-items-count_plural":"__count__ Einträge",
@@ -145,12 +144,6 @@
     "curated-content-editor-new-featured-content":"Neue empfohlene Inhalte",
     "curated-content-editor-new-section":"Neuer Ordner",
     "curated-content-editor-new-category":"Neue Kategorie"
-  },
-  "discussion":{
-    "share-default-title":"Diskussion in __siteName__",
-    "sort-by-latest":"Neueste",
-    "sort-by-trending":"Trends",
-    "number-of-posts":"__numberOfPosts__ Beiträge"
   },
   "userStatus":{
     "anon-cta":"__registerLink__ oder __loginLink__",
