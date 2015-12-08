@@ -91,7 +91,8 @@ $('#whatIsWikia').click(function(event) : void {
 
 function search() : void {
 	var searchText : string,
-		searchUrl : string;
+		searchUrl : string,
+		optimizelyId = globals.getOptimizelyId();
 
 	searchText = encodeURI($('#searchWikiaText').val());
 
@@ -101,8 +102,18 @@ function search() : void {
 	}
 
 	if (searchText) {
-		searchUrl = '/search?q=' + searchText;
+		if (window.optimizely.variationMap[optimizelyId] === 1) {
+			// Use Google search
+			searchUrl = '/search?q=' + searchText;
 
-		window.location.href = searchUrl;
+			window.location.href = searchUrl;
+		} else {
+			// Use Oasis search
+			searchUrl = 'http://ja.wikia.com/Special:Search?search=';
+			searchUrl += searchText;
+			searchUrl += '&fulltext=Search&resultsLang=ja';
+
+			window.location.href = searchUrl;
+		}
 	}
 }

@@ -30,4 +30,8 @@ class Globals {
 	getMobileBreakpoint() : number {
 		return this.cachedData ? this.cachedData.mobileBreakpoint : 710;
 	}
+
+	getOptimizelyId() : number {
+		return this.cachedData ? this.cachedData.googleSearchOptimizelyId : 0;
+	}
 }
