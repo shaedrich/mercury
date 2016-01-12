@@ -15,7 +15,8 @@ function index(request, reply) {
 		data = {
 			title: 'ウィキア・ジャパン',
 			carousel: util.getLocalizedHubData(hubConfig, locale),
-			popular: util.preprocessPopularData(popularItemConfig)
+			popular: util.preprocessPopularData(popularItemConfig),
+			prod: (process.env.WIKIA_ENVIRONMENT === 'prod'),
 		};
 
 	util.renderWithGlobalData(request, reply, data, 'index');

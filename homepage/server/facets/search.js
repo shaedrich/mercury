@@ -10,7 +10,8 @@ function companyInfo(request, reply) {
 	var data = {
 		title: 'ウィキア・ジャパン',
 		loading: '検索結果ロード中',
-		search: true
+		search: true,
+		prod: (process.env.WIKIA_ENVIRONMENT === 'prod'),
 	};
 
 	util.renderWithGlobalData(request, reply, data, 'search');
