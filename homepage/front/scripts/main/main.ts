@@ -104,7 +104,11 @@ function search() : void {
 	if (searchText) {
 		if (window.optimizely.variationMap[optimizelyId] === 1) {
 			// Use Google search
-			searchUrl = `/search?q=${searchText}`;
+			if (window.location.pathname === '/') {
+				searchUrl = `search?q=${searchText}`;
+			} else {
+				searchUrl = `/search?q=${searchText}`;
+			}
 
 			ga('send', 'pageview', `${window.location.pathname}${searchUrl}&qInter=${searchText}`);
 
