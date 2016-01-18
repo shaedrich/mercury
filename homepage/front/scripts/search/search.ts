@@ -28,9 +28,7 @@
 		return params;
 	}
 
-	function fillSearchTextBox() : void {
-		var params : any = processArguments();
-
+	function fillSearchTextBox(params) : void {
 		if (params.hasOwnProperty('q')) {
 			if ($(document).width() < mobileBreakpoint) {
 				$('#searchWikiaTextMobile').val(decodeURIComponent(params.q));
@@ -42,20 +40,21 @@
 
 	function loadSearch() : void {
 		globals.loadGlobalData().then((data: any) => {
-			mobileBreakpoint = globals.getMobileBreakpoint();
+			mobileBreakpoint = globals.getMobileBreakpoint(),
 
 			// Google custom search injection
 			// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
 			// TODO: Consider keeping searchKey in separate config file as it is currently shared with Mercury
 			var searchKey : string = '006230450596576500385:kcgbfm7zpa8',
 				url : string = (document.location.protocol === 'https:' ? 'https:' : 'http:') +
-					'//www.google.com/cse/cse.js?cx=' + searchKey;
+					'//www.google.com/cse/cse.js?cx=' + searchKey,
+				params : any = processArguments();
 
 			$.getScript(url);
 
-			fillSearchTextBox();
+			fillSearchTextBox(params);
 
-			ga('send', 'pageview', `${window.location.pathname}${searchUrl}&qInter=${searchText}`);
+			ga('send', 'pageview', `${window.location.pathname}?q=${params.q}&qInter=${params.q}`);
 		});
 	}
 
