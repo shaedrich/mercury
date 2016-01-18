@@ -40,6 +40,9 @@ $(function() : void {
 
 	globals = new Globals();
 	globals.loadGlobalData();
+
+	ga('create', 'UA-32129070-1', 'auto');
+	ga('send', 'pageview');
 });
 
 function parallax() : void {
@@ -109,8 +112,6 @@ function search() : void {
 			} else {
 				searchUrl = `/search?q=${searchText}`;
 			}
-
-			ga('send', 'pageview', `${window.location.pathname}${searchUrl}&qInter=${searchText}`);
 
 			window.location.href = searchUrl;
 		} else {

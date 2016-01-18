@@ -54,6 +54,8 @@
 			$.getScript(url);
 
 			fillSearchTextBox();
+
+			ga('send', 'pageview', `${window.location.pathname}${searchUrl}&qInter=${searchText}`);
 		});
 	}
 
