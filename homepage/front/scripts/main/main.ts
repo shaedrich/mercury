@@ -40,9 +40,6 @@ $(function() : void {
 
 	globals = new Globals();
 	globals.loadGlobalData();
-
-	ga('create', 'UA-32129070-1', 'auto');
-	ga('send', 'pageview');
 });
 
 function parallax() : void {
