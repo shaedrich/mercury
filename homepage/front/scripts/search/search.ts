@@ -40,7 +40,7 @@
 
 	function loadSearch() : void {
 		globals.loadGlobalData().then((data: any) => {
-			mobileBreakpoint = globals.getMobileBreakpoint(),
+			mobileBreakpoint = globals.getMobileBreakpoint();
 
 			// Google custom search injection
 			// https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
@@ -50,11 +50,9 @@
 					'//www.google.com/cse/cse.js?cx=' + searchKey,
 				params : any = processArguments();
 
-			$.getScript(url);
-
-			fillSearchTextBox(params);
-
 			ga('send', 'pageview', `${window.location.pathname}?q=${params.q}&qInter=${params.q}`);
+			$.getScript(url);
+			fillSearchTextBox(params);
 		});
 	}
 
