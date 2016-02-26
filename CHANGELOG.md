@@ -1,3 +1,7 @@
+## release-213 hotfix 1 (2016-02-26 11:53 UTC)
+* [XW-1184](https://wikia-inc.atlassian.net/browse/XW-1184) XW-1184 | Fix actions for RWA
+* release-213-hotfix: Release 213 hotfix
+
 ## release-213 (2016-02-25 12:05 UTC)
 * [XW-1173](https://wikia-inc.atlassian.net/browse/XW-1173) XW-1173 | ASAP send an event to UA that user opened a page
 * [DAT-3770](https://wikia-inc.atlassian.net/browse/DAT-3770) DAT-3770 infobox builder reordering of elements
