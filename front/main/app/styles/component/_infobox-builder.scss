@@ -7,10 +7,8 @@ $icon-button-size: 30px;
 $border-width: 1px;
 $box-shadow-size: 2px;
 $shadow-blur: 15px;
-$spinner-text-color: rgba(0, 0, 0, .5);
-$shadow-color: rgba(0, 0, 0, .3);
-$grayout-color: rgba(255, 255, 255, .3);
-$overlay-color: rgba(255, 255, 255, .8);
+$shadow-color: rgba(0,0,0,0.3);
+$grayout-color: rgba(255,255,255,0.3);
 
 // overwrite default mercury styles
 .infobox-builder-body-wrapper {
@@ -193,7 +191,7 @@ $overlay-color: rgba(255, 255, 255, .8);
 	}
 
 	.modal-dialog {
-		box-shadow: 0 0 20px 0 $shadow-color;
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
 		font-size: 14px;
 		line-height: 20px;
 		max-width: 250px;
@@ -290,31 +288,5 @@ $overlay-color: rgba(255, 255, 255, .8);
 			width: 100%;
 			z-index: 2;
 		}
-	}
-}
-
-.infobox-builder-spinner {
-	align-items: center;
-	color: $spinner-text-color;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-
-	&.loading-overlay {
-		background: $overlay-color;
-	}
-
-	.success-icon {
-		height: 80px;
-		width: 80px;
-	}
-
-	.spinner {
-		margin: 0;
-		position: inherit;
-	}
-
-	.spinner-text {
-		margin-top: 15px;
 	}
 }

@@ -26,7 +26,7 @@ test('test resetting item in edit model', function (assert) {
 
 	controller.set('model', modelMock);
 	cases.forEach((testCase) => {
-		controller.send('handleItemInEditMode', testCase.actionTrigger);
+		controller.send('handleItemInEditModel', testCase.actionTrigger);
 		assert.equal(resetEditModeSpy.called, testCase.wasReset, testCase.message);
 	});
 });

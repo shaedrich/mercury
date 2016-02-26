@@ -1,22 +1,16 @@
 import Ember from 'ember';
 import InfoboxBuilderModel from '../models/infobox-builder';
-import ConfirmationMixin from 'ember-onbeforeunload/mixins/confirmation';
 
-export default Ember.Route.extend(ConfirmationMixin, {
+export default Ember.Route.extend({
 	pontoLoadingInitialized: false,
 	pontoPath: '/front/main/assets/vendor/ponto/ponto.js',
-
-	// ember-onbeforeunload - message displayed within confirmation dialog
-	confirmationMessage() {
-		return i18n.t('infobox-builder:main.leave-confirmation');
-	},
 
 	renderTemplate() {
 		this.render('infobox-builder');
 	},
 
 	beforeModel(transition) {
-		const templateName = transition.params['infobox-builder'].templateName;
+		const templateName = transition.params.infoboxBuilder.templateName;
 
 		return new Ember.RSVP.Promise((resolve, reject) => {
 			if (window.self !== window.top && (!window.Ponto || !this.get('pontoLoadingInitialized'))) {
