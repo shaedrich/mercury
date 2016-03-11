@@ -1,3 +1,6 @@
+## release-219 hotfix 1 (2016-03-11 17:08 UTC)
+* [CE-3494](https://wikia-inc.atlassian.net/browse/CE-3494)
+
 ## release-219 (2016-03-10 10:31 UTC)
 * [RECIRC-49](https://wikia-inc.atlassian.net/browse/RECIRC-49) ABTest Fandom content in footer
 * upgrade-ember-cli: Upgrade Ember CLI to 2.4.2
