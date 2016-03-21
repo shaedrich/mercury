@@ -1,3 +1,6 @@
+## release-222 (2016-03-21 14:05 UTC)
+* [CE-3531](https://wikia-inc.atlassian.net/browse/CE-3531)
+
 ## release-219 (2016-03-10 10:31 UTC)
 * [RECIRC-49](https://wikia-inc.atlassian.net/browse/RECIRC-49) ABTest Fandom content in footer
 * upgrade-ember-cli: Upgrade Ember CLI to 2.4.2
