@@ -111,36 +111,36 @@ export default Ember.Route.extend(RouteWithAdsMixin, {
 	 */
 	setHeadTags(model) {
 		const headTags = [],
-			defaultHtmlTitleTemplate = '$1 - Wikia',
 			pageUrl = model.get('url'),
 			description = model.get('description'),
-			htmlTitleTemplate = Ember.get(Mercury, 'wiki.htmlTitleTemplate') || defaultHtmlTitleTemplate,
 			canonicalUrl = `${Ember.get(Mercury, 'wiki.basePath')}${pageUrl}`,
 			appId = Ember.get(Mercury, 'wiki.smartBanner.appId.ios'),
 			appleAppContent = pageUrl ?
 				`app-id=${appId}, app-argument=${Ember.get(Mercury, 'wiki.basePath')}${pageUrl}` :
-				`app-id=${appId}`;
+				`app-id=${appId}`,
+			htmlTitleTemplate = Ember.get(Mercury, 'wiki.htmlTitleTemplate') || '$1 - Wikia';
 
 		document.title = model.get('documentTitle') || htmlTitleTemplate.replace('$1', model.get('displayTitle'));
 
-		headTags.push(
-			{
-				type: 'link',
-				tagId: 'canonical-url',
-				attrs: {
-					rel: 'canonical',
-					href: canonicalUrl
-				}
-			},
-			{
+		headTags.push({
+			type: 'link',
+			tagId: 'canonical-url',
+			attrs: {
+				rel: 'canonical',
+				href: canonicalUrl
+			}
+		});
+
+		if (description) {
+			headTags.push({
 				type: 'meta',
 				tagId: 'meta-description',
 				attrs: {
 					name: 'description',
 					content: description
 				}
-			}
-		);
+			});
+		}
 
 		if (appId) {
 			headTags.push({
