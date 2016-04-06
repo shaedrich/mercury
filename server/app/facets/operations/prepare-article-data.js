@@ -15,7 +15,8 @@ export default function prepareArticleData(request, data) {
 		result = getBaseResult(request, data);
 
 	result.displayTitle = getDefaultTitle(request, pageData);
-	result.documentTitle = getDocumentTitle(pageData) || result.displayTitle;
+	result.documentTitle = pageData.htmlTitle || getDocumentTitle(pageData) || result.displayTitle;
+
 	result.articlePage = data.page;
 	result.queryParams = parseQueryParams(request.query, allowedQueryParams);
 	result.asyncArticle = request.query._escaped_fragment_ !== '0' ?
