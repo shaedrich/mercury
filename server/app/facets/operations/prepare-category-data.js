@@ -12,7 +12,7 @@ export default function prepareCategoryData(request, data) {
 		result = getBaseResult(request, data);
 
 	result.displayTitle = getDefaultTitle(request, pageData);
-	result.documentTitle = getDocumentTitle(pageData) || result.displayTitle;
+	result.documentTitle = pageData.htmlTitle || getDocumentTitle(pageData) || result.displayTitle;
 	result.asyncArticle = false;
 	result.hasToC = false;
 	result.queryParams = parseQueryParams(request.query, allowedQueryParams);

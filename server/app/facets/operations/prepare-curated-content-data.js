@@ -20,7 +20,7 @@ export default function prepareCuratedContentData(request, data) {
 	}
 
 	result.displayTitle = getCuratedMainPageTitle(request, wikiVariables);
-	result.documentTitle = result.displayTitle;
+	result.documentTitle =  data.htmlTitle || result.displayTitle;
 	result.isMainPage = true;
 	result.mainPageData = data.mainPageData;
 	result.openGraph = getOpenGraphData('website', result.displayTitle, result.canonicalUrl, result.mainPageData);
