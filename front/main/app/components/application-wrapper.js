@@ -214,12 +214,6 @@ export default Ember.Component.extend({
 		return this.get('navABTestCurrentGroup') === this.get('navABTestBarDropdownIconGroup');
 	}),
 
-	navABTestChangeUI: Ember.computed('navABTestCurrentGroup', 'navABTestDefaultGroup', function () {
-		const currentGroup = this.get('navABTestCurrentGroup');
-
-		return currentGroup && currentGroup !== this.get('navABTestDefaultGroup');
-	}),
-
 	navABTestEnableShare: Ember.computed('navABTestIsBarMenuIcon', 'navABTestIsBarDropdownIcon', function () {
 		return !this.get('navABTestIsBarMenuIcon') && !this.get('navABTestIsBarDropdownIcon');
 	}),
@@ -229,6 +223,21 @@ export default Ember.Component.extend({
 			return (this.get('navABTestCurrentGroup') === this.get('navABTestFabIconMenuGroup')) ||
 					(this.get('navABTestCurrentGroup') === this.get('navABTestIsFabSearchIcon'));
 		}),
+
+	navABTestChangeUI: Ember.computed(
+		'navABTestCurrentGroup', 'navABTestDefaultGroup', 'navABTestControlGroup',
+		function () {
+			const currentGroup = this.get('navABTestCurrentGroup');
+
+			return currentGroup &&
+				currentGroup !== this.get('navABTestDefaultGroup') &&
+				currentGroup !== this.get('navABTestControlGroup');
+		}
+	),
+
+	navABTestIsControlGroup: Ember.computed('navABTestCurrentGroup', 'navABTestControlGroup', function () {
+		return this.get('navABTestCurrentGroup') === this.get('navABTestControlGroup');
+	}),
 
 	fabIcon: Ember.computed('navABTestIsFabSearchIcon', function () {
 		return this.get('navABTestIsFabSearchIcon') ? 'search-for-ab-test' : 'menu';
