@@ -201,7 +201,9 @@ export default Ember.Component.extend({
 	),
 
 	navABTestIsControlGroup: Ember.computed('navABTestCurrentGroup', 'navABTestControlGroup', function () {
-		return this.get('navABTestCurrentGroup') === this.get('navABTestControlGroup');
+	return this.get('navABTestCurrentGroup') === this.get('navABTestControlGroup');
+	}),
+
 	navABTestIsFabMenuIcon: Ember.computed('navABTestCurrentGroup', 'navABTestFabIconMenuGroup', function () {
 		return this.get('navABTestCurrentGroup') === this.get('navABTestFabIconMenuGroup');
 	}),
