@@ -189,21 +189,6 @@ export default Ember.Component.extend({
 		return this.get('navABTestCurrentGroup') === this.get('navABTestFabIconSearchGroup');
 	}),
 
-	navABTestChangeUI: Ember.computed(
-		'navABTestCurrentGroup', 'navABTestDefaultGroup', 'navABTestControlGroup',
-		function () {
-			const currentGroup = this.get('navABTestCurrentGroup');
-
-			return currentGroup &&
-				currentGroup !== this.get('navABTestDefaultGroup') &&
-				currentGroup !== this.get('navABTestControlGroup');
-		}
-	),
-
-	navABTestIsControlGroup: Ember.computed('navABTestCurrentGroup', 'navABTestControlGroup', function () {
-	return this.get('navABTestCurrentGroup') === this.get('navABTestControlGroup');
-	}),
-
 	navABTestIsFabMenuIcon: Ember.computed('navABTestCurrentGroup', 'navABTestFabIconMenuGroup', function () {
 		return this.get('navABTestCurrentGroup') === this.get('navABTestFabIconMenuGroup');
 	}),
