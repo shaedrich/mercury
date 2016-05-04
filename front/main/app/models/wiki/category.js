@@ -131,6 +131,8 @@ CategoryModel.reopenClass({
 				}
 			}
 
+			debugger;
+
 			/**
 			 * This is necessary to avoid having duplicated title on Category pages
 			 * This should be removed in XW-1442
