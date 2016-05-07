@@ -3,9 +3,9 @@ import {test, moduleFor} from 'ember-qunit';
 import apiStubs from '../api-stubs';
 import sinon from 'sinon';
 
-const DiscussionPostModelClass = require('main/models/discussion/domain/post').default;
+const DiscussionReplyModelClass = require('main/models/discussion/domain/reply').default;
 
-moduleFor('model:discussion/domain/post', 'Unit | Model | Discussion Post', {
+moduleFor('model:discussion/domain/reply', 'Unit | Model | Discussion Reply', {
 	unit: true,
 
 	beforeEach: function () {
@@ -15,8 +15,8 @@ moduleFor('model:discussion/domain/post', 'Unit | Model | Discussion Post', {
 	}
 });
 
-function checkDiscussionPost(assert, post) {
-	assert.ok(post instanceof DiscussionPostModelClass);
+function checkDiscussionReply(assert, post) {
+	assert.ok(post instanceof DiscussionReplyModelClass);
 
 	assert.equal(typeof post.createdBy, 'object');
 	assert.equal(typeof post.creationTimestamp, 'number');
@@ -27,20 +27,16 @@ function checkDiscussionPost(assert, post) {
 	assert.equal(typeof post.isReported, 'boolean');
 	assert.equal(typeof post.isRequesterBlocked, 'boolean');
 	assert.equal(typeof post.rawContent, 'string');
-	assert.equal(typeof post.repliesCount, 'number');
 	assert.equal(typeof post.threadId, 'string');
 	assert.equal(typeof post.title, 'string');
 	assert.equal(typeof post.upvoteCount, 'number');
+	assert.equal(typeof post.threadCreatedBy, 'object');
+
+	assert.ok(post.isReply);
 }
 
-test('Proper DiscussionPost is being created from API Thread', function (assert) {
-	const post = DiscussionPostModelClass.createFromThreadData(apiStubs.thread);
+test('Proper DiscussionReply is being created from API Post', function (assert) {
+	const reply = DiscussionReplyModelClass.create(apiStubs.replyPost);
 
-	checkDiscussionPost(assert, post);
-});
-
-test('Proper DiscussionPost is being created from API Post', function (assert) {
-	const post = DiscussionPostModelClass.createFromPostListData(apiStubs.post);
-
-	checkDiscussionPost(assert, post);
+	checkDiscussionReply(assert, reply);
 });
