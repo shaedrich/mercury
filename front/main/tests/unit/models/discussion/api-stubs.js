@@ -228,6 +228,33 @@ const apiStubs = Ember.Object.create({
 				}
 			]
 		}
+	},
+	"userPermissions": {
+		fullSet: [
+			"canUndelete",
+			"canUnlock",
+			"canModerate",
+			"canDelete",
+			"canLock"
+		],
+
+		missingFlags: [
+			"canUnlock",
+			"canLock"
+		],
+
+		emptySet: []
+	},
+	"userData": {
+		fullSet: {
+			"hasReported": false,
+			"hasUpvoted": true,
+			"permissions": []
+		},
+
+		missingFlags: {
+			"permissions": []
+		}
 	}
 });
 

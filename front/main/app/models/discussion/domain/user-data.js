@@ -15,8 +15,8 @@ DiscussionUserData.reopenClass({
 	 */
 	create(userData) {
 		return this._super({
-			hasReported: userData.hasReported,
-			hasUpvoted: userData.hasUpvoted,
+			hasReported: Boolean(userData.hasReported),
+			hasUpvoted: Boolean(userData.hasUpvoted),
 			permissions: DiscussionUserPermissions.create(userData.permissions)
 		});
 	}
