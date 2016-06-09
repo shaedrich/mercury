@@ -1,4 +1,5 @@
 import Hoek from 'hoek';
+import sass from 'node-sass';
 import {Policy} from './lib/caching';
 import {getRedirectUrlWithQueryString} from './lib/auth-utils';
 import proxyMW from './facets/operations/proxy-mw';
@@ -46,6 +47,33 @@ const routeCacheConfig = {
 		'/{title*}'
 	];
 
+function sassHandler(request, reply) {
+
+	console.log(request.query);
+
+	sass.render({
+		// TODO extract it
+		data: `$asd: ${request.query.color1}; @import 'front/main/app/styles/app-runtime.scss';`,
+		outputStyle: 'compressed',
+		sourceComments: 'none'
+	}, function (err, result) {
+
+		if (err) {
+			console.log(err);
+			return reply('error');
+		}
+
+		console.log('parsing time:', result.stats.duration);
+
+		const response = reply(result.css);
+		response.code(200);
+		response.type('text/css; charset=utf-8');
+
+		return response;
+	});
+};
+
+
 // routes that don't care if the user is logged in or not, i.e. lazily loaded modules
 let routes,
 	unauthenticatedRoutes = [
@@ -91,6 +119,11 @@ let routes,
 			method: 'GET',
 			path: '/logout',
 			handler: logoutHandler
+		},
+		{
+			method: 'GET',
+			path: '/sass',
+			handler: sassHandler
 		}
 	],
 	// routes where we want to know the user's auth status
