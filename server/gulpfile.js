@@ -84,6 +84,10 @@ gulp.task('copy-main-styles', function () {
 	return gulp.src('front/main/app/styles/**/*')
 		.pipe(gulp.dest(paths.views.main.destFront + '/app/styles'));
 });
+gulp.task('copy-main-components', function () {
+	return gulp.src('front/main/bower_components/**/*')
+		.pipe(gulp.dest(paths.views.main.destFront + '/bower_components'));
+});
 
 /*
  * Copy view files
@@ -100,7 +104,8 @@ gulp.task('build-server', [
 	'build-server-node-modules',
 	'build-server-scripts',
 	'build-server-views',
-	'copy-main-styles'
+	'copy-main-styles',
+	'copy-main-components'
 ]);
 
 /*
@@ -110,6 +115,7 @@ gulp.task('watch-server', function () {
 	watch(paths.views.main.src, function () {
 		gulp.start('build-server-views-main');
 		gulp.start('copy-main-styles');
+		gulp.start('copy-main-components');
 	}).on('error', exitOnError);
 
 	watch(paths.views.auth.src, function () {
