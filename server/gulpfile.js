@@ -82,7 +82,7 @@ gulp.task('build-server-views-auth', function () {
 
 gulp.task('copy-main-styles', function () {
 	return gulp.src('front/main/app/styles/**/*')
-		.pipe(gulp.dest(paths.views.main.destFront + '/styles'));
+		.pipe(gulp.dest(paths.views.main.destFront + '/app/styles'));
 });
 
 /*
@@ -109,6 +109,7 @@ gulp.task('build-server', [
 gulp.task('watch-server', function () {
 	watch(paths.views.main.src, function () {
 		gulp.start('build-server-views-main');
+		gulp.start('copy-main-styles');
 	}).on('error', exitOnError);
 
 	watch(paths.views.auth.src, function () {
