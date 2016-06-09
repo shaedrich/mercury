@@ -15,6 +15,7 @@ import registerHandler from './facets/auth/register';
 import signinHandler from './facets/auth/signin';
 import showApplication from './facets/show-application';
 import showCuratedContent from './facets/show-curated-content';
+import Logger from './lib/logger';
 
 /**
  * @typedef {Object} RouteDefinition
@@ -49,7 +50,6 @@ const routeCacheConfig = {
 
 function sassHandler(request, reply) {
 
-	console.log(request.query);
 
 	sass.render({
 		// TODO extract it
@@ -59,11 +59,10 @@ function sassHandler(request, reply) {
 	}, function (err, result) {
 
 		if (err) {
-			console.log(err);
+			Logger.fatal(err, 'Sass parsing error');
 			return reply('error');
 		}
-
-		console.log('parsing time:', result.stats.duration);
+		Logger.info('parsing time:', result.stats.duration);
 
 		const response = reply(result.css);
 		response.code(200);
