@@ -13,6 +13,7 @@ module.exports = {
 	jsPattern: jsPattern,
 
 	auth: {
+		dest: outputFront + '/auth/app/styles',
 		scripts: {
 			base: './front/auth',
 			src: 'front/auth/app/' + jsPattern,
@@ -96,6 +97,7 @@ module.exports = {
 				src: outputFront + '/**/ember-main.hbs',
 				base: outputFront + '/main',
 				dest: outputServer + '/app/views/_layouts',
+				destFront: outputFront + '/main',
 			}
 		},
 	},

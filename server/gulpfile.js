@@ -80,6 +80,11 @@ gulp.task('build-server-views-auth', function () {
 		.pipe(gulp.dest(paths.views.dest));
 });
 
+gulp.task('copy-main-styles', function () {
+	return gulp.src('front/main/app/styles/**/*')
+		.pipe(gulp.dest(paths.views.main.destFront + '/styles'));
+});
+
 /*
  * Copy view files
  */
@@ -94,7 +99,8 @@ gulp.task('build-server-views', [
 gulp.task('build-server', [
 	'build-server-node-modules',
 	'build-server-scripts',
-	'build-server-views'
+	'build-server-views',
+	'copy-main-styles'
 ]);
 
 /*

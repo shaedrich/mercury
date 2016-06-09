@@ -50,6 +50,11 @@ gulp.task('build-auth-styles', function () {
 	);
 });
 
+gulp.task('copy-auth-styles', function () {
+	return gulp.src(paths.auth.styles.src + '/**/*')
+		.pipe(gulp.dest(paths.auth.dest));
+});
+
 gulp.task('build-auth-views-copy', function () {
 	return piper(
 		gulp.src([
@@ -105,7 +110,8 @@ gulp.task('build-auth', function (done) {
 		[
 			'build-auth-vendor',
 			'build-auth-views-copy',
-			'build-auth-styles'
+			'build-auth-styles',
+			'copy-auth-styles'
 		],
 		'build-auth-views-index',
 		done

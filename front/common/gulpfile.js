@@ -51,6 +51,11 @@ gulp.task('build-common-public', function () {
 		.pipe(gulp.dest(pathsCommon.dest));
 });
 
+gulp.task('copy-common-styles', function () {
+	return gulp.src(pathsCommon.src + '/styles/**/*')
+		.pipe(gulp.dest(pathsCommon.dest + '/styles'));
+});
+
 /*
  * Build svg symbols
  */
@@ -89,6 +94,7 @@ gulp.task('build-common', function (done) {
 			'build-common-scripts-modules-utils',
 			'build-common-public',
 			'build-common-symbols',
+			'copy-common-styles'
 		],
 		// It needs build-common-scripts-baseline and build-common-scripts-modules-utils to be finished
 		// We need to use runSequence instead of gulp dependencies so watcher doesn't go into infinite loop
