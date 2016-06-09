@@ -53,7 +53,7 @@ function sassHandler(request, reply) {
 
 	sass.render({
 		// TODO extract it
-		data: `$color-page: ${request.query['color-page']};$color-links: ${request.query['color-links']};$color-buttons: ${request.query['color-buttons']}; @import 'front/main/app/styles/app-runtime.scss';`,
+		data: `$color-page: ${request.query['color-page']};$color-links: ${request.query['color-links']};$color-buttons: ${request.query['color-buttons']}; @import '../../front/main/app/styles/app-runtime.scss';`,
 		outputStyle: 'compressed',
 		sourceComments: 'none'
 	}, function (err, result) {
