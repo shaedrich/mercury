@@ -25,6 +25,7 @@ import prepareMainPageData from './operations/prepare-main-page-data';
 import prepareMediaWikiData from './operations/prepare-mediawiki-data';
 import showServerErrorPage from './operations/show-server-error-page';
 import deepExtend from 'deep-extend';
+import url from 'url';
 
 const cachingTimes = {
 	enabled: true,
@@ -103,6 +104,17 @@ function handleResponse(request, reply, data, allowCache = true, code = 200) {
 		ns = pageData.ns;
 		isMainPage = pageData.isMainPage;
 	}
+
+	console.log(data);
+
+	result.cssUrl = url.format({
+		pathname: '/login',
+		query: {
+			'color-page': data.wikiVariables.theme['color-page'],
+			'color-links': data.wikiVariables.theme['color-links'],
+			'color-buttons': data.wikiVariables.theme['color-buttons'],
+		}
+	});
 
 	result.mediaWikiNamespace = ns;
 	result.articleId = pageData.details ? pageData.details.id : 0;

@@ -24,7 +24,22 @@ $upvote-icon-back-color: $color-white;
 $upvote-icon-activated-color: #e3bd00;
 $pop-over-background-color: $color-white;
 
-$discussion-bg-color: $color-white;
+$isLightTheme: true;
+
+$color-page: #fff !default;
+$color-links: #1A5EB8 !default;
+
+@if lightness($color-page) < 50 {
+	$isLightTheme: false;
+}
+
+$discussion-bg-color: if($isLightTheme, $color-white, #262626);
+$font-color: if($isLightTheme, #39424d, #ddd);
+$header-color: if($isLightTheme, #092344, #97AAC1);
+$table-bg-color: if($isLightTheme, $color-gray-light, $color-gray-dark);
+$recommendations-bg-color: if($isLightTheme, rgb(241, 242, 252), rgb(14, 13, 3));
+
+
 $discussion-count-color: #999;
 $discussion-actions-color: #999;
 $discussion-back-button-color: $color-white;
@@ -56,7 +71,7 @@ $discussion-post-card-linked-background: #fff;
 $discussion-locked-post-replies-color: #ccc;
 $discussion-post-actions-border-color: #e6e6e6;
 
-$discussion-desktop-bg-color: #f6f6f6;
+$discussion-desktop-bg-color: if($isLightTheme, #f6f6f6, #262626);
 $discussion-desktop-post-detail-bg-color: $color-white;
 $discussion-rail-separator-color: #e6e6e6;
 

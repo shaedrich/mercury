@@ -53,7 +53,7 @@ function sassHandler(request, reply) {
 
 	sass.render({
 		// TODO extract it
-		data: `$asd: ${request.query.color1}; @import 'front/main/app/styles/app-runtime.scss';`,
+		data: `$color-page: ${request.query['color-page']};$color-links: ${request.query['color-links']};$color-buttons: ${request.query['color-buttons']}; @import 'front/main/app/styles/app-runtime.scss';`,
 		outputStyle: 'compressed',
 		sourceComments: 'none'
 	}, function (err, result) {
@@ -122,7 +122,8 @@ let routes,
 		},
 		{
 			method: 'GET',
-			path: '/sass',
+			// TODO
+			path: '/login',
 			handler: sassHandler
 		}
 	],
@@ -165,18 +166,18 @@ let routes,
 				]
 			}
 		},
-		{
-			method: 'GET',
-			path: '/login',
-			/**
-			 * @param {Hapi.Request} request
-			 * @param {*} reply
-			 * @returns {Hapi.Response}
-			 */
-			handler(request, reply) {
-				return reply.redirect(getRedirectUrlWithQueryString('signin', request));
-			}
-		},
+		// {
+		// 	method: 'GET',
+		// 	path: '/login',
+		// 	/**
+		// 	 * @param {Hapi.Request} request
+		// 	 * @param {*} reply
+		// 	 * @returns {Hapi.Response}
+		// 	 */
+		// 	handler(request, reply) {
+		// 		return reply.redirect(getRedirectUrlWithQueryString('signin', request));
+		// 	}
+		// },
 		{
 			method: 'GET',
 			path: '/signup',

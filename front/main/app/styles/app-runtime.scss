@@ -1,7 +1,3 @@
-body {
-	color: $asd;
-}
-
 // DO NOT CHANGE:
 // load order of files below is intentional
 @import '../../bower_components/wikia-style-guide/src/scss/main';
@@ -23,3 +19,41 @@ body {
 @import '../../../auth/app/styles/base/input';
 @import '../../../auth/app/styles/module/forms';
 @import '../../../auth/app/styles/module/form-icons';
+
+
+body {
+	background-color: $discussion-bg-color;
+	color: $font-color;
+}
+
+abbr, acronym {
+	color: $font-color;
+}
+
+.wiki-page-header {
+	background-color: $color-buttons;
+}
+
+a, .table-of-contents .title{
+	color: $color-links;
+}
+
+.portable-table-wrappper table {
+	border-color: $discussion-bg-color;
+}
+
+h1, h2, h3, h4, h5, h6, .article-content h1, .article-content h2, .article-content h3, .article-content h4, .article-content h6 {
+	color: $header-color;
+}
+
+.edit-section .icon {
+	fill: $header-color;
+}
+
+table[data-portable="true"] tr:nth-child(odd) td {
+	background-color: $table-bg-color
+}
+
+.content-recommendations {
+	background-color: $recommendations-bg-color;
+}

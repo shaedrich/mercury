@@ -22,14 +22,14 @@ export default Ember.Mixin.create({
 
 		this.applyThemeColorStyles();
 
-		if (Ember.get(Mercury, 'wiki.isDarkTheme')) {
-			this.set('themeActivated', 'dark');
-			Ember.$('body').addClass(this.themeSettings.dark.class);
-		}
-
-		if (!this.get('themeLoadingInitialized')) {
-			this.loadThemeCss();
-		}
+		// if (Ember.get(Mercury, 'wiki.isDarkTheme')) {
+		// 	this.set('themeActivated', 'dark');
+		// 	Ember.$('body').addClass(this.themeSettings.dark.class);
+		// }
+		//
+		// if (!this.get('themeLoadingInitialized')) {
+		// 	this.loadThemeCss();
+		// }
 	},
 
 	/**

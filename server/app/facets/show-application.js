@@ -12,6 +12,8 @@ import {
 import {isRtl, getUserId, getLocalSettings} from './operations/page-data-helper';
 import showServerErrorPage from './operations/show-server-error-page';
 
+import url from 'url';
+
 /**
  * @typedef {Object} CommunityAppConfig
  * @property {string} androidAppLink
@@ -78,6 +80,14 @@ export default function showApplication(request, reply, wikiVariables, context =
 
 			context.wikiVariables = wikiVariables;
 			context.isRtl = isRtl(wikiVariables);
+			context.cssUrl = url.format({
+				pathname: '/login',
+				query: {
+					'color-page': wikiVariables.theme['color-page'],
+					'color-links': wikiVariables.theme['color-links'],
+					'color-buttons': wikiVariables.theme['color-buttons'],
+				}
+			});
 
 			return OpenGraph.getAttributes(request, context.wikiVariables);
 		})
