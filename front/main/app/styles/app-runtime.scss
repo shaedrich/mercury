@@ -61,3 +61,7 @@ table[data-portable="true"] tr:nth-child(odd) td {
 .contributors {
 	background-color: $discussion-body-bg-color
 }
+
+.collapsible-menu .title, .fandom-posts a {
+	color: $font-color
+}
