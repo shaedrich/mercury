@@ -109,6 +109,8 @@ function handleResponse(request, reply, data, allowCache = true, code = 200) {
 	let cb = 1;
 	fs.readdir('/usr/wikia/mercury/current/front/main/assets', function (err, files) {
 		console.log(files);
+		Logger.info(files);
+
 		if (!files) {
 			return;
 		}

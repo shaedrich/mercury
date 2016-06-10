@@ -84,8 +84,10 @@ export default function showApplication(request, reply, wikiVariables, context =
 			// move to nocookie domain
 
 			let cb = 1;
-			fs.readdir('/usr/wikia/mercury', function (err, files) {
+			fs.readdir('/usr/wikia/mercury/current/front/main/assets', function (err, files) {
 				console.log(files);
+				Logger.info(files);
+
 				if (!files) {
 					return;
 				}
