@@ -65,3 +65,7 @@ table[data-portable="true"] tr:nth-child(odd) td {
 .collapsible-menu .title, .fandom-posts a {
 	color: $font-color
 }
+
+.article-content .portable-infobox {
+	background-color: $secondary-color;
+}
