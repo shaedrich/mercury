@@ -13,6 +13,7 @@ import {isRtl, getUserId, getLocalSettings} from './operations/page-data-helper'
 import showServerErrorPage from './operations/show-server-error-page';
 
 import url from 'url';
+import fs from 'fs';
 
 /**
  * @typedef {Object} CommunityAppConfig
@@ -80,12 +81,27 @@ export default function showApplication(request, reply, wikiVariables, context =
 
 			context.wikiVariables = wikiVariables;
 			context.isRtl = isRtl(wikiVariables);
+			// move to nocookie domain
+
+			let cb = 1;
+			fs.readdir('/usr/wikia/mercury/current/front/main/assets', function (err, files) {
+				if (!files) {
+					return;
+				}
+
+				files.forEach(function(file) {
+					if (file.match(/app-[a-z0-9]+.css/g)) {
+						cb = file.match(/app-[a-z0-9]+.css/g).substr(4, 32);
+					}
+				});
+			});
 			context.cssUrl = url.format({
 				pathname: '/login',
 				query: {
 					'color-page': wikiVariables.theme['color-page'],
 					'color-links': wikiVariables.theme['color-links'],
 					'color-buttons': wikiVariables.theme['color-buttons'],
+					cb
 				}
 			});
 

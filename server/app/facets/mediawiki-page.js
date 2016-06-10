@@ -26,6 +26,7 @@ import prepareMediaWikiData from './operations/prepare-mediawiki-data';
 import showServerErrorPage from './operations/show-server-error-page';
 import deepExtend from 'deep-extend';
 import url from 'url';
+import fs from 'fs';
 
 const cachingTimes = {
 	enabled: true,
@@ -105,14 +106,25 @@ function handleResponse(request, reply, data, allowCache = true, code = 200) {
 		isMainPage = pageData.isMainPage;
 	}
 
-	console.log(data);
+	let cb = 1;
+	fs.readdir('/usr/wikia/mercury/current/front/main/assets', function (err, files) {
+		if (!files) {
+			return;
+		}
 
+		files.forEach(function(file) {
+			if (file.match(/app-[a-z0-9]+.css/g)) {
+				cb = file.match(/app-[a-z0-9]+.css/g).substr(4, 32);
+			}
+		});
+	});
 	result.cssUrl = url.format({
 		pathname: '/login',
 		query: {
 			'color-page': data.wikiVariables.theme['color-page'],
 			'color-links': data.wikiVariables.theme['color-links'],
 			'color-buttons': data.wikiVariables.theme['color-buttons'],
+			cb
 		}
 	});
 
