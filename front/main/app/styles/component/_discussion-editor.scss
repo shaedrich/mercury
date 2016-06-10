@@ -54,6 +54,7 @@ $editor-label-height: 44px;
 
 	.editor-textarea {
 		border-bottom: 1px solid $secondary-color;
+		color: $font-color;
 		flex: 1;
 		height: $line-height-smaller;
 		min-height: $line-height-smaller;

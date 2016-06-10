@@ -34,7 +34,7 @@ $legend-font-size: 16px;
 	}
 
 	legend {
-		color: $discussion-filters-color;
+		color: $color-c6;
 		font-size: $legend-font-size;
 		font-weight: bold;
 		line-height: $line-height-smallest;
@@ -126,7 +126,7 @@ $legend-font-size: 16px;
 
 	.moderation-checkbox-label {
 		align-items: flex-start;
-		color: $discussion-filters-color;
+		color: $color-c6;
 		display: flex;
 		line-height: $line-height-min;
 		padding-top: 18px;
