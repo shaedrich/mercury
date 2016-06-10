@@ -84,14 +84,15 @@ export default function showApplication(request, reply, wikiVariables, context =
 			// move to nocookie domain
 
 			let cb = 1;
-			fs.readdir('/usr/wikia/mercury/current/front/main/assets', function (err, files) {
+			fs.readdir('/usr/wikia/mercury', function (err, files) {
+				console.log(files);
 				if (!files) {
 					return;
 				}
 
 				files.forEach(function(file) {
 					if (file.match(/app-[a-z0-9]+.css/g)) {
-						cb = file.match(/app-[a-z0-9]+.css/g).substr(4, 32);
+						cb = file.match(/app-[a-z0-9]+.css/g)[0].substr(4, 32);
 					}
 				});
 			});
