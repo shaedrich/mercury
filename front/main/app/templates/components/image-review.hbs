@@ -30,12 +30,16 @@
 		{{else}}
 			<p>{{i18n 'main.image-context-not-provided' ns='image-review'}}</p>
 		{{/if}}
-        <span>{{i18n 'main.image-name' ns='image-review'}} {{thumbnailModel.originalFilename}}</span>
+		<span>{{i18n 'main.image-name' ns='image-review'}} {{thumbnailModel.originalFilename}}</span>
 		<br />
-        <span>{{i18n 'main.image-size' ns='image-review'}} {{thumbnailModel.size}} {{i18n 'main.image-bytes' ns='image-review'}}</span>
-        <br />
-        <span>{{i18n 'main.image-dimensions' ns='image-review'}} {{thumbnailModel.dimensions}}</span>
-        <br />
+		<span>{{i18n 'main.image-size' ns='image-review'}} {{thumbnailModel.size}} {{i18n 'main.image-bytes' ns='image-review'}}</span>
+		<br />
+		<span>{{i18n 'main.image-dimensions' ns='image-review'}} {{thumbnailModel.dimensions}}</span>
+		<br />
+		<span>Labels: {{thumbnailModel.labels}}</span>
+		<br />
+        <table id="image-safesearch">{{i18n 'main.image-history' ns='image-review'}}</table>
+		<br />
         <table id="image-history">{{i18n 'main.image-history' ns='image-review'}}</table>
 	{{/modal-dialog}}
 

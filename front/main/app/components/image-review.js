@@ -20,6 +20,7 @@ export default Ember.Component.extend({
 					isModalVisible: true
 				});
 				document.getElementById('image-history').innerHTML = popupModel.history;
+				document.getElementById('image-safesearch').innerHTML = popupModel.safeSearch;
 			});
 		}
 	}

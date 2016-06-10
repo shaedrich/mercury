@@ -73,14 +73,32 @@ ImageReviewModel.reopenClass({
 					contractId,
 					context: image.context || '#',
 					status: 'accepted',
-					history: ImageReviewModel.prepareHistoryDom(image.imageHistory)
+					labels: image.labels,
+					safeSearch: ImageReviewModel.prepareSafeSearchTable(image.safeSearch),
+					history: ImageReviewModel.prepareHistoryTable(image.imageHistory)
 				}));
 			}
 		});
 		return ImageReviewModel.create({images, contractId, imagesToReviewCount});
 	},
 
-	prepareHistoryDom(historyJson) {
+	prepareSafeSearchTable(safeSearchJson) {
+		if (safeSearchJson === null || typeof safeSearchJson === 'undefined') {
+			return 'No history';
+		}
+
+		let tableContent = '<td>Type</td><td>Value</td>';
+		const keys = Object.keys(safeSearchJson);
+		keys.forEach((key) => {
+			tableContent += '<tr>';
+			tableContent += `<td>${key}</td>`;
+			tableContent += `<td>${safeSearchJson[key]}</td>`;
+			tableContent += '</tr>';
+		});
+		return tableContent;
+	},
+
+	prepareHistoryTable(historyJson) {
 		if (historyJson === null || typeof historyJson === 'undefined') {
 			return 'No history';
 		}
