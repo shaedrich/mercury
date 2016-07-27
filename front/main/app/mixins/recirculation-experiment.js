@@ -59,17 +59,24 @@ export default Ember.Mixin.create(
 			 *
 			 * @returns {void}
 			 */
-			trackExperimentClick(url) {
+			trackExperimentClick(item) {
+				const slot = item.index + 1;
+
+				let label = `${this.get('label')}=slot-${slot}`;
+				if (item.source) {
+					label = `${label}=${item.source}`;
+				}
+
 				trackExperiment(this.get('experimentName'), {
 					action: trackActions.click,
 					category: 'recirculation',
-					label: this.get('label')
+					label: label
 				});
 
 				this.set('isLoading', true);
 				if (this.get('externalLink')) {
 					setTimeout(() => {
-						window.location.assign(url);
+						window.location.assign(item.url);
 					}, 200);
 				}
 			}

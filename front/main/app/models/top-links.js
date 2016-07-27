@@ -46,12 +46,18 @@ const TopLinksModel = Ember.Object.extend({
 	},
 
 	formatData(data) {
-		let items = [];
+		let items = [],
+			index = 0;
 
-		// data.items is an object, using `each` here to force it into an array.
-		Ember.$.each(data.items, (index, item) => {
+		/**
+		 * data.items is an object, using `each` here to force it into an array.
+		 */
+		Ember.$.each(data.items, (articleId, item) => {
 			item.index = index;
+			item.source = 'wiki';
 			items.push(item);
+
+			index ++;
 		});
 
 		return {
