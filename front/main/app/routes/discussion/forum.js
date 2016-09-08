@@ -143,7 +143,8 @@ export default DiscussionBaseRoute.extend(
 				const transitionParams =
 					JSON.parse(localStorageConnector.getItem('discussionForumPreviousQueryParams'));
 
-				transitionParams.catId = transitionParams.catId.join(',');
+					// hotfix
+					transitionParams.categories = undefined;
 
 				// check if object because of situation when user had previously stored "null" (string) value
 				// for transitionParams
