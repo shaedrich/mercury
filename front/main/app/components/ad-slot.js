@@ -38,13 +38,7 @@ export default Component.extend(
 				Logger.info('Injected ad', name);
 				ads.addSlot(name);
 			} else {
-				ads.waitForUapResponse(
-					() => {},
-					() => {
-						Logger.info('Injected ad:', name);
-						ads.pushSlotToQueue(name);
-					}
-				);
+				ads.pushSlotToQueue(name);
 			}
 
 			Ember.setProperties(this, {
@@ -65,16 +59,6 @@ export default Component.extend(
 			if (this.get('noAds')) {
 				Logger.info('Ad disabled for:', name);
 				return;
-			}
-
-			if (!this.get('isAboveTheFold')) {
-				ads.waitForUapResponse(
-					() => {
-						Logger.info('Injected ad on scroll:', name);
-						ads.pushSlotToQueue(name);
-					},
-					() => {}
-				);
 			}
 		},
 
