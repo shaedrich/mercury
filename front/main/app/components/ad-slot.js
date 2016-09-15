@@ -34,7 +34,7 @@ export default Component.extend(
 				return;
 			}
 
-			if (this.get('isAboveTheFold')) {
+			if (['MOBILE_TOP_LEADERBOARD', 'MOBILE_IN_CONTENT', 'MOBILE_PREFOOTER'].indexOf(this.get('name')) > -1) {
 				Logger.info('Injected ad', name);
 				ads.addSlot(name);
 			} else {
