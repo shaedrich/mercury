@@ -17,6 +17,6 @@
     "server-error":"Hubo un error al procesar tu solicitud. Inténtalo de nuevo más tarde."
   },
   "labels":{
-    "terms-of-use-and-privacy-policy-text":"Estoy de acuerdo con __termsOfUseLink__ y __privacyPolicyLink__ (requerido)"
+    "terms-of-use-and-privacy-policy-text":"Estoy de acuerdo con los __termsOfUseLink__ y la __privacyPolicyLink__ (requerido)"
   }
 }
