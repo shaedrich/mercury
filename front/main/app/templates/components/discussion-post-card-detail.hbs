@@ -1,5 +1,5 @@
 <div class="side-spaced">
-	<div id="post-{{post.id}}">
+	<div id="post-{{unbound post.id}}">
 		{{#if showTopNote}}
 			{{discussion-post-card-top-note
 				approve=(action this.attrs.approve)
@@ -22,26 +22,26 @@
 
 		{{#unless hideMoreOptions}}
 			<div class="discussion-more-options" id="post-options-{{post.threadId}}">
-				{{svg 'more' viewBox='0 0 4 18' class='icon more-icon'}}
+				{{unbound (svg 'more' viewBox='0 0 4 18' class='icon more-icon')}}
 			</div>
 
 			{{#pop-over for=(concat 'post-options-' post.threadId) on='click' flow='flip' class='more-options-pop-over'}}
 				{{discussion-more-options
 				delete=(action this.attrs.delete)
-				deleteMessage=(i18n 'main.delete-post' ns='discussion')
-				editMessage=(i18n 'main.edit-post' ns='discussion')
+				deleteMessage=(unbound (i18n 'main.delete-post' ns='discussion'))
+				editMessage=(unbound (i18n 'main.edit-post' ns='discussion'))
 				isLockable=true
 				lock=(action this.attrs.lock)
-				lockMessage=(i18n 'main.lock-post' ns='discussion')
+				lockMessage=(unbound (i18n 'main.lock-post' ns='discussion'))
 				post=post
 				report=(action this.attrs.report)
-				reportMessage=(i18n 'main.report-post' ns='discussion')
+				reportMessage=(unbound (i18n 'main.report-post' ns='discussion'))
 				openEditEditor=(action this.attrs.openEditEditor)
 				setEditorActive=(action this.attrs.setEditorActive)
 				undelete=(action this.attrs.undelete)
-				undeleteMessage=(i18n 'main.undelete-post' ns='discussion')
+				undeleteMessage=(unbound (i18n 'main.undelete-post' ns='discussion'))
 				unlock=(action this.attrs.unlock)
-				unlockMessage=(i18n 'main.unlock-post' ns='discussion')
+				unlockMessage=(unbound (i18n 'main.unlock-post' ns='discussion'))
 				}}
 			{{/pop-over}}
 		{{/unless}}
@@ -78,19 +78,19 @@
 		{{/if}}
 		<span class="post-counters">
 			<span class="upvote-count">
-				{{svg 'upvote-tiny' viewBox='0 0 14 14' class='icon upvote'}}
+				{{unbound (svg 'upvote-tiny' viewBox='0 0 14 14' class='icon upvote')}}
 				{{post.upvoteCount}}
 			</span>
 			<span class="reply-count">
-				{{svg 'reply-tiny' viewBox='0 0 14 14' class='icon replies'}}
+				{{unbound (svg 'reply-tiny' viewBox='0 0 14 14' class='icon replies')}}
 				{{replyCount}}
 			</span>
 		</span>
 	</div>
 </div>
 {{discussion-post-card-actions
-	entryPointLabel=(i18n 'main.share-label' ns='discussion')
-	header=(i18n 'main.share-header' ns='discussion')
+	entryPointLabel=(unbound (i18n 'main.share-label' ns='discussion'))
+	header=(unbound (i18n 'main.share-header' ns='discussion'))
 	isDeleted=isDeleted
 	isDetailsView=isDetailsView
 	post=post

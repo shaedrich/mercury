@@ -1,38 +1,38 @@
 <li>
 	{{#link-to 'discussion.user' post.createdBy.id}}
-		{{svg 'empty-eye' viewBox='0 0 16 12' class='icon eye'}}
-		{{i18n 'main.all-posts-by-username' userName=post.createdBy.name ns='discussion'}}
+		{{unbound (svg 'empty-eye' viewBox='0 0 16 12' class='icon eye')}}
+		{{unbound (i18n 'main.all-posts-by-username' userName=post.createdBy.name ns='discussion')}}
 	{{/link-to}}
 </li>
 {{#if canEdit}}
 	<li>
 		<a class="edit-link" {{action 'edit' post}}>
-			{{svg 'pencil' viewBox='0 0 18 18' class='icon edit'}}
-			{{editMessage}}
+			{{unbound (svg 'pencil' viewBox='0 0 18 18' class='icon edit')}}
+			{{unbound editMessage}}
 		</a>
 	</li>
 {{/if}}
 {{#if canReport}}
 	<li>
 		<a class="report-link" {{action 'report' post}}>
-			{{svg 'report' viewBox='0 0 18 18' class='icon report'}}
-			{{reportMessage}}
+			{{unbound (svg 'report' viewBox='0 0 18 18' class='icon report')}}
+			{{unbound reportMessage}}
 		</a>
 	</li>
 {{/if}}
 {{#if canLock}}
 	<li>
 		<a class="report-link" {{action 'lock' post}}>
-			{{svg 'lock' viewBox='0 0 18 18' class='icon lock'}}
-			{{lockMessage}}
+			{{unbound (svg 'lock' viewBox='0 0 18 18' class='icon lock')}}
+			{{unbound lockMessage}}
 		</a>
 	</li>
 {{/if}}
 {{#if canUnlock}}
 	<li>
 		<a class="report-link" {{action 'unlock' post}}>
-			{{svg 'unlock' viewBox='0 0 18 18' class='icon unlock'}}
-			{{unlockMessage}}
+			{{unbound (svg 'unlock' viewBox='0 0 18 18' class='icon unlock')}}
+			{{unbound unlockMessage}}
 		</a>
 	</li>
 {{/if}}
@@ -40,14 +40,14 @@
 	<li>
 		{{#if canUndelete}}
 			<a class="undelete-link" {{action 'undelete' post}}>
-				{{svg 'undelete' viewBox='0 0 16 19' class='icon undelete'}}
-				<span>{{undeleteMessage}}</span>
+				{{unbound (svg 'undelete' viewBox='0 0 16 19' class='icon undelete')}}
+				<span>{{unbound undeleteMessage}}</span>
 			</a>
 		{{/if}}
 		{{#if canDelete}}
 			<a class="delete-link" {{action 'delete' post}}>
-				{{svg 'delete' viewBox='0 0 16 19' class='icon delete'}}
-				<span>{{deleteMessage}}</span>
+				{{unbound (svg 'delete' viewBox='0 0 16 19' class='icon delete')}}
+				<span>{{unbound deleteMessage}}</span>
 			</a>
 		{{/if}}
 	</li>
