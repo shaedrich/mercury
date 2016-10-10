@@ -28,3 +28,13 @@
 @import 'discussion-user-avatar-badge';
 @import 'discussion-welcome';
 @import 'discussion-widget';
+
+vertical-collection {
+  display: block;
+  position: relative;
+}
+
+vertical-item {
+  display: block;
+  position: relative;
+}
