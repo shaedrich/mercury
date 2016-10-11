@@ -16,14 +16,38 @@
 	gotoGuidelines=(action this.attrs.gotoGuidelines)
 }}
 {{#vertical-collection
-		content=posts
+		content=pages
 		defaultHeight=50
 		alwaysRemeasure=true
 		bufferSize=3
-		renderAllInitially=true
 		containerSelector="body"
-	as |entity index|
+as |page index|
 }}
+{{#discussion-post-page
+	page=page as |data|
+}}
+	{{discussion-post-card-detail
+			approve=(action this.attrs.approve)
+			author=entity.createdBy
+			categories=categories
+			delete=(action this.attrs.deletePost)
+			lock=(action this.attrs.lockPost)
+			openEditEditor=(action this.attrs.openEditEditor)
+			post=data.entity
+			replyCount=entity.repliesCount
+			report=(action this.attrs.report)
+			setEditorActive=(action this.attrs.setEditorActive)
+			undelete=(action this.attrs.undeletePost)
+			unlock=(action this.attrs.unlockPost)
+			upvote=(action this.attrs.upvote)
+	}}
+
+{{/discussion-post-page}}
+{{/vertical-collection}}
+
+
+{{!--{{#ember-collection items=posts cell-layout=(fixed-grid-layout 500 50)
+as |entity index| }}
 	{{discussion-post-card-detail
 			approve=(action this.attrs.approve)
 			author=entity.createdBy
@@ -39,8 +63,30 @@
 			unlock=(action this.attrs.unlockPost)
 			upvote=(action this.attrs.upvote)
 	}}
-
-{{/vertical-collection}}
+{{/ember-collection}}--}}
+{{!--
+{{#each posts as |entity|}}
+	{{discussion-post-card-detail
+		approve=(action this.attrs.approve)
+		author=entity.createdBy
+		categories=categories
+		delete=(action this.attrs.deletePost)
+		lock=(action this.attrs.lockPost)
+		openEditEditor=(action this.attrs.openEditEditor)
+		post=entity
+		replyCount=entity.repliesCount
+		report=(action this.attrs.report)
+		setEditorActive=(action this.attrs.setEditorActive)
+		undelete=(action this.attrs.undeletePost)
+		unlock=(action this.attrs.unlockPost)
+		upvote=(action this.attrs.upvote)
+	}}
+{{else}}
+	{{discussion-empty-forum-message
+		setEditorActive=(action this.attrs.setEditorActive)
+	}}
+{{/each}}
+--}}
 {{discussion-wrapper-load-more
 	hasMore=hasMore
 	isLoading=isLoading
