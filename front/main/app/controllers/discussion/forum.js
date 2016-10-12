@@ -10,6 +10,8 @@ export default DiscussionBaseController.extend(
 	DiscussionForumActionsControllerMixin,
 	ResponsiveMixin,
 	{
+		queryParams: ['smoke'],
+		smoke: null,
 		catId: null,
 		areGuidelinesVisible: false,
 
