@@ -327,7 +327,7 @@ class Ads {
 				this.adLogicPageViewCounterModule.increment();
 				this.googleTagModule.updateCorrelator();
 				this.mercuryPV = this.mercuryPV + 1;
-				this.adLogicPageParams.add('mercuryPV', this.mercuryPV);
+				this.adLogicPageParams.add('mercuryPV', this.mercuryPV.toString());
 			});
 			if (adsContext) {
 				this.adContextModule.setContext(adsContext);
@@ -367,7 +367,7 @@ class Ads {
 	 */
 	reloadWhenReady() {
 		this.reload(this.currentAdsContext, () => {
-			this.adLogicPageParams.add('mercuryPV', this.mercuryPV);
+			this.adLogicPageParams.add('mercuryPV', this.mercuryPV.toString());
 			this.adMercuryListenerModule.startOnLoadQueue();
 			this.trackKruxPageView();
 			this.adLogicPageViewCounterModule.increment();
