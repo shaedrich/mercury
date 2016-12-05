@@ -170,7 +170,7 @@ export function trackPageView(uaDimensions, overrideUrl) {
 	} else {
 		window.trackQuantservePageView();
 		window.trackNielsenPageView();
-		window.trackComscorePageView();
+		// window.trackComscorePageView();
 
 		M.tracker.Internal.trackPageView(context);
 		M.tracker.UniversalAnalytics.trackPageView(uaDimensions, overrideUrl);

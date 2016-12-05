@@ -48,11 +48,13 @@
 	{{content-for '$script'}}
 	{{> server-data}}
 	{{> tracking-quantserve}}
-	{{> tracking-comscore}}
-	{{> optimizely}}
+	<!--{{> tracking-comscore}}-->
+	<!--{{> optimizely}}-->
 	{{> tracking-ua-init}}
 
 	{{content-for 'head-footer'}}
+
+	<script src='//d3c3cq33003psk.cloudfront.net/opentag-165812-devdianamercury.js' async defer></script>
 </head>
 <body class="{{bodyClassName}}">
 {{content-for 'body'}}

@@ -5,6 +5,8 @@ import {getQueryParam} from 'common/utils/querystring';
  *
  * @returns {void}
  */
+
+// @jolek
 export function initialize(application) {
 	if (!getQueryParam('noexternals')) {
 		application.deferReadiness();
