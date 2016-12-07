@@ -1,0 +1,34 @@
+{{ad-slot isAboveTheFold=true name='INVISIBLE_HIGH_IMPACT'}}
+
+<div id="wikiContainer" class="wiki-container">
+	{{#if model.hasArticle}}
+		{{#article-wrapper
+			commentsPage=commentsPage
+			mainPageTitle=mainPageTitle
+			model=model
+			showComments=false
+			wikiPageHeaderSubtitle=(i18n 'app.category-page-subtitle')
+			siteName=siteName
+			addPhoto='addPhoto'
+			articleRendered='articleRendered'
+			edit='edit'
+			openLightbox='openLightbox'
+			toggleDrawer='toggleDrawer'
+		}}
+			{{category-sections
+				adsContext=model.adsContext
+				sections=model.sections
+				setupAds=false
+				loadBatch=(action 'loadBatch')
+			}}
+		{{/article-wrapper}}
+	{{else}}
+		{{wikia-ui-components/wiki-page-header title=model.displayTitle subtitle=(i18n 'app.category-page-subtitle')}}
+		{{category-sections
+			adsContext=model.adsContext
+			sections=model.sections
+			setupAds=true
+			loadBatch=(action 'loadBatch')
+		}}
+	{{/if}}
+</div>

@@ -1,0 +1,25 @@
+<figure class="avatar">
+	{{#if avatarUrl}}
+		{{#if shouldWrapInHref}}
+			<a href="{{profileUrl}}">
+				<img src="{{avatarUrl}}">
+			</a>
+		{{else}}
+			<img src="{{avatarUrl}}">
+		{{/if}}
+	{{else}}
+		{{svg 'avatar' viewBox='0 0 40 40' class='icon'}}
+	{{/if}}
+</figure>
+{{#if badgePermission}}
+	{{discussion-user-avatar-badge
+		badgePermission=badgePermission
+	}}
+{{/if}}
+{{#if displayProfileName}}
+	{{#if shouldWrapInHref}}
+		<a href="{{profileUrl}}" class="avatar-username">{{displayName}}</a>
+	{{else}}
+		<span class="avatar-username">{{displayName}}</span>
+	{{/if}}
+{{/if}}

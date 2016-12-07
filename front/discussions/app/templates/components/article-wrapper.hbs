@@ -1,0 +1,90 @@
+{{#if contributionEnabled}}
+	{{#wikia-ui-components/wiki-page-header title=model.displayTitle subtitle=wikiPageHeaderSubtitle heroImage=heroImage}}
+		{{article-contribution
+			addPhotoAllowed=addPhotoAllowed
+			addPhotoIconVisible=addPhotoIconVisible
+			editAllowed=editAllowed
+			editIconVisible=editIconVisible
+			section=0
+			title=model.displayTitle
+			addPhoto='addPhoto'
+			edit='edit'
+		}}
+	{{/wikia-ui-components/wiki-page-header}}
+{{else}}
+	{{wikia-ui-components/wiki-page-header title=model.displayTitle subtitle=wikiPageHeaderSubtitle heroImage=heroImage}}
+{{/if}}
+{{#ab-test experiment='POTENTIAL_MEMBER_PAGE_ENTRY_POINTS' as |group| }}
+	{{#if (equal group 'TOP') }}
+		{{potential-member-page-experiment experimentGroup='TOP'}}
+	{{else if (equal group 'GLUE_BOTTOM')}}
+		{{potential-member-page-experiment experimentGroup='GLUE_BOTTOM'}}
+	{{/if}}
+{{/ab-test}}
+<section class="article-body">
+	{{ad-slot isAboveTheFold=true name='NATIVE_PAID_ASSET_DROP'}}
+	{{article-content
+		adsContext=model.adsContext
+		content=model.content
+		media=model.media
+		openLightbox=(action 'openLightbox')
+		contributionEnabled=contributionEnabled
+		uploadFeatureEnabled=uploadFeatureEnabled
+		displayTitle=model.displayTitle
+		edit='edit'
+		addPhoto='addPhoto'
+		addPhotoIconVisible=addPhotoIconVisible
+		editIconVisible=editIconVisible
+		editAllowed=editAllowed
+		addPhotoAllowed=addPhotoAllowed
+	}}
+</section>
+{{yield}}
+<section class="article-footer">
+	{{wikia-users
+		users=model.topContributors
+		classes='contributors'
+	}}
+	{{#if showComments}}
+		{{article-comments
+			page=commentsPage
+			articleId=model.id
+			commentsCount=model.comments
+		}}
+	{{/if}}
+	{{#if model.categories}}
+		{{#collapsible-menu
+			showMenuIcon=false
+			tLabel='app.article-categories-list-label'
+			ordered=false
+			observe=model.displayTitle
+			trackingEvent='category-menu'
+		}}
+			{{#each model.categories as |category|}}
+				<li class="mw-content" {{action 'trackClick' 'category-menu' 'open-category'}}>
+					<a href="{{unbound category.url}}" title="{{unbound category.title}}">
+						{{unbound category.title}}
+						{{svg 'chevron' viewBox='0 0 12 7' class='icon chevron'}}
+					</a>
+				</li>
+			{{/each}}
+		{{/collapsible-menu}}
+	{{/if}}
+	{{#if model.otherLanguages}}
+		{{#collapsible-menu
+			showMenuIcon=false
+			tLabel='app.article-other-languages'
+			ordered=false
+			observe=model.displayTitle
+		}}
+			{{#each model.otherLanguages as |link|}}
+				<li class="mw-content">
+					<a href="{{unbound link.url}}" title="{{unbound link.title}}">
+						{{unbound link.languageName}} | {{unbound link.articleTitle}}
+						{{svg 'chevron' viewBox='0 0 12 7' class='icon chevron'}}
+					</a>
+				</li>
+			{{/each}}
+		{{/collapsible-menu}}
+	{{/if}}
+</section>
