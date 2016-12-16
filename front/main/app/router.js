@@ -81,37 +81,6 @@ Router.map(function () {
 		path: '/wiki/addPhoto/:title'
 	});
 
-	this.route('discussion', {
-		path: '/d'
-	}, function () {
-		this.route('forum', {
-			path: '/f'
-		});
-
-		this.route('follow');
-
-		this.route('reported-posts', {
-			path: '/reported'
-		});
-
-		this.route('post', {
-			path: '/p/:postId'
-		});
-
-		this.route('reply', {
-			path: '/p/:postId/r/:replyId'
-		});
-
-		this.route('user', {
-			path: '/u/:userId'
-		});
-
-		this.route('guidelines', {
-			path: '/g'
-		});
-	});
-
-
 	this.route('image-review', function () {
 		this.route('index', {
 			path: '/'
