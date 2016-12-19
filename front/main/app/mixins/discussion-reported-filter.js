@@ -29,7 +29,6 @@ export default Mixin.create({
 			if (!this.get('showApplyButton')) {
 				this.get('applyFilters')(
 					this.get('sortBy'),
-					this.get('onlyReported'),
 					[]
 				);
 			}

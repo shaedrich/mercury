@@ -105,21 +105,16 @@ export default Ember.Mixin.create(
 			 * Attempts transition to a route based on current discussion filters setup
 			 *
 			 * @param {string} sortBy
-			 * @param {boolean} onlyReported
 			 * @param {Object} catId
 			 * @param {Object} changeState
 			 *
 			 * @returns {EmberStates.Transition}
 			 */
-			applyFilters(sortBy, onlyReported, catId, changeState) {
+			applyFilters(sortBy, catId, changeState) {
 				const discussionSort = this.get('discussionSort'),
 					currentSortBy = discussionSort.get('sortBy');
 
 				let targetRoute = 'discussion.forum';
-
-				if (onlyReported === true) {
-					return this.transitionTo('discussion.reported-posts');
-				}
 
 				if (sortBy !== currentSortBy) {
 					discussionSort.setSortBy(sortBy);

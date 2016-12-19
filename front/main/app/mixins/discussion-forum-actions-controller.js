@@ -47,14 +47,13 @@ export default Ember.Mixin.create(
 
 			/**
 			 * @param {string} sortBy
-			 * @param {boolean} shouldShowReported
 			 * @param {Object} catId
 			 * @param {Object} changeState
 			 *
 			 * @returns {void}
 			 */
-			applyFilters(sortBy, shouldShowReported, catId, changeState) {
-				this.get('target').send('applyFilters', sortBy, shouldShowReported, catId, changeState);
+			applyFilters(sortBy, catId, changeState) {
+				this.get('target').send('applyFilters', sortBy, catId, changeState);
 			}
 		}
 	}

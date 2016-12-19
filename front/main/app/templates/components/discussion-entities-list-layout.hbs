@@ -58,12 +58,15 @@
 					}}
 				{{/if}}
 			{{/if}}
+			{{!--
 			{{#if canShowReportedPostsFilter}}
 				{{discussion-reported-filter
 					applyFilters=(action this.attrs.applyFilters)
 					topDecoration=reportedFilterTopDecoration
 				}}
 			{{/if}}
+			--}}
+
 			{{discussion-sort
 					disabled=isSortingDisabled
 					sortBy=sortBy

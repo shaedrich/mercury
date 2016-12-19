@@ -3,13 +3,17 @@
 	line-height: $line-height-smallest;
 	margin-bottom: 10px;
 
-	.wiki-name {
+	h4 {
 		border-bottom: 1px solid $discussion-right-rail-line-color;
 		color: $discussion-rail-title-color;
 		font-size: $type-smallest;
 		line-height: $line-height-smallest;
 		margin-bottom: 13px;
 		padding-bottom: 6px;
+
+		&.moderator-tools {
+			 margin-top: 24px;
+		}
 	}
 
 	.discussion-app-join-text {
@@ -19,18 +23,10 @@
 		margin-bottom: 6px;
 	}
 
-	.guidelines-link,
-	.wikia-home-link {
+	.text-link {
 		color: $discussion-community-unit-link-color;
 		display: block;
-	}
-
-	.guidelines-link {
-		margin: 8px 0;
-	}
-
-	.wikia-home-link {
-		padding: 8px 0;
+		margin-bottom: 8px;
 	}
 
 	.guidelines-link-section {
@@ -50,7 +46,9 @@
 		margin-right: 7px;
 
 		&.wikia-home,
-		&.wikia-guidelines {
+		&.wikia-guidelines,
+		&.wds-icon-small,
+		&.user-activity {
 			height: 16px;
 			width: 16px;
 		}
