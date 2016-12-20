@@ -28,15 +28,7 @@
 	</a>
 {{/if}}
 
-<h4 class="moderator-tools">Moderator Tools</h4>
-{{#link-to 'discussion.reported-posts' class='text-link active-element-theme-color' click=(action 'openReportedContent')}}
-	{{svg 'wds-icons-alert-small' class='wds-icon wds-icon-small icon'}}
-	<span>{{i18n 'main.reported-content' ns='discussion'}}</span>
-{{/link-to}}
-{{#link-to 'discussion.moderator.user-activity' class='text-link active-element-theme-color' click=(action 'openUserActivity')}}
-	{{svg 'user-activity' role='img' class='icon user-activity'}}
-	<span>{{i18n 'main.user-activity' ns='discussion'}}</span>
-{{/link-to}}
+{{discussion-moderator-tools}}
 
 
 {{#if displayAppPromotion}}

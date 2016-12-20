@@ -13,11 +13,12 @@ $legend-font-size: 16px;
 
 
 .discussion-filter-header {
-	border-bottom: 1px solid $discussion-rail-separator-color;
-	color: $discussion-filters-color;
-	font-size: $type-smaller;
+	border-bottom: 1px solid #ccc;
+	color: #333;
+	font-size: $wds-typescale-size-base;
 	font-weight: normal;
-	margin-bottom: 12px;
+	margin: 0;
+	padding-bottom: 8px;
 
 	a {
 		float: right;
@@ -26,7 +27,11 @@ $legend-font-size: 16px;
 	}
 
 	.rail & {
+		border-bottom-color: #e6e6e6;
+		font-size: $type-smaller;
+		margin-bottom: 12px;
 		margin-top: 24px;
+		padding-bottom: 0;
 	}
 }
 
@@ -97,10 +102,6 @@ $legend-font-size: 16px;
 		}
 	}
 
-	.sortby-fieldset {
-		margin-top: 18px;
-	}
-
 	.moderation-fieldset {
 		margin-top: 14px;
 		padding-bottom: 18px;
@@ -116,10 +117,6 @@ $legend-font-size: 16px;
 			color: $discussion-filters-color;
 			height: $sort-label-height;
 			width: 100%;
-
-			&:last-child {
-				border-bottom: none;
-			}
 
 			label {
 				color: $discussion-filters-color;

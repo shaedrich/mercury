@@ -48,12 +48,12 @@
 		margin-top: .75rem;
 
 		.discussion-filter-header {
-			border-bottom: none;
+			border-bottom: 1px solid #ccc;
 			color: $discussion-filters-color;
-			font-size: $type-base;
-			font-weight: $font-weight-bold;
-			line-height: $line-height-min;
-			margin-bottom: 0;
+			font-size: $wds-typescale-size-base;
+			font-weight: normal;
+			margin: 0;
+			padding-bottom: 8px;
 		}
 
 		.discussion-fieldset {
@@ -64,10 +64,10 @@
 			list-style: none;
 
 			.sort-option {
-				border-bottom: 1px solid $discussion-filters-border;
+				border-bottom: 2px solid #e6e6e6;
 				clear: left;
 				color: $discussion-filters-color;
-				height: 48px;
+				height: 54px;
 				width: 100%;
 
 				.sort-option-label {
@@ -84,10 +84,6 @@
 							width: 16px;
 						}
 					}
-				}
-
-				&.sort-trending {
-					border-bottom: none;
 				}
 			}
 		}

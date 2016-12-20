@@ -1,6 +1,15 @@
 .discussion-categories-list-container {
-	margin-left: -8px;
 	max-height: 800px;
+
+	.rail & {
+		margin-left: -8px;
+
+		.discussion-categories-list {
+			label {
+				padding: 4px 0 4px 8px;
+			}
+		}
+	}
 }
 
 .discussion-categories-list {
@@ -9,7 +18,7 @@
 
 	label {
 		overflow: hidden;
-		padding: 4px 0 4px 8px;
+		padding: 4px 0;
 		text-overflow: ellipsis;
 		white-space: nowrap;
 
@@ -20,7 +29,21 @@
 }
 
 
+.discussion-filters {
+	.discussion-categories-list {
+		li {
+			border-bottom: 2px solid #e6e6e6;
+			padding: 11px 0;
+		}
+	}
+}
+
 .discussion-categories {
+
+	&.discussion-fieldset {
+		margin-top: 10px;
+	}
+
 	&:disabled {
 		.discussion-categories-list {
 			opacity: 0.5;

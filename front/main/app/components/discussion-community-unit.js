@@ -62,14 +62,6 @@ export default Ember.Component.extend({
 			track(trackActions.GuidelinesLinkTapped);
 		},
 
-		openReportedContent() {
-			track(trackActions.ReportedPostsLinkTapped);
-		},
-
-		openUserActivity() {
-			track(trackActions.UserActivityLinkTapped);
-		},
-
 		clickWikiaHomeLink() {
 			track(trackActions.WikiHomeLinkClicked);
 		}

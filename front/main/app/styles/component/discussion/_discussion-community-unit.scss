@@ -10,10 +10,6 @@
 		line-height: $line-height-smallest;
 		margin-bottom: 13px;
 		padding-bottom: 6px;
-
-		&.moderator-tools {
-			 margin-top: 24px;
-		}
 	}
 
 	.discussion-app-join-text {
@@ -46,9 +42,7 @@
 		margin-right: 7px;
 
 		&.wikia-home,
-		&.wikia-guidelines,
-		&.wds-icon-small,
-		&.user-activity {
+		&.wikia-guidelines {
 			height: 16px;
 			width: 16px;
 		}
