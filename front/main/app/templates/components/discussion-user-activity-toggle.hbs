@@ -1,0 +1,24 @@
+<ul class="user-activity-options">
+	<li class="{{if isPostsActive 'active'}}">
+		{{#link-to 'discussion.moderator.user-activity.posts'}}
+			{{{i18n 'user-activity.active-users-toggle-option' ns='discussion'}}}
+		{{/link-to}}
+	</li>
+	<li class="{{if isReportsActive 'active'}}">
+		{{#link-to 'discussion.moderator.user-activity.reports'}}
+			{{{i18n 'user-activity.reports-toggle-option' ns='discussion'}}}
+		{{/link-to}}
+	</li>
+	<li class="{{if isModerationsActive 'active'}}">
+		{{#link-to 'discussion.moderator.user-activity.moderations'}}
+			{{{i18n 'user-activity.moderator-actions-toggle-option' ns='discussion'}}}
+		{{/link-to}}
+	</li>
+</ul>
+
+{{#if responsive.isDesktop}}
+	{{discussion-days-toggle
+		days=days
+		setDays=setDays
+	}}
+{{/if}}

@@ -147,20 +147,20 @@
   },
   "user-activity":{
     "active-users-toggle-option":"Aktive Benutzer",
-    "reports-toggle-option":"Meldungen",
+    "reports-toggle-option":"Berichte",
     "moderator-actions-toggle-option":"Moderationen",
     "days-count":"__numberOfDays__ Tage",
     "glossary-header":"Übersicht",
     "active-users-headline":"Aktive Benutzer",
     "active-users-description":"Wer hat die meisten Beiträge veröffentlicht?",
-    "reports-headline":"Meldungen",
-    "reports-description":"Wer hat die meisten Inhalte gemeldet und wurden diese Beiträge gelöscht, freigegeben oder noch nicht von einem Moderator bearbeitet?",
+    "reports-headline":"Berichte",
+    "reports-description":"Wer hat die meisten Inhalte gemeldet und wurden diese Beiträge gelöscht, genehmigt oder noch nicht von einem Moderator bearbeitet?",
     "moderator-actions-headline":"Moderationen",
-    "moderator-actions-description":"Welche Moderatoren haben die meisten Beiträge gelöscht, freigegeben, gesperrt oder am häufigsten die Kategorie eines Beitrags geändert?",
+    "moderator-actions-description":"Welche Moderatoren haben die meisten Beiträge gelöscht, genehmigt und gesperrt oder am häufigsten die Kategorie eines Beitrags geändert?",
+    "hero-unit-subtitle":"Benutzeraktivität",
     "posts":"Beiträge",
     "not-processed":"nicht bearbeitet",
-    "actions":"Aktionen",
-    "hero-unit-subtitle":"Benutzeraktivität"
+    "actions":"Aktionen"
   },
   "editor":{
     "post-failed-error":"Veröffentlichung ist fehlgeschlagen.",

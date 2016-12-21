@@ -28,6 +28,11 @@ module.exports = function (environment) {
 		}
 	};
 
+	ENV['ember-cli-mirage'] = {
+		// fixme remember to disable it before merging user activity branch
+		enabled: true
+	};
+
 	if (environment === 'development') {
 		ENV.APP.LOG_RESOLVER = false;
 		ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -36,7 +41,8 @@ module.exports = function (environment) {
 		ENV.APP.LOG_VIEW_LOOKUPS = true;
 
 		ENV['ember-cli-mirage'] = {
-			enabled: false
+			// fixme remember to disable it before merging user activity branch
+			enabled: true
 		};
 	}
 

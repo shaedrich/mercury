@@ -157,10 +157,10 @@
     "reports-description":"谁报告的问题最多，并且所报告的帖子被版主删除、批准或是等待处理？",
     "moderator-actions-headline":"版主操作",
     "moderator-actions-description":"哪个版主表现最活跃，对帖子进行删除、批准、锁定或者更换分类？",
+    "hero-unit-subtitle":"用户活动",
     "posts":"个帖子",
     "not-processed":"尚未处理",
-    "actions":"操作",
-    "hero-unit-subtitle":"用户活动"
+    "actions":"操作"
   },
   "editor":{
     "post-failed-error":"发布失败",

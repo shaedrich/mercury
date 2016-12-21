@@ -518,6 +518,84 @@ body.dark-theme {
 	.error-message-container {
 		color: $dark-discussion-upload-image-error-text-color;
 	}
+
+
+	.user-activity-title {
+		color: $dark-discussion-user-activity-title-color;
+	}
+
+	.discussion-user-activity {
+		h2 {
+			color: $dark-discussion-user-activity-community-avatar-color;
+		}
+	}
+
+	.discussion-user-activity-toggle {
+		border-bottom-color: $dark-discussion-user-activity-toggle-border-bottom-color;
+	}
+
+	.user-activity-options {
+		a,
+		a:active,
+		a:visited {
+			color: $dark-discussion-user-activity-toggle-option-color;
+		}
+	}
+
+	.discussion-user-activity-glossary {
+		h5,
+		p {
+			color: $dark-discussion-user-activity-glossary-text-color;;
+		}
+
+		legend {
+			border-bottom-color: $dark-discussion-user-activity-glossary-legend-color;
+		}
+	}
+
+	.discussion-user-activity-list {
+		color: $dark-discussion-user-activity-text-color;
+
+		.row {
+			.user {
+				figure {
+					&.avatar {
+						img, svg {
+							border-color: $dark-discussion-user-activity-avatar-stroke-color;
+						}
+					}
+				}
+
+				.username {
+					border-bottom-color: $dark-discussion-user-activity-row-separator-color;
+				}
+			}
+
+			.details {
+				border-bottom-color: $dark-discussion-user-activity-row-separator-color;
+
+				.user-activity-value {
+					.description {
+						color: $dark-discussion-user-activity-value-description-color;
+					}
+				}
+
+				.user-activity-icon {
+					fill: $dark-discussion-user-activity-icon-color;
+				}
+			}
+		}
+	}
+
+	.discussion-days-toggle {
+		color: $dark-discussion-days-toggle-color;
+	}
+
+	.discussion-header {
+		.discussion-days-toggle {
+			color: $dark-discussion-header-days-toggle-color;
+		}
+	}
 }
 
 @media #{$desktop-range} {
@@ -620,6 +698,18 @@ body.dark-theme {
 							border-color: $dark-body-background;
 						}
 					}
+				}
+			}
+		}
+	}
+
+	.discussion-user-activity-list {
+		color: $dark-discussion-content-color;
+
+		.row {
+			.user {
+				.username {
+					color: $dark-discussion-content-color;
 				}
 			}
 		}

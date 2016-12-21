@@ -157,10 +157,10 @@
     "reports-description":"Who has reported the most content, and have those posts been deleted, approved, or not yet been processed by a moderator?",
     "moderator-actions-headline":"Moderator Actions",
     "moderator-actions-description":"Which moderators have been the most active by deleting, approving, and locking posts, or changing a post’s category?",
+    "hero-unit-subtitle":"User Activity",
     "posts":"posts",
     "not-processed":"not processed",
-    "actions":"actions",
-    "hero-unit-subtitle":"User Activity"
+    "actions":"actions"
   },
   "editor":{
     "post-failed-error":"Post failed.",
