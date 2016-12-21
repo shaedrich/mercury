@@ -143,7 +143,9 @@
     "tab-following":"Following",
     "no-followed-posts-header":"Welcome to your Following tab.",
     "no-followed-posts-text":"Hit the “Follow” icon at the bottom of any post to fill your list with discussions that matter most to you. We’ll put them here and notify you of new activity.",
-    "find-posts-to-follow":"Find posts to follow"
+    "find-posts-to-follow":"Find posts to follow",
+    "reported-content":"Reported Content",
+    "user-activity":"User Activity"
   },
   "user-activity":{
     "active-users-toggle-option":"Active Users",
@@ -157,10 +159,10 @@
     "reports-description":"Who has reported the most content, and have those posts been deleted, approved, or not yet been processed by a moderator?",
     "moderator-actions-headline":"Moderator Actions",
     "moderator-actions-description":"Which moderators have been the most active by deleting, approving, and locking posts, or changing a post’s category?",
-    "hero-unit-subtitle":"User Activity",
     "posts":"posts",
     "not-processed":"not processed",
-    "actions":"actions"
+    "actions":"actions",
+    "hero-unit-subtitle":"User Activity"
   },
   "editor":{
     "post-failed-error":"Post failed.",

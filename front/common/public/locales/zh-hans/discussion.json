@@ -143,7 +143,9 @@
     "tab-following":"关注中",
     "no-followed-posts-header":"欢迎使用关注标签。",
     "no-followed-posts-text":"点击帖子底部的“关注”按钮关注你感兴趣的话题。你可以在这里查看全部关注的帖子。如有任何新的活动，你都会收到系统通知。",
-    "find-posts-to-follow":"查找需要关注的帖子"
+    "find-posts-to-follow":"查找需要关注的帖子",
+    "reported-content":"Reported Content",
+    "user-activity":"User Activity"
   },
   "user-activity":{
     "active-users-toggle-option":"活跃用户",
@@ -157,10 +159,10 @@
     "reports-description":"谁报告的问题最多，并且所报告的帖子被版主删除、批准或是等待处理？",
     "moderator-actions-headline":"版主操作",
     "moderator-actions-description":"哪个版主表现最活跃，对帖子进行删除、批准、锁定或者更换分类？",
-    "hero-unit-subtitle":"用户活动",
     "posts":"个帖子",
     "not-processed":"尚未处理",
-    "actions":"操作"
+    "actions":"操作",
+    "hero-unit-subtitle":"用户活动"
   },
   "editor":{
     "post-failed-error":"发布失败",

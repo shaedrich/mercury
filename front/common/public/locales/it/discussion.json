@@ -143,7 +143,9 @@
     "tab-following":"Seguite",
     "no-followed-posts-header":"Benvenuto nella scheda Seguite.",
     "no-followed-posts-text":"Fai clic sull'icona \"Segui\" in basso ad ogni post per aggiungerlo alla liste delle discussioni che ti interessano di più. Le aggiungeremo qui e ti informeremo in caso di nuove attività.",
-    "find-posts-to-follow":"Trova post da seguire"
+    "find-posts-to-follow":"Trova post da seguire",
+    "reported-content":"Reported Content",
+    "user-activity":"User Activity"
   },
   "user-activity":{
     "active-users-toggle-option":"Utenti attivi",
@@ -157,10 +159,10 @@
     "reports-description":"Chi ha segnalato il maggior numero di contenuti e tali post sono stati eliminati, approvati o non ancora esaminati da un moderatore?",
     "moderator-actions-headline":"Azioni di moderazione",
     "moderator-actions-description":"Quali moderatori sono stati i più attivi eliminando, approvando e bloccando post o modificando la categoria di un post?",
-    "hero-unit-subtitle":"Attività degli utenti",
     "posts":"post",
     "not-processed":"non esaminato",
-    "actions":"azioni"
+    "actions":"azioni",
+    "hero-unit-subtitle":"Attività degli utenti"
   },
   "editor":{
     "post-failed-error":"Post non pubblicato",

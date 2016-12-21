@@ -143,7 +143,9 @@
     "tab-following":"Verfolgt",
     "no-followed-posts-header":"Willkommen auf dem Tab „Verfolgt“.",
     "no-followed-posts-text":"Klicke auf das Symbol „Folgen“ am Ende eines beliebigen Beitrags, um deine Liste mit den Diskussionen zu füllen, die dir am wichtigsten sind. Wir stellen sie hier ein und geben dir Bescheid, wenn es etwas Neues gibt.",
-    "find-posts-to-follow":"Finde Beiträge, denen du folgen möchtest"
+    "find-posts-to-follow":"Finde Beiträge, denen du folgen möchtest",
+    "reported-content":"Reported Content",
+    "user-activity":"User Activity"
   },
   "user-activity":{
     "active-users-toggle-option":"Aktive Benutzer",
@@ -157,10 +159,10 @@
     "reports-description":"Wer hat die meisten Inhalte gemeldet und wurden diese Beiträge gelöscht, genehmigt oder noch nicht von einem Moderator bearbeitet?",
     "moderator-actions-headline":"Moderationen",
     "moderator-actions-description":"Welche Moderatoren haben die meisten Beiträge gelöscht, genehmigt und gesperrt oder am häufigsten die Kategorie eines Beitrags geändert?",
-    "hero-unit-subtitle":"Benutzeraktivität",
     "posts":"Beiträge",
     "not-processed":"nicht bearbeitet",
-    "actions":"Aktionen"
+    "actions":"Aktionen",
+    "hero-unit-subtitle":"Benutzeraktivität"
   },
   "editor":{
     "post-failed-error":"Veröffentlichung ist fehlgeschlagen.",

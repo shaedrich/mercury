@@ -143,7 +143,9 @@
     "tab-following":"Suivies",
     "no-followed-posts-header":"Bienvenue dans l'onglet Suivies !",
     "no-followed-posts-text":"Appuyez sur l'icône \"Suivre\" disponible en bas de chaque publication pour ajouter à la liste les discussions qui vous tiennent le plus à cœur. Nous les inclurons ici et vous informerons de toute nouvelle activité.",
-    "find-posts-to-follow":"Rechercher des publications à suivre"
+    "find-posts-to-follow":"Rechercher des publications à suivre",
+    "reported-content":"Reported Content",
+    "user-activity":"User Activity"
   },
   "user-activity":{
     "active-users-toggle-option":"Utilisateurs<br>actifs",
@@ -157,10 +159,10 @@
     "reports-description":"Qui a signalé le plus de contenus ? Ces publications ont-elles été supprimées, approuvées ou pas encore traitées par un modérateur ?",
     "moderator-actions-headline":"Actions de modération",
     "moderator-actions-description":"Quels ont été les modérateurs les plus actifs en supprimant, approuvant et verrouillant des publications ou en changeant une publication de catégorie ?",
-    "hero-unit-subtitle":"Activité des utilisateurs",
     "posts":"publications",
     "not-processed":"non traités",
-    "actions":"actions"
+    "actions":"actions",
+    "hero-unit-subtitle":"Activité des utilisateurs"
   },
   "editor":{
     "post-failed-error":"Échec de la publication.",

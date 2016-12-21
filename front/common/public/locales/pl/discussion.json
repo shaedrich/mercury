@@ -143,7 +143,9 @@
     "tab-following":"Obserwowane",
     "no-followed-posts-header":"Witaj na karcie Obserwowane.",
     "no-followed-posts-text":"Kliknij przycisk „Obserwuj” znajdujący się pod postem, żeby wypełnić listę dyskusjami, które najbardziej cię interesują. Umieścimy je tutaj i będziemy informować cię o aktywności w nich.",
-    "find-posts-to-follow":"Znajdź posty do obserwowania"
+    "find-posts-to-follow":"Znajdź posty do obserwowania",
+    "reported-content":"Reported Content",
+    "user-activity":"User Activity"
   },
   "user-activity":{
     "active-users-toggle-option":"Aktywni<br>użytkownicy",
@@ -157,10 +159,10 @@
     "reports-description":"Kto zgłosił najwięcej treści? Czy zgłoszone posty zostały usunięte, zatwierdzone, czy nie zostały jeszcze sprawdzone przez moderatora?",
     "moderator-actions-headline":"Aktywność moderatorów",
     "moderator-actions-description":"Którzy moderatorzy byli najbardziej aktywni przy usuwaniu, zatwierdzaniu i blokowaniu postów oraz przy zmianach ich kategorii?",
-    "hero-unit-subtitle":"Aktywność użytkowników",
     "posts":"posty",
     "not-processed":"niesprawdzone",
-    "actions":"działania"
+    "actions":"działania",
+    "hero-unit-subtitle":"Aktywność użytkowników"
   },
   "editor":{
     "post-failed-error":"Publikacja nie powiodła się.",
