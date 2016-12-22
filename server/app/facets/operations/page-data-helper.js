@@ -28,7 +28,9 @@ export function isRtl(wikiVariables) {
  * @returns {number}
  */
 export function getUserId(request) {
-	return request.auth.isAuthenticated ? request.auth.credentials.userId : 0;
+	// FIXME DIANA
+	return 555;
+	//return request.auth.isAuthenticated ? request.auth.credentials.userId : 0;
 }
 
 /**
