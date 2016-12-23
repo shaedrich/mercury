@@ -44,6 +44,7 @@
 
 	{{> nirvana }}
 	<script src="/front/main/assets/vendor/jquery/jquery.min.js"></script>
+	<!--<script type="text/javascript" src="//tags.tiqcdn.com/utag/wikia/mercury/dev/utag.sync.js"></script>-->
 	{{content-for 'baseline'}}
 	{{content-for '$script'}}
 	{{> server-data}}
@@ -55,6 +56,20 @@
 	{{content-for 'head-footer'}}
 </head>
 <body class="{{bodyClassName}}">
+<!--Tealium tag manager-->
+<script type="text/javascript">
+	var utag_data = {}
+</script>
+
+<!-- Loading script asynchronously -->
+<script type="text/javascript">
+	(function(a,b,c,d){
+		a='//tags.tiqcdn.com/utag/wikia/mercury/dev/utag.js';
+		b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+		a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+	})();
+</script>
+
 {{content-for 'body'}}
 
 {{> first-render-time}}
