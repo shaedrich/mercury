@@ -99,6 +99,8 @@ class Ads {
 		// Required by ads tracking code
 		window.gaTrackAdEvent = Ads.gaTrackAdEvent;
 
+		debugger
+
 		// Load the ads code from MW
 		load(adsUrl, () => {
 			/* eslint-disable max-params */
@@ -135,13 +137,13 @@ class Ads {
 					this.vastUrlBuilder = vastUrlBuilder;
 					this.krux = krux;
 					this.isLoaded = true;
-					this.krux = krux;
 					this.sourcePointDetectionModule = sourcePointDetectionModule;
 					this.pageFairDetectionModule = pageFairDetectionModule;
 					this.adLogicPageParams = adLogicPageParams;
 					this.addDetectionListeners();
 					this.reloadWhenReady();
 				});
+				debugger
 			} else {
 				console.error('Looks like ads asset has not been loaded');
 			}
@@ -220,6 +222,7 @@ class Ads {
 	 * @returns {void}
 	 */
 	trackKruxPageView() {
+		debugger
 		if (this.krux && typeof this.krux.load === 'function') {
 			console.info('Track pageView: Krux');
 

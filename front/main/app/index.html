@@ -44,21 +44,24 @@
 
 	{{> nirvana }}
 	<script src="/front/main/assets/vendor/jquery/jquery.min.js"></script>
-	<!--<script type="text/javascript" src="//tags.tiqcdn.com/utag/wikia/mercury/dev/utag.sync.js"></script>-->
 	{{content-for 'baseline'}}
 	{{content-for '$script'}}
 	{{> server-data}}
+	<script type="text/javascript" src="//tags.tiqcdn.com/utag/wikia/mercury/dev/utag.sync.js"></script>
 	{{> tracking-quantserve}}
 	{{> tracking-comscore}}
-	{{> optimizely}}
-	{{> tracking-ua-init}}
+	<!--{{> optimizely}}-->
+	<!--{{> tracking-ua-init}}-->
 
 	{{content-for 'head-footer'}}
 </head>
 <body class="{{bodyClassName}}">
 <!--Tealium tag manager-->
 <script type="text/javascript">
-	var utag_data = {}
+	var utag_data = {
+		GA_sampleRate_primary: '10',
+		isGASpecialWiki: M.prop('isGASpecialWiki') || Mercury.wiki.isGASpecialWiki
+	}
 </script>
 
 <!-- Loading script asynchronously -->
