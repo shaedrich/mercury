@@ -48,10 +48,6 @@
 	{{content-for '$script'}}
 	{{> server-data}}
 	<script type="text/javascript" src="//tags.tiqcdn.com/utag/wikia/mercury/dev/utag.sync.js"></script>
-	<!--{{> tracking-quantserve}}-->
-	<!--{{> tracking-comscore}}-->
-	<!--{{> optimizely}}-->
-	<!--{{> tracking-ua-init}}-->
 
 	{{content-for 'head-footer'}}
 </head>
@@ -67,7 +63,7 @@
 		comscore_url_append: M.prop('tracking.comscore.keyword') + "=" + M.prop('tracking.comscore.c7Value'),
 		comscore_c1: '2',
 		comscore_c2: M.prop('tracking.comscore.id')
-	}
+	};
 
 	if (window.Mercury && window.Mercury.wiki && window.Mercury.wiki.vertical) {
 		utag_data.quantcastLabels = `${window.Mercury.wiki.vertical} + ${utag_data.quantcastLabels}`;
@@ -86,7 +82,6 @@
 {{content-for 'body'}}
 
 {{> first-render-time}}
-<!--{{> qualaroo}}-->
 
 {{!--
 	Ember must render out to a specific div above the scripts, otherwise

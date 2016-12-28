@@ -168,9 +168,9 @@ export function trackPageView(uaDimensions, overrideUrl) {
 	if (M.prop('initialPageView')) {
 		M.prop('initialPageView', false);
 	} else {
-		window.trackQuantservePageView();
 		window.trackNielsenPageView();
-		window.trackComscorePageView();
+		// responsoble for ComScore and QuantCast tracking
+		utag.view();
 
 		M.tracker.Internal.trackPageView(context);
 		M.tracker.UniversalAnalytics.trackPageView(uaDimensions, overrideUrl);
