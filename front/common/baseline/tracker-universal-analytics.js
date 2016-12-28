@@ -470,16 +470,16 @@ if (typeof window.M.tracker === 'undefined') {
 
 		accounts = M.prop('tracking.ua');
 
-		//initAccount(accountPrimary);
+		initAccount(accountPrimary);
 		initAccount(accountAds);
 
-		// if (M.prop('isGASpecialWiki') || Mercury.wiki.isGASpecialWiki) {
-		// 	initAccount(accountSpecial);
-		// }
+		if (M.prop('isGASpecialWiki') || Mercury.wiki.isGASpecialWiki) {
+			initAccount(accountSpecial);
+		}
 
 		isInitialized = true;
 
-		// flushEventsQueue();
+		flushEventsQueue();
 
 		return true;
 	}
