@@ -103,7 +103,7 @@ export function post(request, reply) {
 						errorHandler = 'username-not-recognized';
 					}
 
-					return errorHandler;
+					return data;
 				});
 
 				reply({
