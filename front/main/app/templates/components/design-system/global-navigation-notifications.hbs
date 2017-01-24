@@ -1,0 +1,20 @@
+{{#design-system.wds-dropdown
+	class='wds-global-navigation__notifications'
+	onClose=this.attrs.onClose
+	onOpen=this.attrs.onOpen
+	as |dropdown|
+}}
+	{{#dropdown.toggle class='wds-global-navigation__dropdown-toggle'}}
+		{{svg 'wds-icons-note' class='wds-icon wds-icon-small'}}
+	{{/dropdown.toggle}}
+	{{#dropdown.content
+		class='wds-global-navigation__dropdown-content'
+		dropdownRightAligned=true
+	}}
+		<ul class="wds-list wds-has-lines-between">
+			{{#each notifications as |notification|}}
+				<li>Hello</li>
+			{{/each}}
+		</ul>
+	{{/dropdown.content}}
+{{/design-system.wds-dropdown}}
