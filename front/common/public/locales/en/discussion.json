@@ -197,5 +197,8 @@
     "overlay-message-text": "Before posting, be sure to check out the __guidelinesLinkTitle__.",
     "overlay-message-button": "Done",
     "guidelines-link-title": "Discussion Guidelines"
+  },
+  "notifications": {
+    "no-notifications-message": "No notifications yet."
   }
 }

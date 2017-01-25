@@ -1,0 +1,26 @@
+.notifications-toggle {
+	margin-left: 16px;
+	margin-right: 16px;
+}
+
+.notifications-dropdown-content {
+	align-items: center;
+	color: #656d77;
+	display: flex;
+	font-size: 14px;
+	justify-content: center;
+	min-width: 320px;
+	padding: 36px 18px;
+	width: 100%;
+
+	li {
+		display: flex;
+		flex-direction: row;
+	}
+}
+
+@media #{$desktop-range} {
+	.notifications-dropdown-content {
+		max-width: 320px;
+	}
+}
