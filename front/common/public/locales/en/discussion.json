@@ -199,6 +199,7 @@
     "guidelines-link-title": "Discussion Guidelines"
   },
   "notifications": {
-    "no-notifications-message": "No notifications yet."
+    "no-notifications-message": "No notifications yet.",
+    "mark-all-as-read": "Mark all as read"
   }
 }
