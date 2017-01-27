@@ -1,3 +1,19 @@
+.notifications-unread-mark {
+	align-items: center;
+	background-color: #00b7e0;
+	border: 1px solid #fff;
+	border-radius: 100%;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	font-size: 10px;
+	height: 18px;
+	left: -9px;
+	position: absolute;
+	top: 7px;
+	width: 18px;
+}
+
 .notifications-toggle {
 	margin-left: 16px;
 	margin-right: 16px;
@@ -7,15 +23,40 @@
 	align-items: center;
 	color: #656d77;
 	display: flex;
+	flex-direction: column;
 	font-size: 14px;
 	justify-content: center;
 	min-width: 320px;
-	padding: 36px 18px;
 	width: 100%;
+
+	ul {
+		padding: 0 18px;
+	}
 
 	li {
 		display: flex;
 		flex-direction: row;
+
+		svg {
+			height: 14px;
+			width: 14px;
+		}
+	}
+
+	.mark-all-as-read-button {
+		box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.1);
+		display: flex;
+		justify-content: flex-start;
+		min-height: 44px;
+		width: 100%;
+
+		a {
+			color: #00b7e0;
+			font-size: 12px;
+			font-weight: bold;
+			padding: 18px;
+			text-transform: uppercase;
+		}
 	}
 }
 

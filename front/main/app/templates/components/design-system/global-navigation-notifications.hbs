@@ -5,6 +5,11 @@
 	as |dropdown|
 }}
 	{{#dropdown.toggle class='wds-global-navigation__dropdown-toggle notifications-toggle'}}
+		{{#if hasUnread}}
+			<span class="notifications-unread-mark">
+				10
+			</span>
+		{{/if}}
 		{{svg 'wds-icons-bell' class='wds-icon wds-icon-small'}}
 	{{/dropdown.toggle}}
 	{{#dropdown.content
@@ -13,7 +18,13 @@
 	}}
 		<div class="notifications-dropdown-content">
 			{{#if notificationsList.length}}
-				<a href="#"
+				{{#if hasUnread}}
+					<div class="mark-all-as-read-button">
+						<a href="" {{action 'markAllAsRead'}}>
+							{{i18n 'notifications.mark-all-as-read' ns='discussion'}}
+						</a>
+					</div>
+				{{/if}}
 				<ul class="wds-list wds-has-lines-between">
 					{{#each notificationsList as |notification|}}
 						{{notification-card
