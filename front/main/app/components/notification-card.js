@@ -4,5 +4,4 @@ export default Ember.Component.extend({
 	tagName: 'li',
 
 	text: 'Lorem ipsum gówno'
-
 });

@@ -12,13 +12,13 @@ const NotificationsModel = Ember.Object.extend({
 			data: new Ember.A()
 		});
 
-		data.pushObjects([
+		this.data.pushObjects([
 			{
 				author: {
 					avatarUrl: null,
 					badgePermission: null,
 					id: null,
-					name: Brtkowal,
+					name: 'Brtkowal',
 					profileUrl: null,
 				},
 				type: 'discussion-upvote',
@@ -45,10 +45,9 @@ NotificationsModel.reopenClass({
 			// 	// Categories fail silently - you can still view the default category
 			// 	resolve(discussionInstance);
 			// });
-			debugger;
 
 			notificationsInstance.setNormalizedData();
-			resolve(notificationsInstance);
+			return resolve(notificationsInstance);
 		});
 	}
 });

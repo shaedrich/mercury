@@ -12,10 +12,11 @@
 		dropdownRightAligned=true
 	}}
 		<div class="notifications-dropdown-content">
-			{{#if notifications}}
+			{{#if notificationsList.length}}
+				<a href="#"
 				<ul class="wds-list wds-has-lines-between">
 					{{#each notificationsList as |notification|}}
-						{{notification
+						{{notification-card
 							model=notification
 						}}
 					{{/each}}
