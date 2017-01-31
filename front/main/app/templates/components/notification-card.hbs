@@ -1,16 +1,16 @@
 <div class="notification-icon-wrapper">
-	{{svg icon}}
+	{{svg iconName viewBox='0 0 24 24' class='icon'}}
 </div>
 <div class="notification-body">
 	<p class="notification-text">
 		{{text}}
 	</p>
-	<div class="notification-context">
-		<span class="notification-timestamp">
-			{{timestamp}}
-		</span>
-		<span class="notification-community-name">
-			{{model.communityName}}
-		</span>
-	</div>
+	<ul class="notification-context-list">
+		<li class="notification-context-item">
+			{{time-ago model.timestamp}}
+		</li>
+		<li class="notification-context-item">
+			{{model.wiki}}
+		</li>
+	</ul>
 </div>

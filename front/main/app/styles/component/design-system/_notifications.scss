@@ -29,18 +29,10 @@
 	min-width: 320px;
 	width: 100%;
 
-	ul {
+	.notifications-list {
+		box-sizing: border-box;
 		padding: 0 18px;
-	}
-
-	li {
-		display: flex;
-		flex-direction: row;
-
-		svg {
-			height: 14px;
-			width: 14px;
-		}
+		width: 100%;
 	}
 
 	.mark-all-as-read-button {

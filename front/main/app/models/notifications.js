@@ -22,7 +22,19 @@ const NotificationsModel = Ember.Object.extend({
 					profileUrl: null,
 				},
 				type: 'discussion-upvote',
-				title: 'Zupa Romana',
+				wiki: 'Wookiepedia',
+				timestamp: 1485349922140,
+			},
+			{
+				author: {
+					avatarUrl: null,
+					badgePermission: null,
+					id: null,
+					name: 'Brtkowal',
+					profileUrl: null,
+				},
+				type: 'discussion-upvote',
+				wiki: 'Fallout',
 				timestamp: 1485349922140,
 			}
 		])
