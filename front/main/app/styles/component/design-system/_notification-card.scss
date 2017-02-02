@@ -1,11 +1,33 @@
 .notification-card {
-	display: flex;
 	padding: 12px 0 8px;
 
 	&.is-unread {
 		.notification-icon-wrapper {
 			.icon {
 				fill: #00b7e0;
+			}
+		}
+	}
+
+	a {
+		color: #656d77;
+		display: flex;
+		padding: 0;
+	}
+
+	.discussion-contributors {
+		margin: 8px 18px 6px 40px;
+
+		.user-avatar {
+			background: #fff;
+			border-radius: 100%;
+			margin: 0;
+		}
+
+		@for $i from 1 to 5 {
+			.ember-view:nth-child(#{$i}) .user-avatar {
+				transform: translate(($i - 1) * - 15px);
+				z-index: 5 - $i;
 			}
 		}
 	}
@@ -42,16 +64,20 @@
 	display: flex;
 	font-size: 12px;
 	font-weight: bold;
-	list-style-type: disc;
+	list-style-type: none;
 	margin: 0;
 	padding: 8px 0 0;
 }
 
-.notification-context-item:first-child {
-	list-style-type: none;
-	margin-left: 0;
+.notification-entity-text-snippet {
+	font-size: 14px;
+	font-style: italic;
+	line-height: 18px;
+	margin: 8px 0 0;
 }
 
-.notification-context-item {
-	margin-left: 28px;
+.notification-context-separator {
+	display: flex;
+	font-size: 16px;
+	margin: -7px 8px 0;
 }

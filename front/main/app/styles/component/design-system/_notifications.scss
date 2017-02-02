@@ -26,11 +26,14 @@
 	flex-direction: column;
 	font-size: 14px;
 	justify-content: center;
-	min-width: 320px;
+	//padding 18 * 2 + content 320px
+	min-width: 356px;
 	width: 100%;
 
 	.notifications-list {
 		box-sizing: border-box;
+		max-height: 420px;
+		overflow-y: scroll;
 		padding: 0 18px;
 		width: 100%;
 	}
@@ -40,20 +43,33 @@
 		display: flex;
 		justify-content: flex-start;
 		min-height: 44px;
+		padding: 0;
 		width: 100%;
 
 		a {
 			color: #00b7e0;
 			font-size: 12px;
 			font-weight: bold;
+			line-height: 12px;
 			padding: 18px;
 			text-transform: uppercase;
 		}
 	}
 }
 
+.wds-is-active {
+	background-color: #656e78;
+	border-color: #363b41;
+
+	.notifications-toggle {
+		.wds-icon {
+			fill: white;
+		}
+	}
+}
+
 @media #{$desktop-range} {
 	.notifications-dropdown-content {
-		max-width: 320px;
+		max-width: 356px;
 	}
 }

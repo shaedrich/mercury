@@ -42,7 +42,17 @@ export default Ember.Component.extend({
 			return this.getReplyMessageBody(model);
 		} else if (type === 'discussion-upvote-post') {
 			return this.getPostUpvoteMessageBody(model);
+		} else {
+			return this.getReplyUpvoteMessageBody(model);
 		}
+	}),
+
+	showAvatars: Ember.computed('model.events.length', 'model.type', function () {
+		return this.get('model.events.length') > 2 && this.get('model.type') === 'discussion-reply';
+	}),
+
+	authors: Ember.computed('model.events', function () {
+		return this.get('model.events').mapBy('author');
 	}),
 
 	getPostUpvoteMessageBody(model) {
@@ -71,6 +81,39 @@ export default Ember.Component.extend({
 				});
 			} else {
 				return i18n.t('notifications.post-upvote-single-user-no-title', {
+					ns: 'discussion',
+					user: this.get('model.author.name'),
+				});
+			}
+		}
+	},
+
+	getReplyUpvoteMessageBody(model) {
+		const hasTitle = model.title,
+			hasMultipleUsers = model.events.length > 1;
+
+		if (hasTitle) {
+			if (hasMultipleUsers) {
+				return i18n.t('notifications.reply-upvote-multiple-users-with-title', {
+					ns: 'discussion',
+					postTitle: this.get('postTitleMarkup'),
+					number: this.get('model.events.length') - 1
+				});
+			} else {
+				return i18n.t('notifications.reply-upvote-single-user-with-title', {
+					ns: 'discussion',
+					user: this.get('model.author.name'),
+					postTitle: this.get('postTitleMarkup'),
+				});
+			}
+		} else {
+			if (hasMultipleUsers) {
+				return i18n.t('notifications.reply-upvote-multiple-users-no-title', {
+					ns: 'discussion',
+					number: this.get('model.events.length')
+				});
+			} else {
+				return i18n.t('notifications.reply-upvote-single-user-no-title', {
 					ns: 'discussion',
 					user: this.get('model.author.name'),
 				});

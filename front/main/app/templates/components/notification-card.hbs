@@ -1,16 +1,33 @@
-<div class="notification-icon-wrapper">
-	{{svg iconName viewBox='0 0 24 24' class='icon'}}
-</div>
-<div class="notification-body">
-	<p class="notification-text">
-		{{{text}}}
-	</p>
-	<ul class="notification-context-list">
-		<li class="notification-context-item">
-			{{time-ago model.timestamp}}
-		</li>
-		<li class="notification-context-item">
-			{{model.wiki}}
-		</li>
-	</ul>
-</div>
+{{#if showAvatars}}
+	{{discussion-contributors
+			users=authors
+			maxContributorDisplayCount=5
+			totalContributorCount=model.events.length
+	}}
+{{/if}}
+<a href="{{href}}">
+	<div class="notification-icon-wrapper">
+		{{svg iconName viewBox='0 0 24 24' class='icon'}}
+	</div>
+	<div class="notification-body">
+		<p class="notification-text">
+			{{{text}}}
+		</p>
+		{{#unless model.title}}
+			<p class="notification-entity-text-snippet">
+				{{{model.snippet}}}
+			</p>
+		{{/unless}}
+		<ul class="notification-context-list">
+			<li class="notification-context-item">
+				{{time-ago model.timestamp}}
+			</li>
+			<li>
+				<span class="notification-context-separator">.</span>
+			</li>
+			<li class="notification-context-item">
+				{{model.wiki}}
+			</li>
+		</ul>
+	</div>
+</a>

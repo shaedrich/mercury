@@ -34,6 +34,7 @@ const NotificationsModel = Ember.Object.extend({
 					}
 				],
 				unread: true,
+				snippet: 'lalalalala there were a couple of things done and blah blah blah',
 				type: 'discussion-reply',
 				wiki: 'Wookiepedia',
 				timestamp: 1485349922140,
@@ -68,7 +69,9 @@ const NotificationsModel = Ember.Object.extend({
 						timestamp: 1485349922140,
 					}
 				],
+				unread: true,
 				type: 'discussion-reply',
+				snippet: 'lalalalala there were a couple of things done and blah blah blah',
 				wiki: 'Fallout',
 				timestamp: 1485349922140,
 			},
@@ -139,6 +142,7 @@ const NotificationsModel = Ember.Object.extend({
 					}
 				],
 				type: 'discussion-upvote-post',
+				snippet: 'lalalalala there were a couple of things done and blah blah blah',
 				wiki: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
@@ -173,6 +177,7 @@ const NotificationsModel = Ember.Object.extend({
 					}
 				],
 				type: 'discussion-upvote-post',
+				snippet: 'lalalalala there were a couple of things done and blah blah blah',
 				wiki: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
@@ -207,6 +212,7 @@ const NotificationsModel = Ember.Object.extend({
 					}
 				],
 				type: 'discussion-upvote-reply',
+				snippet: 'lalalalala there were a couple of things done and blah blah blah',
 				wiki: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
@@ -234,6 +240,7 @@ const NotificationsModel = Ember.Object.extend({
 					}
 				],
 				type: 'discussion-upvote-reply',
+				snippet: 'lalalalala there were a couple of things done and blah blah blah',
 				wiki: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
