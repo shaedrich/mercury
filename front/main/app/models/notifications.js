@@ -21,7 +21,20 @@ const NotificationsModel = Ember.Object.extend({
 					name: 'Brtkowal',
 					profileUrl: null,
 				},
-				type: 'discussion-upvote',
+				events: [
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					}
+				],
+				unread: true,
+				type: 'discussion-reply',
 				wiki: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
@@ -33,10 +46,197 @@ const NotificationsModel = Ember.Object.extend({
 					name: 'Brtkowal',
 					profileUrl: null,
 				},
-				type: 'discussion-upvote',
+				events: [
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					}
+				],
+				type: 'discussion-reply',
 				wiki: 'Fallout',
 				timestamp: 1485349922140,
-			}
+			},
+			{
+				author: {
+					avatarUrl: null,
+					badgePermission: null,
+					id: null,
+					name: 'Brtkowal',
+					profileUrl: null,
+				},
+				events: [
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					}
+				],
+				title: 'Harmless title',
+				type: 'discussion-reply',
+				wiki: 'Fallout',
+				timestamp: 1485349922140,
+			},
+			//discussion-upvote-post
+			{
+				author: {
+					avatarUrl: null,
+					badgePermission: null,
+					id: null,
+					name: 'Brtkowal',
+					profileUrl: null,
+				},
+				events: [
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					}
+				],
+				type: 'discussion-upvote-post',
+				wiki: 'Wookiepedia',
+				timestamp: 1485349922140,
+			},
+			{
+				author: {
+					avatarUrl: null,
+					badgePermission: null,
+					id: null,
+					name: 'Brtkowal',
+					profileUrl: null,
+				},
+				events: [
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					}
+				],
+				type: 'discussion-upvote-post',
+				wiki: 'Wookiepedia',
+				timestamp: 1485349922140,
+			},
+			{
+				author: {
+					avatarUrl: null,
+					badgePermission: null,
+					id: null,
+					name: 'Brtkowal',
+					profileUrl: null,
+				},
+				events: [
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					}
+				],
+				type: 'discussion-upvote-reply',
+				wiki: 'Wookiepedia',
+				timestamp: 1485349922140,
+			},
+			{
+				author: {
+					avatarUrl: null,
+					badgePermission: null,
+					id: null,
+					name: 'Brtkowal',
+					profileUrl: null,
+				},
+				events: [
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						timestamp: 1485349922140,
+					}
+				],
+				type: 'discussion-upvote-reply',
+				wiki: 'Wookiepedia',
+				timestamp: 1485349922140,
+			},
 		])
 	}
 });

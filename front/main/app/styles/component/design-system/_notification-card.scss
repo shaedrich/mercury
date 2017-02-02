@@ -4,7 +4,9 @@
 
 	&.is-unread {
 		.notification-icon-wrapper {
-			fill: #00b7e0;
+			.icon {
+				fill: #00b7e0;
+			}
 		}
 	}
 }
@@ -14,8 +16,8 @@
 	width: 30px;
 
 	.icon {
-		height: 24px;
-		width: 24px;
+		height: 18px;
+		width: 18px;
 	}
 }
 
