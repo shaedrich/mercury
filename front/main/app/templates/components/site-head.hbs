@@ -5,12 +5,17 @@
 --}}
 <div class="site-head-wrapper">
 	<nav class="site-head">
-		{{wikia-ui-components/icon-button
-			click=(action 'siteHeadIconClick' 'nav')
-			class='site-head-icon site-head-icon-nav'
-			icon=navIcon
-			iconSize=24
-		}}
+		<div class="nav-icon-wrapper">
+			<span class="notifications-unread-mark">
+				2
+			</span>
+			{{wikia-ui-components/icon-button
+				click=(action 'siteHeadIconClick' 'nav')
+				class='site-head-icon site-head-icon-nav'
+				icon=navIcon
+				iconSize=24
+			}}
+		</div>
 		<div class="site-logo">
 			<a {{action 'trackWordmarkClick' preventDefault=false}} href="{{wikiaHomepage}}">
 				{{svg svgName role='img' class='fandom-logo'}}

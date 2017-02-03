@@ -14,6 +14,7 @@ export default Component.extend(
 		closeIcon: 'close',
 
 		ads: Ember.inject.service(),
+		notifications: Ember.inject.service(),
 
 		headroomOptions: {
 			classes: {
@@ -42,6 +43,8 @@ export default Component.extend(
 		}),
 
 		offset: computed.readOnly('ads.siteHeadOffset'),
+
+		unreadNotificationsCount: computed.alias('notifications.model.unreadCount'),
 
 		actions: {
 			/**
