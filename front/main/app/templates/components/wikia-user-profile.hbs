@@ -2,7 +2,7 @@
 	<div class="wikia-nav__header">
 		<a {{action 'getBack' preventDefault=false}}
 				class="wikia-nav__back user-profile-back-link">
-			{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon'}}
+			{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon menu-chevron'}}
 		</a>
 		<a {{action 'trackClick' 'side-nav' 'open-logout' preventDefault=false}}
 				href="{{unbound logoutLink}}"
@@ -11,10 +11,12 @@
 		</a>
 	</div>
 
-	{{user-avatar
+	<header class="user-profile-header-wrapper">
+		{{user-avatar
 			username=username
-	}}
-	<h4 class="user-profile-username">{{username}}</h4>
+		}}
+		<h4 class="user-profile-username">{{username}}</h4>
+	</header>
 
 	{{#if notificationsList.length}}
 		<div class="notifications-title">

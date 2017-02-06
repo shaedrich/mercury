@@ -73,3 +73,15 @@
 		max-width: 356px;
 	}
 }
+
+.wikia-nav {
+	.user-profile-avatar {
+		position: relative;
+	}
+
+	.notifications-unread-mark {
+		left: initial;
+		right: -9px;
+		top: -4px;
+	}
+}

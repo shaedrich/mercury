@@ -3,11 +3,12 @@
 		<div class="wikia-nav__header user-profile-header">
 			<a {{action 'onUsernameClicked' preventDefault=false}}
 					class="wikia-nav--external wikia-nav--profile-link">
-				<figure class="wikia-nav__avatar">
+				<figure class="wikia-nav__avatar user-profile-avatar">
 					<img src={{currentUser.avatarPath}} alt="{{currentUser.name}}">
+					<span class="notifications-unread-mark">2</span>
 				</figure>
-				{{i18n 'app.user-menu-profile'}}
-				{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon'}}
+				{{currentUser.name}}
+				{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon menu-chevron'}}
 			</a>
 		</div>
 	{{else}}

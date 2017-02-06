@@ -52,7 +52,6 @@ export default Component.extend(
 			 * @returns {void}
 			 */
 			siteHeadIconClick(icon) {
-				debugger;
 				if (this.get('drawerVisible')) {
 					track({
 						action: trackActions.click,

@@ -12,9 +12,9 @@
 				icon=navIcon
 				iconSize=24
 			}}
-			<span class="notifications-unread-mark">
-				2
-			</span>
+			{{#unless drawerVisible}}
+				<span class="notifications-unread-mark">2</span>
+			{{/unless}}
 		</div>
 		<div class="site-logo">
 			<a {{action 'trackWordmarkClick' preventDefault=false}} href="{{wikiaHomepage}}">

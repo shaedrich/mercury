@@ -12,17 +12,17 @@
 	svg {
 		float: left;
 		margin-top: 4px;
-		transform: rotate(	90deg);
+		transform: rotate(90deg);
 	}
 }
 
-.wikia-user-profile {
-	background-color: $color-white;
-	flex-grow: 1;
-	overflow: auto;
-	-webkit-overflow-scrolling: touch;
-	text-align: center;
+.icon {
+	&.menu-chevron {
+		fill: #c5ced9;
+	}
+}
 
+.user-profile-header-wrapper {
 	.user-avatar {
 		background-color: #fff;
 		border-color: #fff;
@@ -36,6 +36,14 @@
 			width: 94px;
 		}
 	}
+}
+
+.wikia-user-profile {
+	background-color: $color-white;
+	flex-grow: 1;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	text-align: center;
 
 	.user-profile-username {
 		margin-top: 10px;
