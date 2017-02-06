@@ -1,3 +1,21 @@
+.user-profile-header {
+	svg {
+		float: right;
+		margin-top: 4px;
+		transform: rotate(-90deg);
+	}
+}
+
+.user-profile-back-link {
+	line-height: 20px;
+
+	svg {
+		float: left;
+		margin-top: 4px;
+		transform: rotate(	90deg);
+	}
+}
+
 .wikia-user-profile {
 	background-color: $color-white;
 	flex-grow: 1;

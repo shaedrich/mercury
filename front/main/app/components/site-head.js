@@ -35,7 +35,7 @@ export default Component.extend(
 		svgName: M.prop('globalNavigation.logo.module.main.image-data.name'),
 
 		navIcon: computed('drawerContent', 'drawerVisible', function () {
-			return this.get('drawerVisible') && this.get('drawerContent') === 'nav' ? 'close' : 'nav';
+			return this.get('drawerVisible') && ['nav', 'user-profile'].indexOf(this.get('drawerContent')) !== -1 ? 'close' : 'nav';
 		}),
 
 		searchIcon: computed('drawerContent', 'drawerVisible', function () {
@@ -52,7 +52,8 @@ export default Component.extend(
 			 * @returns {void}
 			 */
 			siteHeadIconClick(icon) {
-				if (this.get('drawerVisible') && this.get('drawerContent') === icon) {
+				debugger;
+				if (this.get('drawerVisible')) {
 					track({
 						action: trackActions.click,
 						category: 'side-nav',

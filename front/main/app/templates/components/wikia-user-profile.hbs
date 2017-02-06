@@ -1,7 +1,8 @@
 <div class="user-profile-fixed-wrapper">
 	<div class="wikia-nav__header">
 		<a {{action 'getBack' preventDefault=false}}
-				class="wikia-nav__back">
+				class="wikia-nav__back user-profile-back-link">
+			{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon'}}
 		</a>
 		<a {{action 'trackClick' 'side-nav' 'open-logout' preventDefault=false}}
 				href="{{unbound logoutLink}}"

@@ -1,12 +1,13 @@
 {{#if model.inRoot}}
 	{{#if isUserAuthenticated}}
-		<div class="wikia-nav__header">
+		<div class="wikia-nav__header user-profile-header">
 			<a {{action 'onUsernameClicked' preventDefault=false}}
 					class="wikia-nav--external wikia-nav--profile-link">
 				<figure class="wikia-nav__avatar">
 					<img src={{currentUser.avatarPath}} alt="{{currentUser.name}}">
 				</figure>
 				{{i18n 'app.user-menu-profile'}}
+				{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon'}}
 			</a>
 		</div>
 	{{else}}
