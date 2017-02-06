@@ -20,7 +20,7 @@
 			{{#if notificationsList.length}}
 				{{#if hasUnread}}
 					<div class="mark-all-as-read-button">
-						<a href="" {{action 'markAllAsRead'}}>
+						<a {{action 'markAllAsRead'}} class="mark-all-as-read">
 							{{i18n 'notifications.mark-all-as-read' ns='discussion'}}
 						</a>
 					</div>

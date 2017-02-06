@@ -1,19 +1,15 @@
 import Ember from 'ember';
 import NotificationsModel from '../models/notifications';
 
-export default Ember.Service.extend({
-	model: Ember.computed('userId', function () {
-		const userId = this.get('userId');
+const {Service, Logger, computed} = Ember;
 
-		if (userId !== null) {
-			return NotificationsModel
-				.getNotifications()
-				.catch((err) => {
-					Ember.Logger.warn('Couldn\'t load notifications', err);
-				});
-		}
-
-		return Ember.RSVP.reject();
+export default Service.extend({
+	model: computed(function () {
+		return NotificationsModel
+			.getNotifications()
+			.catch((err) => {
+				Logger.warn('Couldn\'t load notifications', err);
+			});
 	}),
 
 	/**
@@ -22,7 +18,8 @@ export default Ember.Service.extend({
 	init() {
 		this._super(...arguments);
 
-		// fetch the model from the API
+		// fetches the model from the API at first attempt to use the data
+		// then a singleton service will keep the data until page reloads
 		this.get('model').then((model) => {
 			this.setProperties({
 				data: model.data,

@@ -1,0 +1,54 @@
+.wikia-user-profile {
+	background-color: $color-white;
+	flex-grow: 1;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	text-align: center;
+
+	.user-avatar {
+		background-color: #fff;
+		border-color: #fff;
+		border-radius: 100%;
+		margin-top: -25px;
+		// hack for making it get on top of the header
+		transform: translate(0, 0);
+
+		svg {
+			height: 94px;
+			width: 94px;
+		}
+	}
+
+	.user-profile-username {
+		margin-top: 10px;
+	}
+
+	.notifications-title {
+		border-bottom: solid 1px #e6e6e6;
+		display: flex;
+		justify-content: space-between;
+		margin: 0 18px;
+		padding: 0 0 11px;
+
+		h5,
+		.mark-all-as-read {
+			line-height: 12px;
+			margin: 0;
+			padding: 0;
+		}
+
+		h5 {
+			font-size: 12px;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.user-profile-fixed-wrapper {
+	flex-grow: 0;
+}
+
+.user-profile-scrollable-wrapper {
+	flex-grow: 1;
+	overflow: auto;
+}

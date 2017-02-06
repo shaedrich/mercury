@@ -14,18 +14,6 @@ export default Component.extend(
 		currentUser: inject.service(),
 		isUserAuthenticated: computed.oneWay('currentUser.isAuthenticated'),
 
-		logoutLink: M.buildUrl({
-			namespace: 'Special',
-			title: 'UserLogout'
-		}),
-
-		userProfileLink: computed('currentUser.name', function () {
-			return M.buildUrl({
-				namespace: 'User',
-				title: this.get('currentUser.name')
-			});
-		}),
-
 		init() {
 			this._super(...arguments);
 			this.model = WikiaNavModel.create();
@@ -72,6 +60,12 @@ export default Component.extend(
 
 			goToSubNav(index) {
 				this.get('model').goToSubNav(index);
+			},
+
+			onUsernameClicked() {
+				this.send('trackClick', 'side-nav', 'open-user-profile');
+
+				this.sendAction('setDrawerContent', 'user-profile');
 			},
 
 			/**

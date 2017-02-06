@@ -2,14 +2,16 @@ import Ember from 'ember';
 import Notification from './notification';
 import request from 'ember-ajax/request';
 
-const NotificationsModel = Ember.Object.extend({
+const {Object, A, RSVP} = Ember;
+
+const NotificationsModel = Object.extend({
 	unreadCount: null,
 	data: null,
 
 	setNormalizedData(apiData) {
 		this.setProperties({
 			unreadCount: 1, //apiData.unreadCount,
-			data: new Ember.A()
+			data: new A()
 		});
 
 		this.data.pushObjects([
@@ -253,7 +255,7 @@ NotificationsModel.reopenClass({
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	getNotifications() {
-		return new Ember.RSVP.Promise((resolve) => {
+		return new RSVP.Promise((resolve) => {
 			const notificationsInstance = NotificationsModel.create();
 
 			// request(M.getDiscussionServiceUrl(`/${wikiId}/forums`)).then((data) => {
