@@ -1,3 +1,11 @@
+.notifications {
+	&:hover {
+		svg {
+			fill: #00b7e0;
+		}
+	}
+}
+
 .notifications-unread-mark {
 	align-items: center;
 	background-color: #00b7e0;
@@ -16,7 +24,7 @@
 
 .notifications-toggle {
 	margin-left: 16px;
-	margin-right: 16px;
+	margin-right: 8px;
 }
 
 .notifications-dropdown-content {
@@ -82,6 +90,6 @@
 	.notifications-unread-mark {
 		left: initial;
 		right: -9px;
-		top: -4px;
+		top: -3px;
 	}
 }

@@ -23,13 +23,28 @@
 			background: #fff;
 			border-radius: 100%;
 			margin: 0;
+
+			figure.avatar {
+				svg {
+					border-color: #ccc;
+				}
+			}
 		}
 
-		@for $i from 1 to 5 {
+		@for $i from 1 to 6 {
 			.ember-view:nth-child(#{$i}) .user-avatar {
 				transform: translate(($i - 1) * - 15px);
 				z-index: 5 - $i;
 			}
+		}
+
+		div.discussion-contributors-more {
+			background-color: #fff;
+			border: 0;
+			color: #333;
+			font-size: 12px;
+			transform: translate(-60px);
+			width: auto;
 		}
 	}
 }

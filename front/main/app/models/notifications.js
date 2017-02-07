@@ -115,7 +115,38 @@ const NotificationsModel = Object.extend({
 							profileUrl: null,
 						},
 						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
+					},
+					{
+						author: {
+							avatarUrl: null,
+							badgePermission: null,
+							id: null,
+							name: 'Brtkowal',
+							profileUrl: null,
+						},
+						timestamp: 1485349922140,
 					}
+
 				],
 				title: 'Harmless title',
 				type: 'discussion-reply',

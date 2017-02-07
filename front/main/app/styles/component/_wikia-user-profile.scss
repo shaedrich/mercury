@@ -1,7 +1,7 @@
 .user-profile-header {
-	svg {
+	.menu-chevron {
 		float: right;
-		margin-top: 4px;
+		margin-top: 5px;
 		transform: rotate(-90deg);
 	}
 }
@@ -11,7 +11,7 @@
 
 	svg {
 		float: left;
-		margin-top: 4px;
+		margin-top: 5px;
 		transform: rotate(90deg);
 	}
 }
@@ -25,32 +25,37 @@
 .user-profile-header-wrapper {
 	.user-avatar {
 		background-color: #fff;
-		border-color: #fff;
 		border-radius: 100%;
 		margin-top: -25px;
 		// hack for making it get on top of the header
 		transform: translate(0, 0);
 
-		svg {
-			height: 94px;
-			width: 94px;
+		figure.avatar {
+			svg {
+				border-color: #fff;
+				border-width: 3px;
+				height: 94px;
+				width: 94px;
+			}
 		}
 	}
 }
 
 .wikia-user-profile {
 	background-color: $color-white;
+	display: flex;
+	flex-direction: column;
 	flex-grow: 1;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch;
 	text-align: center;
 
 	.user-profile-username {
-		margin-top: 10px;
+		margin: 4px 18px 1.1rem 18px;
 	}
 
 	.notifications-title {
-		border-bottom: solid 1px #e6e6e6;
+		border-bottom: solid 1px #c5ced9;
 		display: flex;
 		justify-content: space-between;
 		margin: 0 18px;
