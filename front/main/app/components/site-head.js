@@ -11,6 +11,7 @@ export default Component.extend(
 		classNameBindings: ['themeBar'],
 		tagName: 'div',
 		themeBar: false,
+		closableDrawerStates: ['nav', 'user-profile'],
 		closeIcon: 'close',
 
 		ads: Ember.inject.service(),
@@ -35,7 +36,8 @@ export default Component.extend(
 		svgName: M.prop('globalNavigation.logo.module.main.image-data.name'),
 
 		navIcon: computed('drawerContent', 'drawerVisible', function () {
-			return this.get('drawerVisible') && ['nav', 'user-profile'].indexOf(this.get('drawerContent')) !== -1 ? 'close' : 'nav';
+			return this.get('drawerVisible') &&
+			this.get('closableDrawerStates').indexOf(this.get('drawerContent')) !== -1 ? 'close' : 'nav';
 		}),
 
 		searchIcon: computed('drawerContent', 'drawerVisible', function () {
