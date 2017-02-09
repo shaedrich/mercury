@@ -1,3 +1,6 @@
+$notification-card-text-color: #38424d;
+$notification-card-anchor-color: #656d77;
+
 .notification-card {
 	padding: 12px 0 8px;
 	text-align: left;
@@ -5,13 +8,13 @@
 	&.is-unread {
 		.notification-icon-wrapper {
 			.icon {
-				fill: #00b7e0;
+				fill: $wds-color-slate-gray ;
 			}
 		}
 	}
 
 	a {
-		color: #656d77;
+		color: $notification-card-anchor-color;
 		display: flex;
 		padding: 0;
 	}
@@ -20,13 +23,13 @@
 		margin: 8px 18px 6px 40px;
 
 		.user-avatar {
-			background: #fff;
+			background: $wds-color-white;
 			border-radius: 100%;
 			margin: 0;
 
 			figure.avatar {
 				svg {
-					border-color: #ccc;
+					border-color: $wds-color-light-c4;
 				}
 			}
 		}
@@ -39,9 +42,9 @@
 		}
 
 		div.discussion-contributors-more {
-			background-color: #fff;
+			background-color: $wds-color-white;
 			border: 0;
-			color: #333;
+			color: $wds-color-light-c6;
 			font-size: 12px;
 			transform: translate(-60px);
 			width: auto;
@@ -69,14 +72,14 @@
 }
 
 .notification-text {
-	color: #38424d;
+	color: $notification-card-text-color;
 	font-size: 14px;
 	line-height: 18px;
 	margin: 0;
 }
 
 .notification-context-list {
-	color: #c5ced9;
+	color: $wds-color-blue-gray;
 	display: flex;
 	font-size: 12px;
 	font-weight: bold;

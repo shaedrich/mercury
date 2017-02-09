@@ -1,17 +1,21 @@
+$notifications-dropdown-content-color: #656d77;
+$notifications-dropdown-border-color: #363b41
+
 .notifications {
 	&:hover {
-		svg {
-			fill: #00b7e0;
+		.icon-bell,
+		.wds-dropdown__toggle-chevron {
+			fill: $wds-color-link;
 		}
 	}
 }
 
 .notifications-unread-mark {
 	align-items: center;
-	background-color: #00b7e0;
-	border: 1px solid #fff;
+	background-color: $wds-color-link;
+	border: 1px solid $$wds-color-white;
 	border-radius: 100%;
-	color: #fff;
+	color: $$wds-color-white;
 	display: flex;
 	justify-content: center;
 	font-size: 10px;
@@ -29,7 +33,7 @@
 
 .notifications-dropdown-content {
 	align-items: center;
-	color: #656d77;
+	color: $notifications-dropdown-content-color;
 	display: flex;
 	flex-direction: column;
 	font-size: 14px;
@@ -42,9 +46,12 @@
 		box-sizing: border-box;
 		max-height: 420px;
 		overflow-y: scroll;
-		padding: 0 18px;
 		width: 100%;
 	}
+}
+
+.notifications-list {
+	padding: 0 18px 100px;
 }
 
 .mark-all-as-read-button {
@@ -57,7 +64,7 @@
 }
 
 .mark-all-as-read {
-	color: #00b7e0;
+	color: $wds-color-link;
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 12px;
@@ -66,8 +73,8 @@
 }
 
 .wds-is-active {
-	background-color: #656e78;
-	border-color: #363b41;
+	background-color: $wds-color-slate-gray;
+	border-color: $notifications-dropdown-border-color;
 
 	.notifications-toggle {
 		.wds-icon {
@@ -91,5 +98,16 @@
 		left: initial;
 		right: -9px;
 		top: -3px;
+	}
+}
+
+.notifications-scroll-menu {
+	.loading-overlay {
+		position: absolute;
+	}
+
+	.spinner {
+		top: initial;
+		bottom: 10px;
 	}
 }

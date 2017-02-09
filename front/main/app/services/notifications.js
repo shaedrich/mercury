@@ -4,7 +4,11 @@ import NotificationsModel from '../models/notifications';
 const {Service, Logger, computed} = Ember;
 
 export default Service.extend({
-	model: computed(function () {
+	isLoading: false,
+	model: null,
+	notificationsPerPage: 10,
+
+	modelLoader: computed(function () {
 		return NotificationsModel
 			.getNotifications()
 			.catch((err) => {
@@ -17,14 +21,23 @@ export default Service.extend({
 	 */
 	init() {
 		this._super(...arguments);
-
+		this.set('isLoading', true);
 		// fetches the model from the API at first attempt to use the data
 		// then a singleton service will keep the data until page reloads
-		this.get('model').then((model) => {
+		this.get('modelLoader').then((model) => {
 			this.setProperties({
-				data: model.data,
-				unreadCount: model.unreadCount
+				model,
+				isLoading: false,
 			})
 		});
 	},
+
+	loadMoreResults() {
+		this.set('isLoading', true);
+		this.get('model')
+			.loadMoreResults(this.get('notificationsPerPage'))
+			.then(() => {
+				this.set('isLoading', false);
+			});
+	}
 });

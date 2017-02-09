@@ -18,13 +18,13 @@
 
 .icon {
 	&.menu-chevron {
-		fill: #c5ced9;
+		fill: $wds-color-blue-gray;
 	}
 }
 
 .user-profile-header-wrapper {
 	.user-avatar {
-		background-color: #fff;
+		background-color: $wds-color-white;
 		border-radius: 100%;
 		margin-top: -25px;
 		// hack for making it get on top of the header
@@ -32,7 +32,7 @@
 
 		figure.avatar {
 			svg {
-				border-color: #fff;
+				border-color: $wds-color-white;
 				border-width: 3px;
 				height: 94px;
 				width: 94px;
@@ -42,7 +42,7 @@
 }
 
 .wikia-user-profile {
-	background-color: $color-white;
+	background-color: $wds-color-white;
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
@@ -55,7 +55,7 @@
 	}
 
 	.notifications-title {
-		border-bottom: solid 1px #c5ced9;
+		border-bottom: solid 1px $wds-color-blue-gray;
 		display: flex;
 		justify-content: space-between;
 		margin: 0 18px;

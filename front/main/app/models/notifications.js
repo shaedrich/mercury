@@ -278,6 +278,14 @@ const NotificationsModel = Object.extend({
 				timestamp: 1485349922140,
 			},
 		])
+	},
+
+	loadMoreResults() {
+		return new RSVP.Promise((resolve) => {
+			//results fetch from API
+
+			return resolve();
+		});
 	}
 });
 

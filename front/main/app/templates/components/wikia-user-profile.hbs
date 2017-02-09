@@ -38,4 +38,9 @@
 	{{else}}
 		{{i18n 'notifications.no-notifications-message' ns='discussion'}}
 	{{/if}}
+	{{loading-spinner
+		active=isLoadingNewResults
+		radius=38
+		strokeWidth=3
+	}}
 </div>
