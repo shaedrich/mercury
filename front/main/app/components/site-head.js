@@ -36,8 +36,7 @@ export default Component.extend(
 		svgName: M.prop('globalNavigation.logo.module.main.image-data.name'),
 
 		navIcon: computed('drawerContent', 'drawerVisible', function () {
-			return this.get('drawerVisible') &&
-			this.get('closableDrawerStates').indexOf(this.get('drawerContent')) !== -1 ? 'close' : 'nav';
+			return this.get('drawerVisible') && this.isNavInClosableState() ? 'close' : 'nav';
 		}),
 
 		searchIcon: computed('drawerContent', 'drawerVisible', function () {
@@ -47,6 +46,10 @@ export default Component.extend(
 		offset: computed.readOnly('ads.siteHeadOffset'),
 
 		unreadNotificationsCount: computed.alias('notifications.model.unreadCount'),
+
+		isNavInClosableState() {
+			return this.get('closableDrawerStates').indexOf(this.get('drawerContent')) !== -1;
+		},
 
 		actions: {
 			/**
