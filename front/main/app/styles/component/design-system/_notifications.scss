@@ -83,11 +83,11 @@ $notifications-dropdown-border-color: #363b41;
 	}
 }
 
-@media #{$desktop-range} {
-	.notifications-dropdown-content {
-		max-width: 356px;
-	}
+
+.notifications-dropdown-content {
+	max-width: 356px;
 }
+
 
 .wikia-nav {
 	.user-profile-avatar {
