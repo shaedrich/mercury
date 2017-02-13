@@ -1,15 +1,17 @@
 import Ember from 'ember';
 import NotificationsScrollMenuMixin from '../../mixins/notifications-scroll-menu';
 
-export default Ember.Component.extend(NotificationsScrollMenuMixin, {
+const {Component, inject, computed} = Ember;
+
+export default Component.extend(NotificationsScrollMenuMixin, {
 	hasUnread: true,
 
-	currentUser: Ember.inject.service(),
-	notifications: Ember.inject.service(),
+	currentUser: inject.service(),
+	notifications: inject.service(),
 
-	notificationsList: Ember.computed('notifications.model.data', function () {
+	notificationsList: computed('notifications.model.data', function () {
 		return this.get('notifications.model.data');
 	}),
 
-	isLoadingNewResults: Ember.computed.oneWay('notifications.isLoading'),
+	isLoadingNewResults: computed.oneWay('notifications.isLoading'),
 });

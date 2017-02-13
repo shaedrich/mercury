@@ -4,7 +4,9 @@ import NewReplyNotificationMixin from '../mixins/new-reply-notification'
 import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification'
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification'
 
-export default Ember.Component.extend(
+const {Component, inject, computed} = Ember;
+
+export default Component.extend(
 	NewReplyNotificationMixin,
 	PostUpvoteNotificationMixin,
 	ReplyUpvoteNotificationMixin,
@@ -15,20 +17,20 @@ export default Ember.Component.extend(
 
 		tagName: 'li',
 
-		currentUser: Ember.inject.service(),
+		currentUser: inject.service(),
 		// use the proper user lang after the translations are merged
-		// userLanguage: Ember.computed.oneWay('currentUser.language'),
+		// userLanguage: computed.oneWay('currentUser.language'),
 		userLanguage: 'en',
 
-		iconName: Ember.computed('model.type', function () {
+		iconName: computed('model.type', function () {
 			return this.get('model.type') === 'discussion-reply' ?
 				'wds-icons-reply-small' :
 				'wds-icons-upvote-small';
 		}),
 
-		isUnread: Ember.computed.alias('model.unread'),
+		isUnread: computed.alias('model.unread'),
 
-		postTitleMarkup: Ember.computed('model.title', function () {
+		postTitleMarkup: computed('model.title', function () {
 			return wrapMeHelper.compute([
 				this.get('model.title')
 			], {
@@ -36,7 +38,7 @@ export default Ember.Component.extend(
 			});
 		}),
 
-		postSnippetMarkup: Ember.computed('model.snippet', function () {
+		postSnippetMarkup: computed('model.snippet', function () {
 			return wrapMeHelper.compute([
 				this.get('model.snippet')
 			], {
@@ -44,7 +46,7 @@ export default Ember.Component.extend(
 			});
 		}),
 
-		text: Ember.computed('model', function () {
+		text: computed('model', function () {
 			const model = this.get('model'),
 				type = model.type;
 
@@ -57,11 +59,11 @@ export default Ember.Component.extend(
 			}
 		}),
 
-		showAvatars: Ember.computed('model.events.length', 'model.type', function () {
+		showAvatars: computed('model.events.length', 'model.type', function () {
 			return this.get('model.events.length') > 2 && this.get('model.type') === 'discussion-reply';
 		}),
 
-		authors: Ember.computed('model.events', function () {
+		authors: computed('model.events', function () {
 			return this.get('model.events').mapBy('author');
 		}),
 

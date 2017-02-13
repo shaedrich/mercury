@@ -2,7 +2,9 @@ import Ember from 'ember';
 import {extractDomainFromUrl} from '../utils/domain';
 import DiscussionContributor from './discussion/domain/contributor';
 
-const NotificationModel = Ember.Object.extend({
+const {Object} = Ember;
+
+const NotificationModel = Object.extend({
 	author: null,
 	title: null,
 	textSnippet: null,
