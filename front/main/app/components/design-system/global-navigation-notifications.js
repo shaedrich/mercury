@@ -6,7 +6,6 @@ const {Component, inject, computed} = Ember;
 export default Component.extend(NotificationsScrollMenuMixin, {
 	hasUnread: true,
 
-	currentUser: inject.service(),
 	notifications: inject.service(),
 
 	notificationsList: computed('notifications.model.data', function () {
