@@ -4,7 +4,7 @@ import NewReplyNotificationMixin from '../mixins/new-reply-notification'
 import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification'
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification'
 
-const {Component, inject, computed} = Ember;
+const {Component, inject, computed, Logger} = Ember;
 
 export default Component.extend(
 	NewReplyNotificationMixin,
@@ -50,14 +50,31 @@ export default Component.extend(
 			const model = this.get('model'),
 				type = model.type;
 
-			if (type === 'discussion-reply') {
+			if (this.isDiscussionReply(type)) {
 				return this.getReplyMessageBody(model);
-			} else if (type === 'discussion-upvote-post') {
+
+			} else if (this.isDiscussionPostUpvote(type)) {
 				return this.getPostUpvoteMessageBody(model);
-			} else {
+
+			} else if (isDiscussionReplyUpvote(type)) {
 				return this.getReplyUpvoteMessageBody(model);
+
+			} else {
+				Logger.warn('No type found for a notification', model);
 			}
 		}),
+
+		isDiscussionReply(type) {
+			return type === 'discussion-reply';
+		},
+
+		isDiscussionReplyUpvote(type) {
+			return type === 'discussion-reply-upvote';
+		},
+
+		isDiscussionPostUpvote(type) {
+			return type === 'discussion-post-upvote';
+		},
 
 		showAvatars: computed('model.events.length', 'model.type', function () {
 			return this.get('model.events.length') > 2 && this.get('model.type') === 'discussion-reply';
