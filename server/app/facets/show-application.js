@@ -67,7 +67,7 @@ export default function showApplication(request, reply, wikiVariables, context =
 
 	// @todo These transforms could be better abstracted, as such, this is a lot like prepareWikiPageData
 	context.server = Utils.createServerData(settings, wikiDomain);
-	context.queryParams = Utils.parseQueryParams(request.query, []);
+	context.queryParams = Utils.parseQueryParams(request.query, ['noexternals', 'buckysampling']);
 	context.settings = getSettings();
 	context.userId = getUserId(request);
 	context.gaUserIdHash = gaUserIdHash(context.userId);
