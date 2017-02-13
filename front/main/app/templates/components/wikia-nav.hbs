@@ -1,7 +1,7 @@
 {{#if model.inRoot}}
 	{{#if isUserAuthenticated}}
 		<div class="wikia-nav__header user-profile-header">
-			<a {{action 'onUsernameClicked' preventDefault=false}}
+			<a {{action 'onUsernameClicked'}}
 					class="wikia-nav--external wikia-nav--profile-link">
 				<figure class="wikia-nav__avatar user-profile-avatar">
 					<img src={{currentUser.avatarPath}} alt="{{currentUser.name}}">
