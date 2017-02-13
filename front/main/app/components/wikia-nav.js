@@ -64,7 +64,6 @@ export default Component.extend(
 
 			onUsernameClicked() {
 				this.send('trackClick', 'side-nav', 'open-user-profile');
-
 				this.sendAction('setDrawerContent', 'user-profile');
 			},
 
