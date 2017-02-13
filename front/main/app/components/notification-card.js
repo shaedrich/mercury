@@ -15,8 +15,6 @@ export default Ember.Component.extend(
 
 		tagName: 'li',
 
-		formatters: [],
-
 		currentUser: Ember.inject.service(),
 		// use the proper user lang after the translations are merged
 		// userLanguage: Ember.computed.oneWay('currentUser.language'),

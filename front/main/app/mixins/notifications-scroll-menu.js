@@ -29,10 +29,6 @@ export default Mixin.create({
 	},
 
 	onScrolledToTheBottom() {
-		throw new Error('Did not overload an infinite scroll mixin onScrolledToTheBottom method');
-	},
-
-	onScrolledToTheBottom() {
 		const $scrollableElement = this.$(this.get('scrollableElement'))[0];
 
 		this.get('notifications').loadMoreResults();
