@@ -3,6 +3,8 @@ import NotificationsScrollMenuMixin from '../../mixins/notifications-scroll-menu
 
 export default Ember.Component.extend(NotificationsScrollMenuMixin, {
 	hasUnread: true,
+
+	currentUser: Ember.inject.service(),
 	notifications: Ember.inject.service(),
 
 	notificationsList: Ember.computed('notifications.model.data', function () {

@@ -21,7 +21,7 @@
 				{{#if hasUnread}}
 					<div class="mark-all-as-read-button">
 						<a {{action 'markAllAsRead'}} class="mark-all-as-read">
-							{{i18n 'notifications.mark-all-as-read' ns='discussion'}}
+							{{i18n 'notifications.mark-all-as-read' ns='discussion' lng='currentUser.language'}}
 						</a>
 					</div>
 				{{/if}}
@@ -33,7 +33,7 @@
 					{{/each}}
 				</ul>
 			{{else}}
-				{{i18n 'notifications.no-notifications-message' ns='discussion'}}
+				{{i18n 'notifications.no-notifications-message' ns='discussion' lng='currentUser.language'}}
 			{{/if}}
 			{{loading-spinner
 				active=isLoadingNewResults
