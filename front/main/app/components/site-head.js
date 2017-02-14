@@ -36,7 +36,7 @@ export default Component.extend(
 		svgName: M.prop('globalNavigation.logo.module.main.image-data.name'),
 
 		navIcon: computed('drawerContent', 'drawerVisible', function () {
-			return this.get('drawerVisible') && this.isNavInClosableState() ? 'close' : 'nav';
+			return this.get('drawerVisible') && this.isDrawerInClosableState() ? 'close' : 'nav';
 		}),
 
 		searchIcon: computed('drawerContent', 'drawerVisible', function () {
@@ -47,12 +47,18 @@ export default Component.extend(
 
 		unreadNotificationsCount: computed.alias('notifications.model.unreadCount'),
 
-		isNavInClosableState() {
+		isDrawerInClosableState() {
 			return this.get('closableDrawerStates').indexOf(this.get('drawerContent')) !== -1;
 		},
 
-		canBeClosed(clickedIcon) {
-			return this.get('drawerVisible')
+		canBeClosed(icon) {
+			const drawerContent = this.get('drawerContent');
+
+			return icon === this.getPrimaryDrawerState(drawerContent);
+		},
+
+		getPrimaryDrawerState(state) {
+			return state === 'user-profile' ? 'nav' : state;
 		},
 
 		actions: {
@@ -61,7 +67,7 @@ export default Component.extend(
 			 * @returns {void}
 			 */
 			siteHeadIconClick(icon) {
-				if (this.get('drawerVisible') && icon !== 'search') {
+				if (this.get('drawerVisible') && this.canBeClosed(icon)) {
 					track({
 						action: trackActions.click,
 						category: 'side-nav',
