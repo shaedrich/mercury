@@ -51,13 +51,17 @@ export default Component.extend(
 			return this.get('closableDrawerStates').indexOf(this.get('drawerContent')) !== -1;
 		},
 
+		canBeClosed(clickedIcon) {
+			return this.get('drawerVisible')
+		},
+
 		actions: {
 			/**
 			 * @param {String} icon
 			 * @returns {void}
 			 */
 			siteHeadIconClick(icon) {
-				if (this.get('drawerVisible')) {
+				if (this.get('drawerVisible') && icon !== 'search') {
 					track({
 						action: trackActions.click,
 						category: 'side-nav',

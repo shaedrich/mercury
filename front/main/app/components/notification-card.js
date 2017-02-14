@@ -56,7 +56,7 @@ export default Component.extend(
 			} else if (this.isDiscussionPostUpvote(type)) {
 				return this.getPostUpvoteMessageBody(model);
 
-			} else if (isDiscussionReplyUpvote(type)) {
+			} else if (this.isDiscussionReplyUpvote(type)) {
 				return this.getReplyUpvoteMessageBody(model);
 
 			} else {
@@ -69,11 +69,11 @@ export default Component.extend(
 		},
 
 		isDiscussionReplyUpvote(type) {
-			return type === 'discussion-reply-upvote';
+			return type === 'discussion-upvote-reply';
 		},
 
 		isDiscussionPostUpvote(type) {
-			return type === 'discussion-post-upvote';
+			return type === 'discussion-upvote-post';
 		},
 
 		showAvatars: computed('model.events.length', 'model.type', function () {

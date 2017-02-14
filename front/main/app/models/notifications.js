@@ -38,7 +38,7 @@ const NotificationsModel = Object.extend({
 				unread: true,
 				snippet: 'lalalalala there were a couple of things done and blah blah blah',
 				type: 'discussion-reply',
-				wiki: 'Wookiepedia',
+				siteName: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
 			{
@@ -74,7 +74,7 @@ const NotificationsModel = Object.extend({
 				unread: true,
 				type: 'discussion-reply',
 				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				wiki: 'Fallout',
+				siteName: 'Fallout',
 				timestamp: 1485349922140,
 			},
 			{
@@ -150,7 +150,7 @@ const NotificationsModel = Object.extend({
 				],
 				title: 'Harmless title',
 				type: 'discussion-reply',
-				wiki: 'Fallout',
+				siteName: 'Fallout',
 				timestamp: 1485349922140,
 			},
 			//discussion-upvote-post
@@ -176,7 +176,7 @@ const NotificationsModel = Object.extend({
 				],
 				type: 'discussion-upvote-post',
 				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				wiki: 'Wookiepedia',
+				siteName: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
 			{
@@ -211,7 +211,7 @@ const NotificationsModel = Object.extend({
 				],
 				type: 'discussion-upvote-post',
 				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				wiki: 'Wookiepedia',
+				siteName: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
 			{
@@ -246,7 +246,7 @@ const NotificationsModel = Object.extend({
 				],
 				type: 'discussion-upvote-reply',
 				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				wiki: 'Wookiepedia',
+				siteName: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
 			{
@@ -274,7 +274,7 @@ const NotificationsModel = Object.extend({
 				],
 				type: 'discussion-upvote-reply',
 				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				wiki: 'Wookiepedia',
+				siteName: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
 		])
