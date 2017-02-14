@@ -1,10 +1,9 @@
 import * as authUtils from "../../lib/auth-utils";
-import settings from "../../../config/settings";
 import * as authView from "./auth-view";
 import deepExtend from "deep-extend";
-import * as signIn from "../operations/signin";
+import {piggybackAsUser} from "../operations/piggyback";
 import querystring from "querystring";
-import {disableCache} from '../../lib/caching';
+import {disableCache} from "../../lib/caching";
 
 /**
  * @typedef {Object} SignInViewContext
@@ -23,29 +22,14 @@ import {disableCache} from '../../lib/caching';
 function getViewContext(request) {
 	return deepExtend(authView.getDefaultContext(request),
 		{
-			bodyClasses: 'signin-page',
-			pageType: 'signin-page',
-			piggybackPostURL: '/signin',
+			title: 'auth:piggyback.header',
+			headerText: 'auth:piggyback.header',
+			pageType: 'piggyback',
+			piggybackPostURL: '/piggyback',
 			submitText: 'auth:signin.submit-text',
 			formId: 'piggybackForm',
-			headerText: 'auth:piggyback.header'
 		}
 	);
-}
-
-/**
- * @param {Hapi.Request} request
- * @param {*} reply
- * @returns {void}
- */
-export function get(request, reply) {
-	const context = getViewContext(request);
-
-	if (request.auth.isAuthenticated) {
-		return authView.onAuthenticatedRequestReply(request, reply, context);
-	}
-
-	return assembleView(context, request, reply);
 }
 
 function assembleView(context, request, reply) {
@@ -66,18 +50,34 @@ function assembleView(context, request, reply) {
  * @param {*} reply
  * @returns {void}
  */
+export function get(request, reply) {
+	if (!request.auth.isAuthenticated) {
+		const context = getViewContext(request);
+		return assembleView(context, request, reply);
+	} else {
+		return reply.redirect(authUtils.getSignInUrl(request)).takeover();
+	}
+}
+
+/**
+ * @param {Hapi.Request} request
+ * @param {*} reply
+ * @returns {void}
+ */
 export function post(request, reply) {
 	const username = querystring.escape(request.payload.username),
 		password = querystring.escape(request.payload.password),
 		targetUsername = querystring.escape(request.payload.targetUsername);
-	signIn.withUserCredentials(username, password, request)
-		.then(data => {
-			const accessToken = JSON.parse(data).access_token;
-			if (accessToken && accessToken.length) {
-				reply.state('access_token', accessToken);
-			}
-			reply({payload: data.payload}).code(200);
-		}).catch(data => {
-		reply({payload: data.payload}).code(data.statusCode);
-	});
+
+	translateUserIdFrom(targetUsername, request).then(data => {
+		const userId = JSON.parse(data.payload)[0].userId;
+		return piggybackAsUser(username, password, userId, request)
+			.then(data => {
+				const accessToken = JSON.parse(data).access_token;
+				if (accessToken && accessToken.length) {
+					reply.state('access_token', accessToken);
+				}
+				reply({payload: data.payload}).code(200);
+			})
+	}).catch(error => reply({payload: data.payload}).code(data.statusCode));
 }
