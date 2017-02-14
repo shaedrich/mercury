@@ -34,7 +34,7 @@ export default Ember.Mixin.create({
 		let content = this.get('post.renderedContent').trim();
 
 		if (this.get('shouldTruncateContent') && shouldUseTruncationHack()) {
-			content = truncate(escapedContent, 148);
+			content = truncate(content, 148);
 		}
 
 		return content;
