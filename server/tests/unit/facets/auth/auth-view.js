@@ -9,9 +9,9 @@ QUnit.test('getRedirectUrl', function (assert) {
 			description: 'Whitelists wikia.com domain'
 		},
 		{
-			redirect: 'http://glee.devbox.wikia-dev.com/wiki/Rachel_Berry',
-			host: 'glee.devbox.wikia-dev.com',
-			expected: 'http://glee.devbox.wikia-dev.com/wiki/Rachel_Berry',
+			redirect: 'http://glee.devbox.wikia-dev.pl/wiki/Rachel_Berry',
+			host: 'glee.devbox.wikia-dev.pl',
+			expected: 'http://glee.devbox.wikia-dev.pl/wiki/Rachel_Berry',
 			description: 'Allow current domain'
 		},
 		{
@@ -22,7 +22,7 @@ QUnit.test('getRedirectUrl', function (assert) {
 		},
 		{
 			redirect: undefined,
-			host: 'glee.devbox.wikia-dev.com',
+			host: 'glee.devbox.wikia-dev.pl',
 			expected: '/',
 			description: 'Fallback to / when empty redirect'
 		},
@@ -39,8 +39,8 @@ QUnit.test('getRedirectUrl', function (assert) {
 			description: 'Don\'t allow external domain when whitelisted domain is in URL'
 		},
 		{
-			redirect: 'http://www.google.com/?domain=glee.devbox.wikia-dev.com',
-			host: 'glee.devbox.wikia-dev.com',
+			redirect: 'http://www.google.com/?domain=glee.devbox.wikia-dev.pl',
+			host: 'glee.devbox.wikia-dev.pl',
 			expected: '/',
 			description: 'Don\'t allow external domain when current domain is in URL'
 		},
@@ -52,7 +52,7 @@ QUnit.test('getRedirectUrl', function (assert) {
 		},
 		{
 			redirect: 'http://otherdomainwikia.com',
-			host: 'glee.devbox.wikia-dev.com',
+			host: 'glee.devbox.wikia-dev.pl',
 			expected: '/',
 			description: 'Don\'t allow external domain when wikia.com is the last part of an external domain'
 		},

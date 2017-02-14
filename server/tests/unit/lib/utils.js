@@ -116,7 +116,7 @@ QUnit.test('getWikiName', function (assert) {
 				environment: global.environments.dev,
 				devboxDomain: 'evgeniy'
 			},
-			expected: 'muppet.evgeniy.wikia-dev.com',
+			expected: 'muppet.evgeniy.wikia-dev.pl',
 			description: 'Returns proper devbox url if xip.io sub-domain is used'
 
 		},
@@ -126,7 +126,7 @@ QUnit.test('getWikiName', function (assert) {
 				environment: global.environments.dev,
 				devboxDomain: 'evgeniy'
 			},
-			expected: 'de.muppet.evgeniy.wikia-dev.com',
+			expected: 'de.muppet.evgeniy.wikia-dev.pl',
 			description: 'Returns proper devbox url if xip.io sub-domain is used with language'
 		}
 	];
@@ -185,7 +185,7 @@ QUnit.test('getWikiaSubdomain', function (assert) {
 			description: 'Works for sandbox sub-domains'
 		},
 		{
-			host: 'sandbox-test.ja.starwars.armon.wikia-dev.com',
+			host: 'sandbox-test.ja.starwars.armon.wikia-dev.pl',
 			expected: 'ja.starwars',
 			description: 'Works for sandbox sub-domains with language'
 		},
@@ -332,7 +332,7 @@ QUnit.test('isXipHost', function (assert) {
 		},
 		{
 			environment: global.environments.dev,
-			hostName: 'muppet.igor.wikia-dev.com',
+			hostName: 'muppet.igor.wikia-dev.pl',
 			expected: false
 		},
 		{
@@ -409,7 +409,7 @@ QUnit.test('redirectToCanonicalHostIfNeeded', function (assert) {
 					query: {}
 				},
 				wikiVariables: {
-					basePath: 'http://starwars.igor.wikia-dev.com'
+					basePath: 'http://starwars.igor.wikia-dev.pl'
 				},
 				settings: {
 					environment: global.environments.dev
@@ -421,7 +421,7 @@ QUnit.test('redirectToCanonicalHostIfNeeded', function (assert) {
 			{
 				request: {
 					headers: {
-						host: 'www.starwars.igor.wikia-dev.com'
+						host: 'www.starwars.igor.wikia-dev.pl'
 					},
 					path: '/wiki/Yoda',
 					query: {
@@ -429,14 +429,14 @@ QUnit.test('redirectToCanonicalHostIfNeeded', function (assert) {
 					}
 				},
 				wikiVariables: {
-					basePath: 'http://starwars.igor.wikia-dev.com'
+					basePath: 'http://starwars.igor.wikia-dev.pl'
 				},
 				settings: {
 					environment: global.environments.dev
 				},
 				expected: {
 					redirected: true,
-					redirectLocation: 'http://starwars.igor.wikia-dev.com/wiki/Yoda?noads=1'
+					redirectLocation: 'http://starwars.igor.wikia-dev.pl/wiki/Yoda?noads=1'
 				}
 			}
 		],
@@ -544,13 +544,13 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 			expected: 'preview.www.wikia.com'
 		},
 		{
-			wikiDomain: 'poznan.hacker.wikia-dev.com',
+			wikiDomain: 'poznan.hacker.wikia-dev.pl',
 			environment: global.environments.dev,
 			devDomain: 'pl',
 			expected: 'www.hacker.wikia-dev.pl'
 		},
 		{
-			wikiDomain: 'pl.gta.hacker.wikia-dev.com',
+			wikiDomain: 'pl.gta.hacker.wikia-dev.pl',
 			environment: global.environments.dev,
 			devDomain: 'us',
 			expected: 'www.hacker.wikia-dev.us'

@@ -113,7 +113,7 @@ export function getWikiDomainName(settings, hostName = '') {
 		const regex = /^\.?(.+?)\.((?:[\d]{1,3}\.){3}[\d]{1,3}\.xip.io)$/,
 			match = hostName.match(regex);
 
-		return match ? `${match[1]}.${settings.devboxDomain}.wikia-dev.com` : hostName;
+		return match ? `${match[1]}.${settings.devboxDomain}.wikia-dev.[us|pl]` : hostName;
 	} else {
 		return hostName;
 	}
@@ -129,7 +129,7 @@ export function getWikiaSubdomain(host) {
 	return host.replace(new RegExp(
 			'^(?:(?:verify|preview|stable|sandbox-[^.]+)\\.)?' +
 			'([a-z\\d.]*[a-z\d])\\.' +
-			'(?:wikia|wikia-staging|[a-z\\d]+\\.wikia-dev)?\\.com'
+			'(?:wikia\\.com|wikia-staging\\.com|[a-z\\d]+\\.wikia-dev\\.[us|pl])?'
 		),
 		'$1'
 	);
