@@ -7,6 +7,7 @@ import Form from './common/form';
 import Login from './common/login';
 import ResetPassword from './reset-password/reset-password';
 import SignupForm from './signup/signup-form';
+import PiggybackForm from './piggyback/piggyback-form';
 import SubmitValidator from './login/submit-validator';
 import VisitSourceWrapper from './common/visit-source-wrapper';
 import {init as initTracking} from './tracking';
@@ -57,6 +58,8 @@ export function init() {
 				new ForgotPassword(formElement).watch();
 			} else if (formElement.id === 'resetPasswordForm') {
 				new ResetPassword(formElement).watch();
+			} else if (formElement.id === 'piggybackForm') {
+				new PiggybackForm(formElement).watch();
 			}
 		}
 

@@ -51,7 +51,7 @@ function assembleView(context, request, reply) {
  * @returns {void}
  */
 export function get(request, reply) {
-	if (!request.auth.isAuthenticated) {
+	if (request.auth.isAuthenticated) {
 		const context = getViewContext(request);
 		return assembleView(context, request, reply);
 	} else {
@@ -69,15 +69,12 @@ export function post(request, reply) {
 		password = querystring.escape(request.payload.password),
 		targetUsername = querystring.escape(request.payload.targetUsername);
 
-	translateUserIdFrom(targetUsername, request).then(data => {
-		const userId = JSON.parse(data.payload)[0].userId;
-		return piggybackAsUser(username, password, userId, request)
-			.then(data => {
-				const accessToken = JSON.parse(data).access_token;
-				if (accessToken && accessToken.length) {
-					reply.state('access_token', accessToken);
-				}
-				reply({payload: data.payload}).code(200);
-			})
-	}).catch(error => reply({payload: data.payload}).code(data.statusCode));
+	return piggybackAsUser(username, password, targetUsername, request)
+		.then(data => {
+			const accessToken = JSON.parse(data).access_token;
+			if (accessToken && accessToken.length) {
+				reply.state('access_token', accessToken);
+			}
+			reply({payload: data.payload}).code(200);
+		}).catch(error => reply({payload: error.payload}).code(error.statusCode));
 }
