@@ -94,13 +94,13 @@ export default Component.extend({
 	 */
 	topNoteText: computed('isReported', 'post.isLocked', 'post.reportDetails.count',
 		'post.isDeleted', 'post.lastDeletedBy.name', function () {
-		const isReply = this.get('post.isReply'),
-			isLocked = this.get('isLocked'),
-			isDeleted = this.get('post.isDeleted'),
-			isReported = this.get('isReported'),
-			reportDetails = this.get('post.reportDetails'),
-			canSeeModeratorContent = this.get('canModerate'),
-			shouldShowRepliedTo = this.get('showRepliedTo');
+			const isReply = this.get('post.isReply'),
+				isLocked = this.get('isLocked'),
+				isDeleted = this.get('post.isDeleted'),
+				isReported = this.get('isReported'),
+				reportDetails = this.get('post.reportDetails'),
+				canSeeModeratorContent = this.get('canModerate'),
+				shouldShowRepliedTo = this.get('showRepliedTo');
 
 			if (isDeleted && canSeeModeratorContent) {
 				return this.getDeletedByMessageForModerator();
