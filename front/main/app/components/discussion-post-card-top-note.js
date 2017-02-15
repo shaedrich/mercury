@@ -10,7 +10,7 @@ export default Component.extend({
 	canDelete: computed.readOnly('post.userData.permissions.canDelete'),
 	canModerate: computed.readOnly('post.userData.permissions.canModerate'),
 
-	isLocked: computed('post.isLocked'),
+	isLocked: computed.readOnly('post.isLocked'),
 	showButtons: computed.and('canShowModButtons', 'isReported', 'canModerate'),
 	modalDialog: inject.service(),
 
@@ -103,19 +103,19 @@ export default Component.extend({
 			shouldShowRepliedTo = this.get('showRepliedTo');
 
 			if (isDeleted && canSeeModeratorContent) {
-				return getDeletedByMessageForModerator();
+				return this.getDeletedByMessageForModerator();
 
 			} else if (isReported && canSeeModeratorContent && reportDetails) {
-				return getReportedByMessageForModerator(isReply, isLocked, shouldShowRepliedTo);
+				return this.getReportedByMessageForModerator(isReply, isLocked, shouldShowRepliedTo);
 
 			} else if (isReported && !canSeeModeratorContent) {
-				return getReportedByMessageForNonModerator(isReply, isLocked);
+				return this.getReportedByMessageForNonModerator(isReply, isLocked);
 
 			} else if (shouldShowRepliedTo) {
-				return getRepliedToMessage();
+				return this.getRepliedToMessage();
 
 			} else if (isLocked) {
-				return getLockedPostMessage();
+				return this.getLockedPostMessage();
 
 			}
 		}),
