@@ -11,7 +11,7 @@ function getContext(username, password, targetUserId, request) {
 		options: {
 			headers: getInternalHeaders(request, {
 				'Content-type': 'application/x-www-form-urlencoded',
-				'X-Wikia-UserId': 5448092
+				'X-Wikia-Internal-Request': '1'
 			}),
 			timeout: settings.helios.timeout,
 			payload: `username=${username}&password=${password}&token=${request.state.access_token}`
