@@ -2,7 +2,7 @@
  * settings for application, used by default by dev environments
  */
 
-//These variables are used in multiple places in config
+// These variables are used in multiple places in config
 const devDomain = (process.env.WIKIA_DATACENTER === 'poz') ? 'pl' : 'us',
 	servicesDomain = `services.wikia-dev.${devDomain}`;
 

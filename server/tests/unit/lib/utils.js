@@ -554,10 +554,10 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 			expected: 'www.hacker.wikia-dev.pl'
 		},
 		{
-			wikiDomain: 'pl.gta.hacker.wikia-dev.pl',
+			wikiDomain: 'pl.gta.hacker.wikia-dev.us',
 			environment: global.environments.dev,
-			devDomain: 'pl',
-			expected: 'www.hacker.wikia-dev.pl'
+			devDomain: 'us',
+			expected: 'www.hacker.wikia-dev.us'
 		}
 	];
 
@@ -565,8 +565,7 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 		const settings = {
 			environment: testCase.environment,
 			devDomain: testCase.devDomain,
-			devboxDomain: 'hacker',
-			devDomain: 'pl'
+			devboxDomain: 'hacker'
 		};
 
 		assert.equal(global.getCorporatePageUrlFromWikiDomain(settings, testCase.wikiDomain), testCase.expected);
