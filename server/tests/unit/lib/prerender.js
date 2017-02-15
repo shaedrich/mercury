@@ -23,7 +23,7 @@ QUnit.test('updateRequestedUrl', function (assert) {
 			out: 'http://muppet.wikia.com/wiki/Miss_Piggy?useskin=mercury'
 		},
 		{
-			in: 'http://muppet.rychu.wikia-dev.com/wiki/Miss_Piggy',
+			in: 'http://muppet.rychu.wikia-dev.pl/wiki/Miss_Piggy',
 			out: 'http://muppet.wikia.com/wiki/Miss_Piggy?useskin=mercury'
 		},
 		{
