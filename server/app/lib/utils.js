@@ -129,7 +129,7 @@ export function getWikiaSubdomain(host) {
 	return host.replace(new RegExp(
 			'^(?:(?:verify|preview|stable|sandbox-[^.]+)\\.)?' +
 			'([a-z\\d.]*[a-z\d])\\.' +
-			'(?:wikia\\.com|wikia-staging\\.com|[a-z\\d]+\\.wikia-dev\\.[us|pl])?'
+			'(?:wikia|wikia-staging|[a-z\\d]+\\.wikia-dev)?\\.[com|us|pl]'
 		),
 		'$1'
 	);
