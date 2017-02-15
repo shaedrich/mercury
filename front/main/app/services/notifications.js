@@ -8,7 +8,7 @@ export default Service.extend({
 	model: null,
 	notificationsPerPage: 10,
 
-	modelLoader: computed(function () {
+	modelLoader: computed(() => {
 		return NotificationsModel
 			.getNotifications()
 			.catch((err) => {
@@ -28,7 +28,7 @@ export default Service.extend({
 			this.setProperties({
 				model,
 				isLoading: false,
-			})
+			});
 		});
 	},
 

@@ -10,7 +10,7 @@ const NotificationsModel = Object.extend({
 
 	setNormalizedData(apiData) {
 		this.setProperties({
-			unreadCount: 1, //apiData.unreadCount,
+			unreadCount: 1,
 			data: new A()
 		});
 
@@ -153,7 +153,6 @@ const NotificationsModel = Object.extend({
 				siteName: 'Fallout',
 				timestamp: 1485349922140,
 			},
-			//discussion-upvote-post
 			{
 				author: {
 					avatarUrl: null,
@@ -277,13 +276,11 @@ const NotificationsModel = Object.extend({
 				siteName: 'Wookiepedia',
 				timestamp: 1485349922140,
 			},
-		])
+		]);
 	},
 
 	loadMoreResults() {
 		return new RSVP.Promise((resolve) => {
-			//results fetch from API
-
 			return resolve();
 		});
 	}

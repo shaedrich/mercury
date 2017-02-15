@@ -23,7 +23,7 @@ export default Mixin.create({
 		const element = $(e.target);
 
 		// 99 is a height of the space for loading spinner
-		if (element[0].scrollHeight  == element.outerHeight() + element.scrollTop() + 50) {
+		if (element[0].scrollHeight === element.outerHeight() + element.scrollTop() + 50) {
 			this.onScrolledToTheBottom();
 		}
 	},
@@ -33,6 +33,6 @@ export default Mixin.create({
 
 		this.get('notifications').loadMoreResults();
 		this.set('isLoadingNewResults', true);
-		$scrollableElement.scrollTop(scrollableElement[0].scrollHeight);
+		$scrollableElement.scrollTop($scrollableElement[0].scrollHeight);
 	}
 });

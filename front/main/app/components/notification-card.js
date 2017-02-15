@@ -1,8 +1,8 @@
 import Ember from 'ember';
 import wrapMeHelper from '../helpers/wrap-me';
-import NewReplyNotificationMixin from '../mixins/new-reply-notification'
-import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification'
-import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification'
+import NewReplyNotificationMixin from '../mixins/new-reply-notification';
+import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification';
+import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification';
 
 const {Component, inject, computed, Logger} = Ember;
 
