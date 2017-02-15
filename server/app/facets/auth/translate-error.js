@@ -1,3 +1,4 @@
+import Logger from '../../lib/logger';
 
 function handleUserDiscoveryErrors(statusCode, errors) {
 	if (statusCode === 404) {
@@ -22,15 +23,23 @@ function handleServerErrors(payload, errors) {
 }
 
 export default function translateError(data, customError) {
+	if (!data.response) {
+		Logger.error("Response was empty " + JSON.stringify(data));
+		return ['server-error'];
+	}
+
 	const statusCode = data.response.statusCode,
 		step = data.step,
 		errors = [];
+
 	if (step === 'service-discovery') {
 		errors.push('server-error');
 	} else if (step === 'user-discovery') {
 		handleUserDiscoveryErrors(statusCode, errors);
 	} else if (step === 'piggy-back' && statusCode === 401) {
-		errors.push('password_equal_name')
+		errors.push('password_equal_name');
+	} else if (step === 'piggy-back' && statusCode === 403) {
+		errors.push('access-denied');
 	} else if (step === 'update-password' || step === 'reset-password') {
 		const payload = JSON.parse(data.payload);
 

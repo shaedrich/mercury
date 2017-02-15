@@ -32,8 +32,14 @@ export function piggybackAsUser(username, password, targetUsername, request) {
 			context = getContext(username, password, userInfo[0].userId, request);
 		return new Promise((resolve, reject) => {
 			Wreck.post(context.url, context.options, (error, response, payload) => {
+				Logger.info(response);
 				if (response && response.statusCode === 200) {
-					resolve(payload);
+					resolve({
+						step: 'piggy-back',
+						error: error,
+						response,
+						payload
+					});
 				} else {
 					Logger.error({
 						url: context.url,

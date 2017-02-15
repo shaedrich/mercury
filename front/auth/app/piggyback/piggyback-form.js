@@ -70,6 +70,7 @@ export default class PiggybackForm {
 	 */
 	onSuccess() {
 		document.querySelector('.cards-container').classList.add('dissolved');
+		window.location = `/wiki/User:${this.form.elements.targetUsername.value}`;
 	}
 
 	/**
@@ -107,17 +108,7 @@ export default class PiggybackForm {
 	 */
 	watch() {
 		this.form.addEventListener('submit', this.onSubmit.bind(this));
-
-		this.onInit();
 		this.focusOnFirstInput();
-	}
-
-	/**
-	 * @protected
-	 *
-	 * @returns {void}
-	 */
-	onInit() {
 	}
 
 	/**
@@ -140,15 +131,8 @@ export default class PiggybackForm {
 		const errorElement = document.createElement('small');
 
 		errorElement.classList.add('error');
-		errorElement.innerHTML = i18n.t(messageKey, this.getI18nParameters());
+		errorElement.innerHTML = i18n.t(messageKey, {});
 		this.form.elements[this.form.elements.length - 2].parentElement.appendChild(errorElement);
-	}
-
-	/**
-	 * @protected
-	 */
-	getI18nParameters() {
-		return {};
 	}
 
 	/**

@@ -72,12 +72,13 @@ export function post(request, reply) {
 
 	return piggybackAsUser(username, password, targetUsername, request)
 		.then(data => {
-			const accessToken = JSON.parse(data).access_token;
+			const accessToken = JSON.parse(data.payload).access_token;
 			if (accessToken && accessToken.length) {
 				reply.state('access_token', accessToken);
 			}
-			const payloadData = new Buffer(data.payload).toString('utf8');
-			reply({payloadData}).code(200);
+			reply({
+				payload: data.payload
+			}).code(200);
 		}).catch(data => {
 			const errors = translateError(data, (error) => {
 				let errorHandler = 'server-error';
