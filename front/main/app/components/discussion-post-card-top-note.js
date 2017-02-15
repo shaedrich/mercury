@@ -2,15 +2,17 @@ import Ember from 'ember';
 import wrapMeHelper from '../helpers/wrap-me';
 import {track, trackActions} from '../utils/discussion-tracker';
 
-export default Ember.Component.extend({
+const {Component, computed, inject, Handlebars} = Ember;
+
+export default Component.extend({
 	classNames: ['top-note'],
 
-	canDelete: Ember.computed.readOnly('post.userData.permissions.canDelete'),
-	canModerate: Ember.computed.readOnly('post.userData.permissions.canModerate'),
+	canDelete: computed.readOnly('post.userData.permissions.canDelete'),
+	canModerate: computed.readOnly('post.userData.permissions.canModerate'),
 
-	isLocked: Ember.computed('post.isLocked'),
-	showButtons: Ember.computed.and('canShowModButtons', 'isReported', 'canModerate'),
-	modalDialog: Ember.inject.service(),
+	isLocked: computed('post.isLocked'),
+	showButtons: computed.and('canShowModButtons', 'isReported', 'canModerate'),
+	modalDialog: inject.service(),
 
 	isReportDetailsVisible: false,
 
@@ -19,7 +21,7 @@ export default Ember.Component.extend({
 	/**
 	 * Context for the i18n.t method for localization texts used in top note area
 	 */
-	topNoteTextContext: Ember.computed('post.reportDetails.count', function () {
+	topNoteTextContext: computed('post.reportDetails.count', function () {
 		return {
 			ns: 'discussion',
 			reportedByNumberUsers: wrapMeHelper.compute([
@@ -38,7 +40,7 @@ export default Ember.Component.extend({
 				tagName: 'a',
 				className: this.get('reportDetailsEntryPointClassName'),
 			}),
-			threadCreatorName: Ember.Handlebars.Utils.escapeExpression(this.get('threadCreatorName')),
+			threadCreatorName: Handlebars.Utils.escapeExpression(this.get('threadCreatorName')),
 		};
 	}),
 
@@ -90,7 +92,7 @@ export default Ember.Component.extend({
 	/**
 	 * Computes text for the post-card note
 	 */
-	topNoteText: Ember.computed('isReported', 'post.isLocked', 'post.reportDetails.count',
+	topNoteText: computed('isReported', 'post.isLocked', 'post.reportDetails.count',
 		'post.isDeleted', 'post.lastDeletedBy.name', function () {
 		const isReply = this.get('post.isReply'),
 			isLocked = this.get('isLocked'),
