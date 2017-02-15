@@ -114,7 +114,8 @@ QUnit.test('getWikiName', function (assert) {
 			host: 'muppet.10.10.10.145.xip.io',
 			settings: {
 				environment: global.environments.dev,
-				devboxDomain: 'evgeniy'
+				devboxDomain: 'evgeniy',
+				devDomain: 'pl'
 			},
 			expected: 'muppet.evgeniy.wikia-dev.pl',
 			description: 'Returns proper devbox url if xip.io sub-domain is used'
@@ -124,7 +125,8 @@ QUnit.test('getWikiName', function (assert) {
 			host: 'de.muppet.10.10.10.145.xip.io',
 			settings: {
 				environment: global.environments.dev,
-				devboxDomain: 'evgeniy'
+				devboxDomain: 'evgeniy',
+				devDomain: 'pl'
 			},
 			expected: 'de.muppet.evgeniy.wikia-dev.pl',
 			description: 'Returns proper devbox url if xip.io sub-domain is used with language'
@@ -412,7 +414,8 @@ QUnit.test('redirectToCanonicalHostIfNeeded', function (assert) {
 					basePath: 'http://starwars.igor.wikia-dev.pl'
 				},
 				settings: {
-					environment: global.environments.dev
+					environment: global.environments.dev,
+					devDomain: 'pl'
 				},
 				expected: {
 					redirected: false
@@ -432,7 +435,8 @@ QUnit.test('redirectToCanonicalHostIfNeeded', function (assert) {
 					basePath: 'http://starwars.igor.wikia-dev.pl'
 				},
 				settings: {
-					environment: global.environments.dev
+					environment: global.environments.dev,
+					devDomain: 'pl'
 				},
 				expected: {
 					redirected: true,
@@ -550,7 +554,7 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 			expected: 'www.hacker.wikia-dev.pl'
 		},
 		{
-			wikiDomain: 'pl.gta.hacker.wikia-dev.pl',
+			wikiDomain: 'pl.gta.hacker.wikia-dev.us',
 			environment: global.environments.dev,
 			devDomain: 'us',
 			expected: 'www.hacker.wikia-dev.us'
@@ -562,6 +566,7 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 			environment: testCase.environment,
 			devDomain: testCase.devDomain,
 			devboxDomain: 'hacker',
+			devDomain: 'pl'
 		};
 
 		assert.equal(global.getCorporatePageUrlFromWikiDomain(settings, testCase.wikiDomain), testCase.expected);
