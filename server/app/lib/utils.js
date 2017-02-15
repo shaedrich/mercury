@@ -113,7 +113,7 @@ export function getWikiDomainName(settings, hostName = '') {
 		const regex = /^\.?(.+?)\.((?:[\d]{1,3}\.){3}[\d]{1,3}\.xip.io)$/,
 			match = hostName.match(regex);
 
-		return match ? `${match[1]}.${settings.devboxDomain}.wikia-dev.[us|pl]` : hostName;
+		return match ? `${match[1]}.${settings.devboxDomain}.wikia-dev.${settings.devDomain}` : hostName;
 	} else {
 		return hostName;
 	}
