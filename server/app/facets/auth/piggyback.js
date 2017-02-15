@@ -1,9 +1,10 @@
-import * as authUtils from "../../lib/auth-utils";
-import * as authView from "./auth-view";
-import deepExtend from "deep-extend";
-import {piggybackAsUser} from "../operations/piggyback";
-import querystring from "querystring";
-import {disableCache} from "../../lib/caching";
+import * as authUtils from '../../lib/auth-utils';
+import * as authView from './auth-view';
+import deepExtend from 'deep-extend';
+import {piggybackAsUser} from '../operations/piggyback';
+import querystring from 'querystring';
+import {disableCache} from '../../lib/caching';
+import translateError from './translate-error';
 
 /**
  * @typedef {Object} SignInViewContext
@@ -75,6 +76,23 @@ export function post(request, reply) {
 			if (accessToken && accessToken.length) {
 				reply.state('access_token', accessToken);
 			}
-			reply({payload: data.payload}).code(200);
-		}).catch(error => reply({payload: error.payload}).code(error.statusCode));
+			const payloadData = new Buffer(data.payload).toString('utf8');
+			reply({payloadData}).code(200);
+		}).catch(data => {
+			const errors = translateError(data, (error) => {
+				let errorHandler = 'server-error';
+
+				if (error.description === 'user_is_blocked') {
+					errorHandler = 'username_blocked';
+				} else if (error.description === 'user_doesnt_exist') {
+					errorHandler = 'username-not-recognized';
+				}
+
+				return errorHandler;
+			});
+
+			reply({
+				errors,
+			}).code(data.response ? data.response.statusCode : 500);
+		});
 }

@@ -1,3 +1,4 @@
+
 function handleUserDiscoveryErrors(statusCode, errors) {
 	if (statusCode === 404) {
 		errors.push('username-not-recognized');
@@ -24,11 +25,12 @@ export default function translateError(data, customError) {
 	const statusCode = data.response.statusCode,
 		step = data.step,
 		errors = [];
-
 	if (step === 'service-discovery') {
 		errors.push('server-error');
 	} else if (step === 'user-discovery') {
 		handleUserDiscoveryErrors(statusCode, errors);
+	} else if (step === 'piggy-back' && statusCode === 401) {
+		errors.push('password_equal_name')
 	} else if (step === 'update-password' || step === 'reset-password') {
 		const payload = JSON.parse(data.payload);
 
