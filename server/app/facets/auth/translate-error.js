@@ -24,7 +24,7 @@ function handleServerErrors(payload, errors) {
 
 export default function translateError(data, customError) {
 	if (!data.response) {
-		Logger.error("Response was empty " + JSON.stringify(data));
+		Logger.error(data, 'Response was empty');
 		return ['server-error'];
 	}
 

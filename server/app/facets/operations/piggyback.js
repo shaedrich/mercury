@@ -37,8 +37,8 @@ export function piggybackAsUser(username, password, targetUsername, request) {
 					resolve({
 						step: 'piggy-back',
 						error: error,
-						response,
-						payload
+						response: response,
+						payload: payload
 					});
 				} else {
 					Logger.error({
@@ -48,8 +48,8 @@ export function piggybackAsUser(username, password, targetUsername, request) {
 					reject({
 						step: 'piggy-back',
 						error: error,
-						response,
-						payload
+						response: response,
+						payload: payload
 					});
 				}
 			});
