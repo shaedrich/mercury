@@ -554,10 +554,10 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 			expected: 'www.hacker.wikia-dev.pl'
 		},
 		{
-			wikiDomain: 'pl.gta.hacker.wikia-dev.us',
+			wikiDomain: 'pl.gta.hacker.wikia-dev.pl',
 			environment: global.environments.dev,
-			devDomain: 'us',
-			expected: 'www.hacker.wikia-dev.us'
+			devDomain: 'pl',
+			expected: 'www.hacker.wikia-dev.pl'
 		}
 	];
 
