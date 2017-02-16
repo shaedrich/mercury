@@ -30,24 +30,29 @@ export default class PiggybackForm {
 
 		this.clearErrors();
 		button.disabled = true;
+		xhr.onload = this.handleOnLoad(xhr, button);
+		xhr.onerror = this.handleOnError(xhr, button);
+		xhr.open('post', this.form.action, true);
+		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xhr.send(this.urlHelper.urlEncode(data));
+	}
 
-		xhr.onload = () => {
+	handleOnLoad(xhr, button) {
+		return () => {
 			button.disabled = false;
 			if (xhr.status === HttpCodes.OK) {
 				this.onSuccess();
 			} else {
 				this.handleErrors(xhr);
 			}
-		};
+		}
+	}
 
-		xhr.onerror = () => {
+	handleOnError(xhr, button) {
+		return () => {
 			button.disabled = false;
 			this.onError(xhr);
 		};
-
-		xhr.open('post', this.form.action, true);
-		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		xhr.send(this.urlHelper.urlEncode(data));
 	}
 
 	/**
