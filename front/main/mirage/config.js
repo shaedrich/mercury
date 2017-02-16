@@ -10,7 +10,7 @@ export default function () {
 	this.passthrough('/write-blanket-coverage');
 	this.passthrough('https://localhost/**');
 
-	this.passthrough('https://services-poz.wikia-dev.com/**');
+	this.passthrough('https://services-poz.wikia-dev.pl/**');
 	this.passthrough('https://services.wikia.com/**');
 	this.passthrough('/wikia.php');
 	this.passthrough('/api.php');
@@ -63,15 +63,15 @@ export default function () {
 		return schema.siteAttributes.first();
 	});
 
-	this.get('https://services-poz.wikia-dev.com/discussion/:forum_id/leaderboards', (schema, request) => {
+	this.get('https://services-poz.wikia-dev.pl/discussion/:forum_id/leaderboards', (schema, request) => {
 		return userActivityPostsFixtures;
 	});
 
-	this.get('https://services-poz.wikia-dev.com/discussion/:forum_id/leaderboard/reports', (schema, request) => {
+	this.get('https://services-poz.wikia-dev.pl/discussion/:forum_id/leaderboard/reports', (schema, request) => {
 		return userActivityReportsFixtures;
 	});
 
-	this.get('https://services-poz.wikia-dev.com/discussion/:forum_id/leaderboard/moderator', (schema, request) => {
+	this.get('https://services-poz.wikia-dev.pl/discussion/:forum_id/leaderboard/moderator', (schema, request) => {
 		return userActivityModerationsFixtures;
 	});
 

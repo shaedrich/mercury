@@ -45,7 +45,7 @@ export function checkDomainMatchesCurrentHost(domain, currentHost) {
  * @returns {boolean}
  */
 export function isWhiteListedDomain(domain) {
-	const whiteListedDomains = ['.wikia.com', '.wikia-dev.com', '.wikia-staging.com', '.wikia-dev.pl', '.wikia-dev.us'];
+	const whiteListedDomains = ['.wikia.com', '.wikia-staging.com', '.wikia-dev.pl', '.wikia-dev.us'];
 
 	/**
 	 * @param {string} whileListedDomain
