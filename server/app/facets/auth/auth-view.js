@@ -159,9 +159,7 @@ export function view(template, context, request, reply, layout = 'auth') {
 	const response = reply.view(
 		`auth/${getViewType(request)}/${template}`,
 		context,
-		{
-			layout: layout
-		}
+		{ layout }
 	);
 
 	disableCache(response);

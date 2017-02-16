@@ -45,7 +45,7 @@ export default class PiggybackForm {
 			} else {
 				this.handleErrors(xhr);
 			}
-		}
+		};
 	}
 
 	handleOnError(xhr, button) {

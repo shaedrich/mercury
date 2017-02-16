@@ -34,16 +34,16 @@ export function piggybackAsUser(username, password, targetUsername, request) {
 			Wreck.post(context.url, context.options, (error, response, payload) => {
 				const result = {
 					step: 'piggy-back',
-					error: error,
-					response: response,
-					payload: payload
+					error,
+					response,
+					payload
 				};
 				if (response && response.statusCode === 200) {
 					resolve(result);
 				} else {
 					Logger.error({
 						url: context.url,
-						error: error,
+						error,
 					}, 'Error from Helios token endpoint.');
 					reject(result);
 				}
