@@ -155,12 +155,12 @@ export function getViewType(request) {
  * @param {*} reply
  * @returns {Hapi.Response}
  */
-export function view(template, context, request, reply) {
+export function view(template, context, request, reply, layout = 'auth') {
 	const response = reply.view(
 		`auth/${getViewType(request)}/${template}`,
 		context,
 		{
-			layout: 'auth'
+			layout: layout
 		}
 	);
 

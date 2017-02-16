@@ -32,25 +32,20 @@ export function piggybackAsUser(username, password, targetUsername, request) {
 			context = getContext(username, password, userInfo[0].userId, request);
 		return new Promise((resolve, reject) => {
 			Wreck.post(context.url, context.options, (error, response, payload) => {
-				Logger.info(response);
+				const result = {
+					step: 'piggy-back',
+					error: error,
+					response: response,
+					payload: payload
+				};
 				if (response && response.statusCode === 200) {
-					resolve({
-						step: 'piggy-back',
-						error: error,
-						response: response,
-						payload: payload
-					});
+					resolve(result);
 				} else {
 					Logger.error({
 						url: context.url,
 						error: error,
 					}, 'Error from Helios token endpoint.');
-					reject({
-						step: 'piggy-back',
-						error: error,
-						response: response,
-						payload: payload
-					});
+					reject(result);
 				}
 			});
 		});

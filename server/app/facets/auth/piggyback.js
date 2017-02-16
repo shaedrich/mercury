@@ -18,7 +18,7 @@ import translateError from './translate-error';
 
 /**
  * @param {Hapi.Request} request
- * @returns {SignInViewContext}
+ * @returns {AuthViewContext}
  */
 function getViewContext(request) {
 	return deepExtend(authView.getDefaultContext(request),
@@ -33,19 +33,6 @@ function getViewContext(request) {
 	);
 }
 
-function assembleView(context, request, reply) {
-	const response = reply.view(
-		`auth/${authView.getViewType(request)}/piggyback`,
-		context,
-		{
-			layout: 'card'
-		}
-	);
-
-	disableCache(response);
-	return response;
-}
-
 /**
  * @param {Hapi.Request} request
  * @param {*} reply
@@ -54,7 +41,7 @@ function assembleView(context, request, reply) {
 export function get(request, reply) {
 	if (request.auth.isAuthenticated) {
 		const context = getViewContext(request);
-		return assembleView(context, request, reply);
+		return authView.view('piggyback', context, request, reply, 'card');
 	} else {
 		return reply.redirect(authUtils.getSignInUrl(request)).takeover();
 	}

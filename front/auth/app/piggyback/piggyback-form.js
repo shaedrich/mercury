@@ -24,43 +24,30 @@ export default class PiggybackForm {
 	onSubmit(event) {
 		event.preventDefault();
 
-		const button = this.form.querySelector('button'),
+		const button = this.form.querySelector('piggyback-submit'),
 			data = this.collectDataBeforeSubmit(),
 			xhr = new XMLHttpRequest();
 
 		this.clearErrors();
 		button.disabled = true;
 
-		if (this.isInputValid()) {
-			xhr.onload = () => {
-				button.disabled = false;
+		xhr.onload = () => {
+			button.disabled = false;
+			if (xhr.status === HttpCodes.OK) {
+				this.onSuccess();
+			} else {
+				this.handleErrors(xhr);
+			}
+		};
 
-				if (xhr.status === HttpCodes.OK) {
-					this.onSuccess();
-				} else {
-					this.handleErrors(xhr);
-				}
-			};
+		xhr.onerror = () => {
+			button.disabled = false;
+			this.onError(xhr);
+		};
 
-			xhr.onerror = () => {
-				button.disabled = false;
-				this.onError(xhr);
-			};
-
-			xhr.open('post', this.form.action, true);
-			xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-			xhr.send(this.urlHelper.urlEncode(data));
-		}
-	}
-
-
-	/**
-	 * @protected
-	 *
-	 * @returns {boolean} true if input is validated, false if errors were found
-	 */
-	isInputValid() {
-		return true;
+		xhr.open('post', this.form.action, true);
+		xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+		xhr.send(this.urlHelper.urlEncode(data));
 	}
 
 	/**
@@ -69,8 +56,7 @@ export default class PiggybackForm {
 	 * @returns {void}
 	 */
 	onSuccess() {
-		document.querySelector('.cards-container').classList.add('dissolved');
-		window.location = `/wiki/User:${this.form.elements.targetUsername.value}`;
+		window.location.href = `/wiki/User:${this.form.elements.targetUsername.value}`;
 	}
 
 	/**
@@ -116,6 +102,7 @@ export default class PiggybackForm {
 	 */
 	focusOnFirstInput() {
 		const input = this.form.elements[0];
+
 		if (input) {
 			input.focus();
 			input.setSelectionRange(input.value.length, input.value.length);
