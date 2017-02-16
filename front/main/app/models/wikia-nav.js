@@ -15,7 +15,8 @@ export default Object.extend({
 			ns: 'design-system'
 		});
 	}),
-	localLinks: get(Mercury, 'wiki.navigation2016.localNav'),
+
+	localLinks: get(Mercury, 'wiki.localNav') || get(Mercury, 'wiki.navigation2016.localNav'),
 	discussionsEnabled: get(Mercury, 'wiki.enableDiscussions'),
 	wikiName: get(Mercury, 'wiki.siteName'),
 
