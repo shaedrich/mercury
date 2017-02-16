@@ -132,19 +132,14 @@ export default Component.extend({
 
 			if (isDeleted && canSeeModeratorContent) {
 				return this.getDeletedByMessageForModerator();
-
 			} else if (isReported && canSeeModeratorContent && reportDetails) {
 				return this.getReportedByMessageForModerator(isReply, isLocked, shouldShowRepliedTo);
-
 			} else if (isReported && !canSeeModeratorContent) {
 				return this.getReportedByMessageForNonModerator(isReply, isLocked);
-
 			} else if (shouldShowRepliedTo) {
 				return this.getRepliedToMessage();
-
 			} else if (isLocked) {
 				return this.getLockedPostMessage();
-
 			}
 		}),
 
