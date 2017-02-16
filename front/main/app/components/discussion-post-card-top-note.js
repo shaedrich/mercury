@@ -2,13 +2,17 @@ import Ember from 'ember';
 import wrapMeHelper from '../helpers/wrap-me';
 import {track, trackActions} from '../utils/discussion-tracker';
 
-export default Ember.Component.extend({
+const {Component, computed, inject, Handlebars} = Ember;
+
+export default Component.extend({
 	classNames: ['top-note'],
 
-	canDelete: Ember.computed.readOnly('post.userData.permissions.canDelete'),
-	canModerate: Ember.computed.readOnly('post.userData.permissions.canModerate'),
-	showButtons: Ember.computed.and('canShowModButtons', 'isReported', 'canModerate'),
-	modalDialog: Ember.inject.service(),
+	canDelete: computed.readOnly('post.userData.permissions.canDelete'),
+	canModerate: computed.readOnly('post.userData.permissions.canModerate'),
+
+	isLocked: computed.readOnly('post.isLocked'),
+	showButtons: computed.and('canShowModButtons', 'isReported', 'canModerate'),
+	modalDialog: inject.service(),
 
 	isReportDetailsVisible: false,
 
@@ -17,7 +21,7 @@ export default Ember.Component.extend({
 	/**
 	 * Context for the i18n.t method for localization texts used in top note area
 	 */
-	topNoteTextContext: Ember.computed('post.reportDetails.count', function () {
+	topNoteTextContext: computed('post.reportDetails.count', function () {
 		return {
 			ns: 'discussion',
 			reportedByNumberUsers: wrapMeHelper.compute([
@@ -36,51 +40,83 @@ export default Ember.Component.extend({
 				tagName: 'a',
 				className: this.get('reportDetailsEntryPointClassName'),
 			}),
-			threadCreatorName: Ember.Handlebars.Utils.escapeExpression(this.get('threadCreatorName')),
+			threadCreatorName: Handlebars.Utils.escapeExpression(this.get('threadCreatorName')),
 		};
 	}),
+
+	getReportedByMessageForModerator(isReply, isLocked, shouldShowRepliedTo) {
+		// this block prepares 'reported posts' texts for moderators (regular user should never have post.reportDetails)
+		if (shouldShowRepliedTo) {
+			// post is reported, is a reply and supposed to show reply-to info
+			return i18n.t('main.reported-by-replied-to', this.get('topNoteTextContext'));
+		} else if (!shouldShowRepliedTo && isReply) {
+			// post is reported, is a reply, but NOT supposed to show reply-to info
+			return i18n.t('main.reported-by-reply', this.get('topNoteTextContext'));
+		} else if (!isReply) {
+			if (isLocked) {
+				return i18n.t('main.reported-by-and-locked', this.get('topNoteTextContext'));
+			}
+			// post is reported and is NOT a reply
+			return i18n.t('main.reported-by', this.get('topNoteTextContext'));
+		}
+	},
+
+	getReportedByMessageForNonModerator(isReply, isLocked) {
+		// it have the same logic as above, but prepares text for regular users
+		if (isReply) {
+			// post is reported, is a reply, but NOT supposed to show reply-to info
+			return i18n.t('main.reported-to-moderators-reply', this.get('topNoteTextContext'));
+		} else if (isLocked) {
+			// post is reported and locked
+			return i18n.t('main.reported-to-moderators-and-locked', this.get('topNoteTextContext'));
+		} else {
+			// post is reported and is NOT a reply
+			return i18n.t('main.reported-to-moderators', this.get('topNoteTextContext'));
+		}
+	},
+
+	getDeletedByMessageForModerator() {
+		let username = this.get('post.lastDeletedBy.name') || '';
+		return i18n.t('main.deleted-by', {userName: username, ns: 'discussion'});
+	},
+
+	getRepliedToMessage() {
+		// post is NOT reported, is a reply and supposed to show reply-to info
+		return i18n.t('main.user-replied-to', this.get('topNoteTextContext'));
+	},
+
+	getLockedPostMessage() {
+		return i18n.t('main.locked-post-text', this.get('topNoteTextContext'));
+	},
 
 	/**
 	 * Computes text for the post-card note
 	 */
-	topNoteText: Ember.computed('isReported', 'post.isLocked', 'post.reportDetails.count',
+	topNoteText: computed('isReported', 'post.isLocked', 'post.reportDetails.count',
 		'post.isDeleted', 'post.lastDeletedBy.name', function () {
-			if (this.get('post.isDeleted') && this.get('canModerate')) {
-				let username = this.get('post.lastDeletedBy.name') || '';
-				return i18n.t('main.deleted-by', {userName: username, ns: 'discussion'});
-			} else if (this.get('isReported') && this.get('canModerate') && this.get('post.reportDetails')) {
-				// this block prepares 'reported posts' texts for moderators (regular user should never have post.reportDetails)
-				if (this.get('showRepliedTo')) {
-					// post is reported, is a reply and supposed to show reply-to info
-					return i18n.t('main.reported-by-replied-to', this.get('topNoteTextContext'));
-				} else if (!this.get('showRepliedTo') && this.get('isReply')) {
-					// post is reported, is a reply, but NOT supposed to show reply-to info
-					return i18n.t('main.reported-by-reply', this.get('topNoteTextContext'));
-				} else if (!this.get('isReply')) {
-					if (this.get('post.isLocked')) {
-						return i18n.t('main.reported-by-and-locked', this.get('topNoteTextContext'));
-					}
-					// post is reported and is NOT a reply
-					return i18n.t('main.reported-by', this.get('topNoteTextContext'));
-				}
-			} else if (this.get('isReported') && !this.get('canModerate')) {
-				// this block prepares 'reported posts' texts for regular users
-				// it have the same logic as above, but prepares text for regular users
-				if (this.get('isReply')) {
-					// post is reported, is a reply, but NOT supposed to show reply-to info
-					return i18n.t('main.reported-to-moderators-reply', this.get('topNoteTextContext'));
-				} else if (this.get('post.isLocked')) {
-					// post is reported and locked
-					return i18n.t('main.reported-to-moderators-and-locked', this.get('topNoteTextContext'));
-				} else {
-					// post is reported and is NOT a reply
-					return i18n.t('main.reported-to-moderators', this.get('topNoteTextContext'));
-				}
-			} else if (this.get('showRepliedTo')) {
-				// post is NOT reported, is a reply and supposed to show reply-to info
-				return i18n.t('main.user-replied-to', this.get('topNoteTextContext'));
-			} else if (this.get('post.isLocked')) {
-				return i18n.t('main.locked-post-text', this.get('topNoteTextContext'));
+			const isReply = this.get('post.isReply'),
+				isLocked = this.get('isLocked'),
+				isDeleted = this.get('post.isDeleted'),
+				isReported = this.get('isReported'),
+				reportDetails = this.get('post.reportDetails'),
+				canSeeModeratorContent = this.get('canModerate'),
+				shouldShowRepliedTo = this.get('showRepliedTo');
+
+			if (isDeleted && canSeeModeratorContent) {
+				return this.getDeletedByMessageForModerator();
+
+			} else if (isReported && canSeeModeratorContent && reportDetails) {
+				return this.getReportedByMessageForModerator(isReply, isLocked, shouldShowRepliedTo);
+
+			} else if (isReported && !canSeeModeratorContent) {
+				return this.getReportedByMessageForNonModerator(isReply, isLocked);
+
+			} else if (shouldShowRepliedTo) {
+				return this.getRepliedToMessage();
+
+			} else if (isLocked) {
+				return this.getLockedPostMessage();
+
 			}
 		}),
 
