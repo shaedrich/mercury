@@ -19,8 +19,8 @@ More available scripts are listed [here](#scripts)
 
 ## Access Mercury
 ### Devbox environment
-Open http://muppet.yourname.wikia-dev.com/wiki/Kermit from mobile device or while emulating it in desktop browser.
-Or use `curl -H "Host:muppet.yourname.wikia-dev.com" "http://dev-yourname:7000/wiki/Kermit"`
+Open http://muppet.yourname.wikia-dev.pl/wiki/Kermit from mobile device or while emulating it in desktop browser.
+Or use `curl -H "Host:muppet.yourname.wikia-dev.pl" "http://dev-yourname:7000/wiki/Kermit"`
 
 ### Local environment
 Open http://muppet.127.0.0.1.xip.io:7000/wiki/Kermit
