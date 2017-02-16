@@ -7,12 +7,14 @@ export default Mixin.create({
 	classNameBindings: ['isLoadingNewResults'],
 	scrollableElement: '.notifications-list',
 
-	onScrollBinder: observer('notifications.model.data', function () {
+	onNotificationsModelChange: observer('notifications.model.data', function () {
 		if (this.get('notifications.model.data.length')) {
 			run.later(() => {
 				this.$(this.get('scrollableElement')).on('scroll', this.onScroll.bind(this));
 			}, 0);
 		}
+
+		this.set('isLoadingNewResults', false);
 	}),
 
 	onScrollRemover: on('didInsertElement', function () {
@@ -23,16 +25,15 @@ export default Mixin.create({
 		const element = $(e.target);
 
 		// 99 is a height of the space for loading spinner
-		if (element[0].scrollHeight === element.outerHeight() + element.scrollTop() + 50) {
+		if (element[0].scrollHeight === element.outerHeight() + element.scrollTop()) {
 			this.onScrolledToTheBottom();
 		}
 	},
 
 	onScrolledToTheBottom() {
-		const $scrollableElement = this.$(this.get('scrollableElement'))[0];
+		const $scrollableElement = this.$(this.get('scrollableElement'));
 
 		this.get('notifications').loadMoreResults();
 		this.set('isLoadingNewResults', true);
-		$scrollableElement.scrollTop($scrollableElement[0].scrollHeight);
 	}
 });

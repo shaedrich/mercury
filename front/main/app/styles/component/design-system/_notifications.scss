@@ -51,7 +51,7 @@ $notifications-dropdown-border-color: #363b41;
 }
 
 .notifications-list {
-	padding: 0 18px 100px;
+	padding: 0 18px;
 }
 
 .mark-all-as-read-button {
@@ -103,10 +103,5 @@ $notifications-dropdown-border-color: #363b41;
 .notifications-scroll-menu {
 	.loading-overlay {
 		position: absolute;
-	}
-
-	.spinner {
-		top: initial;
-		bottom: 10px;
 	}
 }
