@@ -24,7 +24,7 @@ export default class PiggybackForm {
 	onSubmit(event) {
 		event.preventDefault();
 
-		const button = this.form.querySelector('piggyback-submit'),
+		const button = this.form.querySelector('#piggyback-submit'),
 			data = this.collectDataBeforeSubmit(),
 			xhr = new XMLHttpRequest();
 
