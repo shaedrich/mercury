@@ -9,7 +9,6 @@ export default Component.extend({
 
 	canDelete: computed.readOnly('post.userData.permissions.canDelete'),
 	canModerate: computed.readOnly('post.userData.permissions.canModerate'),
-
 	isLocked: computed.readOnly('post.isLocked'),
 	showButtons: computed.and('canShowModButtons', 'isReported', 'canModerate'),
 	modalDialog: inject.service(),
@@ -44,25 +43,45 @@ export default Component.extend({
 		};
 	}),
 
+	/**
+	 * @private
+	 */
 	getReportedByMessageForModerator(isReply, isLocked, shouldShowRepliedTo) {
-		// this block prepares 'reported posts' texts for moderators (regular user should never have post.reportDetails)
-		if (shouldShowRepliedTo) {
-			// post is reported, is a reply and supposed to show reply-to info
-			return i18n.t('main.reported-by-replied-to', this.get('topNoteTextContext'));
-		} else if (!shouldShowRepliedTo && isReply) {
-			// post is reported, is a reply, but NOT supposed to show reply-to info
-			return i18n.t('main.reported-by-reply', this.get('topNoteTextContext'));
-		} else if (!isReply) {
-			if (isLocked) {
-				return i18n.t('main.reported-by-and-locked', this.get('topNoteTextContext'));
-			}
-			// post is reported and is NOT a reply
-			return i18n.t('main.reported-by', this.get('topNoteTextContext'));
+		if (isReply) {
+			return this.getReportedReplyMessageForModerator(shouldShowRepliedTo);
+		} else {
+			return this.getReportedPostMessageForModerator(isLocked);
 		}
 	},
 
+	/**
+	 * @private
+	 */
+	getReportedReplyMessageForModerator(shouldShowRepliedTo) {
+		if (shouldShowRepliedTo) {
+			// post is reported, is a reply and supposed to show reply-to info
+			return i18n.t('main.reported-by-replied-to', this.get('topNoteTextContext'));
+		} else {
+			// post is reported, is a reply, but NOT supposed to show reply-to info
+			return i18n.t('main.reported-by-reply', this.get('topNoteTextContext'));
+		}
+	},
+
+	/**
+	 * @private
+	 */
+	getReportedPostMessageForModerator(isLocked) {
+		if (isLocked) {
+			return i18n.t('main.reported-by-and-locked', this.get('topNoteTextContext'));
+		}
+		// post is reported and is NOT a reply
+		return i18n.t('main.reported-by', this.get('topNoteTextContext'));
+	},
+
+	/**
+	 * @private
+	 */
 	getReportedByMessageForNonModerator(isReply, isLocked) {
-		// it have the same logic as above, but prepares text for regular users
 		if (isReply) {
 			// post is reported, is a reply, but NOT supposed to show reply-to info
 			return i18n.t('main.reported-to-moderators-reply', this.get('topNoteTextContext'));
@@ -75,16 +94,25 @@ export default Component.extend({
 		}
 	},
 
+	/**
+	 * @private
+	 */
 	getDeletedByMessageForModerator() {
 		let username = this.get('post.lastDeletedBy.name') || '';
 		return i18n.t('main.deleted-by', {userName: username, ns: 'discussion'});
 	},
 
+	/**
+	 * @private
+	 */
 	getRepliedToMessage() {
 		// post is NOT reported, is a reply and supposed to show reply-to info
 		return i18n.t('main.user-replied-to', this.get('topNoteTextContext'));
 	},
 
+	/**
+	 * @private
+	 */
 	getLockedPostMessage() {
 		return i18n.t('main.locked-post-text', this.get('topNoteTextContext'));
 	},
