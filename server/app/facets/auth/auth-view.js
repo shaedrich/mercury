@@ -153,13 +153,14 @@ export function getViewType(request) {
  * @param {AuthViewContext} context
  * @param {Hapi.Request} request
  * @param {*} reply
+ * @param layout either 'card' or 'auth', 'auth' is default
  * @returns {Hapi.Response}
  */
 export function view(template, context, request, reply, layout = 'auth') {
 	const response = reply.view(
 		`auth/${getViewType(request)}/${template}`,
 		context,
-		{ layout }
+		{layout}
 	);
 
 	disableCache(response);
