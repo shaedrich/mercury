@@ -3,7 +3,7 @@ var sinon = require('sinon');
 QUnit.module('lib/utils');
 
 QUnit.test('shouldServeMobileView', function (assert) {
-	let testCases = [
+	var testCases = [
 		{
 			userAgent: 'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36' +
 			' (KHTML, like Gecko) Chrome/55.0.2883.95 Mobile Safari/537.36',
