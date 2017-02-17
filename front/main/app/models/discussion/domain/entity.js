@@ -11,6 +11,7 @@ const DiscussionEntity = Ember.Object.extend({
 	isRequesterBlocked: null,
 	openGraph: null,
 	rawContent: null,
+	renderedContent: null,
 	reportDetails: null,
 	threadId: null,
 	title: null,

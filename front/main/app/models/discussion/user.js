@@ -3,7 +3,6 @@ import DiscussionBaseModel from './base';
 import DiscussionModerationModelMixin from '../../mixins/discussion-moderation-model';
 import DiscussionForumActionsModelMixin from '../../mixins/discussion-forum-actions-model';
 import DiscussionContributionModelMixin from '../../mixins/discussion-contribution-model';
-import ContentFormatMixin from '../../mixins/discussion-content-format-static';
 import DiscussionContributors from './domain/contributors';
 import DiscussionEntities from './domain/entities';
 import request from 'ember-ajax/request';
@@ -12,7 +11,6 @@ const DiscussionUserModel = DiscussionBaseModel.extend(
 	DiscussionModerationModelMixin,
 	DiscussionForumActionsModelMixin,
 	DiscussionContributionModelMixin,
-	ContentFormatMixin,
 	{
 		userId: null,
 
@@ -23,13 +21,13 @@ const DiscussionUserModel = DiscussionBaseModel.extend(
 		 */
 		loadPage(pageNum = 1) {
 			return request(M.getDiscussionServiceUrl(`/${this.get('wikiId')}/users/${this.get('userId')}/posts`), {
-				data: this.getRequestDataWithFormat({
+				data: {
 					limit: this.get('loadMoreLimit'),
 					page: this.get('data.pageNum') + 1,
 					pivot: this.get('pivotId'),
 					responseGroup: 'full',
-					viewableOnly: false,
-				}),
+					viewableOnly: false
+				},
 			}).then((data) => {
 				const newEntities = DiscussionEntities.createFromPostsData(Ember.get(data, '_embedded.doc:posts'));
 
@@ -72,7 +70,6 @@ DiscussionUserModel.reopenClass({
 	/**
 	 * @param {number} wikiId
 	 * @param {number} userId
-	 * @param {number} [page = 1]
 	 *
 	 * @returns {Ember.RSVP.Promise}
 	 */
@@ -84,12 +81,12 @@ DiscussionUserModel.reopenClass({
 			});
 
 			request(M.getDiscussionServiceUrl(`/${wikiId}/users/${userId}/posts`), {
-				data: userInstance.getRequestDataWithFormat({
+				data: {
 					page: page - 1,
 					limit: userInstance.get('postsLimit'),
 					responseGroup: 'full',
-					viewableOnly: false,
-				})
+					viewableOnly: false
+				}
 			}).then((data) => {
 				userInstance.setNormalizedData(data);
 

@@ -34,6 +34,7 @@ DiscussionReply.reopenClass({
 				openGraph: null,
 				position: postData.position,
 				rawContent: postData.rawContent,
+				renderedContent: postData.renderedContent,
 				threadCreatedBy: DiscussionContributor.create(postData.threadCreatedBy),
 				threadId: postData.threadId,
 				title: postData.title,

@@ -12,9 +12,13 @@ export default Ember.Mixin.create({
 	 * Returns content with links created from urls and converts \n, \rn and \r to <br>
 	 * @returns {string}
 	 */
-	parsedContent: Ember.computed('content', function () {
+	parsedContent: Ember.computed('post.rawContent', 'post.renderedContent', function () {
+		return this.get('post.renderedContent') ? this.getParsedRenderedContent() : this.getParsedRawContent();
+	}),
+
+	getParsedRawContent() {
 		let escapedContent = Ember.Handlebars.Utils.escapeExpression(
-			this.get('content')
+			this.get('post.rawContent')
 		).trim();
 
 		if (this.get('shouldTruncateContent') && shouldUseTruncationHack()) {
@@ -24,7 +28,21 @@ export default Ember.Mixin.create({
 		escapedContent = nl2br(escapedContent);
 
 		return window.Autolinker ? window.Autolinker.link(escapedContent, this.autolinkerConfig) : escapedContent;
-	}),
+	},
+
+	getParsedRenderedContent() {
+		let content = this.get('post.renderedContent').trim();
+
+		if (this.get('shouldTruncateContent') && shouldUseTruncationHack()) {
+			content = truncate(content, 148);
+		}
+
+		return content;
+	},
+
+	parseRenderedContent() {
+
+	},
 
 	init() {
 		this.autolinkerConfig = {

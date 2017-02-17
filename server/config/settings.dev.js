@@ -1,13 +1,18 @@
 /**
  * settings for application, used by default by dev environments
  */
+
+// These variables are used in multiple places in config
+const devDomain = (process.env.WIKIA_DATACENTER === 'poz') ? 'pl' : 'us',
+	servicesDomain = `services.wikia-dev.${devDomain}`;
+
 export default {
 	loggers: {
 		console: 'debug'
 	},
-	devDomain: (process.env.WIKIA_DATACENTER === 'poz') ? 'pl' : 'us',
-	authCookieDomain: (process.env.WIKIA_DATACENTER === 'poz') ? '.wikia-dev.pl' : '.wikia-dev.us',
-	servicesDomain: (process.env.WIKIA_DATACENTER === 'poz') ? 'services.wikia-dev.pl' : 'services.wikia-dev.us',
+	devDomain,
+	authCookieDomain: `.wikia-dev.${devDomain}`,
+	servicesDomain,
 	facebook: {
 		appId: 881967318489580
 	},
@@ -21,7 +26,7 @@ export default {
 	clickstream: {
 		social: {
 			enable: true,
-			url: 'https://services.wikia-dev.com/clickstream/events/social'
+			url: `https://${servicesDomain}/clickstream/events/social`
 		}
 	},
 	helios: {

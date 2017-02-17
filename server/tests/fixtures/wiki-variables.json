@@ -11,7 +11,6 @@
     "disableMobileSectionEditor": false,
     "enableCommunityData": false,
     "enableDiscussions": true,
-    "enableGlobalNav2016": true,
     "enableNewAuth": true,
     "favicon": "http:\/\/vignette3.wikia.nocookie.net\/starwars\/images\/6\/64\/Favicon.ico\/revision\/latest?cb=20150514050108",
     "homepage": "http:\/\/www.wikia.com\/fandom",
@@ -95,57 +94,7 @@
       }
     },
     "wikiCategories": [],
-    "navigation2016": {
-      "hubsLinks": [
-        {
-          "text": "Games",
-          "textEscaped": "Games",
-          "href": "http:\/\/fandom.wikia.com\/games",
-          "specialAttr": "games",
-          "canonicalAttr": null
-        },
-        {
-          "text": "Movies",
-          "textEscaped": "Movies",
-          "href": "http:\/\/fandom.wikia.com\/movies",
-          "specialAttr": "movies",
-          "canonicalAttr": null
-        },
-        {
-          "text": "TV",
-          "textEscaped": "TV",
-          "href": "http:\/\/fandom.wikia.com\/tv",
-          "specialAttr": "tv",
-          "canonicalAttr": null
-        }
-      ],
-      "exploreWikia": {
-        "text": "Wikis",
-        "textEscaped": "Wikis",
-        "href": "#",
-        "trackingLabel": "wikis"
-      },
-      "exploreWikiaMenu": [
-        {
-          "text": "Explore Wikis",
-          "textEscaped": "Explore Wikis",
-          "href": "http:\/\/www.wikia.com\/explore",
-          "trackingLabel": "explore-wikis"
-        },
-        {
-          "text": "Community Central",
-          "textEscaped": "Community Central",
-          "href": "http:\/\/community.wikia.com",
-          "trackingLabel": "community-central"
-        },
-        {
-          "text": "Fandom University",
-          "textEscaped": "Fandom University",
-          "href": "http:\/\/community.wikia.com\/wiki\/Wikia_University",
-          "trackingLabel": "fandom-university"
-        }
-      ],
-      "localNav": [
+    "localNav": [
         {
           "text": "Status Articles",
           "href": "\/wiki\/Category:Wookieepedia_status_articles",
@@ -396,8 +345,7 @@
             }
           ]
         }
-      ]
-    },
+      ],
     "vertical": "movies",
     "basePath": "http:\/\/starwars.wikia.com",
     "isGASpecialWiki": true,
