@@ -2,6 +2,32 @@ var sinon = require('sinon');
 
 QUnit.module('lib/utils');
 
+QUnit.test('shouldServeMobileView', function (assert) {
+	let testCases = [
+		{
+			userAgent: 'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Mobile Safari/537.36',
+			expected: true,
+			description: 'Galaxy S5'
+		},
+		{
+			userAgent: 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+			expected: true,
+			description: 'iPad'
+		},
+		{
+			userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
+			expected: true,
+			description: 'Chrome on Mac OS Sierra'
+		},
+
+	];
+
+	testCases.forEach(function (testCase) {
+		assert.equal(global.shouldServeMobileView(testCase.userAgent),
+			testCase.expected, testCase.description);
+	});
+});
+
 QUnit.test('getWikiName', function (assert) {
 	var testCases = [
 		{

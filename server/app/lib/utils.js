@@ -9,6 +9,7 @@ import {RedirectedToCanonicalHost} from './custom-errors';
 import deepExtend from 'deep-extend';
 import Promise from 'bluebird';
 import uuid from 'node-uuid';
+import MobileDetect from 'mobile-detect';
 
 /**
  * @typedef {Object} ServerData
@@ -366,4 +367,10 @@ export function getInternalHeaders(request, customHeaders = {}) {
 		},
 		customHeaders
 	);
+}
+
+export function shouldServeMobileView(userAgent) {
+	const md = new MobileDetect(userAgent);
+
+	return md.mobile() || md.phone() || md.tablet() || md.isPhoneSized();
 }
