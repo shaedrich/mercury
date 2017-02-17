@@ -22,7 +22,11 @@ function getTrackingContext(label, action, params) {
 		category: gaCategory,
 		label: labels[label]
 	}, params);
-}
+},
+
+function getGAValueFromUnreadStatus(isUnread) {
+	return isUnread ? 1 : 0;
+},
 
 /**
  * @param {string} action
@@ -36,4 +40,29 @@ export function track(label, action, params) {
 	);
 }
 
-export {labels};
+export function trackImpression(notificationModel) {
+	track(
+		labels[notificationModel.get('type')],
+		'impression',
+		{
+			value: getGAValueFromUnreadStatus(notificationModel.get('isUnread'))
+		}
+	);
+}
+
+export function trackClick(notificationModel) {
+	track(
+		labels[notificationModel.get('type')],
+		'click',
+		{
+			value: getGAValueFromUnreadStatus(notificationModel.get('isUnread'))
+		}
+	);
+}
+
+export function trackMarkAllAsRead() {
+	track(
+		labels['mark-all-as-read'],
+		'click',
+	);
+}

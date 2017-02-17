@@ -3,6 +3,7 @@ import wrapMeHelper from '../helpers/wrap-me';
 import NewReplyNotificationMixin from '../mixins/new-reply-notification';
 import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification';
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification';
+import {track, trackingLabels} from '../utils/notifications-tracker';
 
 const {Component, inject, computed, Logger} = Ember;
 
@@ -63,6 +64,13 @@ export default Component.extend(
 				Logger.warn('No type found for a notification', model);
 			}
 		}),
+
+		didInsertElement() {
+			track(
+				this.get('model.type'),
+				'impression',
+			);
+		},
 
 		isDiscussionReply(type) {
 			return type === 'discussion-reply';
