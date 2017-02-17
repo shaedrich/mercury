@@ -50,7 +50,6 @@ export default Ember.Component.extend(
 		createAlert(model) {
 			const alertData = {
 				message: model.message,
-				type: 'info',
 				expiry: 60000,
 				unsafe: true,
 				callbacks: {

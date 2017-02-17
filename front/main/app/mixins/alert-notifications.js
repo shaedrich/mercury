@@ -9,7 +9,7 @@ export default Ember.Mixin.create({
 	 */
 	addAlert({
 		message,
-		type = '',
+		type = 'info',
 		expiry = 10000,
 		unsafe = false,
 		callbacks = {},
