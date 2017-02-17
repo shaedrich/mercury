@@ -1,7 +1,6 @@
 /**
  * Utility functions
  */
-
 import {applyToDefaults, escapeHtml} from 'hoek';
 import {parse} from 'url';
 import {stringify} from 'querystring';
@@ -371,6 +370,9 @@ export function getInternalHeaders(request, customHeaders = {}) {
 
 export function shouldServeMobileView(userAgent) {
 	const md = new MobileDetect(userAgent);
-
-	return md.mobile() || md.phone() || md.tablet() || md.isPhoneSized();
+	if (md.mobile() || md.phone() || md.tablet() || md.isPhoneSized()) {
+		return true;
+	} else {
+		return false;
+	}
 }

@@ -19,7 +19,7 @@ QUnit.test('shouldServeMobileView', function (assert) {
 		{
 			userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36' +
 			' (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36',
-			expected: true,
+			expected: false,
 			description: 'Chrome on Mac OS Sierra'
 		},
 
