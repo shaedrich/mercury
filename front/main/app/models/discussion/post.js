@@ -1,7 +1,6 @@
 import DiscussionBaseModel from './base';
 import DiscussionModerationModelMixin from '../../mixins/discussion-moderation-model';
 import DiscussionContributionModelMixin from '../../mixins/discussion-contribution-model';
-import ContentFormatMixin from '../../mixins/discussion-content-format-static';
 import DiscussionContributors from './domain/contributors';
 import DiscussionPost from './domain/post';
 import DiscussionReply from './domain/reply';
@@ -11,7 +10,6 @@ import request from 'ember-ajax/request';
 const DiscussionPostModel = DiscussionBaseModel.extend(
 	DiscussionModerationModelMixin,
 	DiscussionContributionModelMixin,
-	ContentFormatMixin,
 	{
 		links: {
 			next: null,
@@ -123,6 +121,7 @@ const DiscussionPostModel = DiscussionBaseModel.extend(
 			});
 		},
 
+
 		/**
 		 * @param {Object} replyData
 		 *
@@ -195,13 +194,13 @@ DiscussionPostModel.reopenClass({
 				urlPath = replyId ? `/${wikiId}/permalinks/posts/${replyId}` : `/${wikiId}/threads/${threadId}`;
 
 			request(M.getDiscussionServiceUrl(urlPath), {
-				data: postInstance.getRequestDataWithFormat({
+				data: {
 					limit: postInstance.get('repliesLimit'),
 					responseGroup: 'full',
 					sortDirection: 'descending',
 					sortKey: 'creation_date',
-					viewableOnly: false,
-				})
+					viewableOnly: false
+				}
 			}).then((data) => {
 				if (replyId) {
 					data.permalinkedReplyId = replyId;
@@ -214,6 +213,7 @@ DiscussionPostModel.reopenClass({
 				});
 
 				postInstance.setNormalizedData(data);
+
 				resolve(postInstance);
 
 				// main post and the replies set up at once

@@ -42,6 +42,7 @@ DiscussionPost.reopenClass({
 				isReported: data.isReported,
 				isRequesterBlocked: data.isRequesterBlocked,
 				rawContent: data.rawContent,
+				renderedContent: data.renderedContent,
 				title: data.title,
 				upvoteCount: parseInt(data.upvoteCount, 10),
 				userBlockDetails: DiscussionUserBlockDetails.create(data.userBlockDetails),
