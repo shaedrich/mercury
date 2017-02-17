@@ -12,7 +12,7 @@ const activities = {
 			"userId": 23914359,
 			"userInfo": {
 				"id": "23914359",
-				"avatarUrl": "http:\/\/dev-vignette.wikia-dev.com\/043b4107-8029-42c4-aae8-6c2489c3be5f\/scale-to-width-down\/100",
+				"avatarUrl": "http:\/\/dev-vignette.wikia-dev.us\/043b4107-8029-42c4-aae8-6c2489c3be5f\/scale-to-width-down\/100",
 				"name": "ModUser1ModUser1ModUser1ModUser1ModUser1ModUser1ModUser1",
 				"badgePermission": "badge:threadmoderator"
 			},
@@ -28,7 +28,7 @@ const activities = {
 			"userId": 23914359,
 			"userInfo": {
 				"id": "23914359",
-				"avatarUrl": "http:\/\/dev-vignette.wikia-dev.com\/043b4107-8029-42c4-aae8-6c2489c3be5f\/scale-to-width-down\/100",
+				"avatarUrl": "http:\/\/dev-vignette.wikia-dev.us\/043b4107-8029-42c4-aae8-6c2489c3be5f\/scale-to-width-down\/100",
 				"name": "ModUser2ModUser2ModUser2ModUser2",
 				"badgePermission": "badge:threadmoderator"
 			},
@@ -44,7 +44,7 @@ const activities = {
 			"userId": 23914359,
 			"userInfo": {
 				"id": "23914359",
-				"avatarUrl": "http:\/\/dev-vignette.wikia-dev.com\/043b4107-8029-42c4-aae8-6c2489c3be5f\/scale-to-width-down\/100",
+				"avatarUrl": "http:\/\/dev-vignette.wikia-dev.us\/043b4107-8029-42c4-aae8-6c2489c3be5f\/scale-to-width-down\/100",
 				"name": "ModUser3",
 				"badgePermission": "badge:threadmoderator"
 			},
