@@ -39,5 +39,10 @@ export default Service.extend({
 			.then(() => {
 				this.set('isLoading', false);
 			});
+	},
+
+	markAllAsRead() {
+		this.get('model')
+			.markAllAsRead();
 	}
 });

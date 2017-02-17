@@ -21,7 +21,9 @@
 	{{#if notificationsList.length}}
 		<div class="notifications-title">
 			<h5>{{i18n 'notifications.notifications' ns='discussion'}}</h5>
-			<a class="mark-all-as-read">{{i18n 'notifications.mark-all-as-read' ns='discussion'}}</a>
+			<a class="mark-all-as-read" {{action 'markAllAsRead'}}>
+				{{i18n 'notifications.mark-all-as-read' ns='discussion'}}
+			</a>
 		</div>
 	{{/if}}
 </div>

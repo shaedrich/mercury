@@ -283,7 +283,13 @@ const NotificationsModel = Object.extend({
 		return new RSVP.Promise((resolve) => {
 			return resolve();
 		});
-	}
+	},
+
+	markAllAsRead() {
+		return new RSVP.Promise((resolve) => {
+			return resolve();
+		});
+	},
 });
 
 NotificationsModel.reopenClass({

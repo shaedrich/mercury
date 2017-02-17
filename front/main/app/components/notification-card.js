@@ -3,7 +3,7 @@ import wrapMeHelper from '../helpers/wrap-me';
 import NewReplyNotificationMixin from '../mixins/new-reply-notification';
 import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification';
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification';
-import {track, trackingLabels} from '../utils/notifications-tracker';
+import {trackClick, trackImpression} from '../utils/notifications-tracker';
 
 const {Component, inject, computed, Logger} = Ember;
 
@@ -66,10 +66,7 @@ export default Component.extend(
 		}),
 
 		didInsertElement() {
-			track(
-				this.get('model.type'),
-				'impression',
-			);
+			trackImpression(this.get('model'));
 		},
 
 		isDiscussionReply(type) {
@@ -99,6 +96,12 @@ export default Component.extend(
 			}, context);
 
 			return i18n.t(key, fullContext);
+		},
+
+		actions: {
+			onNotificationClicked() {
+				trackClick(this.get('model'));
+			}
 		}
 	}
 );

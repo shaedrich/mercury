@@ -5,7 +5,7 @@
 			totalContributorCount=model.events.length
 	}}
 {{/if}}
-<a href="{{href}}">
+<a href="{{href}}" {{action 'onNotificationClicked'}}>
 	<div class="notification-icon-wrapper">
 		{{svg iconName viewBox='0 0 24 24' class='icon'}}
 	</div>

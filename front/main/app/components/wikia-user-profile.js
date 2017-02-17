@@ -2,12 +2,14 @@ import Ember from 'ember';
 import NoScrollMixin from '../mixins/no-scroll';
 import {track, trackActions} from 'common/utils/track';
 import NotificationsScrollMenuMixin from '../mixins/notifications-scroll-menu';
+import MarkAllNotificationsMixin from '../mixins/mark-all-notifications';
 
 const {Component, computed, inject} = Ember;
 
 export default Component.extend(
 	NoScrollMixin,
 	NotificationsScrollMenuMixin,
+	MarkAllNotificationsMixin,
 	{
 		classNames: ['wikia-user-profile'],
 		currentUser: inject.service(),

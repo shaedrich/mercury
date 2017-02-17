@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import NotificationsScrollMenuMixin from '../../mixins/notifications-scroll-menu';
+import MarkAllNotificationsMixin from '../../mixins/mark-all-notifications';
 
 const {Component, inject, computed} = Ember;
 
-export default Component.extend(NotificationsScrollMenuMixin, {
+export default Component.extend(NotificationsScrollMenuMixin, MarkAllNotificationsMixin, {
 	hasUnread: true,
 
 	notifications: inject.service(),
