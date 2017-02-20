@@ -12,13 +12,13 @@ export default Ember.Mixin.create({
 	 * Returns content with links created from urls and converts \n, \rn and \r to <br>
 	 * @returns {string}
 	 */
-	parsedContent: Ember.computed('post.rawContent', 'post.renderedContent', function () {
+	parsedContent: Ember.computed('post.rawContent', 'post.renderedContent', 'content', function () {
 		return this.get('post.renderedContent') ? this.getParsedRenderedContent() : this.getParsedRawContent();
 	}),
 
 	getParsedRawContent() {
 		let escapedContent = Ember.Handlebars.Utils.escapeExpression(
-			this.get('post.rawContent')
+			this.get('post.rawContent') || this.get('content')
 		).trim();
 
 		if (this.get('shouldTruncateContent') && shouldUseTruncationHack()) {
