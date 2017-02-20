@@ -95,6 +95,10 @@ export function getHostFromRequest(request) {
 	return request.headers['x-original-host'] || request.headers.host;
 }
 
+export function getReferrerUrlOrDefault(request, alternative = 'http://www.wikia.com/') {
+	return request.headers['REFERER'] || alternative;
+}
+
 /**
  * Generate wiki host name from the request host
  *

@@ -208,6 +208,11 @@ let routes,
 		},
 		{
 			method: 'GET',
+			path: '/signout',
+			handler: logoutHandler
+		},
+		{
+			method: 'GET',
 			path: '/logout',
 			handler: logoutHandler
 		},
