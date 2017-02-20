@@ -42,11 +42,11 @@ $notifications-dropdown-border-color: #363b41;
 	min-width: 356px;
 	width: 100%;
 
-	.notifications-list {
-		box-sizing: border-box;
-		max-height: 420px;
-		overflow-y: scroll;
-		width: 100%;
+    .scrolling-part {
+	  box-sizing: border-box;
+	  max-height: 420px;
+	  overflow-y: scroll;
+	  width: 100%;
 	}
 }
 
