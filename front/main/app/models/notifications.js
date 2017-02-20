@@ -10,244 +10,17 @@ const NotificationsModel = Object.extend({
 
 	setNormalizedData(apiData) {
 		this.setProperties({
-			unreadCount: 1,
+			unreadCount: apiData.unread,
 			data: new A()
 		});
 
-		this.data.pushObjects([
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				unread: true,
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				type: 'discussion-reply',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				unread: true,
-				type: 'discussion-reply',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Fallout',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
+		const notifications = apiData.notifications;
 
-				],
-				title: 'Harmless title',
-				type: 'discussion-reply',
-				siteName: 'Fallout',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-post',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-post',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-reply',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
+		if (notifications && notifications.length) {
+			this.addNotifications(apiData.notifications);
+		}
+
+		this.data.pushObjects([
 			{
 				author: {
 					avatarUrl: null,
@@ -290,6 +63,14 @@ const NotificationsModel = Object.extend({
 			return resolve();
 		});
 	},
+
+	addNotifications(notifications) {
+		const notificationModels = notifications.map(function (notificationApiData) {
+			return Notification.create(notificationApiData);
+		});
+
+		this.get('data').pushObjects(notificationModels);
+	}
 });
 
 NotificationsModel.reopenClass({
