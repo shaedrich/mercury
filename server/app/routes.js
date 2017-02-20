@@ -7,6 +7,7 @@ import heartbeatHandler from './facets/operations/heartbeat';
 import discussionsHandler from './facets/show-discussions';
 import mediaWikiPageHandler from './facets/mediawiki-page';
 import logoutHandler from './facets/auth/logout';
+import signOutHandler from './facets/auth/signout';
 import articlePreview from './facets/article-preview';
 import joinHandler from './facets/auth/join';
 import {validateRedirect} from './facets/auth/auth-view';
@@ -209,7 +210,7 @@ let routes,
 		{
 			method: 'GET',
 			path: '/signout',
-			handler: logoutHandler
+			handler: signOutHandler
 		},
 		{
 			method: 'GET',
