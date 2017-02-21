@@ -25,15 +25,15 @@ NotificationModel.reopenClass({
 	create(notificationData) {
 		return this._super({
 			author: DiscussionContributor.create(notificationData.author),
-			title: Ember.get('notificationData.refersTo.title'),
-			textSnippet: Ember.get('notificationData.refersTo.textSnippet'),
-			timestamp: NotificationModel.getTimestamp(Ember.get('notificationData.events.latestEvent.timestamp')),
-			communityName: Ember.get('notificationData.community.name'),
-			communityId: Ember.get('notificationData.community.id'),
+			title: Ember.get(notificationData, 'refersTo.title'),
+			textSnippet: Ember.get(notificationData, 'refersTo.textSnippet'),
+			timestamp: NotificationModel.getTimestamp(Ember.get(notificationData, 'events.latestEvent.timestamp')),
+			communityName: Ember.get(notificationData, 'community.name'),
+			communityId: Ember.get(notificationData, 'community.id'),
 			isUnread: notificationData.read === false,
-			totalUniqueActors: Ember.get('notificationData.events.totalUniqueActors'),
+			totalUniqueActors: Ember.get(notificationData, 'events.totalUniqueActors'),
 			latestActors: NotificationModel.createActors(notificationData.actors),
-			type: notificationData.type,
+			type: NotificationModel.getTypeFromApiData(notificationData),
 			threadId: notificationData.threadId,
 			siteId: notificationData.siteId,
 			replyId: notificationData.replyId,
@@ -50,6 +50,18 @@ NotificationModel.reopenClass({
 
 	getTimestamp(dateString) {
 		return new Date(dateString).getTime();
+	},
+
+	getTypeFromApiData(apiData) {
+		if (apiData.type === 'upvote-notification') {
+			if (apiData.refersTo.type === 'discussion-post') {
+				return 'discussion-upvote-reply';
+			} else {
+				return 'discussion-upvote-post';
+			}
+		} else if (apiData.type === 'reply-notification') {
+			return 'discussion-reply';
+		}
 	}
 });
 

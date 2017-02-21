@@ -28,8 +28,11 @@ const NotificationsModel = Object.extend({
 	loadMoreResults() {
 		const since = this.getNewestNotificationISODate();
 
-		return request(M.getOnSiteNotificationsServiceUrl(`/notifications?since=${since}`), {
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
 			method: 'POST',
+			data: {
+				since
+			}
 		}).then((thread) => {
 			this.get('data').setEach('isUnread', false);
 		});
@@ -38,8 +41,10 @@ const NotificationsModel = Object.extend({
 	markAllAsRead() {
 		const since = this.getNewestNotificationISODate();
 
-		return request(M.getOnSiteNotificationsServiceUrl(`/notifications?since=${since}`), {
-			method: 'POST',
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
+			data: {
+				since
+			},
 		}).then((thread) => {
 			this.get('data').setEach('isUnread', false);
 		});
@@ -62,11 +67,11 @@ NotificationsModel.reopenClass({
 		return new RSVP.Promise((resolve, reject) => {
 			const notificationsInstance = NotificationsModel.create();
 
-			request(M.getOnSiteNotificationsServiceUrl('/notifications')).then((data) => {
+			request(M.getOnSiteNotificationsServiceUrl('/notifications'), {}).then((data) => {
 				notificationsInstance.setNormalizedData(data);
 				resolve(notificationsInstance);
 			}).catch(() => {
-				reject(discussionInstance);
+				reject(notificationsInstance);
 			});
 		});
 	}
