@@ -2,7 +2,6 @@ import DiscussionBaseModel from './base';
 import DiscussionModerationModelMixin from '../../mixins/discussion-moderation-model';
 import DiscussionForumActionsModelMixin from '../../mixins/discussion-forum-actions-model';
 import DiscussionContributionModelMixin from '../../mixins/discussion-contribution-model';
-import ContentFormatMixin from '../../mixins/discussion-content-format-static';
 import DiscussionContributors from './domain/contributors';
 import DiscussionEntities from './domain/entities';
 import request from 'ember-ajax/request';
@@ -11,7 +10,6 @@ const DiscussionReportedPostsModel = DiscussionBaseModel.extend(
 	DiscussionModerationModelMixin,
 	DiscussionForumActionsModelMixin,
 	DiscussionContributionModelMixin,
-	ContentFormatMixin,
 	{
 		/**
 		 * @param {number} [pageNum=0]
@@ -20,13 +18,13 @@ const DiscussionReportedPostsModel = DiscussionBaseModel.extend(
 		 */
 		loadPage(pageNum = 1) {
 			return request(M.getDiscussionServiceUrl(`/${this.wikiId}/posts`), {
-				data: this.getRequestDataWithFormat({
+				data: {
 					limit: this.get('loadMoreLimit'),
 					page: this.get('data.pageNum') + 1,
 					pivot: this.get('pivotId'),
 					viewableOnly: true,
-					reported: true,
-				}),
+					reported: true
+				},
 			}).then((data) => {
 				const newEntities = DiscussionEntities.createFromPostsData(Ember.get(data, '_embedded.doc:posts'));
 
@@ -76,12 +74,12 @@ DiscussionReportedPostsModel.reopenClass({
 			});
 
 			request(M.getDiscussionServiceUrl(`/${wikiId}/posts`), {
-				data: reportedPostsInstance.getRequestDataWithFormat({
+				data: {
 					page: page - 1,
 					limit: reportedPostsInstance.get('postsLimit'),
 					reported: true,
 					viewableOnly: true,
-				})
+				}
 			}).then((data) => {
 				reportedPostsInstance.setNormalizedData(data);
 

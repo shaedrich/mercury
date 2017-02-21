@@ -1,0 +1,21 @@
+<form id="{{formId}}" action="{{piggybackPostURL}}" method="POST">
+	<p>{{i18n 'auth:piggyback.warning'}}</p>
+
+	<div class="input-container">
+		<input type="text" name="targetUsername" id="targetUsername" required />
+		<label class="floating-label" for="targetUsername">{{i18n "auth:piggyback.target-username-label"}}</label>
+	</div>
+	<h5 class="auth-section-header">
+		{{i18n 'auth:piggyback.re-enter-credentials'}}
+	</h5>
+	<div class="input-container">
+		<input type="text" name="username" id="loginUsername" required />
+		<label class="floating-label" for="loginUsername">{{i18n "auth:common.username-label"}}</label>
+	</div>
+	<div class="input-container">
+		<input class="sign-in-password" type="password" name="password" id="loginPassword" autocomplete="off" required />
+		<label class="floating-label" for="loginPassword">{{i18n "auth:common.password-label"}}</label>
+		<span class="input-icon password-toggler"></span>
+	</div>
+	<button id="piggyback-submit" type="submit" class="form-submit" disabled><span>{{i18n submitText}}</span></button>
+</form>

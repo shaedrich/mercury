@@ -3,6 +3,7 @@ import {getUserPreferencesUrl} from '../../lib/auth-utils';
 import {parse, resolve} from 'url';
 import settings from '../../../config/settings';
 import ESAPI from 'node-esapi';
+import {shouldServeMobileView} from '../../lib/utils';
 
 /**
  * @typedef {string[]} PageParams
@@ -139,13 +140,11 @@ export function validateRedirect(request, reply) {
  * @returns {string}
  */
 export function getViewType(request) {
-	const mobilePattern = settings.patterns.mobile,
-		ipadPattern = settings.patterns.iPad;
-
-	if (mobilePattern.test(request.headers['user-agent']) && !ipadPattern.test(request.headers['user-agent'])) {
+	if (shouldServeMobileView(request.headers['user-agent'])) {
 		return VIEW_TYPE_MOBILE;
+	} else {
+		return VIEW_TYPE_DESKTOP;
 	}
-	return VIEW_TYPE_DESKTOP;
 }
 
 /**
@@ -153,15 +152,14 @@ export function getViewType(request) {
  * @param {AuthViewContext} context
  * @param {Hapi.Request} request
  * @param {*} reply
+ * @param layout either 'card' or 'auth', 'auth' is default
  * @returns {Hapi.Response}
  */
-export function view(template, context, request, reply) {
+export function view(template, context, request, reply, layout = 'auth') {
 	const response = reply.view(
 		`auth/${getViewType(request)}/${template}`,
 		context,
-		{
-			layout: 'auth'
-		}
+		{layout}
 	);
 
 	disableCache(response);
