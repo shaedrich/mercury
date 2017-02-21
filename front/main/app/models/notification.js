@@ -32,11 +32,12 @@ NotificationModel.reopenClass({
 			communityId: Ember.get(notificationData, 'community.id'),
 			isUnread: notificationData.read === false,
 			totalUniqueActors: Ember.get(notificationData, 'events.totalUniqueActors'),
-			latestActors: NotificationModel.createActors(notificationData.actors),
+			latestActors: NotificationModel.createActors(notificationData.events.latestActors),
 			type: NotificationModel.getTypeFromApiData(notificationData),
 			threadId: notificationData.threadId,
 			siteId: notificationData.siteId,
 			replyId: notificationData.replyId,
+			uri: Ember.get(notificationData, 'refersTo.uri')
 		});
 	},
 

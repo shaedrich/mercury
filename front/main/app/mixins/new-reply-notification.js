@@ -9,9 +9,10 @@ export default Mixin.create({
 	 * @returns {string}
 	 */
 	getReplyMessageBody(model) {
-		const hasTitle = model.title,
-			hasTwoUsers = model.events.length === 2,
-			hasThreeOrMoreUsers = model.events.length > 2;
+		const hasTitle = model.get('title'),
+			totalUniqueActors = model.get('totalUniqueActors'),
+			hasTwoUsers = totalUniqueActors === 2,
+			hasThreeOrMoreUsers = totalUniqueActors > 2;
 
 		if (hasTitle) {
 			if (hasThreeOrMoreUsers) {

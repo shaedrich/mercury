@@ -9,8 +9,8 @@ export default Mixin.create({
 	 * @returns {string}
 	 */
 	getPostUpvoteMessageBody(model) {
-		const hasTitle = model.title,
-			hasMultipleUsers = model.events.length > 1;
+		const hasTitle = model.get('title'),
+			hasMultipleUsers = model.get('totalUniqueActors') > 1;
 
 		if (hasTitle) {
 			if (hasMultipleUsers) {

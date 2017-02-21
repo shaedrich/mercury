@@ -21,7 +21,7 @@ const NotificationsModel = Object.extend({
 		const notifications = apiData.notifications;
 
 		if (notifications && notifications.length) {
-			this.addNotifications(apiData.notifications);
+			this.addNotifications(notifications);
 		}
 	},
 
