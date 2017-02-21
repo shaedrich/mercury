@@ -1,6 +1,14 @@
 $notifications-dropdown-content-color: #656d77;
 $notifications-dropdown-border-color: #363b41;
 
+.spinner-container {
+  border-top: solid 1px #e6e6e6;
+  margin-left: 18px;
+  margin-right: 18px;
+  padding-bottom: 11px;
+  padding-top:11px;
+}
+
 .notifications {
 	&:hover {
 		.icon-bell,

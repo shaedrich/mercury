@@ -37,13 +37,16 @@
 				{{else}}
 					{{i18n 'notifications.no-notifications-message' ns='discussion'}}
 				{{/if}}
+				<div class="spinner-container">
 				{{loading-spinner
 						active=isLoadingNewResults
 						isBlock=true
+						isThemed=false
 						overlay=false
 						radius=20
-						strokeWidth=3
+						strokeWidth=2
 				}}
+				</div>
 			</div>
 		</div>
 	{{/dropdown.content}}
