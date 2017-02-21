@@ -310,10 +310,6 @@ export default {
 	facebook: {
 		appId: 112328095453510
 	},
-	patterns: {
-		mobile: /(iPhone|Android.*Mobile|iPod|Opera Mini|Opera Mobile|Mobile.*Firefox|Windows CE| Kindle|IEMobile|Symbian|Danger|BlackBerry|BB10|Googlebot-Mobile|Nokia)/,
-		iPad: /iPad/
-	},
 	enableDiscussions: true,
 	clickstream: {
 		social: {
