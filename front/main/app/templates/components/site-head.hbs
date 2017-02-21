@@ -13,7 +13,9 @@
 				iconSize=24
 			}}
 			{{#unless drawerVisible}}
-				<span class="notifications-unread-mark">2</span>
+				{{#if unreadCount}}
+					<span class="notifications-unread-mark">{{unreadCount}}</span>
+				{{/if}}
 			{{/unless}}
 		</div>
 		<div class="site-logo">

@@ -1,11 +1,13 @@
 import Ember from 'ember';
 import HeadroomMixin from '../mixins/headroom';
+import NotificationsUnreadCountixin from '../mixins/notifications-unread-count';
 import {track, trackActions} from 'common/utils/track';
 
 const {computed, Component} = Ember;
 
 export default Component.extend(
 	HeadroomMixin,
+	NotificationsUnreadCountMixin,
 	{
 		classNames: ['site-head-container'],
 		classNameBindings: ['themeBar'],

@@ -2,12 +2,13 @@ import Ember from 'ember';
 import LoginLinkMixin from '../mixins/login-link';
 import WikiaNavModel from '../models/wikia-nav';
 import NoScrollMixin from '../mixins/no-scroll';
+import NotificationsUnreadCountMixin from '../mixins/notifications-unread-count';
 import {track, trackActions} from 'common/utils/track';
 
 const {Component, computed, inject} = Ember;
 
 export default Component.extend(
-	LoginLinkMixin, NoScrollMixin,
+	LoginLinkMixin, NoScrollMixin, NotificationsUnreadCountMixin,
 	{
 		classNames: ['wikia-nav'],
 		classNameBindings: ['model.inRoot:wikia-nav--in-root'],
