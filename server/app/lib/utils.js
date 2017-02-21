@@ -1,7 +1,6 @@
 /**
  * Utility functions
  */
-
 import {applyToDefaults, escapeHtml} from 'hoek';
 import {parse} from 'url';
 import {stringify} from 'querystring';
@@ -9,6 +8,7 @@ import {RedirectedToCanonicalHost} from './custom-errors';
 import deepExtend from 'deep-extend';
 import Promise from 'bluebird';
 import uuid from 'node-uuid';
+import MobileDetect from 'mobile-detect';
 
 /**
  * @typedef {Object} ServerData
@@ -370,4 +370,13 @@ export function getInternalHeaders(request, customHeaders = {}) {
 		},
 		customHeaders
 	);
+}
+
+export function shouldServeMobileView(userAgent) {
+	const md = new MobileDetect(userAgent);
+	if (md.mobile() || md.phone() || md.tablet() || md.isPhoneSized()) {
+		return true;
+	} else {
+		return false;
+	}
 }
