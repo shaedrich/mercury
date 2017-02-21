@@ -8,6 +8,10 @@ const NotificationsModel = Object.extend({
 	unreadCount: null,
 	data: null,
 
+	getNewestNotificationISODate() {
+		return new Date(this.get('data.0.timestamp')).toISOString();
+	},
+
 	setNormalizedData(apiData) {
 		this.setProperties({
 			unreadCount: apiData.unread,
@@ -22,14 +26,22 @@ const NotificationsModel = Object.extend({
 	},
 
 	loadMoreResults() {
-		return new RSVP.Promise((resolve) => {
-			return resolve();
+		const since = this.getNewestNotificationISODate();
+
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications?since=${since}`), {
+			method: 'POST',
+		}).then((thread) => {
+			this.get('data').setEach('isUnread', false);
 		});
 	},
 
 	markAllAsRead() {
-		return new RSVP.Promise((resolve) => {
-			return resolve();
+		const since = this.getNewestNotificationISODate();
+
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications?since=${since}`), {
+			method: 'POST',
+		}).then((thread) => {
+			this.get('data').setEach('isUnread', false);
 		});
 	},
 

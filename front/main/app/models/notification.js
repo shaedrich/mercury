@@ -30,6 +30,7 @@ NotificationModel.reopenClass({
 			timestamp: NotificationModel.getTimestamp(Ember.get('notificationData.events.latestEvent.timestamp')),
 			communityName: Ember.get('notificationData.community.name'),
 			communityId: Ember.get('notificationData.community.id'),
+			isUnread: notificationData.read === false,
 			totalUniqueActors: Ember.get('notificationData.events.totalUniqueActors'),
 			latestActors: NotificationModel.createActors(notificationData.actors),
 			type: notificationData.type,
