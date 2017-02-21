@@ -3,6 +3,7 @@ import {getUserPreferencesUrl} from '../../lib/auth-utils';
 import {parse, resolve} from 'url';
 import settings from '../../../config/settings';
 import ESAPI from 'node-esapi';
+import {shouldServeMobileView} from '../../lib/utils';
 
 /**
  * @typedef {string[]} PageParams
@@ -139,13 +140,11 @@ export function validateRedirect(request, reply) {
  * @returns {string}
  */
 export function getViewType(request) {
-	const mobilePattern = settings.patterns.mobile,
-		ipadPattern = settings.patterns.iPad;
-
-	if (mobilePattern.test(request.headers['user-agent']) && !ipadPattern.test(request.headers['user-agent'])) {
+	if (shouldServeMobileView(request.headers['user-agent'])) {
 		return VIEW_TYPE_MOBILE;
+	} else {
+		return VIEW_TYPE_DESKTOP;
 	}
-	return VIEW_TYPE_DESKTOP;
 }
 
 /**
