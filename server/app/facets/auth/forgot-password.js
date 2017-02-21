@@ -2,7 +2,6 @@ import authLocaleSettings from '../../../config/authLocaleSettings';
 import * as authUtils from '../../lib/auth-utils';
 import * as authView from './auth-view';
 import deepExtend from 'deep-extend';
-import {disableCache} from '../../lib/caching';
 import resetPasswordFor from '../operations/reset-password';
 import settings from '../../../config/settings';
 import translateError from './translate-error';
@@ -48,19 +47,6 @@ function getForgotPasswordViewContext(request) {
 	return context;
 }
 
-function assembleView(context, request, reply) {
-	const response = reply.view(
-		`auth/${authView.getViewType(request)}/cards`,
-		context,
-		{
-			layout: 'card'
-		}
-	);
-
-	disableCache(response);
-	return response;
-}
-
 /**
  * @param {Hapi.Request} request
  * @param {*} reply
@@ -72,7 +58,7 @@ export function get(request, reply) {
 		return authView.onAuthenticatedRequestReply(request, reply, context);
 	}
 
-	return assembleView(context, request, reply);
+	return authView.view('cards', context, request, reply, 'card');
 }
 
 /**
