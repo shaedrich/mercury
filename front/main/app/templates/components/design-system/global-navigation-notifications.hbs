@@ -33,7 +33,9 @@
 					{{/each}}
 				</ul>
 			{{else}}
-				{{i18n 'notifications.no-notifications-message' ns='discussion'}}
+				<div class="notifications-empty-content">
+					{{i18n 'notifications.no-notifications-message' ns='discussion'}}
+				</div>
 			{{/if}}
 			{{loading-spinner
 				active=isLoadingNewResults
