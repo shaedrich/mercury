@@ -19,37 +19,6 @@ const NotificationsModel = Object.extend({
 		if (notifications && notifications.length) {
 			this.addNotifications(apiData.notifications);
 		}
-
-		this.data.pushObjects([
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-reply',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-		]);
 	},
 
 	loadMoreResults() {
@@ -78,20 +47,15 @@ NotificationsModel.reopenClass({
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	getNotifications() {
-		return new RSVP.Promise((resolve) => {
+		return new RSVP.Promise((resolve, reject) => {
 			const notificationsInstance = NotificationsModel.create();
 
-			// request(M.getDiscussionServiceUrl(`/${wikiId}/forums`)).then((data) => {
-			// 	discussionInstance.setNormalizedData(data);
-			//
-			// 	resolve(discussionInstance);
-			// }).catch(() => {
-			// 	// Categories fail silently - you can still view the default category
-			// 	resolve(discussionInstance);
-			// });
-
-			notificationsInstance.setNormalizedData();
-			return resolve(notificationsInstance);
+			request(M.getOnSiteNotificationsServiceUrl('/notifications')).then((data) => {
+				notificationsInstance.setNormalizedData(data);
+				resolve(notificationsInstance);
+			}).catch(() => {
+				reject(discussionInstance);
+			});
 		});
 	}
 });
