@@ -212,6 +212,9 @@ export default {
 	userPermissions: {
 		baseAPIPath: 'user-permissions'
 	},
+	onSiteNotifications: {
+		baseAPIPath: 'on-site-notifications'
+	},
 	whoAmIService: {
 		path: '/whoami',
 		timeout: 3000

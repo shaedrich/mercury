@@ -8,288 +8,50 @@ const NotificationsModel = Object.extend({
 	unreadCount: null,
 	data: null,
 
+	getNewestNotificationISODate() {
+		return new Date(this.get('data.0.timestamp')).toISOString();
+	},
+
 	setNormalizedData(apiData) {
 		this.setProperties({
-			unreadCount: 1,
+			unreadCount: apiData.unread,
 			data: new A()
 		});
 
-		this.data.pushObjects([
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				unread: true,
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				type: 'discussion-reply',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				unread: true,
-				type: 'discussion-reply',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Fallout',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
+		const notifications = apiData.notifications;
 
-				],
-				title: 'Harmless title',
-				type: 'discussion-reply',
-				siteName: 'Fallout',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-post',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-post',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-reply',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-			{
-				author: {
-					avatarUrl: null,
-					badgePermission: null,
-					id: null,
-					name: 'Brtkowal',
-					profileUrl: null,
-				},
-				events: [
-					{
-						author: {
-							avatarUrl: null,
-							badgePermission: null,
-							id: null,
-							name: 'Brtkowal',
-							profileUrl: null,
-						},
-						timestamp: 1485349922140,
-					},
-					{
-						timestamp: 1485349922140,
-					}
-				],
-				type: 'discussion-upvote-reply',
-				snippet: 'lalalalala there were a couple of things done and blah blah blah',
-				siteName: 'Wookiepedia',
-				timestamp: 1485349922140,
-			},
-		]);
+		if (notifications && notifications.length) {
+			this.addNotifications(apiData.notifications);
+		}
 	},
 
 	loadMoreResults() {
-		return new RSVP.Promise((resolve) => {
-			return resolve();
+		const since = this.getNewestNotificationISODate();
+
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications?since=${since}`), {
+			method: 'POST',
+		}).then((thread) => {
+			this.get('data').setEach('isUnread', false);
 		});
 	},
 
 	markAllAsRead() {
-		return new RSVP.Promise((resolve) => {
-			return resolve();
+		const since = this.getNewestNotificationISODate();
+
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications?since=${since}`), {
+			method: 'POST',
+		}).then((thread) => {
+			this.get('data').setEach('isUnread', false);
 		});
 	},
+
+	addNotifications(notifications) {
+		const notificationModels = notifications.map(function (notificationApiData) {
+			return Notification.create(notificationApiData);
+		});
+
+		this.get('data').pushObjects(notificationModels);
+	}
 });
 
 NotificationsModel.reopenClass({
@@ -297,20 +59,15 @@ NotificationsModel.reopenClass({
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	getNotifications() {
-		return new RSVP.Promise((resolve) => {
+		return new RSVP.Promise((resolve, reject) => {
 			const notificationsInstance = NotificationsModel.create();
 
-			// request(M.getDiscussionServiceUrl(`/${wikiId}/forums`)).then((data) => {
-			// 	discussionInstance.setNormalizedData(data);
-			//
-			// 	resolve(discussionInstance);
-			// }).catch(() => {
-			// 	// Categories fail silently - you can still view the default category
-			// 	resolve(discussionInstance);
-			// });
-
-			notificationsInstance.setNormalizedData();
-			return resolve(notificationsInstance);
+			request(M.getOnSiteNotificationsServiceUrl('/notifications')).then((data) => {
+				notificationsInstance.setNormalizedData(data);
+				resolve(notificationsInstance);
+			}).catch(() => {
+				reject(discussionInstance);
+			});
 		});
 	}
 });
