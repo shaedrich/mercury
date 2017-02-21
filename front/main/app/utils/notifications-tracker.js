@@ -22,11 +22,11 @@ function getTrackingContext(label, action, params) {
 		category: gaCategory,
 		label: labels[label]
 	}, params);
-},
+}
 
 function getGAValueFromUnreadStatus(isUnread) {
 	return isUnread ? 1 : 0;
-},
+}
 
 /**
  * @param {string} action
