@@ -36,7 +36,7 @@ export default function translateError(data, customError) {
 		errors.push('server-error');
 	} else if (step === 'user-discovery') {
 		handleUserDiscoveryErrors(statusCode, errors);
-	} else if (step === 'piggy-back' && ( statusCode === 403 || statusCode === 401 ) ) {
+	} else if (step === 'piggy-back' && (statusCode === 403 || statusCode === 401)) {
 		errors.push('access-denied');
 	} else if (step === 'update-password' || step === 'reset-password') {
 		const payload = JSON.parse(data.payload);
