@@ -7,7 +7,7 @@ const {Object, A} = Ember;
 
 const NotificationModel = Object.extend({
 	title: null,
-	textSnippet: null,
+	snippet: null,
 	timestamp: null,
 	communityName: null,
 	type: null,
@@ -26,7 +26,7 @@ NotificationModel.reopenClass({
 	create(notificationData) {
 		return this._super({
 			title: Ember.get(notificationData, 'refersTo.title'),
-			textSnippet: Ember.get(notificationData, 'refersTo.snippet'),
+			snippet: Ember.get(notificationData, 'refersTo.snippet'),
 			timestamp: NotificationModel.getTimestamp(Ember.get(notificationData, 'events.latestEvent.when')),
 			communityName: Ember.get(notificationData, 'community.name'),
 			communityId: Ember.get(notificationData, 'community.id'),
