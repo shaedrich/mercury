@@ -94,8 +94,8 @@ CuratedContentEditorModel.reopenClass({
 	 */
 	prepareDataForSave(model) {
 		return {
-			data: [].concat(model.featured, model.curated.items, model.optional),
-			community_data: model.communityData
+			data: JSON.stringify([].concat(model.featured, model.curated.items, model.optional)),
+			community_data: JSON.stringify(model.communityData)
 		};
 	},
 
