@@ -13,9 +13,11 @@
 		<p class="notification-text">
 			{{{text}}}
 		</p>
-		<p class="notification-entity-text-snippet">
-			{{{postSnippetMarkup}}}
-		</p>
+		{{#unless model.title}}
+			<p class="notification-entity-text-snippet">
+				{{{postSnippetMarkup}}}
+			</p>
+		{{/unless}}
 		<ul class="notification-context-list">
 			<li class="notification-context-item">
 				{{time-ago model.timestamp}}
