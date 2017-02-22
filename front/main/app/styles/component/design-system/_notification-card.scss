@@ -8,7 +8,7 @@ $notification-card-anchor-color: #656d77;
 	&.is-unread {
 		.notification-icon-wrapper {
 			.icon {
-				fill: $wds-color-slate-gray ;
+				fill: $wds-color-link;
 			}
 		}
 	}

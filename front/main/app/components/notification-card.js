@@ -30,7 +30,7 @@ export default Component.extend(
 				'wds-icons-upvote-small';
 		}),
 
-		isUnread: computed.alias('model.unread'),
+		isUnread: computed.alias('model.isUnread'),
 
 		postTitleMarkup: computed('model.title', function () {
 			return wrapMeHelper.compute([
