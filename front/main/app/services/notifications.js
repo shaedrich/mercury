@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import NotificationsModel from '../models/notifications';
+import NotificationsModel from '../models/notifications/notifications';
 
 const {Service, Logger, computed} = Ember;
 

@@ -1,6 +1,6 @@
 import Ember from 'ember';
-import {extractDomainFromUrl} from '../utils/domain';
-import DiscussionContributor from './discussion/domain/contributor';
+import {extractDomainFromUrl} from '../../utils/domain';
+import DiscussionContributor from '../discussion/domain/contributor';
 
 const {Object, A} = Ember;
 
@@ -26,8 +26,8 @@ NotificationModel.reopenClass({
 		return this._super({
 			author: DiscussionContributor.create(notificationData.author),
 			title: Ember.get(notificationData, 'refersTo.title'),
-			textSnippet: Ember.get(notificationData, 'refersTo.textSnippet'),
-			timestamp: NotificationModel.getTimestamp(Ember.get(notificationData, 'events.latestEvent.timestamp')),
+			textSnippet: Ember.get(notificationData, 'refersTo.snippet'),
+			timestamp: NotificationModel.getTimestamp(Ember.get(notificationData, 'events.latestEvent.when')),
 			communityName: Ember.get(notificationData, 'community.name'),
 			communityId: Ember.get(notificationData, 'community.id'),
 			isUnread: notificationData.read === false,
