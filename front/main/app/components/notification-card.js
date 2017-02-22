@@ -79,13 +79,9 @@ export default Component.extend(
 			return type === notificationTypes.discussionUpvotePost;
 		},
 
-		showAvatars: computed('model.events.length', 'model.type', function () {
-			return this.get('model.events.length') > 2 &&
+		showAvatars: computed('model.totalUniqueActors', 'model.type', function () {
+			return this.get('model.totalUniqueActors') > 2 &&
 				this.isDiscussionReply(this.get('model.type'));
-		}),
-
-		authors: computed('model.events', function () {
-			return this.get('model.events').mapBy('author');
 		}),
 
 		getTranslatedMessage(key, context) {

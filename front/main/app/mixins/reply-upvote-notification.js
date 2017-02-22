@@ -10,28 +10,30 @@ export default Mixin.create({
 	 */
 	getReplyUpvoteMessageBody(model) {
 		const hasTitle = model.get('title'),
-			hasMultipleUsers = model.get('totalUniqueActors') > 1;
+			totalUniqueActors = model.get('totalUniqueActors'),
+			hasMultipleUsers = totalUniqueActors > 1,
+			user = model.get('latestActors.0');
 
 		if (hasTitle) {
 			if (hasMultipleUsers) {
 				return this.getTranslatedMessage('notifications.reply-upvote-multiple-users-with-title', {
 					postTitle: this.get('postTitleMarkup'),
-					number: this.get('model.events.length') - 1
+					number: totalUniqueActors - 1
 				});
 			} else {
 				return this.getTranslatedMessage('notifications.reply-upvote-single-user-with-title', {
-					user: this.get('model.author.name'),
+					user: user.name,
 					postTitle: this.get('postTitleMarkup'),
 				});
 			}
 		} else {
 			if (hasMultipleUsers) {
 				return this.getTranslatedMessage('notifications.reply-upvote-multiple-users-no-title', {
-					number: this.get('model.events.length')
+					number: totalUniqueActors
 				});
 			} else {
 				return this.getTranslatedMessage('notifications.reply-upvote-single-user-no-title', {
-					user: this.get('model.author.name'),
+					user: user.name,
 				});
 			}
 		}

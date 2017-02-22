@@ -1,8 +1,8 @@
 {{#if showAvatars}}
 	{{discussion-contributors
-			users=authors
+			users=model.latestActors
 			maxContributorDisplayCount=5
-			totalContributorCount=model.events.length
+			totalContributorCount=model.totalUniqueActors
 	}}
 {{/if}}
 <a href="{{model.uri}}" {{action 'onNotificationClicked'}}>

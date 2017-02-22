@@ -6,15 +6,15 @@ import {notificationTypes} from '../../utils/global-notifications';
 const {Object, A} = Ember;
 
 const NotificationModel = Object.extend({
-	author: null,
 	title: null,
 	textSnippet: null,
 	timestamp: null,
 	communityName: null,
 	type: null,
-	threadId: null,
-	siteId: null,
-	replyId: null
+	isUnread: false,
+	totalUniqueActors: 1,
+	latestActors: [],
+	uri: null
 });
 
 NotificationModel.reopenClass({
@@ -25,7 +25,6 @@ NotificationModel.reopenClass({
 	 */
 	create(notificationData) {
 		return this._super({
-			author: DiscussionContributor.create(notificationData.author),
 			title: Ember.get(notificationData, 'refersTo.title'),
 			textSnippet: Ember.get(notificationData, 'refersTo.snippet'),
 			timestamp: NotificationModel.getTimestamp(Ember.get(notificationData, 'events.latestEvent.when')),
@@ -33,11 +32,8 @@ NotificationModel.reopenClass({
 			communityId: Ember.get(notificationData, 'community.id'),
 			isUnread: notificationData.read === false,
 			totalUniqueActors: Ember.get(notificationData, 'events.totalUniqueActors'),
-			latestActors: NotificationModel.createActors(notificationData.events.latestActors),
+			latestActors: NotificationModel.createActors(Ember.get(notificationData, 'events.latestActors')),
 			type: NotificationModel.getTypeFromApiData(notificationData),
-			threadId: notificationData.threadId,
-			siteId: notificationData.siteId,
-			replyId: notificationData.replyId,
 			uri: Ember.get(notificationData, 'refersTo.uri')
 		});
 	},
@@ -46,8 +42,11 @@ NotificationModel.reopenClass({
 		const actors = new A();
 
 		actors.pushObjects(actorsApiData.map(function (apiActor) {
-			return DiscussionContributor.create(apiActor.userInfo);
-		}))
+			apiActor.name = apiActor.userName;
+			return DiscussionContributor.create(apiActor);
+		}));
+
+		return actors;
 	},
 
 	getTimestamp(dateString) {
