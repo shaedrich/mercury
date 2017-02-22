@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import {extractDomainFromUrl} from '../../utils/domain';
 import DiscussionContributor from '../discussion/domain/contributor';
+import {notificationTypes} from '../../utils/global-notifications';
 
 const {Object, A} = Ember;
 
@@ -56,12 +57,12 @@ NotificationModel.reopenClass({
 	getTypeFromApiData(apiData) {
 		if (apiData.type === 'upvote-notification') {
 			if (apiData.refersTo.type === 'discussion-post') {
-				return 'discussion-upvote-reply';
+				return notificationTypes.discussionUpvoteReply;
 			} else {
-				return 'discussion-upvote-post';
+				return notificationTypes.discussionUpvotePost;
 			}
-		} else if (apiData.type === 'reply-notification') {
-			return 'discussion-reply';
+		} else if (apiData.type === 'replies-notification') {
+			return notificationTypes.discussionReply;
 		}
 	}
 });

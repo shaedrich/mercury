@@ -4,6 +4,7 @@ import NewReplyNotificationMixin from '../mixins/new-reply-notification';
 import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification';
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification';
 import {trackClick, trackImpression} from '../utils/notifications-tracker';
+import {notificationTypes} from '../utils/global-notifications';
 
 const {Component, inject, computed, Logger} = Ember;
 
@@ -24,7 +25,7 @@ export default Component.extend(
 		userLanguage: 'en',
 
 		iconName: computed('model.type', function () {
-			return this.get('model.type') === 'discussion-reply' ?
+			return this.isDiscussionReply(this.get('model.type')) ?
 				'wds-icons-reply-small' :
 				'wds-icons-upvote-small';
 		}),
@@ -53,13 +54,10 @@ export default Component.extend(
 
 			if (this.isDiscussionReply(type)) {
 				return this.getReplyMessageBody(model);
-
 			} else if (this.isDiscussionPostUpvote(type)) {
 				return this.getPostUpvoteMessageBody(model);
-
 			} else if (this.isDiscussionReplyUpvote(type)) {
 				return this.getReplyUpvoteMessageBody(model);
-
 			} else {
 				Logger.warn('No type found for a notification', model);
 			}
@@ -70,19 +68,20 @@ export default Component.extend(
 		},
 
 		isDiscussionReply(type) {
-			return type === 'discussion-reply';
+			return type === notificationTypes.discussionReply;
 		},
 
 		isDiscussionReplyUpvote(type) {
-			return type === 'discussion-upvote-reply';
+			return type === notificationTypes.discussionUpvoteReply;
 		},
 
 		isDiscussionPostUpvote(type) {
-			return type === 'discussion-upvote-post';
+			return type === notificationTypes.discussionUpvotePost;
 		},
 
 		showAvatars: computed('model.events.length', 'model.type', function () {
-			return this.get('model.events.length') > 2 && this.get('model.type') === 'discussion-reply';
+			return this.get('model.events.length') > 2 &&
+				this.isDiscussionReply(this.get('model.type'));
 		}),
 
 		authors: computed('model.events', function () {
