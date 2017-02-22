@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import CuratedContentEditorItemModel from '../models/curated-content-editor-item';
 import request from 'ember-ajax/request';
-import {form} from '../utils/content-type';
 
 /**
  * CuratedContentEditorRawSection
@@ -62,7 +61,8 @@ CuratedContentEditorModel.reopenClass({
 			}
 		}), {
 			method: 'POST',
-			contentType: form,
+			contentType: false,
+			processData: false,
 			data: this.prepareDataForSave(model),
 		});
 	},
@@ -93,10 +93,12 @@ CuratedContentEditorModel.reopenClass({
 	 * @returns {object} converted object
 	 */
 	prepareDataForSave(model) {
-		return {
-			data: JSON.stringify([].concat(model.featured, model.curated.items, model.optional)),
-			community_data: JSON.stringify(model.communityData)
-		};
+		let fd = new FormData();
+
+		fd.append('data',
+			JSON.stringify([].concat(model.featured, model.curated.items, model.optional)));
+		fd.append('community_data', JSON.stringify(model.communityData));
+		return fd;
 	},
 
 	/**
