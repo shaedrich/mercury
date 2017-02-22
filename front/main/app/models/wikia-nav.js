@@ -82,7 +82,7 @@ export default Object.extend({
 	exploreItems: computed('inExploreNav', 'exploreWikis', function () {
 		const wikis = this.get('exploreWikis');
 
-		return this.get('inExploreNav') &&
+		return wikis && this.get('inExploreNav') &&
 			get(wikis, 'links.length') &&
 			get(wikis, 'links').map((item) => {
 				return {
@@ -115,7 +115,7 @@ export default Object.extend({
 	exploreSubMenuItem: computed('inRoot', 'exploreWikis', function () {
 		const wikis = this.get('exploreWikis');
 
-		if (this.get('inRoot') && get(wikis, 'links.length')) {
+		if (wikis && this.get('inRoot') && get(wikis, 'links.length')) {
 			if (wikis.header) {
 				return [{
 					type: 'nav-menu-root',
