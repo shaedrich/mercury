@@ -34,6 +34,11 @@ export default Service.extend({
 	},
 
 	loadMoreResults() {
+		if (this.get('isLoading')) {
+			Logger.info('Is already loading');
+			return;
+		}
+
 		this.set('isLoading', true);
 		this.get('model')
 			.loadMoreResults(this.get('notificationsPerPage'))
