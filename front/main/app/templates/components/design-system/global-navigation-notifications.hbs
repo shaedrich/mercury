@@ -17,14 +17,17 @@
 		dropdownRightAligned=true
 	}}
 		<div class="notifications-dropdown-content">
+			{{#if hasUnread}}
+				<div class="mark-all-as-read-button">
+					<a {{action 'markAllAsRead'}} class="mark-all-as-read">
+						{{i18n 'notifications.mark-all-as-read' ns='discussion'}}
+					</a>
+				</div>
+			{{/if}}
+			<div class="scrolling-part">
+
 			{{#if notificationsList.length}}
-				{{#if hasUnread}}
-					<div class="mark-all-as-read-button">
-						<a {{action 'markAllAsRead'}} class="mark-all-as-read">
-							{{i18n 'notifications.mark-all-as-read' ns='discussion'}}
-						</a>
-					</div>
-				{{/if}}
+
 				<ul class="wds-list wds-has-lines-between notifications-list">
 					{{#each notificationsList as |notification|}}
 						{{log notification}}
@@ -39,10 +42,14 @@
 				</div>
 			{{/if}}
 			{{loading-spinner
-				active=isLoadingNewResults
-				radius=38
-				strokeWidth=3
+					active=isLoadingNewResults
+					isBlock=true
+					isThemed=false
+					overlay=false
+					radius=20
+					strokeWidth=2
 			}}
+			</div>
 		</div>
 	{{/dropdown.content}}
 {{/design-system.wds-dropdown}}
