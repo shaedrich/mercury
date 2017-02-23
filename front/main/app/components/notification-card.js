@@ -94,7 +94,9 @@ export default Component.extend(
 
 		actions: {
 			onNotificationClicked() {
-				trackClick(this.get('model'));
+				const model = this.get('model');
+				trackClick(model);
+				window.location.href = model.uri;
 			}
 		}
 	}
