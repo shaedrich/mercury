@@ -86,10 +86,15 @@ NotificationsModel.reopenClass({
 	getNotifications() {
 		const notificationsInstance = NotificationsModel.create();
 
-		return RSVP.all([
-			notificationsInstance.getNotificationsList(notificationsInstance),
-			notificationsInstance.getUnreadNotificationsCount(notificationsInstance)
-		]);
+		return new RSVP.Promise((resolve) => {
+			return RSVP.all([
+				notificationsInstance.getNotificationsList(notificationsInstance),
+				notificationsInstance.getUnreadNotificationsCount(notificationsInstance)
+			]).then((data) => {
+				resolve(data[0]);
+			});
+		});
+
 	},
 });
 

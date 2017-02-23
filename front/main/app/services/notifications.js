@@ -1,20 +1,32 @@
 import Ember from 'ember';
 import NotificationsModel from '../models/notifications/notifications';
 
-const {Service, Logger, computed} = Ember;
+const {Service, Logger, computed, inject, RSVP} = Ember;
 
 export default Service.extend({
 	isLoading: false,
 	model: null,
 	notificationsPerPage: 10,
 
-	modelLoader: computed(function () {
-		return NotificationsModel
-			.getNotifications()
-			.catch((err) => {
-				Logger.warn('Couldn\'t load notifications', err);
-				this.set('isLoading', false);
-			});
+	currentUser: inject.service(),
+
+	modelLoader: computed('currentUser.userId', function () {
+		if (this.get('currentUser.userId') !== null) {
+			return NotificationsModel
+				.getNotifications()
+				.then((model) => {
+					this.setProperties({
+						model,
+						isLoading: false,
+					})
+				})
+				.catch((err) => {
+					Logger.warn('Couldn\'t load notifications', err);
+					this.set('isLoading', false);
+				});
+		}
+
+		return RSVP.reject();
 	}),
 
 	/**
@@ -25,12 +37,7 @@ export default Service.extend({
 		this.set('isLoading', true);
 		// fetches the model from the API at first attempt to use the data
 		// then a singleton service will keep the data until page reloads
-		this.get('modelLoader').then((model) => {
-			this.setProperties({
-				model,
-				isLoading: false,
-			})
-		});
+		this.get('modelLoader');
 	},
 
 	loadMoreResults() {
