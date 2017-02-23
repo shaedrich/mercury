@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import {extractDomainFromUrl} from '../../utils/domain';
 import DiscussionContributor from '../discussion/domain/contributor';
 import {notificationTypes} from '../../utils/global-notifications';
 

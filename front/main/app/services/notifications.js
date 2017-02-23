@@ -13,6 +13,7 @@ export default Service.extend({
 			.getNotifications()
 			.catch((err) => {
 				Logger.warn('Couldn\'t load notifications', err);
+				this.set('isLoading', false);
 			});
 	}),
 
@@ -28,7 +29,7 @@ export default Service.extend({
 			this.setProperties({
 				model,
 				isLoading: false,
-			});
+			})
 		});
 	},
 
@@ -37,6 +38,10 @@ export default Service.extend({
 		this.get('model')
 			.loadMoreResults(this.get('notificationsPerPage'))
 			.then(() => {
+				this.set('isLoading', false);
+			})
+			.catch((err) => {
+				Logger.warn('Couldn\'t load more notifications', err);
 				this.set('isLoading', false);
 			});
 	},

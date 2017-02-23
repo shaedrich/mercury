@@ -14,7 +14,7 @@ export default Mixin.create({
 			}, 0);
 		}
 
-		this.set('isLoadingNewResults', false);
+		// this.set('isLoadingNewResults', false);
 	}),
 
 	onScrollRemover: on('didInsertElement', function () {
@@ -34,6 +34,5 @@ export default Mixin.create({
 		const $scrollableElement = this.$(this.get('scrollableElement'));
 
 		this.get('notifications').loadMoreResults();
-		this.set('isLoadingNewResults', true);
 	}
 });
