@@ -35,7 +35,6 @@ const NotificationsModel = Object.extend({
 			}
 		}).then((data) => {
 			this.addNotifications(data.notifications);
-			this.get('data').setEach('isUnread', false);
 		});
 	},
 
