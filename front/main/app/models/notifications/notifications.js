@@ -29,11 +29,12 @@ const NotificationsModel = Object.extend({
 		const since = this.getNewestNotificationISODate();
 
 		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
-			method: 'POST',
+			method: 'GET',
 			data: {
 				since
 			}
-		}).then((thread) => {
+		}).then((data) => {
+			this.addNotifications(data.notifications);
 			this.get('data').setEach('isUnread', false);
 		});
 	},
@@ -45,7 +46,7 @@ const NotificationsModel = Object.extend({
 			data: {
 				since
 			},
-		}).then((thread) => {
+		}).then((data) => {
 			this.get('data').setEach('isUnread', false);
 		});
 	},
