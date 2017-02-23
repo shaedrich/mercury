@@ -8,11 +8,11 @@ const {Component, inject, computed} = Ember;
 export default Component.extend(NotificationsScrollMenuMixin, MarkAllNotificationsMixin, NotificationsUnreadCount, {
 	notifications: inject.service(),
 
-	notificationsList: computed.readOnly('notifications.model.data'),
+	notificationsList: computed.oneWay('notifications.model.data'),
 
-	isLoadingNewResults: computed.readOnly('notifications.isLoading'),
+	isLoadingNewResults: computed.oneWay('notifications.isLoading'),
 
-	hasUnread: computed.readOnly('notifications.model.data', function() {
+	hasUnread: computed.oneWay('notifications.model.data', function() {
 		return this.get('notifications.model.data').reduce(
 			function (acc, notification) {
 				if (notification.isUnread) {

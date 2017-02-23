@@ -42,7 +42,7 @@ export default Service.extend({
 
 	loadMoreResults() {
 		if (this.get('isLoading') === true) {
-			Logger.info('Is already loading');
+			Logger.debug('Is already loading');
 			return;
 		}
 
