@@ -12,15 +12,5 @@ export default Component.extend(NotificationsScrollMenuMixin, MarkAllNotificatio
 
 	isLoadingNewResults: computed.oneWay('notifications.isLoading'),
 
-	hasUnread: computed.oneWay('notifications.model.data', function() {
-		return this.get('notifications.model.data').reduce(
-			function (acc, notification) {
-				if (notification.isUnread) {
-					return acc+1;
-				} else {
-					return acc;
-				}
-			}, 0
-		) > 0;
-	})
+	hasUnread: computed.gt('notifications.model.unreadCount', 0)
 });
