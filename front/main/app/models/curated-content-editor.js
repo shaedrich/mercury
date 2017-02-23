@@ -93,12 +93,12 @@ CuratedContentEditorModel.reopenClass({
 	 * @returns {object} converted object
 	 */
 	prepareDataForSave(model) {
-		let fd = new FormData();
+		const curatedContent = new FormData();
 
-		fd.append('data',
+		curatedContent.append('data',
 			JSON.stringify([].concat(model.featured, model.curated.items, model.optional)));
-		fd.append('community_data', JSON.stringify(model.communityData));
-		return fd;
+		curatedContent.append('community_data', JSON.stringify(model.communityData));
+		return curatedContent;
 	},
 
 	/**
