@@ -52,7 +52,6 @@ export default Service.extend({
 	},
 
 	markAllAsRead() {
-		this.get('model')
-			.markAllAsRead();
+		this.get('model').markAllAsRead();
 	}
 });
