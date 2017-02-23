@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Notification from './notification';
 import request from 'ember-ajax/request';
 
-const {Object, A, RSVP} = Ember;
+const {Object, A, RSVP, Logger} = Ember;
 
 const NotificationsModel = Object.extend({
 	unreadCount: null,
@@ -41,7 +41,7 @@ const NotificationsModel = Object.extend({
 	markAllAsRead() {
 		const since = this.getNewestNotificationISODate();
 
-		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications/mark-all-as-read`), {
 			data: {
 				since
 			},
@@ -56,6 +56,26 @@ const NotificationsModel = Object.extend({
 		});
 
 		this.get('data').pushObjects(notificationModels);
+	},
+
+	getUnreadNotificationsCount(notificationsInstance) {
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count')).then((data) => {
+			notificationsInstance.set('unreadCount', data.unreadCount);
+		}).catch((error) => {
+			notificationsInstance.set('unreadCount', 0);
+			Logger.error('Setting notifications unread count to 0 because of the API fetch error');
+		});
+	},
+
+	getNotificationsList(notificationsInstance) {
+		return new RSVP.Promise((resolve, reject) => {
+			request(M.getOnSiteNotificationsServiceUrl('/notifications')).then((data) => {
+				notificationsInstance.setNormalizedData(data);
+				resolve(notificationsInstance);
+			}).catch(() => {
+				reject(notificationsInstance);
+			});
+		});
 	}
 });
 
@@ -64,17 +84,13 @@ NotificationsModel.reopenClass({
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	getNotifications() {
-		return new RSVP.Promise((resolve, reject) => {
-			const notificationsInstance = NotificationsModel.create();
+		const notificationsInstance = NotificationsModel.create();
 
-			request(M.getOnSiteNotificationsServiceUrl('/notifications'), {}).then((data) => {
-				notificationsInstance.setNormalizedData(data);
-				resolve(notificationsInstance);
-			}).catch(() => {
-				reject(notificationsInstance);
-			});
-		});
-	}
+		return RSVP.all([
+			notificationsInstance.getNotificationsList(notificationsInstance),
+			notificationsInstance.getUnreadNotificationsCount(notificationsInstance)
+		]);
+	},
 });
 
 export default NotificationsModel;
