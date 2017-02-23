@@ -8,7 +8,7 @@ export default Service.extend({
 	model: null,
 	notificationsPerPage: 10,
 
-	modelLoader: computed(() => {
+	modelLoader: computed(function () {
 		return NotificationsModel
 			.getNotifications()
 			.catch((err) => {
@@ -34,7 +34,7 @@ export default Service.extend({
 	},
 
 	loadMoreResults() {
-		if (this.get('isLoading')) {
+		if (this.get('isLoading') === true) {
 			Logger.info('Is already loading');
 			return;
 		}

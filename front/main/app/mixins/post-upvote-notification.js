@@ -18,7 +18,7 @@ export default Mixin.create({
 			if (hasMultipleUsers) {
 				return this.getTranslatedMessage('notifications.post-upvote-multiple-users-with-title', {
 					postTitle: this.get('postTitleMarkup'),
-					number: totalUniqueActors - 1
+					number: totalUniqueActors
 				});
 			} else {
 				return this.getTranslatedMessage('notifications.post-upvote-single-user-with-title', {

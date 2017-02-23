@@ -20,9 +20,8 @@ export default Component.extend(
 		tagName: 'li',
 
 		currentUser: inject.service(),
-		// use the proper user lang after the translations are merged
-		// userLanguage: computed.oneWay('currentUser.language'),
-		userLanguage: 'en',
+
+		userLanguage: computed.oneWay('currentUser.language'),
 
 		iconName: computed('model.type', function () {
 			return this.isDiscussionReply(this.get('model.type')) ?
