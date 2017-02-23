@@ -14,7 +14,6 @@ const NotificationsModel = Object.extend({
 
 	setNormalizedData(apiData) {
 		this.setProperties({
-			unreadCount: apiData.unread,
 			data: new A()
 		});
 
@@ -58,25 +57,6 @@ const NotificationsModel = Object.extend({
 		this.get('data').pushObjects(notificationModels);
 	},
 
-	getUnreadNotificationsCount(notificationsInstance) {
-		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count')).then((data) => {
-			notificationsInstance.set('unreadCount', data.unreadCount);
-		}).catch((error) => {
-			notificationsInstance.set('unreadCount', 0);
-			Logger.error('Setting notifications unread count to 0 because of the API fetch error');
-		});
-	},
-
-	getNotificationsList(notificationsInstance) {
-		return new RSVP.Promise((resolve, reject) => {
-			request(M.getOnSiteNotificationsServiceUrl('/notifications')).then((data) => {
-				notificationsInstance.setNormalizedData(data);
-				resolve(notificationsInstance);
-			}).catch(() => {
-				reject(notificationsInstance);
-			});
-		});
-	}
 });
 
 NotificationsModel.reopenClass({
@@ -84,18 +64,31 @@ NotificationsModel.reopenClass({
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	getNotifications() {
-		const notificationsInstance = NotificationsModel.create();
+		const model = NotificationsModel.create();
 
-		return new RSVP.Promise((resolve) => {
-			return RSVP.all([
-				notificationsInstance.getNotificationsList(notificationsInstance),
-				notificationsInstance.getUnreadNotificationsCount(notificationsInstance)
-			]).then((data) => {
-				resolve(data[0]);
-			});
+		return RSVP.all([
+			this.getNotificationsList(model),
+			this.getUnreadNotificationsCount(model)
+		]).then(() => {
+			return model;
 		});
-
 	},
+
+	getUnreadNotificationsCount(model) {
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count')).then(function (data) {
+			model.set('unreadCount', data.unreadCount);
+		}).catch((error) => {
+			model.set('unreadCount', 0);
+			Logger.error('Setting notifications unread count to 0 because of the API fetch error');
+		});
+	},
+
+	getNotificationsList(model) {
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications')).then((data) => {
+			model.setNormalizedData(data);
+		});
+	}
+
 });
 
 export default NotificationsModel;

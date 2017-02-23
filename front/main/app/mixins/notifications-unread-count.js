@@ -4,5 +4,5 @@ const {Mixin, computed} = Ember;
 
 export default Mixin.create({
 	unreadCount: computed.oneWay('notifications.model.unreadCount'),
-	hasUnread: computed.gt('notifications.model.unreadCount', 0)
+	hasUnread: computed.gt('notifications.model.unreadCount', 0),
 });

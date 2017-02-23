@@ -12,8 +12,7 @@ export default Service.extend({
 
 	modelLoader: computed('currentUser.userId', function () {
 		if (this.get('currentUser.userId') !== null) {
-			return NotificationsModel
-				.getNotifications()
+			return NotificationsModel.getNotifications()
 				.then((model) => {
 					this.setProperties({
 						model,
