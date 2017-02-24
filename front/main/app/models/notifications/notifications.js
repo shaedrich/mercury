@@ -13,6 +13,10 @@ const NotificationsModel = Object.extend({
 		return convertToIsoString(this.get('data.0.timestamp'));
 	},
 
+	getOldestNotificationISODate() {
+		return convertToIsoString(this.get('data.lastObject.timestamp'));
+	},
+
 	setNormalizedData(apiData) {
 		this.setProperties({
 			data: new A()
@@ -26,7 +30,7 @@ const NotificationsModel = Object.extend({
 	},
 
 	loadMoreResults() {
-		const startingTimestamp = this.getNewestNotificationISODate();
+		const startingTimestamp = this.getOldestNotificationISODate();
 
 		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
 			method: 'GET',
