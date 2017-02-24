@@ -10,7 +10,7 @@ export default Component.extend({
 	canDelete: computed.readOnly('post.userData.permissions.canDelete'),
 	canModerate: computed.readOnly('post.userData.permissions.canModerate'),
 	isLocked: computed.readOnly('post.isLocked'),
-	showButtons: computed.and('canShowModButtons', 'isReported', 'canModerate'),
+	showButtons: computed.and('isReported', 'canModerate'),
 	modalDialog: inject.service(),
 
 	isReportDetailsVisible: false,
