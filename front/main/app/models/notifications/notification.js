@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DiscussionContributor from '../discussion/domain/contributor';
 import {notificationTypes} from '../../utils/global-notifications';
+import request from 'ember-ajax/request';
 
 const {Object, A} = Ember;
 
@@ -13,7 +14,16 @@ const NotificationModel = Object.extend({
 	isUnread: false,
 	totalUniqueActors: 1,
 	latestActors: [],
-	uri: null
+	uri: null,
+
+	markAsRead() {
+		return request(M.getOnSiteNotificationsServiceUrl(`/notifications/mark-as-read/by-uri`), {
+			method: 'POST',
+			data: JSON.stringify([this.get('uri')]),
+		}).then(() => {
+			this.set('isUnread', false)
+		});
+	},
 });
 
 NotificationModel.reopenClass({

@@ -11,6 +11,7 @@ export default Service.extend({
 	currentUser: inject.service(),
 
 	modelLoader: computed('currentUser.userId', function () {
+		this.set('isLoading', true);
 		if (this.get('currentUser.userId') !== null) {
 			return NotificationsModel.getNotifications()
 				.then((model) => {
@@ -59,5 +60,6 @@ export default Service.extend({
 
 	markAllAsRead() {
 		this.get('model').markAllAsRead();
-	}
+	},
+
 });

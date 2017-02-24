@@ -5,6 +5,7 @@ const labels = {
 	'discussion-upvote-post': 'discussion-upvote-post',
 	'discussion-reply': 'discussion-reply',
 	'mark-all-as-read': 'mark-all-as-read',
+	'mark-as-read': 'mark-as-read',
 	'open-menu': 'open-menu',
 },
 	gaCategory = 'on-site-notifications';
@@ -12,7 +13,7 @@ const labels = {
 /**
  * @param {string} label
  * @param {string} action
- * @param {string} params
+ * @param {Object} params
  *
  * @returns {Object}
  */
@@ -29,34 +30,42 @@ function getGAValueFromUnreadStatus(isUnread) {
 }
 
 /**
+ * @param {string} label
  * @param {string} action
- * @param {object} params
+ * @param {Object} params
  *
  * @returns {void}
  */
-export function track(label, action, params) {
+export function track(label, action, params = null) {
 	mercuryTrack(
 		getTrackingContext(label, action, params),
 	);
 }
 
-export function trackImpression(notificationModel) {
+export function trackImpression(notification) {
 	track(
-		labels[notificationModel.get('type')],
+		labels[notification.get('type')],
 		'impression',
 		{
-			value: getGAValueFromUnreadStatus(notificationModel.get('isUnread'))
+			value: getGAValueFromUnreadStatus(notification.get('isUnread'))
 		}
 	);
 }
 
-export function trackClick(notificationModel) {
+export function trackClick(notification) {
 	track(
-		labels[notificationModel.get('type')],
+		labels[notification.get('type')],
 		'click',
 		{
-			value: getGAValueFromUnreadStatus(notificationModel.get('isUnread'))
+			value: getGAValueFromUnreadStatus(notification.get('isUnread'))
 		}
+	);
+}
+
+export function trackMarkAsRead(notification) {
+	track(
+		labels['mark-as-read'] + '-' + labels[notification.get('type')],
+		'click',
 	);
 }
 

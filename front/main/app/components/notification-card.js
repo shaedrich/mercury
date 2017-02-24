@@ -3,6 +3,7 @@ import wrapMeHelper from '../helpers/wrap-me';
 import NewReplyNotificationMixin from '../mixins/new-reply-notification';
 import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification';
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification';
+import MarkAsReadNotificationMixin from '../mixins/mark-as-read-notification';
 import {trackClick, trackImpression} from '../utils/notifications-tracker';
 import {notificationTypes} from '../utils/global-notifications';
 
@@ -12,6 +13,7 @@ export default Component.extend(
 	NewReplyNotificationMixin,
 	PostUpvoteNotificationMixin,
 	ReplyUpvoteNotificationMixin,
+	MarkAsReadNotificationMixin,
 	{
 		classNames: ['notification-card'],
 
@@ -94,9 +96,7 @@ export default Component.extend(
 
 		actions: {
 			onNotificationClicked() {
-				const model = this.get('model');
-				trackClick(model);
-				window.location.href = model.uri;
+				trackClick(this.get('model'));
 			}
 		}
 	}
