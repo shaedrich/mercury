@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Notification from './notification';
 import request from 'ember-ajax/request';
+import {convertToIsoString} from '../../utils/iso-date-time'
 
 const {Object, A, RSVP, Logger} = Ember;
 
@@ -9,7 +10,7 @@ const NotificationsModel = Object.extend({
 	data: null,
 
 	getNewestNotificationISODate() {
-		return new Date(this.get('data.0.timestamp')).toISOString();
+		return convertToIsoString(this.get('data.0.timestamp'));
 	},
 
 	setNormalizedData(apiData) {
@@ -25,12 +26,12 @@ const NotificationsModel = Object.extend({
 	},
 
 	loadMoreResults() {
-		const since = this.getNewestNotificationISODate();
+		const startingTimestamp = this.getNewestNotificationISODate();
 
 		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
 			method: 'GET',
 			data: {
-				since
+				startingTimestamp
 			}
 		}).then((data) => {
 			this.addNotifications(data.notifications);
