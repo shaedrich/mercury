@@ -165,7 +165,9 @@ export default Route.extend(
 				ArticleModel
 					.getArticleRandomTitle()
 					.then((articleTitle) => {
-						this.transitionTo('wiki-page', encodeURIComponent(normalizeToUnderscore(articleTitle)));
+						window.location.assign(M.buildUrl({
+							title: normalizeToUnderscore(articleTitle)
+						}));
 					})
 					.catch((err) => {
 						this.send('error', err);
@@ -225,6 +227,14 @@ export default Route.extend(
 				} else {
 					window.location.assign(`${Mercury.wiki.articlePath}Special:Search?search=${query}&fulltext=Search`);
 				}
+			},
+
+			/**
+			 * Load wiki page in Mobile Wiki app, don't use SPA
+			 * @param item
+			 */
+			openWikiPage(item) {
+				window.location.assign(item.href);
 			},
 
 			openNav() {

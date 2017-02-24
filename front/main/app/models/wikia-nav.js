@@ -147,10 +147,12 @@ export default Object.extend({
 		return this.get('inRoot') &&
 			this.get('wikiName') &&
 			[{
-				type: 'nav-menu-header',
-				route: 'wiki-page',
-				// will generate href="/wiki/"
-				href: '',
+				type: 'nav-menu-external',
+				className: 'nav-menu__header',
+				href: M.buildUrl({
+					title: get(Mercury, 'wiki.mainPageTitle')
+				}),
+				actionId: 'onWikiPageClick',
 				name: i18n.t('app.explore-wiki', {wikiName: this.get('wikiName')})
 			}] || [];
 	}),
@@ -171,9 +173,9 @@ export default Object.extend({
 		return !this.get('inExploreNav') &&
 			this.get('currentLocalLinks').map((item, index) => {
 				return {
-					type: item.children ? 'nav-menu-root' : 'nav-menu-item',
-					href: item.href.replace(/^(\/wiki)?\//i, ''),
-					route: 'wiki-page',
+					type: item.children ? 'nav-menu-root' : 'nav-menu-external',
+					href: item.href,
+					actionId: 'onWikiPageClick',
 					name: item.text,
 					index: index + 1,
 					trackLabel: `local-nav-open-link-index-${index + 1}`
