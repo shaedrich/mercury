@@ -216,17 +216,19 @@ export default Route.extend(
 				this.get('controller').send('closeLightbox');
 			},
 
-			// This is used only in not-found.hbs template
 			/**
 			 * @returns {void}
 			 * @param {string} query
 			 */
 			goToSearchResults(query) {
-				if (this.get('responsive.isMobile')) {
-					this.transitionTo('search', {queryParams: {query}});
-				} else {
-					window.location.assign(`${Mercury.wiki.articlePath}Special:Search?search=${query}&fulltext=Search`);
-				}
+				window.location.assign(M.buildUrl({
+					namespace: 'Special',
+					title: 'Search',
+					query: {
+						search: query,
+						fulltext: 'Search'
+					}
+				}));
 			},
 
 			/**
