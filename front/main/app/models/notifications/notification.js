@@ -2,6 +2,8 @@ import Ember from 'ember';
 import DiscussionContributor from '../discussion/domain/contributor';
 import {notificationTypes} from '../../utils/global-notifications';
 import request from 'ember-ajax/request';
+import {convertToTimestamp} from '../../utils/iso-date-time'
+
 
 const {Object, A} = Ember;
 
@@ -36,7 +38,7 @@ NotificationModel.reopenClass({
 		return this._super({
 			title: Ember.get(notificationData, 'refersTo.title'),
 			snippet: Ember.get(notificationData, 'refersTo.snippet'),
-			timestamp: NotificationModel.getTimestamp(Ember.get(notificationData, 'events.latestEvent.when')),
+			timestamp: convertToTimestamp(Ember.get(notificationData, 'events.latestEvent.when')),
 			communityName: Ember.get(notificationData, 'community.name'),
 			communityId: Ember.get(notificationData, 'community.id'),
 			isUnread: notificationData.read === false,
@@ -56,10 +58,6 @@ NotificationModel.reopenClass({
 		}));
 
 		return actors;
-	},
-
-	getTimestamp(dateString) {
-		return new Date(dateString).getTime();
 	},
 
 	getTypeFromApiData(apiData) {
