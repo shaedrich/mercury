@@ -34,7 +34,7 @@
     "loading-more-posts":"Ładuję więcej postów",
     "load-more-posts-button":"Załaduj więcej",
     "load-previous-posts-button":"Do góry",
-    "number-of-posts":"__numberOfPosts__ posty\/ów",
+    "number-of-posts":"__numberOfPosts__ posty/ów",
     "connection-error":"Nie można uzyskać połączenia, spróbuj ponownie.",
     "not-found-error":"Ojej, wygląda na to, że ta strona nie istnieje!",
     "action-retry-title":"Ponów próbę",
@@ -130,7 +130,7 @@
     "guidelines-link-title":"Zasady korzystania z Dyskusji",
     "guidelines-header-title":"Zasady korzystania z Dyskusji",
     "welcome-message-header":"Niesamowicie się cieszymy, że jesteś!",
-    "welcome-message-text":"Miłego przeglądania, tworzenia i odpowiadania na posty. Przeczytaj nasze __guidelinesLinkTitle__, które pomogą Ci się szybko odnaleźć.",
+    "welcome-message-text":"Miłego przeglądania, tworzenia i odpowiadania na posty. Przeczytaj nasze __guidelinesLinkTitle__, które pomogą ci się szybko odnaleźć.",
     "category-picker-button-text":"Dodaj kategorię",
     "category-picker-required-message":"wymagane",
     "edit-badge-button-text":"Edytuj odznakę",
@@ -197,5 +197,24 @@
     "overlay-message-text":"Przed opublikowaniem pamiętaj, by zapoznać się z __guidelinesLinkTitle__.",
     "overlay-message-button":"Gotowe",
     "guidelines-link-title":"Zasady korzystania z Dyskusji"
+  },
+  "notifications":{
+    "no-notifications-message":"Brak powiadomień.",
+    "mark-all-as-read":"Oznacz wszystkie jako przeczytane",
+    "replied-by-multiple-users-with-title":"__mostRecentUser__ i __number__ innych użytkowników <b>odpowiedziało na</b> __postTitle__",
+    "replied-by-multiple-users-no-title":"__mostRecentUser__ i __number__ innych użytkowników <b>odpowiedziało</b> w dyskusji, którą śledzisz",
+    "replied-by-two-users-with-title":"Użytkownicy __firstUser__ i __secondUser__ <b>odpowiedzieli</b> na post __postTitle__",
+    "replied-by-two-users-no-title":"Użytkownicy __firstUser__ i __secondUser__ <b>odpowiedzieli</b> w dyskusji, którą śledzisz",
+    "replied-by-with-title":"Użytkownik __user__ <b>odpowiedział</b> na post __postTitle__",
+    "replied-by-no-title":"Użytkownik __user__ <b>odpowiedział</b> w dyskusji, którą śledzisz",
+    "post-upvote-single-user-with-title":"Użytkownik __user__ <b>zagłosował</b> na twoją dyskusję: __postTitle__",
+    "post-upvote-single-user-no-title":"Użytkownik __user__ <b>zagłosował</b> na twoją dyskusję",
+    "post-upvote-multiple-users-with-title":"__number__ użytkowników <b>zagłosowało</b> na twoją dyskusję __postTitle__",
+    "post-upvote-multiple-users-no-title":"__number__ użytkowników <b>zagłosowało</b> na twoją dyskusję",
+    "reply-upvote-single-user-with-title":"Użytkownik __user__ <b>zagłosował</b> na twoją odpowiedź w __postTitle__",
+    "reply-upvote-single-user-no-title":"Użytkownik __user__ <b>zagłosował</b> na twoją odpowiedź",
+    "reply-upvote-multiple-users-with-title":"__number__ użytkowników <b>zagłosowało</b> na twoją odpowiedź w __postTitle__",
+    "reply-upvote-multiple-users-no-title":"__number__ użytkowników <b>zagłosowało</b> na twoją odpowiedź",
+    "notifications":"Powiadomienia"
   }
 }
