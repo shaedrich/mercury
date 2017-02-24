@@ -6,7 +6,7 @@ import {convertToIsoString} from '../../utils/iso-date-time'
 const {Object, A, RSVP, Logger} = Ember;
 
 const NotificationsModel = Object.extend({
-	unreadCount: null,
+	unreadCount: 0,
 	data: null,
 
 	getNewestNotificationISODate() {
@@ -46,11 +46,13 @@ const NotificationsModel = Object.extend({
 		const since = this.getNewestNotificationISODate();
 
 		return request(M.getOnSiteNotificationsServiceUrl(`/notifications/mark-all-as-read`), {
+			method: 'POST',
 			data: {
 				since
 			},
 		}).then((data) => {
 			this.get('data').setEach('isUnread', false);
+			this.set('unreadCount', 0);
 		});
 	},
 
