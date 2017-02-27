@@ -10,23 +10,25 @@ export default Service.extend({
 
 	currentUser: inject.service(),
 
-	modelLoader: computed('currentUser.userId', function () {
+
+	modelLoader: computed('currentUser.isAuthenticated', function () {
 		this.set('isLoading', true);
-		if (this.get('currentUser.userId') !== null) {
-			return NotificationsModel.getNotifications()
-				.then((model) => {
-					this.setProperties({
-						model,
-						isLoading: false,
-					})
-				})
-				.catch((err) => {
-					Logger.warn('Couldn\'t load notifications', err);
-					this.set('isLoading', false);
-				});
+		if (!this.isUserAuthenticated()) {
+			this.set('isLoading', false);
+			return RSVP.reject();
 		}
 
-		return RSVP.reject();
+		return NotificationsModel.getNotifications()
+			.then((model) => {
+				this.setProperties({
+					model,
+					isLoading: false,
+				})
+			})
+			.catch((err) => {
+				Logger.warn('Couldn\'t load notifications', err);
+				this.set('isLoading', false);
+			});
 	}),
 
 	/**
@@ -41,8 +43,8 @@ export default Service.extend({
 	},
 
 	loadMoreResults() {
-		if (this.get('isLoading') === true) {
-			Logger.debug('Is already loading');
+		if (this.get('isLoading') === true && !this.isUserAuthenticated()) {
+			Logger.debug('Is already loading or is not authenticated.');
 			return;
 		}
 
@@ -61,5 +63,14 @@ export default Service.extend({
 	markAllAsRead() {
 		this.get('model').markAllAsRead();
 	},
+
+	/**
+	 * @private
+	 */
+	isUserAuthenticated() {
+		return this.get('currentUser.isAuthenticated') === true;
+	}
+
+
 
 });
