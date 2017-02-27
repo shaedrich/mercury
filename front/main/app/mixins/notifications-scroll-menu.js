@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Mixin, on, run} = Ember;
+const {Mixin, on, run, observer} = Ember;
 
 export default Mixin.create({
 	classNames: ['notifications-scroll-menu'],
@@ -15,6 +15,14 @@ export default Mixin.create({
 
 	onScrollRemover: on('willDestroyElement', function () {
 		this.$(this.get('scrollableElement')).off('scroll', this.onScroll.bind(this));
+	}),
+
+	onIsLoading: observer('notifications.isLoading', function () {
+		if (this.get('notifications.isLoading') === true) {
+			$(this.get('scrollableElement')).animate(
+				{scrollTop: $('#zorf').offset().top + 30},
+				'slow');
+		}
 	}),
 
 	onScroll(e) {
