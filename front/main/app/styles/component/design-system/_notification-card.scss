@@ -28,9 +28,16 @@ $notification-card-anchor-color: #656d77;
 			margin: 0;
 
 			figure.avatar {
-				svg {
+			  svg {
 					border-color: $wds-color-light-c4;
+					display: inline;
 				}
+			  	a {
+				    img {
+					    border-color: $wds-color-light-c4;
+					}
+					display: inline;
+			  	}
 			}
 		}
 
