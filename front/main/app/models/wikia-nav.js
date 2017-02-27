@@ -149,9 +149,7 @@ export default Object.extend({
 			[{
 				type: 'nav-menu-external',
 				className: 'nav-menu__header',
-				href: M.buildUrl({
-					title: get(Mercury, 'wiki.mainPageTitle')
-				}),
+				href: `/wiki/${get(Mercury, 'wiki.mainPageTitle')}`,
 				name: i18n.t('app.explore-wiki', {wikiName: this.get('wikiName')})
 			}] || [];
 	}),
