@@ -58,7 +58,7 @@ export default Component.extend(
 				if (item.actionId) {
 					const actionName = this.get(`clickHandlers.${item.actionId}`);
 
-					this.get(actionName)(item);
+					this.get(actionName)();
 				}
 			},
 
