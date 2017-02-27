@@ -173,7 +173,7 @@ export default Component.extend(
 				 * @returns {void}
 				 */
 				(suggestion, index, suggestionsArr) => {
-					suggestionsArr[index].uri = encodeURIComponent(suggestion.title);
+					suggestionsArr[index].uri = `/wiki/${encodeURIComponent(suggestion.title)}`;
 					suggestion.text = suggestion.title.replace(highlightRegexp, highlighted);
 				}
 			);
