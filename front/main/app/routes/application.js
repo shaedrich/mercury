@@ -221,14 +221,18 @@ export default Route.extend(
 			 * @param {string} query
 			 */
 			goToSearchResults(query) {
-				window.location.assign(M.buildUrl({
-					namespace: 'Special',
-					title: 'Search',
-					query: {
-						search: query,
-						fulltext: 'Search'
-					}
-				}));
+				if (this.get('responsive.isMobile')) {
+					window.location.assign(`/search?query=${query}`);
+				} else {
+					window.location.assign(M.buildUrl({
+						namespace: 'Special',
+						title: 'Search',
+						query: {
+							search: query,
+							fulltext: 'Search'
+						}
+					}));
+				}
 			},
 
 			openNav() {
