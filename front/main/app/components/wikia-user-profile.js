@@ -4,7 +4,7 @@ import {track, trackActions} from 'common/utils/track';
 import NotificationsScrollMenuMixin from '../mixins/notifications-scroll-menu';
 import MarkAllNotificationsMixin from '../mixins/mark-all-notifications';
 
-const {Component, computed, inject, observer} = Ember;
+const {Component, computed, inject} = Ember;
 
 export default Component.extend(
 	NoScrollMixin,
@@ -16,12 +16,7 @@ export default Component.extend(
 		notifications: inject.service(),
 
 		notificationsList: computed.oneWay('notifications.model.data'),
-		/**
-		 * This is an observer because (most likely) the spinner is not visible immediately, therefore it's not computed.
-		 */
-		isLoadingNewResults: observer('notifications.isLoading', function() {
-			return this.get('notifications.isLoading');
-		}),
+		isLoadingNewResults: computed.oneWay('notifications.isLoading'),
 
 		logoutLink: M.buildUrl({
 			namespace: 'Special',

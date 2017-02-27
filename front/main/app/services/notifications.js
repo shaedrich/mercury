@@ -5,6 +5,7 @@ const {Service, Logger, computed, inject, RSVP} = Ember;
 
 export default Service.extend({
 	isLoading: false,
+	allLoaded: false,
 	model: null,
 	notificationsPerPage: 10,
 
@@ -22,6 +23,7 @@ export default Service.extend({
 				this.setProperties({
 					model,
 					isLoading: false,
+					allLoaded:  model.data.length < this.get('notificationsPerPage')
 				})
 			})
 			.catch((err) => {
@@ -41,16 +43,21 @@ export default Service.extend({
 	},
 
 	loadMoreResults() {
-		if (this.get('isLoading') === true && !this.isUserAuthenticated()) {
-			Logger.debug('Is already loading or is not authenticated.');
+		if (this.get('isLoading') === true || !this.isUserAuthenticated() || this.get('allLoaded') === true) {
+			console.log('not loading', this.get('isLoading'), this.get('allLoaded'));
 			return;
 		}
+		console.log('loading', this.get('isLoading'));
+
 
 		this.set('isLoading', true);
 		this.get('model')
 			.loadMoreResults(this.get('notificationsPerPage'))
-			.then(() => {
-				this.set('isLoading', false);
+			.then((resultCount) => {
+				this.setProperties({
+					isLoading: false,
+					allLoaded: resultCount < this.get('notificationsPerPage')
+				});
 			})
 			.catch((err) => {
 				Logger.warn('Couldn\'t load more notifications', err);

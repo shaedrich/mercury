@@ -39,6 +39,7 @@ const NotificationsModel = Object.extend({
 			}
 		}).then((data) => {
 			this.addNotifications(data.notifications);
+			return data.notifications.length;
 		});
 	},
 
@@ -52,7 +53,7 @@ const NotificationsModel = Object.extend({
 			},
 		}).then((data) => {
 			this.get('data').setEach('isUnread', false);
-			this.set('unreadCount', 0);
+			this.set('unreadCount', 0)
 		});
 	},
 
