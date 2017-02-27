@@ -12,8 +12,10 @@
 	</div>
 
 	<header class="user-profile-header-wrapper">
+		{{log currentUser}}
 		{{user-avatar
 			username=username
+			avatarUrl=currentUser.avatarPath
 		}}
 		<h4 class="user-profile-username">{{username}}</h4>
 	</header>
