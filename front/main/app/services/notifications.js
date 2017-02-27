@@ -10,7 +10,6 @@ export default Service.extend({
 
 	currentUser: inject.service(),
 
-
 	modelLoader: computed('currentUser.isAuthenticated', function () {
 		this.set('isLoading', true);
 		if (!this.isUserAuthenticated()) {
@@ -70,7 +69,5 @@ export default Service.extend({
 	isUserAuthenticated() {
 		return this.get('currentUser.isAuthenticated') === true;
 	}
-
-
 
 });
