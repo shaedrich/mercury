@@ -42,9 +42,16 @@
 	{{else}}
 		{{i18n 'notifications.no-notifications-message' ns='discussion'}}
 	{{/if}}
-	{{loading-spinner
-		active=isLoadingNewResults
-		radius=38
-		strokeWidth=3
-	}}
+	{{#if isLoadingNewResults }}
+		<div class="spinner-container">
+			{{loading-spinner
+					active=true
+					isBlock=true
+					isThemed=false
+					overlay=false
+					radius=15
+					strokeWidth=2
+			}}
+		</div>
+	{{/if}}
 </div>

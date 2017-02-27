@@ -35,7 +35,6 @@ export default Service.extend({
 	 */
 	init() {
 		this._super(...arguments);
-		this.set('isLoading', true);
 		// fetches the model from the API at first attempt to use the data
 		// then a singleton service will keep the data until page reloads
 		this.get('modelLoader');
