@@ -231,14 +231,6 @@ export default Route.extend(
 				}));
 			},
 
-			/**
-			 * Load wiki page in Mobile Wiki app, don't use SPA
-			 * @param item
-			 */
-			openWikiPage(item) {
-				window.location.assign(item.href);
-			},
-
 			openNav() {
 				this.get('controller').setProperties({
 					drawerContent: 'nav',

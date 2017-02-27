@@ -1,7 +1,3 @@
 <li class="nav-menu__item {{className}}" {{action attrs.itemClick preventDefault=false}}>
-	{{#if actionId}}
-		{{name}}
-	{{else}}
-		<a href="{{href}}">{{name}}</a>
-	{{/if}}
+	<a href="{{href}}" class="external">{{name}}</a>
 </li>

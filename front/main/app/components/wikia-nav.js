@@ -30,8 +30,7 @@ export default Component.extend(
 			this._super(...arguments);
 			this.model = WikiaNavModel.create();
 			this.clickHandlers = {
-				onRandomPageClick: 'loadRandomArticle',
-				onWikiPageClick: 'openWikiPage'
+				onRandomPageClick: 'loadRandomArticle'
 			};
 		},
 

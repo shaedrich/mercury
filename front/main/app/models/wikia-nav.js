@@ -152,7 +152,6 @@ export default Object.extend({
 				href: M.buildUrl({
 					title: get(Mercury, 'wiki.mainPageTitle')
 				}),
-				actionId: 'onWikiPageClick',
 				name: i18n.t('app.explore-wiki', {wikiName: this.get('wikiName')})
 			}] || [];
 	}),
@@ -175,7 +174,6 @@ export default Object.extend({
 				return {
 					type: item.children ? 'nav-menu-root' : 'nav-menu-external',
 					href: item.href,
-					actionId: 'onWikiPageClick',
 					name: item.text,
 					index: index + 1,
 					trackLabel: `local-nav-open-link-index-${index + 1}`
