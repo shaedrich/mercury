@@ -81,19 +81,19 @@ test('display div with loading search suggestions', function (assert) {
 test('display div with loading search suggestions', function (assert) {
 	const suggestions = [
 		{
-			uri: 'test1',
+			uri: '/wiki/test1',
 			text: 'test1'
 		},
 		{
-			uri: 'test2',
+			uri: '/wiki/test2',
 			text: 'test2'
 		},
 		{
-			uri: 'test3',
+			uri: '/wiki/test3',
 			text: 'test3'
 		},
 		{
-			uri: 'test4',
+			uri: '/wiki/test4',
 			text: 'test4'
 		}
 	];
