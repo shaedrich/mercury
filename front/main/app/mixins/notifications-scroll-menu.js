@@ -6,7 +6,7 @@ export default Mixin.create({
 	classNames: ['notifications-scroll-menu'],
 	classNameBindings: ['isLoadingNewResults'],
 	scrollableElement: '.scrolling-part',
-	almostBottom: 50,
+	almostBottom: 70,
 
 	bindScrollObserver: on('didRender', function() {
 		run.later(() => {
@@ -29,7 +29,7 @@ export default Mixin.create({
 	 * @private
 	 */
 	hasScrolledToTheBottom(element) {
-		return element[0].scrollHeight >= element.outerHeight() + element.scrollTop() - this.get('almostBottom');
+		return element[0].scrollHeight - this.get('almostBottom') <= element.scrollTop() + element.innerHeight();
 	},
 
 	onScrolledToTheBottom() {

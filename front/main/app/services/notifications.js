@@ -44,11 +44,8 @@ export default Service.extend({
 
 	loadMoreResults() {
 		if (this.get('isLoading') === true || !this.isUserAuthenticated() || this.get('allLoaded') === true) {
-			console.log('not loading', this.get('isLoading'), this.get('allLoaded'));
 			return;
 		}
-		console.log('loading', this.get('isLoading'));
-
 
 		this.set('isLoading', true);
 		this.get('model')
