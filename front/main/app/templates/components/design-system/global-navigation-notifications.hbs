@@ -38,7 +38,6 @@ as |dropdown|
 						{{i18n 'notifications.no-notifications-message' ns='discussion'}}
 					</div>
 				{{/if}}
-				<div id="zorf"></div>
 				{{#if isLoadingNewResults }}
 					<div class="spinner-container">
 						{{loading-spinner
@@ -46,10 +45,12 @@ as |dropdown|
 								isBlock=true
 								isThemed=false
 								overlay=false
-								radius=15
+								radius=13
 								strokeWidth=2
 						}}
 					</div>
+				{{else}}
+					<div style="padding-top: 10px"></div>
 				{{/if}}
 			</div>
 		</div>

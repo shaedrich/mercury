@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
-const {Mixin, on, run, observer} = Ember;
+const {Mixin, on, run} = Ember;
 
 export default Mixin.create({
 	classNames: ['notifications-scroll-menu'],
 	classNameBindings: ['isLoadingNewResults'],
 	scrollableElement: '.scrolling-part',
+	almostBottom: 50,
 
 	bindScrollObserver: on('didRender', function() {
 		run.later(() => {
@@ -17,20 +18,18 @@ export default Mixin.create({
 		this.$(this.get('scrollableElement')).off('scroll', this.onScroll.bind(this));
 	}),
 
-	onIsLoading: observer('notifications.isLoading', function () {
-		if (this.get('notifications.isLoading') === true) {
-			$(this.get('scrollableElement')).animate(
-				{scrollTop: $('#zorf').offset().top + 30},
-				'slow');
-		}
-	}),
-
 	onScroll(e) {
-		const element = $(e.target);
-
-		if (element[0].scrollHeight === element.outerHeight() + element.scrollTop()) {
+		if (this.hasScrolledToTheBottom($(e.target))) {
 			this.onScrolledToTheBottom();
 		}
+	},
+
+	/**
+	 * Has the user scrolled almost to the bottom?
+	 * @private
+	 */
+	hasScrolledToTheBottom(element) {
+		return element[0].scrollHeight >= element.outerHeight() + element.scrollTop() - this.get('almostBottom');
 	},
 
 	onScrolledToTheBottom() {
