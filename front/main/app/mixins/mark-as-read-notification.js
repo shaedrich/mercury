@@ -8,7 +8,7 @@ export default Mixin.create(
 		actions: {
 			markAsRead(notification) {
 				trackMarkAsRead(notification);
-				notification.markAsRead();
+				this.get('notifications').markAsRead(notification);
 			}
 		}
 	}

@@ -22,6 +22,7 @@ export default Component.extend(
 		tagName: 'li',
 
 		currentUser: inject.service(),
+		notifications: inject.service(),
 
 		userLanguage: computed.oneWay('currentUser.language'),
 
