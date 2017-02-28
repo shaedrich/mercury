@@ -165,7 +165,9 @@ export default Route.extend(
 				ArticleModel
 					.getArticleRandomTitle()
 					.then((articleTitle) => {
-						this.transitionTo('wiki-page', encodeURIComponent(normalizeToUnderscore(articleTitle)));
+						window.location.assign(M.buildUrl({
+							title: normalizeToUnderscore(articleTitle)
+						}));
 					})
 					.catch((err) => {
 						this.send('error', err);
@@ -214,16 +216,22 @@ export default Route.extend(
 				this.get('controller').send('closeLightbox');
 			},
 
-			// This is used only in not-found.hbs template
 			/**
 			 * @returns {void}
 			 * @param {string} query
 			 */
 			goToSearchResults(query) {
 				if (this.get('responsive.isMobile')) {
-					this.transitionTo('search', {queryParams: {query}});
+					window.location.assign(`/search?query=${query}`);
 				} else {
-					window.location.assign(`${Mercury.wiki.articlePath}Special:Search?search=${query}&fulltext=Search`);
+					window.location.assign(M.buildUrl({
+						namespace: 'Special',
+						title: 'Search',
+						query: {
+							search: query,
+							fulltext: 'Search'
+						}
+					}));
 				}
 			},
 

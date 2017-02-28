@@ -6,10 +6,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
-	this.route('article-preview');
-
-	this.route('search');
-
 	// we use here wilcard instead of a dynamic segment to be able to
 	// handle in builder also sub-templates (with /)
 	this.route('infobox-builder', {
@@ -57,18 +53,6 @@ Router.map(function () {
 		});
 	});
 
-	this.route('wiki-page', {
-		path: '/wiki/*title'
-	});
-
-	this.route('articleEdit', {
-		path: '/wiki/edit/:title/:sectionIndex'
-	});
-
-	this.route('articleAddPhoto', {
-		path: '/wiki/addPhoto/:title'
-	});
-
 	this.route('discussion', {
 		path: '/d'
 	}, function () {
@@ -111,7 +95,6 @@ Router.map(function () {
 		});
 	});
 
-
 	this.route('image-review', function () {
 		this.route('index', {
 			path: '/'
@@ -134,11 +117,6 @@ Router.map(function () {
 				path: '/:username'
 			});
 		});
-	});
-
-	// Route to catch all badly formed URLs
-	this.route('notFound', {
-		path: '/*url'
 	});
 });
 

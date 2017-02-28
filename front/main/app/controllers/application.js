@@ -132,15 +132,6 @@ export default Ember.Controller.extend(
 			},
 
 			/**
-			 * Bubbles up to ApplicationRoute
-			 *
-			 * @returns {void}
-			 */
-			loadRandomArticle() {
-				this.get('target').send('loadRandomArticle');
-			},
-
-			/**
 			 * Sets controller properties that are passed to LightboxWrapperComponent.
 			 * Also blocks scrolling.
 			 *
