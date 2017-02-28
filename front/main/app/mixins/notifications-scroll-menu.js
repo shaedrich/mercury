@@ -6,7 +6,7 @@ export default Mixin.create({
 	classNames: ['notifications-scroll-menu'],
 	classNameBindings: ['isLoadingNewResults'],
 	scrollableElement: '.scrolling-part',
-	almostBottom: 70,
+	almostBottom: 100,
 
 	bindScrollObserver: on('didRender', function() {
 		run.later(() => {
