@@ -66,6 +66,10 @@ export default Service.extend({
 		this.get('model').markAllAsRead();
 	},
 
+	markAsRead(notification) {
+		this.get('model').markAsRead(notification);
+	},
+
 	/**
 	 * @private
 	 */

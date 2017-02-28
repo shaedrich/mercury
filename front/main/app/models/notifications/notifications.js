@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import Notification from './notification';
 import request from 'ember-ajax/request';
-import {convertToIsoString} from '../../utils/iso-date-time'
+import {convertToIsoString} from '../../utils/iso-date-time';
 
 const {Object, A, RSVP, Logger} = Ember;
 
@@ -41,6 +41,17 @@ const NotificationsModel = Object.extend({
 			this.addNotifications(data.notifications);
 			return data.notifications.length;
 		});
+	},
+
+	markAsRead(notification) {
+		if (!notification.isUnread) {
+			return RSVP.reject();
+		}
+
+		return notification.markAsRead()
+			.then(() => {
+				this.decrementProperty('unreadCount');
+			});
 	},
 
 	markAllAsRead() {
