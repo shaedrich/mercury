@@ -27,9 +27,15 @@ export default Component.extend(
 		userLanguage: computed.oneWay('currentUser.language'),
 
 		iconName: computed('model.type', function () {
-			return this.isDiscussionReply(this.get('model.type')) ?
-				'wds-icons-reply-small' :
-				'wds-icons-upvote-small';
+			const type = this.get('model.type');
+
+			if (this.isDiscussionReply(type)) {
+				return 'wds-icons-reply-small';
+			} else if (this.isAnnouncement(type)) {
+				return 'wds-icons-megaphone';
+			} else {
+				return 'wds-icons-upvote-small';
+			}
 		}),
 
 		isUnread: computed.alias('model.isUnread'),
@@ -42,8 +48,12 @@ export default Component.extend(
 			});
 		}),
 
-		showSnippet: computed('model.title', 'model.isAnnouncement', function() {
-			return this.get('model.title') && this.get('model.isAnnouncement') !== true;
+		showSnippet: computed('model.title', 'model.type', function() {
+			return this.get('model.title') && this.isAnnouncement(this.get('model.type')) !== true;
+		}),
+
+		showLastActor: computed('model.type', function() {
+			return this.isAnnouncement(this.get('model.type')) === true;
 		}),
 
 		postSnippetMarkup: computed('model.snippet', function () {
@@ -64,6 +74,8 @@ export default Component.extend(
 				return this.getPostUpvoteMessageBody(model);
 			} else if (this.isDiscussionReplyUpvote(type)) {
 				return this.getReplyUpvoteMessageBody(model);
+			} else if (this.isAnnouncement(type)) {
+				return model.title;
 			} else {
 				Logger.warn('No type found for a notification', model);
 			}
@@ -83,6 +95,10 @@ export default Component.extend(
 
 		isDiscussionPostUpvote(type) {
 			return type === notificationTypes.discussionUpvotePost;
+		},
+
+		isAnnouncement(type) {
+			return type === notificationTypes.announcement;
 		},
 
 		showAvatars: computed('model.totalUniqueActors', 'model.type', function () {
