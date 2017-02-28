@@ -41,6 +41,10 @@ export default Component.extend(
 			});
 		}),
 
+		showSnippet: computed('model.title', 'model.isAnnouncement', function() {
+			return this.get('model.title') && this.get('model.isAnnouncement') !== true;
+		}),
+
 		postSnippetMarkup: computed('model.snippet', function () {
 			return wrapMeHelper.compute([
 				this.get('model.snippet')

@@ -15,11 +15,16 @@
 		<p class="notification-text">
 			{{{text}}}
 		</p>
-		{{#unless model.title}}
+		{{#if showSnippet}}
 			<p class="notification-entity-text-snippet">
 				{{{postSnippetMarkup}}}
 			</p>
-		{{/unless}}
+		{{/if}}
+		{{#if model.isAnnouncement}}
+			<p class="notification-entity-announcement-author">
+				{{model.announcementAuthor}}
+			</p>
+		{{/if}}
 		<ul class="notification-context-list">
 			<li class="notification-context-item">
 				{{time-ago model.timestamp}}

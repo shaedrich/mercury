@@ -43,6 +43,17 @@ const NotificationsModel = Object.extend({
 		});
 	},
 
+	markAsRead(notification) {
+		return notification.markAsRead()
+			.then((data) => {
+				if (notification.isUnread) {
+					this.decrement('unreadCount');
+				}
+				return data;
+			});
+	},
+
+
 	markAllAsRead() {
 		const since = this.getNewestNotificationISODate();
 
