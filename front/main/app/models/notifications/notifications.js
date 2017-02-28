@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Notification from './notification';
 import request from 'ember-ajax/request';
 import {convertToIsoString} from '../../utils/iso-date-time';
+import {_notifications, stubbingOn} from '../../utils/stubs';
 
 const {Object, A, RSVP, Logger} = Ember;
 
@@ -103,9 +104,21 @@ NotificationsModel.reopenClass({
 	},
 
 	getNotificationsList(model) {
-		return request(M.getOnSiteNotificationsServiceUrl('/notifications')).then((data) => {
+		return this.requestNotifications().then((data) => {
 			model.setNormalizedData(data);
 		});
+	},
+
+	/**
+	 * @private
+	 */
+	requestNotifications() {
+		if (stubbingOn) {
+			return new RSVP.Promise((cb) => {
+				setTimeout(() => {cb(_notifications(), 1000)})
+			});
+		}
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications'));
 	}
 
 });

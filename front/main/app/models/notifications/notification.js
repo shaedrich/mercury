@@ -38,14 +38,14 @@ NotificationModel.reopenClass({
 		return this._super({
 			title: Ember.get(notificationData, 'refersTo.title'),
 			snippet: Ember.get(notificationData, 'refersTo.snippet'),
+			uri: Ember.get(notificationData, 'refersTo.uri'),
 			timestamp: convertToTimestamp(Ember.get(notificationData, 'events.latestEvent.when')),
 			communityName: Ember.get(notificationData, 'community.name'),
 			communityId: Ember.get(notificationData, 'community.id'),
 			isUnread: notificationData.read === false,
 			totalUniqueActors: Ember.get(notificationData, 'events.totalUniqueActors'),
 			latestActors: NotificationModel.createActors(Ember.get(notificationData, 'events.latestActors')),
-			type: NotificationModel.getTypeFromApiData(notificationData),
-			uri: Ember.get(notificationData, 'refersTo.uri')
+			type: NotificationModel.getTypeFromApiData(notificationData)
 		});
 	},
 
@@ -66,6 +66,8 @@ NotificationModel.reopenClass({
 			}
 		} else if (apiData.type === 'replies-notification') {
 			return notificationTypes.discussionReply;
+		} else if(apiData.type === 'announcement-notification') {
+			return notificationTypes.announcement;
 		}
 	}
 });
