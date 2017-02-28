@@ -49,15 +49,12 @@ NotificationModel.reopenClass({
 		});
 	},
 
-	createActors(actorsApiData) {
-		const actors = new A();
-
-		actors.pushObjects(actorsApiData.map(function (apiActor) {
-			apiActor.name = apiActor.userName;
-			return DiscussionContributor.create(apiActor);
-		}));
-
-		return actors;
+	createActors(actors) {
+		return actors.reduce(function (array, actor) {
+			actor.name = actor.userName;
+			array.addObject(DiscussionContributor.create(actor));
+			return array;
+		}, new A());
 	},
 
 	getTypeFromApiData(apiData) {
