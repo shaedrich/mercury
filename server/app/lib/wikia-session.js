@@ -15,7 +15,7 @@ export default function scheme() {
 		 * @param {*} reply
 		 * @returns {*}
 		 */
-		authenticate: (request, reply) => {
+		authenticate(request, reply) {
 			const accessToken = request.state.access_token,
 				/**
 				 * @param {*} err
@@ -23,22 +23,21 @@ export default function scheme() {
 				 * @param {string} payload
 				 * @returns {*}
 				 */
-				callback = (err, response, payload) => {
-					let parsed,
-						parseError;
+				callback = (error, response, payload) => {
+					let parsed;
+
+					// Detects an error with the connection
+					if (error) {
+						Logger.error('Helios connection error: ', error);
+
+						return reply(unauthorized('Helios connection error'));
+					}
 
 					try {
 						parsed = JSON.parse(payload);
-					} catch (e) {
-						parseError = e;
-					}
+					} catch (parseError) {
+						Logger.error('Helios payload error: ', parseError);
 
-					// Detects an error with the connection
-					if (err || parseError) {
-						Logger.error('Helios connection error: ', {
-							err,
-							parseError
-						});
 						return reply(unauthorized('Helios connection error'));
 					}
 
@@ -46,8 +45,10 @@ export default function scheme() {
 						if (response.statusCode === 401) {
 							reply.unstate('access_token');
 						}
+
 						return reply(unauthorized('Token not authorized by Helios'));
 					}
+
 					return reply.continue({credentials: {userId: parsed.user_id}});
 				};
 
