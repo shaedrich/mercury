@@ -18,7 +18,7 @@ export default function scheme() {
 		authenticate(request, reply) {
 			const accessToken = request.state.access_token,
 				/**
-				 * @param {*} err
+				 * @param {*} error
 				 * @param {*} response
 				 * @param {string} payload
 				 * @returns {*}
