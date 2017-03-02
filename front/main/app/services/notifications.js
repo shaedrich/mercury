@@ -23,8 +23,8 @@ export default Service.extend({
 				this.setProperties({
 					model,
 					isLoading: false,
-					allLoaded:  model.data.length < this.get('notificationsPerPage')
-				})
+					allLoaded: model.data.length < this.get('notificationsPerPage')
+				});
 			})
 			.catch((err) => {
 				Logger.warn('Couldn\'t load notifications', err);
