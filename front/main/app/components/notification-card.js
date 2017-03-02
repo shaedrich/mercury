@@ -48,11 +48,11 @@ export default Component.extend(
 			});
 		}),
 
-		showSnippet: computed('model.title', 'model.type', function() {
+		showSnippet: computed('model.title', 'model.type', function () {
 			return this.get('model.title') && this.isAnnouncement(this.get('model.type')) !== true;
 		}),
 
-		showLastActor: computed('model.type', function() {
+		showLastActor: computed('model.type', function () {
 			return this.isAnnouncement(this.get('model.type')) === true;
 		}),
 
