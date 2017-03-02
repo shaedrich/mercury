@@ -1,5 +1,5 @@
 
-export const stubbingOn = true;
+export const stubbingOn = false;
 
 export function _notifications() {
 	return JSON.parse(

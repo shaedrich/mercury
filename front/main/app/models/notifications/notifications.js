@@ -65,12 +65,12 @@ const NotificationsModel = Object.extend({
 			},
 		}).then((data) => {
 			this.get('data').setEach('isUnread', false);
-			this.set('unreadCount', 0)
+			this.set('unreadCount', 0);
 		});
 	},
 
 	addNotifications(notifications) {
-		const notificationModels = notifications.map(function (notificationApiData) {
+		const notificationModels = notifications.map((notificationApiData) => {
 			return Notification.create(notificationApiData);
 		});
 
@@ -95,8 +95,8 @@ NotificationsModel.reopenClass({
 	},
 
 	getUnreadNotificationsCount(model) {
-		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count')).then(function (data) {
-			model.set('unreadCount', data.unreadCount);
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count')).then((result) => {
+			model.set('unreadCount', result.unreadCount);
 		}).catch((error) => {
 			model.set('unreadCount', 0);
 			Logger.error('Setting notifications unread count to 0 because of the API fetch error');
@@ -114,9 +114,7 @@ NotificationsModel.reopenClass({
 	 */
 	requestNotifications() {
 		if (stubbingOn) {
-			return new RSVP.Promise((cb) => {
-				setTimeout(() => {cb(_notifications(), 1000)})
-			});
+			return new RSVP.Promise((cb) => setTimeout(() => cb(_notifications(), 1000)));
 		}
 		return request(M.getOnSiteNotificationsServiceUrl('/notifications'));
 	}
