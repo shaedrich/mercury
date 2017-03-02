@@ -60,9 +60,7 @@ const NotificationsModel = Object.extend({
 
 		return request(M.getOnSiteNotificationsServiceUrl(`/notifications/mark-all-as-read`), {
 			method: 'POST',
-			data: {
-				since
-			},
+			data: JSON.stringify({since}),
 		}).then((data) => {
 			this.get('data').setEach('isUnread', false);
 			this.set('unreadCount', 0);
