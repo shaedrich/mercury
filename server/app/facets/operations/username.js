@@ -66,7 +66,7 @@ function handleServiceDiscoveryResponse(data, request) {
 
 function createServiceDiscoveryContext() {
 	return {
-		url: `${settings.consul.internalUrl}${settings.userRegistationService.path}`,
+		url: `${settings.consul.internalUrl}${settings.userRegistationService.path}?tag=${settings.environment}`,
 		options: {
 			timeout: settings.consul.timeout
 		}
