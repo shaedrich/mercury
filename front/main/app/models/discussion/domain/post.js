@@ -5,7 +5,7 @@ import DiscussionContributor from './contributor';
 import DiscussionUserBlockDetails from './user-block-details';
 import DiscussionUserData from './user-data';
 import OpenGraph from './open-graph';
-import {convertToTimestamp} from '../../../utils/iso-date-time'
+import {convertToTimestamp} from '../../../utils/iso-date-time';
 
 const {get} = Ember,
 	DiscussionPost = DiscussionEntity.extend({
