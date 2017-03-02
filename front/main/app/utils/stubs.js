@@ -1,9 +1,8 @@
-
 export const stubbingOn = false;
 
 export function _notifications() {
 	return JSON.parse(
-`{
+		`{
 	"notifications": [
 		{
 			"type": "upvote-notification",
@@ -132,5 +131,5 @@ export function _notifications() {
 			"read": false
 		}
 	]
-}`)
+}`);
 }
