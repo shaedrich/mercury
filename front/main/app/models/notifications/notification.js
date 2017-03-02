@@ -2,7 +2,7 @@ import Ember from 'ember';
 import DiscussionContributor from '../discussion/domain/contributor';
 import {notificationTypes} from '../../utils/global-notifications';
 import request from 'ember-ajax/request';
-import {convertToTimestamp} from '../../utils/iso-date-time'
+import {convertToTimestamp} from '../../utils/iso-date-time';
 
 
 const {Object, A} = Ember;
@@ -23,7 +23,7 @@ const NotificationModel = Object.extend({
 			method: 'POST',
 			data: JSON.stringify([this.get('uri')]),
 		}).then(() => {
-			this.set('isUnread', false)
+			this.set('isUnread', false);
 		});
 	},
 });
@@ -50,7 +50,7 @@ NotificationModel.reopenClass({
 	},
 
 	createActors(actors) {
-		return actors.reduce(function (array, actor) {
+		return actors.reduce((array, actor) => {
 			actor.name = actor.userName;
 			array.addObject(DiscussionContributor.create(actor));
 			return array;
@@ -66,7 +66,7 @@ NotificationModel.reopenClass({
 			}
 		} else if (apiData.type === 'replies-notification') {
 			return notificationTypes.discussionReply;
-		} else if(apiData.type === 'announcement-notification') {
+		} else if (apiData.type === 'announcement-notification') {
 			return notificationTypes.announcement;
 		}
 	}
