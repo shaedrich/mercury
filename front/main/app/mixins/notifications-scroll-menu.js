@@ -8,7 +8,7 @@ export default Mixin.create({
 	scrollableElement: '.scrolling-part',
 	almostBottom: 100,
 
-	bindScrollObserver: on('didRender', function() {
+	bindScrollObserver: on('didRender', function () {
 		run.later(() => {
 			this.$(this.get('scrollableElement')).on('scroll', this.onScroll.bind(this));
 		}, 0);
