@@ -1,4 +1,3 @@
-
 /**
  * Gets timestamp from date that can be ISO string or epoch object
  * @param {string|object} date
@@ -19,4 +18,4 @@ function convertToIsoString(timestamp) {
 }
 
 
-export {convertToTimestamp, convertToIsoString}
+export {convertToTimestamp, convertToIsoString};

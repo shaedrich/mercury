@@ -1,13 +1,13 @@
 import {track as mercuryTrack} from 'common/utils/track';
 
 const labels = {
-	'discussion-upvote-reply': 'discussion-upvote-reply',
-	'discussion-upvote-post': 'discussion-upvote-post',
-	'discussion-reply': 'discussion-reply',
-	'mark-all-as-read': 'mark-all-as-read',
-	'mark-as-read': 'mark-as-read',
-	'open-menu': 'open-menu',
-},
+		'discussion-upvote-reply': 'discussion-upvote-reply',
+		'discussion-upvote-post': 'discussion-upvote-post',
+		'discussion-reply': 'discussion-reply',
+		'mark-all-as-read': 'mark-all-as-read',
+		'mark-as-read': 'mark-as-read',
+		'open-menu': 'open-menu',
+	},
 	gaCategory = 'on-site-notifications';
 
 /**
@@ -64,7 +64,7 @@ export function trackClick(notification) {
 
 export function trackMarkAsRead(notification) {
 	track(
-		labels['mark-as-read'] + '-' + labels[notification.get('type')],
+		`${labels['mark-as-read']}-${labels[notification.get('type')]}`,
 		'click',
 	);
 }
