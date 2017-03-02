@@ -13,6 +13,7 @@ export default Component.extend(
 		classNames: ['wikia-nav'],
 		classNameBindings: ['model.inRoot:wikia-nav--in-root'],
 		currentUser: inject.service(),
+		notifications: inject.service(),
 		isUserAuthenticated: computed.oneWay('currentUser.isAuthenticated'),
 
 		init() {

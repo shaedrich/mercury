@@ -56,6 +56,11 @@ $nav-padding-vertical: 18px;
 			width: $nav-avatar-size;
 			vertical-align: top;
 		}
+
+		.notifications-unread-mark {
+		  left: initial;
+		  right: -6;
+		}
 	}
 
 	.wikia-nav--login {

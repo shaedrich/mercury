@@ -4,10 +4,10 @@
 			<a {{action 'onUsernameClicked'}}
 					class="wikia-nav--external wikia-nav--profile-link">
 				<figure class="wikia-nav__avatar user-profile-avatar">
-					<img src={{currentUser.avatarPath}} alt="{{currentUser.name}}">
 					{{#if unreadCount}}
 						<span class="notifications-unread-mark">{{unreadCount}}</span>
 					{{/if}}
+					<img src={{currentUser.avatarPath}} alt="{{currentUser.name}}">
 				</figure>
 				{{currentUser.name}}
 				{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon menu-chevron'}}
