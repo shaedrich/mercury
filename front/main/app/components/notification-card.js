@@ -109,7 +109,7 @@ export default Component.extend(
 		getTranslatedMessage(key, context) {
 			const fullContext = $.extend({}, {
 				lng: this.get('userLanguage'),
-				ns: 'discussion',
+				ns: 'design-system',
 			}, context);
 
 			return i18n.t(key, fullContext);
