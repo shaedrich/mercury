@@ -51,7 +51,6 @@ NotificationModel.reopenClass({
 
 	createActors(actors) {
 		return actors.reduce((array, actor) => {
-			actor.name = actor.userName;
 			array.addObject(DiscussionContributor.create(actor));
 			return array;
 		}, new A());
