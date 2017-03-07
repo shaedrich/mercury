@@ -21,9 +21,9 @@
 
 	{{#if notificationsList.length}}
 		<div class="notifications-title">
-			<h5>{{i18n 'notifications.notifications' ns='discussion'}}</h5>
+			<h5>{{i18n 'notifications-notifications' ns='design-system'}}</h5>
 			<a class="mark-all-as-read" {{action 'markAllAsRead'}}>
-				{{i18n 'notifications.mark-all-as-read' ns='discussion'}}
+				{{i18n 'notifications-mark-all-as-read' ns='design-system'}}
 			</a>
 		</div>
 	{{/if}}
@@ -39,7 +39,7 @@
 			{{/each}}
 		</ul>
 	{{else}}
-		{{i18n 'notifications.no-notifications-message' ns='discussion'}}
+		{{i18n 'notifications-no-notifications-message' ns='design-system'}}
 	{{/if}}
 	{{#if isLoadingNewResults }}
 		<div class="spinner-container">
