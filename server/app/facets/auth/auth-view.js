@@ -120,21 +120,17 @@ function hasInvalidProtocol(protocol) {
 export function getRedirectUrl(request) {
 	const currentHost = request.headers.host,
 		redirectUrl = request.query.redirect || '/',
-		parsedUrl = parse(redirectUrl),
-		redirectUrlHost = parsedUrl.host;
+		redirectUrlHost = parse(redirectUrl).host;
 
-	if (hasImplicitProtocol(redirectUrl) ||
-		hasInvalidProtocol(parsedUrl.protocol) ||
-		(
-			redirectUrlHost &&
-			!checkDomainMatchesCurrentHost(redirectUrlHost, currentHost) &&
-			!isWhiteListedDomain(redirectUrlHost)
-		)
+	if (!redirectUrlHost ||
+		checkDomainMatchesCurrentHost(redirectUrlHost, currentHost) ||
+		isWhiteListedDomain(redirectUrlHost)
 	) {
-		return '/';
-	} else {
 		return redirectUrl;
 	}
+
+	// Not valid domain
+	return '/';
 }
 
 /**
