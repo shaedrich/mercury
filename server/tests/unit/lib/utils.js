@@ -350,8 +350,6 @@ QUnit.test('parseQueryParams', function (assert) {
 		'Whitelisted parameter was not passed through');
 	assert.equal(typeof global.parseQueryParams(testCases[3], allowedKeys).allowed, 'string',
 		'Whitelisted parameter was not passed through');
-	assert.equal(global.parseQueryParams(testCases[3], allowedKeys).allowed, '&lt;&#x2f;script&gt;',
-		'HTML in query not escaped properly');
 });
 
 QUnit.test('isXipHost', function (assert) {

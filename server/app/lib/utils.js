@@ -232,7 +232,7 @@ export function parseQueryParams(obj, allowedKeys) {
 				} else if (rawProp.toLowerCase() === 'false') {
 					prop = false;
 				} else {
-					prop = escapeHtml(rawProp);
+					prop = rawProp;
 				}
 
 				parsed[key] = prop;
