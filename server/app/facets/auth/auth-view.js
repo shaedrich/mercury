@@ -2,7 +2,6 @@ import {disableCache} from '../../lib/caching';
 import {getUserPreferencesUrl} from '../../lib/auth-utils';
 import {parse, resolve} from 'url';
 import settings from '../../../config/settings';
-import ESAPI from 'node-esapi';
 import {shouldServeMobileView} from '../../lib/utils';
 
 /**
