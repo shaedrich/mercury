@@ -6,7 +6,7 @@ set -o pipefail
 mkdir jenkins || rm -rf jenkins/* && true
 echo "githubToken=Authorization: token $GITHUB_TOKEN" > jenkins/params
 echo "githubUrl=https://api.github.com/repos/Wikia/mercury/statuses/$GIT_COMMIT" >> jenkins/params
-dependenciesDir="/var/lib/jenkins/workspace/Mercury-UPDATE-dependencies"
+dependenciesDir="/var/lib/jenkins/workspace/mercury-update-dependencies"
 
 # $1 - context
 # $2 - state
