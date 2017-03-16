@@ -97,11 +97,11 @@ $site-head-default-box-shadow: 0 1px 4px 0 $site-head-box-shadow-color;
 
 	.nav-icon-wrapper {
 		position: relative;
+	}
 
-		.notifications-unread-mark {
-			left: initial;
-			right: 0;
-		}
+	.notifications-unread-mark {
+	  left: initial;
+	  right: 0;
 	}
 }
 

@@ -27,22 +27,14 @@ $notification-card-anchor-color: #656d77;
 			border-radius: 100%;
 			margin: 0;
 
-			figure.avatar {
-			  svg {
-					border-color: $wds-color-light-c4;
-					display: inline;
-				}
-			  	a {
-				    img {
-					    border-color: $wds-color-light-c4;
-					}
-					display: inline;
-			  	}
+			&__image {
+				border-color: $wds-color-light-c4;
 			}
+
 		}
 
 		@for $i from 1 to 6 {
-			.ember-view:nth-child(#{$i}) .user-avatar {
+			.user-avatar:nth-child(#{$i}) {
 				transform: translate(($i - 1) * - 15px);
 				z-index: 5 - $i;
 			}
