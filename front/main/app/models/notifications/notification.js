@@ -51,6 +51,9 @@ NotificationModel.reopenClass({
 
 	createActors(actors) {
 		return actors.reduce((array, actor) => {
+			if (!actor.avatarUrl) {
+				actor.avatarUrl = 'http://static.wikia.nocookie.net/messaging/images/1/19/Avatar.jpg/revision/latest/scale-to-width-down/50';
+			}
 			array.addObject(DiscussionContributor.create(actor));
 			return array;
 		}, new A());

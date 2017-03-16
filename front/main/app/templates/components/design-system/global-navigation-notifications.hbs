@@ -24,9 +24,9 @@ as |dropdown|
 					</a>
 				</div>
 			{{/if}}
-			<div class="scrolling-part">
+			<div class="scrolling-part notifications-list">
 				{{#if notificationsList.length}}
-					<ul class="wds-list wds-has-lines-between notifications-list">
+					<ul class="wds-list wds-has-lines-between">
 						{{#each notificationsList as |notification|}}
 							{{notification-card
 									model=notification
