@@ -4,9 +4,9 @@ import request from 'ember-ajax/request';
 import {convertToIsoString} from '../../utils/iso-date-time';
 import {_notifications, stubbingOn} from '../../utils/stubs';
 
-const {Object, A, RSVP, Logger} = Ember;
+const {Object: EmberObject, A, RSVP, Logger} = Ember;
 
-const NotificationsModel = Object.extend({
+const NotificationsModel = EmberObject.extend({
 	unreadCount: 0,
 	data: null,
 

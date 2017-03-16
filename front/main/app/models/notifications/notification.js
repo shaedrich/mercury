@@ -5,9 +5,9 @@ import request from 'ember-ajax/request';
 import {convertToTimestamp} from '../../utils/iso-date-time';
 
 
-const {Object, A} = Ember;
+const {Object: EmberObject, A} = Ember;
 
-const NotificationModel = Object.extend({
+const NotificationModel = EmberObject.extend({
 	title: null,
 	snippet: null,
 	timestamp: null,
@@ -30,7 +30,7 @@ const NotificationModel = Object.extend({
 
 NotificationModel.reopenClass({
 	/**
-	 * @param {Object} notificationData
+	 * @param {EmberObject} notificationData
 	 *
 	 * @returns {array}
 	 */
