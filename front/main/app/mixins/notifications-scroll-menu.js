@@ -18,9 +18,9 @@ export default Mixin.create({
 		this.$(this.get('scrollableElement')).off('scroll', this.onScroll.bind(this));
 	}),
 
-	onScroll(e) {
-		if (this.hasScrolledToTheBottom($(e.target))) {
-			this.onScrolledToTheBottom();
+	onScroll(event) {
+		if (this.hasAlmostScrolledToTheBottom($(event.target))) {
+			this.get('notifications').loadMoreResults();
 		}
 	},
 
@@ -28,11 +28,8 @@ export default Mixin.create({
 	 * Has the user scrolled almost to the bottom?
 	 * @private
 	 */
-	hasScrolledToTheBottom(element) {
+	hasAlmostScrolledToTheBottom(element) {
 		return element[0].scrollHeight - this.get('almostBottom') <= element.scrollTop() + element.innerHeight();
-	},
-
-	onScrolledToTheBottom() {
-		this.get('notifications').loadMoreResults();
 	}
+
 });
