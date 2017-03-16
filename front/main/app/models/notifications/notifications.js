@@ -93,12 +93,13 @@ NotificationsModel.reopenClass({
 	},
 
 	getUnreadNotificationsCount(model) {
-		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count')).then((result) => {
-			model.set('unreadCount', result.unreadCount);
-		}).catch((error) => {
-			model.set('unreadCount', 0);
-			Logger.error('Setting notifications unread count to 0 because of the API fetch error');
-		});
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count'))
+			.then((result) => {
+				model.set('unreadCount', result.unreadCount);
+			}).catch((error) => {
+				model.set('unreadCount', 0);
+				Logger.error('Setting notifications unread count to 0 because of the API fetch error');
+			});
 	},
 
 	getNotificationsList(model) {
