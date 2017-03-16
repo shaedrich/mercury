@@ -5,7 +5,8 @@ import request from 'ember-ajax/request';
 import {convertToTimestamp} from '../../utils/iso-date-time';
 
 
-const {Object: EmberObject, A} = Ember;
+const {Object: EmberObject, A} = Ember,
+	avatar = 'http://static.wikia.nocookie.net/messaging/images/1/19/Avatar.jpg/revision/latest/scale-to-width-down/50';
 
 const NotificationModel = EmberObject.extend({
 	title: null,
@@ -52,7 +53,7 @@ NotificationModel.reopenClass({
 	createActors(actors) {
 		return actors.reduce((array, actor) => {
 			if (!actor.avatarUrl) {
-				actor.avatarUrl = 'http://static.wikia.nocookie.net/messaging/images/1/19/Avatar.jpg/revision/latest/scale-to-width-down/50';
+				actor.avatarUrl = avatar;
 			}
 			array.addObject(DiscussionContributor.create(actor));
 			return array;
