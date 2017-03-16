@@ -11,6 +11,7 @@ export default Mixin.create({
 	bindScrollObserver: on('didRender', function () {
 		run.later(() => {
 			this.$(this.get('scrollableElement')).on('scroll', this.onScroll.bind(this));
+			this.$(this.get('scrollableElement')).on('mousewheel DOMMouseScroll', this.onMouseWheel);
 		}, 0);
 	}),
 
@@ -19,8 +20,18 @@ export default Mixin.create({
 	}),
 
 	onScroll(event) {
-		if (this.hasAlmostScrolledToTheBottom($(event.target))) {
+		const target = $(event.target);
+
+		if (this.hasAlmostScrolledToTheBottom(target)) {
 			this.get('notifications').loadMoreResults();
+		}
+	},
+
+	onMouseWheel (e) {
+		const delta = -e.originalEvent.wheelDelta || e.originalEvent.detail,
+			scrollTop = this.scrollTop;
+		if ((delta < 0 && scrollTop === 0) || (delta > 0 && this.scrollHeight - this.clientHeight - scrollTop === 0)) {
+			e.preventDefault();
 		}
 	},
 
@@ -28,8 +39,9 @@ export default Mixin.create({
 	 * Has the user scrolled almost to the bottom?
 	 * @private
 	 */
-	hasAlmostScrolledToTheBottom(element) {
+	hasAlmostScrolledToTheBottom(element){
 		return element[0].scrollHeight - this.get('almostBottom') <= element.scrollTop() + element.innerHeight();
 	}
 
-});
+})
+;
