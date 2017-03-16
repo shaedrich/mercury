@@ -13,7 +13,7 @@ export default Service.extend({
 
 	modelLoader: computed('currentUser.isAuthenticated', function () {
 		this.set('isLoading', true);
-		if (!this.isUserAuthenticated()) {
+		if (!this.isUserAuthenticated) {
 			this.set('isLoading', false);
 			return RSVP.reject();
 		}
@@ -43,7 +43,7 @@ export default Service.extend({
 	},
 
 	loadMoreResults() {
-		if (this.get('isLoading') === true || !this.isUserAuthenticated() || this.get('allLoaded') === true) {
+		if (this.get('isLoading') === true || !this.isUserAuthenticated || this.get('allLoaded') === true) {
 			return;
 		}
 
@@ -73,8 +73,6 @@ export default Service.extend({
 	/**
 	 * @private
 	 */
-	isUserAuthenticated() {
-		return this.get('currentUser.isAuthenticated') === true;
-	}
+	isUserAuthenticated: Ember.computed.bool('currentUser.isAuthenticated')
 
 });
