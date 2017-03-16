@@ -109,3 +109,33 @@ $notification-card-anchor-color: #656d77;
 	font-size: 16px;
 	margin: -7px 8px 0;
 }
+
+
+// copied from Design System
+.wds-notification-card {
+
+  &__context-list {
+	color: $wds-color-blue-gray;
+	display: flex;
+	font-size: $wds-typescale-size-minus-2;
+	font-weight: bold;
+	list-style-type: none;
+	margin: 0;
+	padding: 8px 0 0;
+  }
+
+  &__community {
+	max-width: 150px;
+	text-overflow: ellipsis;
+  }
+
+  &__context-item {
+	white-space: nowrap;
+	overflow: hidden;
+  }
+
+  &__context-separator {
+	margin: 0 8px 0 8px;
+  }
+
+}
