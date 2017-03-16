@@ -31,4 +31,8 @@ export default Ember.Component.extend({
 	fullDiameter: Ember.computed('radius', function () {
 		return this.get('radius') * 2 + this.get('strokeWidth');
 	}),
+
+	strokeLength: Ember.computed('radius', function () {
+		return 2 * Math.PI * this.get('radius');
+	})
 });
