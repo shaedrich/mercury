@@ -20,6 +20,8 @@ $notification-card-anchor-color: #656d77;
 	}
 
 	.discussion-contributors {
+	  	align-items: center;
+	  	display: flex;
 		margin: 8px 18px 6px 40px;
 
 		.user-avatar {
@@ -30,13 +32,16 @@ $notification-card-anchor-color: #656d77;
 			&__image {
 				border-color: $wds-color-light-c4;
 			}
-
 		}
 
 		@for $i from 1 to 6 {
-			.user-avatar:nth-child(#{$i}) {
+		  //TODO avatars shouldn't stack based on ember-view
+		  // you have to wrap it in discussion-contributors with a new class
+		  // and modify styles which rely on current structure
+			.ember-view:nth-child(#{$i}) .user-avatar {
 				transform: translate(($i - 1) * - 15px);
 				z-index: 5 - $i;
+			  	position: relative;
 			}
 		}
 
@@ -46,7 +51,6 @@ $notification-card-anchor-color: #656d77;
 			color: $wds-color-light-c6;
 			font-size: 12px;
 			transform: translate(-60px);
-			width: auto;
 		}
 	}
 }
