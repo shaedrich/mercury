@@ -49,7 +49,7 @@ export default Component.extend(
 		}),
 
 		showSnippet: computed('model.title', 'model.type', function () {
-			return this.get('model.title') && this.isAnnouncement(this.get('model.type')) !== true;
+			return !this.get('model.title') && this.isAnnouncement(this.get('model.type')) !== true;
 		}),
 
 		showLastActor: computed('model.type', function () {
