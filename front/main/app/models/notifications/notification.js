@@ -40,6 +40,7 @@ NotificationModel.reopenClass({
 			title: Ember.get(notificationData, 'refersTo.title'),
 			snippet: Ember.get(notificationData, 'refersTo.snippet'),
 			uri: Ember.get(notificationData, 'refersTo.uri'),
+			latestEventUri: Ember.get(notificationData, 'events.latestEvent.uri'),
 			timestamp: convertToTimestamp(Ember.get(notificationData, 'events.latestEvent.when')),
 			communityName: Ember.get(notificationData, 'community.name'),
 			communityId: Ember.get(notificationData, 'community.id'),

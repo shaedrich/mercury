@@ -5,7 +5,7 @@
 			totalContributorCount=model.totalUniqueActors
 	}}
 {{/if}}
-<a href="{{model.uri}}" {{action 'onNotificationClicked' preventDefault=false}}>
+<a href="{{model.latestEventUri}}" {{action 'onNotificationClicked' preventDefault=false}}>
 	<a {{action 'markAsRead' model}}>
 		<div class="notification-icon-wrapper">
 			{{svg iconName viewBox='0 0 24 24' class='icon'}}
