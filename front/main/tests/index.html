@@ -57,6 +57,8 @@
 		M.tracker.Internal.trackPageView = function () {};
 
 		M.prop('environment', 'test', true);
+		// i18n tries to download translations asynchronously when translations are empty, so we add empty object for "en" key
+		M.prop('translations', {"en": {}});
 	</script>
 
 </head>
