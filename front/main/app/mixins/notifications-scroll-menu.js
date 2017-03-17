@@ -27,7 +27,7 @@ export default Mixin.create({
 		}
 	},
 
-	onMouseWheel (e) {
+	onMouseWheel(e) {
 		const delta = -e.originalEvent.wheelDelta || e.originalEvent.detail,
 			scrollTop = this.scrollTop;
 		if ((delta < 0 && scrollTop === 0) || (delta > 0 && this.scrollHeight - this.clientHeight - scrollTop === 0)) {
@@ -39,7 +39,7 @@ export default Mixin.create({
 	 * Has the user scrolled almost to the bottom?
 	 * @private
 	 */
-	hasAlmostScrolledToTheBottom(element){
+	hasAlmostScrolledToTheBottom(element) {
 		return element[0].scrollHeight - this.get('almostBottom') <= element.scrollTop() + element.innerHeight();
 	}
 

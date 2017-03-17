@@ -54,7 +54,8 @@ export default Service.extend({
 	},
 
 	loadMoreResults() {
-		if (this.get('isLoading') === true || !this.isUserAuthenticated || this.get('allLoaded') === true || !this.enableOnSiteNotifications) {
+		if (this.get('isLoading') === true || !this.isUserAuthenticated
+			|| this.get('allLoaded') === true || !this.enableOnSiteNotifications) {
 			return;
 		}
 
