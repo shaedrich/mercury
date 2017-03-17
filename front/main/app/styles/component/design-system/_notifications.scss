@@ -1,0 +1,118 @@
+$notifications-dropdown-content-color: #656d77;
+$notifications-dropdown-border-color: #363b41;
+
+.spinner-container {
+	border-top: solid 1px #e6e6e6;
+	margin-left: 18px;
+	margin-right: 18px;
+	padding-bottom: 11px;
+	padding-top: 11px;
+}
+
+.notifications {
+	&:hover {
+		.icon-bell,
+		.wds-dropdown__toggle-chevron {
+			fill: $wds-color-link;
+		}
+	}
+}
+
+.notifications-unread-mark {
+	align-items: center;
+	background-color: $wds-color-link;
+	border: 1px solid $wds-color-white;
+	border-radius: 100%;
+	color: $wds-color-white;
+	display: flex;
+	justify-content: center;
+	font-size: 10px;
+	height: 18px;
+	left: -9px;
+	position: absolute;
+	top: 7px;
+	width: 18px;
+}
+
+.notifications-toggle {
+	margin-left: 16px;
+	margin-right: 8px;
+}
+
+.notifications-dropdown-content {
+	align-items: center;
+	color: $notifications-dropdown-content-color;
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	justify-content: center;
+	min-height: 80px;
+	min-width: (18px * 2) + 320px;
+	overflow-wrap: break-word;
+	width: 100%;
+	//word-break: break-word is not supported on Firefox, therefore word-wrap and overflow-wrap are used too
+	word-break: break-word;
+	word-wrap: break-word;
+
+	.scrolling-part {
+		box-sizing: border-box;
+		max-height: 420px;
+		overflow-y: scroll;
+		width: 100%;
+	}
+}
+
+.mark-all-as-read-button {
+	box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.1);
+	display: flex;
+	justify-content: flex-start;
+	min-height: 44px;
+	padding: 0;
+	width: 100%;
+}
+
+.mark-all-as-read {
+	color: $wds-color-link;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 12px;
+	padding: 18px;
+	text-transform: uppercase;
+}
+
+.wds-is-active {
+	background-color: $wds-color-slate-gray;
+	border-color: $notifications-dropdown-border-color;
+
+	.notifications-toggle {
+		.wds-icon {
+			fill: white;
+		}
+	}
+}
+
+.notifications-dropdown-content {
+	max-width: 356px;
+}
+
+.wikia-nav {
+	.user-profile-avatar {
+		position: relative;
+	}
+
+	.notifications-unread-mark {
+		left: initial;
+		right: -9px;
+		top: -3px;
+	}
+}
+
+.notifications-scroll-menu {
+	.loading-overlay {
+		position: absolute;
+	}
+}
+
+.notifications-empty-content {
+	font-size: 14px;
+}

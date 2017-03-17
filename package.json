@@ -54,7 +54,7 @@
     "babel-template": "6.7.0",
     "babel-types": "6.7.2",
     "code": "1.5.0",
-    "design-system-i18n": "wikia/design-system-i18n.git#0.6.3",
+    "design-system-i18n": "wikia/design-system-i18n.git#0.8.0",
     "ember-template-compiler": "toranb/ember-template-compiler#b924608fb9652850d6e297b61b9bd116fe157faa",
     "eslint": "2.9.0",
     "eslint-config-airbnb": "9.0.1",
