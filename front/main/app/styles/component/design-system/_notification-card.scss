@@ -20,8 +20,8 @@ $notification-card-anchor-color: #656d77;
 	}
 
 	.discussion-contributors {
-	  	align-items: center;
-	  	display: flex;
+		align-items: center;
+		display: flex;
 		margin: 8px 18px 6px 40px;
 
 		.user-avatar {
@@ -35,13 +35,13 @@ $notification-card-anchor-color: #656d77;
 		}
 
 		@for $i from 1 to 6 {
-		  //TODO avatars shouldn't stack based on ember-view
-		  // you have to wrap it in discussion-contributors with a new class
-		  // and modify styles which rely on current structure
+			//TODO avatars shouldn't stack based on ember-view
+			// you have to wrap it in discussion-contributors with a new class
+			// and modify styles which rely on current structure
 			.ember-view:nth-child(#{$i}) .user-avatar {
 				transform: translate(($i - 1) * - 15px);
 				z-index: 5 - $i;
-			  	position: relative;
+				position: relative;
 			}
 		}
 
@@ -110,32 +110,31 @@ $notification-card-anchor-color: #656d77;
 	margin: -7px 8px 0;
 }
 
-
 // copied from Design System
 .wds-notification-card {
 
-  &__context-list {
-	color: $wds-color-blue-gray;
-	display: flex;
-	font-size: $wds-typescale-size-minus-2;
-	font-weight: bold;
-	list-style-type: none;
-	margin: 0;
-	padding: 8px 0 0;
-  }
+	&__context-list {
+		color: $wds-color-blue-gray;
+		display: flex;
+		font-size: $wds-typescale-size-minus-2;
+		font-weight: bold;
+		list-style-type: none;
+		margin: 0;
+		padding: 8px 0 0;
+	}
 
-  &__community {
-	max-width: 150px;
-	text-overflow: ellipsis;
-  }
+	&__community {
+		max-width: 150px;
+		text-overflow: ellipsis;
+	}
 
-  &__context-item {
-	white-space: nowrap;
-	overflow: hidden;
-  }
+	&__context-item {
+		white-space: nowrap;
+		overflow: hidden;
+	}
 
-  &__context-separator {
-	margin: 0 8px 0 8px;
-  }
+	&__context-separator {
+		margin: 0 8px 0 8px;
+	}
 
 }
