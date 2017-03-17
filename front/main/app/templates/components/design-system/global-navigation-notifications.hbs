@@ -24,8 +24,8 @@ as |dropdown|
 					</a>
 				</div>
 			{{/if}}
-			<div class="scrolling-part notifications-list">
-				{{#if notificationsList.length}}
+			{{#if notificationsList.length}}
+				<div class="scrolling-part notifications-list">
 					<ul class="wds-list wds-has-lines-between">
 						{{#each notificationsList as |notification|}}
 							{{notification-card
@@ -33,24 +33,25 @@ as |dropdown|
 							}}
 						{{/each}}
 					</ul>
-				{{else}}
-					<div class="notifications-empty-content">
-						{{i18n 'notifications-no-notifications-message' ns='design-system'}}
-					</div>
-				{{/if}}
-				{{#if isLoadingNewResults }}
-					<div class="spinner-container">
-						{{loading-spinner
-								active=true
-								isBlock=true
-								isThemed=false
-								overlay=false
-								radius=13
-								strokeWidth=2
-						}}
-					</div>
-				{{/if}}
-			</div>
+
+					{{#if isLoadingNewResults }}
+						<div class="spinner-container">
+							{{loading-spinner
+									active=true
+									isBlock=true
+									isThemed=false
+									overlay=false
+									radius=13
+									strokeWidth=2
+							}}
+						</div>
+					{{/if}}
+				</div>
+			{{else}}
+				<p class="notifications-empty-content">
+					{{i18n 'notifications-no-notifications-message' ns='design-system'}}
+				</p>
+			{{/if}}
 		</div>
 	{{/dropdown.content}}
 {{/design-system.wds-dropdown}}
