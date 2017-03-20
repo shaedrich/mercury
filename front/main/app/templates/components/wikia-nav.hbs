@@ -14,7 +14,7 @@
 					{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon menu-chevron'}}
 				</a>
 			{{else}}
-				<!--TODO: Remove with the feature flag IRIS-4170 -->
+				{{!TODO: Remove with the feature flag IRIS-4170}}
 				<a {{action 'trackClick' 'side-nav' 'open-user-profile' preventDefault=false}}
 						href="{{userProfileLink}}" class="wikia-nav--external wikia-nav--profile-link">
 					<figure class="wikia-nav__avatar">
@@ -44,7 +44,7 @@
 {{/if}}
 
 {{nav-menu
-		items=model.items
-		onClickHandler=(action 'onClick')
-		onChangeItemHandler=(action 'goToSubNav')
+	items=model.items
+	onClickHandler=(action 'onClick')
+	onChangeItemHandler=(action 'goToSubNav')
 }}
