@@ -7,14 +7,28 @@ import {track, trackActions} from 'common/utils/track';
 
 const {Component, computed, inject} = Ember;
 
-export default Component.extend(
-	LoginLinkMixin, NoScrollMixin, NotificationsUnreadCountMixin,
+export default Component.extend(LoginLinkMixin, NoScrollMixin, NotificationsUnreadCountMixin,
 	{
 		classNames: ['wikia-nav'],
 		classNameBindings: ['model.inRoot:wikia-nav--in-root'],
 		currentUser: inject.service(),
 		notifications: inject.service(),
 		isUserAuthenticated: computed.oneWay('currentUser.isAuthenticated'),
+		enableOnSiteNotifications: Ember.get(Mercury, 'wiki.enableOnSiteNotifications'),
+
+		/** TODO: Remove with the feature flag IRIS-4170 */
+		logoutLink: M.buildUrl({
+			namespace: 'Special',
+			title: 'UserLogout'
+		}),
+
+		/** TODO: Remove with the feature flag IRIS-4170 */
+		userProfileLink: computed('currentUser.name', function () {
+			return M.buildUrl({
+				namespace: 'User',
+				title: this.get('currentUser.name')
+			});
+		}),
 
 		init() {
 			this._super(...arguments);
