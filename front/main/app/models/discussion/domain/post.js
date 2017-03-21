@@ -52,7 +52,7 @@ DiscussionPost.reopenClass({
 				contentImages: null
 			}),
 			userData = get(data, '_embedded.userData.0'),
-			openGraphData = get(data, '_embedded.openGraph.0'),
+			openGraphData = get(data, '_embedded.openGraph'),
 			contentImagesData = get(data, '_embedded.contentImages');
 
 		if (userData) {
