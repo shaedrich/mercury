@@ -202,8 +202,8 @@ export function getDefaultContext(request) {
 	/* eslint no-undefined: 0 */
 	return {
 		title: null,
-		canonicalUrl: encodeForJavaScript(getCanonicalUrl(request)),
-		exitTo: encodeForJavaScript(getRedirectUrl(request)),
+		canonicalUrl: getCanonicalUrl(request),
+		exitTo: getRedirectUrl(request),
 		mainPage: 'http://www.wikia.com',
 		language: request.server.methods.i18n.getInstance().lng(),
 		trackingConfig: settings.tracking,
