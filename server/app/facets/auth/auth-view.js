@@ -96,20 +96,40 @@ export function getOrigin(request) {
 }
 
 /**
+ * Workaround for node's problems with implicit URLs
+ * @param url
+ * @return {boolean}
+ */
+function hasImplicitProtocol(url) {
+	return url.substr(0, 2) === '//';
+}
+
+/**
+ * We only allow HTTP or HTTPS or no protocol. "javascript:" for example will be rejected.
+ * @param protocol
+ * @return {boolean}
+ */
+function hasInvalidProtocol(protocol) {
+	return !(protocol === 'http:' || protocol === 'https:' || !protocol);
+}
+
+/**
  * @param {Hapi.Request} request
  * @returns {string}
  */
 export function getRedirectUrl(request) {
 	const currentHost = request.headers.host,
 		redirectUrl = request.query.redirect || '/',
-		redirectUrlHost = parse(redirectUrl).host,
-		// Workaround for node's problems with implicit urls
-		hasImplicitProtocol = redirectUrl.substr(0, 2) === '//';
+		parsedUrl = parse(redirectUrl),
+		redirectUrlHost = parsedUrl.host;
 
-	if (hasImplicitProtocol ||
-		(redirectUrlHost &&
-		!checkDomainMatchesCurrentHost(redirectUrlHost, currentHost) &&
-		!isWhiteListedDomain(redirectUrlHost))
+	if (hasImplicitProtocol(redirectUrl) ||
+		hasInvalidProtocol(parsedUrl.protocol) ||
+		(
+			redirectUrlHost &&
+			!checkDomainMatchesCurrentHost(redirectUrlHost, currentHost) &&
+			!isWhiteListedDomain(redirectUrlHost)
+		)
 	) {
 		return '/';
 	} else {
@@ -177,7 +197,7 @@ function encodeForJavaScript(value) {
 export function getDefaultContext(request) {
 	const viewType = getViewType(request),
 		isModal = request.query.modal === '1',
-		redirectUrl = encodeForJavaScript(getRedirectUrl(request)),
+		redirectUrl = getRedirectUrl(request),
 		reactivateAccountUrl = resolve(redirectUrl, '/Special:CloseMyAccount/reactivate'),
 		pageParams = {
 			cookieDomain: settings.authCookieDomain,
