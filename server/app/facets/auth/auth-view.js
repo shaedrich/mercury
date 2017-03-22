@@ -196,7 +196,7 @@ export function getDefaultContext(request) {
 	}
 
 	if (isModal) {
-		pageParams.parentOrigin = encodeForJavaScript(getOrigin(request));
+		pageParams.parentOrigin = getOrigin(request);
 	}
 
 	/* eslint no-undefined: 0 */
