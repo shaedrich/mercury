@@ -105,12 +105,12 @@ function hasImplicitProtocol(url) {
 }
 
 /**
- * We only allow HTTP or HTTPS. "javascript:" for example will be rejected.
+ * We only allow HTTP or HTTPS or no protocol. "javascript:" for example will be rejected.
  * @param protocol
  * @return {boolean}
  */
 function hasInvalidProtocol(protocol) {
-	return !(protocol === 'http:' || protocol === 'https:' || protocol === '');
+	return !(protocol === 'http:' || protocol === 'https:' || !protocol);
 }
 
 /**
