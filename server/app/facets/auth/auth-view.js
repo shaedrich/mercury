@@ -106,11 +106,11 @@ function hasImplicitProtocol(url) {
 
 /**
  * We only allow HTTP or HTTPS. "javascript:" for example will be rejected.
- * @param url
+ * @param protocol
  * @return {boolean}
  */
-function hasInvalidProtocol(url) {
-	return !(url === 'http:' || url === 'https:');
+function hasInvalidProtocol(protocol) {
+	return !(protocol === 'http:' || protocol === 'https:' || protocol === '');
 }
 
 /**

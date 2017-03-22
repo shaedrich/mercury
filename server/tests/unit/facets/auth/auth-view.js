@@ -69,6 +69,7 @@ QUnit.test('getRedirectUrl', function (assert) {
 			description: 'Don\'t allow encoded JavaScript protocol'
 		},
 		{
+			// eslint-disable-next-line no-script-url
 			redirect: 'javascript:alert(document.domain);',
 			host: 'wikia.com',
 			expected: '/',
