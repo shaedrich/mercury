@@ -65,13 +65,13 @@ QUnit.test('getRedirectUrl', function (assert) {
 		{
 			redirect: 'javascript%3Aalert(document.domain)%3B',
 			host: 'wikia.com',
-			expected: ';',
+			expected: '/',
 			description: 'Don\'t allow encoded JavaScript protocol'
 		},
 		{
 			redirect: 'javascript:alert(document.domain);',
 			host: 'wikia.com',
-			expected: ';',
+			expected: '/',
 			description: 'Don\'t allow JavaScript protocol'
 		}
 	];
