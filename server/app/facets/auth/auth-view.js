@@ -166,6 +166,10 @@ export function view(template, context, request, reply, layout = 'auth') {
 	return response;
 }
 
+function encodeForJavaScript(value) {
+	return ESAPI.encoder().encodeForJavaScript(value);
+}
+
 /**
  * @param {Hapi.Request} request
  * @returns {AuthViewContext}
@@ -173,7 +177,7 @@ export function view(template, context, request, reply, layout = 'auth') {
 export function getDefaultContext(request) {
 	const viewType = getViewType(request),
 		isModal = request.query.modal === '1',
-		redirectUrl = ESAPI.encoder().encodeForJavaScript(getRedirectUrl(request)),
+		redirectUrl = encodeForJavaScript(getRedirectUrl(request)),
 		reactivateAccountUrl = resolve(redirectUrl, '/Special:CloseMyAccount/reactivate'),
 		pageParams = {
 			cookieDomain: settings.authCookieDomain,
@@ -187,11 +191,12 @@ export function getDefaultContext(request) {
 		};
 
 	if (request.query.forceLogin) {
-		pageParams.forceLogin = request.query.forceLogin;
+		// we're expecting 0 or 1, but it comes from querystring - that's why parseInt
+		pageParams.forceLogin = Boolean(parseInt(request.query.forceLogin, 10));
 	}
 
 	if (isModal) {
-		pageParams.parentOrigin = getOrigin(request);
+		pageParams.parentOrigin = encodeForJavaScript(getOrigin(request));
 	}
 
 	/* eslint no-undefined: 0 */
