@@ -5,6 +5,7 @@ import DiscussionContributor from './contributor';
 import DiscussionUserBlockDetails from './user-block-details';
 import DiscussionUserData from './user-data';
 import OpenGraph from './open-graph';
+import {convertToTimestamp} from '../../../utils/iso-date-time';
 
 const {get} = Ember,
 	DiscussionPost = DiscussionEntity.extend({
@@ -51,7 +52,7 @@ DiscussionPost.reopenClass({
 				contentImages: null
 			}),
 			userData = get(data, '_embedded.userData.0'),
-			openGraphData = get(data, '_embedded.openGraph.0'),
+			openGraphData = get(data, '_embedded.openGraph'),
 			contentImagesData = get(data, '_embedded.contentImages');
 
 		if (userData) {
@@ -101,7 +102,7 @@ DiscussionPost.reopenClass({
 
 		post.setProperties({
 			id: threadData.firstPostId,
-			creationTimestamp: DiscussionPost.getThreadDataTimestamp(threadData.creationDate),
+			creationTimestamp: convertToTimestamp(threadData.creationDate),
 			isFollowed: threadData.isFollowed,
 			isLocked: !threadData.isEditable,
 			lastEditedBy: DiscussionContributor.create(threadData.lastEditedBy),
@@ -113,14 +114,6 @@ DiscussionPost.reopenClass({
 		return post;
 	},
 
-	/**
-	 * Gets timestamp from date that can be iso string or epoch object
-	 * @param {string|object} date
-	 * @returns {number} - timestamp
-	 */
-	getThreadDataTimestamp(date) {
-		return typeof date === 'string' ? (new Date(date)).getTime() / 1000 : date.epochSecond;
-	}
 });
 
 export default DiscussionPost;
