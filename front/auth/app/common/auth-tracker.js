@@ -35,8 +35,7 @@ export default class AuthTracker {
 				window.opener.postMessage(
 					{
 						beforeunload: true,
-						// we're expecting 0 or 1, but it comes from querystring - that's why parseInt
-						forceLogin: Boolean(parseInt(pageParams.forceLogin, 10))
+						forceLogin: pageParams.forceLogin
 					},
 					pageParams.parentOrigin
 				);

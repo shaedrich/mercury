@@ -187,7 +187,8 @@ export function getDefaultContext(request) {
 		};
 
 	if (request.query.forceLogin) {
-		pageParams.forceLogin = request.query.forceLogin;
+		// we're expecting 0 or 1, but it comes from querystring - that's why parseInt
+		pageParams.forceLogin = Boolean(parseInt(pageParams.forceLogin, 10));
 	}
 
 	if (isModal) {
