@@ -63,12 +63,6 @@ QUnit.test('getRedirectUrl', function (assert) {
 			description: 'Don\'t allow external domain when wikia.com is the last part of an external domain'
 		},
 		{
-			redirect: 'javascript%3Aalert(document.domain)%3B',
-			host: 'wikia.com',
-			expected: '/',
-			description: 'Don\'t allow encoded JavaScript protocol'
-		},
-		{
 			// eslint-disable-next-line no-script-url
 			redirect: 'javascript:alert(document.domain);',
 			host: 'wikia.com',
