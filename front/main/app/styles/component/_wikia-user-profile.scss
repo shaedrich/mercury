@@ -1,5 +1,5 @@
 .user-profile-header {
-	.menu-chevron {
+	.wds-menu-chevron {
 		float: right;
 		margin-top: 5px;
 		transform: rotate(-90deg);
@@ -17,7 +17,7 @@
 }
 
 .icon {
-	&.menu-chevron {
+	&.wds-menu-chevron {
 		fill: $wds-color-blue-gray;
 	}
 }
