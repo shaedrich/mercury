@@ -18,22 +18,6 @@ $notifications-dropdown-border-color: #363b41;
 	}
 }
 
-.notifications-unread-mark {
-	align-items: center;
-	background-color: $wds-color-link;
-	border: 1px solid $wds-color-white;
-	border-radius: 100%;
-	color: $wds-color-white;
-	display: flex;
-	justify-content: center;
-	font-size: 10px;
-	height: 18px;
-	left: -9px;
-	position: absolute;
-	top: 7px;
-	width: 18px;
-}
-
 .notifications-toggle {
 	margin-left: 16px;
 	margin-right: 8px;
@@ -100,7 +84,7 @@ $notifications-dropdown-border-color: #363b41;
 		position: relative;
 	}
 
-	.notifications-unread-mark {
+	.wds-notifications__unread-mark {
 		left: initial;
 		right: -9px;
 		top: -3px;
@@ -115,4 +99,25 @@ $notifications-dropdown-border-color: #363b41;
 
 .notifications-empty-content {
 	font-size: 14px;
+}
+
+
+.wds-notifications {
+
+	&__unread-mark {
+		align-items: center;
+		background-color: $wds-color-link;
+		border: 1px solid $wds-color-white;
+		border-radius: 100%;
+		color: $wds-color-white;
+		display: flex;
+		justify-content: center;
+		font-size: 10px;
+		height: 18px;
+		left: -9px;
+		position: absolute;
+		top: 7px;
+		width: 18px;
+	}
+
 }
