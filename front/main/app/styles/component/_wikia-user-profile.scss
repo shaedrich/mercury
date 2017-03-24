@@ -28,12 +28,12 @@
 }
 
 .wikia-user-profile {
+	-webkit-overflow-scrolling: touch;
 	background-color: $wds-color-white;
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
 	overflow: auto;
-	-webkit-overflow-scrolling: touch;
 	text-align: center;
 
 	.user-profile-username {

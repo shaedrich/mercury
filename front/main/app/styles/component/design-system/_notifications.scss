@@ -101,13 +101,13 @@ $notifications-dropdown-border-color: #363b41;
 	&__unread-mark {
 		align-items: center;
 		background-color: $wds-color-link;
-		border: 1px solid $wds-color-white;
 		border-radius: 100%;
+		border: 1px solid $wds-color-white;
 		color: $wds-color-white;
 		display: flex;
-		justify-content: center;
 		font-size: 10px;
 		height: 18px;
+		justify-content: center;
 		left: -9px;
 		position: absolute;
 		top: 7px;
@@ -121,8 +121,8 @@ $notifications-dropdown-border-color: #363b41;
 }
 
 .wds-menu-chevron {
+	fill: $wds-color-blue-gray;
 	float: right;
 	margin-top: 5px;
 	transform: rotate(-90deg);
-	fill: $wds-color-blue-gray;
 }
