@@ -6,7 +6,7 @@ as |dropdown|
 }}
 	{{#dropdown.toggle class='wds-global-navigation__dropdown-toggle notifications-toggle'}}
 		{{#if unreadCount}}
-			<span class="notifications-unread-mark">
+			<span class="wds-notifications__unread-mark">
 				{{unreadCount}}
 			</span>
 		{{/if}}
@@ -48,7 +48,7 @@ as |dropdown|
 					{{/if}}
 				</div>
 			{{else}}
-				<p class="notifications-empty-content">
+				<p class="wds-notifications__zero-state">
 					{{i18n 'notifications-no-notifications-message' ns='design-system'}}
 				</p>
 			{{/if}}
