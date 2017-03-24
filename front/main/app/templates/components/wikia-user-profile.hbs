@@ -32,17 +32,13 @@
 
 <div class="user-profile__scrollable-wrapper scrolling-part">
 	{{#if notificationsList.length}}
-		{{#if notificationsList.length}}
-			<ul class="wds-list wds-has-lines-between notifications-list">
-				{{#each notificationsList as |notification|}}
-					{{notification-card
-							model=notification
-					}}
-				{{/each}}
-			</ul>
-		{{else}}
-			{{i18n 'notifications-no-notifications-message' ns='design-system'}}
-		{{/if}}
+		<ul class="wds-list wds-has-lines-between notifications-list">
+			{{#each notificationsList as |notification|}}
+				{{notification-card
+						model=notification
+				}}
+			{{/each}}
+		</ul>
 		{{#if isLoadingNewResults }}
 			<div class="spinner-container">
 				{{loading-spinner
