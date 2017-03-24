@@ -31,7 +31,7 @@
 
 
 <div class="user-profile__scrollable-wrapper scrolling-part">
-{{#if notificationsList.length}}
+	{{#if notificationsList.length}}
 		{{#if notificationsList.length}}
 			<ul class="wds-list wds-has-lines-between notifications-list">
 				{{#each notificationsList as |notification|}}
@@ -55,9 +55,9 @@
 				}}
 			</div>
 		{{/if}}
-{{else}}
-	<p class="wds-notifications__zero-state">
-		{{i18n 'notifications-no-notifications-message' ns='design-system'}}
-	</p>
-{{/if}}
+	{{else}}
+		<p class="wds-notifications__zero-state">
+			{{i18n 'notifications-no-notifications-message' ns='design-system'}}
+		</p>
+	{{/if}}
 </div>
