@@ -114,6 +114,24 @@ $notifications-dropdown-border-color: #363b41;
 		width: 18px;
 	}
 
+	&__mark-all-as-read-button {
+		box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.1);
+		display: flex;
+		justify-content: flex-start;
+		min-height: 44px;
+		padding: 0;
+		width: 100%;
+	}
+
+	&__mark-all-as-read {
+		color: $wds-color-link;
+		cursor: pointer;
+		font-size: $wds-typescale-size-minus-2;
+		font-weight: bold;
+		text-transform: uppercase;
+		padding: 18px;
+	}
+
 	&__zero-state {
 		font-size: 14px;
 		color: $notifications-dropdown-content-color;
