@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import DiscussionContributor from '../discussion/domain/contributor';
-import {notificationTypes} from '../../utils/global-notifications';
+import {notificationTypes} from '../../utils/notification-types';
 import request from 'ember-ajax/request';
 import {convertToTimestamp} from '../../utils/iso-date-time';
 

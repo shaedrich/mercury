@@ -5,7 +5,7 @@ import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification';
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification';
 import MarkAsReadNotificationMixin from '../mixins/mark-as-read-notification';
 import {trackClick, trackImpression} from '../utils/notifications-tracker';
-import {notificationTypes} from '../utils/global-notifications';
+import {notificationTypes} from '../utils/notification-types';
 
 const {Component, inject, computed, Logger} = Ember;
 
