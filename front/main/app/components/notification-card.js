@@ -21,10 +21,7 @@ export default Component.extend(
 
 		tagName: 'li',
 
-		currentUser: inject.service(),
 		notifications: inject.service(),
-
-		userLanguage: computed.oneWay('currentUser.language'),
 
 		iconName: computed('model.type', function () {
 			const type = this.get('model.type');
@@ -108,8 +105,6 @@ export default Component.extend(
 
 		getTranslatedMessage(key, context) {
 			const fullContext = $.extend({}, {
-				// TODO: XW-1685 fix i18n for User's language
-				// lng: this.get('userLanguage'),
 				ns: 'design-system',
 			}, context);
 
