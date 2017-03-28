@@ -31,13 +31,6 @@
 
 
 <div class="wds-user-profile__scrollable-wrapper scrolling-part">
-	{{wds-spinner active=true
-				  isBlock=true
-				  isThemed=false
-				  overlay=false
-				  radius=15
-				  strokeWidth=2 }}
-
 	{{#if notificationsList.length}}
 		<ul class="wds-list wds-has-lines-between notifications-list">
 			{{#each notificationsList as |notification|}}
