@@ -40,16 +40,14 @@
 			{{/each}}
 		</ul>
 		{{#if isLoadingNewResults }}
-			<div class="spinner-container">
-				{{wds-spinner
-						active=true
-						isBlock=true
-						isThemed=false
-						overlay=false
-						radius=15
-						strokeWidth=2
-				}}
-			</div>
+			{{wds-spinner
+					active=true
+					isBlock=true
+					isThemed=false
+					overlay=false
+					radius=15
+					strokeWidth=2
+			}}
 		{{/if}}
 	{{else}}
 		<p class="wds-notifications__zero-state">
