@@ -3,29 +3,20 @@
 $notifications-dropdown-content-color: $wds-color-light-c7;
 $wds-icon-color: $wds-color-light-c5;
 
-.wds-hidden-svg {
-	height: 0;
-	overflow: hidden;
-	position: absolute;
-	width: 0;
-}
-
-.wds-dropdown.wds-is-active.wds-notifications .wds-dropdown__content {
-	display: flex;
-}
+$content-padding: 18px;
 
 .wds-notifications {
 
 	&__unread-mark {
 		align-items: center;
 		background-color: $wds-color-link;
+		border-radius: 50%;
 		border: 1px solid $wds-color-white;
-		border-radius: 100%;
 		color: $wds-color-white;
 		display: flex;
-		justify-content: center;
 		font-size: $wds-typescale-size-minus-3;
 		height: 18px;
+		justify-content: center;
 		left: -9px;
 		position: absolute;
 		top: 7px;
@@ -46,19 +37,19 @@ $wds-icon-color: $wds-color-light-c5;
 		cursor: pointer;
 		font-size: $wds-typescale-size-minus-2;
 		font-weight: bold;
-		text-transform: uppercase;
 		padding: 18px;
+		text-transform: uppercase;
 	}
 
 	&__dropdown-content {
-		flex-direction: column;
-		justify-content: center;
 		align-items: center;
 		color: $notifications-dropdown-content-color;
+		flex-direction: column;
 		font-size: $wds-typescale-size-minus-1;
-		max-width: 18px * 2 + 320px;
+		justify-content: center;
+		max-width: $padding * 2 + 320px;
 		min-height: 80px;
-		min-width: 18px * 2 + 320px;
+		min-width: $padding * 2 + 320px;
 		white-space: normal;
 		width: 100%;
 	}
@@ -84,17 +75,17 @@ $notification-card-anchor-color: $notifications-dropdown-content-color;
 	text-align: left;
 
 	&__outer-body {
-		display: flex;
 		cursor: pointer;
+		display: flex;
 	}
 
 	&__icon-wrapper {
-		display: flex;
 		cursor: pointer;
-		margin-left: 12px;
+		display: flex;
 		height: 18px;
-		width: 18px;
+		margin-left: 12px;
 		min-width: 18px;
+		width: 18px;
 
 		.wds-icon {
 			fill: $wds-icon-color;
@@ -109,9 +100,9 @@ $notification-card-anchor-color: $notifications-dropdown-content-color;
 	}
 
 	&__body {
+		display: flex;
 		flex-direction: column;
 		flex-grow: 1;
-		display: flex;
 		justify-content: flex-start;
 		overflow-wrap: break-word;
 		padding-left: 12px;
@@ -193,47 +184,6 @@ $notification-card-anchor-color: $notifications-dropdown-content-color;
 	}
 }
 
-$duration: 2s;
-$spinner-color: $wds-color-link;
-
-.wds-spinner {
-
-	@keyframes rotator {
-		from {
-			transform: rotate(0);
-		}
-		to {
-			transform: rotate(360deg);
-		}
-	}
-
-	@keyframes dash {
-		to {
-			stroke-dashoffset: 0;
-		}
-	}
-
-	animation: rotator $duration linear infinite;
-	left: 50%;
-	margin: -33px 0 0 -33px;
-	position: absolute;
-	top: 50%;
-	transform: translateZ(0);
-
-	&.wds-block {
-		display: block;
-		left: auto;
-		margin: auto;
-		position: relative;
-	}
-
-	.wds-path {
-		-webkit-backface-visibility: hidden;
-		animation: dash ($duration / 6) linear infinite alternate-reverse;
-		stroke: $spinner-color;
-	}
-}
-
 .wds-menu-chevron {
 	float: right;
 	margin-top: 5px;
@@ -268,7 +218,7 @@ $spinner-color: $wds-color-link;
 
 		.user-avatar {
 			background: $wds-color-white;
-			border-radius: 100%;
+			border-radius: 50%;
 			margin: 0;
 
 			&__image {
@@ -277,10 +227,10 @@ $spinner-color: $wds-color-link;
 		}
 
 		@for $i from 1 to 6 {
-			//TODO avatars shouldn't stack based on ember-view
+			//TODO avatars shouldn't stack based on track-view
 			// you have to wrap it in discussion-contributors with a new class
 			// and modify styles which rely on current structure
-			.discussion-contributors:nth-child(#{$i}) .user-avatar {
+			.track-click:nth-child(#{$i}) .user-avatar {
 				transform: translate(($i - 1) * - 15px);
 				z-index: 5 - $i;
 				position: relative;
