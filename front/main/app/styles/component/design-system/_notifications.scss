@@ -1,113 +1,31 @@
-$notifications-dropdown-content-color: $wds-color-slate-gray;
-$notifications-dropdown-border-color: #363b41;
+// on-site-notifications to be moved to Design System - IRIS-4081
 
-.spinner-container {
-	border-top: solid 1px #e6e6e6;
-	margin-left: 18px;
-	margin-right: 18px;
-	padding-bottom: 11px;
-	padding-top: 11px;
+$notifications-dropdown-content-color: $wds-color-light-c7;
+$wds-icon-color: $wds-color-light-c5;
+
+.wds-hidden-svg {
+	height: 0;
+	overflow: hidden;
+	position: absolute;
+	width: 0;
 }
 
-.notifications {
-	&:hover {
-		.icon-bell,
-		.wds-dropdown__toggle-chevron {
-			fill: $wds-color-link;
-		}
-	}
-}
-
-.notifications-toggle {
-	margin-left: 16px;
-	margin-right: 8px;
-}
-
-.notifications-dropdown-content {
-	align-items: center;
-	color: $notifications-dropdown-content-color;
+.wds-dropdown.wds-is-active.wds-notifications .wds-dropdown__content {
 	display: flex;
-	flex-direction: column;
-	font-size: 14px;
-	justify-content: center;
-	min-height: 80px;
-	min-width: (18px * 2) + 320px;
-	overflow-wrap: break-word;
-	width: 100%;
-	//word-break: break-word is not supported on Firefox, therefore word-wrap and overflow-wrap are used too
-	word-break: break-word;
-	word-wrap: break-word;
-
-	.scrolling-part {
-		box-sizing: border-box;
-		max-height: 420px;
-		overflow-y: scroll;
-		width: 100%;
-	}
-}
-
-.mark-all-as-read-button {
-	box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.1);
-	display: flex;
-	justify-content: flex-start;
-	min-height: 44px;
-	padding: 0;
-	width: 100%;
-}
-
-.mark-all-as-read {
-	color: $wds-color-link;
-	font-size: 12px;
-	font-weight: bold;
-	line-height: 12px;
-	padding: 18px;
-	text-transform: uppercase;
-}
-
-.wds-is-active {
-	background-color: $wds-color-slate-gray;
-	border-color: $notifications-dropdown-border-color;
-
-	.notifications-toggle {
-		.wds-icon {
-			fill: white;
-		}
-	}
-}
-
-.notifications-dropdown-content {
-	max-width: 356px;
-}
-
-.wikia-nav {
-	.user-profile-avatar {
-		position: relative;
-	}
-
-	.wds-notifications__unread-mark {
-		left: initial;
-		right: -9px;
-		top: -3px;
-	}
-}
-
-.notifications-scroll-menu {
-	.loading-overlay {
-		position: absolute;
-	}
 }
 
 .wds-notifications {
+
 	&__unread-mark {
 		align-items: center;
 		background-color: $wds-color-link;
-		border-radius: 100%;
 		border: 1px solid $wds-color-white;
+		border-radius: 100%;
 		color: $wds-color-white;
 		display: flex;
-		font-size: 10px;
-		height: 18px;
 		justify-content: center;
+		font-size: $wds-typescale-size-minus-3;
+		height: 18px;
 		left: -9px;
 		position: absolute;
 		top: 7px;
@@ -132,15 +50,249 @@ $notifications-dropdown-border-color: #363b41;
 		padding: 18px;
 	}
 
-	&__zero-state {
-		font-size: 14px;
+	&__dropdown-content {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		color: $notifications-dropdown-content-color;
+		font-size: $wds-typescale-size-minus-1;
+		max-width: 18px * 2 + 320px;
+		min-height: 80px;
+		min-width: 18px * 2 + 320px;
+		white-space: normal;
+		width: 100%;
+	}
+
+	&__notification-list {
+		box-sizing: border-box;
+		max-height: 420px;
+		overflow-y: auto;
+		width: 100%;
+	}
+
+	&__zero-state {
+		display: block;
+		padding: 18px 18px 4px;
+	}
+}
+
+$notification-card-text-color: $wds-color-dark-blue-gray;
+$notification-card-anchor-color: $notifications-dropdown-content-color;
+
+.wds-notification-card {
+	padding: 12px 0 8px;
+	text-align: left;
+
+	&__outer-body {
+		display: flex;
+		cursor: pointer;
+	}
+
+	&__icon-wrapper {
+		display: flex;
+		cursor: pointer;
+		margin-left: 12px;
+		height: 18px;
+		width: 18px;
+		min-width: 18px;
+
+		.wds-icon {
+			fill: $wds-icon-color;
+			height: 18px;
+			min-width: inherit;
+			width: 18px;
+
+			.wds-is-unread & {
+				fill: $wds-color-link;
+			}
+		}
+	}
+
+	&__body {
+		flex-direction: column;
+		flex-grow: 1;
+		display: flex;
+		justify-content: flex-start;
+		overflow-wrap: break-word;
+		padding-left: 12px;
+		padding-right: 12px;
+		//word-break: break-word is not supported on Firefox, therefore word-wrap and overflow-wrap are used too
+		word-break: break-word;
+		word-wrap: break-word;
+	}
+
+	&__text {
+		color: $notification-card-text-color;
+		font-size: $wds-typescale-size-minus-1;
+		line-height: 18px;
+		margin: 0;
+		b {
+			font-weight: bold;
+		}
+	}
+
+	&__snippet {
+		color: $wds-color-blue-gray;
+		font-size: $wds-typescale-size-minus-1;
+		font-style: italic;
+		line-height: 18px;
+		margin: 8px 0 0;
+	}
+
+	&__context-list {
+		display: flex;
+		color: $wds-color-blue-gray;
+		font-size: $wds-typescale-size-minus-2;
+		font-weight: bold;
+		list-style-type: none;
+		margin: 0;
+		padding: 8px 0 0;
+	}
+
+	&__community {
+		max-width: 150px;
+		text-overflow: ellipsis;
+	}
+
+	&__context-item {
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	&__context-separator {
+		margin: 0 8px;
+	}
+
+}
+
+.wds-avatar-stack {
+	align-items: center;
+	display: flex;
+	margin: 8px 18px 6px 40px;
+
+	&__avatar {
+		color: $wds-color-light-c4;
+	}
+
+	@for $i from 1 to 6 {
+		.wds-avatar-stack__avatar:nth-child(#{$i}) {
+			position: relative;
+			transform: translate(($i - 1) * - 15px);
+			z-index: 5 - $i;
+		}
+	}
+
+	&__overflow {
+		background-color: $wds-color-white;
+		border: 0;
+		color: $wds-color-light-c6;
+		font-size: $wds-typescale-size-minus-2;
+		padding-left: 6px;
+		transform: translate(-60px);
+		width: auto;
+	}
+}
+
+$duration: 2s;
+$spinner-color: $wds-color-link;
+
+.wds-spinner {
+
+	@keyframes rotator {
+		from {
+			transform: rotate(0);
+		}
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes dash {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	animation: rotator $duration linear infinite;
+	left: 50%;
+	margin: -33px 0 0 -33px;
+	position: absolute;
+	top: 50%;
+	transform: translateZ(0);
+
+	&.wds-block {
+		display: block;
+		left: auto;
+		margin: auto;
+		position: relative;
+	}
+
+	.wds-path {
+		-webkit-backface-visibility: hidden;
+		animation: dash ($duration / 6) linear infinite alternate-reverse;
+		stroke: $spinner-color;
 	}
 }
 
 .wds-menu-chevron {
-	fill: $wds-color-blue-gray;
 	float: right;
 	margin-top: 5px;
 	transform: rotate(-90deg);
+	fill: $wds-color-blue-gray;
+}
+
+// TODO move those to wikia-nav
+.wikia-nav {
+	.user-profile-avatar {
+		position: relative;
+	}
+
+	.wds-notifications__unread-mark {
+		left: initial;
+		right: -9px;
+		top: -3px;
+	}
+}
+
+.wds-is-hidden {
+	display: none;
+}
+
+/// Override for discussion-contributors
+
+.wds-notification-card {
+	.discussion-contributors {
+		align-items: center;
+		display: flex;
+		margin: 8px 18px 6px 40px;
+
+		.user-avatar {
+			background: $wds-color-white;
+			border-radius: 100%;
+			margin: 0;
+
+			&__image {
+				border-color: $wds-color-light-c4;
+			}
+		}
+
+		@for $i from 1 to 6 {
+			//TODO avatars shouldn't stack based on ember-view
+			// you have to wrap it in discussion-contributors with a new class
+			// and modify styles which rely on current structure
+			.discussion-contributors:nth-child(#{$i}) .user-avatar {
+				transform: translate(($i - 1) * - 15px);
+				z-index: 5 - $i;
+				position: relative;
+			}
+		}
+
+		div.discussion-contributors-more {
+			background-color: $wds-color-white;
+			border: 0;
+			color: $wds-color-light-c6;
+			font-size: 12px;
+			transform: translate(-60px);
+		}
+	}
 }

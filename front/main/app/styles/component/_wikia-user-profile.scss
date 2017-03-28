@@ -28,13 +28,14 @@
 	&__header-wrapper {
 		.user-avatar {
 			background-color: $wds-color-white;
-			border-radius: 100%;
+			border-radius: 50%;
 			margin-top: -25px;
-			// hack for making it get on top of the header
-			transform: translate(0, 0);
+			// position relative and z-index allows the avatar to positioned on top of the bar
+			position: relative;
+			z-index: 1;
 
 			figure.avatar {
-				svg,a>img  {
+				svg, a > img  {
 					border-color: $wds-color-white;
 					border-width: 3px;
 					height: 94px;
@@ -47,6 +48,10 @@
 	&__scrollable-wrapper {
 		flex-grow: 1;
 		overflow: auto;
+
+		&.wds-notifications__notification-list {
+			max-height: inherit;
+		}
 
 		.wds-notifications__zero-state {
 			padding-top: 40px;
