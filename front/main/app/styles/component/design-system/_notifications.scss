@@ -1,37 +1,14 @@
-/// Override for discussion-contributors in On Site Notifications
-.wds-notification-card {
-	.discussion-contributors {
-		align-items: center;
-		display: flex;
-		margin: 8px 18px 6px 40px;
+.wds-avatar-stack {
+	.avatar__link {
+		@extend .wds-avatar-stack__avatar;
+	}
 
-		.user-avatar {
-			background: $wds-color-white;
-			border-radius: 50%;
-			margin: 0;
-
-			&__image {
+	.user-avatar {
+		.avatar {
+			.user-avatar__image {
+				@extend .wds-avatar;
 				border-color: $wds-color-light-c4;
 			}
-		}
-
-		@for $i from 1 to 6 {
-			//TODO avatars shouldn't stack based on track-view
-			// you have to wrap it in discussion-contributors with a new class
-			// and modify styles which rely on current structure
-			.track-click:nth-child(#{$i}) .user-avatar {
-				transform: translate(($i - 1) * - 15px);
-				z-index: 5 - $i;
-				position: relative;
-			}
-		}
-
-		div.discussion-contributors-more {
-			background-color: $wds-color-white;
-			border: 0;
-			color: $wds-color-light-c6;
-			font-size: 12px;
-			transform: translate(-60px);
 		}
 	}
 }
