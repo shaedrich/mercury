@@ -11,8 +11,8 @@ export default Ember.Component.extend({
 		return this.get('users').slice(0, this.get('displayLimit'));
 	}),
 
-	avatarOverflow: Ember.computed('users', 'totalUserCount', function () {
-		return this.get('totalUserCount') - this.get('avatars.length');
+	avatarOverflow: Ember.computed('users', 'totalCount', function () {
+		return this.get('totalCount') - this.get('avatars.length');
 	}),
 
 	showAvatarOverflow: Ember.computed.gt('avatarOverflow', 0)
