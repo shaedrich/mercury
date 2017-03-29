@@ -1,128 +1,17 @@
-$notifications-dropdown-content-color: $wds-color-slate-gray;
-$notifications-dropdown-border-color: #363b41;
+/// On Site Notifications CSS reside in Design System
+/// Override for avatar-stack in On Site Notifications because it uses user-avatar
 
-.spinner-container {
-	border-top: solid 1px #e6e6e6;
-	margin-left: 18px;
-	margin-right: 18px;
-	padding-bottom: 11px;
-	padding-top: 11px;
-}
+.wds-avatar-stack {
+	.avatar__link {
+		@extend .wds-avatar-stack__avatar;
+	}
 
-.notifications {
-	&:hover {
-		.icon-bell,
-		.wds-dropdown__toggle-chevron {
-			fill: $wds-color-link;
+	.user-avatar {
+		.avatar {
+			.user-avatar__image {
+				@extend .wds-avatar;
+				border-color: $wds-color-light-c4;
+			}
 		}
 	}
-}
-
-.notifications-toggle {
-	margin-left: 16px;
-	margin-right: 8px;
-}
-
-.notifications-dropdown-content {
-	align-items: center;
-	color: $notifications-dropdown-content-color;
-	display: flex;
-	flex-direction: column;
-	font-size: 14px;
-	justify-content: center;
-	min-height: 80px;
-	min-width: (18px * 2) + 320px;
-	overflow-wrap: break-word;
-	width: 100%;
-	//word-break: break-word is not supported on Firefox, therefore word-wrap and overflow-wrap are used too
-	word-break: break-word;
-	word-wrap: break-word;
-
-	.scrolling-part {
-		box-sizing: border-box;
-		max-height: 420px;
-		overflow-y: scroll;
-		width: 100%;
-	}
-}
-
-.mark-all-as-read-button {
-	box-shadow: 0 -1px 10px 0 rgba(0, 0, 0, 0.1);
-	display: flex;
-	justify-content: flex-start;
-	min-height: 44px;
-	padding: 0;
-	width: 100%;
-}
-
-.mark-all-as-read {
-	color: $wds-color-link;
-	font-size: 12px;
-	font-weight: bold;
-	line-height: 12px;
-	padding: 18px;
-	text-transform: uppercase;
-}
-
-.wds-is-active {
-	background-color: $wds-color-slate-gray;
-	border-color: $notifications-dropdown-border-color;
-
-	.notifications-toggle {
-		.wds-icon {
-			fill: white;
-		}
-	}
-}
-
-.notifications-dropdown-content {
-	max-width: 356px;
-}
-
-.wikia-nav {
-	.user-profile-avatar {
-		position: relative;
-	}
-
-	.wds-notifications__unread-mark {
-		left: initial;
-		right: -9px;
-		top: -3px;
-	}
-}
-
-.notifications-scroll-menu {
-	.loading-overlay {
-		position: absolute;
-	}
-}
-
-.wds-notifications {
-	&__unread-mark {
-		align-items: center;
-		background-color: $wds-color-link;
-		border-radius: 100%;
-		border: 1px solid $wds-color-white;
-		color: $wds-color-white;
-		display: flex;
-		font-size: 10px;
-		height: 18px;
-		justify-content: center;
-		left: -9px;
-		position: absolute;
-		top: 7px;
-		width: 18px;
-	}
-
-	&__zero-state {
-		font-size: 14px;
-		color: $notifications-dropdown-content-color;
-	}
-}
-
-.wds-menu-chevron {
-	fill: $wds-color-blue-gray;
-	float: right;
-	margin-top: 5px;
-	transform: rotate(-90deg);
 }

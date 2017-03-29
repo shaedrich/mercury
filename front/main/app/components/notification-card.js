@@ -5,7 +5,7 @@ import PostUpvoteNotificationMixin from '../mixins/post-upvote-notification';
 import ReplyUpvoteNotificationMixin from '../mixins/reply-upvote-notification';
 import MarkAsReadNotificationMixin from '../mixins/mark-as-read-notification';
 import {trackClick, trackImpression} from '../utils/notifications-tracker';
-import {notificationTypes} from '../utils/global-notifications';
+import {notificationTypes} from '../utils/notification-types';
 
 const {Component, inject, computed, Logger} = Ember;
 
@@ -15,16 +15,13 @@ export default Component.extend(
 	ReplyUpvoteNotificationMixin,
 	MarkAsReadNotificationMixin,
 	{
-		classNames: ['notification-card'],
+		classNames: ['wds-notification-card'],
 
-		classNameBindings: ['isUnread'],
+		classNameBindings: ['isUnread:wds-is-unread'],
 
 		tagName: 'li',
 
-		currentUser: inject.service(),
 		notifications: inject.service(),
-
-		userLanguage: computed.oneWay('currentUser.language'),
 
 		iconName: computed('model.type', function () {
 			const type = this.get('model.type');
@@ -108,7 +105,6 @@ export default Component.extend(
 
 		getTranslatedMessage(key, context) {
 			const fullContext = $.extend({}, {
-				lng: this.get('userLanguage'),
 				ns: 'design-system',
 			}, context);
 

@@ -108,7 +108,7 @@
 </fieldset>
 
 {{#if isLoading}}
-	{{loading-spinner
+	{{wds-spinner
 		active=isLoading
 		class='categories-loading-overlay'
 		radius=32
@@ -117,7 +117,7 @@
 {{/if}}
 
 {{#if showSuccess}}
-	<div class="categories-loading-overlay loading-overlay">
+	<div class="categories-loading-overlay wds-spinner__overlay">
 		{{svg 'success' class='success' viewBox='0 0 80 80'}}
 	</div>
 {{/if}}
