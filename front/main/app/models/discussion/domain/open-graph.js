@@ -29,6 +29,9 @@ OpenGraph.reopenClass({
 		if (Array.isArray(openGraphData)) {
 			openGraph = openGraphData[0];
 		}
+		if (!openGraph) {
+			return null;
+		}
 
 		return this._super({
 			description: openGraph.description,

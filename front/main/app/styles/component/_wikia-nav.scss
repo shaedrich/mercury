@@ -1,6 +1,6 @@
 $nav-avatar-border: 2px;
 $nav-avatar-border-radius: 50%;
-$nav-avatar-margin: 10px;
+$nav-avatar-margin: 15px;
 $nav-avatar-size: 30px;
 $nav-back-arrow-padding: 68px;
 $nav-background-color: #636b76;
@@ -19,6 +19,19 @@ $nav-padding-vertical: 18px;
 	// not be supported on all browsers or behaviour may change.
 	// see: https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-overflow-scrolling
 	-webkit-overflow-scrolling: touch;
+}
+
+// Overrides for unread mark from On Site Notifications
+.wikia-nav {
+	.user-profile-avatar {
+		position: relative;
+	}
+
+	.wds-notifications__unread-mark {
+		left: initial;
+		right: -9px;
+		top: -3px;
+	}
 }
 
 .wikia-nav__header {
@@ -55,6 +68,11 @@ $nav-padding-vertical: 18px;
 			height: $nav-avatar-size;
 			width: $nav-avatar-size;
 			vertical-align: top;
+		}
+
+		.notifications-unread-mark {
+		  left: initial;
+		  right: -6;
 		}
 	}
 

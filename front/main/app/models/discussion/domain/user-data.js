@@ -15,7 +15,6 @@ DiscussionUserData.reopenClass({
 	 */
 	create(userData) {
 		let user = userData;
-
 		/*
 		 * if it's gotten from followed-by end-point we get userData in plain object,
 		 * not in an array, we still need to support /threads end-point with an array result
