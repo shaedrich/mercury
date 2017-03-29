@@ -3,7 +3,6 @@
 		{{#if showTopNote}}
 			{{discussion-post-card-top-note
 					approve=(action this.attrs.approve)
-					canShowModButtons=isDetailsView
 					delete=(action this.attrs.delete)
 					isReported=isReported
 					post=post
@@ -150,7 +149,7 @@
 		upvote=(action this.attrs.upvote)
 }}
 {{#if post.isLoading}}
-	{{loading-spinner
+	{{wds-spinner
 			active=post.isLoading
 			radius=32
 			strokeWidth=2

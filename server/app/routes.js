@@ -15,6 +15,7 @@ import * as forgotPasswordHandler from './facets/auth/forgot-password';
 import registerHandler from './facets/auth/register';
 import * as resetPasswordHandler from './facets/auth/reset-password';
 import signinHandler from './facets/auth/signin';
+import * as piggybackHandler from './facets/auth/piggyback';
 import confirmEmailHandler from './facets/auth/confirm-email';
 import showApplication from './facets/show-application';
 
@@ -110,6 +111,31 @@ let routes,
 			method: 'GET',
 			path: '/signin',
 			handler: signinHandler,
+			config: {
+				pre: [
+					{
+						method: validateRedirect
+					}
+				]
+			}
+		},
+
+		{
+			method: 'GET',
+			path: '/piggyback',
+			handler: piggybackHandler.get,
+			config: {
+				pre: [
+					{
+						method: validateRedirect
+					}
+				]
+			}
+		},
+		{
+			method: 'POST',
+			path: '/piggyback',
+			handler: piggybackHandler.post,
 			config: {
 				pre: [
 					{

@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-const {Object, A, Logger, computed, get} = Ember;
+const {Object: EmberObject, A, Logger, computed, get} = Ember;
 
-export default Object.extend({
+export default EmberObject.extend({
 	dsGlobalNavigation: M.prop('globalNavigation'),
 	hubsLinks: computed(function () {
 		return this.get('dsGlobalNavigation.fandom_overview.links');
@@ -23,7 +23,7 @@ export default Object.extend({
 	/**
 	 * Iteratively traverse local navigation tree to find out root node
 	 * of current nav state
-	 * @returns {Object} currentLocalNav
+	 * @returns {EmberObject} currentLocalNav
 	 */
 	currentLocalNav: computed('state.[]', 'localLinks', function () {
 		const state = this.get('state');
@@ -80,11 +80,11 @@ export default Object.extend({
 		}),
 
 	exploreItems: computed('inExploreNav', 'exploreWikis', function () {
-		const wikis = this.get('exploreWikis');
+		const exploreWikis = this.get('exploreWikis');
 
-		return this.get('inExploreNav') &&
-			get(wikis, 'links.length') &&
-			get(wikis, 'links').map((item) => {
+		return exploreWikis && this.get('inExploreNav') &&
+			get(exploreWikis, 'links.length') &&
+			get(exploreWikis, 'links').map((item) => {
 				return {
 					type: 'nav-menu-external',
 					href: item.href,
@@ -115,7 +115,7 @@ export default Object.extend({
 	exploreSubMenuItem: computed('inRoot', 'exploreWikis', function () {
 		const wikis = this.get('exploreWikis');
 
-		if (this.get('inRoot') && get(wikis, 'links.length')) {
+		if (wikis && this.get('inRoot') && get(wikis, 'links.length')) {
 			if (wikis.header) {
 				return [{
 					type: 'nav-menu-root',
@@ -147,10 +147,9 @@ export default Object.extend({
 		return this.get('inRoot') &&
 			this.get('wikiName') &&
 			[{
-				type: 'nav-menu-header',
-				route: 'wiki-page',
-				// will generate href="/wiki/"
-				href: '',
+				type: 'nav-menu-external',
+				className: 'nav-menu__header',
+				href: `/wiki/${get(Mercury, 'wiki.mainPageTitle')}`,
 				name: i18n.t('app.explore-wiki', {wikiName: this.get('wikiName')})
 			}] || [];
 	}),
@@ -171,9 +170,8 @@ export default Object.extend({
 		return !this.get('inExploreNav') &&
 			this.get('currentLocalLinks').map((item, index) => {
 				return {
-					type: item.children ? 'nav-menu-root' : 'nav-menu-item',
-					href: item.href.replace(/^(\/wiki)?\//i, ''),
-					route: 'wiki-page',
+					type: item.children ? 'nav-menu-root' : 'nav-menu-external',
+					href: item.href,
 					name: item.text,
 					index: index + 1,
 					trackLabel: `local-nav-open-link-index-${index + 1}`

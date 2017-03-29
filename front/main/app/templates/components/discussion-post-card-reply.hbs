@@ -2,7 +2,6 @@
 	{{#if showTopNote}}
 		{{discussion-post-card-top-note
 			approve=(action this.attrs.approve)
-			canShowModButtons=isDetailsView
 			delete=(action this.attrs.delete)
 			isReply=true
 			isReported=isReported
@@ -79,7 +78,7 @@
 	{{/if}}
 </div>
 {{#if post.isLoading}}
-	{{loading-spinner
+	{{wds-spinner
 		active=post.isLoading
 		radius=32
 		strokeWidth=2
