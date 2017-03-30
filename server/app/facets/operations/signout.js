@@ -1,6 +1,6 @@
 import * as authUtils from '../../lib/auth-utils';
 import {getInternalHeaders} from '../../lib/utils';
-import {getUserId, getAccessToken} from './page-data-helper'
+import {getUserId, getAccessToken} from './page-data-helper';
 import settings from '../../../config/settings';
 import Logger from '../../lib/logger';
 import Wreck from 'wreck';
@@ -19,6 +19,13 @@ function getContext(request) {
 			timeout: settings.helios.timeout
 		},
 	};
+}
+
+function extractStatusCode(response) {
+	if (response && Number.isInteger(response.statusCode)) {
+		return response.statusCode;
+	}
+	return HttpStatus.INTERNAL_SERVER_ERROR;
 }
 
 /**
@@ -47,11 +54,4 @@ export default function signOutUser(request) {
 			}
 		});
 	});
-}
-
-function extractStatusCode(response) {
-	if (response && Number.isInteger(response.statusCode)) {
-		return response.statusCode;
-	}
-	return HttpStatus.INTERNAL_SERVER_ERROR
 }

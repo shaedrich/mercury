@@ -1,5 +1,5 @@
-import signOutUser from '../operations/signout'
-import HttpStatus from 'http-status-codes'
+import signOutUser from '../operations/signout';
+import HttpStatus from 'http-status-codes';
 
 /**
  * @param {Hapi.Request} request
