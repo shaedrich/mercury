@@ -3,8 +3,8 @@ import * as authView from './auth-view';
 import deepExtend from 'deep-extend';
 import {piggybackAsUser} from '../operations/piggyback';
 import querystring from 'querystring';
-import {disableCache} from '../../lib/caching';
 import translateError from './translate-error';
+import HttpStatus from 'http-status-codes'
 
 /**
  * @typedef {Object} SignInViewContext
@@ -36,7 +36,7 @@ function getViewContext(request) {
 /**
  * @param {Hapi.Request} request
  * @param {*} reply
- * @returns {void}
+ * @returns {Hapi.Response}
  */
 export function get(request, reply) {
 	if (request.auth.isAuthenticated) {
@@ -57,7 +57,7 @@ export function post(request, reply) {
 		password = querystring.escape(request.payload.password),
 		targetUsername = querystring.escape(request.payload.targetUsername);
 
-	return piggybackAsUser(username, password, targetUsername, request)
+	piggybackAsUser(username, password, targetUsername, request)
 		.then(data => {
 			const accessToken = JSON.parse(data.payload).access_token;
 			if (accessToken && accessToken.length) {
@@ -65,7 +65,7 @@ export function post(request, reply) {
 			}
 			reply({
 				payload: data.payload
-			}).code(200);
+			}).code(HttpStatus.OK);
 		}).catch(data => {
 			const errors = translateError(data, (error) => {
 				let errorHandler = 'server-error';
@@ -81,6 +81,6 @@ export function post(request, reply) {
 
 			reply({
 				errors,
-			}).code(data.response ? data.response.statusCode : 500);
+			}).code(data.response ? data.response.statusCode : HttpStatus.INTERNAL_SERVER_ERROR);
 		});
 }
