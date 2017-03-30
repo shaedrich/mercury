@@ -1,4 +1,4 @@
-import {signOutUser} from '../operations/signout'
+import signOutUser from '../operations/signout'
 import HttpStatus from 'http-status-codes'
 import Logger from '../../lib/logger';
 
@@ -13,7 +13,7 @@ export default function post(request, reply) {
 	} else {
 		signOutUser(request.state.access_token, request)
 			.then(data => {
-				const accessToken = JSON.parse(data.payload).access_token;
+				const accessToken = data.payload ? data.payload.access_token : null;
 				Logger.info('access token ' + accessToken);
 				reply('Sign out successful')
 					.state('access_token', accessToken)

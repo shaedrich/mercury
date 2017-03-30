@@ -6,28 +6,27 @@ import Logger from '../../lib/logger';
 import Wreck from 'wreck';
 import HttpStatus from 'http-status-codes';
 
-function getContext(token, request, userId) {
+function getContext(token, request) {
 	return {
-		url: authUtils.getHeliosUrl(`/token/${token}`),
+		url: authUtils.getHeliosInternalUrl(`/token/${token}`),
 		options: {
 			headers: getInternalHeaders(request, {
-				'X-Wikia-UserId': userId
+				'X-Wikia-UserId': getUserId(request),
+				'Content-type': 'application/json',
 			}),
+			json: true,
 			timeout: settings.helios.timeout
 		},
 	};
 }
 
-
 /**
  * @param token
- * @param {Object} request
+ * @param {Hapi.Request} request
  * @returns {Promise}
  */
-export function signOutUser(token, request) {
-	const userId = getUserId(request);
-	const context = getContext(token, request, userId);
-	Logger.info(userId, 'userID');
+export default function signOutUser(token, request) {
+	const context = getContext(token, request);
 
 	return new Promise((resolve, reject) => {
 		Wreck.delete(context.url, context.options, (error, response, payload) => {

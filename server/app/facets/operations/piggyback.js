@@ -23,7 +23,7 @@ function getContext(username, password, targetUserId, request) {
  * @param {string} username
  * @param {string} password
  * @param {string} targetUsername
- * @param {Object} request
+ * @param {Hapi.Request} request
  * @returns {Promise}
  */
 export function piggybackAsUser(username, password, targetUsername, request) {
