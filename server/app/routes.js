@@ -235,7 +235,8 @@ let routes,
 		},
 		{
 			method: 'POST',
-			path: '/signout',
+			// until VCL is complete /logout rather than /signout
+			path: '/logout',
 			handler: signOutHandler
 		},
 		{
