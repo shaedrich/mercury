@@ -1,22 +1,23 @@
-import {getReferrerUrlOrDefault} from '../../lib/utils'
 import {signOutUser} from '../operations/signout'
+import HttpStatus from 'http-status-codes'
 
 /**
  * @param {Hapi.Request} request
  * @param {*} reply
- * @returns {void}
+ * @returns void
  */
-export default function signOut(request, reply) {
-	if (request.auth.isAuthenticated) {
-		return signOutUser(request.state('access_token'))
+export default function post(request, reply) {
+	if (!request.auth.isAuthenticated) {
+		reply('Cannot sign out an unauthenticated user.').code(HttpStatus.BAD_REQUEST);
+	} else {
+		signOutUser(request.state('access_token'))
 			.then(data => {
 				const accessToken = JSON.parse(data.payload).access_token;
-				reply.state('access_token', accessToken);
-				reply.redirect(getReferrerUrlOrDefault(request)).takeover();
-			}).catch(data => {
-				reply.redirect(getReferrerUrlOrDefault(request)).takeover();
+				reply('Sign out successful')
+					.state('access_token', accessToken)
+					.code(HttpStatus.OK);
+			}).catch(() => {
+				reply('Sign out unsuccessful').code(HttpStatus.INTERNAL_SERVER_ERROR);
 			});
-	} else {
-		return reply.redirect(getReferrerUrlOrDefault(request)).takeover();
 	}
 }

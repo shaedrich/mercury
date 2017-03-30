@@ -234,7 +234,7 @@ let routes,
 			}
 		},
 		{
-			method: 'GET',
+			method: 'POST',
 			path: '/signout',
 			handler: signOutHandler
 		},
