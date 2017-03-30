@@ -4,7 +4,7 @@ import deepExtend from 'deep-extend';
 import {piggybackAsUser} from '../operations/piggyback';
 import querystring from 'querystring';
 import translateError from './translate-error';
-import HttpStatus from 'http-status-codes'
+import HttpStatus from 'http-status-codes';
 
 /**
  * @typedef {Object} SignInViewContext
@@ -63,9 +63,7 @@ export function post(request, reply) {
 			if (accessToken && accessToken.length) {
 				reply.state('access_token', accessToken);
 			}
-			reply({
-				payload: data.payload
-			}).code(HttpStatus.OK);
+			reply({payload: data.payload}).code(HttpStatus.OK);
 		}).catch(data => {
 			const errors = translateError(data, (error) => {
 				let errorHandler = 'server-error';

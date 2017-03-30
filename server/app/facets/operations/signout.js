@@ -1,15 +1,17 @@
 import * as authUtils from '../../lib/auth-utils';
 import {getInternalHeaders} from '../../lib/utils';
+import {getUserId} from './page-data-helper'
 import settings from '../../../config/settings';
 import Logger from '../../lib/logger';
 import Wreck from 'wreck';
+import HttpStatus from 'http-status-codes';
 
-function getContext(token, request) {
+function getContext(token, request, userId) {
 	return {
 		url: authUtils.getHeliosUrl(`/token/${token}`),
 		options: {
 			headers: getInternalHeaders(request, {
-				'Content-type': 'application/x-www-form-urlencoded',
+				'X-Wikia-UserId': userId
 			}),
 			timeout: settings.helios.timeout
 		},
@@ -23,7 +25,9 @@ function getContext(token, request) {
  * @returns {Promise}
  */
 export function signOutUser(token, request) {
-	const context = getContext(token, request);
+	const userId = getUserId(request);
+	const context = getContext(token, request, userId);
+	Logger.info(userId, 'userID');
 
 	return new Promise((resolve, reject) => {
 		Wreck.delete(context.url, context.options, (error, response, payload) => {
@@ -33,12 +37,14 @@ export function signOutUser(token, request) {
 				response,
 				payload
 			};
-			if (response && response.statusCode === 200) {
+			if (response && response.statusCode === HttpStatus.NO_CONTENT) {
 				resolve(result);
 			} else {
 				Logger.error({
 					url: context.url,
 					error,
+					status: response.statusCode,
+					response: JSON.parse(payload)
 				}, 'Error from Helios token endpoint.');
 				reject(result);
 			}
