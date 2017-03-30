@@ -11,22 +11,14 @@ export default function post(request, reply) {
 	if (!request.auth.isAuthenticated) {
 		reply('Cannot sign out an unauthenticated user.').code(HttpStatus.BAD_REQUEST);
 	} else {
-		signOutUser(request.state.access_token, request)
-			.then(data => {
-				const accessToken = data.payload ? data.payload.access_token : null;
-				Logger.info('access token ' + accessToken);
+		signOutUser(request)
+			.then(result => {
+				Logger.info('access token ' + result.token);
 				reply('Sign out successful')
-					.state('access_token', accessToken)
+					.state('access_token', result.token)
 					.code(HttpStatus.OK);
-			}).catch((data) => {
-				reply('Sign out unsuccessful').code(extractStatusCode(data.response));
+			}).catch((result) => {
+				reply('Sign out unsuccessful').code(result.status);
 			});
 	}
-}
-
-function extractStatusCode(response) {
-	if (response && Number.isInteger(response.statusCode)) {
-		return response.statusCode;
-	}
-	return HttpStatus.INTERNAL_SERVER_ERROR
 }
