@@ -1,7 +1,7 @@
 import {disableCache} from '../../lib/caching';
 import {getUserPreferencesUrl} from '../../lib/auth-utils';
 import {getValidRedirectUrl, getValidOriginUrl} from '../../lib/auth-url-factory';
-import {getCanonicalUrl} from '../../lib/url-utils'
+import {getCanonicalUrl} from '../../lib/url-utils';
 import {parse, resolve} from 'url';
 import settings from '../../../config/settings';
 import {shouldServeMobileView} from '../../lib/utils';

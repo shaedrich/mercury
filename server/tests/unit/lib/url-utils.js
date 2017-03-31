@@ -101,6 +101,7 @@ QUnit.test('hasHttpProtocol', function (assert) {
 			description: 'Undefined a protocol'
 		},
 		{
+			// eslint-disable-next-line no-script-url
 			url: 'javascript:',
 			expected: false,
 			description: 'JavaScript protocol'
@@ -159,7 +160,9 @@ QUnit.test('doesDomainMatchCurrentHost', function (assert) {
 	];
 
 	testCases.forEach(function (testCase) {
-		assert.equal(global.doesDomainMatchCurrentHost(testCase.domain, testCase.currentHost), testCase.expected, testCase.description);
+		assert.equal(global.doesDomainMatchCurrentHost(testCase.domain, testCase.currentHost),
+			testCase.expected,
+			testCase.description);
 	});
 });
 

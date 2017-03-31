@@ -1,6 +1,6 @@
 import Url from 'url';
-import {getHost, hasHttpProtocol} from './url-utils'
-import {isRedirectValid, hostIsWhitelistedOrMatchesCurrent} from './redirect-validator'
+import {getHost, hasHttpProtocol} from './url-utils';
+import {isRedirectValid, hostIsWhitelistedOrMatchesCurrent} from './redirect-validator';
 
 /**
  * @param {Hapi.Request} request

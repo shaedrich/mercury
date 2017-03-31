@@ -1,5 +1,5 @@
 import Url from 'url';
-import {hasImplicitProtocol, hasHttpOrNoProtocol, doesDomainMatchCurrentHost} from './url-utils'
+import {hasImplicitProtocol, hasHttpOrNoProtocol, doesDomainMatchCurrentHost} from './url-utils';
 
 /**
  * @param {string} domain
@@ -15,6 +15,10 @@ function isWhiteListedDomain(domain) {
 	return whiteListedDomains.some((whiteListedDomain) => {
 		return domain.indexOf(whiteListedDomain, domain.length - whiteListedDomain.length) !== -1;
 	});
+}
+
+export function hostIsWhitelistedOrMatchesCurrent(host, currentHost) {
+	return host && (doesDomainMatchCurrentHost(host, currentHost) || isWhiteListedDomain(host));
 }
 
 export function isRedirectValid(request, redirectUrl) {
@@ -33,8 +37,4 @@ export function isRedirectValid(request, redirectUrl) {
 	}
 
 	return true;
-}
-
-export function hostIsWhitelistedOrMatchesCurrent(host, currentHost) {
-	return host && (doesDomainMatchCurrentHost(host, currentHost) || isWhiteListedDomain(host));
 }
