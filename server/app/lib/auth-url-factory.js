@@ -40,3 +40,19 @@ export function getValidOriginUrl(request) {
 	}
 }
 
+function getPayloadRedirect(payload) {
+	if (payload && payload.redirect) {
+		return payload.redirect;
+	} else {
+		return null;
+	}
+}
+
+export function getRedirectUrlForPost(request) {
+	const redirectUrl = getPayloadRedirect(request.payload) || request.query.redirect || '/';
+	if (isRedirectValid(request, redirectUrl)) {
+		return redirectUrl;
+	} else {
+		return '/';
+	}
+}
