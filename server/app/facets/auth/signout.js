@@ -7,7 +7,7 @@ import HttpStatus from 'http-status-codes';
  * @returns void
  */
 export default function post(request, reply) {
-	//TODO IRIS-4012: Implement anti-CSRF token
+	// TODO IRIS-4012: Implement anti-CSRF token
 	if (!request.auth.isAuthenticated) {
 		reply('Cannot sign out an unauthenticated user.').code(HttpStatus.BAD_REQUEST);
 	} else {
