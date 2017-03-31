@@ -48,7 +48,7 @@ export function hasHttpOrNoProtocol(protocol) {
 }
 
 function isSubdomain(domain, host) {
-	return (new RegExp('^.+[.]'+host+'$')).test(domain);
+	return (new RegExp(`^.+[.]${host}$`)).test(domain);
 }
 
 /**
