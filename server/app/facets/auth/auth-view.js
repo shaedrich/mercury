@@ -1,8 +1,9 @@
 import {disableCache} from '../../lib/caching';
 import {getUserPreferencesUrl} from '../../lib/auth-utils';
+import {getValidRedirectUrl, getValidOriginUrl} from '../../lib/auth-url-factory';
+import {getCanonicalUrl} from '../../lib/url-utils'
 import {parse, resolve} from 'url';
 import settings from '../../../config/settings';
-import ESAPI from 'node-esapi';
 import {shouldServeMobileView} from '../../lib/utils';
 
 /**
@@ -32,120 +33,13 @@ export const VIEW_TYPE_MOBILE = 'mobile',
 	VIEW_TYPE_DESKTOP = 'desktop';
 
 /**
- * @param {string} domain
- * @param {string} currentHost
- * @returns {boolean}
- */
-export function checkDomainMatchesCurrentHost(domain, currentHost) {
-	return currentHost === domain ||
-		domain.indexOf(`.${currentHost}`, domain.length - currentHost.length - 1) !== -1;
-}
-
-/**
- * @param {string} domain
- * @returns {boolean}
- */
-export function isWhiteListedDomain(domain) {
-	const whiteListedDomains = ['.wikia.com', '.wikia-staging.com', '.wikia-dev.pl', '.wikia-dev.us'];
-
-	/**
-	 * @param {string} whileListedDomain
-	 * @returns {boolean}
-	 */
-	return whiteListedDomains.some((whiteListedDomain) => {
-		return domain.indexOf(whiteListedDomain, domain.length - whiteListedDomain.length) !== -1;
-	});
-}
-
-/**
- * @param {Hapi.Request} request
- * @returns {string}
- */
-export function getCurrentOrigin(request) {
-	// for now the assumption is that there will be https
-	return `https://${request.headers.host}`;
-}
-
-/**
- * @param {Hapi.Request} request
- * @returns {string}
- */
-export function getCanonicalUrl(request) {
-	return getCurrentOrigin(request) + request.path;
-}
-
-/**
- * @param {Hapi.Request} request
- * @returns {string}
- */
-export function getOrigin(request) {
-	const currentHost = request.headers.host,
-		redirectUrl = request.query.redirect || '/',
-		redirectUrlHost = parse(redirectUrl).host,
-		redirectUrlOrigin = `${parse(redirectUrl).protocol}//${redirectUrlHost}`;
-
-	if (redirectUrlHost && (
-			checkDomainMatchesCurrentHost(redirectUrlHost, currentHost) ||
-			isWhiteListedDomain(redirectUrlHost)
-		)
-	) {
-		return redirectUrlOrigin;
-	}
-
-	return getCurrentOrigin(request);
-}
-
-/**
- * Workaround for node's problems with implicit URLs
- * @param url
- * @return {boolean}
- */
-function hasImplicitProtocol(url) {
-	return url.substr(0, 2) === '//';
-}
-
-/**
- * We only allow HTTP or HTTPS or no protocol. "javascript:" for example will be rejected.
- * @param protocol
- * @return {boolean}
- */
-function hasInvalidProtocol(protocol) {
-	return !(protocol === 'http:' || protocol === 'https:' || !protocol);
-}
-
-/**
- * @param {Hapi.Request} request
- * @returns {string}
- */
-export function getRedirectUrl(request) {
-	const currentHost = request.headers.host,
-		redirectUrl = request.query.redirect || '/',
-		parsedUrl = parse(redirectUrl),
-		redirectUrlHost = parsedUrl.host;
-
-	if (hasImplicitProtocol(redirectUrl) ||
-		hasInvalidProtocol(parsedUrl.protocol) ||
-		(
-			redirectUrlHost &&
-			!checkDomainMatchesCurrentHost(redirectUrlHost, currentHost) &&
-			!isWhiteListedDomain(redirectUrlHost)
-		)
-	) {
-		return '/';
-	} else {
-		return redirectUrl;
-	}
-}
-
-/**
  * @param {Hapi.Request} request
  * @param {*} reply
  * @returns {*}
  */
 export function validateRedirect(request, reply) {
-	const queryRedirectUrl = getRedirectUrl(request);
-
-	// redirect only if redirect url domain is on whitelist
+	const queryRedirectUrl = getValidRedirectUrl(request);
+	// if redirect present and has been validated then replace with new one
 	if (request.query.redirect && queryRedirectUrl !== request.query.redirect) {
 		request.url.query.redirect = queryRedirectUrl;
 		request.url.search = null;
@@ -186,10 +80,6 @@ export function view(template, context, request, reply, layout = 'auth') {
 	return response;
 }
 
-function encodeForJavaScript(value) {
-	return ESAPI.encoder().encodeForJavaScript(value);
-}
-
 /**
  * @param {Hapi.Request} request
  * @returns {AuthViewContext}
@@ -197,7 +87,7 @@ function encodeForJavaScript(value) {
 export function getDefaultContext(request) {
 	const viewType = getViewType(request),
 		isModal = request.query.modal === '1',
-		redirectUrl = getRedirectUrl(request),
+		redirectUrl = getValidRedirectUrl(request),
 		reactivateAccountUrl = resolve(redirectUrl, '/Special:CloseMyAccount/reactivate'),
 		pageParams = {
 			cookieDomain: settings.authCookieDomain,
@@ -216,14 +106,14 @@ export function getDefaultContext(request) {
 	}
 
 	if (isModal) {
-		pageParams.parentOrigin = getOrigin(request);
+		pageParams.parentOrigin = getValidOriginUrl(request);
 	}
 
 	/* eslint no-undefined: 0 */
 	return {
 		title: null,
 		canonicalUrl: getCanonicalUrl(request),
-		exitTo: getRedirectUrl(request),
+		exitTo: getValidRedirectUrl(request),
 		mainPage: 'http://www.wikia.com',
 		language: request.server.methods.i18n.getInstance().lng(),
 		trackingConfig: settings.tracking,
@@ -242,8 +132,7 @@ export function getDefaultContext(request) {
  * @returns {Hapi.Response}
  */
 export function onAuthenticatedRequestReply(request, reply, context) {
-	const redirect = getRedirectUrl(request);
-
+	const redirect = getValidRedirectUrl(request);
 	if (context.pageParams.isModal) {
 		return reply.view(
 			'auth/desktop/modal-message',
@@ -253,6 +142,5 @@ export function onAuthenticatedRequestReply(request, reply, context) {
 			}
 		);
 	}
-
 	return reply.redirect(redirect);
 }
