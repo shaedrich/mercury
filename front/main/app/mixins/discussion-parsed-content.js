@@ -8,6 +8,9 @@ import {truncate, shouldUseTruncationHack} from '../utils/truncate';
 export default Ember.Mixin.create({
 	autolinkerConfig: {},
 
+	rawContent: Ember.computed('post.rawContent', 'content', function () {
+		return this.getParsedRawContent();
+	}),
 	/**
 	 * Returns content with links created from urls and converts \n, \rn and \r to <br>
 	 * @returns {string}

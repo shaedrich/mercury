@@ -1,6 +1,6 @@
 [![Dependency Status](https://david-dm.org/Wikia/mercury.svg)](https://david-dm.org/Wikia/mercury)
 [![devDependency Status](https://david-dm.org/Wikia/mercury/dev-status.svg)](https://david-dm.org/Wikia/mercury#info=devDependencies)
-
+ 
 ## Setup
 To begin your journey with Mercury all you need to do is:
 
