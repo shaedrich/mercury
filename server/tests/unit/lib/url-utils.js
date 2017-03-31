@@ -136,7 +136,7 @@ QUnit.test('doesDomainMatchCurrentHost', function (assert) {
 		{
 			domain: 'wikia.com',
 			currentHost: 'fallout.wikia.com',
-			expected: false,
+			expected: true,
 			description: 'wikia.com should match Fallout subdomain.'
 		},
 		{
@@ -158,10 +158,16 @@ QUnit.test('doesDomainMatchCurrentHost', function (assert) {
 			description: 'Fake wikia.com.fake.com subdomain should not match'
 		},
 		{
-			domain: 'wikia.com',
-			currentHost: 'fake.com',
+			domain: 'fake.com',
+			currentHost: 'wikia.com',
 			expected: false,
 			description: 'Another domain should not match.'
+		},
+		{
+			domain: 'fakewikia.com',
+			currentHost: 'wikia.com',
+			expected: false,
+			description: 'Don\'t allow external domain when wikia.com is the last part of an external domain'
 		},
 	];
 
