@@ -149,7 +149,7 @@ QUnit.test('doesDomainMatchCurrentHost', function (assert) {
 			domain: 'wikia.com',
 			currentHost: 'wikia.com.fake.com',
 			expected: false,
-			description: 'Fake www.wikia.com.fake.com subdomain should not match.'
+			description: 'Fake wikia.com subdomain should not match wikia.com.fake.com.'
 		},
 		{
 			domain: 'wikia.com.fake.com',
