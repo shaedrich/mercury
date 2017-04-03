@@ -13,8 +13,7 @@ function getContext(request) {
 		url: authUtils.getHeliosInternalUrl(`/token/${token}`),
 		options: {
 			headers: getInternalHeaders(request, {
-				'X-Wikia-UserId': userId,
-				'Content-type': 'application/json',
+				'X-Wikia-UserId': userId
 			}),
 			timeout: settings.helios.timeout
 		},
