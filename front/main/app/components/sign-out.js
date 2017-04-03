@@ -8,8 +8,8 @@ export default Component.extend(
 		classNames: ['wds-sign-out'],
 
 		currentUrl: null,
-		onPathChanged: Ember.observer('target.url', function() {
-			Ember.run.next(this, function() {
+		onPathChanged: Ember.observer('target.url', function () {
+			Ember.run.next(this, function () {
 				this.set('currentUrl', window.location.href);
 			});
 		}),
