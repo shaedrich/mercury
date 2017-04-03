@@ -65,7 +65,7 @@ export default DiscussionBaseRoute.extend(
 			}
 
 			if (!modifiedTransition && !queryParams.sort) {
-				this.transitionTo({
+				this.replaceWith({
 					queryParams: {
 						sort: discussionSort.get('defaultSort')
 					}
@@ -107,7 +107,7 @@ export default DiscussionBaseRoute.extend(
 		},
 
 		transitionToCommaSplittedCategories(params) {
-			return this.transitionTo({
+			return this.replaceWith({
 				queryParams: {
 					catId: this.getCommaSplittedCategories(params.catId),
 					sort: params.sort
@@ -127,15 +127,11 @@ export default DiscussionBaseRoute.extend(
 		 * @returns {EmberStates.Transition} may return null when categories in query params are valid
 		 */
 		transitionToValidCategoryFilters(categories, params) {
-			let transition = null;
-
 			if (!Ember.isEmpty(params.catId)) {
-				let validCategories = params.catId;
-
-				validCategories = this.validateCategories(categories, params);
+				let validCategories = this.validateCategories(categories, params);
 
 				if (params.catId.length !== validCategories.length) {
-					transition = this.transitionTo({
+					return this.replaceWith({
 						queryParams: {
 							catId: validCategories,
 							page: params.page,
@@ -144,8 +140,7 @@ export default DiscussionBaseRoute.extend(
 					});
 				}
 			}
-
-			return transition;
+			return null;
 		},
 
 		/**
@@ -155,8 +150,6 @@ export default DiscussionBaseRoute.extend(
 		 * @returns {EmberStates.Transition} may return null when previous query params are not applied.
 		 */
 		transitionToPreviouslySelectedFilters(categories, params) {
-			let transition = null;
-
 			if (localStorageConnector.getItem('discussionForumPreviousQueryParams')) {
 				this.validateAndUpdateStoredParams(categories, params);
 
@@ -168,7 +161,7 @@ export default DiscussionBaseRoute.extend(
 					&& !Ember.isEmpty(transitionParams.catId)) {
 					transitionParams.catId = transitionParams.catId.join(',');
 
-					transition = this.transitionTo({
+					return this.replaceWith({
 						queryParams: transitionParams
 					});
 				}
@@ -176,7 +169,7 @@ export default DiscussionBaseRoute.extend(
 				this.storeQueryParams(params);
 			}
 
-			return transition;
+			return null;
 		},
 
 		/**
@@ -215,7 +208,7 @@ export default DiscussionBaseRoute.extend(
 				params.sort = sortBy;
 				return params;
 			});
-			return this.transitionTo('discussion.forum', {queryParams: {sort: sortBy}});
+			return this.replaceWith('discussion.forum', {queryParams: {sort: sortBy}});
 		},
 
 		serializeQueryParam(value, urlKey, defaultValueType) {
@@ -262,7 +255,7 @@ export default DiscussionBaseRoute.extend(
 
 				this.refreshStoredCategories(catId);
 
-				this.transitionTo({
+				this.replaceWith({
 					queryParams: {
 						catId: Ember.isEmpty(catId) ? null : catId,
 						sort: this.get('discussionSort.sortBy')
