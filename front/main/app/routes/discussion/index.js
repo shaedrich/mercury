@@ -15,12 +15,12 @@ export default Ember.Route.extend({
 
 		// check if object because of situation when user had previously stored "null" (string) value
 		// for transitionParams
-		if (!transitionParams || Ember.typeOf(transitionParams) !== 'object') {
+		if (!transitionParams || Ember.typeOf(transitionParams) !== 'object' || Ember.isEmpty(transitionParams.sort)) {
 			transitionParams = {sort: this.get('discussionSort.defaultSort')};
 		}
 		if (Ember.isEmpty(transitionParams.catId)) {
 			transitionParams.catId = null;
 		}
-		this.transitionTo('discussion.forum', {queryParams: transitionParams});
+		this.replaceWith('discussion.forum', {queryParams: transitionParams});
 	},
 });

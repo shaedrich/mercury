@@ -4,6 +4,7 @@ import {getValidRedirectUrl, getValidOriginUrl} from '../../lib/auth-url-factory
 import {getCanonicalUrl} from '../../lib/url-utils';
 import {parse, resolve} from 'url';
 import settings from '../../../config/settings';
+import ESAPI from 'node-esapi';
 import {shouldServeMobileView} from '../../lib/utils';
 
 /**
@@ -80,6 +81,10 @@ export function view(template, context, request, reply, layout = 'auth') {
 	return response;
 }
 
+function encodeForJavaScript(value) {
+	return ESAPI.encoder().encodeForJavaScript(value);
+}
+
 /**
  * @param {Hapi.Request} request
  * @returns {AuthViewContext}
@@ -87,7 +92,7 @@ export function view(template, context, request, reply, layout = 'auth') {
 export function getDefaultContext(request) {
 	const viewType = getViewType(request),
 		isModal = request.query.modal === '1',
-		redirectUrl = getValidRedirectUrl(request),
+		redirectUrl = encodeForJavaScript(getValidRedirectUrl(request)),
 		reactivateAccountUrl = resolve(redirectUrl, '/Special:CloseMyAccount/reactivate'),
 		pageParams = {
 			cookieDomain: settings.authCookieDomain,
