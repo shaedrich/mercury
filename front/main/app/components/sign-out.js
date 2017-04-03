@@ -1,22 +1,16 @@
 import Ember from 'ember';
 import {track, trackActions} from 'common/utils/track';
 
-const {Component, computed, inject} = Ember;
+const {Component} = Ember;
 
 export default Component.extend(
 	{
+		trackingLabel: 'open-logout',
 		classNames: ['wds-sign-out'],
-
-		currentUrl: null,
-		onPathChanged: Ember.observer('target.url', function () {
-			Ember.run.next(this, function () {
-				this.set('currentUrl', window.location.href);
-			});
-		}),
-
+		trackClick: Ember.K,
 		actions: {
-			getBack() {
-				this.sendAction('setDrawerContent', 'nav');
+			onClick() {
+				this.get('trackClick')(this.get('trackingLabel'));
 			},
 		}
 	}

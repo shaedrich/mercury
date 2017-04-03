@@ -29,6 +29,14 @@
 		width: auto;
 		height: auto;
 		margin: 0;
+		text-align: left;
+
+		.wds-is-linked & {
+			// wds-is-linked does this to <a>
+			padding: 11px 0;
+			display: block;
+			width: 100%;
+		}
 	}
 	&__button:hover {
 		color: inherit;
