@@ -197,7 +197,7 @@ function encodeForJavaScript(value) {
 export function getDefaultContext(request) {
 	const viewType = getViewType(request),
 		isModal = request.query.modal === '1',
-		redirectUrl = getRedirectUrl(request),
+		redirectUrl = encodeForJavaScript(getRedirectUrl(request)),
 		reactivateAccountUrl = resolve(redirectUrl, '/Special:CloseMyAccount/reactivate'),
 		pageParams = {
 			cookieDomain: settings.authCookieDomain,
