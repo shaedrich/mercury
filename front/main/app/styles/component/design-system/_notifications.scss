@@ -30,4 +30,8 @@
 		height: auto;
 		margin: 0;
 	}
+	&__button:hover {
+		color: inherit;
+		background: inherit;
+	}
 }
