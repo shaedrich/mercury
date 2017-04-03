@@ -5,8 +5,7 @@ const {Component, computed, inject} = Ember;
 
 export default Component.extend(
 	{
-		classNames: ['wds-sign-out-button'],
-
+		classNames: ['wds-sign-out'],
 
 		currentUrl: null,
 		onPathChanged: Ember.observer('target.url', function() {
