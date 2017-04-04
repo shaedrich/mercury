@@ -1,19 +1,23 @@
 import Url from 'url';
-import {getHost, hasHttpProtocol} from './url-utils';
-import {isRedirectValid, hostIsWhitelistedOrMatchesCurrent} from './redirect-validator';
+import {getHost, isHttpProtocol} from './url-utils';
+import {isRedirectValid, isWhitelistedDomainOrMatchesCurrent} from './redirect-validator';
 
 /**
  * @param {Hapi.Request} request
- * @param {*} reply
- * @returns {*}
+ * @returns {string}
  */
 export function getValidRedirectUrl(request) {
 	const redirectUrl = request.query.redirect || '/';
-	if (isRedirectValid(request, redirectUrl)) {
-		return redirectUrl;
-	} else {
-		return '/';
-	}
+	return getRedirectUrlOrElse(request.headers.host, redirectUrl, '/');
+}
+
+/**
+ * @param {Hapi.Request} request
+ * @returns {string}
+ */
+export function getRedirectUrlForPost(request) {
+	const redirectUrl = getPayloadRedirect(request.payload) || request.query.redirect || '/';
+	return getRedirectUrlOrElse(request.headers.host, redirectUrl, '/');
 }
 
 /**
@@ -27,8 +31,8 @@ export function getValidOriginUrl(request) {
 		redirectUrlHost = parsedUrl.host,
 		redirectUrlProtocol = parsedUrl.protocol;
 
-	if (hostIsWhitelistedOrMatchesCurrent(redirectUrlHost, currentHost)
-		&& hasHttpProtocol(redirectUrlProtocol)) {
+	if (isWhitelistedDomainOrMatchesCurrent(redirectUrlHost, currentHost)
+		&& isHttpProtocol(redirectUrlProtocol)) {
 		// Domain or protocol is valid so return the redirect URL without the path or queries
 		return Url.format({
 			protocol: redirectUrlProtocol,
@@ -48,11 +52,6 @@ function getPayloadRedirect(payload) {
 	}
 }
 
-export function getRedirectUrlForPost(request) {
-	const redirectUrl = getPayloadRedirect(request.payload) || request.query.redirect || '/';
-	if (isRedirectValid(request, redirectUrl)) {
-		return redirectUrl;
-	} else {
-		return '/';
-	}
+function getRedirectUrlOrElse(currentHost, desiredUrl, alternativeUrl) {
+	return isRedirectValid(currentHost, desiredUrl) ? desiredUrl : alternativeUrl;
 }

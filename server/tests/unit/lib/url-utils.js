@@ -78,7 +78,7 @@ QUnit.test('hasImplicitProtocol', function (assert) {
 	});
 });
 
-QUnit.test('hasHttpProtocol', function (assert) {
+QUnit.test('isHttpProtocol', function (assert) {
 	var testCases = [
 		{
 			url: 'http:',
@@ -109,11 +109,11 @@ QUnit.test('hasHttpProtocol', function (assert) {
 	];
 
 	testCases.forEach(function (testCase) {
-		assert.equal(global.hasHttpProtocol(testCase.url), testCase.expected, testCase.description);
+		assert.equal(global.isHttpProtocol(testCase.url), testCase.expected, testCase.description);
 	});
 });
 
-QUnit.test('doesDomainMatchCurrentHost', function (assert) {
+QUnit.test('areDomainsMatching', function (assert) {
 	var testCases = [
 		{
 			domain: 'wikia.com',
@@ -172,7 +172,7 @@ QUnit.test('doesDomainMatchCurrentHost', function (assert) {
 	];
 
 	testCases.forEach(function (testCase) {
-		assert.equal(global.doesDomainMatchCurrentHost(testCase.domain, testCase.currentHost),
+		assert.equal(global.areDomainsMatching(testCase.domain, testCase.currentHost),
 			testCase.expected,
 			testCase.description);
 	});

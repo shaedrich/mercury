@@ -26,7 +26,7 @@ export function getCanonicalUrl(request, ssl = true) {
 }
 
 /**
- * Workaround for node's problems with implicit URLs
+ * Workaround for node's problems with implicit URLs.
  * @param url
  * @return {boolean}
  */
@@ -34,7 +34,12 @@ export function hasImplicitProtocol(url) {
 	return url.substr(0, 2) === '//';
 }
 
-export function hasHttpProtocol(protocol) {
+/**
+ * Check if protocol is HTTP or HTTPS.
+ * @param {string} protocol
+ * @return {boolean}
+ */
+export function isHttpProtocol(protocol) {
 	return protocol === 'http:' || protocol === 'https:';
 }
 
@@ -43,19 +48,26 @@ export function hasHttpProtocol(protocol) {
  * @param protocol
  * @return {boolean}
  */
-export function hasHttpOrNoProtocol(protocol) {
-	return hasHttpProtocol(protocol) || !protocol;
-}
-
-function isSubdomain(domain, host) {
-	return (new RegExp(`^.+[.]${host}$`)).test(domain);
+export function isHttpOrEmptyProtocol(protocol) {
+	return isHttpProtocol(protocol) || !protocol;
 }
 
 /**
+ * Check if this is a subdomain of a specified domain.
+ * @param {string} possibleSubdomain
  * @param {string} domain
- * @param {string} host
+ * @return {boolean}
+ */
+function isSubdomain(possibleSubdomain, domain) {
+	return (new RegExp(`^.+[.]${domain}$`)).test(possibleSubdomain);
+}
+
+/**
+ * Check if the domains the same or is one a subdomain of the other.
+ * @param {string} firstDomain
+ * @param {string} secondDomain
  * @returns {boolean}
  */
-export function doesDomainMatchCurrentHost(domain, host) {
-	return host === domain || isSubdomain(domain, host) || isSubdomain(host, domain);
+export function areDomainsMatching(firstDomain, secondDomain) {
+	return secondDomain === firstDomain || isSubdomain(firstDomain, secondDomain) || isSubdomain(secondDomain, firstDomain);
 }
