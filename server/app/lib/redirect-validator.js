@@ -1,5 +1,5 @@
 import Url from 'url';
-import {hasImplicitProtocol, hasHttpOrNoProtocol, doesDomainMatchCurrentHost} from './url-utils';
+import {hasImplicitProtocol, isHttpOrEmptyProtocol, areDomainsMatching} from './url-utils';
 
 /**
  * @param {string} domain
@@ -17,23 +17,22 @@ function isWhiteListedDomain(domain) {
 	});
 }
 
-export function hostIsWhitelistedOrMatchesCurrent(host, currentHost) {
-	return host && (doesDomainMatchCurrentHost(host, currentHost) || isWhiteListedDomain(host));
+export function isWhitelistedDomainOrMatchesCurrent(domain, currentHost) {
+	return domain && (areDomainsMatching(domain, currentHost) || isWhiteListedDomain(domain));
 }
 
-export function isRedirectValid(request, redirectUrl) {
-	const currentHost = request.headers.host,
-		parsedUrl = Url.parse(redirectUrl),
+export function isRedirectValid(currentHost, redirectUrl) {
+	const parsedUrl = Url.parse(redirectUrl),
 		redirectUrlHost = parsedUrl.host;
 
-	if (hasImplicitProtocol(redirectUrl) || !hasHttpOrNoProtocol(parsedUrl.protocol)) {
+	if (hasImplicitProtocol(redirectUrl) || !isHttpOrEmptyProtocol(parsedUrl.protocol)) {
 		// The protocol different than HTTP or HTTPS
 		return false;
 	}
 
 	if (redirectUrlHost) {
 		// The URL is not relative, validate domain
-		return hostIsWhitelistedOrMatchesCurrent(redirectUrlHost, currentHost);
+		return isWhitelistedDomainOrMatchesCurrent(redirectUrlHost, currentHost);
 	}
 
 	return true;
