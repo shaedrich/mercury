@@ -22,7 +22,7 @@ export default function post(request, reply) {
 					.state('access_token', result.token)
 					.takeover();
 			}).catch((result) => {
-			reply('Sign out unsuccessful').code(result.status);
-		});
+				reply('Sign out unsuccessful').code(result.status);
+			});
 	}
 }

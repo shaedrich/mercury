@@ -69,5 +69,7 @@ function isSubdomain(possibleSubdomain, domain) {
  * @returns {boolean}
  */
 export function areDomainsMatching(firstDomain, secondDomain) {
-	return secondDomain === firstDomain || isSubdomain(firstDomain, secondDomain) || isSubdomain(secondDomain, firstDomain);
+	return secondDomain === firstDomain
+		|| isSubdomain(firstDomain, secondDomain)
+		|| isSubdomain(secondDomain, firstDomain);
 }

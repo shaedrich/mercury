@@ -2,6 +2,18 @@ import Url from 'url';
 import {getHost, isHttpProtocol} from './url-utils';
 import {isRedirectValid, isWhitelistedDomainOrMatchesCurrent} from './redirect-validator';
 
+function getPayloadRedirect(payload) {
+	if (payload && payload.redirect) {
+		return payload.redirect;
+	} else {
+		return null;
+	}
+}
+
+function getRedirectUrlOrElse(currentHost, desiredUrl, alternativeUrl) {
+	return isRedirectValid(currentHost, desiredUrl) ? desiredUrl : alternativeUrl;
+}
+
 /**
  * @param {Hapi.Request} request
  * @returns {string}
@@ -42,16 +54,4 @@ export function getValidOriginUrl(request) {
 		// Domain or protocol is invalid so return the host
 		return getHost(request);
 	}
-}
-
-function getPayloadRedirect(payload) {
-	if (payload && payload.redirect) {
-		return payload.redirect;
-	} else {
-		return null;
-	}
-}
-
-function getRedirectUrlOrElse(currentHost, desiredUrl, alternativeUrl) {
-	return isRedirectValid(currentHost, desiredUrl) ? desiredUrl : alternativeUrl;
 }

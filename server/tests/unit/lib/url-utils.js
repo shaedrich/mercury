@@ -7,13 +7,25 @@ QUnit.test('getHost', function (assert) {
 			host: 'wikia.com',
 			ssl: true,
 			expected: 'https://wikia.com',
-			description: ''
+			description: 'wikia.com with SSL'
 		},
 		{
 			host: 'wikia.com',
 			ssl: false,
 			expected: 'http://wikia.com',
-			description: ''
+			description: 'wikia.com without SSL'
+		},
+		{
+			host: 'fallout.wikia.com',
+			ssl: false,
+			expected: 'http://fallout.wikia.com',
+			description: 'fallout.wikia.com without SSL'
+		},
+		{
+			host: 'localhost:8080',
+			ssl: true,
+			expected: 'https://localhost:8080',
+			description: 'localhost:8080 with SSL'
 		}
 	];
 
