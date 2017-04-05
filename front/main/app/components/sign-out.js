@@ -5,11 +5,11 @@ const {Component} = Ember;
 
 export default Component.extend(
 	{
+		title: 'global-navigation-user-sign-out',
 		trackingLabel: 'open-logout',
 		classNames: ['wds-sign-out'],
-		trackClick: Ember.K,
 		actions: {
-			onClick() {
+			trackClick() {
 				this.get('trackClick')(this.get('trackingLabel'));
 			},
 		}
