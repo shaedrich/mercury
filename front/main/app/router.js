@@ -93,6 +93,11 @@ Router.map(function () {
 				this.route('moderations');
 			});
 		});
+
+		// When user tries to load invalid path under /d* we redirect to /d
+		this.route('invalid', {
+			path: '/*url'
+		});
 	});
 
 	this.route('image-review', function () {
