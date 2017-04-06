@@ -94,7 +94,7 @@ Router.map(function () {
 			});
 		});
 
-		// When user tries to load invalid path under /d* we redirect to /d
+		// When user tries to load invalid path under /d* we render a not found page
 		this.route('not-found', {
 			path: '/*url'
 		});
