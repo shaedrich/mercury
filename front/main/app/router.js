@@ -95,7 +95,7 @@ Router.map(function () {
 		});
 
 		// When user tries to load invalid path under /d* we redirect to /d
-		this.route('invalid', {
+		this.route('not-found', {
 			path: '/*url'
 		});
 	});
