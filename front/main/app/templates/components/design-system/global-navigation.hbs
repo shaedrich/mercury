@@ -44,13 +44,11 @@
 			}}
 		{{/if}}
 		{{#if model.user}}
-			{{# if enableOnSiteNotifications}}
-				{{design-system.global-navigation-notifications
-					trackClick=(action 'trackClick')
-					onClose=(action 'onDropdownClose')
-					onOpen=(action 'onDropdownOpen')
-				}}
-			{{/if}}
+			{{design-system.global-navigation-notifications
+				trackClick=(action 'trackClick')
+				onClose=(action 'onDropdownClose')
+				onOpen=(action 'onDropdownOpen')
+			}}
 		{{/if}}
 		<div class="wds-global-navigation__start-a-wiki">
 			<a href="{{model.create_wiki.header.href}}" class="wds-global-navigation__start-a-wiki-button wds-button wds-is-squished wds-is-secondary" {{action 'trackClick' model.create_wiki.header.tracking_label preventDefault=false}}>
