@@ -25,6 +25,14 @@ export function isRtl(wikiVariables) {
 
 /**
  * @param {Hapi.Request} request
+ * @returns {string}
+ */
+export function getAccessToken(request) {
+	return request.state.access_token;
+}
+
+/**
+ * @param {Hapi.Request} request
  * @returns {number}
  */
 export function getUserId(request) {
