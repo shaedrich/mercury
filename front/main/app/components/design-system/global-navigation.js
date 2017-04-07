@@ -2,7 +2,7 @@ import Ember from 'ember';
 import Headroom from '../../mixins/headroom';
 import {track, trackActions} from 'common/utils/track';
 
-const {Component, Object: EmberObject, computed, get} = Ember;
+const {Component, Object: EmberObject, computed} = Ember;
 
 export default Component.extend(Headroom, {
 	classNames: ['wds-global-navigation-wrapper'],
@@ -11,7 +11,6 @@ export default Component.extend(Headroom, {
 	headroomEnabled: computed.bool('model.user'),
 	searchIsActive: false,
 	shouldHide: computed.not('activeDropdownCount'),
-	enableOnSiteNotifications: get(Mercury, 'wiki.enableOnSiteNotifications'),
 
 	didInsertElement() {
 		this.initHeadroom({}, this.$().outerHeight(true));

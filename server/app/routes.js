@@ -119,7 +119,6 @@ let routes,
 				]
 			}
 		},
-
 		{
 			method: 'GET',
 			path: '/piggyback',
@@ -236,6 +235,11 @@ let routes,
 		{
 			method: 'POST',
 			path: '/signout',
+			handler: signOutHandler
+		},
+		{
+			method: 'POST',
+			path: '/logout',
 			handler: signOutHandler
 		},
 		{
