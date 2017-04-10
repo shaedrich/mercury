@@ -93,6 +93,11 @@ Router.map(function () {
 				this.route('moderations');
 			});
 		});
+
+		// When user tries to load invalid path under /d* we render a not found page
+		this.route('not-found', {
+			path: '/*url'
+		});
 	});
 
 	this.route('image-review', function () {
