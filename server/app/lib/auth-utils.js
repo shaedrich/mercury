@@ -6,7 +6,7 @@ import url from 'url';
 import querystring from 'querystring';
 import settings from '../../config/settings';
 import authLocaleSettings from '../../config/authLocaleSettings.js';
-import {setUrlPathname} from './url-utils'
+import {setUrlPathname} from './url-utils';
 
 /**
  * @param {Hapi.Request} request

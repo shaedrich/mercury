@@ -18,7 +18,7 @@ export function setUrlPathname(url, pathname) {
  */
 export function setUrlQuery(url, queryParams) {
 	const urlObject = Url.parse(url);
-	// if search is not undefined then queryParams won't matter
+	// if search is not undefined then query won't have an effect
 	urlObject.search = undefined;
 	urlObject.query = queryParams;
 	return urlObject.format();
