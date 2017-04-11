@@ -1,6 +1,30 @@
 import Url from 'url';
 
 /**
+ * @param {string} url
+ * @param {string} pathname
+ * @returns {string}
+ */
+export function setUrlPathname(url, pathname) {
+	const urlObject = Url.parse(url);
+	urlObject.pathname = pathname;
+	return urlObject.format();
+}
+
+/**
+ * @param {string} url
+ * @param {object} queryParams
+ * @returns {string} url
+ */
+export function setUrlQuery(url, queryParams) {
+	const urlObject = Url.parse(url);
+	// if search is not undefined then queryParams won't matter
+	urlObject.search = undefined;
+	urlObject.query = queryParams;
+	return urlObject.format();
+}
+
+/**
  * @param {Hapi.Request} request
  * @param {boolean} ssl - should use https, default true
  * @returns {string}
