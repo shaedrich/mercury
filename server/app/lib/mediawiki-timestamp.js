@@ -1,6 +1,14 @@
 import moment from 'moment';
 
 /**
+ * Converts date to MediaWiki format (YYYYMMDDHHMMSS)
+ * @return {string}
+ */
+export function momentToTimestamp(moment) {
+	return moment.format('YYYYMMDDHHmmss');
+}
+
+/**
  * Provides current timestamp in MediaWiki format (YYYYMMDDHHMMSS)
  * @return {string}
  */
@@ -15,12 +23,4 @@ export function timestampNow() {
  */
 export function dateToTimestamp(date) {
 	return momentToTimestamp(moment(date));
-}
-
-/**
- * Converts date to MediaWiki format (YYYYMMDDHHMMSS)
- * @return {string}
- */
-export function momentToTimestamp(moment) {
-	return moment.format('YYYYMMDDHHmmss');
 }

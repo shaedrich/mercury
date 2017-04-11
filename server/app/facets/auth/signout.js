@@ -22,7 +22,7 @@ export default function post(request, reply) {
 				// For redirect Hapi uses 302 status code which should correctly change the method to GET
 				reply.redirect(redirectUrl)
 					.state('access_token', result.token)
-					.state('LoggedOut', timestampNow(), { ttl: 24 * 60 * 60 })
+					.state('LoggedOut', timestampNow(), {ttl: 24 * 60 * 60})
 					.takeover();
 			}).catch((result) => {
 				reply('Sign out unsuccessful').code(result.status);
