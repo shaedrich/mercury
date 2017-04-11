@@ -1,6 +1,8 @@
 import signOutUser from '../operations/signout';
 import Logger from '../../lib/logger';
 import {getRedirectUrlForPost} from '../../lib/auth-url-factory';
+import {timestampNow} from '../../lib/mediawiki-timestamp';
+
 /**
  * @param {Hapi.Request} request
  * @param {*} reply
@@ -20,6 +22,10 @@ export default function post(request, reply) {
 				// For redirect Hapi uses 302 status code which should correctly change the method to GET
 				reply.redirect(redirectUrl)
 					.state('access_token', result.token)
+					// LoggedOut cookie is required to avoid issues with ETag
+					// Read more here https://wikia-inc.atlassian.net/wiki/display/SOC/ETag+Caching+in+MW+and+Sign+out
+					// TODO: should be removed as part of SUS-1989
+					.state('LoggedOut', timestampNow(), {ttl: 24 * 60 * 60})
 					.takeover();
 			}).catch((result) => {
 				reply('Sign out unsuccessful').code(result.status);
