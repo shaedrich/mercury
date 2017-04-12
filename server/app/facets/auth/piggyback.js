@@ -5,6 +5,7 @@ import {piggybackAsUser} from '../operations/piggyback';
 import querystring from 'querystring';
 import translateError from './translate-error';
 import HttpStatus from 'http-status-codes';
+import {setUrlQuery} from '../../lib/url-utils';
 
 /**
  * @typedef {Object} SignInViewContext
@@ -33,17 +34,23 @@ function getViewContext(request) {
 	);
 }
 
+function getSignInUrlWithRedirectBackToPiggyback(request) {
+	const signInUrl = authUtils.getSignInUrl(request);
+	return setUrlQuery(signInUrl, {redirect: request.url.format()});
+}
+
 /**
  * @param {Hapi.Request} request
  * @param {*} reply
  * @returns {Hapi.Response}
  */
 export function get(request, reply) {
-	if (request.auth.isAuthenticated) {
+	if (!request.auth.isAuthenticated) {
+		const signInUrl = getSignInUrlWithRedirectBackToPiggyback(request);
+		return reply.redirect(signInUrl).takeover();
+	} else {
 		const context = getViewContext(request);
 		return authView.view('piggyback', context, request, reply, 'card');
-	} else {
-		return reply.redirect(authUtils.getSignInUrl(request)).takeover();
 	}
 }
 
