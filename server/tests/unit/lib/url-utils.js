@@ -190,3 +190,38 @@ QUnit.test('areDomainsMatching', function (assert) {
 	});
 });
 
+QUnit.test('setUrlPathname', function (assert) {
+	var testCases = [
+		{
+			url: 'http://fallout.wikia.com/wiki/Fallout_Wiki',
+			pathname: 'signin',
+			expected: 'http://fallout.wikia.com/signin',
+			description: 'Regular HTTP protocol'
+		}
+	];
+
+	testCases.forEach(function (testCase) {
+		assert.equal(global.setUrlPathname(testCase.url, testCase.pathname), testCase.expected, testCase.description);
+	});
+});
+
+QUnit.test('setUrlQuery', function (assert) {
+	var testCases = [
+		{
+			url: 'http://fallout.wikia.com/signin',
+			query: {redirect: 'http://fallout.wikia.com/piggyback'},
+			expected: 'http://fallout.wikia.com/signin?redirect=http%3A%2F%2Ffallout.wikia.com%2Fpiggyback',
+			description: 'Query param is escaped'
+		},
+		{
+			url: 'http://muppet.wikia.com/signin?oldParam=I-should-be-gone',
+			query: {newParam: 'I-should-stay'},
+			expected: 'http://muppet.wikia.com/signin?newParam=I-should-stay',
+			description: 'Previous query parameters are removed'
+		}
+	];
+
+	testCases.forEach(function (testCase) {
+		assert.equal(global.setUrlQuery(testCase.url, testCase.query), testCase.expected, testCase.description);
+	});
+});
