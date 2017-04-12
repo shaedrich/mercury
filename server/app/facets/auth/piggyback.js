@@ -5,6 +5,7 @@ import {piggybackAsUser} from '../operations/piggyback';
 import querystring from 'querystring';
 import translateError from './translate-error';
 import HttpStatus from 'http-status-codes';
+import {encodeForJavaScript} from '../../lib/sanitizer';
 
 /**
  * @typedef {Object} SignInViewContext
@@ -21,6 +22,7 @@ import HttpStatus from 'http-status-codes';
  * @returns {AuthViewContext}
  */
 function getViewContext(request) {
+	const targetUsername = encodeForJavaScript(request.query.target) || '';
 	return deepExtend(authView.getDefaultContext(request),
 		{
 			title: 'auth:piggyback.header',
@@ -29,6 +31,7 @@ function getViewContext(request) {
 			piggybackPostURL: '/piggyback',
 			submitText: 'auth:signin.submit-text',
 			formId: 'piggybackForm',
+			targetUsername
 		}
 	);
 }
