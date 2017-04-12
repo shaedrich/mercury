@@ -3,6 +3,12 @@ import Ember from 'ember';
 const {Mixin, computed} = Ember;
 
 export default Mixin.create({
-	unreadCount: computed.oneWay('notifications.model.unreadCount'),
-	hasUnread: computed.gt('notifications.model.unreadCount', 0),
+	unreadCount: computed('notifications.model.unreadCount', function() {
+		const count = this.get('notifications.model.unreadCount');
+		if (count > 99) {
+			return '99+';
+		} else {
+			return count;
+		}
+	}),	hasUnread: computed.gt('notifications.model.unreadCount', 0),
 });
