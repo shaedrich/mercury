@@ -2,9 +2,9 @@ import {disableCache} from '../../lib/caching';
 import {getUserPreferencesUrl} from '../../lib/auth-utils';
 import {getValidRedirectUrl, getValidOriginUrl} from '../../lib/auth-url-factory';
 import {getCanonicalUrl} from '../../lib/url-utils';
-import {parse, resolve} from 'url';
+import {encodeForJavaScript} from '../../lib/sanitizer';
+import {resolve} from 'url';
 import settings from '../../../config/settings';
-import ESAPI from 'node-esapi';
 import {shouldServeMobileView} from '../../lib/utils';
 
 /**
@@ -79,10 +79,6 @@ export function view(template, context, request, reply, layout = 'auth') {
 
 	disableCache(response);
 	return response;
-}
-
-function encodeForJavaScript(value) {
-	return ESAPI.encoder().encodeForJavaScript(value);
 }
 
 /**
