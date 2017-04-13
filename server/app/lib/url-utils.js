@@ -1,13 +1,4 @@
 import Url from 'url';
-import parseDomain from 'parse-domain';
-
-/**
- * @param {object} urlObject
- * @returns {string} domain
- */
-export function getDomain(url) {
-	return parseDomain(url.hostname).domain;
-}
 
 /**
  * @param {string} url
