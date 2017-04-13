@@ -27,7 +27,7 @@ export default function post(request, reply) {
 					// LoggedOut cookie is required to avoid issues with ETag
 					// Read more here https://wikia-inc.atlassian.net/wiki/display/SOC/ETag+Caching+in+MW+and+Sign+out
 					// TODO: should be removed as part of SUS-1989
-					.state(`${settings.cookiePrefix}LoggedOut`, timestampNow(), {ttl: 24 * 60 * 60, domain})
+					.state(`${settings.cookiePrefix}LoggedOut`, timestampNow(), {ttl: 24 * 60 * 60 * 1000, domain})
 					.takeover();
 			}).catch((result) => {
 				reply('Sign out unsuccessful').code(result.status);
