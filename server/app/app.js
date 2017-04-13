@@ -1,4 +1,4 @@
-import {setResponseCaching, Policy, Interval} from './lib/caching';
+import {Interval, Policy, setResponseCaching} from './lib/caching';
 import Logger from './lib/logger';
 import {environments} from './lib/utils';
 import wikiaSessionScheme from './lib/wikia-session';
@@ -260,11 +260,11 @@ server.register(plugins, (err) => {
 	/**
 	 * This helper allows us to decode variables rendered by Hapi, which got encodeForJavaScript treatment
 	 */
-	handlebars.registerHelper('decode', function (str) {
+	handlebars.registerHelper('decode', (str) => {
 		let unicode = /\\[u]([\d\w]{4})/gi,
 			ascii = /\\[x]([\d\w]{2})/gi,
-			replacer = function (match, grp) {
-				return String.fromCharCode(parseInt(grp, 16));
+			replacer = (match, grp) => {
+				return String.fromCharCode(parseInt(grp, 16))
 			};
 		return new handlebars.SafeString(str.replace(unicode, replacer).replace(ascii, replacer));
 	});
