@@ -8,7 +8,7 @@ const {Object: EmberObject, A, RSVP, Logger} = Ember;
 
 const NotificationsModel = EmberObject.extend({
 	unreadCount: 0,
-	data: null,
+	data: new A(),
 
 	getNewestNotificationISODate() {
 		return convertToIsoString(this.get('data.0.timestamp'));
@@ -18,29 +18,23 @@ const NotificationsModel = EmberObject.extend({
 		return convertToIsoString(this.get('data.lastObject.timestamp'));
 	},
 
-	setNormalizedData(apiData) {
-		this.setProperties({
-			data: new A()
-		});
-
-		const notifications = apiData.notifications;
-
-		if (notifications && notifications.length) {
-			this.addNotifications(notifications);
+	loadFirstPage() {
+		if (stubbingOn) {
+			return new RSVP.Promise((cb) => setTimeout(() => cb(_notifications(), 1000)));
 		}
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications'))
+			.then((data) => {
+				this.addNotifications(data.notifications);
+				return data['_links'].next;
+			});
 	},
 
-	loadMoreResults() {
-		const startingTimestamp = this.getOldestNotificationISODate();
-
-		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
+	loadMoreResults(nextPage) {
+		return request(M.getOnSiteNotificationsServiceUrl(nextPage), {
 			method: 'GET',
-			data: {
-				startingTimestamp
-			}
 		}).then((data) => {
 			this.addNotifications(data.notifications);
-			return data.notifications.length;
+			return data['_links'].next;
 		});
 	},
 
@@ -81,17 +75,18 @@ NotificationsModel.reopenClass({
 	/**
 	 * @returns {Ember.RSVP.Promise}
 	 */
-	getNotifications() {
+	loadUnreadNotificationCount() {
 		const model = NotificationsModel.create();
-
-		return RSVP.all([
-			this.getNotificationsList(model),
-			this.getUnreadNotificationsCount(model)
-		]).then(() => {
+		return this.getUnreadNotificationsCount(model).then(() => {
 			return model;
 		});
 	},
 
+	/**
+	 * @private
+	 * @param model
+	 * @return {Promise.<T>}
+	 */
 	getUnreadNotificationsCount(model) {
 		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count'))
 			.then((result) => {
@@ -100,22 +95,6 @@ NotificationsModel.reopenClass({
 				model.set('unreadCount', 0);
 				Logger.error('Setting notifications unread count to 0 because of the API fetch error');
 			});
-	},
-
-	getNotificationsList(model) {
-		return this.requestNotifications().then((data) => {
-			model.setNormalizedData(data);
-		});
-	},
-
-	/**
-	 * @private
-	 */
-	requestNotifications() {
-		if (stubbingOn) {
-			return new RSVP.Promise((cb) => setTimeout(() => cb(_notifications(), 1000)));
-		}
-		return request(M.getOnSiteNotificationsServiceUrl('/notifications'));
 	}
 
 });

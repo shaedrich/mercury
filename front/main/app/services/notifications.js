@@ -4,10 +4,9 @@ import NotificationsModel from '../models/notifications/notifications';
 const {Service, Logger, computed, inject, RSVP} = Ember;
 
 export default Service.extend({
+	model: NotificationsModel.create(),
 	isLoading: false,
-	allLoaded: false,
-	model: null,
-	notificationsPerPage: 10,
+	nextPage: null,
 
 	currentUser: inject.service(),
 
@@ -17,23 +16,12 @@ export default Service.extend({
 	isUserAuthenticated: Ember.computed.bool('currentUser.isAuthenticated'),
 
 	modelLoader: computed('isUserAuthenticated', function () {
-		this.set('isLoading', true);
 		if (!this.get('isUserAuthenticated')) {
-			this.set('isLoading', false);
 			return RSVP.reject();
 		}
-
-		return NotificationsModel.getNotifications()
-			.then((model) => {
-				this.setProperties({
-					model,
-					isLoading: false,
-					allLoaded: model.data.length < this.get('notificationsPerPage')
-				});
-			})
+		return this.get('model').loadUnreadNotificationCount()
 			.catch((err) => {
-				Logger.warn('Couldn\'t load notifications', err);
-				this.set('isLoading', false);
+				Logger.warn('Couldn\'t load notification count', err);
 			});
 	}),
 
@@ -47,18 +35,43 @@ export default Service.extend({
 		this.get('modelLoader');
 	},
 
+	loadFirstPage() {
+		this.set('isLoading', true);
+		if (!this.get('isUserAuthenticated')
+			|| this.get('nextPage') !== null) {
+			this.set('isLoading', false);
+			return RSVP.reject();
+		}
+
+		this.get('model')
+			.loadFirstPage()
+			.then((nextPage) => {
+				this.setProperties({
+					isLoading: false,
+					nextPage
+				});
+			})
+			.catch((err) => {
+				Logger.warn('Couldn\'t load first page', err);
+				this.set('isLoading', false);
+			});
+	},
+
 	loadMoreResults() {
-		if (this.get('isLoading') === true || !this.get('isUserAuthenticated') || this.get('allLoaded') === true) {
+		if (this.get('isLoading') === true
+			|| !this.get('isUserAuthenticated')
+			|| this.get('allLoaded') === true
+			|| this.get('nextPage') === null) {
 			return;
 		}
 
 		this.set('isLoading', true);
 		this.get('model')
 			.loadMoreResults(this.get('notificationsPerPage'))
-			.then((resultCount) => {
+			.then((nextPage) => {
 				this.setProperties({
 					isLoading: false,
-					allLoaded: resultCount < this.get('notificationsPerPage')
+					nextPage
 				});
 			})
 			.catch((err) => {
