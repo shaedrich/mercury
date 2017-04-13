@@ -264,7 +264,7 @@ server.register(plugins, (err) => {
 		let unicode = /\\[u]([\d\w]{4})/gi,
 			ascii = /\\[x]([\d\w]{2})/gi,
 			replacer = (match, grp) => {
-				return String.fromCharCode(parseInt(grp, 16))
+				return String.fromCharCode(parseInt(grp, 16));
 			};
 		return new handlebars.SafeString(str.replace(unicode, replacer).replace(ascii, replacer));
 	});
