@@ -2,7 +2,7 @@
 	<p>{{i18n 'auth:piggyback.warning'}}</p>
 
 	<div class="input-container">
-		<input type="text" name="targetUsername" id="targetUsername" required value="{{targetUsername}}"/>
+		<input type="text" name="targetUsername" id="targetUsername" required value="{{{decode targetUsername}}}"/>
 		<label class="floating-label" for="targetUsername">{{i18n "auth:piggyback.target-username-label"}}</label>
 	</div>
 	<h5 class="auth-section-header">

@@ -257,6 +257,18 @@ server.register(plugins, (err) => {
 		Logger.error(err);
 	}
 
+	/**
+	 * This helper allows us to decode variables rendered by Hapi, which got encodeForJavaScript treatment
+	 */
+	handlebars.registerHelper('decode', function (str) {
+		let unicode = /\\[u]([\d\w]{4})/gi,
+			ascii = /\\[x]([\d\w]{2})/gi,
+			replacer = function (match, grp) {
+				return String.fromCharCode(parseInt(grp, 16));
+			};
+		return new handlebars.SafeString(str.replace(unicode, replacer).replace(ascii, replacer));
+	});
+
 	server.views({
 		engines: {
 			hbs: handlebars
