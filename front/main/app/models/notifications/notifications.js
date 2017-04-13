@@ -4,7 +4,7 @@ import request from 'ember-ajax/request';
 import {convertToIsoString} from '../../utils/iso-date-time';
 import {_notifications, stubbingOn} from '../../utils/stubs';
 
-const {Object: EmberObject, A, RSVP, Logger} = Ember;
+const {Object: EmberObject, A, RSVP, Logger, get} = Ember;
 
 const NotificationsModel = EmberObject.extend({
 	unreadCount: 0,
@@ -25,7 +25,7 @@ const NotificationsModel = EmberObject.extend({
 		return request(M.getOnSiteNotificationsServiceUrl('/notifications'))
 			.then((data) => {
 				this.addNotifications(data.notifications);
-				return data['_links'].next;
+				return this.getNext(data);
 			});
 	},
 
@@ -34,8 +34,12 @@ const NotificationsModel = EmberObject.extend({
 			method: 'GET',
 		}).then((data) => {
 			this.addNotifications(data.notifications);
-			return data['_links'].next;
+			return this.getNext(data);
 		});
+	},
+
+	getNext(data) {
+		return get(data, '_links.next') || null;
 	},
 
 	markAsRead(notification) {
@@ -69,30 +73,17 @@ const NotificationsModel = EmberObject.extend({
 		this.get('data').pushObjects(notificationModels);
 	},
 
-});
-
-NotificationsModel.reopenClass({
-	/**
-	 * @returns {Ember.RSVP.Promise}
-	 */
-	loadUnreadNotificationCount() {
-		const model = NotificationsModel.create();
-		return this.getUnreadNotificationsCount(model).then(() => {
-			return model;
-		});
-	},
-
 	/**
 	 * @private
 	 * @param model
 	 * @return {Promise.<T>}
 	 */
-	getUnreadNotificationsCount(model) {
+	loadUnreadNotificationCount() {
 		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count'))
 			.then((result) => {
-				model.set('unreadCount', result.unreadCount);
+				this.set('unreadCount', result.unreadCount);
 			}).catch((error) => {
-				model.set('unreadCount', 0);
+				this.set('unreadCount', 0);
 				Logger.error('Setting notifications unread count to 0 because of the API fetch error');
 			});
 	}

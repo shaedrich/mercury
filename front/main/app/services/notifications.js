@@ -67,7 +67,7 @@ export default Service.extend({
 
 		this.set('isLoading', true);
 		this.get('model')
-			.loadMoreResults(this.get('notificationsPerPage'))
+			.loadMoreResults(this.get('nextPage'))
 			.then((nextPage) => {
 				this.setProperties({
 					isLoading: false,
