@@ -11,7 +11,7 @@ export default Component.extend(NotificationsScrollMenuMixin, MarkAllNotificatio
 	isLoadingNewResults: computed.oneWay('notifications.isLoading'),
 
 	actions: {
-		onOpen: function () {
+		onOpen() {
 			this.get('notifications').loadFirstPage();
 			this.get('attrs').onOpen();
 		}
