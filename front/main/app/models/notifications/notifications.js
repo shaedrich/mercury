@@ -2,13 +2,12 @@ import Ember from 'ember';
 import Notification from './notification';
 import request from 'ember-ajax/request';
 import {convertToIsoString} from '../../utils/iso-date-time';
-import {_notifications, stubbingOn} from '../../utils/stubs';
 
-const {Object: EmberObject, A, RSVP, Logger} = Ember;
+const {Object: EmberObject, A, RSVP, Logger, get} = Ember;
 
 const NotificationsModel = EmberObject.extend({
 	unreadCount: 0,
-	data: null,
+	data: new A(),
 
 	getNewestNotificationISODate() {
 		return convertToIsoString(this.get('data.0.timestamp'));
@@ -18,30 +17,25 @@ const NotificationsModel = EmberObject.extend({
 		return convertToIsoString(this.get('data.lastObject.timestamp'));
 	},
 
-	setNormalizedData(apiData) {
-		this.setProperties({
-			data: new A()
-		});
-
-		const notifications = apiData.notifications;
-
-		if (notifications && notifications.length) {
-			this.addNotifications(notifications);
-		}
+	loadFirstPageReturningNextPageLink() {
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications'))
+			.then((data) => {
+				this.addNotifications(data.notifications);
+				return this.getNext(data);
+			});
 	},
 
-	loadMoreResults() {
-		const startingTimestamp = this.getOldestNotificationISODate();
-
-		return request(M.getOnSiteNotificationsServiceUrl(`/notifications`), {
+	loadPageReturningNextPageLink(page) {
+		return request(M.getOnSiteNotificationsServiceUrl(page), {
 			method: 'GET',
-			data: {
-				startingTimestamp
-			}
 		}).then((data) => {
 			this.addNotifications(data.notifications);
-			return data.notifications.length;
+			return this.getNext(data);
 		});
+	},
+
+	getNext(data) {
+		return get(data, '_links.next') || null;
 	},
 
 	markAsRead(notification) {
@@ -75,47 +69,19 @@ const NotificationsModel = EmberObject.extend({
 		this.get('data').pushObjects(notificationModels);
 	},
 
-});
-
-NotificationsModel.reopenClass({
-	/**
-	 * @returns {Ember.RSVP.Promise}
-	 */
-	getNotifications() {
-		const model = NotificationsModel.create();
-
-		return RSVP.all([
-			this.getNotificationsList(model),
-			this.getUnreadNotificationsCount(model)
-		]).then(() => {
-			return model;
-		});
-	},
-
-	getUnreadNotificationsCount(model) {
-		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count'))
-			.then((result) => {
-				model.set('unreadCount', result.unreadCount);
-			}).catch((error) => {
-				model.set('unreadCount', 0);
-				Logger.error('Setting notifications unread count to 0 because of the API fetch error');
-			});
-	},
-
-	getNotificationsList(model) {
-		return this.requestNotifications().then((data) => {
-			model.setNormalizedData(data);
-		});
-	},
-
 	/**
 	 * @private
+	 * @param model
+	 * @return {Promise.<T>}
 	 */
-	requestNotifications() {
-		if (stubbingOn) {
-			return new RSVP.Promise((cb) => setTimeout(() => cb(_notifications(), 1000)));
-		}
-		return request(M.getOnSiteNotificationsServiceUrl('/notifications'));
+	loadUnreadNotificationCount() {
+		return request(M.getOnSiteNotificationsServiceUrl('/notifications/unread-count'))
+			.then((result) => {
+				this.set('unreadCount', result.unreadCount);
+			}).catch((error) => {
+				this.set('unreadCount', 0);
+				Logger.error('Setting notifications unread count to 0 because of the API fetch error');
+			});
 	}
 
 });

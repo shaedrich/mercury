@@ -32,6 +32,12 @@ export default Component.extend(
 
 		username: computed.oneWay('currentUser.name'),
 
+		init() {
+			this._super(...arguments);
+			this.errors = [];
+			this.get('notifications').loadFirstPage();
+		},
+
 		didRender() {
 			this._super(...arguments);
 			this.element.scrollTop = 0;
