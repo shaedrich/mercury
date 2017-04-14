@@ -4,6 +4,7 @@ import settings from '../../config/settings';
 import showApplication from './show-application';
 import showServerErrorPage from './operations/show-server-error-page';
 import Logger from '../lib/logger';
+import {getOptimizelyScriptUrl} from './operations/page-data-helper';
 import {NonJsonApiResponseError, WikiVariablesRequestError} from '../lib/custom-errors';
 
 /**
@@ -27,6 +28,7 @@ export default function showDiscussions(request, reply) {
 
 		context.htmlTitle = `Discussions${wikiHtmlTitle.separator}${wikiHtmlTitle.parts.join(wikiHtmlTitle.separator)}`;
 		context.showSpinner = true;
+		context.optimizelyScript = getOptimizelyScriptUrl(request);
 
 		showApplication(request, reply, wikiVariables, context, true);
 	})

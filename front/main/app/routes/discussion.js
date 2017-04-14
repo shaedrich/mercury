@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 import DiscussionCategoriesModel from '../models/discussion/categories';
 import DiscussionSiteAttributesModel from '../models/discussion/site-attributes';
-import DiscussionNotificationsModel from '../models/notifications/notifications';
 import RouteWithBodyClassNameMixin from '../mixins/route-with-body-class-name';
 
 export default Ember.Route.extend(
