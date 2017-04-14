@@ -13,7 +13,7 @@ export default Service.extend({
 	/**
 	 * @private
 	 */
-	isUserAuthenticated: Ember.computed.bool('currentUser.isAuthenticated'),
+	isUserAnonymous: Ember.computed.not('currentUser.isAuthenticated'),
 
 	modelLoader: computed('isUserAnonymous', function () {
 		if (this.get('isUserAnonymous') === true) {
