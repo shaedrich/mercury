@@ -15,7 +15,7 @@ export default Service.extend({
 	 */
 	isUserAuthenticated: Ember.computed.bool('currentUser.isAuthenticated'),
 
-	modelLoader: computed('isUserAuthenticated', function () {
+	modelLoader: computed('isUserAnonymous', function () {
 		if (this.get('isUserAnonymous') === true) {
 			return RSVP.reject();
 		}
