@@ -10,7 +10,12 @@ export default Service.extend({
 
 	currentUser: inject.service(),
 
-	modelLoader: computed('currentUser.isAuthenticated', function () {
+	/**
+	 * @private
+	 */
+	isUserAuthenticated: Ember.computed.bool('currentUser.isAuthenticated'),
+
+	modelLoader: computed('isUserAuthenticated', function () {
 		if (this.isUserAnonymous()) {
 			return RSVP.reject();
 		}
@@ -84,7 +89,7 @@ export default Service.extend({
 	 * @private
 	 */
 	isUserAnonymous() {
-		return !this.get('currentUser.isAuthenticated');
+		return !this.get('isUserAuthenticated');
 	}
 
 });
