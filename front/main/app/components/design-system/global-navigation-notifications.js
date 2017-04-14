@@ -12,7 +12,7 @@ export default Component.extend(NotificationsScrollMenuMixin, MarkAllNotificatio
 
 	actions: {
 		onOpen() {
-			this.get('notifications').loadFirstPageReturningNextPageLink();
+			this.get('notifications').loadFirstPage();
 			this.get('attrs').onOpen();
 		}
 	}

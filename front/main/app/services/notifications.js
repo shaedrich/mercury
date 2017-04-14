@@ -10,13 +10,8 @@ export default Service.extend({
 
 	currentUser: inject.service(),
 
-	/**
-	 * @private
-	 */
-	isUserAuthenticated: Ember.computed.bool('currentUser.isAuthenticated'),
-
-	modelLoader: computed('isUserAuthenticated', function () {
-		if (!this.get('isUserAuthenticated')) {
+	modelLoader: computed('currentUser.isAuthenticated', function () {
+		if (this.isUserAnonymous()) {
 			return RSVP.reject();
 		}
 		return this.get('model').loadUnreadNotificationCount()
@@ -35,14 +30,13 @@ export default Service.extend({
 		this.get('modelLoader');
 	},
 
-	loadFirstPageReturningNextPageLink() {
-		this.set('isLoading', true);
-		if (!this.get('isUserAuthenticated')
+	loadFirstPage() {
+		if (this.isUserAnonymous()
+			|| this.get('isLoading') === true
 			|| this.get('nextPage') !== null) {
-			this.set('isLoading', false);
-			return RSVP.reject();
+			return;
 		}
-
+		this.set('isLoading', true);
 		this.get('model')
 			.loadFirstPageReturningNextPageLink()
 			.then((nextPage) => {
@@ -57,14 +51,12 @@ export default Service.extend({
 			});
 	},
 
-	loadPageReturningNextPageLink() {
-		if (this.get('isLoading') === true
-			|| !this.get('isUserAuthenticated')
-			|| this.get('allLoaded') === true
+	loadNextPage() {
+		if (this.isUserAnonymous()
+			|| this.get('isLoading') === true
 			|| this.get('nextPage') === null) {
 			return;
 		}
-
 		this.set('isLoading', true);
 		this.get('model')
 			.loadPageReturningNextPageLink(this.get('nextPage'))
@@ -86,6 +78,13 @@ export default Service.extend({
 
 	markAsRead(notification) {
 		this.get('model').markAsRead(notification);
+	},
+
+	/**
+	 * @private
+	 */
+	isUserAnonymous() {
+		return !this.get('currentUser.isAuthenticated');
 	}
 
 });

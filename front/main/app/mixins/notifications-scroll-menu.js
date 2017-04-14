@@ -23,7 +23,7 @@ export default Mixin.create({
 		const target = $(event.target);
 
 		if (this.hasAlmostScrolledToTheBottom(target)) {
-			this.get('notifications').loadPageReturningNextPageLink();
+			this.get('notifications').loadNextPage();
 		}
 	},
 
