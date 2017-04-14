@@ -35,7 +35,7 @@ export default Service.extend({
 		this.get('modelLoader');
 	},
 
-	loadFirstPage() {
+	loadFirstPageReturningNextPageLink() {
 		this.set('isLoading', true);
 		if (!this.get('isUserAuthenticated')
 			|| this.get('nextPage') !== null) {
@@ -44,7 +44,7 @@ export default Service.extend({
 		}
 
 		this.get('model')
-			.loadFirstPage()
+			.loadFirstPageReturningNextPageLink()
 			.then((nextPage) => {
 				this.setProperties({
 					isLoading: false,
@@ -57,7 +57,7 @@ export default Service.extend({
 			});
 	},
 
-	loadMoreResults() {
+	loadPageReturningNextPageLink() {
 		if (this.get('isLoading') === true
 			|| !this.get('isUserAuthenticated')
 			|| this.get('allLoaded') === true
@@ -67,7 +67,7 @@ export default Service.extend({
 
 		this.set('isLoading', true);
 		this.get('model')
-			.loadMoreResults(this.get('nextPage'))
+			.loadPageReturningNextPageLink(this.get('nextPage'))
 			.then((nextPage) => {
 				this.setProperties({
 					isLoading: false,

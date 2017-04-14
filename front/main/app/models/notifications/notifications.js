@@ -2,7 +2,6 @@ import Ember from 'ember';
 import Notification from './notification';
 import request from 'ember-ajax/request';
 import {convertToIsoString} from '../../utils/iso-date-time';
-import {_notifications, stubbingOn} from '../../utils/stubs';
 
 const {Object: EmberObject, A, RSVP, Logger, get} = Ember;
 
@@ -18,10 +17,7 @@ const NotificationsModel = EmberObject.extend({
 		return convertToIsoString(this.get('data.lastObject.timestamp'));
 	},
 
-	loadFirstPage() {
-		if (stubbingOn) {
-			return new RSVP.Promise((cb) => setTimeout(() => cb(_notifications(), 1000)));
-		}
+	loadFirstPageReturningNextPageLink() {
 		return request(M.getOnSiteNotificationsServiceUrl('/notifications'))
 			.then((data) => {
 				this.addNotifications(data.notifications);
@@ -29,8 +25,8 @@ const NotificationsModel = EmberObject.extend({
 			});
 	},
 
-	loadMoreResults(nextPage) {
-		return request(M.getOnSiteNotificationsServiceUrl(nextPage), {
+	loadPageReturningNextPageLink(page) {
+		return request(M.getOnSiteNotificationsServiceUrl(page), {
 			method: 'GET',
 		}).then((data) => {
 			this.addNotifications(data.notifications);

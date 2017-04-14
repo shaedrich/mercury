@@ -35,7 +35,7 @@ export default Component.extend(
 		init() {
 			this._super(...arguments);
 			this.errors = [];
-			this.get('notifications').loadFirstPage();
+			this.get('notifications').loadFirstPageReturningNextPageLink();
 		},
 
 		didRender() {
