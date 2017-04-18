@@ -10,5 +10,6 @@ export default Mixin.create({
 		} else {
 			return count;
 		}
-	}),	hasUnread: computed.gt('notifications.model.unreadCount', 0),
+	}),
+	hasUnread: computed.gt('notifications.model.unreadCount', 0)
 });
