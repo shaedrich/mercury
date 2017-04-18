@@ -4,11 +4,9 @@
 				class="wikia-nav__back wikia-user-profile__back-link">
 			{{svg 'wds-icons-menu-control' viewBox='0 0 24 24' class='icon wds-menu-chevron'}}
 		</a>
-		<a {{action 'trackClick' 'side-nav' 'open-logout' preventDefault=false}}
-				href="{{unbound logoutLink}}"
-				class="wikia-nav--external wikia-nav--logout">
-			{{i18n 'app.user-menu-log-out'}}
-		</a>
+		<div class=" wikia-nav--external wikia-nav--logout">
+			{{sign-out title='global-navigation-user-sign-out' trackingLabel='open-logout' trackingCategory='side-nav'}}
+		</div>
 	</div>
 
 	<header class="wikia-user-profile__header-wrapper">
@@ -20,7 +18,9 @@
 	</header>
 
 	<div class="wikia-user-profile__notification-title-wrapper">
-		<h5 class="wikia-user-profile__notification-title">{{i18n 'notifications-notifications' ns='design-system'}}</h5>
+		<h5 class="wikia-user-profile__notification-title">
+			{{i18n 'notifications-notifications' ns='design-system'}}
+		</h5>
 		{{#if notificationsList.length}}
 			<a class="wds-notifications__mark-all-as-read" {{action 'markAllAsRead'}}>
 				{{i18n 'notifications-mark-all-as-read' ns='design-system'}}
