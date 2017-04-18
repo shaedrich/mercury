@@ -7,8 +7,13 @@ const {Component, inject, computed} = Ember;
 
 export default Component.extend(NotificationsScrollMenuMixin, MarkAllNotificationsMixin, NotificationsUnreadCount, {
 	notifications: inject.service(),
-
 	notificationsList: computed.oneWay('notifications.model.data'),
+	isLoadingNewResults: computed.oneWay('notifications.isLoading'),
 
-	isLoadingNewResults: computed.oneWay('notifications.isLoading')
+	actions: {
+		onOpen() {
+			this.get('notifications').loadFirstPage();
+			this.get('attrs').onOpen();
+		}
+	}
 });

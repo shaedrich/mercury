@@ -5,6 +5,8 @@ import {piggybackAsUser} from '../operations/piggyback';
 import querystring from 'querystring';
 import translateError from './translate-error';
 import HttpStatus from 'http-status-codes';
+import {encodeForJavaScript} from '../../lib/sanitizer';
+import {setUrlQuery} from '../../lib/url-utils';
 
 /**
  * @typedef {Object} SignInViewContext
@@ -21,6 +23,7 @@ import HttpStatus from 'http-status-codes';
  * @returns {AuthViewContext}
  */
 function getViewContext(request) {
+	const targetUsername = encodeForJavaScript(request.query.target) || '';
 	return deepExtend(authView.getDefaultContext(request),
 		{
 			title: 'auth:piggyback.header',
@@ -29,8 +32,14 @@ function getViewContext(request) {
 			piggybackPostURL: '/piggyback',
 			submitText: 'auth:signin.submit-text',
 			formId: 'piggybackForm',
+			targetUsername
 		}
 	);
+}
+
+function getSignInUrlWithRedirectBackToPiggyback(request) {
+	const signInUrl = authUtils.getSignInUrl(request);
+	return setUrlQuery(signInUrl, {redirect: request.url.format()});
 }
 
 /**
@@ -39,11 +48,12 @@ function getViewContext(request) {
  * @returns {Hapi.Response}
  */
 export function get(request, reply) {
-	if (request.auth.isAuthenticated) {
+	if (!request.auth.isAuthenticated) {
+		const signInUrl = getSignInUrlWithRedirectBackToPiggyback(request);
+		return reply.redirect(signInUrl).takeover();
+	} else {
 		const context = getViewContext(request);
 		return authView.view('piggyback', context, request, reply, 'card');
-	} else {
-		return reply.redirect(authUtils.getSignInUrl(request)).takeover();
 	}
 }
 

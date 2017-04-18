@@ -6,6 +6,7 @@ import url from 'url';
 import querystring from 'querystring';
 import settings from '../../config/settings';
 import authLocaleSettings from '../../config/authLocaleSettings.js';
+import {setUrlPathname} from './url-utils';
 
 /**
  * @param {Hapi.Request} request
@@ -62,10 +63,7 @@ export function getCacheBusterUrl(redirect) {
  * @returns {string}
  */
 export function getRedirectUrlWithQueryString(route, request) {
-	const redirectUrl = request.url;
-
-	redirectUrl.pathname = route;
-	return redirectUrl.format();
+	return setUrlPathname(request.url.format(), route);
 }
 
 /**
