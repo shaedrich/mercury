@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {mobileMax, desktopMin} from '../utils/responsive-utils'
+import {mobileMax, desktopMin} from '../utils/responsive-utils';
 
 const {Mixin, inject} = Ember;
 

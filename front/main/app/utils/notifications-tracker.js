@@ -2,13 +2,13 @@ import {track as mercuryTrack} from 'common/utils/track';
 import {isMobile} from 'responsive-utils';
 
 const labels = {
-		'discussion-upvote-reply': 'discussion-upvote-reply',
-		'discussion-upvote-post': 'discussion-upvote-post',
-		'discussion-reply': 'discussion-reply',
-		markAllAsRead: 'mark-all-as-read',
-		markAsRead: 'mark-as-read',
-		openMenu: 'open-menu'
-	};
+	'discussion-upvote-reply': 'discussion-upvote-reply',
+	'discussion-upvote-post': 'discussion-upvote-post',
+	'discussion-reply': 'discussion-reply',
+	markAllAsRead: 'mark-all-as-read',
+	markAsRead: 'mark-as-read',
+	openMenu: 'open-menu'
+};
 
 /**
  * Currently we change mobile to desktop layout
