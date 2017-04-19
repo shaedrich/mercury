@@ -1,7 +1,7 @@
 import {track as mercuryTrack} from 'common/utils/track';
 import {isMobile} from './responsive-utils';
 
-export const trackActions = {
+const trackActions = {
 	PostCreate: 'PostCreate',
 	PostEdit: 'PostEdit',
 	PostEditSave: 'PostEditSave',
