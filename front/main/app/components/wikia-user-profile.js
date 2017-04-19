@@ -3,6 +3,7 @@ import NoScrollMixin from '../mixins/no-scroll';
 import {track, trackActions} from 'common/utils/track';
 import NotificationsScrollMenuMixin from '../mixins/notifications-scroll-menu';
 import MarkAllNotificationsMixin from '../mixins/mark-all-notifications';
+import {trackOpenMenu} from '../utils/notifications-tracker';
 
 const {Component, computed, inject} = Ember;
 
@@ -36,6 +37,7 @@ export default Component.extend(
 			this._super(...arguments);
 			this.errors = [];
 			this.get('notifications').loadFirstPage();
+			trackOpenMenu(this.get('notifications').getUnreadCount());
 		},
 
 		didRender() {
