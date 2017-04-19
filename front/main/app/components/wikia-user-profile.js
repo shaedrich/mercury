@@ -37,12 +37,12 @@ export default Component.extend(
 			this._super(...arguments);
 			this.errors = [];
 			this.get('notifications').loadFirstPage();
-			trackOpenMenu(this.get('notifications').getUnreadCount());
 		},
 
 		didRender() {
 			this._super(...arguments);
 			this.element.scrollTop = 0;
+			trackOpenMenu(this.get('notifications').getUnreadCount());
 		},
 
 		actions: {
