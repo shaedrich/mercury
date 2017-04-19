@@ -1,5 +1,5 @@
 import {track as mercuryTrack} from 'common/utils/track';
-import {isMobile} from 'responsive-utils';
+import {isMobile} from './responsive-utils';
 
 export const trackActions = {
 	PostCreate: 'PostCreate',
