@@ -1,4 +1,5 @@
 import {track as mercuryTrack} from 'common/utils/track';
+import {isMobile} from 'responsive-utils';
 
 const labels = {
 		'discussion-upvote-reply': 'discussion-upvote-reply',
@@ -15,7 +16,7 @@ const labels = {
  * @returns {string}
  */
 function getGACategory() {
-	return window.innerWidth < 1064 ? 'on-site-notifications-mobile' : 'on-site-notifications-desktop';
+	return isMobile() ? 'on-site-notifications-mobile' : 'on-site-notifications-desktop';
 }
 
 /**
