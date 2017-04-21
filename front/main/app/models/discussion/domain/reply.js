@@ -41,7 +41,7 @@ DiscussionReply.reopenClass({
 				upvoteCount: parseInt(postData.upvoteCount, 10),
 			}),
 			userData = get(postData, '_embedded.userData.0'),
-			openGraphData = get(postData, '_embedded.openGraph.0'),
+			openGraphData = get(postData, '_embedded.openGraph'),
 			contentImagesData = get(postData, '_embedded.contentImages');
 
 		if (openGraphData) {

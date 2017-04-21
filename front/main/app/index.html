@@ -31,6 +31,8 @@
 		<link rel="stylesheet" href="/front/main/assets/app.css">
 	{{/if}}
 
+	{{> apple-touch-icon}}
+
 	{{> dns-prefetch}}
 	{{> open-graph-tags}}
 	{{> other-languages-head}}
@@ -74,7 +76,7 @@
 			{{{content}}}
 		</div>
 		{{#if showSpinner}}
-			{{> loading-spinner}}
+			{{> wds-spinner}}
 		{{/if}}
 	</div>
 </div>

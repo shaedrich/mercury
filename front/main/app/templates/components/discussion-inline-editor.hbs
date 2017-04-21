@@ -91,7 +91,7 @@
 	</div>
 
 	{{#if isLoading}}
-		{{loading-spinner
+		{{wds-spinner
 			active=isLoading
 			radius=32
 			strokeWidth=2
@@ -99,7 +99,7 @@
 	{{/if}}
 
 	{{#if showSuccess}}
-		<div class="loading-overlay">
+		<div class="wds-spinner__overlay">
 			{{svg 'success' class='success' viewBox='0 0 80 80'}}
 		</div>
 	{{/if}}

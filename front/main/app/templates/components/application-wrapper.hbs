@@ -30,6 +30,7 @@
 				outsideSuggestionsClickAction=(action 'closeDrawer')
 				loadRandomArticle=this.attrs.loadRandomArticle
 				goToSearchResults=this.attrs.goToSearchResults
+				setDrawerContent=(action 'setDrawerContent')
 				noScroll=true
 				focusInput=true
 			}}
@@ -58,4 +59,4 @@
 {{/if}}
 {{wikia-in-your-lang}}
 {{alert-notifications alerts=alertNotifications}}
-{{loading-spinner active=isLoading}}
+{{wds-spinner active=isLoading}}

@@ -170,6 +170,7 @@ export default {
 	// Default timeout for backend requests
 	// This timeout is the same as the MW app timeout
 	backendRequestTimeout: 300000,
+	cookiePrefix: 'wikicities',
 	consul: {
 		internalUrl: 'http://localhost:8500/v1/health/service',
 		timeout: 3000
@@ -212,6 +213,9 @@ export default {
 	userPermissions: {
 		baseAPIPath: 'user-permissions'
 	},
+	onSiteNotifications: {
+		baseAPIPath: 'on-site-notifications'
+	},
 	whoAmIService: {
 		path: '/whoami',
 		timeout: 3000
@@ -251,7 +255,7 @@ export default {
 		ua: {
 			primary: {
 				id: 'UA-32129070-1',
-				sampleRate: 10
+				sampleRate: 100
 			},
 			ads: {
 				prefix: 'ads',

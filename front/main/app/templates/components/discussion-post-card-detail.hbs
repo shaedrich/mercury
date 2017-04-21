@@ -78,7 +78,7 @@
 					<a href="{{href-to 'discussion.post' post.threadId}}" class="post-details-link">{{post.title}}</a>
 				</h2>
 			{{/if}}
-			<a href="{{href-to 'discussion.post' post.threadId}}" class="post-details-link clamp">{{{parsedContent}}}</a>
+			<a href="{{href-to 'discussion.post' post.threadId}}" class="post-details-link clamp">{{{rawContent}}}</a>
 		</div>
 		{{#if post.contentImages.images}}
 			<a href="{{href-to 'discussion.post' post.threadId}}">
@@ -149,7 +149,7 @@
 		upvote=(action this.attrs.upvote)
 }}
 {{#if post.isLoading}}
-	{{loading-spinner
+	{{wds-spinner
 			active=post.isLoading
 			radius=32
 			strokeWidth=2
