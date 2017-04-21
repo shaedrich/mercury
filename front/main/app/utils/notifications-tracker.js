@@ -1,5 +1,4 @@
 import {track as mercuryTrack} from 'common/utils/track';
-import {isMobile} from './responsive-utils';
 
 const labels = {
 	'discussion-upvote-reply': 'discussion-upvote-reply',
@@ -11,15 +10,6 @@ const labels = {
 };
 
 /**
- * Currently we change mobile to desktop layout
- *
- * @returns {string}
- */
-function getGACategory() {
-	return isMobile() ? 'on-site-notifications-mobile' : 'on-site-notifications-desktop';
-}
-
-/**
  * @param {string} label
  * @param {string} action
  * @param {Object} params
@@ -29,7 +19,7 @@ function getGACategory() {
 function getTrackingContext(label, action, params) {
 	return $.extend({
 		action,
-		category: getGACategory(),
+		category: 'on-site-notifications',
 		label: labels[label]
 	}, params);
 }
