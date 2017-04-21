@@ -33,7 +33,7 @@ if (typeof window.M.tracker === 'undefined') {
 	 */
 	function getConfig() {
 		const mercury = window.Mercury,
-			beaconCookieSplit = (`; ${document.cookie}`).split('; wikia_beacon_id=');
+			beaconCookieSplit = `; ${document.cookie}`.split('; wikia_beacon_id=');
 
 		let beacon = '';
 
