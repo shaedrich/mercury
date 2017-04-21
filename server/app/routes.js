@@ -5,10 +5,8 @@ import proxyMW from './facets/operations/proxy-mw';
 import {handler as assetsHandler} from './facets/operations/assets';
 import heartbeatHandler from './facets/operations/heartbeat';
 import discussionsHandler from './facets/show-discussions';
-import mediaWikiPageHandler from './facets/mediawiki-page';
 import logoutHandler from './facets/auth/logout';
 import signOutHandler from './facets/auth/signout';
-import articlePreview from './facets/article-preview';
 import joinHandler from './facets/auth/join';
 import {validateRedirect} from './facets/auth/auth-view';
 import * as forgotPasswordHandler from './facets/auth/forgot-password';
@@ -44,11 +42,7 @@ const routeCacheConfig = {
 				strategy: 'session'
 			}
 		}
-	},
-	mediaWikiPagePaths = [
-		'/wiki/{title*}',
-		'/{title*}'
-	];
+	};
 
 // routes that don't care if the user is logged in or not, i.e. lazily loaded modules
 let routes,
@@ -75,21 +69,8 @@ let routes,
 		},
 		{
 			method: 'GET',
-			path: '/search',
-			handler: showApplication,
-			config: {
-				cache: routeCacheConfig
-			}
-		},
-		{
-			method: 'GET',
 			path: '/heartbeat',
 			handler: heartbeatHandler
-		},
-		{
-			method: 'POST',
-			path: '/article-preview',
-			handler: articlePreview
 		}
 	],
 	// routes where we want to know the user's auth status
@@ -349,21 +330,6 @@ let routes,
 			handler: discussionsHandler
 		}
 	];
-
-/**
- * @param {*} path
- * @returns {void}
- */
-mediaWikiPagePaths.forEach((path) => {
-	authenticatedRoutes.push({
-		method: 'GET',
-		path,
-		handler: mediaWikiPageHandler,
-		config: {
-			cache: routeCacheConfig
-		}
-	});
-});
 
 /**
  * @param {*} route
