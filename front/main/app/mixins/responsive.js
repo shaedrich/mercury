@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {mobileMax, desktopMin} from '../utils/responsive-utils';
 
 const {Mixin, inject} = Ember;
 
@@ -15,12 +16,9 @@ const {Mixin, inject} = Ember;
 export default Mixin.create({
 	responsive: inject.service(),
 
-	/**
-	 * Keep this values in sync with $mobile-range and $desktop-range from _settings.scss
-	 */
 	breakpoints: [
-		{id: 'mobile', max: 1063},
-		{id: 'desktop', min: 1064}
+		{id: 'mobile', max: mobileMax},
+		{id: 'desktop', min: desktopMin}
 	],
 
 	init() {
