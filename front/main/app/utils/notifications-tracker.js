@@ -1,14 +1,13 @@
 import {track as mercuryTrack} from 'common/utils/track';
 
 const labels = {
-		'discussion-upvote-reply': 'discussion-upvote-reply',
-		'discussion-upvote-post': 'discussion-upvote-post',
-		'discussion-reply': 'discussion-reply',
-		'mark-all-as-read': 'mark-all-as-read',
-		'mark-as-read': 'mark-as-read',
-		'open-menu': 'open-menu',
-	},
-	gaCategory = 'on-site-notifications';
+	'discussion-upvote-reply': 'discussion-upvote-reply',
+	'discussion-upvote-post': 'discussion-upvote-post',
+	'discussion-reply': 'discussion-reply',
+	markAllAsRead: 'mark-all-as-read',
+	markAsRead: 'mark-as-read',
+	openMenu: 'open-menu'
+};
 
 /**
  * @param {string} label
@@ -20,7 +19,7 @@ const labels = {
 function getTrackingContext(label, action, params) {
 	return $.extend({
 		action,
-		category: gaCategory,
+		category: 'on-site-notifications',
 		label: labels[label]
 	}, params);
 }
@@ -64,14 +63,24 @@ export function trackClick(notification) {
 
 export function trackMarkAsRead(notification) {
 	track(
-		`${labels['mark-as-read']}-${labels[notification.get('type')]}`,
+		`${labels.markAsRead}-${labels[notification.get('type')]}`,
 		'click',
 	);
 }
 
 export function trackMarkAllAsRead() {
 	track(
-		labels['mark-all-as-read'],
+		labels.markAllAsRead,
 		'click',
+	);
+}
+
+export function trackOpenMenu(unreadCount) {
+	track(
+		labels.openMenu,
+		'click',
+		{
+			value: unreadCount
+		}
 	);
 }

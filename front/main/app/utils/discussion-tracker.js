@@ -1,4 +1,5 @@
 import {track as mercuryTrack} from 'common/utils/track';
+import {isMobile} from './responsive-utils';
 
 const trackActions = {
 	PostCreate: 'PostCreate',
@@ -108,7 +109,7 @@ const trackActions = {
  * @returns {string}
  */
 function getGACategory() {
-	return window.innerWidth < 1064 ? 'MobileWebDiscussions' : 'DesktopWebDiscussions';
+	return isMobile() ? 'MobileWebDiscussions' : 'DesktopWebDiscussions';
 }
 
 /**
