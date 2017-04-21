@@ -32,7 +32,14 @@ if (typeof window.M.tracker === 'undefined') {
 	 * @returns {InternalTrackingConfig}
 	 */
 	function getConfig() {
-		const mercury = window.Mercury;
+		const mercury = window.Mercury,
+			beaconCookieSplit = ('; ' + document.cookie).split('; wikia_beacon_id=');
+
+		let beacon = '';
+
+		if (beaconCookieSplit.length === 2) {
+			beacon = beaconCookieSplit.pop().split(';').shift();
+		}
 
 		return {
 			c: mercury.wiki.id,
@@ -40,7 +47,7 @@ if (typeof window.M.tracker === 'undefined') {
 			lc: mercury.wiki.language.content,
 			u: parseInt(M.prop('userId'), 10) || 0,
 			s: 'mercury',
-			beacon: '',
+			beacon,
 			cb: Math.floor(Math.random() * 99999)
 		};
 	}
