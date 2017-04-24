@@ -13,7 +13,7 @@
   },
   "main":{
     "action-general-error":"Action failed, please try again.",
-    "discussions-header-title":"Discussions",
+    "discussions-header-title":"토론",
     "pagination-post-show-more":"View Older Replies",
     "pagination-post-show-newer-replies":"View Newer Replies",
     "pagination-post-show-new-replies":"New Replies",
