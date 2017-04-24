@@ -1,6 +1,5 @@
 /* eslint no-console: 0 */
 
-import Ads from '../modules/ads';
 import {getGroup} from '../modules/abtest';
 
 /**
@@ -177,7 +176,9 @@ export function trackPageView(uaDimensions, overrideUrl) {
 	}
 
 	window.trackIVW3PageView();
-	Ads.getInstance().trackKruxPageView();
+
+	// TODO
+	//Ads.getInstance().trackKruxPageView();
 }
 
 /**

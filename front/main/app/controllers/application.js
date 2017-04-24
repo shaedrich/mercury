@@ -7,24 +7,6 @@ import {track, trackActions} from 'common/utils/track';
 export default Ember.Controller.extend(
 	AlertNotificationsMixin, NoScrollMixin,
 	{
-		// This has to be here because we need to access media from ArticleController model to open
-		// lightbox TODO: Should be refactored when decoupling article from application
-		wikiPage: Ember.inject.controller(),
-		ads: Ember.inject.service(),
-		queryParams: ['file', 'map',
-			{
-				noAds: 'noads'
-			},
-			// TODO: should be on articles controller https://wikia-inc.atlassian.net/browse/HG-815
-			{
-				commentsPage: 'comments_page'
-			}
-		],
-		file: null,
-		map: null,
-		noAds: Ember.computed.alias('ads.noAdsQueryParam'),
-		commentsPage: null,
-
 		smartBannerVisible: false,
 		drawerVisible: false,
 		drawerContent: null,
@@ -207,33 +189,6 @@ export default Ember.Controller.extend(
 			 */
 			toggleUserMenu(visible) {
 				this.set('userMenuVisible', visible);
-			}
-		},
-
-		/**
-		 * Finds media in article model by the file query param and sends proper data to
-		 * openLightbox action.
-		 * TODO: It currently opens the first found image with the given title (file qp),
-		 * TODO: we should improve it some day.
-		 *
-		 * @param {string} file
-		 * @returns {void}
-		 */
-		openLightboxForMedia(file) {
-			const mediaModel = this.get('wikiPage.model.media'),
-				lightboxMediaRefs = mediaModel instanceof MediaModel ?
-					mediaModel.getRefsForLightboxByTitle(file) :
-					null;
-
-			if (!Ember.isEmpty(lightboxMediaRefs)) {
-				this.send('openLightbox', 'media', {
-					media: mediaModel,
-					mediaRef: lightboxMediaRefs.mediaRef,
-					galleryRef: lightboxMediaRefs.galleryRef
-				});
-			} else {
-				// If we can't display the lightbox let's remove this param from the URL
-				this.set('file', null);
 			}
 		},
 

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ArticleModel from '../models/wiki/article';
 import getLinkInfo from '../utils/article-link';
 import HeadTagsStaticMixin from '../mixins/head-tags-static';
 import ResponsiveMixin from '../mixins/responsive';
@@ -19,15 +18,6 @@ export default Route.extend(
 	HeadTagsStaticMixin,
 	ResponsiveMixin,
 	{
-		queryParams: {
-			commentsPage: {
-				replace: true
-			},
-		},
-
-		ads: Ember.inject.service(),
-		adsHighImpact: Ember.inject.service(),
-
 		actions: {
 			/**
 			 * @param {boolean} state
@@ -64,7 +54,6 @@ export default Route.extend(
 				if (this.controller) {
 					this.controller.set('isLoading', false);
 				}
-				this.get('ads.module').onTransition();
 
 				// Clear notification alerts for the new route
 				this.controller.clearNotifications();
@@ -101,20 +90,14 @@ export default Route.extend(
 			handleLink(target) {
 				const currentRoute = this.router.get('currentRouteName');
 
-				let title,
-					trackingCategory,
+				let trackingCategory,
 					info;
 
-				if (currentRoute === 'wiki-page') {
-					title = this.controllerFor('wikiPage').get('model').get('title');
-				} else {
-					title = '';
-				}
 
 				trackingCategory = target.dataset.trackingCategory;
 				info = getLinkInfo(
 					Mercury.wiki.basePath,
-					title,
+					'',
 					target.hash,
 					target.href,
 					target.search
@@ -159,20 +142,21 @@ export default Route.extend(
 			/**
 			 * @returns {void}
 			 */
-			loadRandomArticle() {
-				this.get('controller').send('toggleDrawer', false);
-
-				ArticleModel
-					.getArticleRandomTitle()
-					.then((articleTitle) => {
-						window.location.assign(M.buildUrl({
-							title: normalizeToUnderscore(articleTitle)
-						}));
-					})
-					.catch((err) => {
-						this.send('error', err);
-					});
-			},
+			// TODO link to mobile-wiki
+			// loadRandomArticle() {
+			// 	this.get('controller').send('toggleDrawer', false);
+			//
+			// 	ArticleModel
+			// 		.getArticleRandomTitle()
+			// 		.then((articleTitle) => {
+			// 			window.location.assign(M.buildUrl({
+			// 				title: normalizeToUnderscore(articleTitle)
+			// 			}));
+			// 		})
+			// 		.catch((err) => {
+			// 			this.send('error', err);
+			// 		});
+			// },
 
 			// We need to proxy these actions because of the way Ember is bubbling them up through routes
 			// see http://emberjs.com/images/template-guide/action-bubbling.png
@@ -240,45 +224,6 @@ export default Route.extend(
 					drawerContent: 'nav',
 					drawerVisible: true
 				});
-			}
-		},
-
-		/**
-		 * @returns {void}
-		 */
-		activate() {
-			const adsModule = this.get('ads.module'),
-				instantGlobals = (window.Wikia && window.Wikia.InstantGlobals) || {};
-
-			if (this.get('ads.adsUrl') && !M.prop('queryParams.noexternals') &&
-				!instantGlobals.wgSitewideDisableAdsOnMercury) {
-				adsModule.init(this.get('ads.adsUrl'));
-
-				/*
-				 * This global function is being used by our AdEngine code to provide prestitial/interstitial ads
-				 * It works in similar way on Oasis: we call ads server (DFP) to check if there is targeted ad unit for a user.
-				 * If there is and it's in a form of prestitial/interstitial the ad server calls our exposed JS function to
-				 * display the ad in a form of modal. The ticket connected to the changes: ADEN-1834.
-				 * Created lightbox might be empty in case of lack of ads, so we want to create lightbox with argument
-				 * lightboxVisible=false and then decide if we want to show it.
-				 */
-				adsModule.createLightbox = (contents, closeButtonDelay, lightboxVisible) => {
-					const actionName = lightboxVisible ? 'openLightbox' : 'createHiddenLightbox';
-
-					if (!closeButtonDelay) {
-						closeButtonDelay = 0;
-					}
-
-					this.send(actionName, 'ads', {contents}, closeButtonDelay);
-				};
-
-				adsModule.showLightbox = () => {
-					this.send('showLightbox');
-				};
-
-				adsModule.setSiteHeadOffset = (offset) => {
-					this.set('ads.siteHeadOffset', offset);
-				};
 			}
 		},
 	}
