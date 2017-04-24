@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import getLinkInfo from '../utils/article-link';
 import HeadTagsStaticMixin from '../mixins/head-tags-static';
 import ResponsiveMixin from '../mixins/responsive';
 import {normalizeToUnderscore} from 'common/utils/string';
@@ -88,20 +87,7 @@ export default Route.extend(
 			 * @returns {void}
 			 */
 			handleLink(target) {
-				const currentRoute = this.router.get('currentRouteName');
-
-				let trackingCategory,
-					info;
-
-
-				trackingCategory = target.dataset.trackingCategory;
-				info = getLinkInfo(
-					Mercury.wiki.basePath,
-					'',
-					target.hash,
-					target.href,
-					target.search
-				);
+				const trackingCategory = target.dataset.trackingCategory;
 
 				/**
 				 * Handle tracking
@@ -120,18 +106,16 @@ export default Route.extend(
 					return window.location.assign(target.href);
 				}
 
-				if (info.article) {
-					this.transitionTo('wiki-page', info.article + (info.hash ? info.hash : ''));
-				} else if (info.url) {
+				if (target.href) {
 					/**
 					 * If it's a jump link or a link to something in a Wikia domain, treat it like a normal link
 					 * so that it will replace whatever is currently in the window.
 					 * TODO: this regex is alright for dev environment, but doesn't work well with production
 					 */
-					if (info.url.charAt(0) === '#' || info.url.match(/^https?:\/\/.*\.wikia(\-.*)?\.com.*\/.*$/)) {
-						window.location.assign(info.url);
+					if (target.href.charAt(0) === '#' || target.href.match(/^https?:\/\/.*\.wikia(\-.*)?\.com.*\/.*$/)) {
+						window.location.assign(target.href);
 					} else {
-						window.open(info.url);
+						window.open(target.href);
 					}
 				} else {
 					// Reaching this clause means something is probably wrong.

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import {isHashLink} from '../utils/article-link';
 import {trackPerf} from 'common/utils/track-perf';
 import ResponsiveMixin from '../mixins/responsive';
 
@@ -101,7 +100,7 @@ export default Component.extend(ResponsiveMixin, {
 		if (target && this.shouldHandleClick(target)) {
 			tagName = target.tagName.toLowerCase();
 
-			if (tagName === 'a' && !isHashLink(target)) {
+			if (tagName === 'a' && target.hasAttribute('href') && target.getAttribute('href').indexOf('#') === 0) {
 				this.handleLink(target);
 				event.preventDefault();
 			}
