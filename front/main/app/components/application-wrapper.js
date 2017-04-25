@@ -155,15 +155,7 @@ export default Component.extend(ResponsiveMixin, {
 		 * handler for it that deals with it based on ID or something and we just skip it.
 		 */
 		if (target && target.href) {
-			/**
-			 * But if it does have an href, we check that it's not the link to expand the comments
-			 * If it's _any_ other link than that comments link, we stop its action and
-			 * pass it up to handleLink
-			 */
-			if (!target.href.match(`^${window.location.origin}/a/.*/comments$`)) {
-				this.sendAction('closeLightbox');
-				this.sendAction('handleLink', target);
-			}
+			this.sendAction('handleLink', target);
 		}
 	}
 });
