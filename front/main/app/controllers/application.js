@@ -19,9 +19,6 @@ export default Ember.Controller.extend(
 			'isGlobalNavigationHeadroomPinnedOrDisabled'
 		),
 
-		// Controls the appearance of the share-header component
-		enableShareHeader: false,
-
 		/**
 		 * @returns {void}
 		 */
