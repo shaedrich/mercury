@@ -57,12 +57,6 @@ export default Route.extend(
 				// Clear notification alerts for the new route
 				this.controller.clearNotifications();
 
-				/*
-				 * This is called after the first route of any application session has loaded
-				 * and is necessary to prevent the ArticleModel from trying to bootstrap from the DOM
-				 */
-				M.prop('articleContentPreloadedInDOM', false, true);
-
 				// TODO (HG-781): This currently will scroll to the top even when the app has encountered an error.
 				// Optimally, it would remain in the same place.
 				window.scrollTo(0, 0);
@@ -141,48 +135,6 @@ export default Route.extend(
 			// 			this.send('error', err);
 			// 		});
 			// },
-
-			// We need to proxy these actions because of the way Ember is bubbling them up through routes
-			// see http://emberjs.com/images/template-guide/action-bubbling.png
-			/**
-			 * @returns {void}
-			 */
-			handleLightbox() {
-				this.get('controller').send('handleLightbox');
-			},
-
-			/**
-			 * @param {string} lightboxType
-			 * @param {*} [lightboxModel]
-			 * @param {number} [closeButtonDelay]
-			 * @returns {void}
-			 */
-			openLightbox(lightboxType, lightboxModel, closeButtonDelay) {
-				this.get('controller').send('openLightbox', lightboxType, lightboxModel, closeButtonDelay);
-			},
-
-			/**
-			 * @param {string} lightboxType
-			 * @param {*} [lightboxModel]
-			 * @returns {void}
-			 */
-			createHiddenLightbox(lightboxType, lightboxModel) {
-				this.get('controller').send('createHiddenLightbox', lightboxType, lightboxModel);
-			},
-
-			/**
-			 * @returns {void}
-			 */
-			showLightbox() {
-				this.get('controller').send('showLightbox');
-			},
-
-			/**
-			 * @returns {void}
-			 */
-			closeLightbox() {
-				this.get('controller').send('closeLightbox');
-			},
 
 			/**
 			 * @returns {void}

@@ -9,7 +9,6 @@
 			drawerContent=activeDrawerContent
 			drawerVisible=drawerVisible
 			setDrawerContent=(action 'setDrawerContent')
-			isSearchPage=isSearchPage
 		}}
 	{{else}}
 		{{design-system.global-navigation
@@ -48,14 +47,6 @@
 			{{outlet}}
 		</div>
 	{{/if}}
-	{{lightbox-wrapper
-		type=lightboxType
-		model=lightboxModel
-		isVisible=lightboxVisible
-		lightboxCloseButtonDelay=lightboxCloseButtonDelay
-		closeLightbox=attrs.closeLightbox
-		setQueryParam=attrs.setQueryParam
-	}}
 {{/if}}
 {{wikia-in-your-lang}}
 {{alert-notifications alerts=alertNotifications}}

@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import AlertNotificationsMixin from '../mixins/alert-notifications';
-import MediaModel from '../models/media';
 import NoScrollMixin from '../mixins/no-scroll';
 import {track, trackActions} from 'common/utils/track';
 
@@ -13,10 +12,6 @@ export default Ember.Controller.extend(
 		userMenuVisible: false,
 		fullPage: false,
 		noMargins: false,
-		lightboxType: null,
-		lightboxModel: null,
-		lightboxVisible: false,
-		lightboxCloseButtonDelay: 0,
 		isGlobalNavigationPositionFixed: true,
 		isGlobalNavigationHeadroomPinnedOrDisabled: true,
 		isGlobalNavigationVisible: Ember.computed.and(
@@ -26,8 +21,6 @@ export default Ember.Controller.extend(
 
 		// Controls the appearance of the share-header component
 		enableShareHeader: false,
-
-		isSearchPage: Ember.computed.equal('currentRouteName', 'search'),
 
 		/**
 		 * @returns {void}
@@ -51,42 +44,6 @@ export default Ember.Controller.extend(
 
 		actions: {
 			/**
-			 * Resets properties related to lightbox which causes it to close. Also unblocks scrolling.
-			 *
-			 * @returns {void}
-			 */
-			closeLightbox() {
-				this.setProperties({
-					lightboxModel: null,
-					lightboxType: null,
-					lightboxVisible: false,
-					lightboxCloseButtonDelay: 0,
-					file: null,
-					map: null,
-					noScroll: false
-				});
-			},
-
-			/**
-			 * Sets lightbox type and model but doesn't show it. This method is used by Ads Module to
-			 * prevent showing lightbox when there is no ad to display.
-			 *
-			 * @param {string} lightboxType
-			 * @param {Object} [lightboxModel]
-			 * @param {number} [closeButtonDelay]
-			 * @returns {void}
-			 */
-			createHiddenLightbox(lightboxType, lightboxModel, closeButtonDelay) {
-				this.setProperties({
-					lightboxModel,
-					lightboxType,
-					lightboxVisible: false,
-					lightboxCloseButtonDelay: closeButtonDelay,
-					noScroll: false
-				});
-			},
-
-			/**
 			 * Bubbles up to ApplicationRoute
 			 *
 			 * @param {HTMLAnchorElement} target
@@ -94,77 +51,6 @@ export default Ember.Controller.extend(
 			 */
 			handleLink(target) {
 				this.get('target').send('handleLink', target);
-			},
-
-			/**
-			 * Handles query params that should open a lightbox.
-			 * If you add another param to the app you should modify this function.
-			 *
-			 * @returns {void}
-			 */
-			handleLightbox() {
-				const file = this.get('file'),
-					map = this.get('map');
-
-				if (!Ember.isEmpty(file)) {
-					this.openLightboxForMedia(file);
-				} else if (!Ember.isEmpty(map)) {
-					this.openLightboxForMap(map);
-				}
-			},
-
-			/**
-			 * Sets controller properties that are passed to LightboxWrapperComponent.
-			 * Also blocks scrolling.
-			 *
-			 * @param {string} lightboxType
-			 * @param {Object} [lightboxModel]
-			 * @param {number} [closeButtonDelay]
-			 * @returns {void}
-			 */
-			openLightbox(lightboxType, lightboxModel, closeButtonDelay) {
-				this.setProperties({
-					lightboxModel,
-					lightboxType,
-					lightboxVisible: true,
-					lightboxCloseButtonDelay: closeButtonDelay,
-					noScroll: true
-				});
-			},
-
-			/**
-			 * Sets query param with given name to given value. Uses whitelist.
-			 *
-			 * @param {string} name
-			 * @param {*} value
-			 * @returns {void}
-			 */
-			setQueryParam(name, value) {
-				const queryParamsWhitelist = ['file', 'map'];
-
-				if (queryParamsWhitelist.indexOf(name) === -1) {
-					Ember.Logger.error('Something tried to set query param that is not on the whitelist', {
-						name,
-						value,
-						whitelist: queryParamsWhitelist
-					});
-					return;
-				}
-
-				this.set(name, value);
-			},
-
-			/**
-			 * Sets lightbox visibility to true. If you use openLightbox with lightboxVisible=false
-			 * you can use this method to lightbox.
-			 *
-			 * @returns {void}
-			 */
-			showLightbox() {
-				this.setProperties({
-					lightboxVisible: true,
-					noScroll: true
-				});
 			},
 
 			/**
@@ -191,21 +77,5 @@ export default Ember.Controller.extend(
 				this.set('userMenuVisible', visible);
 			}
 		},
-
-		/**
-		 * Find the map element in DOM by given map id and sends proper data to openLightbox action.
-		 *
-		 * @param {string} map
-		 * @returns {void}
-		 */
-		openLightboxForMap(map) {
-			const $map = Ember.$(`a[data-map-id=${map}]`);
-
-			this.send('openLightbox', 'map', {
-				title: $map.data('map-title'),
-				url: $map.data('map-url'),
-				id: $map.data('map-id')
-			});
-		}
 	}
 );
