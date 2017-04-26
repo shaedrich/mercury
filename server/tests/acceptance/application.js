@@ -15,7 +15,7 @@ var Lab = require('lab'),
 
 describe('application', function () {
 	var requestParams = {
-			url: '/search',
+			url: '/d',
 			method: 'GET',
 			headers: {
 				host: 'starwars.wikia.com'
@@ -86,7 +86,7 @@ describe('application', function () {
 		server.inject(requestParamsWithAliasHost, function (response) {
 			expect(response.statusCode).to.equal(301);
 			expect(response.headers.location).to.equal(
-				'http://starwars.wikia.com/search'
+				'http://starwars.wikia.com/d'
 			);
 			done();
 		});

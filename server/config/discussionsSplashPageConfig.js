@@ -31,7 +31,6 @@ export default {
 		domain: 'walkingdead.wikia.com',
 		icon: '/front/images/Walking-Dead-Icon.png',
 		appName: 'Walking Dead',
-		appScreens: '/front/images/Phone-Walking-Dead.png',
 		language: 'en',
 		wikiId: 13346,
 		dbName: 'walkingdead'
@@ -45,7 +44,6 @@ export default {
 		domain: 'fallout.wikia.com',
 		icon: '/front/images/Fallout-Icon.png',
 		appName: 'Fallout',
-		appScreens: '/front/images/Phone-Fallout.png',
 		language: 'en',
 		wikiId: 3035,
 		dbName: 'fallout'
@@ -59,7 +57,6 @@ export default {
 		domain: 'starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'en',
 		wikiId: 147,
 		dbName: 'starwars'
@@ -73,7 +70,6 @@ export default {
 		domain: 'ja.starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'ja',
 		wikiId: 5931,
 		dbName: 'jastarwars'
@@ -87,7 +83,6 @@ export default {
 		domain: 'de.starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'de',
 		wikiId: 280741,
 		dbName: 'dejedipedia'
@@ -115,7 +110,6 @@ export default {
 		domain: 'es.starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'es',
 		wikiId: 916,
 		dbName: 'esstarwars'
@@ -129,7 +123,6 @@ export default {
 		domain: 'pt.starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'pt',
 		wikiId: 1473,
 		dbName: 'ptstarwars'
@@ -143,7 +136,6 @@ export default {
 		domain: 'ru.starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'ru',
 		wikiId: 1530,
 		dbName: 'rustarwars'
@@ -157,7 +149,6 @@ export default {
 		domain: 'pl.starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'pt',
 		wikiId: 1707,
 		dbName: 'plstarwars'
@@ -171,7 +162,6 @@ export default {
 		domain: 'it.starwars.wikia.com',
 		icon: '/front/images/Star-Wars-Icon.png',
 		appName: 'Star Wars',
-		appScreens: '/front/images/Phone-Star-Wars.png',
 		language: 'it',
 		wikiId: 3786,
 		dbName: 'ptstarwars'
@@ -185,7 +175,6 @@ export default {
 		domain: 'cocktails.wikia.com',
 		icon: '/front/images/Cocktails-App-Icon.png',
 		appName: 'Cocktails',
-		appScreens: '/front/images/Phone-Cocktails.png',
 		language: 'en',
 		wikiId: 8390,
 		dbName: 'cocktails'
@@ -199,7 +188,6 @@ export default {
 		domain: 'adventuretime.wikia.com',
 		icon: '/front/images/Adventure-Time-Icon.png',
 		appName: 'Adventure Time',
-		appScreens: '/front/images/Phone-Adventure-Time.png',
 		language: 'en',
 		wikiId: 24357,
 		dbName: 'adventuretimewithfinnandjake'
@@ -213,7 +201,6 @@ export default {
 		domain: 'hawaiifiveo.wikia.com',
 		icon: '/front/images/Hawaii-Five-O-App-Icon.png',
 		appName: 'Hawaii Five O',
-		appScreens: '/front/images/Phone-Hawaii-Five-O.png',
 		language: 'en',
 		wikiId: 119235,
 		dbName: 'hawaiifiveo'
@@ -227,7 +214,6 @@ export default {
 		domain: 'thehungergames.wikia.com',
 		icon: '/front/images/Hunger-Games-App-Icon.png',
 		appName: 'Hunger Games',
-		appScreens: '/front/images/Phone-Hunger-Games.png',
 		language: 'en',
 		wikiId: 35171,
 		dbName: 'thehungergames'
@@ -241,7 +227,6 @@ export default {
 		domain: 'onedirection.wikia.com',
 		icon: '/front/images/One-Direction-App-Icon.png',
 		appName: 'One Direction',
-		appScreens: '/front/images/Phone-One-Direction.png',
 		language: 'en',
 		wikiId: 203914,
 		dbName: 'onedirection'

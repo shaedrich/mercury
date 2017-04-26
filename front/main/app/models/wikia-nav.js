@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import request from 'ember-ajax/request';
+import {normalizeToUnderscore} from 'common/utils/string';
 
 const {Object: EmberObject, A, Logger, computed, get} = Ember;
 
@@ -211,5 +213,35 @@ export default EmberObject.extend({
 	 */
 	goToSubNav(index) {
 		this.get('state').pushObject(index);
+	},
+
+	getRandomWikiPageTitle() {
+		const apiUrl = M.buildUrl({
+			path: '/api.php',
+			query: {
+				action: 'query',
+				generator: 'random',
+				grnnamespace: 0,
+				format: 'json'
+			}
+		});
+
+		return request(apiUrl, {
+			cache: false,
+		}).then((data) => {
+			if (data.query && data.query.pages) {
+				const articleId = Object.keys(data.query.pages)[0],
+					pageData = data.query.pages[articleId];
+
+				if (pageData.title) {
+					return normalizeToUnderscore(pageData.title);
+				}
+			}
+
+			throw new Error({
+				message: 'Data from server misshaped',
+				data
+			});
+		});
 	}
 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{wikiVariables.language.content}}" dir="{{wikiVariables.language.contentDir}}" {{#if preview}}class='article-preview'{{/if}}>
+<html lang="{{wikiVariables.language.content}}" dir="{{wikiVariables.language.contentDir}}">
 <head>
 	<meta data-server-head-tags-static charset="utf-8">
 	<meta data-server-head-tags-static http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,16 +35,9 @@
 
 	{{> dns-prefetch}}
 	{{> open-graph-tags}}
-	{{> other-languages-head}}
 	{{> smart-banner-ios}}
 
 	<link data-server-head-tags-dynamic rel="canonical" href="{{canonicalUrl}}">
-	{{#if nextPageUrl}}
-		<link data-server-head-tags-dynamic rel="next" href="{{{nextPageUrl}}}">
-	{{/if}}
-	{{#if prevPageUrl}}
-		<link data-server-head-tags-dynamic rel="prev" href="{{{prevPageUrl}}}">
-	{{/if}}
 
 	{{> nirvana }}
 	<script src="/front/main/assets/vendor/jquery/jquery.min.js"></script>

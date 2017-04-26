@@ -18,9 +18,6 @@ export default Component.extend(LoginLinkMixin, NoScrollMixin, NotificationsUnre
 		init() {
 			this._super(...arguments);
 			this.model = WikiaNavModel.create();
-			this.clickHandlers = {
-				onRandomPageClick: 'loadRandomArticle'
-			};
 		},
 
 		didRender() {
@@ -44,10 +41,9 @@ export default Component.extend(LoginLinkMixin, NoScrollMixin, NotificationsUnre
 				this.get('closeDrawer')();
 				// reset state
 				this.send('goRoot');
-				if (item.actionId) {
-					const actionName = this.get(`clickHandlers.${item.actionId}`);
 
-					this.get(actionName)();
+				if (item.actionId) {
+					this.send(item.actionId);
 				}
 			},
 
@@ -66,6 +62,12 @@ export default Component.extend(LoginLinkMixin, NoScrollMixin, NotificationsUnre
 			onUsernameClicked() {
 				this.send('trackClick', 'side-nav', 'open-user-profile');
 				this.sendAction('setDrawerContent', 'user-profile');
+			},
+
+			onRandomPageClick() {
+				this.get('model').getRandomWikiPageTitle().then((title) => {
+					window.location.assign(M.buildUrl({title}));
+				});
 			},
 
 			/**

@@ -4,7 +4,7 @@ import CuratedContentEditorLabelsMixin from '../mixins/curated-content-editor-la
 import CuratedContentEditorLayoutMixin from '../mixins/curated-content-editor-layout';
 import CuratedContentThumbnailMixin from '../mixins/curated-content-thumbnail';
 import IEIFrameFocusFixMixin from '../mixins/ieiframe-focus-fix';
-import ArticleAddPhotoModel from '../models/article-add-photo';
+import AddPhotoModel from '../models/add-photo';
 import CuratedContentEditorItemModel from '../models/curated-content-editor-item';
 
 export default Ember.Component.extend(
@@ -234,8 +234,8 @@ export default Ember.Component.extend(
 			fileUpload(files) {
 				this.set('isLoading', true);
 
-				ArticleAddPhotoModel.load(files[0])
-					.then((photoModel) => ArticleAddPhotoModel.upload(photoModel))
+				AddPhotoModel.load(files[0])
+					.then((photoModel) => AddPhotoModel.upload(photoModel))
 					.then((data) => {
 						if (data && data.url && data.article_id) {
 							this.setProperties({

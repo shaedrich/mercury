@@ -9,7 +9,7 @@ import {form} from '../utils/content-type';
  * @property {string} extension
  */
 
-const ArticleAddPhotoModel = Ember.Object.extend({
+const AddPhotoModel = Ember.Object.extend({
 	title: null,
 	sectionIndex: null,
 	photoData: null,
@@ -18,7 +18,7 @@ const ArticleAddPhotoModel = Ember.Object.extend({
 	photoExtension: null
 });
 
-ArticleAddPhotoModel.reopenClass(
+AddPhotoModel.reopenClass(
 	{
 		/**
 		 * @param {*} photoData
@@ -30,12 +30,12 @@ ArticleAddPhotoModel.reopenClass(
 
 				oFReader.readAsDataURL(photoData);
 				oFReader.onload = function (oFREvent) {
-					const separatedName = ArticleAddPhotoModel.separateFileNameAndExtension(photoData.name),
+					const separatedName = AddPhotoModel.separateFileNameAndExtension(photoData.name),
 						photoName = separatedName.name,
 						photoExtension = separatedName.extension;
 
 					resolve(
-						ArticleAddPhotoModel.create({
+						AddPhotoModel.create({
 							photoData,
 							photoImage: oFREvent.target.result,
 							photoName,
@@ -46,51 +46,6 @@ ArticleAddPhotoModel.reopenClass(
 				oFReader.onerror = function () {
 					reject();
 				};
-			});
-		},
-
-		/**
-		 * @param {*} uploadedPhotoTitle
-		 * @param {*} model
-		 * @returns {Ember.RSVP.Promise}
-		 */
-		addToContent(uploadedPhotoTitle, model) {
-			const photoWikiText = `\n[[File:${uploadedPhotoTitle}|thumb]]\n`,
-				editData = {
-					action: 'edit',
-					title: model.title,
-					section: model.sectionIndex,
-					format: 'json',
-					// For now, we always add image file at the bottom of section.
-					appendtext: photoWikiText,
-					token: ''
-				};
-
-			return getEditToken(model.title)
-				.then((token) => {
-					editData.token = token;
-
-					return this.editContent(editData);
-				});
-		},
-
-		/**
-		 * @param {*} data
-		 * @returns {Ember.RSVP.Promise}
-		 */
-		editContent(data) {
-			return request(M.buildUrl({path: '/api.php'}), {
-				method: 'POST',
-				contentType: form,
-				data,
-			}).then((response) => {
-				if (response && response.edit && response.edit.result === 'Success') {
-					return response.edit.result;
-				} else if (response && response.error) {
-					throw new Error(response.error.code);
-				} else {
-					throw new Error();
-				}
 			});
 		},
 
@@ -198,4 +153,4 @@ ArticleAddPhotoModel.reopenClass(
 	}
 );
 
-export default ArticleAddPhotoModel;
+export default AddPhotoModel;

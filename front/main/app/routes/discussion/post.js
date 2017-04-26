@@ -25,29 +25,12 @@ export default DiscussionBaseRoute.extend(
 		},
 
 		/**
-		 * @param {DiscussionPostModel} model
-		 * @returns {void}
-		 */
-		afterModel(model) {
-			let title = model.current.get('title');
-
-			this._super(...arguments);
-
-			if (!title) {
-				title = i18n.t('main.share-default-title', {siteName: Mercury.wiki.siteName, ns: 'discussion'});
-			}
-
-			this.controllerFor('application').set('currentTitle', title);
-		},
-
-		/**
 		 * @returns {void}
 		 */
 		activate() {
 			this.controllerFor('application').setProperties({
 				// Enables vertical-colored theme bar in site-head component
 				themeBar: true,
-				enableShareHeader: false
 			});
 			this._super();
 		},
@@ -59,7 +42,6 @@ export default DiscussionBaseRoute.extend(
 			this.controllerFor('application').setProperties({
 				// Disables vertical-colored theme bar in site-head component
 				themeBar: false,
-				enableShareHeader: false
 			});
 			this._super();
 		},
