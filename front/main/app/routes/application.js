@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import HeadTagsStaticMixin from '../mixins/head-tags-static';
 import ResponsiveMixin from '../mixins/responsive';
-import {normalizeToUnderscore} from 'common/utils/string';
 import {track, trackActions} from 'common/utils/track';
 import {activate as variantTestingActivate} from 'common/utils/variant-testing';
 
@@ -116,25 +115,6 @@ export default Route.extend(
 					Logger.error('unable to open link', target.href);
 				}
 			},
-
-			/**
-			 * @returns {void}
-			 */
-			// TODO link to mobile-wiki
-			// loadRandomArticle() {
-			// 	this.get('controller').send('toggleDrawer', false);
-			//
-			// 	ArticleModel
-			// 		.getArticleRandomTitle()
-			// 		.then((articleTitle) => {
-			// 			window.location.assign(M.buildUrl({
-			// 				title: normalizeToUnderscore(articleTitle)
-			// 			}));
-			// 		})
-			// 		.catch((err) => {
-			// 			this.send('error', err);
-			// 		});
-			// },
 
 			/**
 			 * @returns {void}
