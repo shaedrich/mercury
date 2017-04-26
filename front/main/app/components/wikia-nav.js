@@ -65,7 +65,9 @@ export default Component.extend(LoginLinkMixin, NoScrollMixin, NotificationsUnre
 			},
 
 			onRandomPageClick() {
-				this.get('model').goToRandomWikiPage();
+				this.get('model').getRandomWikiPageTitle().then((title) => {
+					window.location.assign(M.buildUrl({title}));
+				});
 			},
 
 			/**

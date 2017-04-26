@@ -215,7 +215,7 @@ export default EmberObject.extend({
 		this.get('state').pushObject(index);
 	},
 
-	goToRandomWikiPage() {
+	getRandomWikiPageTitle() {
 		const apiUrl = M.buildUrl({
 			path: '/api.php',
 			query: {
@@ -242,8 +242,6 @@ export default EmberObject.extend({
 				message: 'Data from server misshaped',
 				data
 			});
-		}).then((title) => {
-			window.location.assign(M.buildUrl({title}));
 		});
 	}
 });
