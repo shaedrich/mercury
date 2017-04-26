@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import request from 'ember-ajax/request';
-import {normalizeToUnderscore} from 'common/utils/string'
+import {normalizeToUnderscore} from 'common/utils/string';
 
 const {Object: EmberObject, A, Logger, computed, get} = Ember;
 
