@@ -26,7 +26,7 @@ function sanitizeHTML(rawHTML) {
 
 describe('global-footer', function () {
 	var requestParams = {
-			url: '/wiki/Yoda',
+			url: '/d',
 			method: 'GET',
 			headers: {
 				host: 'starwars.wikia.com'
@@ -56,9 +56,8 @@ describe('global-footer', function () {
 			fs.readFileSync(__dirname + '/../fixtures/design-system/global-footer.html', 'utf-8')
 		);
 
-		wreckGetStub.onCall(0).yields(null, {statusCode: 200}, clone(article));
-		wreckGetStub.onCall(1).yields(null, {statusCode: 200}, clone(wikiVariables));
-		wreckGetStub.onCall(2).yields(null, {statusCode: 200}, clone(footer));
+		wreckGetStub.onCall(0).yields(null, {statusCode: 200}, clone(wikiVariables));
+		wreckGetStub.onCall(1).yields(null, {statusCode: 200}, clone(footer));
 
 		server.inject(requestParams, function (response) {
 			jsdom.env(response.payload, function (errors, window) {
