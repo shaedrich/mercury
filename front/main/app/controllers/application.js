@@ -9,7 +9,6 @@ export default Ember.Controller.extend(
 		smartBannerVisible: false,
 		drawerVisible: false,
 		drawerContent: null,
-		userMenuVisible: false,
 		fullPage: false,
 		noMargins: false,
 		isGlobalNavigationPositionFixed: true,
@@ -65,14 +64,6 @@ export default Ember.Controller.extend(
 			toggleSmartBanner(visible) {
 				this.set('smartBannerVisible', visible);
 			},
-
-			/**
-			 * @param {boolean} visible
-			 * @returns {void}
-			 */
-			toggleUserMenu(visible) {
-				this.set('userMenuVisible', visible);
-			}
 		},
 	}
 );
