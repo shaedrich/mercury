@@ -100,7 +100,7 @@ export default Component.extend(ResponsiveMixin, {
 		if (target && this.shouldHandleClick(target)) {
 			tagName = target.tagName.toLowerCase();
 
-			if (tagName === 'a' && target.hasAttribute('href') && target.getAttribute('href').indexOf('#') === 0) {
+			if (tagName === 'a' && !(target.hasAttribute('href') && target.getAttribute('href').indexOf('#') === 0)) {
 				this.handleLink(target);
 				event.preventDefault();
 			}
