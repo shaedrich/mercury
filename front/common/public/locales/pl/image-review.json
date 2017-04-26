@@ -1,18 +1,32 @@
 {
   "main":{
     "head":"Sprawdzanie obrazów",
-    "description":"Klikaj na obrazach, aby oznaczyć przeznaczyć je do usunięcia lub oznaczyć jako wątpliwe (do sprawdzenia przez pracowników). Kiedy skończysz przeglądać daną partię zdjęć, kliknij 'Sprawdź' poniżej, aby przejść do następnej partii.",
+    "description":"Klikaj na obrazach, aby oznaczyć przeznaczyć je do usunięcia lub oznaczyć jako wątpliwe (do sprawdzenia przez pracowników). Kiedy skończysz przeglądać daną partię zdjęć, kliknij „Sprawdź” poniżej, aby przejść do następnej partii.",
     "error-no-access-permissions":"Brak autoryzacji, nie posiadasz uprawnień do oglądania tej strony",
     "error-other":"Nie można załadować przeglądu obrazów",
     "error-invalid-data":"Image Review API zwróciło błędne dane",
-    "error-no-more-images":"Nie ma więcej obrazów",
-    "review-and-get-more":"Sprawdź i przejdź do następnej partii",
+    "error-no-more-images":"Nie ma więcej obrazów do sprawdzenia",
+    "review-and-get-more":"Sprawdź i załaduj więcej",
     "get-flagged":"Pobierz oflagowane",
+    "get-rejected":"Pobierz odrzucone",
     "images-to-review-count":"Obrazy pozostałe do sprawdzenia:",
     "image-context":"Kontekst:",
+    "image-name":"Oryginalna nazwa pliku:",
+    "image-bytes":"bajtów",
+    "image-size":"Rozmiar:",
+    "image-dimensions":"Wymiary obrazu:",
+    "image-history":"Historia obrazu:",
+    "image-upload-date":"Data przesłania:",
     "image-context-not-provided":"Brak kontekstu",
     "status-accepted":"OK",
     "status-flagged":"Wątpliwy",
-    "status-rejected":"Usuń"
+    "status-rejected":"Odrzucony",
+    "history-date":"Data",
+    "history-action":"Działanie",
+    "history-user":"Użytkownik",
+    "history-status":"Status",
+    "history-undefined":"Niedostępne",
+    "history-no-history":"Brak historii",
+    "not-provided":"nie podane"
   }
 }
