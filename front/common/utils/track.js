@@ -176,9 +176,6 @@ export function trackPageView(uaDimensions, overrideUrl) {
 	}
 
 	window.trackIVW3PageView();
-
-	// TODO
-	//Ads.getInstance().trackKruxPageView();
 }
 
 /**
