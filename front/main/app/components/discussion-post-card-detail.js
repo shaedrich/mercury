@@ -26,6 +26,10 @@ export default DiscussionPostCardBaseComponent.extend(
 			return Ember.isEmpty(this.get('post.contentImages.images')) && Boolean(this.get('post.openGraph'));
 		}),
 
+		showPoll: computed('post.poll', function () {
+			return !Ember.isEmpty(this.get('post.poll'));
+		}),
+
 		// URL passed to the ShareFeatureComponent for sharing a post
 		sharedUrl: computed('postId', function () {
 			const localPostUrl = this.get('routing').router.generate('discussion.post', this.get('postId'));

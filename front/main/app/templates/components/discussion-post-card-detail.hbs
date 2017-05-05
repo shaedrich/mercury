@@ -95,6 +95,9 @@
 				openGraphData=post.openGraph
 		}}
 	{{/if}}
+    {{#if showPoll}}
+        {{discussion-poll pollData=post.poll}}
+    {{/if}}
 	{{#if showLastEditedByMessage}}
 		<div class="row post-edited-by-row">
 			{{lastEditedByMessage}}

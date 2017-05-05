@@ -1,0 +1,87 @@
+<style>
+    .pollContainer {
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        border: solid 1px #ececec;
+        margin: 10px 11px 10px 11px;
+    }
+    .pollHeader {
+        background-color: #f6f6f6;
+    }
+    .pollTitle {
+        font-family: HelveticaNeue;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.29;
+        color: #262626;
+        padding: 10px 12px 13px 12px;
+    }
+    .answerForm {
+        margin-top: 12px;
+        padding-left: 12px;
+    }
+    .answerRadio {
+        width: 14px;
+        height: 14px;
+        border: solid 1px #999999;
+    }
+    .castVote {
+        border-top: 2px solid #e6e6e6;
+        padding: 12px 13px 14px 13px;
+        position: relative;
+    }
+    .castVote button {
+        margin: 0;
+    }
+    .castVote button label {
+        width: 87px;
+        height: 10px;
+        opacity: 0.5;
+        font-family: HelveticaNeue;
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 0.83;
+        letter-spacing: 0.2px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .castVote div {
+        font-family: HelveticaNeue;
+        font-size: 12px;
+        line-height: 1;
+        color: #999999;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 4%;
+    }
+
+    .voteDisabled {
+        opacity: 0.5;
+        background-color: #08556a !important;
+        cursor: default;
+    }
+
+    .voteEnabled {
+        opacity: 100;
+        background-color: #08556a !important;
+        cursor: pointer;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+</style>
+<div class="pollContainer">
+    <div class="pollHeader"><div class="pollTitle">{{pollData.title}}</div></div>
+    <form class="answerForm">
+        {{#each pollData.answers as |answer|}}
+            <span class="clickable" {{action 'selectAnswer'}}><input class="answerRadio, clickable" type="radio" name="answerId" value="{{answer.id}}" >{{answer.text}}</span><br/>
+        {{/each}}
+    </form>
+    <div class="castVote">
+        <button id="submitVote" class="voteDisabled" {{action 'castVote' pollData}}><span>CAST VOTE</span></button>
+        <div>21 votes</div>
+    </div>
+</div>

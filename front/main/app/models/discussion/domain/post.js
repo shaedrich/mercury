@@ -5,6 +5,7 @@ import DiscussionContributor from './contributor';
 import DiscussionUserBlockDetails from './user-block-details';
 import DiscussionUserData from './user-data';
 import OpenGraph from './open-graph';
+import Poll from './poll';
 import {convertToTimestamp} from '../../../utils/iso-date-time';
 
 const {get} = Ember,
@@ -49,11 +50,13 @@ DiscussionPost.reopenClass({
 				userBlockDetails: DiscussionUserBlockDetails.create(data.userBlockDetails),
 				userData: null,
 				openGraph: null,
-				contentImages: null
+				contentImages: null,
+				poll: null
 			}),
 			userData = get(data, '_embedded.userData.0'),
 			openGraphData = get(data, '_embedded.openGraph'),
-			contentImagesData = get(data, '_embedded.contentImages');
+			contentImagesData = get(data, '_embedded.contentImages'),
+			pollData = get(data, '_embedded.poll');
 
 		if (userData) {
 			post.set('userData', DiscussionUserData.create(userData));
@@ -61,6 +64,10 @@ DiscussionPost.reopenClass({
 
 		if (openGraphData) {
 			post.set('openGraph', OpenGraph.create(openGraphData));
+		}
+
+		if (pollData) {
+			post.set('poll', Poll.create(pollData));
 		}
 
 		post.set('contentImages', DiscussionContentImages.create(contentImagesData));
