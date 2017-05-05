@@ -11,12 +11,8 @@
 			setDrawerContent=(action 'setDrawerContent')
 		}}
 	{{else}}
-		{{log globalNavigationModel}}
-		{{asd xxx}}
-		{{#if globalNavigationModel}}
-			<global-navigation id="globalNavigation" class="global-navigation"
-							   model={{globalNavigationModel}}></global-navigation>
-		{{/if}}
+		<global-navigation id="globalNavigation" class="global-navigation"
+						   model={{globalNavigationModel}}></global-navigation>
 
 
 		{{!design-system.global-navigation
