@@ -2,8 +2,9 @@ import Ember from 'ember';
 import PollUserInfo from './poll-user-info';
 import PollAnswer from './poll-answer';
 import request from 'ember-ajax/request';
+import DiscussionBaseModel from '../base';
 
-const Poll = Ember.Object.extend({
+const Poll = DiscussionBaseModel.extend({
 	id: null,
 	title: null,
 	createdAt: null,
@@ -12,27 +13,27 @@ const Poll = Ember.Object.extend({
 	responseCount: 0,
 
 	vote(answerId) {
-	    var responseCount = this.get('responseCount');
-	    responseCount++;
-        this.set('userInfo.hasVoted', true);
-        this.set('userInfo.questionId', answerId);
-        this.set('responseCount', responseCount);
-        var answers = this.get('answers');
-        for (var i = 0; i < answers.length; i++) {
-        	var answer = answers.get(i);
-        	if (answer.id == answerId) {
-        	    answer.count++;
-                answer.chosenByThisUser = true;
-			}
-			answer.reCalcPercent(responseCount);
-		}
-		this.set('answers', answers);
-	 	// return request(M.getDiscussionServiceUrl('/polls/' + this.get('id') + '/vote'), {
-	 	// 	method: 'POST',
-		// 	data: JSON.stringify([answerId])
-        // }).then(() => {
-	 	// 	this.set('count', this.get('count') + 1);
-		// });
+	 	return request(M.getDiscussionServiceUrl(`/${this.wikiId}/polls/${this.id}/response`), {
+	 		method: 'POST',
+			data: JSON.stringify({questionId: answerId}),
+            dataType: "text"
+        }).then(() => {
+            var responseCount = this.get('responseCount');
+            responseCount++;
+            this.set('userInfo.hasVoted', true);
+            this.set('userInfo.questionId', answerId);
+            this.set('responseCount', responseCount);
+            var answers = this.get('answers');
+            for (var i = 0; i < answers.length; i++) {
+                var answer = answers.get(i);
+                if (answer.id == answerId) {
+                    answer.count++;
+                    answer.chosenByThisUser = true;
+                }
+                answer.reCalcPercent(responseCount);
+            }
+            this.set('answers', answers);
+		});
 	},
 });
 
@@ -48,6 +49,7 @@ Poll.reopenClass({
 		}
 
 		return this._super({
+			id: poll.id,
 			title: poll.title,
 			createdAt: poll.created,
 			responseCount: poll.responseCount,
