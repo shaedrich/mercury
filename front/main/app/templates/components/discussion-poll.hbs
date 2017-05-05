@@ -27,11 +27,13 @@
     }
     .castVote {
         border-top: 2px solid #e6e6e6;
-        padding: 12px 13px 14px 13px;
+        padding: 12px 13px 12px 13px;
         position: relative;
     }
     .castVote button {
         margin: 0;
+        font-weight: 600;
+        font-size: 0.625rem;
     }
     .castVote button label {
         width: 87px;
@@ -46,7 +48,7 @@
         color: #ffffff;
     }
 
-    .castVote div {
+    .votesImage {
         font-family: HelveticaNeue;
         font-size: 12px;
         line-height: 1;
@@ -72,16 +74,138 @@
     .clickable {
         cursor: pointer;
     }
+
+    .results {
+        padding: 10px 12px 10px 12px;
+        border-top: 1px solid white;
+        position: relative;
+    }
+
+    .answerText {
+        background: transparent;
+        z-index: 10;
+        position: relative;
+    }
+
+    .barGraph {
+        position: absolute;
+        height: 100%;
+        width: 50%;
+        bottom: 0;
+        left: 0;
+    }
+
+    .chosen {
+        background-color: #08556a;
+        opacity: 0.3;
+    }
+
+    .notChosen {
+        background-color: #f6f6f6;
+    }
+
+    .shareImage {
+        font-family: HelveticaNeue;
+        font-size: 12px;
+        line-height: 1;
+        color: #999999;
+    }
+
+    .shareImage span {
+        position: relative;
+        bottom: 4px;
+        left: 4px;
+    }
 </style>
-<div class="pollContainer">
-    <div class="pollHeader"><div class="pollTitle">{{pollData.title}}</div></div>
-    <form class="answerForm">
-        {{#each pollData.answers as |answer|}}
-            <span class="clickable" {{action 'selectAnswer'}}><input class="answerRadio, clickable" type="radio" name="answerId" value="{{answer.id}}" >{{answer.text}}</span><br/>
-        {{/each}}
-    </form>
-    <div class="castVote">
-        <button id="submitVote" class="voteDisabled" {{action 'castVote' pollData}}><span>CAST VOTE</span></button>
-        <div>21 votes</div>
+{{#unless pollData.userInfo.hasAnswered}}
+    <div class="pollContainer">
+        <div class="pollHeader">
+            <div class="pollTitle">{{pollData.title}}
+            </div>
+        </div>
+        <form class="answerForm">
+            {{#each pollData.answers as |answer|}}
+                <span class="clickable" {{action 'selectAnswer'}}><input class="answerRadio, clickable" type="radio" name="answerId" value="{{answer.id}}" >{{answer.text}}</span><br/>
+            {{/each}}
+        </form>
+        <div class="castVote">
+            <button id="submitVote" class="voteDisabled" {{action 'castVote' pollData}}><span>CAST VOTE</span></button>
+            <div class="votesImage">
+                <svg style="margin-right: 11px" width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+                    <title>business-16px_chart-bar-32</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Principle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Post-Details-Poll" transform="translate(-216.000000, -674.000000)" fill-rule="nonzero" fill="#999999">
+                            <g id="Main-Post" transform="translate(0.000000, 189.000000)">
+                                <g id="Group" transform="translate(12.000000, 169.000000)">
+                                    <g id="business-16px_chart-bar-32" transform="translate(203.000000, 315.000000)">
+                                        <path d="M10,1 L8,1 C7.4,1 7,1.4 7,2 L7,16 C7,16.6 7.4,17 8,17 L10,17 C10.6,17 11,16.6 11,16 L11,2 C11,1.4 10.6,1 10,1 Z" id="Shape"></path>
+                                        <path d="M4,11 L2,11 C1.4,11 1,11.4 1,12 L1,16 C1,16.6 1.4,17 2,17 L4,17 C4.6,17 5,16.6 5,16 L5,12 C5,11.4 4.6,11 4,11 Z" id="Shape"></path>
+                                        <path d="M16,6 L14,6 C13.4,6 13,6.4 13,7 L13,16 C13,16.6 13.4,17 14,17 L16,17 C16.6,17 17,16.6 17,16 L17,7 C17,6.4 16.6,6 16,6 Z" id="Shape"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>{{pollData.answerCount}} votes</div>
+        </div>
     </div>
-</div>
+{{else}}
+    <div class="pollContainer">
+        <div class="pollHeader"><div class="pollTitle">{{pollData.title}}</div></div>
+    {{#each pollData.answers as |answer|}}
+            <div class="results">
+                <div class="answerText">{{answer.text}}<span style="float: right">{{answer.percent}}%</span></div>
+                {{#if answer.chosenByThisUser}}
+                    <div class="barGraph chosen" style="width: {{answer.percent}}%"></div>
+                {{else}}
+                    <div class="barGraph notChosen" style="width: {{answer.percent}}%"></div>
+                {{/if}}
+            </div>
+    {{/each}}
+        <div class="castVote">
+            <div class="shareImage">
+                <svg style="margin-left: 5px; margin-top: 5px" width="16px" height="18px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+                    <title>Share</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Principle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Post-Details-Poll-Voted" transform="translate(-25.000000, -674.000000)" fill="#999999">
+                            <g id="Main-Post" transform="translate(0.000000, 189.000000)">
+                                <g id="Group" transform="translate(12.000000, 169.000000)">
+                                    <g id="Share" transform="translate(12.000000, 316.000000)">
+                                        <path d="M3.90909091,12 C4.72509091,12 5.46109091,11.64975 5.98981818,11.09025 L11.2952727,14.21625 C11.2290909,14.4675 11.1818182,14.727 11.1818182,15 C11.1818182,16.6545 12.4865455,18 14.0909091,18 C15.6952727,18 17,16.6545 17,15 C17,13.3455 15.6952727,12 14.0909091,12 C13.2749091,12 12.5389091,12.35025 12.0101818,12.90975 L6.70472727,9.78375 C6.77090909,9.5325 6.81818182,9.273 6.81818182,9 C6.81818182,8.727 6.77090909,8.4675 6.70472727,8.21625 L12.0101818,5.09025 C12.5389091,5.64975 13.2749091,6 14.0909091,6 C15.6952727,6 17,4.6545 17,3 C17,1.3455 15.6952727,0 14.0909091,0 C12.4865455,0 11.1818182,1.3455 11.1818182,3 C11.1818182,3.273 11.2290909,3.5325 11.2952727,3.78375 L5.98981818,6.90975 C5.46109091,6.35025 4.72509091,6 3.90909091,6 C2.30472727,6 1,7.3455 1,9 C1,10.6545 2.30472727,12 3.90909091,12" id="share-small"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <span>Share</span>
+            </div>
+            <div class="votesImage">
+                <svg style="margin-right: 11px" width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+                    <title>business-16px_chart-bar-32</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs></defs>
+                    <g id="Principle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Post-Details-Poll" transform="translate(-216.000000, -674.000000)" fill-rule="nonzero" fill="#999999">
+                            <g id="Main-Post" transform="translate(0.000000, 189.000000)">
+                                <g id="Group" transform="translate(12.000000, 169.000000)">
+                                    <g id="business-16px_chart-bar-32" transform="translate(203.000000, 315.000000)">
+                                        <path d="M10,1 L8,1 C7.4,1 7,1.4 7,2 L7,16 C7,16.6 7.4,17 8,17 L10,17 C10.6,17 11,16.6 11,16 L11,2 C11,1.4 10.6,1 10,1 Z" id="Shape"></path>
+                                        <path d="M4,11 L2,11 C1.4,11 1,11.4 1,12 L1,16 C1,16.6 1.4,17 2,17 L4,17 C4.6,17 5,16.6 5,16 L5,12 C5,11.4 4.6,11 4,11 Z" id="Shape"></path>
+                                        <path d="M16,6 L14,6 C13.4,6 13,6.4 13,7 L13,16 C13,16.6 13.4,17 14,17 L16,17 C16.6,17 17,16.6 17,16 L17,7 C17,6.4 16.6,6 16,6 Z" id="Shape"></path>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>{{pollData.answerCount}} votes</div>
+        </div>
+    </div>
+{{/unless}}

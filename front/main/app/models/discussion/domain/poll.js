@@ -7,18 +7,22 @@ const Poll = Ember.Object.extend({
 	id: null,
 	title: null,
 	createdAt: null,
-	answers: null,
+	questions: null,
 	userInfo: null,
-	count: null,
+	answerCount: 0,
 
 	vote(answerId) {
-	 	return request(M.getDiscussionServiceUrl('/polls/' + this.get('id') + '/vote'), {
-	 		method: 'POST',
-			data: JSON.stringify([answerId])
-        }).then(() => {
-	 		this.set('count', this.get('count') + 1);
-		});
-	}
+        debugger;
+        // this.set('count', this.get('count') + 1);
+        this.set('userInfo.hasAnswered', true);
+        this.set('answerCount', this.get('answerCount') + 1);
+	 	// return request(M.getDiscussionServiceUrl('/polls/' + this.get('id') + '/vote'), {
+	 	// 	method: 'POST',
+		// 	data: JSON.stringify([answerId])
+        // }).then(() => {
+	 	// 	this.set('count', this.get('count') + 1);
+		// });
+	},
 });
 
 Poll.reopenClass({
@@ -35,8 +39,9 @@ Poll.reopenClass({
 		return this._super({
 			title: poll.title,
 			createdAt: poll.created,
-			answers: poll.answers.map((answer) => {
-				return PollAnswer.create(answer);
+			answerCount: poll.answerCount,
+			answers: poll.questions.map((answer) => {
+				return PollAnswer.create(answer, poll.answerCount);
 			}),
 			userInfo: PollUserInfo.create(poll.userInfo)
 		});
