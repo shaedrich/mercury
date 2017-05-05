@@ -6,25 +6,25 @@ const PollAnswer = Ember.Object.extend({
     text: null,
     percent: 0,
     chosenByThisUser: false,
+
+    reCalcPercent(responseCount) {
+        this.percent = Math.floor((this.count / responseCount) * 100);
+    }
 });
 
 PollAnswer.reopenClass({
-    create(pollAnswerData, pollAnswerCount) {
+    create(pollAnswerData, responseCount, pollUserInfo) {
         let pollAnswer = pollAnswerData;
-        var chosen = false;
-
-        if (pollAnswer.id == 2) {
-            chosen = true;
-        }
 
         return this._super({
             id: pollAnswer.id,
             count: pollAnswer.count,
             text: pollAnswer.text,
-            percent: Math.floor((pollAnswer.count / pollAnswerCount) * 100),
-            chosenByThisUser: chosen
+            percent: Math.floor((pollAnswer.count / responseCount) * 100),
+            chosenByThisUser: pollUserInfo.hasVoted && pollUserInfo.questionId === pollAnswer.id
         });
-    }
+    },
+
 });
 
 export default PollAnswer;

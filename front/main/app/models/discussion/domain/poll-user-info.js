@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 const PollUserInfo = Ember.Object.extend({
-	hasAnswered: null,
-	answerId: null,
+	hasVoted: null,
+	questionId: null,
 });
 
 PollUserInfo.reopenClass({
@@ -15,8 +15,8 @@ PollUserInfo.reopenClass({
 		let userInfo = pollUserInfo;
 
 		return this._super({
-			hasAnswered: userInfo.hasVoted,
-			answerId: userInfo.answerId
+			hasVoted: userInfo.hasVoted,
+			questionId: userInfo.questionId
 		});
 	}
 });

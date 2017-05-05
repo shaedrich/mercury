@@ -9,13 +9,24 @@ const Poll = Ember.Object.extend({
 	createdAt: null,
 	questions: null,
 	userInfo: null,
-	answerCount: 0,
+	responseCount: 0,
 
 	vote(answerId) {
-        debugger;
-        // this.set('count', this.get('count') + 1);
-        this.set('userInfo.hasAnswered', true);
-        this.set('answerCount', this.get('answerCount') + 1);
+	    var responseCount = this.get('responseCount');
+	    responseCount++;
+        this.set('userInfo.hasVoted', true);
+        this.set('userInfo.questionId', answerId);
+        this.set('responseCount', responseCount);
+        var answers = this.get('answers');
+        for (var i = 0; i < answers.length; i++) {
+        	var answer = answers.get(i);
+        	if (answer.id == answerId) {
+        	    answer.count++;
+                answer.chosenByThisUser = true;
+			}
+			answer.reCalcPercent(responseCount);
+		}
+		this.set('answers', answers);
 	 	// return request(M.getDiscussionServiceUrl('/polls/' + this.get('id') + '/vote'), {
 	 	// 	method: 'POST',
 		// 	data: JSON.stringify([answerId])
@@ -39,9 +50,9 @@ Poll.reopenClass({
 		return this._super({
 			title: poll.title,
 			createdAt: poll.created,
-			answerCount: poll.answerCount,
+			responseCount: poll.responseCount,
 			answers: poll.questions.map((answer) => {
-				return PollAnswer.create(answer, poll.answerCount);
+				return PollAnswer.create(answer, poll.responseCount, poll.userInfo);
 			}),
 			userInfo: PollUserInfo.create(poll.userInfo)
 		});

@@ -6,14 +6,18 @@ export default Component.extend(
 	{
         actions: {
             castVote(poll) {
-                debugger;
-                poll.vote(2);
+                var $inputs = $("input.clickable");
+                for (var i = 0; i < $inputs.length; i++) {
+                    if ($inputs.get(i).checked) {
+                        poll.vote($inputs.get(i).value)
+                        break;
+                    }
+                }
             },
             selectAnswer() {
                 var $submitVote = $("#submitVote");
                 var $answer = $(event.target).find("input");
-                $answer.prop("checked", true)
-                $submitVote.add("voteId", 2);
+                $answer.prop("checked", true);
                 $submitVote.removeClass("voteDisabled");
                 $submitVote.addClass("voteEnabled");
             }

@@ -117,7 +117,7 @@
         left: 4px;
     }
 </style>
-{{#unless pollData.userInfo.hasAnswered}}
+{{#unless pollData.userInfo.hasVoted}}
     <div class="pollContainer">
         <div class="pollHeader">
             <div class="pollTitle">{{pollData.title}}
@@ -149,7 +149,7 @@
                             </g>
                         </g>
                     </g>
-                </svg>{{pollData.answerCount}} votes</div>
+                </svg>{{pollData.responseCount}} votes</div>
         </div>
     </div>
 {{else}}
@@ -205,7 +205,7 @@
                             </g>
                         </g>
                     </g>
-                </svg>{{pollData.answerCount}} votes</div>
+                </svg>{{pollData.responseCount}} votes</div>
         </div>
     </div>
 {{/unless}}
