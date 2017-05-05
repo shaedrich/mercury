@@ -50,6 +50,20 @@
 	{{> tracking-ua-init}}
 
 	{{content-for 'head-footer'}}
+
+	<script>
+		(function () {
+			if ('import' in document.createElement('link')) {
+				// platform is good!
+			} else {
+				// polyfill the platform!
+				var e = document.createElement('script');
+				e.src = 'https://cdn.rawgit.com/webcomponents/webcomponentsjs/390737cf/webcomponents-hi.js';
+				document.head.appendChild(e);
+			}
+		})();
+	</script>
+	<link rel="import" href="/front/main/global-navigation/global-navigation.html">
 </head>
 <body class="{{bodyClassName}}">
 {{content-for 'body'}}

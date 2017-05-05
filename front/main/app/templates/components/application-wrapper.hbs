@@ -11,7 +11,15 @@
 			setDrawerContent=(action 'setDrawerContent')
 		}}
 	{{else}}
-		{{design-system.global-navigation
+		{{log globalNavigationModel}}
+		{{asd xxx}}
+		{{#if globalNavigationModel}}
+			<global-navigation id="globalNavigation" class="global-navigation"
+							   model={{globalNavigationModel}}></global-navigation>
+		{{/if}}
+
+
+		{{!design-system.global-navigation
 			isGlobalNavigationPositionFixed=isGlobalNavigationPositionFixed
 			triggerGlobalNavigationHeadroomStateChange=(route-action 'triggerGlobalNavigationHeadroomStateChange')
 		}}

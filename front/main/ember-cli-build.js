@@ -129,6 +129,8 @@ module.exports = function (defaults) {
 		app.import(app.bowerDirectory + '/es5-shim/es5-shim.min.js');
 	}
 
+	console.log('asd', app.bowerDirectory);
+
 	// Assets which are lazy loaded
 	var cropperAssets = new Funnel(app.bowerDirectory + '/cropper/dist', {
 			include: ['*.min.*'],
