@@ -18,7 +18,7 @@
     "user_already_linked":"Esta cuenta de Fandom ya está vinculada a Facebook",
     "fb_account_already_linked":"Esta cuenta de Facebook ya está vinculada a otra cuenta de usuario de Fandom",
     "birthdate_invalid":"La fecha de nacimiento no es una fecha válida",
-    "wrong-credentials":"No reconocemos estas credenciales. Por favor inténtalo de nuevo o registra una nueva cuenta.",
+    "wrong-credentials":"No reconocemos estas credenciales. Por favor inténtalo de nuevo o resetea tu cuenta.",
     "server-error":"Hubo un error al procesar tu solicitud. Inténtalo de nuevo más tarde."
   },
   "labels":{
