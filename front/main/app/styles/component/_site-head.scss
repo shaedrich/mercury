@@ -58,15 +58,14 @@ $site-head-default-box-shadow: 0 1px 4px 0 $site-head-box-shadow-color;
 		margin: 0 auto;
 	}
 
-	.fandom-logo,
+	.fandom-logo {
+		height: 28px;
+		width: 130px;
+	}
+
 	.wikia-org-logo {
 		height: 26px;
 		width: 132px;
-	}
-
-	.fandom-logo {
-		// the same color as in wds-company-logo-fandom-powered-by-wikia.svg
-		fill: #39414D;
 	}
 
 	.site-head-icon {
