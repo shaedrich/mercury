@@ -37,8 +37,8 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 			// Use Fandom logo as default image
 			openGraphData.image = `http:${getStaticAssetPath(settings, request)}` +
 				'common/images/og-fandom-logo.jpg';
-			openGraphData.imageWidth = 525;
-			openGraphData.imageHeight = 295;
+			openGraphData.imageWidth = 1200;
+			openGraphData.imageHeight = 1200;
 
 			/**
 			 * @param {Function} resolve
