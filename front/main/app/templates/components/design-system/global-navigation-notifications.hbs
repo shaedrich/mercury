@@ -13,8 +13,8 @@
 		{{svg 'wds-icons-bell' class='wds-icon wds-icon-small icon-bell'}}
 	{{/dropdown.toggle}}
 	{{#dropdown.content
-			class='wds-global-navigation__dropdown-content'
-			dropdownRightAligned=true
+		class='wds-notifications__dropdown-content'
+		dropdownRightAligned=true
 	}}
 		{{#if hasUnread}}
 			<div class="wds-notifications__mark-all-as-read-button">
@@ -27,7 +27,7 @@
 			<ul class="scrolling-part wds-notifications__notification-list wds-list wds-has-lines-between">
 				{{#each notificationsList as |notification|}}
 					{{notification-card
-							model=notification
+						model=notification
 					}}
 				{{/each}}
 				{{#if isLoadingNewResults }}
