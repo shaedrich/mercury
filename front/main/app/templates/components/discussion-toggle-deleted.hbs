@@ -1,0 +1,16 @@
+<fieldset class="discussion-fieldset" disabled={{disabled}}>
+	<legend>
+		Moderation
+	</legend>
+	<ul class="discussion-toggle-deleted-container">
+		<li>
+			{{wikia-ui-components.fancy-check-box
+				inputId='toggle-deleted-checkbox'
+				isChecked=this.attrs.hideDeleted
+				label='Hide Deleted'
+				disabled=false
+				update=(action this.attrs.toggleHideDeleted)
+			}}
+		</li>
+	</ul>
+</fieldset>

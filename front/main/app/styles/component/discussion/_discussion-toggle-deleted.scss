@@ -1,0 +1,15 @@
+.discussion-toggle-deleted-container {
+	list-style-type: none;
+	margin: 0px 0px 0px -8px;
+
+	label {
+		overflow: hidden;
+		padding: 4px 0 4px 8px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		&:hover {
+			background-color: $discussion-category-hover-background;
+		}
+	}
+}

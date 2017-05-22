@@ -30,6 +30,7 @@ export default DiscussionBaseRoute.extend(
 		},
 
 		discussionSort: inject.service(),
+		discussionToggleDeleted: inject.service("discussion-toggle-deleted"),
 
 		/**
 		 * @param {object} transition
@@ -209,6 +210,19 @@ export default DiscussionBaseRoute.extend(
 				return params;
 			});
 			return this.replaceWith('discussion.forum', {queryParams: {sort: sortBy}});
+		},
+
+		/**
+		 * @param {string} hideDeleted
+		 * @returns {EmberStates.Transition}
+		 */
+		toggleHideDeleted() {
+			this.get('discussionToggleDeleted').toggleHideDeleted();
+			this.updateStoredQueryParams(params => {
+				params.hideDeleted = this.get('hideDeleted');
+				return params;
+			});
+			return this.replaceWith('discussion.forum', {queryParams: {hideDeleted: this.get('hideDeleted')}});
 		},
 
 		serializeQueryParam(value, urlKey, defaultValueType) {

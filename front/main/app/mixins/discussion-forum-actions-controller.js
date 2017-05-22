@@ -46,6 +46,13 @@ export default Ember.Mixin.create(
 			},
 
 			/**
+			 * @returns {void}
+			 */
+			toggleHideDeleted() {
+				this.get('target').send('toggleHideDeleted');
+			},
+
+			/**
 			 * @param {string} sortBy
 			 * @param {boolean} shouldShowReported
 			 * @param {Object} catId
