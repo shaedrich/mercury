@@ -17,8 +17,6 @@
 				model=model.wikis
 				trackClick=(action 'trackClick')
 				type='wikis-menu'
-				onClose=(action 'onDropdownClose')
-				onOpen=(action 'onDropdownOpen')
 			}}
 			{{design-system.global-navigation-search
 				model=model.search.module
@@ -32,22 +30,16 @@
 				model=model.user
 				trackClick=(action 'trackClick')
 				type='user-menu'
-				onClose=(action 'onDropdownClose')
-				onOpen=(action 'onDropdownOpen')
 			}}
 		{{else if model.anon}}
 			{{design-system.global-navigation-account-navigation
 				model=model.anon
 				trackClick=(action 'trackClick')
-				onClose=(action 'onDropdownClose')
-				onOpen=(action 'onDropdownOpen')
 			}}
 		{{/if}}
 		{{#if model.user}}
 			{{design-system.global-navigation-notifications
 				trackClick=(action 'trackClick')
-				onClose=(action 'onDropdownClose')
-				onOpen=(action 'onDropdownOpen')
 			}}
 		{{/if}}
 		<div class="wds-global-navigation__start-a-wiki">

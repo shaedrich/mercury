@@ -1,12 +1,27 @@
 import Ember from 'ember';
-import DropdownComponentMixin from 'ember-rl-dropdown/mixins/rl-dropdown-component';
 
-const {Component} = Ember;
+const {Component, run} = Ember;
 
-export default Component.extend(DropdownComponentMixin, {
+export default Component.extend({
 	classNames: ['wds-dropdown'],
 	classNameBindings: ['dropdownExpanded:wds-is-active'],
-	dropdownToggleSelector: '.wds-dropdown__toggle',
-	dropdownSelector: '.wds-dropdown__content',
-	closingEventNamespace: 'wds-dropdown'
+
+	actions: {
+		mouseEnter() {
+			run.later(() => {
+				this.set('dropdownExpanded', true);
+			});
+		},
+
+		click(e) {
+			if (!this.get('dropdownExpanded')) {
+				this.set('dropdownExpanded', true);
+				e.preventDefault();
+			}
+		},
+
+		mouseLeave() {
+			this.set('dropdownExpanded', false);
+		}
+	}
 });
