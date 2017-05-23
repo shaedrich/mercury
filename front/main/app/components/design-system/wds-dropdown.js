@@ -8,6 +8,10 @@ export default Component.extend({
 
 	actions: {
 		mouseEnter() {
+			if(this.onOpen) {
+				this.onOpen();
+			}
+
 			run.later(() => {
 				this.set('dropdownExpanded', true);
 			});
