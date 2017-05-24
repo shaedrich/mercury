@@ -20,9 +20,7 @@ export default Ember.Component.extend(
 			}
 		}),
 
-		hideDeleted: Ember.computed('discussionToggleDeleted.hideDeleted', function () {
-			return this.get('discussionToggleDeleted.hideDeleted');
-		}),
+		hideDeleted: Ember.computed.alias('discussionToggleDeleted.hideDeleted'),
 
 		hasNewPostButton: true,
 

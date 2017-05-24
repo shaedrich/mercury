@@ -17,6 +17,9 @@ export default Ember.Component.extend(
 		showApplyButton: false,
 		showSortSection: false,
 
+		hideDeleted: Ember.computed.alias('discussionToggleDeleted.hideDeleted'),
+
+
 		/**
 		 * @returns {boolean}
 		 */
@@ -107,6 +110,10 @@ export default Ember.Component.extend(
 			 */
 			updateCategoriesSelection(changedCategories) {
 				this.set('changedCategories', changedCategories);
+			},
+
+			toggleHideDeleted() {
+				this.get('discussionToggleDeleted').toggleHideDeleted();
 			},
 		}
 	}
