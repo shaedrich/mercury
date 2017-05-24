@@ -18,6 +18,7 @@ export default Ember.Component.extend(
 		showSortSection: false,
 
 		hideDeleted: Ember.computed.alias('discussionToggleDeleted.hideDeleted'),
+		willHideDeleted: Ember.computed.alias('discussionToggleDeleted.willHideDeleted'),
 
 
 		/**
@@ -78,6 +79,7 @@ export default Ember.Component.extend(
 			 * @returns {void}
 			 */
 			applyFilters() {
+				debugger;
 				const sortBy = this.get('sortBy'),
 					onlyReported = this.get('onlyReported'),
 					changeState = this.didFiltersChange(sortBy, onlyReported);
@@ -96,6 +98,9 @@ export default Ember.Component.extend(
 						changeState
 					);
 				}
+
+				this.get('discussionToggleDeleted').applyHideDeleted();
+
 				const popover = this.get('popover');
 
 				if (popover) {
