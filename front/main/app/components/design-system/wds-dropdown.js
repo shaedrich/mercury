@@ -8,8 +8,10 @@ export default Component.extend({
 
 	actions: {
 		mouseEnter() {
-			if(this.onOpen) {
-				this.onOpen();
+			const onMouseEnter = this.get('onMouseEnter');
+
+			if (typeof onMouseEnter === 'function') {
+				onMouseEnter();
 			}
 
 			run.later(() => {
