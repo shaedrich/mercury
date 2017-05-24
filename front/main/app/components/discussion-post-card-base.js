@@ -9,7 +9,9 @@ const {Component, computed} = Ember;
 export default Component.extend(
 	DiscussionParsedContentMixin,
 	{
-		classNameBindings: ['isNew', 'isDeleted', 'isReported', 'isLocked', 'showTopNote'],
+		classNameBindings: ['isNew', 'isDeleted', 'isReported', 'isLocked', 'showTopNote', 'isHidden'],
+
+		discussionToggleDeleted: Ember.inject.service('discussion-toggle-deleted'),
 
 		content: Ember.computed.oneWay('post.rawContent'),
 		isDeleted: computed.alias('post.isDeleted'),
@@ -18,6 +20,10 @@ export default Component.extend(
 		isReported: computed.alias('post.isReported'),
 		shouldActivateLinks: Ember.computed.alias('isDetailsView'),
 		shouldTruncateContent: Ember.computed.not('isDetailsView'),
+
+		isHidden: computed('isDeleted', 'discussionToggleDeleted.hideDeleted', function() {
+				return this.get('isDeleted') && this.get('discussionToggleDeleted').get('hideDeleted');
+		}),
 
 		showTopNote: computed('isDeleted', 'isReported', 'isLocked', 'showRepliedTo', function () {
 			return this.get('isReported') || this.get('showRepliedTo') ||

@@ -6,6 +6,5 @@ export default Ember.Service.extend({
 	 */
 	toggleHideDeleted() {
 		this.set('hideDeleted', !this.get('hideDeleted'));
-		$(".is-deleted").toggle();
 	}
  });
