@@ -35,9 +35,7 @@ export default Ember.Component.extend(
 				}
 			},
 			toggleHideDeleted() {
-				if (this.get('toggleHideDeleted')) {
-					this.get('toggleHideDeleted')();
-				}
+				this.get('discussionToggleDeleted').toggleHideDeleted();
 			}
 		}
 	}

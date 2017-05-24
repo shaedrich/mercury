@@ -57,11 +57,13 @@
 					}}
 				{{/if}}
 			{{/if}}
-			{{discussion-toggle-deleted
-					disabled=false
-					hideDeleted=hideDeleted
-					toggleHideDeleted=(action 'toggleHideDeleted')
-			}}
+            {{#unless responsive.isMobile}}
+                {{discussion-toggle-deleted
+                disabled=false
+                hideDeleted=hideDeleted
+                toggleHideDeleted=(action 'toggleHideDeleted')
+                }}
+            {{/unless}}
 			{{discussion-sort
 					disabled=isSortingDisabled
 					sortBy=sortBy

@@ -156,12 +156,12 @@ export default Ember.Mixin.create(
 				this.setSortBy(sortBy);
 			},
 
-			/**
-			 * @returns {void}
-			 */
-			toggleHideDeleted() {
-				this.toggleHideDeleted();
-			},
+			///**
+			// * @returns {void}
+			// */
+			//toggleHideDeleted() {
+			//	this.toggleHideDeleted();
+			//},
 		}
 	}
 );
