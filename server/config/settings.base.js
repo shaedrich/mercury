@@ -324,5 +324,6 @@ export default {
 		samplingRate: 0.1,
 		aggregationInterval: 1000
 	},
-	translationFiles: ['main', 'design-system', 'discussion', 'image-review', 'infobox-builder', 'search']
+	translationFiles: ['main', 'design-system', 'discussion', 'image-review', 'infobox-builder', 'search'],
+	inContextTranslationsEnabled: process.env.MERCURY_INCONTEXT_ENABLED === 'true',
 };
