@@ -5,13 +5,11 @@ const {Component} = Ember;
 export default Component.extend({
 	classNames: ['wds-dropdown'],
 
+	onMouseEnter() {},
+
 	actions: {
 		mouseEnter() {
-			const onMouseEnter = this.get('onMouseEnter');
-
-			if (typeof onMouseEnter === 'function') {
-				onMouseEnter();
-			}
+			this.get('onMouseEnter')();
 		}
 	}
 });
