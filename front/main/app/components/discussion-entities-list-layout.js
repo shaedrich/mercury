@@ -10,7 +10,7 @@ export default Ember.Component.extend(
 	{
 		currentUser: Ember.inject.service(),
 		discussionSort: Ember.inject.service(),
-		discussionToggleDeleted: Ember.inject.service('discussion-toggle-deleted'),
+		discussionToggleDeleted: Ember.inject.service(),
 
 		sortBy: Ember.computed('discussionSort.sortBy', 'isSortingDisabled', function () {
 			if (this.get('isSortingDisabled')) {

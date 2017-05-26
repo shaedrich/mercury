@@ -6,7 +6,7 @@ export default Ember.Component.extend(
 	ResponsiveMixin,
 	{
 		classNames: ['discussion-toggle-deleted'],
-		discussionToggleDeleted: Ember.inject.service('discussion-toggle-deleted'),
+		discussionToggleDeleted: Ember.inject.service(),
 
 		actions: {
 			/**

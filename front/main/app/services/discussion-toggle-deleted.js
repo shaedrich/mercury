@@ -39,7 +39,7 @@ export default Ember.Service.extend({
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	getAllPreferences() {
-		var userId = this.get('currentUser').get('userId');
+		const userId = this.get('currentUser').get('userId');
 		return request(M.getUserPreferencesServiceURL(`/${userId}`), {
 			method: 'GET'
 		}).then((preferences) => {
@@ -54,19 +54,19 @@ export default Ember.Service.extend({
 	 * @returns {void}
 	 */
 	savePreferences(preferences) {
-		var userId = this.get('currentUser').get('userId');
+		const userId = this.get('currentUser').get('userId');
 		if (!preferences.globalPreferences) {
 			preferences.globalPreferences = [];
 		}
 
-		for (var i = 0; i < preferences.globalPreferences.length; i++) {
-			var preference = preferences.globalPreferences[i];
-			if (preference.name == 'hideDeleted') {
+		for (let i = 0; i < preferences.globalPreferences.length; i++) {
+			const preference = preferences.globalPreferences[i];
+			if (preference.name === 'hideDeleted') {
 				preferences.globalPreferences.splice(i, 1);
 			}
 		}
 
-		preferences.globalPreferences.push({'name': 'hideDeleted', 'value': `${this.get('hideDeleted')}`});
+		preferences.globalPreferences.push({name: 'hideDeleted', value: `${this.get('hideDeleted')}`});
 
 		request(M.getUserPreferencesServiceURL(`/${userId}`), {
 			method: 'PUT',
@@ -78,16 +78,16 @@ export default Ember.Service.extend({
 	 * @returns {void}
 	 */
 	retrieveStoredPreference() {
-		var userId = this.get('currentUser').get('userId');
+		const userId = this.get('currentUser').get('userId');
 
 		request(M.getUserPreferencesServiceURL(`/${userId}/global/hideDeleted`), {
 			method: 'GET'
-		}).then(function (preference) {
-			this.setHideDeleted(preference.value == 'true');
+		}).then((preference => {
+			this.setHideDeleted(preference.value === 'true');
 			this.applyHideDeleted(false);
-		}.bind(this), function (reason) {
+		}).bind(this), (reason => {
 			this.setHideDeleted(false);
 			this.applyHideDeleted(false);
-		}.bind(this));
+		}).bind(this));
 	}
  });

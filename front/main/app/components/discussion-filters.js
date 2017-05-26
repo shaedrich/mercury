@@ -12,7 +12,7 @@ export default Ember.Component.extend(
 		classNames: ['discussion-filters'],
 		currentUser: Ember.inject.service(),
 		discussionSort: Ember.inject.service(),
-		discussionToggleDeleted: Ember.inject.service("discussion-toggle-deleted"),
+		discussionToggleDeleted: Ember.inject.service(),
 		popover: nearestParent('pop-over'),
 		showApplyButton: false,
 		showSortSection: false,
