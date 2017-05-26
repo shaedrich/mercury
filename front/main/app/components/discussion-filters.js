@@ -79,7 +79,6 @@ export default Ember.Component.extend(
 			 * @returns {void}
 			 */
 			applyFilters() {
-				debugger;
 				const sortBy = this.get('sortBy'),
 					onlyReported = this.get('onlyReported'),
 					changeState = this.didFiltersChange(sortBy, onlyReported);
@@ -99,7 +98,7 @@ export default Ember.Component.extend(
 					);
 				}
 
-				this.get('discussionToggleDeleted').applyHideDeleted();
+				this.get('discussionToggleDeleted').applyHideDeleted(true);
 
 				const popover = this.get('popover');
 

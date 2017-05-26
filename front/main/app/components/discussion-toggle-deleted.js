@@ -8,9 +8,7 @@ export default Ember.Component.extend(
 		classNames: ['discussion-toggle-deleted'],
 		discussionToggleDeleted: Ember.inject.service('discussion-toggle-deleted'),
 
-
 		actions: {
-
 			/**
 			 * @returns {void}
 			 */

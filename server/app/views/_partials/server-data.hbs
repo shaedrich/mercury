@@ -25,7 +25,8 @@
 	M.prop('staticAssetsBaseRoute', {{{json settings.staticAssets.baseAPIPath}}});
 	M.prop('userPermissionsBaseRoute', {{{json settings.userPermissions.baseAPIPath}}});
 	M.prop('onSiteNotificationsBaseRoute', {{{json settings.onSiteNotifications.baseAPIPath}}});
-	M.prop('clickstream', {{{json settings.clickstream}}});
+    M.prop('userPreferencesBaseRoute', {{{json settings.userPreferencesService.baseAPIPath}}});
+    M.prop('clickstream', {{{json settings.clickstream}}});
 	{{#if discussionsSplashPageConfig}}
 		M.prop('discussionsSplashPageConfig', {{{json discussionsSplashPageConfig}}});
 	{{/if}}
