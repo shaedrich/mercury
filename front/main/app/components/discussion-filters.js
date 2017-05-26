@@ -16,10 +16,7 @@ export default Ember.Component.extend(
 		popover: nearestParent('pop-over'),
 		showApplyButton: false,
 		showSortSection: false,
-
-		hideDeleted: Ember.computed.alias('discussionToggleDeleted.hideDeleted'),
 		willHideDeleted: Ember.computed.alias('discussionToggleDeleted.willHideDeleted'),
-
 
 		/**
 		 * @returns {boolean}

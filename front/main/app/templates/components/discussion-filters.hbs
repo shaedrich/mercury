@@ -12,11 +12,13 @@
 			}}
 		{{/if}}
 
-		{{discussion-toggle-deleted
+		{{#if canModerate}}
+			{{discussion-toggle-deleted
 				disabled=false
 				hideDeleted=willHideDeleted
 				toggleHideDeleted=(action 'toggleHideDeleted')
-		}}
+			}}
+		{{/if}}
 
 		{{#if showSortSection}}
 			{{discussion-sort

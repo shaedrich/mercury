@@ -1,6 +1,6 @@
 .discussion-toggle-deleted-container {
 	list-style-type: none;
-	margin: 0px 0px 0px -8px;
+	margin: 3px 0px -10px -8px;
 
 	label {
 		overflow: hidden;
@@ -11,6 +11,10 @@
 		&:hover {
 			background-color: $discussion-category-hover-background;
 		}
+	}
+
+	@media #{$mobile-range} {
+		margin-top: 8px;
 	}
 }
 

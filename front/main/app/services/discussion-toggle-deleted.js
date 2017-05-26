@@ -17,7 +17,7 @@ export default Ember.Service.extend({
 	},
 
 	/**
-	 * @param hideDeleted
+	 * @param {boolean} hideDeleted
 	 * @returns {void}
 	 */
 	setHideDeleted(hideDeleted) {
@@ -25,6 +25,7 @@ export default Ember.Service.extend({
 	},
 
 	/**
+	 * @param {boolean} persist
 	 * @returns {void}
 	 */
 	applyHideDeleted(persist) {
@@ -34,9 +35,11 @@ export default Ember.Service.extend({
 		}
 	},
 
+	/**
+	 * @returns {Ember.RSVP.Promise}
+	 */
 	getAllPreferences() {
 		var userId = this.get('currentUser').get('userId');
-
 		return request(M.getUserPreferencesServiceURL(`/${userId}`), {
 			method: 'GET'
 		}).then((preferences) => {
@@ -46,6 +49,10 @@ export default Ember.Service.extend({
 		});
 	},
 
+	/**
+	 * @param {object} preferences
+	 * @returns {void}
+	 */
 	savePreferences(preferences) {
 		var userId = this.get('currentUser').get('userId');
 		if (!preferences.globalPreferences) {
@@ -54,7 +61,6 @@ export default Ember.Service.extend({
 
 		for (var i = 0; i < preferences.globalPreferences.length; i++) {
 			var preference = preferences.globalPreferences[i];
-
 			if (preference.name == 'hideDeleted') {
 				preferences.globalPreferences.splice(i, 1);
 			}
@@ -68,15 +74,18 @@ export default Ember.Service.extend({
 		});
 	},
 
+	/**
+	 * @returns {void}
+	 */
 	retrieveStoredPreference() {
 		var userId = this.get('currentUser').get('userId');
 
 		request(M.getUserPreferencesServiceURL(`/${userId}/global/hideDeleted`), {
 			method: 'GET'
-		}).then((value) => {
-			this.setHideDeleted(value.value == 'true');
+		}).then(function (preference) {
+			this.setHideDeleted(preference.value == 'true');
 			this.applyHideDeleted(false);
-		}.bind(this), (reason) => {
+		}.bind(this), function (reason) {
 			this.setHideDeleted(false);
 			this.applyHideDeleted(false);
 		}.bind(this));

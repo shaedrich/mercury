@@ -155,13 +155,6 @@ export default Ember.Mixin.create(
 			setSortBy(sortBy) {
 				this.setSortBy(sortBy);
 			},
-
-			///**
-			// * @returns {void}
-			// */
-			//toggleHideDeleted() {
-			//	this.toggleHideDeleted();
-			//},
 		}
 	}
 );
