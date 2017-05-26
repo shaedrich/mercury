@@ -100,5 +100,9 @@
 {{> tracking-pixels}}
 {{> tracking-nielsen}}
 {{> tracking-netzathleten}}
+{{#if settings.inContextTranslationsEnabled}}
+	{{> crowdin-incontext}}
+{{/if}}
+
 </body>
 </html>
