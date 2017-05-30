@@ -38,9 +38,11 @@ export default Service.extend({
 	loadFirstPage() {
 		if (this.get('isUserAnonymous') === true
 			|| this.get('isLoading') === true
-			|| this.get('nextPage') !== null) {
+			|| this.get('nextPage') !== null
+			|| this.get('firstPageLoaded') === true) {
 			return;
 		}
+		this.set('firstPageLoaded', true);
 		this.set('isLoading', true);
 		this.get('model')
 			.loadFirstPageReturningNextPageLink()

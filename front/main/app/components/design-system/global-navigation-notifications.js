@@ -15,7 +15,6 @@ export default Component.extend(NotificationsScrollMenuMixin, MarkAllNotificatio
 		onOpen() {
 			trackOpenMenu(this.get('notifications').getUnreadCount());
 			this.get('notifications').loadFirstPage();
-			this.get('attrs').onOpen();
 		}
 	}
 });
