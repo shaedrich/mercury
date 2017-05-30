@@ -1,13 +1,13 @@
 <fieldset class="discussion-fieldset" disabled={{disabled}}>
 	<legend>
-		Moderation
+		{{i18n 'main.moderation-header' ns='discussion'}}
 	</legend>
 	<ul class="discussion-toggle-deleted-container">
 		<li>
 			{{wikia-ui-components.fancy-check-box
 				inputId='toggle-deleted-checkbox'
 				isChecked=hideDeleted
-				label='Hide Deleted'
+				label=(i18n 'main.hide-deleted' ns='discussion')
 				disabled=false
 				update=(action toggleHideDeleted)
 			}}
