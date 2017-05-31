@@ -2,8 +2,7 @@ import sinon from 'sinon';
 import hbs from 'htmlbars-inline-precompile';
 import {test, moduleForComponent} from 'ember-qunit';
 
-const dropdownSelector = '.wds-dropdown',
-	toggleSelector = '.wds-dropdown__toggle',
+const toggleSelector = '.wds-dropdown__toggle',
 	contentSelector = '.wds-dropdown__content',
 	toggleSvgPattern = '<svg class="wds-icon wds-icon-tiny wds-dropdown__toggle-chevron">.*<\/svg>';
 
@@ -42,23 +41,4 @@ test('handles additional attributes', function (assert) {
 
 	assert.equal(this.$(toggleSelector).prop('title'), 'Title', 'Toggle has title attribute');
 	assert.ok(this.$(contentSelector).hasClass('wds-is-right-aligned'), 'Content', 'Content is right aligned');
-});
-
-test('handles class names', function (assert) {
-	this.render(hbs`
-		{{#design-system.wds-dropdown class="test-dropdown" as |dropdown|}}
-			{{#dropdown.toggle class="test-dropdown-toggle"}}Toggle{{/dropdown.toggle}}
-			{{#dropdown.content class="test-dropdown-content"}}Content{{/dropdown.content}}
-		{{/design-system.wds-dropdown}}
-	`);
-
-	assert.ok(this.$(dropdownSelector).is('.wds-dropdown, .test-dropdown'), 'Dropdown has correct classes');
-	assert.ok(this.$(toggleSelector).is('.wds-dropdown-toggle, .test-dropdown-toggle'), 'Toggle has correct classes');
-	assert.ok(this.$(contentSelector).is('.wds-dropdown-content, .test-dropdown-content'), 'Content has correct classes');
-
-	assert.notOk(this.$(dropdownSelector).hasClass('wds-is-active'), 'Not active at first');
-	this.$(toggleSelector).click();
-	assert.ok(this.$(dropdownSelector).hasClass('wds-is-active'), 'Active after a click');
-	this.$(toggleSelector).click();
-	assert.notOk(this.$(dropdownSelector).hasClass('wds-is-active'), 'Not active after clicking again');
 });

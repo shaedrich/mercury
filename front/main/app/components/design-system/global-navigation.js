@@ -7,24 +7,15 @@ const {Component, Object: EmberObject, computed} = Ember;
 export default Component.extend(Headroom, {
 	classNames: ['wds-global-navigation-wrapper'],
 	model: EmberObject.create(M.prop('globalNavigation')),
-	activeDropdownCount: 0,
 	headroomEnabled: computed.bool('model.user'),
 	searchIsActive: false,
-	shouldHide: computed.not('activeDropdownCount'),
+	shouldHide: computed.not('searchIsActive'),
 
 	didInsertElement() {
 		this.initHeadroom({}, this.$().outerHeight(true));
 	},
 
 	actions: {
-		onDropdownClose() {
-			this.decrementProperty('activeDropdownCount');
-		},
-
-		onDropdownOpen() {
-			this.incrementProperty('activeDropdownCount');
-		},
-
 		onHeadroomPin() {
 			if (this.get('shouldHide')) {
 				this.get('triggerGlobalNavigationHeadroomStateChange')(true);
@@ -38,7 +29,7 @@ export default Component.extend(Headroom, {
 				const headroom = this.get('headroom');
 
 				/**
-				 * While dropdowns are opened we don't want to hide the global navigation.
+				 * While search suggestions are opened we don't want to hide the global navigation.
 				 * headroom.destroy() is not a viable option because headroom.init()
 				 * has a few optimizations that make it an asynchronous method.
 				 * We want the interactions to be in sync so instead we revert classes changed by the Headroom.
@@ -57,12 +48,10 @@ export default Component.extend(Headroom, {
 
 		activateSearch() {
 			this.set('searchIsActive', true);
-			this.incrementProperty('activeDropdownCount');
 		},
 
 		deactivateSearch() {
 			this.set('searchIsActive', false);
-			this.decrementProperty('activeDropdownCount');
 		}
 	}
 });
