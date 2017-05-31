@@ -7,7 +7,7 @@ export default Ember.Component.extend(
 	ResponsiveMixin,
 	{
 		discussionSort: Ember.inject.service(),
-		discussionToggleDeleted: Ember.inject.service(),
+		discussionHideDeleted: Ember.inject.service(),
 
 		actions: {
 			deleteAllPosts() {

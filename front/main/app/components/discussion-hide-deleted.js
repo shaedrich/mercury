@@ -5,8 +5,8 @@ import ResponsiveMixin from '../mixins/responsive';
 export default Ember.Component.extend(
 	ResponsiveMixin,
 	{
-		classNames: ['discussion-toggle-deleted'],
-		discussionToggleDeleted: Ember.inject.service(),
+		classNames: ['discussion-hide-deleted'],
+		discussionHideDeleted: Ember.inject.service(),
 
 		actions: {
 			/**

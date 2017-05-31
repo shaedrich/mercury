@@ -42,11 +42,7 @@ export default Ember.Service.extend({
 		const userId = this.get('currentUser').get('userId');
 		return request(M.getUserPreferencesServiceURL(`/${userId}`), {
 			method: 'GET'
-		}).then((preferences) => {
-			return preferences;
-		}, (reason) => {
-			return {};
-		});
+		}).then(preferences => preferences, reason => {});
 	},
 
 	/**
@@ -82,12 +78,12 @@ export default Ember.Service.extend({
 
 		request(M.getUserPreferencesServiceURL(`/${userId}/global/hideDeleted`), {
 			method: 'GET'
-		}).then((preference => {
+		}).then(preference => {
 			this.setHideDeleted(preference.value === 'true');
 			this.applyHideDeleted(false);
-		}).bind(this), (reason => {
+		}, reason => {
 			this.setHideDeleted(false);
 			this.applyHideDeleted(false);
-		}).bind(this));
+		});
 	}
  });

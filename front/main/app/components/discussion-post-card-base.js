@@ -11,7 +11,7 @@ export default Component.extend(
 	{
 		classNameBindings: ['isNew', 'isDeleted', 'isReported', 'isLocked', 'showTopNote', 'isHidden'],
 
-		discussionToggleDeleted: Ember.inject.service(),
+		discussionHideDeleted: Ember.inject.service(),
 
 		content: Ember.computed.oneWay('post.rawContent'),
 		isDeleted: computed.alias('post.isDeleted'),
@@ -21,8 +21,8 @@ export default Component.extend(
 		shouldActivateLinks: Ember.computed.alias('isDetailsView'),
 		shouldTruncateContent: Ember.computed.not('isDetailsView'),
 
-		isHidden: computed('isDeleted', 'discussionToggleDeleted.hideDeleted', function () {
-			return this.get('isDeleted') && this.get('discussionToggleDeleted').get('hideDeleted');
+		isHidden: computed('isDeleted', 'discussionHideDeleted.hideDeleted', function () {
+			return this.get('isDeleted') && this.get('discussionHideDeleted').get('hideDeleted');
 		}),
 
 		showTopNote: computed('isDeleted', 'isReported', 'isLocked', 'showRepliedTo', function () {

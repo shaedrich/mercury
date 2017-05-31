@@ -12,11 +12,11 @@ export default Ember.Component.extend(
 		classNames: ['discussion-filters'],
 		currentUser: Ember.inject.service(),
 		discussionSort: Ember.inject.service(),
-		discussionToggleDeleted: Ember.inject.service(),
+		discussionHideDeleted: Ember.inject.service(),
 		popover: nearestParent('pop-over'),
 		showApplyButton: false,
 		showSortSection: false,
-		willHideDeleted: Ember.computed.alias('discussionToggleDeleted.willHideDeleted'),
+		willHideDeleted: Ember.computed.alias('discussionHideDeleted.willHideDeleted'),
 
 		/**
 		 * @returns {boolean}
@@ -95,7 +95,7 @@ export default Ember.Component.extend(
 					);
 				}
 
-				this.get('discussionToggleDeleted').applyHideDeleted(true);
+				this.get('discussionHideDeleted').applyHideDeleted(true);
 
 				const popover = this.get('popover');
 
@@ -114,7 +114,7 @@ export default Ember.Component.extend(
 			},
 
 			toggleHideDeleted() {
-				this.get('discussionToggleDeleted').toggleHideDeleted();
+				this.get('discussionHideDeleted').toggleHideDeleted();
 			},
 		}
 	}

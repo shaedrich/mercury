@@ -59,7 +59,7 @@
 			{{/if}}
 			{{#unless responsive.isMobile}}
 				{{#if model.canModerate}}
-					{{discussion-toggle-deleted
+					{{discussion-hide-deleted
 						disabled=false
 						hideDeleted=hideDeleted
 						toggleHideDeleted=(action 'toggleHideDeleted')
