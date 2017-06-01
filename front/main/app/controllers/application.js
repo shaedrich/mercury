@@ -17,6 +17,7 @@ export default Ember.Controller.extend(
 			'isGlobalNavigationPositionFixed',
 			'isGlobalNavigationHeadroomPinnedOrDisabled'
 		),
+		currentUrl: null,
 
 		/**
 		 * @returns {void}
@@ -37,6 +38,12 @@ export default Ember.Controller.extend(
 
 			this._super();
 		},
+
+		onPathChanged: Ember.observer('target.url', function () {
+			Ember.run.next(this, function () {
+				this.set('currentUrl', window.location.href);
+			});
+		}),
 
 		actions: {
 			/**
