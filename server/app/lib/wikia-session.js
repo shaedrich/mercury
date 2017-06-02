@@ -61,7 +61,9 @@ export default function scheme() {
 					code: accessToken
 				}),
 				{
-					headers: getInternalHeaders(request),
+					headers: getInternalHeaders(request, {
+						'X-Wikia-Internal-Request': '1'
+					}),
 					timeout: settings.helios.timeout
 				},
 				callback
@@ -69,4 +71,3 @@ export default function scheme() {
 		}
 	};
 }
-
