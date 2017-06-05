@@ -13,5 +13,8 @@ export default Component.extend({
 
 		return classMap[this.get('model.title.key')] || '';
 	}),
-	href: computed.alias('model.href')
+	currentUrl: null,
+	href: computed('model.href', 'currentUrl', function () {
+		return `${this.get('model.href')}?redirect=${encodeURIComponent(this.get('currentUrl'))}`;
+	})
 });
