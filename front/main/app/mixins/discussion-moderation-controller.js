@@ -3,6 +3,56 @@ import Ember from 'ember';
 const {Mixin} = Ember;
 
 export default Mixin.create({
+	modalDialog: Ember.inject.service(),
+
+	/**
+	 * Opens a modal dialog with translated message
+	 * @param {Object} openDialogParams params for display modal method [see: modalDialog::display]
+	 * @param {string} openDialogParams.message text for dialog modal body message
+	 * @param {string} [openDialogParams.header] text for dialog modal title
+	 * @returns {void}
+	 */
+	openDialog(openDialogParams) {
+		const displayParams = Object.assign(
+				{},
+				{name: 'modal-dialog-confirm-report'},
+				openDialogParams
+		);
+
+		this.get('modalDialog').display(displayParams);
+	},
+
+	/**
+	 * Renders a message to display to an anon trying to follow a post
+	 * @param {Object} item
+	 * @returns {void}
+	 */
+	showConfirmReportModal(item) {
+		let message, confirmText, permanentActionText = i18n.t('main.report-permanent-action-text', {ns: 'discussion'});
+		if (item.isReply) {
+			message = `${i18n.t('main.report-reply-confirm-text', {ns: 'discussion'})} ${permanentActionText}`;
+			confirmText = i18n.t('main.report-reply', {ns: 'discussion'});
+		} else {
+			message = `${i18n.t('main.report-post-confirm-text', {ns: 'discussion'})} ${permanentActionText}`;
+			confirmText = i18n.t('main.report-post', {ns: 'discussion'});
+		}
+
+		this.openDialog({
+			message,
+			confirmButtonText: confirmText,
+			confirmCallback: () => this.performReport(item)
+		});
+	},
+
+	/**
+	 * Reports a post or reply
+	 * @param {Object} item
+	 * @returns {void}
+	 */
+	performReport(item) {
+		this.get('target').send('report', item);
+	},
+
 	actions: {
 		/**
 		 * @param {Object} post
@@ -57,7 +107,7 @@ export default Mixin.create({
 		 * @returns {void}
 		 */
 		report(item) {
-			this.get('target').send('report', item);
+			this.showConfirmReportModal(item);
 		},
 
 		/**

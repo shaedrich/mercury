@@ -147,7 +147,10 @@
     "find-posts-to-follow": "Find posts to follow",
     "reported-content": "Reported Content",
     "user-activity": "Discussions Insights",
-    "moderator-tools": "Moderator Tools"
+    "moderator-tools": "Moderator Tools",
+    "report-post-confirm-text": "Report this post to the moderators?",
+    "report-reply-confirm-text": "Report this reply to the moderators?",
+    "report-permanent-action-text": "This action can't be undone."
   },
   "user-activity":{
     "active-users-toggle-option": "Active Users",
