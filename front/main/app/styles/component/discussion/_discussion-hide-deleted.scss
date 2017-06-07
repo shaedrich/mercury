@@ -8,13 +8,27 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 
-		&:hover {
-			background-color: $discussion-category-hover-background;
+		@media #{$desktop-range} {
+			&:hover {
+				background-color: $discussion-category-hover-background;
+			}
 		}
 	}
 
 	@media #{$mobile-range} {
 		margin-top: 8px;
+	}
+}
+
+.dark-theme {
+	.discussion-hide-deleted-container {
+		label {
+			@media #{$desktop-range} {
+				&:hover {
+					background-color: $dark-discussion-category-hover-background;
+				}
+			}
+		}
 	}
 }
 
