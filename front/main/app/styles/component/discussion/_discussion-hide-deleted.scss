@@ -21,13 +21,17 @@
 }
 
 .dark-theme {
-	.discussion-hide-deleted-container {
-		label {
-			@media #{$desktop-range} {
+	@media #{$desktop-range} {
+		.discussion-hide-deleted-container {
+			label {
 				&:hover {
 					background-color: $dark-discussion-category-hover-background;
 				}
 			}
+		}
+
+		legend {
+			color: $dark-discussion-rail-header-color;
 		}
 	}
 }
