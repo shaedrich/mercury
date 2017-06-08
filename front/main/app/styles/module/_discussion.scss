@@ -97,17 +97,24 @@ body.discussions {
 	}
 
 	&.validate,
-	&.reported-delete {
+	&.reported-delete,
+	&.undelete{
 		height: 40px;
 		width: 40px;
 	}
 
-	&.validate {
+	&.validate,
+	&.undelete {
 		fill: $discussion-submit-icon-color;
 	}
 
-	&.reported-delete {
+	&.reported-delete,
+	&.undelete {
 		margin-right: $post-card-right-icon-margin;
+	}
+
+	&.undelete {
+		padding: 10px;
 	}
 
 	&.locked {
@@ -407,7 +414,7 @@ body.discussions {
 		}
 
 		&.is-parent-deleted .icon:not(.delete),
-		&.is-deleted .icon:not(.delete) {
+		&.is-deleted .icon:not(.delete):not(.undelete) {
 			fill: $discussion-deleted-actions-color;
 		}
 
