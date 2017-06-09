@@ -11,7 +11,8 @@ export default Component.extend({
 	canModerate: computed.readOnly('post.userData.permissions.canModerate'),
 	isLocked: computed.readOnly('post.isLocked'),
 	showButtons: computed('isReported', 'post.isDeleted', 'canModerate', function () {
-		return (this.get('isReported') || this.get('post.isDeleted')) && this.get('canModerate');
+		return (this.get('isReported') || this.get('post.isDeleted'))
+				&& this.get('canModerate');
 	}),
 	modalDialog: inject.service(),
 
@@ -189,7 +190,7 @@ export default Component.extend({
 		},
 
 		/**
-		 * Unelete item
+		 * Undelete item
 		 * @param {Object} item - post or reply
 		 * @returns {void}
 		 */
