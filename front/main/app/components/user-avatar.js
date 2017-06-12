@@ -7,6 +7,7 @@ export default Ember.Component.extend({
 
 		return userName.trim();
 	}),
+	userId: null,
 	/**
 	 * Returns link to the post author's user page
 	 * @returns {string}
@@ -17,8 +18,10 @@ export default Ember.Component.extend({
 			title: this.get('profileName'),
 		});
 	}),
-	displayName: Ember.computed('profileName', function () {
-		return this.get('anonymous') ? i18n.t('app.username-anonymous') : this.get('profileName');
+	displayName: Ember.computed('profileName', 'userId', function () {
+		return this.get('userId') === '0' ? i18n.t('app.username-anonymous') : this.get('profileName');
 	}),
-	shouldWrapInHref: true
+	shouldWrapInHref: Ember.computed('userId', function () {
+		return this.get('userId') !== '0';
+	})
 });
