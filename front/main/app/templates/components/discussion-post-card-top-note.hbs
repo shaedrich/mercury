@@ -18,11 +18,13 @@
 {{/if}}
 {{#if showButtons}}
 	<div class="actions columns large-4 small-4">
-		{{#if canModerate}}
+		{{#if post.isDeleted}}
+			<a class="undelete-link" {{action 'undelete' post}}>{{svg 'wds-icons-trash-open-small' viewBox='0 0 18 18' class='icon undelete'}}</a>
+		{{else}}
 			<a class="validate-link" {{action 'approve' post isReply}}>{{svg 'checkmark' class='icon validate'}}</a>
-		{{/if}}
-		{{#if canDelete}}
-			<a class="delete-link" {{action 'delete' post isReply}}>{{svg 'trash' class='icon reported-delete'}}</a>
+			{{#if canDelete}}
+				<a class="delete-link" {{action 'delete' post isReply}}>{{svg 'trash' class='icon reported-delete'}}</a>
+			{{/if}}
 		{{/if}}
 	</div>
 {{/if}}
