@@ -10,7 +10,10 @@ export default Component.extend({
 	canDelete: computed.readOnly('post.userData.permissions.canDelete'),
 	canModerate: computed.readOnly('post.userData.permissions.canModerate'),
 	isLocked: computed.readOnly('post.isLocked'),
-	showButtons: computed.and('isReported', 'canModerate'),
+	showButtons: computed('isReported', 'post.isDeleted', 'canModerate', function () {
+		return (this.get('isReported') || this.get('post.isDeleted'))
+				&& this.get('canModerate');
+	}),
 	modalDialog: inject.service(),
 
 	isReportDetailsVisible: false,
@@ -184,6 +187,15 @@ export default Component.extend({
 				confirmButtonText: i18n.t('main.modal-dialog-delete', {ns: 'discussion'}),
 				confirmCallback: (() => this.get('delete')(item)),
 			});
+		},
+
+		/**
+		 * Undelete item
+		 * @param {Object} item - post or reply
+		 * @returns {void}
+		 */
+		undelete(item) {
+			this.get('undelete')(item);
 		},
 
 		/**
