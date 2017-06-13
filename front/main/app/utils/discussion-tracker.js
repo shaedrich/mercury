@@ -100,7 +100,9 @@ const trackActions = {
 	PostLightboxOpen: 'PostLightboxOpen',
 	PostLightboxButtonClose: 'PostLightboxButtonClose',
 	PostLightboxKeyClose: 'PostLightboxKeyClose',
-	PostLightboxOverlayClose: 'PostLightboxOverlayClose'
+	PostLightboxOverlayClose: 'PostLightboxOverlayClose',
+	ReportConfirm: 'ReportConfirm',
+	ReportCancel: 'ReportCancel'
 };
 
 /**

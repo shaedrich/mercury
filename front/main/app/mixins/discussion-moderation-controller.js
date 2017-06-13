@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import {track, trackActions} from '../utils/discussion-tracker';
 
 const {Mixin} = Ember;
 
 export default Mixin.create({
 	modalDialog: Ember.inject.service(),
+	currentUser: Ember.inject.service(),
 
 	/**
 	 * Opens a modal dialog with translated message
@@ -40,7 +42,7 @@ export default Mixin.create({
 		this.openDialog({
 			message,
 			confirmButtonText: confirmText,
-			confirmCallback: () => this.performReport(item)
+			confirmCallback: (confirmed) => (confirmed ? this.performReport(item) : this.cancelReport(item))
 		});
 	},
 
@@ -51,6 +53,22 @@ export default Mixin.create({
 	 */
 	performReport(item) {
 		this.get('target').send('report', item);
+		track(trackActions.ReportConfirm, {
+			type: item.isReply ? 'reply' : 'post',
+			context: this.get('currentUser.name')
+		});
+	},
+
+	/**
+	 * Handles cancellation of a report
+	 * @param {Object} item
+	 * @returns {void}
+	 */
+	cancelReport(item) {
+		track(trackActions.ReportCancel, {
+			type: item.isReply ? 'reply' : 'post',
+			context: this.get('currentUser.name')
+		});
 	},
 
 	actions: {
