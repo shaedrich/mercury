@@ -13,7 +13,10 @@ function getContext(request) {
 		url: authUtils.getHeliosInternalUrl(`/token/${token}`),
 		options: {
 			headers: getInternalHeaders(request, {
-				'X-Wikia-UserId': userId
+				// TODO (PLATFORM-3075): remove X-Wikia-UserId once Helios is deployed
+				// leaving for now for backwards compatibility during release
+				'X-Wikia-UserId': userId,
+				'X-Wikia-AccessToken': token
 			}),
 			timeout: settings.helios.timeout
 		},
