@@ -66,7 +66,7 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 						} else if (postsWithOpenGraph.length > 0) {
 							// Use largest OpenGraph image in replies
 							let postOpenGraphData = postsWithOpenGraph.map(post => post._embedded.openGraph[0]);
-							postOpenGraphData.sort((a,b) => b.imageWidth*b.imageHeight - a.imageWidth*a.imageHeight);
+							postOpenGraphData.sort((a, b) => b.imageWidth * b.imageHeight - a.imageWidth * a.imageHeight);
 							const largestOpenGraph = postOpenGraphData[0];
 							openGraphData.image = largestOpenGraph.imageUrl;
 							openGraphData.imageHeight = largestOpenGraph.imageHeight;
