@@ -30,15 +30,10 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 
 		if (regexMatch !== null) {
 			const apiUrl = `http://${settings.servicesDomain}/${settings.discussions.baseAPIPath}` +
-				`/${wikiVars.id}/threads/${regexMatch[1]}`;
+				`/${wikiVars.id}/threads/${regexMatch[1]}?responseGroup=full`;
 
 			openGraphData.type = 'article';
 			openGraphData.url = wikiVars.basePath + request.path;
-			// Use Fandom logo as default image
-			openGraphData.image = `http:${getStaticAssetPath(settings, request)}` +
-				'common/images/og-fandom-logo.jpg';
-			openGraphData.imageWidth = 1200;
-			openGraphData.imageHeight = 1200;
 
 			/**
 			 * @param {Function} resolve
@@ -60,11 +55,33 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 							i18n.t('main.share-default-title', {siteName: wikiVars.siteName, ns: 'discussion'});
 						// Keep description to 175 characters or less
 						openGraphData.description = content.substr(0, 175);
-						if (wikiVars.image) {
+
+						const postsWithOpenGraph = response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph);
+						if (response.payload._embedded.openGraph) {
+							// Use OpenGraph in main post
+							const openGraph = response.payload._embedded.openGraph[0];
+							openGraphData.image = openGraph.imageUrl;
+							openGraphData.imageHeight = openGraph.imageHeight;
+							openGraphData.imageWidth = openGraph.imageWidth;
+						} else if (postsWithOpenGraph.length > 0) {
+							// Use largest OpenGraph image in replies
+							let postOpenGraphData = postsWithOpenGraph.map(post => post._embedded.openGraph[0]);
+							postOpenGraphData.sort((a,b) => b.imageWidth*b.imageHeight - a.imageWidth*a.imageHeight);
+							const largestOpenGraph = postOpenGraphData[0];
+							openGraphData.image = largestOpenGraph.imageUrl;
+							openGraphData.imageHeight = largestOpenGraph.imageHeight;
+							openGraphData.imageWidth = largestOpenGraph.imageWidth;
+						} else if (wikiVars.image) {
+							// Use the community avatar
 							openGraphData.image = wikiVars.image;
-							delete openGraphData.imageWidth;
-							delete openGraphData.imageHeight;
+						} else {
+							// Use Fandom logo as default image
+							openGraphData.image = `http:${getStaticAssetPath(settings, request)}` +
+									'common/images/og-fandom-logo.jpg';
+							openGraphData.imageWidth = 1200;
+							openGraphData.imageHeight = 1200;
 						}
+
 						resolve(openGraphData);
 					})
 					/**
