@@ -43,6 +43,12 @@
 				triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
 				uploadMethod=(action this.attrs.uploadCommunityBadge)
 			}}
+			{{#unless mainPage}}
+				{{discussion-side-button
+					route='discussion'
+				}}
+			{{/unless}}
+
 			{{#if categoriesInRail}}
 				{{#if canShowCategories}}
 					{{discussion-categories
