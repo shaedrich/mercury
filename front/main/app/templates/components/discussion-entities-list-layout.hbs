@@ -57,10 +57,19 @@
 					}}
 				{{/if}}
 			{{/if}}
+			{{#unless responsive.isMobile}}
+				{{#if model.canModerate}}
+					{{discussion-hide-deleted
+						disabled=false
+						hideDeleted=hideDeleted
+						toggleHideDeleted=(action 'toggleHideDeleted')
+					}}
+				{{/if}}
+			{{/unless}}
 			{{discussion-sort
-					disabled=isSortingDisabled
-					sortBy=sortBy
-					setSortBy=(action 'setSortBy')
+				disabled=isSortingDisabled
+				sortBy=sortBy
+				setSortBy=(action 'setSortBy')
 			}}
 		</div>
 		<div class="small-12 large-6 extra-large-6 columns">
