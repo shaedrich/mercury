@@ -11,6 +11,7 @@ const DiscussionPostModel = DiscussionBaseModel.extend(
 	DiscussionModerationModelMixin,
 	DiscussionContributionModelMixin,
 	{
+		isLoadingMore: false,
 		links: {
 			next: null,
 			previous: null,
@@ -62,10 +63,17 @@ const DiscussionPostModel = DiscussionBaseModel.extend(
 		 * @returns {Ember.RSVP.Promise}
 		 */
 		loadAnotherPage(serviceUrl, isNextPageCall) {
+			if (this.get('isLoadingMore')) {
+				return new Ember.RSVP.Promise((resolve, reject) => {});
+			} else {
+				this.set('isLoadingMore', true);
+			}
 			return request(M.getDiscussionServiceUrl(serviceUrl)).then((data) => {
 				this.onLoadAnotherPageSuccess(data, isNextPageCall);
 			}).catch((err) => {
 				this.handleLoadMoreError(err);
+			}).finally(() => {
+				this.set('isLoadingMore', false);
 			});
 		},
 
