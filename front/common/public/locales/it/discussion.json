@@ -147,9 +147,7 @@
     "find-posts-to-follow":"Trova post da seguire",
     "reported-content":"Contenuti segnalati",
     "user-activity":"Insights su Discussioni",
-    "moderator-tools":"Strumenti di moderazione",
-    "moderation-header":"Moderazione",
-    "hide-deleted":"Nascondi rimossi"
+    "moderator-tools":"Strumenti di moderazione"
   },
   "user-activity":{
     "active-users-toggle-option":"Utenti attivi",

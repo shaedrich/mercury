@@ -147,9 +147,7 @@
     "find-posts-to-follow":"查找需要关注的帖子",
     "reported-content":"举报的内容",
     "user-activity":"讨论版一览表",
-    "moderator-tools":"版主工具",
-    "moderation-header":"核查",
-    "hide-deleted":"隐藏已删除内容"
+    "moderator-tools":"版主工具"
   },
   "user-activity":{
     "active-users-toggle-option":"活跃用户",

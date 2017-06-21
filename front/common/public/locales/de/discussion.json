@@ -147,9 +147,7 @@
     "find-posts-to-follow":"Finde Beiträge, denen du folgen möchtest",
     "reported-content":"Gemeldete Inhalte",
     "user-activity":"Diskussionen Insights",
-    "moderator-tools":"Moderation",
-    "moderation-header":"Moderation",
-    "hide-deleted":"Gelöschtes ausblenden"
+    "moderator-tools":"Moderation"
   },
   "user-activity":{
     "active-users-toggle-option":"Aktive Benutzer",
