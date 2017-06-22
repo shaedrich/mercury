@@ -140,14 +140,16 @@
     "image-save-failed":"Save failed. Please try again.",
     "upload-image-button-text":"Upload image",
     "category-select-tooltip-text":"Select",
-    "tab-all":"All",
-    "tab-following":"Following",
+    "tab-all":"Iedereen",
+    "tab-following":"Gevolgde pagina's",
     "no-followed-posts-header":"Welcome to your Following tab.",
     "no-followed-posts-text":"Hit the “Follow” icon at the bottom of any post to fill your list with discussions that matter most to you. We’ll put them here and notify you of new activity.",
     "find-posts-to-follow":"Find posts to follow",
     "reported-content":"Reported Content",
     "user-activity":"Discussions Insights",
-    "moderator-tools":"Moderator Tools"
+    "moderator-tools":"Moderator Tools",
+    "moderation-header":"Moderation",
+    "hide-deleted":"Hide Deleted"
   },
   "user-activity":{
     "active-users-toggle-option":"Active Users",
