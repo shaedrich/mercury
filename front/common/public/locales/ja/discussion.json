@@ -147,7 +147,9 @@
     "find-posts-to-follow":"フォローする投稿を探す",
     "reported-content":"報告された投稿",
     "user-activity":"インサイト",
-    "moderator-tools":"モデレーター専用ツール"
+    "moderator-tools":"モデレーター専用ツール",
+    "moderation-header":"モデレーション機能",
+    "hide-deleted":"削除した投稿を非表示にする"
   },
   "user-activity":{
     "active-users-toggle-option":"アクティブユーザー",
