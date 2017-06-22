@@ -147,9 +147,7 @@
     "find-posts-to-follow":"Поиск сообщений для подписки",
     "reported-content":"Нарушения",
     "user-activity":"Исследования",
-    "moderator-tools":"Панель модератора",
-    "moderation-header":"Модерация",
-    "hide-deleted":"Скрыть удалённые"
+    "moderator-tools":"Панель модератора"
   },
   "user-activity":{
     "active-users-toggle-option":"Активные<br>участники",

@@ -147,9 +147,7 @@
     "find-posts-to-follow":"Find posts to follow",
     "reported-content":"Reported Content",
     "user-activity":"Discussions Insights",
-    "moderator-tools":"Moderator Tools",
-    "moderation-header":"Moderation",
-    "hide-deleted":"Hide Deleted"
+    "moderator-tools":"Moderator Tools"
   },
   "user-activity":{
     "active-users-toggle-option":"Active Users",
