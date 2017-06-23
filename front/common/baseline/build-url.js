@@ -195,4 +195,12 @@ if (typeof window.M === 'undefined') {
 	M.getOnSiteNotificationsServiceUrl = function (path = '') {
 		return `https://${M.prop('servicesDomain')}/${M.prop('onSiteNotificationsBaseRoute')}${path}`;
 	};
+
+	/**
+	 * @param {string} [path='']
+	 * @returns {string}
+	 */
+	M.getUserPreferencesServiceURL = function (path = '') {
+		return `https://${M.prop('servicesDomain')}/${M.prop('userPreferencesBaseRoute')}${path}`;
+	};
 })(M);
