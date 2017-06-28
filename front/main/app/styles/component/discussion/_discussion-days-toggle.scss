@@ -1,4 +1,4 @@
-.discussion-days-toggle {
+.discussion-days-toggle, .discussion-header-dropdown {
 	color: $discussion-days-toggle-color;
 	display: flex;
 	flex-direction: column;
@@ -25,11 +25,19 @@
 
 	.wds-dropdown__content {
 		color: $discussion-days-toggle-color;
+		text-align: left;
+
+	}
+
+	.has-lines-between {
+		li+li {
+			border-top: 1px solid $discussion-rail-separator-color;
+		}
 	}
 }
 
 .discussion-header {
-	.discussion-days-toggle {
+	.discussion-days-toggle, .discussion-header-dropdown {
 		color: $discussion-header-days-toggle-color;
 		float: right;
 		height: 100%;

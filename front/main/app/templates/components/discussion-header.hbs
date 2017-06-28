@@ -23,7 +23,7 @@
 			</div>
 		{{/if}}
 		{{#if hasFilters}}
-			<div class="sort {{if isFilterApplied 'applied'}}" id="{{discussionMobileFilterId}}">
+			<div class="header-dropdown-button {{if isFilterApplied 'applied'}}" id="{{discussionMobileFilterId}}">
 				{{svg 'filter-default' class='icon filter-default'}}
 				{{svg 'filter-applied' class='icon filter-applied'}}
 			</div>
@@ -44,30 +44,19 @@
 		{{/if}}
 	{{/unless}}
 	{{#if canDeleteAll}}
-		<div class="sort {{if isFilterApplied 'applied'}}" id="{{discussionMobileActionsId}}">
-			Moderation ^
-		</div>
-
-		{{#pop-over for=discussionMobileActionsId on='click' flow='downCentered' class='filters-popover'}}
-			<div class="active-element-theme-color">
-				<ul class="wds-list wds-has-lines-between discussion-categories-list-content'}}">
-					<li>
-						<div {{action this.attrs.deleteAllPosts}}>
-							{{svg 'delete' viewBox='0 0 16 19' class='icon delete'}}
-							{{i18n 'main.delete-all' ns='discussion'}}
-						</div>
-					</li>
-
-					{{#if showDiscussionsLogLink}}
-						<li>
-							<a href={{discussionsLogUrl}} class="active-element-theme-color">
-								{{svg 'documents' viewBox='0 0 16 19' class='icon'}}
-								{{i18n 'main.view-discussions-log' ns='discussion'}}
-							</a>
-						</li>
-					{{/if}}
-				</ul>
-			</div>
-		{{/pop-over}}
+		{{#discussion-header-dropdown}}
+			<li {{action this.attrs.deleteAllPosts}} class="active-element-theme-color">
+				{{svg 'delete' viewBox='0 0 16 19' class='icon delete'}}
+				{{i18n 'main.delete-all' ns='discussion'}}
+			</li>
+			{{#if showDiscussionsLogLink}}
+				<li>
+					<a href={{discussionsLogUrl}} class="active-element-theme-color">
+						{{svg 'documents' viewBox='0 0 16 19' class='icon'}}
+						{{i18n 'main.view-discussions-log' ns='discussion'}}
+					</a>
+				</li>
+			{{/if}}
+		{{/discussion-header-dropdown}}
 	{{/if}}
 </div>
