@@ -42,7 +42,7 @@
     "all-discussions-link-mobile":"모든 토론",
     "back-to-discussions-link":"모든 토론",
     "back-to-discussions-standalone-link":"돌아가기",
-    "no-replies":"댓글이 없습니다.",
+    "no-replies":"아직 아무런 글도 작성되지 않았습니다.",
     "no-replies-be-the-first":"댓글이 없습니다. 1등으로 댓글을 달아 보세요!",
     "delete-post":"글 삭제",
     "undelete-post":"글 복구",
@@ -149,7 +149,7 @@
     "user-activity":"토론방 현황",
     "moderator-tools":"관리 도구",
     "moderation-header":"관리 도구",
-    "hide-deleted":"Hide Deleted"
+    "hide-deleted":"삭제된 글 숨기기"
   },
   "user-activity":{
     "active-users-toggle-option":"활동적인 사용자",
