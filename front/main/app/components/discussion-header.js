@@ -23,6 +23,10 @@ export default Ember.Component.extend(
 			return `discussion-mobile-filter-${this.get('elementId')}`;
 		}),
 
+		discussionMobileActionsId: Ember.computed(function () {
+			return `discussion-mobile-actions-${this.get('elementId')}`;
+		}),
+
 		discussionSort: Ember.inject.service(),
 		isFilterApplied: Ember.computed('discussionSort.sortTypes.@each.active', 'categories.@each.selected', function () {
 			return this.get('discussionSort.sortTypes.0.active') === false ||

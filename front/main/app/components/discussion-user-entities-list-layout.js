@@ -6,8 +6,14 @@ export default Ember.Component.extend(
 	DiscussionModalDialogMixin,
 	ResponsiveMixin,
 	{
+		currentUser: Ember.inject.service(),
 		discussionSort: Ember.inject.service(),
 		discussionHideDeleted: Ember.inject.service(),
+		discussionsLogUrl: Ember.computed('currentUser', function () {
+			return `${window.location.origin}/wiki/Special:DiscussionsLog?username=${this.get('currentUser.name')}`;
+		}),
+
+		showDiscussionsLogLink: Ember.computed.bool('currentUser.permissions.discussions.canViewDiscussionsLogLink'),
 
 		actions: {
 			deleteAllPosts() {

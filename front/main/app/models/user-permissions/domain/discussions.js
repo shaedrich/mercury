@@ -8,6 +8,7 @@ const permissionsMap = {
 	canReorderCategories: 'forums:displayorder',
 	canChangePostCategory: 'threads:move',
 	canUseModeratorTools: 'moderatorTools:use',
+	canViewDiscussionsLogLink: '*'
 };
 
 const DiscussionUserPermissions = Ember.Object.extend({
@@ -17,6 +18,7 @@ const DiscussionUserPermissions = Ember.Object.extend({
 	canReorderCategories: false,
 	canChangePostCategory: false,
 	canUseModeratorTools: false,
+	canViewDiscussionsLogLink: false
 });
 
 DiscussionUserPermissions.reopenClass({

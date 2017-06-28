@@ -149,7 +149,8 @@
     "user-activity": "Discussions Insights",
     "moderator-tools": "Moderator Tools",
     "moderation-header": "Moderation",
-    "hide-deleted": "Hide Deleted"
+    "hide-deleted": "Hide Deleted",
+    "view-discussions-log": "View Discussions Log"
   },
   "user-activity":{
     "active-users-toggle-option": "Active Users",

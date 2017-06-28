@@ -44,6 +44,10 @@ $site-header-height: 50px;
 		white-space: nowrap;
 	}
 
+	.pop-over-container {
+		min-width: 200px;
+	}
+
 	.icon {
 		fill: $discussion-back-button-color;
 
@@ -67,6 +71,10 @@ $site-header-height: 50px;
 			margin-left: 5px;
 			vertical-align: middle;
 			width: 7px;
+		}
+
+		&.delete {
+			fill: $wds-color-light-gray;
 		}
 	}
 
