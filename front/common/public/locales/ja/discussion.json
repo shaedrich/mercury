@@ -149,7 +149,7 @@
     "user-activity":"インサイト",
     "moderator-tools":"モデレーター専用ツール",
     "moderation-header":"モデレーション機能",
-    "hide-deleted":"削除した投稿を非表示にする"
+    "hide-deleted":"削除した投稿を非表示"
   },
   "user-activity":{
     "active-users-toggle-option":"アクティブユーザー",
