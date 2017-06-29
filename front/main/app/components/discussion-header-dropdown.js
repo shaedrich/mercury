@@ -6,6 +6,7 @@ export default Ember.Component.extend(
 		classNames: ['discussion-header-dropdown'],
 
 		isDropdownActive: false,
+		hasLinesBetween: true,
 
 		closeDropdown() {
 			this.set('isDropdownActive', false);

@@ -11,10 +11,13 @@
 		<h1 {{action 'clickMobileHeaderWikiName'}}>{{siteName}}</h1>
 	{{/if}}
 	{{#if hasDaysToggle}}
-		{{discussion-days-toggle
-			days=days
-			setDays=(action this.attrs.setDays)
+		{{#discussion-header-dropdown
+			toggleText=(i18n 'user-activity.days-count' numberOfDays=days ns='discussion')
+			hasLinesBetween=false
 		}}
+			<li {{action this.attrs.setDays 30}}>{{i18n 'user-activity.days-count' numberOfDays=30 ns='discussion'}}</li>
+			<li {{action this.attrs.setDays 90}}>{{i18n 'user-activity.days-count' numberOfDays=90 ns='discussion'}}</li>
+		{{/discussion-header-dropdown}}
 	{{/if}}
 	{{#unless hasContentError}}
 		{{#if hasNewPostButton}}
@@ -44,7 +47,9 @@
 		{{/if}}
 	{{/unless}}
 	{{#if canDeleteAll}}
-		{{#discussion-header-dropdown}}
+		{{#discussion-header-dropdown
+			toggleText=(i18n 'main.moderation-header' ns='discussion')
+		}}
 			<li {{action this.attrs.deleteAllPosts}} class="active-element-theme-color">
 				{{svg 'delete' viewBox='0 0 16 19' class='icon delete'}}
 				{{i18n 'main.delete-all' ns='discussion'}}
