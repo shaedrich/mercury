@@ -9,7 +9,7 @@ export default Ember.Component.extend(
 		currentUser: Ember.inject.service(),
 		discussionSort: Ember.inject.service(),
 		discussionHideDeleted: Ember.inject.service(),
-		discussionsLogUrl: Ember.computed('currentUser', function () {
+		discussionsLogUrl: Ember.computed('currentUser.name', function () {
 			return `${window.location.origin}/wiki/Special:DiscussionsLog?username=${this.get('currentUser.name')}`;
 		}),
 
