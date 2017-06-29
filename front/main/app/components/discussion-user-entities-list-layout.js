@@ -9,8 +9,9 @@ export default Ember.Component.extend(
 		currentUser: Ember.inject.service(),
 		discussionSort: Ember.inject.service(),
 		discussionHideDeleted: Ember.inject.service(),
-		discussionsLogUrl: Ember.computed('currentUser.name', function () {
-			return `${window.location.origin}/wiki/Special:DiscussionsLog?username=${this.get('currentUser.name')}`;
+		discussionsLogUrl: Ember.computed('model.userName', function () {
+			const escapedName = encodeURIComponent(this.get('model.userName'));
+			return `${window.location.origin}/wiki/Special:DiscussionsLog?username=${escapedName}`;
 		}),
 
 		showDiscussionsLogLink: Ember.computed.bool('currentUser.permissions.discussions.canViewDiscussionsLogLink'),
