@@ -3,7 +3,7 @@ import {track, trackActions} from '../utils/discussion-tracker';
 
 export default Ember.Component.extend(
 	{
-		classNames: ['discussion-header-dropdown'],
+		classNames: ['discussion-dropdown'],
 
 		isDropdownActive: false,
 		hasLinesBetween: true,
