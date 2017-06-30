@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import nearestParent from 'ember-pop-over/computed/nearest-parent';
 import {track, trackActions} from '../utils/discussion-tracker';
+import {isAnonymousUser} from '../utils/user-utils';
 
 export default Ember.Component.extend({
 	classNames: ['more-options'],
@@ -11,11 +12,11 @@ export default Ember.Component.extend({
 	userId: Ember.computed.readOnly('post.createdBy.id'),
 
 	userName: Ember.computed('userId', 'post.createdBy.name', function () {
-		return this.get('userId') === '0' ? i18n.t('app.username-anonymous') : this.get('post.createdBy.name');
+		return isAnonymousUser(this.get('userId')) ? i18n.t('app.username-anonymous') : this.get('post.createdBy.name');
 	}),
 
 	displayAllPostsLink: Ember.computed('userId', function () {
-		return this.get('userId') !== '0';
+		return !isAnonymousUser(this.get('userId'));
 	}),
 
 	canDelete: Ember.computed('post.isDeleted', function () {

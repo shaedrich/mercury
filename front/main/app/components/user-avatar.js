@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {isAnonymousUser} from '../utils/user-utils';
 
 export default Ember.Component.extend({
 	classNames: ['user-avatar'],
@@ -19,9 +20,9 @@ export default Ember.Component.extend({
 		});
 	}),
 	displayName: Ember.computed('profileName', 'userId', function () {
-		return this.get('userId') === '0' ? i18n.t('app.username-anonymous') : this.get('profileName');
+		return isAnonymousUser(this.get('userId')) ? i18n.t('app.username-anonymous') : this.get('profileName');
 	}),
 	shouldWrapInHref: Ember.computed('userId', function () {
-		return this.get('userId') !== '0';
+		return !isAnonymousUser(this.get('userId'));
 	})
 });
