@@ -8,6 +8,16 @@ export default Ember.Component.extend({
 	currentUser: Ember.inject.service(),
 	popover: nearestParent('pop-over'),
 
+	userId: Ember.computed.readOnly('post.createdBy.id'),
+
+	userName: Ember.computed('userId', 'post.createdBy.name', function () {
+		return this.get('userId') === '0' ? i18n.t('app.username-anonymous') : this.get('post.createdBy.name');
+	}),
+
+	displayAllPostsLink: Ember.computed('userId', function () {
+		return this.get('userId') !== '0';
+	}),
+
 	canDelete: Ember.computed('post.isDeleted', function () {
 		return !this.get('post.isDeleted') && this.get('post.userData.permissions.canDelete');
 	}),
