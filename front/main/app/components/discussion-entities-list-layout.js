@@ -10,6 +10,7 @@ export default Ember.Component.extend(
 	{
 		currentUser: Ember.inject.service(),
 		discussionSort: Ember.inject.service(),
+		discussionHideDeleted: Ember.inject.service(),
 
 		sortBy: Ember.computed('discussionSort.sortBy', 'isSortingDisabled', function () {
 			if (this.get('isSortingDisabled')) {
@@ -18,6 +19,8 @@ export default Ember.Component.extend(
 				return this.get('discussionSort.sortBy');
 			}
 		}),
+
+		hideDeleted: Ember.computed.alias('discussionHideDeleted.hideDeleted'),
 
 		hasNewPostButton: true,
 
@@ -28,6 +31,10 @@ export default Ember.Component.extend(
 				if (this.get('setSortBy')) {
 					this.get('setSortBy')(sortBy);
 				}
+			},
+			toggleHideDeleted() {
+				this.get('discussionHideDeleted').toggleHideDeleted();
+				this.get('discussionHideDeleted').applyHideDeleted(true);
 			}
 		}
 	}

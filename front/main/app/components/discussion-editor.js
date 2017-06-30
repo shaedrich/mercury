@@ -72,7 +72,7 @@ export default Ember.Component.extend(
 		failsPostConstraints() {
 			if (!this.get('isReply') && !this.get('isGuidelinesEditor')) { // is a post
 				return !this.get('category.id') || // does not have a category
-					this.getWithDefault('title', '').trim().length === 0; // does not have a title
+						(this.get('title') || '').trim().length === 0; // does not have a title
 			}
 			return false;
 		},
