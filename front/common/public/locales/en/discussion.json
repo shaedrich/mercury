@@ -148,6 +148,8 @@
     "reported-content": "Reported Content",
     "user-activity": "Discussions Insights",
     "moderator-tools": "Moderator Tools",
+    "moderation-header": "Moderation",
+    "hide-deleted": "Hide Deleted",
     "report-post-confirm-text": "Report this post to the moderators?",
     "report-reply-confirm-text": "Report this reply to the moderators?",
     "report-permanent-action-text": "This action can't be undone."

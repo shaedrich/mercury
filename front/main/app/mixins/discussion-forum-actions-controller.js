@@ -45,6 +45,7 @@ export default Ember.Mixin.create(
 				this.get('target').send('setSortBy', sortBy);
 			},
 
+
 			/**
 			 * @param {string} sortBy
 			 * @param {boolean} shouldShowReported

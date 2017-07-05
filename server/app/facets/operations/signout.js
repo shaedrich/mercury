@@ -1,19 +1,18 @@
 import * as authUtils from '../../lib/auth-utils';
 import {getInternalHeaders} from '../../lib/utils';
-import {getUserId, getAccessToken} from './page-data-helper';
+import {getAccessToken} from './page-data-helper';
 import settings from '../../../config/settings';
 import Logger from '../../lib/logger';
 import Wreck from 'wreck';
 import HttpStatus from 'http-status-codes';
 
 function getContext(request) {
-	const token = getAccessToken(request),
-		userId = getUserId(request);
+	const token = getAccessToken(request);
 	return {
 		url: authUtils.getHeliosInternalUrl(`/token/${token}`),
 		options: {
 			headers: getInternalHeaders(request, {
-				'X-Wikia-UserId': userId
+				'X-Wikia-AccessToken': token
 			}),
 			timeout: settings.helios.timeout
 		},
