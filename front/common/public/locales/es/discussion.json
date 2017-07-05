@@ -149,7 +149,10 @@
     "user-activity":"Estadísticas",
     "moderator-tools":"Herramientas del moderador",
     "moderation-header":"Moderación",
-    "hide-deleted":"Ocultar los eliminados"
+    "hide-deleted":"Ocultar los eliminados",
+    "report-post-confirm-text":"¿Reportar esta discusión a los moderadores?",
+    "report-reply-confirm-text":"¿Reportar esta respuesta a los moderadores?",
+    "report-permanent-action-text":"No se puede deshacer esta acción."
   },
   "user-activity":{
     "active-users-toggle-option":"Usuarios<br>activos",

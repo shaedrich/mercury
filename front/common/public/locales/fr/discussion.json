@@ -149,7 +149,10 @@
     "user-activity":"Statistiques",
     "moderator-tools":"Outils de modération",
     "moderation-header":"Modération",
-    "hide-deleted":"Masquer les supprimées"
+    "hide-deleted":"Masquer les supprimées",
+    "report-post-confirm-text":"Signaler cette publication aux modérateurs ?",
+    "report-reply-confirm-text":"Signaler cette réponse aux modérateurs ?",
+    "report-permanent-action-text":"Cette action ne peut pas être annulée."
   },
   "user-activity":{
     "active-users-toggle-option":"Utilisateurs<br>actifs",
