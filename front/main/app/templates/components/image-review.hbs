@@ -130,20 +130,6 @@
 			<button {{action this.attrs.reviewAndGetMoreImages}}>
 				{{i18n 'main.review-and-get-more' ns='image-review'}}
 			</button>
-			{{#unless isCoppa}}
-				<ul class="image-order-options">
-					<li id="image-order-newest-bottom"
-						{{action 'changeImageOrder' 'NEWEST'}} class={{if newestImages 'image-order--selected'
-																		  'image-order'}}>
-						{{i18n 'main.image-order-newest' ns='image-review'}}
-					</li>
-					<li id="image-order-oldest-bottom"
-						{{action 'changeImageOrder' 'OLDEST'}} class={{if oldestImages 'image-order--selected'
-																		  'image-order'}}>
-						{{i18n 'main.image-order-oldest' ns='image-review'}}
-					</li>
-				</ul>
-			{{/unless}}
 		</div>
 	{{/if}}
 
