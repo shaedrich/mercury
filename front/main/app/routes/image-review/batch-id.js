@@ -55,6 +55,28 @@ export default Route.extend({
 						persistent: false
 					});
 				});
+		},
+
+		changeImageOrder(order) {
+			const {status, source} = this.controller;
+			this.transitionTo('image-review.index', {
+				queryParams: {
+					status,
+					order,
+					source
+				}
+			});
+		},
+
+		changeImageSource(source) {
+			const {status, order} = this.controller;
+			this.transitionTo('image-review.index', {
+				queryParams: {
+					status,
+					order,
+					source
+				}
+			});
 		}
 	}
 });

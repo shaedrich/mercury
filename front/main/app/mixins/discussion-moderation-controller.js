@@ -1,8 +1,76 @@
 import Ember from 'ember';
+import {track, trackActions} from '../utils/discussion-tracker';
 
 const {Mixin} = Ember;
 
 export default Mixin.create({
+	modalDialog: Ember.inject.service(),
+	currentUser: Ember.inject.service(),
+
+	/**
+	 * Opens a modal dialog with translated message
+	 * @param {Object} openDialogParams params for display modal method [see: modalDialog::display]
+	 * @param {string} openDialogParams.message text for dialog modal body message
+	 * @param {string} [openDialogParams.header] text for dialog modal title
+	 * @returns {void}
+	 */
+	openDialog(openDialogParams) {
+		const displayParams = Object.assign(
+				{},
+				{name: 'modal-dialog-confirm-report'},
+				openDialogParams
+		);
+
+		this.get('modalDialog').display(displayParams);
+	},
+
+	/**
+	 * Renders a message to display to an anon trying to follow a post
+	 * @param {Object} item
+	 * @returns {void}
+	 */
+	showConfirmReportModal(item) {
+		let message, confirmText, permanentActionText = i18n.t('main.report-permanent-action-text', {ns: 'discussion'});
+		if (item.isReply) {
+			message = `${i18n.t('main.report-reply-confirm-text', {ns: 'discussion'})} ${permanentActionText}`;
+			confirmText = i18n.t('main.report-reply', {ns: 'discussion'});
+		} else {
+			message = `${i18n.t('main.report-post-confirm-text', {ns: 'discussion'})} ${permanentActionText}`;
+			confirmText = i18n.t('main.report-post', {ns: 'discussion'});
+		}
+
+		this.openDialog({
+			message,
+			confirmButtonText: confirmText,
+			confirmCallback: (confirmed) => (confirmed ? this.performReport(item) : this.cancelReport(item))
+		});
+	},
+
+	/**
+	 * Reports a post or reply
+	 * @param {Object} item
+	 * @returns {void}
+	 */
+	performReport(item) {
+		this.get('target').send('report', item);
+		track(trackActions.ReportConfirm, {
+			type: item.isReply ? 'reply' : 'post',
+			context: this.get('currentUser.name')
+		});
+	},
+
+	/**
+	 * Handles cancellation of a report
+	 * @param {Object} item
+	 * @returns {void}
+	 */
+	cancelReport(item) {
+		track(trackActions.ReportCancel, {
+			type: item.isReply ? 'reply' : 'post',
+			context: this.get('currentUser.name')
+		});
+	},
+
 	actions: {
 		/**
 		 * @param {Object} post
@@ -57,7 +125,7 @@ export default Mixin.create({
 		 * @returns {void}
 		 */
 		report(item) {
-			this.get('target').send('report', item);
+			this.showConfirmReportModal(item);
 		},
 
 		/**
