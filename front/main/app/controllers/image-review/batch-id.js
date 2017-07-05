@@ -8,6 +8,14 @@ export default Ember.Controller.extend({
 	actions: {
 		reviewAndGetMoreImages() {
 			this.get('target').send('reviewAndGetMoreImages');
+		},
+
+		changeImageOrder(order) {
+			this.get('target').send('changeImageOrder', order);
+		},
+
+		changeImageSource(source) {
+			this.get('target').send('changeImageSource', source);
 		}
 	}
 });

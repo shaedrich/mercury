@@ -22,7 +22,7 @@ export default Ember.Service.extend({
 	 * @param {string} displayParameters.message
 	 * @param {string} displayParameters.header
 	 * @param {string} displayParameters.confirmButtonText
-	 * @param {any} displayParameters.confirmCallback
+	 * @param {function} displayParameters.confirmCallback
 	 * @returns {void}
 	 */
 	display(displayParameters) {
