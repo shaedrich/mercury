@@ -194,7 +194,7 @@ export default class PasswordForm {
 	 * @returns {void}
 	 */
 	clearErrors() {
-		this.form.querySelectorAll('small.error').forEach(element => {
+		Array.prototype.forEach.call(this.form.querySelectorAll('small.error'), element => {
 			element.parentNode.removeChild(element);
 		});
 	}
