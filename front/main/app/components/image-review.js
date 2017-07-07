@@ -32,6 +32,10 @@ export default Ember.Component.extend({
 				this.set('thumbnailModel.ownerLookupUrl', ImageReviewItemModel.getOwnerLookupUrl(data.ownerId));
 				this.set('isModalVisible', true);
 			});
+		},
+
+		closeModal() {
+			this.set('isModalVisible', false);
 		}
 	}
 });
