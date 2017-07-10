@@ -319,3 +319,12 @@ input[type="text"].image-review-summary-input {
 .get-user-images-button {
   margin-top: 1.25rem;
 }
+
+.image-review-image-details-close-btn {
+  position: absolute;
+  top: -26px;
+  right: -26px;
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+}
