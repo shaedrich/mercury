@@ -135,5 +135,5 @@
 
 </div>
 {{#modal-dialog isVisible=isModalVisible}}
-	{{image-review-image-details thumbnailModel=thumbnailModel class='image-review-image-details'}}
+	{{image-review-image-details closeModal=(action 'closeModal') thumbnailModel=thumbnailModel class='image-review-image-details'}}
 {{/modal-dialog}}

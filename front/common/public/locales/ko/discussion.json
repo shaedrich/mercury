@@ -150,9 +150,9 @@
     "moderator-tools":"관리 도구",
     "moderation-header":"관리 도구",
     "hide-deleted":"삭제된 글 숨기기",
-    "report-post-confirm-text":"Report this post to the moderators?",
-    "report-reply-confirm-text":"Report this reply to the moderators?",
-    "report-permanent-action-text":"This action can't be undone."
+    "report-post-confirm-text":"이 글을 관리자에게 신고하시겠습니까?",
+    "report-reply-confirm-text":"이 댓글을 관리자에게 신고하시겠습니까?",
+    "report-permanent-action-text":"이 작업은 취소할 수 없습니다."
   },
   "user-activity":{
     "active-users-toggle-option":"활동적인 사용자",
