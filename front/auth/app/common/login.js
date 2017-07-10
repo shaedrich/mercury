@@ -50,6 +50,7 @@ export default class Login {
 
 		this.usernameInput = form.elements.username;
 		this.passwordInput = form.elements.password;
+		this.crumbInput = form.elements.crumb;
 		this.urlHelper = new UrlHelper();
 
 		if (window.location.search) {
@@ -68,7 +69,7 @@ export default class Login {
 	 */
 	onSubmit(event) {
 		const xhr = new XMLHttpRequest(),
-			postData = this.getCredentials(),
+			postData = this.getFormData(),
 			submitButton = this.form.querySelector('button'),
 			enableSubmitButton = () => {
 				submitButton.disabled = false;
@@ -157,10 +158,11 @@ export default class Login {
 	/**
 	 * @returns {LoginCredentials}
 	 */
-	getCredentials() {
+	getFormData() {
 		return {
 			username: this.usernameInput.value,
-			password: this.passwordInput.value
+			password: this.passwordInput.value,
+			crumb: this.crumbInput.value
 		};
 	}
 
