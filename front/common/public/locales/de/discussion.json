@@ -152,7 +152,8 @@
     "hide-deleted":"Gelöschtes ausblenden",
     "report-post-confirm-text":"Soll dieser Beitrag den Moderatoren gemeldet werden?",
     "report-reply-confirm-text":"Soll diese Antwort den Moderatoren gemeldet werden?",
-    "report-permanent-action-text":"Diese Aktion kann nicht rückgängig gemacht werden."
+    "report-permanent-action-text":"Diese Aktion kann nicht rückgängig gemacht werden.",
+    "view-discussions-log":"Diskussionen-Protokoll"
   },
   "user-activity":{
     "active-users-toggle-option":"Aktive Benutzer",

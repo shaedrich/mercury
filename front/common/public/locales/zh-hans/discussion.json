@@ -152,7 +152,8 @@
     "hide-deleted":"隐藏已删除内容",
     "report-post-confirm-text":"向版主报告这篇文章吗？",
     "report-reply-confirm-text":"向版主报告这条回复吗？",
-    "report-permanent-action-text":"此操作无法撤消。"
+    "report-permanent-action-text":"此操作无法撤消。",
+    "view-discussions-log":"查看讨论日志"
   },
   "user-activity":{
     "active-users-toggle-option":"活跃用户",

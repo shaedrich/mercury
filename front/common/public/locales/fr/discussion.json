@@ -152,7 +152,8 @@
     "hide-deleted":"Masquer les supprimées",
     "report-post-confirm-text":"Signaler cette publication aux modérateurs ?",
     "report-reply-confirm-text":"Signaler cette réponse aux modérateurs ?",
-    "report-permanent-action-text":"Cette action ne peut pas être annulée."
+    "report-permanent-action-text":"Cette action ne peut pas être annulée.",
+    "view-discussions-log":"Journal de Discussions"
   },
   "user-activity":{
     "active-users-toggle-option":"Utilisateurs<br>actifs",
