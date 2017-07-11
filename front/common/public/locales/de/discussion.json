@@ -147,7 +147,12 @@
     "find-posts-to-follow":"Finde Beiträge, denen du folgen möchtest",
     "reported-content":"Gemeldete Inhalte",
     "user-activity":"Diskussionen Insights",
-    "moderator-tools":"Moderation"
+    "moderator-tools":"Moderation",
+    "moderation-header":"Moderation",
+    "hide-deleted":"Gelöschtes ausblenden",
+    "report-post-confirm-text":"Soll dieser Beitrag den Moderatoren gemeldet werden?",
+    "report-reply-confirm-text":"Soll diese Antwort den Moderatoren gemeldet werden?",
+    "report-permanent-action-text":"Diese Aktion kann nicht rückgängig gemacht werden."
   },
   "user-activity":{
     "active-users-toggle-option":"Aktive Benutzer",

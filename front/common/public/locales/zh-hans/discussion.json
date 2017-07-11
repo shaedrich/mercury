@@ -147,7 +147,12 @@
     "find-posts-to-follow":"查找需要关注的帖子",
     "reported-content":"举报的内容",
     "user-activity":"讨论版一览表",
-    "moderator-tools":"版主工具"
+    "moderator-tools":"版主工具",
+    "moderation-header":"核查",
+    "hide-deleted":"隐藏已删除内容",
+    "report-post-confirm-text":"向版主报告这篇文章吗？",
+    "report-reply-confirm-text":"向版主报告这条回复吗？",
+    "report-permanent-action-text":"此操作无法撤消。"
   },
   "user-activity":{
     "active-users-toggle-option":"活跃用户",

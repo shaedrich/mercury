@@ -147,7 +147,12 @@
     "find-posts-to-follow":"crwdns54062:0crwdne54062:0",
     "reported-content":"crwdns57584:0crwdne57584:0",
     "user-activity":"crwdns57632:0crwdne57632:0",
-    "moderator-tools":"crwdns57633:0crwdne57633:0"
+    "moderator-tools":"crwdns57633:0crwdne57633:0",
+    "moderation-header":"crwdns67023:0crwdne67023:0",
+    "hide-deleted":"crwdns67024:0crwdne67024:0",
+    "report-post-confirm-text":"crwdns67737:0crwdne67737:0",
+    "report-reply-confirm-text":"crwdns67738:0crwdne67738:0",
+    "report-permanent-action-text":"crwdns67739:0crwdne67739:0"
   },
   "user-activity":{
     "active-users-toggle-option":"crwdns57586:0crwdne57586:0",

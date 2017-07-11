@@ -147,7 +147,12 @@
     "find-posts-to-follow":"Encontrar posts para seguir",
     "reported-content":"Conteúdo denunciado",
     "user-activity":"Insights de Discussões",
-    "moderator-tools":"Ferramentas do Moderador"
+    "moderator-tools":"Ferramentas do Moderador",
+    "moderation-header":"Moderação",
+    "hide-deleted":"Ocultar Deletados",
+    "report-post-confirm-text":"Relatar este post aos moderadores?",
+    "report-reply-confirm-text":"Relatar esta resposta aos moderadores?",
+    "report-permanent-action-text":"Esta ação não pode ser desfeita."
   },
   "user-activity":{
     "active-users-toggle-option":"Usuários<br>ativos",

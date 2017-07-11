@@ -68,12 +68,12 @@
 		<div class="sub-head--done">
 			<ul class="image-order-options">
 				<li id="image-order-newest-top"
-					{{action 'changeImageOrder' 'NEWEST'}} class={{if newestImages 'image-order--selected'
+					{{action this.attrs.changeImageOrder 'NEWEST'}} class={{if newestImages 'image-order--selected'
 																	  'image-order'}}>
 					{{i18n 'main.image-order-newest' ns='image-review'}}
 				</li>
 				<li id="image-order-oldest-top"
-					{{action 'changeImageOrder' 'OLDEST'}} class={{if oldestImages 'image-order--selected'
+					{{action this.attrs.changeImageOrder 'OLDEST'}} class={{if oldestImages 'image-order--selected'
 																	  'image-order'}}>
 					{{i18n 'main.image-order-oldest' ns='image-review'}}
 				</li>
@@ -97,7 +97,7 @@
 			</p>
 			<div class="image-review-sources">
 				{{i18n 'main.image-source' ns='image-review'}}:
-				<select onchange={{action (mut source) value="target.value"}}>
+				<select onchange={{action this.attrs.changeImageSource value='target.value'}}>
 					<option value="">all</option>
 					{{#each model.sources as |s|}}
 						<option value={{s}} selected={{equal source s}}>{{s}}</option>
@@ -130,24 +130,10 @@
 			<button {{action this.attrs.reviewAndGetMoreImages}}>
 				{{i18n 'main.review-and-get-more' ns='image-review'}}
 			</button>
-			{{#unless isCoppa}}
-				<ul class="image-order-options">
-					<li id="image-order-newest-bottom"
-						{{action 'changeImageOrder' 'NEWEST'}} class={{if newestImages 'image-order--selected'
-																		  'image-order'}}>
-						{{i18n 'main.image-order-newest' ns='image-review'}}
-					</li>
-					<li id="image-order-oldest-bottom"
-						{{action 'changeImageOrder' 'OLDEST'}} class={{if oldestImages 'image-order--selected'
-																		  'image-order'}}>
-						{{i18n 'main.image-order-oldest' ns='image-review'}}
-					</li>
-				</ul>
-			{{/unless}}
 		</div>
 	{{/if}}
 
 </div>
 {{#modal-dialog isVisible=isModalVisible}}
-	{{image-review-image-details thumbnailModel=thumbnailModel class='image-review-image-details'}}
+	{{image-review-image-details closeModal=(action 'closeModal') thumbnailModel=thumbnailModel class='image-review-image-details'}}
 {{/modal-dialog}}

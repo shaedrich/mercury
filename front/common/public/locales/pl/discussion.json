@@ -147,7 +147,12 @@
     "find-posts-to-follow":"Znajdź posty do obserwowania",
     "reported-content":"Zgłoszone treści",
     "user-activity":"Podsumowanie Dyskusji",
-    "moderator-tools":"Narzędzia dla moderatorów"
+    "moderator-tools":"Narzędzia dla moderatorów",
+    "moderation-header":"Moderacja",
+    "hide-deleted":"Ukryj usunięte",
+    "report-post-confirm-text":"Czy zgłosić ten post do moderacji?",
+    "report-reply-confirm-text":"Czy zgłosić tę odpowiedź do moderacji?",
+    "report-permanent-action-text":"Tej czynności nie da się cofnąć."
   },
   "user-activity":{
     "active-users-toggle-option":"Aktywni<br>użytkownicy",

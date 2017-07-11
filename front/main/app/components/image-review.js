@@ -34,8 +34,8 @@ export default Ember.Component.extend({
 			});
 		},
 
-		changeImageOrder(order) {
-			this.set('order', order);
+		closeModal() {
+			this.set('isModalVisible', false);
 		}
 	}
 });
