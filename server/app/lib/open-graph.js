@@ -21,7 +21,9 @@ import {getStaticAssetPath} from './utils';
  * @param {Hapi.Request} request
  */
 function selectOpenGraphImage(openGraphData, response, wikiVars, request) {
-	const postsWithOpenGraph = response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph);
+	const postsWithOpenGraph = response.payload._embedded['doc:posts']
+			? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
+			: [];
 	if (response.payload._embedded.openGraph) {
 		// Use OpenGraph in main post
 		const openGraph = response.payload._embedded.openGraph[0];
