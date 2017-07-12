@@ -1,8 +1,7 @@
 {{#design-system.wds-tabs}}
 	{{#each model as |firstLevelItem|}}
 		{{#design-system.wds-tab}}
-			{{#if firstLevelItem.submenu}}
-				asd
+			{{#if firstLevelItem.items}}
 				{{design-system.local-navigation-dropdown model=firstLevelItem}}
 			{{else}}
 				<div class="wds-tabs__tab-label">

@@ -1,15 +1,15 @@
-{{#wds-dropdown as |dropdown|}}
+{{#design-system.wds-dropdown as |dropdown|}}
 	{{#dropdown.toggle class='wds-tabs__tab-label'}}
 		{{#if model.href}}
 			<a href="{{model.href}}">
 				{{#if model.icon}}
-					{{wds-icon name=model.icon class='wds-icon-tiny'}}
+					{{design-system.wds-icon name=model.icon class='wds-icon-tiny'}}
 				{{/if}}
 				<span>
-					{{#if model.label.key}}
-						{{i18n model.label.key}}
+					{{#if model.title.key}}
+						{{i18n model.title.key}}
 					{{else}}
-						{{model.label.value}}
+						{{model.title.value}}
 					{{/if}}
 				</span>
 			</a>
@@ -18,26 +18,27 @@
 				{{wds-icon name=model.icon class='wds-icon-tiny'}}
 			{{/if}}
 			<span>
-				{{#if model.label.key}}
-					{{i18n model.label.key}}
+				{{#if model.title.key}}
+					{{i18n model.title.key}}
 				{{else}}
-					{{model.label.value}}
+					{{model.title.value}}
 				{{/if}}
 			</span>
 		{{/if}}
 	{{/dropdown.toggle}}
 	{{#dropdown.content isNotScrollable=true}}
 		<ul class="wds-list wds-is-linked wds-has-bolded-items">
-			{{#each model.submenu as |secondLevelItem index|}}
-				{{#if secondLevelItem.submenu}}
-					{{wds-community-header/local-navigation-dropdown-level-2 model=secondLevelItem currentIndex=index}}
+			{{#each model.items as |secondLevelItem index|}}
+				{{#if secondLevelItem.items}}
+					{{design-system.local-navigation-dropdown-level-2 model=secondLevelItem
+																													 currentIndex=index}}
 				{{else}}
 					<li>
 						<a href="{{secondLevelItem.href}}">
 							{{#if model.label.key}}
-								{{i18n secondLevelItem.label.key}}
+								{{i18n secondLevelItem.title.key}}
 							{{else}}
-								{{secondLevelItem.label.value}}
+								{{secondLevelItem.title.value}}
 							{{/if}}
 						</a>
 					</li>
@@ -45,4 +46,4 @@
 			{{/each}}
 		</ul>
 	{{/dropdown.content}}
-{{/wds-dropdown}}
+{{/design-system.wds-dropdown}}
