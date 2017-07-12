@@ -1,4 +1,29 @@
-<nav class="wds-community-header__local-navigation">
+{{#design-system.wds-tabs}}
+	{{#each model as |firstLevelItem|}}
+		{{#design-system.wds-tab}}
+			{{#if firstLevelItem.submenu}}
+				asd
+				{{design-system.local-navigation-dropdown model=firstLevelItem}}
+			{{else}}
+				<div class="wds-tabs__tab-label">
+					<a href="{{firstLevelItem.href}}">
+						{{#if firstLevelItem.icon}}
+							{{design-system.wds-icon name=firstLevelItem.icon class='wds-icon-tiny'}}
+						{{/if}}
+						<span>
+							{{#if firstLevelItem.title.key}}
+								{{i18n firstLevelItem.label.key}}
+							{{else}}
+								{{firstLevelItem.title.value}}
+							{{/if}}
+						</span>
+					</a>
+				</div>
+			{{/if}}
+		{{/design-system.wds-tab}}
+	{{/each}}
+{{/design-system.wds-tabs}}
+{{!<nav class="wds-community-header__local-navigation">
 	<ul class="wds-tabs">
 		<li class="wds-tabs__tab">
 			<div class="wds-dropdown">
@@ -231,3 +256,4 @@
 		</li>
 	</ul>
 </nav>
+}}

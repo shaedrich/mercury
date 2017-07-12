@@ -1,21 +1,22 @@
 <header style="{{communityHeaderStyle}}" class="wds-community-header">
 	{{log model}}
-	{{#if model.wordmark.image.url}}
+	{{#if model.wordmark.image-data.url}}
 		<div class="wds-community-header__wordmark">
 			<a accesskey="z" href="{{model.wordmark.href}}">
-				<img src="{{model.wordmark.image.url}}"
-						 width="{{model.wordmark.image.width}}"
-						 height="{{model.wordmark.image.height}}"
-						 alt="{{model.wordmark.label.value}}"
+				<img src="{{model.wordmark.image-data.url}}"
+						 width="{{model.wordmark.image-data.width}}"
+						 height="{{model.wordmark.image-data.height}}"
+						 alt="{{model.wordmark.title.value}}"
 				>
 			</a>
 		</div>
 	{{/if}}
 	<div class="wds-community-header__top-container">
 		<div class="wds-community-header__sitename">
-			<a href="{{model.sitename.href}}">{{model.sitename.label.value}}</a>
+			<a href="{{model.sitename.href}}">{{model.sitename.title.value}}</a>
 		</div>
 		<div class="wds-community-header__counter">
+			{{!fixme - that should display number of post on discussions}}
 			<span class="wds-community-header__counter-value">{{numeral model.counter.value}}</span>
 			<span class="wds-community-header__counter-label">{{i18n model.counter.label.key}}</span>
 		</div>
@@ -30,5 +31,5 @@
 			</div>
 		}}
 	</div>
-	{{design-system.local-navigation}}
+	{{design-system.local-navigation model=model.navigation}}
 </header>
