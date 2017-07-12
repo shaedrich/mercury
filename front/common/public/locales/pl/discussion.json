@@ -152,7 +152,8 @@
     "hide-deleted":"Ukryj usunięte",
     "report-post-confirm-text":"Czy zgłosić ten post do moderacji?",
     "report-reply-confirm-text":"Czy zgłosić tę odpowiedź do moderacji?",
-    "report-permanent-action-text":"Tej czynności nie da się cofnąć."
+    "report-permanent-action-text":"Tej czynności nie da się cofnąć.",
+    "view-discussions-log":"Pokaż rejestr Dyskusji"
   },
   "user-activity":{
     "active-users-toggle-option":"Aktywni<br>użytkownicy",

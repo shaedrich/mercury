@@ -152,7 +152,8 @@
     "hide-deleted":"Ocultar Deletados",
     "report-post-confirm-text":"Relatar este post aos moderadores?",
     "report-reply-confirm-text":"Relatar esta resposta aos moderadores?",
-    "report-permanent-action-text":"Esta ação não pode ser desfeita."
+    "report-permanent-action-text":"Esta ação não pode ser desfeita.",
+    "view-discussions-log":"Visualizar registros"
   },
   "user-activity":{
     "active-users-toggle-option":"Usuários<br>ativos",

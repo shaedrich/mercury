@@ -152,7 +152,8 @@
     "hide-deleted":"Ocultar los eliminados",
     "report-post-confirm-text":"¿Reportar esta discusión a los moderadores?",
     "report-reply-confirm-text":"¿Reportar esta respuesta a los moderadores?",
-    "report-permanent-action-text":"No se puede deshacer esta acción."
+    "report-permanent-action-text":"No se puede deshacer esta acción.",
+    "view-discussions-log":"Ver registro"
   },
   "user-activity":{
     "active-users-toggle-option":"Usuarios<br>activos",
