@@ -3,7 +3,7 @@
 		{{#if model.href}}
 			<a href="{{model.href}}">
 				{{#if model.icon}}
-					{{design-system.wds-icon name=model.icon class='wds-icon-tiny'}}
+					{{svg model.icon class='wds-icon wds-icon-tiny'}}
 				{{/if}}
 				<span>
 					{{#if model.title.key}}
@@ -15,7 +15,7 @@
 			</a>
 		{{else}}
 			{{#if model.icon}}
-				{{wds-icon name=model.icon class='wds-icon-tiny'}}
+				{{svg model.icon class='wds-icon wds-icon-tiny'}}
 			{{/if}}
 			<span>
 				{{#if model.title.key}}
