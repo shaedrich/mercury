@@ -152,7 +152,8 @@
     "hide-deleted":"Скрыть удалённые",
     "report-post-confirm-text":"Пожаловаться модераторам на это сообщение?",
     "report-reply-confirm-text":"Пожаловаться модераторам на этот ответ?",
-    "report-permanent-action-text":"Данное действие нельзя отменить."
+    "report-permanent-action-text":"Данное действие нельзя отменить.",
+    "view-discussions-log":"Журнал обсуждений"
   },
   "user-activity":{
     "active-users-toggle-option":"Активные<br>участники",
