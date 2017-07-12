@@ -104,7 +104,7 @@
     "reported-not-found-error":"There are no reported posts or replies.",
     "categories-header":"Categories",
     "categories-edit-label":"Edit",
-    "category-all-name":"All",
+    "category-all-name":"Iedereen",
     "categories-show-more-button-label":"Show more",
     "categories-show-less-button-label":"Show less",
     "categories-edit-add-category-label":"+ Add Category",
@@ -152,7 +152,8 @@
     "hide-deleted":"Hide Deleted",
     "report-post-confirm-text":"Report this post to the moderators?",
     "report-reply-confirm-text":"Report this reply to the moderators?",
-    "report-permanent-action-text":"This action can't be undone."
+    "report-permanent-action-text":"This action can't be undone.",
+    "view-discussions-log":"View Discussions Log"
   },
   "user-activity":{
     "active-users-toggle-option":"Active Users",
@@ -197,7 +198,7 @@
     "reply-editor-placeholder-text":"Schrijf een antwoord...",
     "reply-editor-label":"Aan de discussie bijdragen",
     "reply-edit-editor-label":"Edit your reply",
-    "reply-action-button-label":"Antwoorden",
+    "reply-action-button-label":"Reply",
     "reply-edit-action-button-label":"Save",
     "overlay-message-text":"Before posting, be sure to check out the __guidelinesLinkTitle__.",
     "overlay-message-button":"Done",
