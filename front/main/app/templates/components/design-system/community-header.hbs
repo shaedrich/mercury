@@ -1,0 +1,34 @@
+<header style="{{communityHeaderStyle}}" class="wds-community-header">
+	{{log model}}
+	{{#if model.wordmark.image.url}}
+		<div class="wds-community-header__wordmark">
+			<a accesskey="z" href="{{model.wordmark.href}}">
+				<img src="{{model.wordmark.image.url}}"
+						 width="{{model.wordmark.image.width}}"
+						 height="{{model.wordmark.image.height}}"
+						 alt="{{model.wordmark.label.value}}"
+				>
+			</a>
+		</div>
+	{{/if}}
+	<div class="wds-community-header__top-container">
+		<div class="wds-community-header__sitename">
+			<a href="{{model.sitename.href}}">{{model.sitename.label.value}}</a>
+		</div>
+		<div class="wds-community-header__counter">
+			<span class="wds-community-header__counter-value">{{numeral model.counter.value}}</span>
+			<span class="wds-community-header__counter-label">{{i18n model.counter.label.key}}</span>
+		</div>
+		{{!TODO avatars
+			<div class="wds-community-header__wiki-buttons wds-button-group">
+				<a class="wds-button wds-is-squished wds-is-secondary" href="/wiki/Special:CreatePage">
+					<svg class="wds-icon-small wds-icon">
+						<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#wds-icons-add-new-page-small"></use>
+					</svg>
+					<span>Add new page</span>
+				</a>
+			</div>
+		}}
+	</div>
+	{{design-system.local-navigation}}
+</header>
