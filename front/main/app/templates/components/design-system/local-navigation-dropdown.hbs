@@ -2,8 +2,8 @@
 	{{#dropdown.toggle class='wds-tabs__tab-label'}}
 		{{#if model.href}}
 			<a href="{{model.href}}">
-				{{#if model.icon}}
-					{{svg model.icon class='wds-icon wds-icon-tiny'}}
+				{{#if model.image-data}}
+					{{svg model.image-data.name class='wds-icon wds-icon-tiny'}}
 				{{/if}}
 				<span>
 					{{#if model.title.key}}
@@ -14,8 +14,8 @@
 				</span>
 			</a>
 		{{else}}
-			{{#if model.icon}}
-				{{svg model.icon class='wds-icon wds-icon-tiny'}}
+			{{#if model.image-data}}
+				{{svg model.image-data.name class='wds-icon wds-icon-tiny'}}
 			{{/if}}
 			<span>
 				{{#if model.title.key}}
