@@ -30,13 +30,15 @@
 		<ul class="wds-list wds-is-linked wds-has-bolded-items">
 			{{#each model.items as |secondLevelItem index|}}
 				{{#if secondLevelItem.items}}
-					{{design-system.local-navigation-dropdown-level-2 model=secondLevelItem
-																													 currentIndex=index}}
+					{{design-system.local-navigation-dropdown-level-2
+						model=secondLevelItem
+						currentIndex=index
+					}}
 				{{else}}
 					<li>
 						<a href="{{secondLevelItem.href}}">
-							{{#if model.label.key}}
-								{{i18n secondLevelItem.title.key}}
+							{{#if (equal model.title.type 'translatable-text')}}
+								{{i18n secondLevelItem.title.key ns='design-system'}}
 							{{else}}
 								{{secondLevelItem.title.value}}
 							{{/if}}

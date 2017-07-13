@@ -6,8 +6,8 @@
 			{{else}}
 				<div class="wds-tabs__tab-label">
 					<a href="{{firstLevelItem.href}}">
-						{{#if firstLevelItem.icon}}
-							{{svg firstLevelItem.icon class='wds-icon wds-icon-tiny'}}
+						{{#if firstLevelItem.image-data}}
+							{{svg firstLevelItem.image-data.name class='wds-icon wds-icon-tiny'}}
 						{{/if}}
 						<span>
 							{{#if (equal firstLevelItem.title.type 'translatable-text')}}
