@@ -1,6 +1,8 @@
 {{yield (hash
 	toggle=(component 'design-system.wds-dropdown-toggle'
-		mouseEnter=(action 'mouseEnter')
+					mouseLeave=(action 'mouseLeave')
+					click=(action 'click')
+					isLevel2=isLevel2
 	)
-	content=(component 'design-system.wds-dropdown-content')
+	content=(component 'design-system.wds-dropdown-content' isLevel2=isLevel2)
 )}}

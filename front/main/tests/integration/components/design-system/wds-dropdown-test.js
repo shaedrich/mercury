@@ -23,7 +23,7 @@ test('yields toggle and content', function (assert) {
 	`);
 
 	assert.ok(
-		new RegExp(`Toggle\n${toggleSvgPattern}`).test(
+		new RegExp(`Toggle\n\\s*${toggleSvgPattern}`).test(
 			this.$(toggleSelector).html().trim()
 		),
 		'Toggle is rendered'
