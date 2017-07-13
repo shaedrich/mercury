@@ -3,12 +3,31 @@
 		border-radius: 50%;
 		background-color: #cccccc;
 		height: 90px;
+		margin: 0 auto;
 		width: 90px;
 	}
 
 	&__icon {
+		color: $wds-color-dark-blue;
 		display: block;
 		height: 100%;
 		margin: 0 auto;
+		stroke: $wds-color-dark-blue;
+		width: 40px;
+	}
+
+	&__insights {
+		font-size: 18px;
+		font-weight: bold;
+		margin: 18px 0 0 0;
+		text-align: center;
+	}
+
+	&__discussions {
+		color: $wds-color-light-c5;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		margin: 0 0 24px 0;
 	}
 }
