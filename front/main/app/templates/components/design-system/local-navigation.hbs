@@ -1,6 +1,6 @@
 <ul class="wds-tabs">
 	{{#each model as |firstLevelItem|}}
-		<li class="wds-tabs__tab">
+		<li class="wds-tabs__tab{{if (equal firstLevelItem.href '/d/f') ' wds-is-current'}}">
 			{{#if firstLevelItem.items}}
 				{{design-system.local-navigation-dropdown model=firstLevelItem}}
 			{{else}}
