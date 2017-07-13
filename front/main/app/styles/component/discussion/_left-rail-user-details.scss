@@ -1,8 +1,27 @@
-.left-rail-avatar {
-	@extend .wds-avatar;
-	border-color: $wds-color-light-c4;
-	width: 90px;
-	height: 90px;
-	display: block;
-	margin: 0 auto;
+.left-rail {
+
+	&__avatar {
+		@extend .wds-avatar;
+		border-color: $wds-color-light-c4;
+		display: block;
+		margin: 0 auto;
+		width: 90px;
+		height: 90px;
+	}
+
+	&__username {
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 0.67;
+		text-align: center;
+	}
+
+	&__postcounter {
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 1;
+		text-align: center;
+		color: $wds-color-light-c5;
+	}
+
 }

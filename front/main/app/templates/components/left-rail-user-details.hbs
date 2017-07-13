@@ -1,5 +1,5 @@
 <a class="user-avatar__link" href="{{userProfile.profileUrl}}">
-	<img class="left-rail-avatar" src="{{userProfile.avatarUrl}}" title="{{userName}}" alt="Avatar">
+	<img class="left-rail__avatar" src="{{userProfile.avatarUrl}}" title="{{userName}}" alt="Avatar">
 </a>
-<p>{{userName}}</p>
-<p>{{numberOfPosts}}</p>
+<p class="left-rail__username">{{userName}}</p>
+<p class="left-rail__postcounter">{{numberOfPosts}} {{i18n 'user-activity.posts' ns='discussion'}}</p>
