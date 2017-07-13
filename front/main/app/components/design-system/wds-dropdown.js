@@ -16,10 +16,10 @@ export default Component.extend({
 	}),
 
 	actions: {
-		click(e) {
+		click(event) {
 			if (this.get('isTouchDevice') && !this.get('isClicked')) {
 				this.set('isClicked', true);
-				e.preventDefault();
+				event.preventDefault();
 			}
 		},
 
