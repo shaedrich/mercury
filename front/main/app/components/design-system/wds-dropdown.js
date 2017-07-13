@@ -3,9 +3,15 @@ import Ember from 'ember';
 const {Component} = Ember;
 
 export default Component.extend({
-	classNameBindings: ['isClicked:wds-is-clicked', 'dropdownExpanded:wds-is-active', 'hasShadow:wds-has-shadow', 'hasDarkShadow:wds-has-dark-shadow', 'isLevel2:wds-dropdown-level-2:wds-dropdown'],
+	classNameBindings: [
+		'isClicked:wds-is-clicked',
+		'dropdownExpanded:wds-is-active',
+		'hasShadow:wds-has-shadow',
+		'hasDarkShadow:wds-has-dark-shadow',
+		'isLevel2:wds-dropdown-level-2:wds-dropdown'
+	],
 	isLevel2: false,
-	isTouchDevice: Ember.computed(function () {
+	isTouchDevice: Ember.computed(() => {
 		return ('ontouchstart' in window);
 	}),
 
