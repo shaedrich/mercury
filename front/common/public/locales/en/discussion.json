@@ -127,7 +127,7 @@
     "rename-category-auth-error": "You are logged out. Please sign in.",
     "rename-category-oermissions-error": "Category cannot be updated.",
     "rename-category-general-error": "Something went wrong, please try again.",
-    "guidelines-link-title": "Discussions Guidelines",
+    "guidelines-link-title": "Guidelines",
     "guidelines-header-title": "Discussions Guidelines",
     "welcome-message-header": "Awesome to have you here!",
     "welcome-message-text": "Have fun browsing, creating, or replying to posts. Read our __guidelinesLinkTitle__ and you'll fit right in.",
