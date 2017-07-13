@@ -18,7 +18,11 @@
 }}
 
 <div class="site-body-discussion post-list-view discussion-user-list">
-	{{discussion-hero-unit
+	{{! FIXME number of posts is incorrect }}
+	{{design-system.community-header
+		numberOfPosts=model.postCount
+	}}
+	{{!discussion-hero-unit
 		contributors=model.contributors
 		heroImage=attributes.heroImage
 		numberOfPosts=model.postCount

@@ -12,12 +12,16 @@
 	{{/ember-wormhole}}
 {{/if}}
 <div class="site-body-discussion post-list-view">
-	{{discussion-hero-unit
+	{{!discussion-hero-unit
 		editingPossible=false
 		heroImage=attributes.heroImage
 		showUserActivity=false
 		triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
 		uploadMethod=(action this.attrs.uploadDiscussionsHeader)
+	}}
+	{{! FIXME number of posts is incorrect }}
+	{{design-system.community-header
+		numberOfPosts=model.postCount
 	}}
 	<div class="discussion-page row">
 		<div class="rail left large-3 extra-large-2 columns">

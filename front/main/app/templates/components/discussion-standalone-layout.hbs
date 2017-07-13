@@ -22,6 +22,10 @@
 	isVisible=shouldShowDialogMessage
 }}
 <div class="site-body-discussion standalone-page-view">
+	{{! FIXME number of posts is incorrect }}
+	{{design-system.community-header
+		numberOfPosts=model.postCount
+	}}
 	<div class="discussion-page row">
 		<div class="rail columns">
 			{{#link-to 'discussion' class="side-button back-button active-element-theme-color"}}
