@@ -1,0 +1,14 @@
+.discussion-left-rail {
+	&__circle {
+		border-radius: 50%;
+		background-color: #cccccc;
+		height: 90px;
+		width: 90px;
+	}
+
+	&__icon {
+		display: block;
+		height: 100%;
+		margin: 0 auto;
+	}
+}
