@@ -37,12 +37,7 @@
 	}}
 	<div class="discussion-page row">
 		<div class="rail left large-3 extra-large-2 columns">
-			{{discussion-community-badge
-				badgeImage=attributes.badgeImage
-				editingPossible=true
-				triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
-				uploadMethod=(action this.attrs.uploadCommunityBadge)
-			}}
+
 			{{#unless mainPage}}
 				{{discussion-side-button
 					route='discussion'
