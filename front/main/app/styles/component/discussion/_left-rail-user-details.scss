@@ -1,0 +1,8 @@
+.left-rail-avatar {
+	@extend .wds-avatar;
+	border-color: $wds-color-light-c4;
+	width: 90px;
+	height: 90px;
+	display: block;
+	margin: 0 auto;
+}

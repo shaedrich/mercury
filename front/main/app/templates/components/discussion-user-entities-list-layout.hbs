@@ -1,42 +1,47 @@
 {{#if responsive.isMobile}}
 	{{#ember-wormhole to="site-head-sub-header"}}
 		{{discussion-header
-			canDeleteAll=model.canDeleteAll
-			deleteAllPosts=deleteAllPosts
-			hasBackButton=true
-			smartBannerVisible=smartBannerVisible
+				canDeleteAll=model.canDeleteAll
+				deleteAllPosts=deleteAllPosts
+				hasBackButton=true
+				smartBannerVisible=smartBannerVisible
 		}}
 	{{/ember-wormhole}}
 {{/if}}
 {{discussion-dialog
-	confirmButtonText=confirmButtonText
-	confirmCallback=confirmCallback
-	dialogMessage=dialogMessage
-	headerText=dialogHeaderText
-	isConfirm=isConfirm
-	isVisible=shouldShowDialogMessage
+		confirmButtonText=confirmButtonText
+		confirmCallback=confirmCallback
+		dialogMessage=dialogMessage
+		headerText=dialogHeaderText
+		isConfirm=isConfirm
+		isVisible=shouldShowDialogMessage
 }}
 
 <div class="site-body-discussion post-list-view discussion-user-list">
 	{{discussion-hero-unit
-		contributors=model.contributors
-		heroImage=attributes.heroImage
-		numberOfPosts=model.postCount
-		triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
-		uploadMethod=(action this.attrs.uploadDiscussionsHeader)
-		userName=model.userName
+			contributors=model.contributors
+			heroImage=attributes.heroImage
+			numberOfPosts=model.postCount
+			triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
+			uploadMethod=(action this.attrs.uploadDiscussionsHeader)
+			userName=model.userName
 	}}
 	<div class="desktop-hidden post-list-header-content">
 		{{discussion-post-list-header
-			userName=model.userName
-			contributors=model.contributors
-			numberOfPosts=model.postCount
+				userName=model.userName
+				contributors=model.contributors
+				numberOfPosts=model.postCount
 		}}
 	</div>
 	<div class="discussion-page row">
 		<div class="rail large-3 extra-large-2 columns">
+			{{left-rail-user-details
+					users=model.contributors.users
+					numberOfPosts=model.postCount
+					userName=model.userName
+			}}
 			{{discussion-side-button
-				route='discussion'
+					route='discussion'
 			}}
 		</div>
 		<div class="small-12 large-6 extra-large-6 columns">
