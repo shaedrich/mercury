@@ -5,11 +5,11 @@
 		{{{parsedContent}}}
 	</div>
 	{{#if canEdit}}
-		<button class="wds-is-secondary wds-is-squished wds-button guidelines-edit-button">
-			<a class="guidelines-edit-link active-element-theme-color" {{action 'openGuidelinesEditor'}}>
-				{{svg 'pencil' viewBox='0 0 18 18' class='icon fill-theme-color'}}
+		<a class="guidelines-edit-button wds-is-secondary wds-is-squished wds-button" {{action 'openGuidelinesEditor'}}>
+			{{svg 'pencil' viewBox='0 0 18 18' class='wds-icon wds-icon-small'}}
+			<span>
 				{{i18n 'main.edit-guidelines-uppercase' ns='discussion'}}
-			</a>
-		</button>
+			</span>
+		</a>
 	{{/if}}
 </div>

@@ -4,7 +4,6 @@ $desktop-content-width: 768px;
 	height: 100%;
 
 	.side-button {
-		border: none;
 		margin-top: 20px;
 	}
 
@@ -34,9 +33,9 @@ $desktop-content-width: 768px;
 	.standalone-page-view {
 		height: auto;
 
-		.rail {
-			width: calc((100% - 768px)/2);
-		}
+		//.rail {
+		//	width: calc((100% - 768px)/2);
+		//}
 
 		.discussion-hero-unit-content {
 			align-items: center;
@@ -46,7 +45,7 @@ $desktop-content-width: 768px;
 
 		.standalone-content {
 			margin: 25px auto;
-			width: $desktop-content-width;
+			//width: $desktop-content-width;
 		}
 
 		.discussion-hero-unit {

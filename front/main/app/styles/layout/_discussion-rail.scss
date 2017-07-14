@@ -11,20 +11,21 @@
 
 	.side-button {
 		border: solid $discussion-rail-separator-color;
+		border-width: 1px 0 0;
 	}
 }
-.post-details-view {
-	.rail {
-		.back-button {
-			border-width: 0 0 1px;
-		}
-	}
-}
+//.post-details-view {
+//	.rail {
+//		.back-button {
+//			border-width: 0 0 1px;
+//		}
+//	}
+//}
 .post-list-view {
 	.rail {
-		.side-button {
-			border-width: 1px 0 0 0;
-		}
+		//.side-button {
+		//	border-width: 1px 0 0 0;
+		//}
 
 		.delete-all {
 			border-top: none;
