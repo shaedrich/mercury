@@ -152,7 +152,8 @@
     "hide-deleted":"隱藏已刪除內容",
     "report-post-confirm-text":"向版主舉報這篇文章嗎？",
     "report-reply-confirm-text":"向版主舉報這個回覆嗎？",
-    "report-permanent-action-text":"此操作無法撤銷。"
+    "report-permanent-action-text":"此操作無法撤銷。",
+    "view-discussions-log":"查閱討論日誌"
   },
   "user-activity":{
     "active-users-toggle-option":"活躍用戶",

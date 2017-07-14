@@ -152,7 +152,8 @@
     "hide-deleted":"Nascondi rimossi",
     "report-post-confirm-text":"Segnalare questo post ai moderatori?",
     "report-reply-confirm-text":"Segnalare questa risposta ai moderatori?",
-    "report-permanent-action-text":"Questa azione non può essere annullata."
+    "report-permanent-action-text":"Questa azione non può essere annullata.",
+    "view-discussions-log":"Vedi registro"
   },
   "user-activity":{
     "active-users-toggle-option":"Utenti attivi",
