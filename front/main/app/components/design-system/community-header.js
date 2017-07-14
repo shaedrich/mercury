@@ -14,6 +14,8 @@ export default Component.extend({
 	attributeBindings: ['style'],
 
 	model: EmberObject.create(M.prop('communityHeader')),
+	contributors: M.prop('discussionsContributors') || [],
+
 	style: computed('model.background_image', function () {
 		const backgroundImage = this.get('model.background_image'),
 			style = `background-image: url('${backgroundImage}');`;
@@ -27,19 +29,6 @@ export default Component.extend({
 
 		return i18n.t(key, {
 			ns: 'design-system'
-		});
-	}),
-
-	contributors: computed(() => {
-		const contributors = M.prop('discussionsContributors') || [];
-
-		return contributors.map((item) => {
-			item.url = M.buildUrl({
-				namespace: 'User',
-				title: item.name,
-			});
-
-			return item;
 		});
 	})
 });

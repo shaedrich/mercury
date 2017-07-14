@@ -21,13 +21,11 @@
 			{{numberOfPostsLabel}}
 		</span>
 	</div>
-
-	<div class="wds-community-header__wiki-buttons wds-button-group wds-avatar-stack">
-		{{#each contributors as |contributor|}}
-			<a href="{{contributor.url}}" class="wds-avatar-stack__avatar" title="{{contributor.name}}">
-				<img src="{{contributor.avatarUrl}}" alt="{{contributor.name}}" class="wds-avatar">
-			</a>
-		{{/each}}
-	</div>
+	{{wds-avatar-stack
+		class='wds-community-header__wiki-buttons wds-button-group'
+		users=contributors
+		displayLimit=5
+		totalCount=5
+	}}
 </div>
 {{design-system.local-navigation model=model.navigation}}
