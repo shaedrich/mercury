@@ -31,6 +31,9 @@
 	{{#if discussionsSplashPageConfig}}
 		M.prop('discussionsSplashPageConfig', {{{json discussionsSplashPageConfig}}});
 	{{/if}}
+	{{#if discussionsContributors}}
+		M.prop('discussionsContributors', {{{json discussionsContributors}}});
+	{{/if}}
 	M.provide('wiki', {{{json wikiVariables}}});
 	{{#if server.mediawikiDomain}}
 		M.prop('mediawikiDomain', '{{server.mediawikiDomain}}');
