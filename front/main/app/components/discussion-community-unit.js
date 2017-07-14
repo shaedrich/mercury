@@ -20,8 +20,10 @@ export default Ember.Component.extend({
 
 		return discussionsSplashPageConfig ? discussionsSplashPageConfig.iosAppLink : null;
 	}),
-
-	displayAppPromotion: Ember.computed.or('androidAppLink', 'iosAppLink'),
+	showAppPromotion: true,
+	displayAppPromotion: Ember.computed('androidAppLink', 'iosAppLink', 'showAppPromotion', function () {
+		return (this.get('androidAppLink') || this.get('iosAppLink')) && this.get('showAppPromotion');
+	}),
 	wikiName: Ember.computed(function () {
 		if (this.get('displayWikiaHomeLink') || this.get('displayGuidelinesLink')) {
 			return Ember.get(Mercury, 'wiki.siteName');
