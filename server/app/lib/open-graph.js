@@ -38,9 +38,9 @@ function selectOpenGraphImage(openGraphData, response, wikiVars, request) {
 		openGraphData.image = largestOpenGraph.imageUrl;
 		openGraphData.imageHeight = largestOpenGraph.imageHeight;
 		openGraphData.imageWidth = largestOpenGraph.imageWidth;
-	} else if (wikiVars.image) {
-		// Use the community avatar
-		openGraphData.image = wikiVars.image;
+	} else if (wikiVars.wordmark.image !== null) {
+		// Use the wordmark image
+		openGraphData.image = wikiVars.wordmark.image.url;
 	} else {
 		// Use Fandom logo as default image
 		openGraphData.image = `http:${getStaticAssetPath(settings, request)}` +
