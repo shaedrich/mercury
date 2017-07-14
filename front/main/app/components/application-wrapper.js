@@ -2,7 +2,7 @@ import Ember from 'ember';
 import {trackPerf} from 'common/utils/track-perf';
 import ResponsiveMixin from '../mixins/responsive';
 
-const {Component, computed, getWithDefault, Logger, $} = Ember;
+const {Component, computed, Logger, $, observer} = Ember;
 
 /**
  * HTMLMouseEvent
@@ -40,6 +40,11 @@ export default Component.extend(ResponsiveMixin, {
 		const vertical = Ember.get(Mercury, 'wiki.vertical');
 
 		return `${vertical}-vertical`;
+	}),
+
+	viewChangeObserver: observer('responsive.isMobile', function () {
+		// Deregister click handlers for open discussion-dropdown components
+		this.$(window.document).off('click');
 	}),
 
 	/**
