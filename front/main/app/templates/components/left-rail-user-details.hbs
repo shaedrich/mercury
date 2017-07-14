@@ -1,7 +1,7 @@
-{{#if userProfile.avatarUrl }}
-<a class="user-avatar__link" href="{{userProfile.profileUrl}}">
-	<img class="left-rail__avatar" src="{{userProfile.avatarUrl}}" title="{{userName}}" alt="Avatar">
-</a>
-{{/if}}
-<p class="left-rail__username">{{userName}}</p>
-<p class="left-rail__postcounter">{{numberOfPosts}} {{i18n 'user-activity.posts' ns='discussion'}}</p>
+{{user-avatar
+	avatarUrl=userProfile.avatarUrl
+	shouldWrapInHref=true
+	username=userName
+}}
+<p class="left-rail-user-details__username">{{userName}}</p>
+<p class="left-rail-user-details__postcounter">{{numberOfPosts}} {{i18n 'user-activity.posts' ns='discussion'}}</p>

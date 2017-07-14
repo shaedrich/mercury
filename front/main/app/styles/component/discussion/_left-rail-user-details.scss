@@ -1,12 +1,11 @@
-.left-rail {
+.left-rail-user-details {
+	text-align: center;
 
-	&__avatar {
-		@extend .wds-avatar;
-		border-color: $wds-color-light-c4;
-		display: block;
-		margin: 0 auto;
-		width: 90px;
-		height: 90px;
+	figure.avatar {
+		svg, img {
+			width: 90px;
+			height: 90px;
+		}
 	}
 
 	&__username {
