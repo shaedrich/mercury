@@ -32,8 +32,9 @@
 					route='discussion'
 				}}
 				{{#unless hasContentError}}
-					<div class="discussion-contributors-title">{{i18n 'main.contributors-title'
-																														ns='discussion'}}</div>
+					<div class="discussion-contributors-title">
+						{{i18n 'main.contributors-title' ns='discussion'}}
+					</div>
 					{{discussion-contributors
 						users=model.contributors.users
 						maxContributorDisplayCount=7
