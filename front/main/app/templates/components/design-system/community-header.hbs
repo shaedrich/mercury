@@ -21,15 +21,20 @@
 			{{numberOfPostsLabel}}
 		</span>
 	</div>
-	{{!TODO avatars
-		<div class="wds-community-header__wiki-buttons wds-button-group">
-			<a class="wds-button wds-is-squished wds-is-secondary" href="/wiki/Special:CreatePage">
-				<svg class="wds-icon-small wds-icon">
-					<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#wds-icons-add-new-page-small"></use>
-				</svg>
-				<span>Add new page</span>
+
+	<div class="wds-community-header__wiki-buttons wds-button-group wds-avatar-stack">
+		{{#each contributors as |contributor|}}
+			<a href="{{contributor.url}}" class="wds-avatar-stack__avatar" title="{{contributor.name}}">
+				<img src="{{contributor.avatarUrl}}" alt="{{contributor.name}}" class="wds-avatar">
 			</a>
-		</div>
-	}}
+		{{/each}}
+		<!--<a class="wds-button wds-is-squished wds-is-secondary" href="/wiki/Special:CreatePage">-->
+			<!--<svg class="wds-icon-small wds-icon">-->
+				<!--<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#wds-icons-add-new-page-small"></use>-->
+			<!--</svg>-->
+			<!--<span>Add new page</span>-->
+		<!--</a>-->
+	</div>
+
 </div>
 {{design-system.local-navigation model=model.navigation}}
