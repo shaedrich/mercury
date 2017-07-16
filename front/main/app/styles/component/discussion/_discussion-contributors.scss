@@ -40,8 +40,9 @@ $discussion-contributors-border-width: 2px;
 
 .rail {
 	.discussion-contributors {
-		display: inline-block;
-		margin-right: 30px;
+	  display: flex;
+	  flex-wrap: wrap;
+	  margin-bottom: 12px;
 
 		.user-avatar {
 			margin-bottom: 5px;
