@@ -38,4 +38,11 @@ $color-page-border: #ff9381;
 	//		width: $page-width-large + $padding-width-large * 2 + $content-border-width * 2;
 	//	}
 	//}
+
+	.wds-avatar-stack .user-avatar .avatar .user-avatar__image {
+		background-color: $wds-color-white;
+		border-color: $wds-color-white; // TODO: should it be CH text color?
+		height: 30px;
+		width: 30px;
+	}
 }

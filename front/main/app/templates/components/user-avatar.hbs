@@ -1,11 +1,17 @@
 <figure class="avatar">
-	{{#if avatarUrl}}
-		{{#if shouldWrapInHref}}
-			<a class="user-avatar__link" href="{{profileUrl}}">
-				<img class="user-avatar__image" src="{{avatarUrl}}" title="{{displayName}}" alt="Avatar">
-			</a>
+	{{#if shouldWrapInHref}}
+		<a class="user-avatar__link" href="{{profileUrl}}" title="{{displayName}}">
+			{{#if avatarUrl}}
+				<img class="user-avatar__image" src="{{avatarUrl}}" alt="Avatar">
+			{{else}}
+				{{svg 'avatar' viewBox='0 0 40 40' class='icon user-avatar__image'}}
+			{{/if}}
+		</a>
+	{{else}}
+		{{#if avatarUrl}}
+			<img class="user-avatar__image" src="{{avatarUrl}}" title="{{displayName}}" alt="Avatar">
 		{{else}}
-			<img src="{{avatarUrl}}">
+			{{svg 'avatar' viewBox='0 0 40 40' class='icon user-avatar__image'}}
 		{{/if}}
 	{{else}}
 		{{svg 'avatar' width=40 height=40 viewBox='0 0 40 40' class='icon'}}
