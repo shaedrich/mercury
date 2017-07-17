@@ -1,4 +1,6 @@
-{{design-system.community-header
-	numberOfPosts=model.categories.threadCount
-}}
+{{#unless responsive.isMobile}}
+	{{design-system.community-header
+		numberOfPosts=model.categories.threadCount
+	}}
+{{/unless}}
 {{outlet}}

@@ -1,0 +1,17 @@
+.discussion-left-rail {
+
+	&__icon-guidelines {
+		color: $wds-color-dark-blue;
+		display: block;
+		height: 100%;
+		margin: 0 auto;
+		width: 40px;
+	}
+
+	&__guidelines {
+		font-size: 18px;
+		font-weight: bold;
+		margin: 18px 0 0 0;
+		text-align: center;
+	}
+}

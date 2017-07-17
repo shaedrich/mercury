@@ -1,0 +1,25 @@
+.left-rail-user-details {
+	text-align: center;
+
+	.avatar {
+		svg, img {
+			@include square(90px);
+			border-color: $wds-color-light-c4
+		}
+	}
+
+	&__username {
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 0.67;
+		text-align: center;
+	}
+
+	&__postcounter {
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 1;
+		text-align: center;
+		color: $wds-color-light-c5;
+	}
+}

@@ -4,8 +4,8 @@ const {Component, computed} = Ember;
 
 export default Component.extend({
 	tagName: '',
-	stickedClassName: computed('model', 'currentIndex', function () {
-		return this.get('model.items.length') < this.get('currentIndex') + 1 ?
+	stickedClassName: computed('item', 'currentIndex', function () {
+		return this.get('item.items.length') < this.get('currentIndex') + 1 ?
 			'wds-is-sticked-to-parent' : '';
 	})
 });

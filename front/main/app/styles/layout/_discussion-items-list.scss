@@ -88,3 +88,11 @@ $discussion-lists-post-margin-bottom: 10px;
 		}
 	}
 }
+
+@media #{$desktop-range} {
+	.discussion-user-list {
+		.left {
+			margin-top: 0;
+		}
+	}
+}
