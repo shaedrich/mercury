@@ -17,6 +17,12 @@ export default Ember.Mixin.create(
 
 		hasMore: Ember.computed('totalPosts', 'page', function () {
 			debugger;
+			console.log("Total posts");
+			console.log(this.get('totalPosts'));
+			console.log("Viewable");
+			console.log(this.getWithDefault('page', 1) * 20);
+			console.log("Returns");
+			console.log(this.get('totalPosts') > this.getWithDefault('page', 1) * 20);
 			return this.get('totalPosts') > this.getWithDefault('page', 1) * 20;
 		}),
 
