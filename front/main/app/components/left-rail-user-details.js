@@ -6,7 +6,7 @@ export default Component.extend({
 	classNames: ['left-rail-user-details'],
 
 	userProfile: computed('users', function () {
-		let users = (this.get('users'));
+		let users = this.get('users');
 		return users[0];
 	}),
 });
