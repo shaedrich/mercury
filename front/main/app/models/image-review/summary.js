@@ -1,7 +1,7 @@
-import Ember from 'ember';
-import moment from 'moment';
-import request from 'ember-ajax/request';
-import ImageReviewItemModel from './item';
+import Ember from "ember";
+import moment from "moment";
+import request from "ember-ajax/request";
+import ImageReviewItemModel from "./item";
 
 const ImageReviewSummaryModel = Ember.Object.extend({
 	summary: null,
@@ -34,18 +34,16 @@ const ImageReviewSummaryModel = Ember.Object.extend({
 				this.set('imageDetails.isContextProvided', Boolean(data.context));
 				this.set('imageDetails.isContextLink', linkRegexp.test(data.context));
 				this.set('imageDetails.source', data.source);
-			});
-
-			ImageReviewItemModel.getImageHistory(imageId).then((data) => {
-				this.set('imageDetails.history', data);
-			});
-
-			ImageReviewItemModel.getImageContext(imageId).then((data) => {
 				this.set('imageDetails.originalFilename', data.originalFilename);
 				this.set('imageDetails.size', data.size);
 				this.set('imageDetails.dimensions', data.dimensions);
 				this.set('imageDetails.ownerId', data.ownerId);
-				this.set('imageDetails.ownerLookupUrl', ImageReviewItemModel.getOwnerLookupUrl(data.ownerId));
+				this.set('imageDetails.ownerLookupUrl',
+					ImageReviewItemModel.getOwnerLookupUrl(data.ownerId));
+			});
+
+			ImageReviewItemModel.getImageHistory(imageId).then((data) => {
+				this.set('imageDetails.history', data);
 			});
 		}
 	},
