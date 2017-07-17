@@ -4,7 +4,7 @@
 	{{/dropdown.toggle}}
 	{{#dropdown.content isNotScrollable=true}}
 		<ul class="wds-list wds-is-linked">
-			{{#each model.items as |thirdLevelItem|}}
+			{{#each item.items as |thirdLevelItem|}}
 				<li><a href="{{thirdLevelItem.href}}">{{thirdLevelItem.title.value}}</a></li>
 			{{/each}}
 		</ul>

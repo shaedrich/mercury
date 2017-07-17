@@ -6,16 +6,7 @@
 			{{else}}
 				<div class="wds-tabs__tab-label">
 					<a href="{{item.href}}">
-						{{#if item.image-data}}
-							{{svg item.image-data.name class='wds-icon wds-icon-tiny'}}
-						{{/if}}
-						<span>
-							{{#if (equal item.title.type 'translatable-text')}}
-								{{i18n item.title.key ns='design-system'}}
-							{{else}}
-								{{item.title.value}}
-							{{/if}}
-						</span>
+						{{partial "discussion/partials/nav-item-with-icon"}}
 					</a>
 				</div>
 			{{/if}}

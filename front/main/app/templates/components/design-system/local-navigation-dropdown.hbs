@@ -13,7 +13,7 @@
 			{{#each item.items as |secondLevelItem index|}}
 				{{#if secondLevelItem.items}}
 					{{design-system.local-navigation-dropdown-level-2
-						model=secondLevelItem
+						item=secondLevelItem
 						currentIndex=index
 					}}
 				{{else}}
