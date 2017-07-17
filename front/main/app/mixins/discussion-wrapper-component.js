@@ -16,6 +16,7 @@ export default Ember.Mixin.create(
 		showLoadMoreButton: Ember.computed.alias('hasMore'),
 
 		hasMore: Ember.computed('totalPosts', 'page', function () {
+			debugger;
 			return this.get('totalPosts') > this.getWithDefault('page', 1) * 20;
 		}),
 
