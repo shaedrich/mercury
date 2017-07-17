@@ -2,10 +2,10 @@
 	{{#dropdown.toggle class='wds-tabs__tab-label'}}
 		{{#if item.href}}
 			<a href="{{item.href}}">
-				{{partial "discussion/partials/nav-item-with-icon.hbs"}}
+				{{partial "discussion/partials/nav-item-with-icon"}}
 			</a>
 		{{else}}
-			{{partial "discussion/partials/nav-item-with-icon.hbs"}}
+			{{partial "discussion/partials/nav-item-with-icon"}}
 		{{/if}}
 	{{/dropdown.toggle}}
 	{{#dropdown.content isNotScrollable=true}}
