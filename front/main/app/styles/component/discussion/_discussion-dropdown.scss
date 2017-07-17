@@ -1,5 +1,5 @@
-.discussion-days-toggle {
-	color: $discussion-days-toggle-color;
+.discussion-dropdown {
+	color: $discussion-dropdown-color;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -24,13 +24,20 @@
 	}
 
 	.wds-dropdown__content {
-		color: $discussion-days-toggle-color;
+		color: $discussion-dropdown-color;
+		text-align: left;
+	}
+
+	.has-lines-between {
+		li+li {
+			border-top: 1px solid $discussion-rail-separator-color;
+		}
 	}
 }
 
 .discussion-header {
-	.discussion-days-toggle {
-		color: $discussion-header-days-toggle-color;
+	.discussion-dropdown {
+		color: $discussion-header-dropdown-color;
 		float: right;
 		height: 100%;
 
@@ -41,7 +48,7 @@
 
 		.wds-dropdown__content {
 			// needs to be set once more to override dark theme
-			color: $discussion-days-toggle-color;
+			color: $discussion-dropdown-color;
 		}
 	}
 }

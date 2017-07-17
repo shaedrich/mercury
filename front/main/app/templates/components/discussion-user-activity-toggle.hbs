@@ -17,8 +17,11 @@
 </ul>
 
 {{#if responsive.isDesktop}}
-	{{discussion-days-toggle
-		days=days
-		setDays=setDays
+	{{#discussion-dropdown
+		toggleText=(i18n 'user-activity.days-count' numberOfDays=days ns='discussion')
+		hasLinesBetween=false
 	}}
+		<li {{action 'setDays' 30}}>{{i18n 'user-activity.days-count' numberOfDays=30 ns='discussion'}}</li>
+		<li {{action 'setDays' 90}}>{{i18n 'user-activity.days-count' numberOfDays=90 ns='discussion'}}</li>
+	{{/discussion-dropdown}}
 {{/if}}
