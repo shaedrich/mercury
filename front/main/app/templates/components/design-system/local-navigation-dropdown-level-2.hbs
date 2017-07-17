@@ -1,12 +1,6 @@
 {{#design-system.wds-dropdown isLevel2=true tagName='li' class=stickedClassName as |dropdown|}}
 	{{#dropdown.toggle tagName='a' href='#'}}
-		<span>
-			{{#if (equal model.title.type 'translatable-text')}}
-				{{i18n model.title.key ns='design-system'}}
-			{{else}}
-				{{model.title.value}}
-			{{/if}}
-		</span>
+		{{partial "discussion/partials/nav-item"}}
 	{{/dropdown.toggle}}
 	{{#dropdown.content isNotScrollable=true}}
 		<ul class="wds-list wds-is-linked">
