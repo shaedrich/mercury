@@ -33,10 +33,6 @@ $desktop-content-width: 768px;
 	.standalone-page-view {
 		height: auto;
 
-		//.rail {
-		//	width: calc((100% - 768px)/2);
-		//}
-
 		.discussion-hero-unit-content {
 			align-items: center;
 			display: flex;
@@ -45,7 +41,6 @@ $desktop-content-width: 768px;
 
 		.standalone-content {
 			margin: 25px auto;
-			//width: $desktop-content-width;
 		}
 
 		.discussion-hero-unit {
