@@ -1,4 +1,4 @@
-import {WikiRequest} from '../lib/mediawiki';
+import {WikiRequest, fetch} from '../lib/mediawiki';
 import {getCachedWikiDomainName} from '../lib/utils';
 import settings from '../../config/settings';
 import showApplication from './show-application';
@@ -6,6 +6,25 @@ import showServerErrorPage from './operations/show-server-error-page';
 import Logger from '../lib/logger';
 import {getOptimizelyScriptUrl} from './operations/page-data-helper';
 import {NonJsonApiResponseError, WikiVariablesRequestError} from '../lib/custom-errors';
+import {reach} from 'hoek';
+
+function fetchContributors({context, variables}) {
+	const apiUrl = `http://${settings.servicesDomain}/${settings.discussions.baseAPIPath}` +
+		`/${variables.id}/threads?page=0&limit=1&viewableOnly=true`;
+
+	return fetch(apiUrl)
+		.then((response) => {
+			const contributors = reach(response, 'payload._embedded.contributors.0.userInfo') || [];
+			context.discussionsContributors = contributors.slice(0, 5);
+
+			return variables;
+		})
+		.catch(() => {
+			context.discussionsContributors = [];
+
+			return variables;
+		});
+}
 
 /**
  * Renders discussions page
@@ -30,7 +49,14 @@ export default function showDiscussions(request, reply) {
 		context.showSpinner = true;
 		context.optimizelyScript = getOptimizelyScriptUrl(request);
 
-		showApplication(request, reply, wikiVariables, context, true);
+		return {
+			context,
+			variables
+		};
+	})
+	.then(fetchContributors)
+	.then((variables) => {
+		showApplication(request, reply, variables, context, true);
 	})
 	/**
 	 * If request for Wiki Variables fails

@@ -14,6 +14,8 @@ export default Component.extend({
 	attributeBindings: ['style'],
 
 	model: EmberObject.create(M.prop('communityHeader')),
+	contributors: M.prop('discussionsContributors') || [],
+
 	style: computed('model.background_image', function () {
 		const backgroundImage = this.get('model.background_image'),
 			style = `background-image: url('${backgroundImage}');`;
