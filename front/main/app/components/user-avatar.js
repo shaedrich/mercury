@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {isAnonymousUser} from '../utils/user-utils';
 
 export default Ember.Component.extend({
 	classNames: ['user-avatar'],
@@ -7,6 +8,7 @@ export default Ember.Component.extend({
 
 		return userName.trim();
 	}),
+	userId: null,
 	/**
 	 * Returns link to the post author's user page
 	 * @returns {string}
@@ -17,8 +19,10 @@ export default Ember.Component.extend({
 			title: this.get('profileName'),
 		});
 	}),
-	displayName: Ember.computed('profileName', function () {
-		return this.get('anonymous') ? i18n.t('app.username-anonymous') : this.get('profileName');
+	displayName: Ember.computed('profileName', 'userId', function () {
+		return isAnonymousUser(this.get('userId')) ? i18n.t('app.username-anonymous') : this.get('profileName');
 	}),
-	shouldWrapInHref: true
+	shouldWrapInHref: Ember.computed('userId', function () {
+		return !isAnonymousUser(this.get('userId'));
+	})
 });

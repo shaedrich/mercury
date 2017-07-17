@@ -153,7 +153,8 @@
     "hide-deleted": "Hide Deleted",
     "report-post-confirm-text": "Report this post to the moderators?",
     "report-reply-confirm-text": "Report this reply to the moderators?",
-    "report-permanent-action-text": "This action can't be undone."
+    "report-permanent-action-text": "This action can't be undone.",
+    "view-discussions-log": "View Discussions Log"
   },
   "user-activity":{
     "active-users-toggle-option": "Active Users",

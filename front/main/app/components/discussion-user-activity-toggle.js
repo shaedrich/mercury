@@ -23,6 +23,10 @@ export default Ember.Component.extend(
 			trackUserActivityModeratorActionsTabTap() {
 				track(trackActions.UserActivityModeratorActionsTabTapped);
 			},
+
+			setDays(days) {
+				this.sendAction('setDays', days);
+			}
 		}
 	}
 );

@@ -9,6 +9,10 @@
 		margin-top: 70px;
 	}
 
+	&.right-noavatar {
+		padding-left: 48px;
+	}
+
 	.side-button {
 		border: solid $discussion-rail-separator-color;
 		border-width: 1px 0 0;

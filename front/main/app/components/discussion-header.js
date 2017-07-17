@@ -24,6 +24,7 @@ export default Ember.Component.extend(
 		}),
 
 		discussionSort: Ember.inject.service(),
+
 		isFilterApplied: Ember.computed('discussionSort.sortTypes.@each.active', 'categories.@each.selected', function () {
 			return this.get('discussionSort.sortTypes.0.active') === false ||
 				!this.get('categories').isEvery('selected', false) ||

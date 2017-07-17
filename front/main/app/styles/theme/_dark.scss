@@ -594,13 +594,13 @@ body.dark-theme {
 		}
 	}
 
-	.discussion-days-toggle {
-		color: $dark-discussion-days-toggle-color;
+	.discussion-dropdown {
+		color: $dark-discussion-dropdown-color;
 	}
 
 	.discussion-header {
-		.discussion-days-toggle {
-			color: $dark-discussion-header-days-toggle-color;
+		.discussion-dropdown {
+			color: $dark-discussion-header-dropdown-color;
 		}
 	}
 }
