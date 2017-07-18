@@ -6,8 +6,6 @@ const {Component, computed} = Ember;
 export default Component.extend({
 	classNames: ['user-avatar'],
 
-	shouldWrapInHref: true,
-
 	profileName: computed('username', function () {
 		const userName = this.get('username') || '';
 
