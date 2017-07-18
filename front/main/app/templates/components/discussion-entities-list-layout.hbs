@@ -31,7 +31,9 @@
 		<div class="discussion-page row">
 			<div class="rail left large-3 extra-large-2 columns">
 				{{#if reportedContent}}
-					{{left-rail-reported-content}}
+					{{left-rail-reported-content
+							numberOfPosts=model.postCount
+					}}
 				{{/if}}
 
 				{{#unless mainPage}}
