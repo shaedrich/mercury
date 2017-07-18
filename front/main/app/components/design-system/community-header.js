@@ -34,13 +34,19 @@ export default Component.extend({
 
 	didInsertElement() {
 		this.$().on('click', '[data-tracking-label]', (event) => {
+			const label = event.currentTarget.dataset.trackingLabel;
+
+			event.stopPropagation();
+
+			if (!label) {
+				return;
+			}
+
 			track({
 				category: 'community-header',
 				action: trackActions.click,
-				label: event.currentTarget.dataset.trackingLabel
+				label
 			});
-
-			event.stopPropagation();
 		});
 	}
 });

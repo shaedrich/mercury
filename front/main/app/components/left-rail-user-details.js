@@ -10,13 +10,19 @@ export default Component.extend({
 
 	didInsertElement() {
 		this.$().on('click', '[data-tracking-label]', (event) => {
+			const label = event.currentTarget.dataset.trackingLabel;
+
+			event.stopPropagation();
+
+			if (!label) {
+				return;
+			}
+
 			track({
 				action: trackActions.click,
 				category: 'DesktopWebDiscussions',
-				label: event.currentTarget.dataset.trackingLabel
+				label
 			});
-
-			event.stopPropagation();
 		});
 	}
 });
