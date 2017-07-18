@@ -33,16 +33,14 @@ export default Component.extend({
 	}),
 
 	didInsertElement() {
-		this.$().on('click', '[data-tracking-label]', (e) => {
-			const label = this.$(e.currentTarget).data('tracking-label');
-
+		this.$().on('click', '[data-tracking-label]', (event) => {
 			track({
 				category: 'community-header',
 				action: trackActions.click,
-				label: label
+				label: event.currentTarget.dataset.trackingLabel
 			});
 
-			e.stopPropagation();
+			event.stopPropagation();
 		});
 	}
 });

@@ -9,16 +9,14 @@ export default Component.extend({
 	userProfile: reads('users.0'),
 
 	didInsertElement() {
-		this.$().on('click', '[data-tracking-label]', (e) => {
-			const label = this.$(e.currentTarget).data('tracking-label');
-
+		this.$().on('click', '[data-tracking-label]', (event) => {
 			track({
 				action: trackActions.click,
 				category: 'DesktopWebDiscussions',
-				label: label
+				label: event.currentTarget.dataset.trackingLabel
 			});
 
-			e.stopPropagation();
+			event.stopPropagation();
 		});
 	}
 });
