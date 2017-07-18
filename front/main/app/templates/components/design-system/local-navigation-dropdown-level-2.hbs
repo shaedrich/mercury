@@ -1,4 +1,4 @@
-{{#design-system.wds-dropdown isLevel2=true tagName='li' class=stickedClassName as |dropdown|}}
+{{#design-system.wds-dropdown isLevel2=true tagName='li' trackingLabel=trackingLabel class=stickedClassName as |dropdown|}}
 	{{#dropdown.toggle tagName='a' href='#'}}
 		<span>
 			{{#if (equal model.title.type 'translatable-text')}}
@@ -11,7 +11,7 @@
 	{{#dropdown.content isNotScrollable=true}}
 		<ul class="wds-list wds-is-linked">
 			{{#each model.items as |thirdLevelItem|}}
-				<li><a href="{{thirdLevelItem.href}}">{{thirdLevelItem.title.value}}</a></li>
+				<li data-tracking-label="{{thirdLevelItem.tracking_label}}"><a href="{{thirdLevelItem.href}}">{{thirdLevelItem.title.value}}</a></li>
 			{{/each}}
 		</ul>
 	{{/dropdown.content}}
