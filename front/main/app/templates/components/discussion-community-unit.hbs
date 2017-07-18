@@ -22,7 +22,9 @@
 	</a>
 {{/if}}
 
-{{#discussion-moderator-tools}}
+{{#discussion-moderator-tools
+		mainPage=mainPage
+}}
 	<li>
 		{{#link-to 'discussion.reported-posts' class='text-link active-element-theme-color'
 			click=params.trackReportedContentTap}}
