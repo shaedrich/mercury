@@ -3,7 +3,7 @@ import Ember from 'ember';
 const {Component, computed} = Ember;
 
 export default Component.extend({
-	attributeBindings: ['escapedTrackingLabel:data-tracking-label'],
+	attributeBindings: ['trackingLabel:data-tracking-label'],
 	classNameBindings: [
 		'isClicked:wds-is-clicked',
 		'dropdownExpanded:wds-is-active',
@@ -11,11 +11,9 @@ export default Component.extend({
 		'hasDarkShadow:wds-has-dark-shadow',
 		'isLevel2:wds-dropdown-level-2:wds-dropdown'
 	],
-	escapedTrackingLabel: computed('trackingLabel', function() {
-		return encodeURI(this.get('trackingLabel'));
-	}),
 	isLevel2: false,
-	isTouchDevice: Ember.computed(() => {
+
+	isTouchDevice: computed(() => {
 		return ('ontouchstart' in window);
 	}),
 
