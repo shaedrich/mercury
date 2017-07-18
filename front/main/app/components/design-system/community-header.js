@@ -30,5 +30,19 @@ export default Component.extend({
 		return i18n.t(key, {
 			ns: 'design-system'
 		});
-	})
+	}),
+
+	didInsertElement() {
+		this.$().on('click', '[data-tracking-label]', (e) => {
+			const label = this.$(e.currentTarget).data('tracking-label');
+
+			track({
+				category: 'community-header',
+				action: trackActions.click,
+				label: label
+			});
+
+			e.stopPropagation();
+		});
+	}
 });
