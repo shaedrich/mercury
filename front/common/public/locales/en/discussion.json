@@ -14,6 +14,7 @@
   "main": {
     "action-general-error": "Action failed, please try again.",
     "discussions-header-title": "Discussions",
+    "discussions-overview": "Discussions Overview",
     "pagination-post-show-more": "View Older Replies",
     "pagination-post-show-newer-replies": "View Newer Replies",
     "pagination-post-show-new-replies": "New Replies",
@@ -92,6 +93,7 @@
     "edit-reply": "Edit Reply",
     "edit-post": "Edit Post",
     "edit-guidelines": "Edit",
+    "edit-guidelines-uppercase": "Edit Guidelines",
     "upvote-label": "Upvote",
     "reply-label": "Reply",
     "share-header": "Share Post",
@@ -127,7 +129,7 @@
     "rename-category-auth-error": "You are logged out. Please sign in.",
     "rename-category-oermissions-error": "Category cannot be updated.",
     "rename-category-general-error": "Something went wrong, please try again.",
-    "guidelines-link-title": "Discussions Guidelines",
+    "guidelines-link-title": "Guidelines",
     "guidelines-header-title": "Discussions Guidelines",
     "welcome-message-header": "Awesome to have you here!",
     "welcome-message-text": "Have fun browsing, creating, or replying to posts. Read our __guidelinesLinkTitle__ and you'll fit right in.",
@@ -146,13 +148,14 @@
     "no-followed-posts-text": "Hit the “Follow” icon at the bottom of any post to fill your list with discussions that matter most to you. We’ll put them here and notify you of new activity.",
     "find-posts-to-follow": "Find posts to follow",
     "reported-content": "Reported Content",
-    "user-activity": "Discussions Insights",
+    "user-activity": "Insights",
     "moderator-tools": "Moderator Tools",
     "moderation-header": "Moderation",
     "hide-deleted": "Hide Deleted",
     "report-post-confirm-text": "Report this post to the moderators?",
     "report-reply-confirm-text": "Report this reply to the moderators?",
-    "report-permanent-action-text": "This action can't be undone."
+    "report-permanent-action-text": "This action can't be undone.",
+    "view-discussions-log": "View Discussions Log"
   },
   "user-activity":{
     "active-users-toggle-option": "Active Users",

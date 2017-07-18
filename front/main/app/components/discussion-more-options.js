@@ -1,12 +1,23 @@
 import Ember from 'ember';
 import nearestParent from 'ember-pop-over/computed/nearest-parent';
 import {track, trackActions} from '../utils/discussion-tracker';
+import {isAnonymousUser} from '../utils/user-utils';
 
 export default Ember.Component.extend({
 	classNames: ['more-options'],
 	tagName: 'ul',
 	currentUser: Ember.inject.service(),
 	popover: nearestParent('pop-over'),
+
+	userId: Ember.computed.readOnly('post.createdBy.id'),
+
+	userName: Ember.computed('userId', 'post.createdBy.name', function () {
+		return isAnonymousUser(this.get('userId')) ? i18n.t('app.username-anonymous') : this.get('post.createdBy.name');
+	}),
+
+	displayAllPostsLink: Ember.computed('userId', function () {
+		return !isAnonymousUser(this.get('userId'));
+	}),
 
 	canDelete: Ember.computed('post.isDeleted', function () {
 		return !this.get('post.isDeleted') && this.get('post.userData.permissions.canDelete');
