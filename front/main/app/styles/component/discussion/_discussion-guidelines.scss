@@ -20,8 +20,8 @@
 	flex-direction: column;
 	align-items: center;
 
-	.wiki-name {
-		color: $discussion-guidelines-wiki-name-color;
+	.discussions-links {
+		color: $discussion-guidelines-discussions-links-color;
 		font-size: $type-small;
 		line-height: $line-height-small;
 		margin-bottom: 16px;
@@ -68,7 +68,7 @@
 		margin-right: 60px;
 		margin-top: 50px;
 
-		.wiki-name {
+		.discussions-links {
 			font-size: $large-desktop-post-details-font-size;
 		}
 

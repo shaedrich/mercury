@@ -1,6 +1,4 @@
-{{#if wikiName}}
-	<h4 class="wiki-name">{{i18n 'main.discussions-links' ns='discussion'}}</h4>
-{{/if}}
+<h4 class="discussions-links">{{i18n 'main.discussions-links' ns='discussion'}}</h4>
 {{#if displayGuidelinesLink}}
 	<div class="guidelines-link-section">
 		{{#link-to 'discussion.guidelines' class='guidelines-link active-element-theme-color' click=(action 'openGuidelines')}}
@@ -23,7 +21,7 @@
 {{/if}}
 
 {{#discussion-moderator-tools
-		mainPage=mainPage
+	mainPage=mainPage
 }}
 	<li>
 		{{#link-to 'discussion.reported-posts' class='text-link active-element-theme-color'
