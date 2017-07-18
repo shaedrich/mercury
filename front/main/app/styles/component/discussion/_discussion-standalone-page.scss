@@ -10,6 +10,10 @@ $desktop-content-width: 768px;
 	.standalone-content {
 		background-color: $discussion-standalone-content-background-color;
 	}
+
+	.rail {
+		padding-right: 0px;
+	}
 }
 
 @media #{$mobile-range} {
