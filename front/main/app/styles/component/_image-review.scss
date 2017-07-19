@@ -86,6 +86,7 @@
   display: block;
   margin: 0 auto;
   position: relative;
+  max-height: 90vh;
 
   p {
     margin: 8px;
@@ -93,6 +94,8 @@
 }
 
 .image-review-modal-history {
+  width: 100%;
+
   td {
     padding: 5px;
     border: 1px solid;
@@ -322,9 +325,26 @@ input[type="text"].image-review-summary-input {
 
 .image-review-image-details-close-btn {
   position: absolute;
-  top: -26px;
-  right: -26px;
+  top: -20px;
+  right: -20px;
   cursor: pointer;
   height: 24px;
   width: 24px;
+}
+
+.image-review-image-details-columns {
+  display: flex;
+}
+
+.image-review-context {
+  padding: 0 6px 0 26px;
+}
+
+.image-review .modal-dialog {
+  max-width: none;
+  width: initial;
+}
+
+.image-review-image-details-img {
+  max-height: 90vh;
 }
