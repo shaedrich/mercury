@@ -14,7 +14,7 @@
   "main": {
     "action-general-error": "Action failed, please try again.",
     "discussions-header-title": "Discussions",
-    "discussions-overview": "Discussions Overview",
+    "discussions-links": "Discussions Links",
     "pagination-post-show-more": "View Older Replies",
     "pagination-post-show-newer-replies": "View Newer Replies",
     "pagination-post-show-new-replies": "New Replies",
@@ -92,8 +92,7 @@
     "unlock-post": "Unlock Post",
     "edit-reply": "Edit Reply",
     "edit-post": "Edit Post",
-    "edit-guidelines": "Edit",
-    "edit-guidelines-uppercase": "Edit Guidelines",
+    "edit-guidelines": "Edit Guidelines",
     "upvote-label": "Upvote",
     "reply-label": "Reply",
     "share-header": "Share Post",

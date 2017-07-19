@@ -1,4 +1,9 @@
 {{#if canUseModeratorTools}}
+	{{#unless mainPage}}
+		<h3 class="{{if responsive.isMobile 'discussion-mobile-filter-header'}}">
+			{{i18n 'main.moderator-tools' ns='discussion'}}
+		</h3>
+	{{/unless}}
 	<ul class="wds-list{{if responsive.isMobile ' wds-has-big-items wds-has-lines-between'}}">
 		{{yield (hash
 			trackReportedContentTap=(action 'trackReportedContentTap')

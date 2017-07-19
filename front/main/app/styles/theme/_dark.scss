@@ -261,7 +261,7 @@ body.dark-theme {
 			color: $dark-discussion-app-promotion-text-color;
 		}
 		h3,
-		.wiki-name {
+		.discussions-links {
 			border-bottom-color: $dark-discussion-right-rail-line-color;
 			color: $dark-discussion-rail-title-color;
 		}
@@ -480,8 +480,8 @@ body.dark-theme {
 	}
 
 	.guidelines-page {
-		.wiki-name {
-			color: $dark-discussion-guidelines-wiki-name-color;
+		.discussions-links {
+			color: $dark-discussion-guidelines-discussions-links-color;
 		}
 
 		.guidelines-text {

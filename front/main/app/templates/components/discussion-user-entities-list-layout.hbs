@@ -45,10 +45,22 @@
 			</div>
 			<div class="rail large-3 extra-large-2 columns">
 				{{#if model.canDeleteAll}}
-					<div {{action 'deleteAllPosts'}} class="side-button delete-all">
-						{{svg 'delete' viewBox='0 0 16 19' class='icon delete'}}
-						{{i18n 'main.delete-all' ns='discussion'}}
-					</div>
+					{{#discussion-moderator-tools}}
+						<li>
+							<div {{action 'deleteAllPosts'}} class="active-element-theme-color">
+								{{svg 'delete' viewBox='0 0 16 19' class='icon delete'}}
+								{{i18n 'main.delete-all' ns='discussion'}}
+							</div>
+						</li>
+						{{#if showDiscussionsLogLink}}
+							<li>
+								<a href={{discussionsLogUrl}} class="active-element-theme-color">
+									{{svg 'documents' viewBox='0 0 16 19' class='icon'}}
+									{{i18n 'main.view-discussions-log' ns='discussion'}}
+								</a>
+							</li>
+						{{/if}}
+					{{/discussion-moderator-tools}}
 				{{/if}}
 			</div>
 		</div>

@@ -1,6 +1,4 @@
-{{#if wikiName}}
-	<h4 class="wiki-name">{{i18n 'main.discussions-overview' ns='discussion'}}</h4>
-{{/if}}
+<h4 class="discussions-links">{{i18n 'main.discussions-links' ns='discussion'}}</h4>
 {{#if displayGuidelinesLink}}
 	<div class="guidelines-link-section">
 		{{#link-to 'discussion.guidelines' class='guidelines-link active-element-theme-color' click=(action 'openGuidelines')}}
@@ -22,7 +20,9 @@
 	</a>
 {{/if}}
 
-{{#discussion-moderator-tools}}
+{{#discussion-moderator-tools
+	mainPage=mainPage
+}}
 	<li>
 		{{#link-to 'discussion.reported-posts' class='text-link active-element-theme-color'
 			click=params.trackReportedContentTap}}
@@ -33,7 +33,7 @@
 	<li>
 		{{#link-to 'discussion.moderator.user-activity' (query-params days="30")
 			class='text-link active-element-theme-color' click=params.trackUserActivityTap}}
-			{{svg 'user-activity' role='img' class='icon user-activity'}}
+			{{svg 'wds-icons-activity' role='img' class='wds-icon wds-icon-small user-activity icon'}}
 			<span>{{i18n 'main.user-activity' ns='discussion'}}</span>
 		{{/link-to}}
 	</li>
