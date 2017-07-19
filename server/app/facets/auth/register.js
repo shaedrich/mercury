@@ -16,7 +16,7 @@ import {parse} from 'url';
  * @property {string} [heliosRegistrationURL]
  * @property {*} [i18nContext]
  * @property {string} [termsOfUseLink]
- * @property {string} heliosFacebookURL
+ * @property {string} signinFacebookURL
  */
 
 /**
@@ -132,7 +132,7 @@ function getEmailRegistrationPage(request, reply) {
 				'auth:join.sign-up-with-email' :
 				'auth:register.desktop-header',
 			heliosRegistrationURL: authUtils.getUserRegistrationUrl('/users'),
-			heliosFacebookURL: authUtils.getHeliosUrl('/facebook/token'),
+			signinFacebookURL: '/signin?method=facebook',
 			title: (viewType === authView.VIEW_TYPE_MOBILE) ?
 				'auth:join.sign-up-with-email' :
 				'auth:register.desktop-header',

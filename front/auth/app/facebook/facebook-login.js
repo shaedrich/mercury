@@ -131,7 +131,8 @@ export default class FacebookLogin {
 	getHeliosInfoFromFBToken(facebookAuthData) {
 		const facebookTokenXhr = new XMLHttpRequest(),
 			data = {
-				fb_access_token: facebookAuthData.accessToken
+				fb_access_token: facebookAuthData.accessToken,
+				crumb: this.loginButton.getAttribute('data-crumb')
 			},
 			url = this.loginButton.getAttribute('data-helios-facebook-uri');
 

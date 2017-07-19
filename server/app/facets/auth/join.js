@@ -10,7 +10,7 @@ import {format} from 'url';
  * @extends {AuthViewContext}
  * @property {string} loginRoute
  * @property {string} signupHref
- * @property {string} heliosFacebookURL
+ * @property {string} signinFacebookURL
  * @property {number} [facebookAppId]
  */
 
@@ -29,7 +29,7 @@ export default function get(request, reply) {
 			signupHref: authUtils.getRegisterUrl(request),
 			bodyClasses: 'splash join-page',
 			pageType: 'join-page',
-			heliosFacebookURL: authUtils.getHeliosUrl('/facebook/token'),
+			signinFacebookURL: '/signin?method=facebook',
 			pageParams: {
 				facebookAppId: settings.facebook.appId
 			}
