@@ -12,6 +12,7 @@ export default Component.extend({
 		'isLevel2:wds-dropdown-level-2:wds-dropdown'
 	],
 	isLevel2: false,
+	onMouseEnter() {},
 
 	isTouchDevice: computed(() => {
 		return ('ontouchstart' in window);
@@ -23,6 +24,10 @@ export default Component.extend({
 				this.set('isClicked', true);
 				event.preventDefault();
 			}
+		},
+
+		mouseEnter() {
+			this.get('onMouseEnter')();
 		},
 
 		mouseLeave() {
