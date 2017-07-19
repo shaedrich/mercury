@@ -9,6 +9,7 @@ import fs from 'fs';
 import h2o2 from 'h2o2';
 import handlebars from 'handlebars';
 import {Server} from 'hapi';
+import crumb from 'crumb';
 import i18next from 'hapi-i18next';
 import inert from 'inert';
 import path from 'path';
@@ -241,6 +242,12 @@ plugins = [
 	},
 	{
 		register: vision
+	},
+	{
+		register: crumb,
+		options: {
+			skip: (request, reply) => request.path.search('^\/(signin|join|register)$') === -1
+		}
 	}
 ];
 
