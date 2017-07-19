@@ -43,7 +43,6 @@ function getBatch(batchId) {
 	}
 	return request(M.getImageReviewServiceUrl(`/batch/${batchId}`))
 		.then(({batchId, imageList}) => {
-			const linkRegexp = new RegExp('(http|https)?:\/\/[^\s]+');
 			const images = imageList
 				.map((image) =>
 					Ember.Object.create({
@@ -52,7 +51,6 @@ function getBatch(batchId) {
 						context: image.context,
 						source: image.source,
 						isContextProvided: Boolean(image.context),
-						isContextLink: linkRegexp.test(image.context),
 						status: toReviewStatus(image.currentStatus)
 					}));
 
