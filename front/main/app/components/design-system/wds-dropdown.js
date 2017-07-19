@@ -1,8 +1,9 @@
 import Ember from 'ember';
 
-const {Component} = Ember;
+const {Component, computed} = Ember;
 
 export default Component.extend({
+	attributeBindings: ['trackingLabel:data-tracking-label'],
 	classNameBindings: [
 		'isClicked:wds-is-clicked',
 		'dropdownExpanded:wds-is-active',
@@ -11,7 +12,8 @@ export default Component.extend({
 		'isLevel2:wds-dropdown-level-2:wds-dropdown'
 	],
 	isLevel2: false,
-	isTouchDevice: Ember.computed(() => {
+
+	isTouchDevice: computed(() => {
 		return ('ontouchstart' in window);
 	}),
 

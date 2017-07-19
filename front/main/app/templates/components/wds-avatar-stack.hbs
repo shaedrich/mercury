@@ -1,8 +1,9 @@
 {{#each avatars as |avatar|}}
 	<div class="wds-avatar-stack__avatar">
 		{{user-avatar
-			avatarUrl=avatar.avatarUrl
-			username=avatar.name
+				avatarUrl=avatar.avatarUrl
+				username=avatar.name
+				userId=avatar.id
 		}}
 	</div>
 {{/each}}

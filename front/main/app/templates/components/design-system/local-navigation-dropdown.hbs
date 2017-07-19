@@ -15,9 +15,10 @@
 					{{design-system.local-navigation-dropdown-level-2
 						item=secondLevelItem
 						currentIndex=index
+						trackingLabel=secondLevelItem.tracking_label
 					}}
 				{{else}}
-					<li>
+					<li data-tracking-label="{{secondLevelItem.tracking_label}}">
 						<a href="{{secondLevelItem.href}}">
 							{{#if (equal secondLevelItem.title.type 'translatable-text')}}
 								{{i18n secondLevelItem.title.key ns='design-system'}}

@@ -30,5 +30,23 @@ export default Component.extend({
 		return i18n.t(key, {
 			ns: 'design-system'
 		});
-	})
+	}),
+
+	didInsertElement() {
+		this.$().on('click', '[data-tracking-label]', (event) => {
+			const label = event.currentTarget.dataset.trackingLabel;
+
+			event.stopPropagation();
+
+			if (!label) {
+				return;
+			}
+
+			track({
+				category: 'community-header',
+				action: trackActions.click,
+				label
+			});
+		});
+	}
 });
