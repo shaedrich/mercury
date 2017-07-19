@@ -3,6 +3,7 @@ import {Policy} from './lib/caching';
 import {getRedirectUrlWithQueryString} from './lib/auth-utils';
 import proxyMW from './facets/operations/proxy-mw';
 import {handler as assetsHandler} from './facets/operations/assets';
+import sassHandler from './facets/operations/sass';
 import heartbeatHandler from './facets/operations/heartbeat';
 import discussionsHandler from './facets/show-discussions';
 import logoutHandler from './facets/auth/logout';
@@ -71,6 +72,11 @@ let routes,
 			method: 'GET',
 			path: '/heartbeat',
 			handler: heartbeatHandler
+		},
+		{
+			method: 'GET',
+			path: '/styles',
+			handler: sassHandler
 		}
 	],
 	// routes where we want to know the user's auth status

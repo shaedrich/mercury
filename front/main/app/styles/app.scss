@@ -8,7 +8,7 @@
 @import 'wikia-variables';
 @import 'mixin/index';
 
-@import '../common/styles/placeholder/index';
+@import 'common/styles/placeholder/index';
 @import 'base/index';
 @import 'layout/index';
 @import 'state/index';
@@ -17,6 +17,6 @@
 @import 'module/index';
 
 // temporary solution while these inputs are not a part of the Style Guide
-@import '../auth/app/styles/base/input';
-@import '../auth/app/styles/module/forms';
-@import '../auth/app/styles/module/form-icons';
+@import 'auth/app/styles/base/input';
+@import 'auth/app/styles/module/forms';
+@import 'auth/app/styles/module/form-icons';
