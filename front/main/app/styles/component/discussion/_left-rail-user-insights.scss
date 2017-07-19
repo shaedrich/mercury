@@ -18,15 +18,16 @@
 	&__insights {
 		font-size: 18px;
 		font-weight: bold;
-		margin: 18px 0 0 0;
+		margin: 16px 0 0 0;
 		text-align: center;
 	}
 
 	&__discussions {
 		color: $wds-color-light-c5;
 		font-size: 14px;
+		line-height: 1;
 		font-weight: bold;
 		text-align: center;
-		margin: 0 0 24px 0;
+		margin: 10px 0 18px 0;
 	}
 }

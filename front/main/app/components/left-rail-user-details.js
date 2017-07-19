@@ -4,7 +4,7 @@ import {track, trackActions} from 'common/utils/track';
 const {Component, computed: {reads}} = Ember;
 
 export default Component.extend({
-	classNames: ['left-rail-user-details'],
+	classNames: ['discussion-left-rail'],
 
 	userProfile: reads('users.0'),
 
