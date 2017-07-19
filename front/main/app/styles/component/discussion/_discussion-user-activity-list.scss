@@ -1,5 +1,9 @@
 .discussion-user-activity-list {
 	color: $discussion-user-activity-text-color;
+	margin-bottom: 0;
+	@media (min-width:1063px) {
+		margin-bottom: 30px;
+	}
 
 	.row {
 		display: flex;
