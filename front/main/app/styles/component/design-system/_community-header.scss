@@ -19,26 +19,6 @@ $color-page-border: #cccccc;
 	// above the local nav dropdowns
 	z-index: 5;
 
-	// fixme
-	//// these styles are compatible with the ones for #WikiaPage in 'skins/oasis/css/core/breakpoints-layout';
-	//@if ($widthType == 0) {
-	//	@media #{$breakpoint-small-only} {
-	//		width: $page-width-small + $padding-width-small * 2 + $content-border-width * 2;
-	//	}
-	//
-	//	@media #{$breakpoint-small-plus} {
-	//		width: $page-width-small-plus + $padding-width-small-plus * 2 + $content-border-width * 2;
-	//	}
-	//
-	//	@media #{$breakpoint-medium-only} {
-	//		width: $page-width-medium + $padding-width-medium * 2 + $content-border-width * 2;
-	//	}
-	//
-	//	@media #{$breakpoint-large-up} {
-	//		width: $page-width-large + $padding-width-large * 2 + $content-border-width * 2;
-	//	}
-	//}
-
 	.wds-avatar-stack .user-avatar .avatar .user-avatar__image {
 		background-color: $wds-color-white;
 		border-color: $wds-color-white; // TODO: should it be CH text color?
