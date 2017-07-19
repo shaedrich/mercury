@@ -15,7 +15,11 @@
 	<div class="discussion-content-wrapper">
 		<div class="discussion-page row">
 			<div class="rail left large-3 extra-large-2 columns">
-				{{left-rail-user-insights}}
+				{{left-rail-details
+						headerText=(i18n 'main.user-activity' ns='discussion')
+						subHeaderText=(i18n 'main.discussions-header-title' ns='discussion')
+						wdsIcon='wds-icons-activity'
+				}}
 				{{discussion-side-button
 						route='discussion'
 				}}

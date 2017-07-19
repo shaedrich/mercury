@@ -1,0 +1,20 @@
+{{#if users}}
+	{{user-avatar
+		avatarUrl=userProfile.avatarUrl
+		shouldWrapInHref=true
+		username=userName
+	}}
+{{else}}
+	<div class="discussion-left-rail__circle">
+		{{svg wdsIcon role='img' class='wds-icon discussion-left-rail__icon-guidelines'}}
+	</div>
+{{/if}}
+<p class="discussion-left-rail__header">{{headerText}}</p>
+<div class="discussion-user-entities-list-layout__side-button-border">
+	{{#if numberOfPosts}}
+		<p class="discussion-left-rail__postcounter">{{numberOfPosts}} {{i18n 'user-activity.posts' ns='discussion'}}</p>
+	{{/if}}
+	{{#if subHeaderText}}
+		<p class="discussion-left-rail__discussions">{{subHeaderText}}</p>
+	{{/if}}
+</div>

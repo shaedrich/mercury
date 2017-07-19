@@ -31,7 +31,9 @@
 		<div class="discussion-page row">
 			<div class="rail left large-3 extra-large-2 columns">
 				{{#if reportedContent}}
-					{{left-rail-reported-content
+					{{left-rail-details
+							headerText=(i18n 'main.reported-content' ns='discussion')
+							wdsIcon='wds-icons-alert'
 							numberOfPosts=model.postCount
 					}}
 				{{/if}}
@@ -42,9 +44,10 @@
 					}}
 				{{/unless}}
 
-				{{#if categoriesInRail}}
-					{{#if canShowCategories}}
-						{{discussion-categories
+				{{#if mainPage}}
+					{{#if categoriesInRail}}
+						{{#if canShowCategories}}
+							{{discussion-categories
 							categories=categories
 							inputIdPrefix='rail'
 							disabled=isCategoryFilterDisabled
@@ -53,23 +56,24 @@
 							updateCategoriesSelection=(action this.attrs.updateCategoriesSelection)
 							validatePostsOnForum=(action this.attrs.validatePostsOnForum)
 							visibleCategoriesCount=10
-						}}
+							}}
+						{{/if}}
 					{{/if}}
+					{{#unless responsive.isMobile}}
+						{{#if model.canModerate}}
+							{{discussion-hide-deleted
+								disabled=false
+								hideDeleted=hideDeleted
+								toggleHideDeleted=(action 'toggleHideDeleted')
+							}}
+						{{/if}}
+					{{/unless}}
+					{{discussion-sort
+						disabled=isSortingDisabled
+						sortBy=sortBy
+						setSortBy=(action 'setSortBy')
+					}}
 				{{/if}}
-				{{#unless responsive.isMobile}}
-					{{#if model.canModerate}}
-						{{discussion-hide-deleted
-							disabled=false
-							hideDeleted=hideDeleted
-							toggleHideDeleted=(action 'toggleHideDeleted')
-						}}
-					{{/if}}
-				{{/unless}}
-				{{discussion-sort
-					disabled=isSortingDisabled
-					sortBy=sortBy
-					setSortBy=(action 'setSortBy')
-				}}
 			</div>
 			<div class="small-12 large-6 extra-large-6 columns">
 				{{yield}}
