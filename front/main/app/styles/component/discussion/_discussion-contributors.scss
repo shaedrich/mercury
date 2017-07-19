@@ -42,7 +42,9 @@ $discussion-contributors-border-width: 2px;
 	.discussion-contributors {
 		display: flex;
 		flex-wrap: wrap;
-		margin-bottom: 12px;
+		padding-bottom: 12px;
+		border: solid #ccc;
+		border-width: 0 0 1px;
 
 		.user-avatar {
 			margin-bottom: 5px;
