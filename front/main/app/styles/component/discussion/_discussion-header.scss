@@ -123,11 +123,6 @@ $site-header-height: 50px;
 		}
 	}
 
-	.delete-all {
-		float: right;
-		padding-right: 15px;
-	}
-
 	// There is no Fandom bar on communities in Wikia.org program
 	.site-head-fandom-bar-hidden & {
 		margin-top: $site-head-height;

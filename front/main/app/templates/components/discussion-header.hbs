@@ -50,7 +50,7 @@
 		{{#discussion-dropdown
 			toggleText=(i18n 'main.moderation-header' ns='discussion')
 		}}
-			<li {{action this.attrs.deleteAllPosts}} class="active-element-theme-color">
+			<li {{action this.attrs.deleteAllPosts}} class="active-element-theme-color delete-all">
 				{{svg 'delete' viewBox='0 0 16 19' class='icon delete'}}
 				{{i18n 'main.delete-all' ns='discussion'}}
 			</li>
