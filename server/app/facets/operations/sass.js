@@ -25,7 +25,7 @@ export default (request, reply) => {
 			'front/main/app/styles/',
 			'front/'
 		],
-		data: `${sassVariables} @import 'app.scss';`,
+		data: `${sassVariables} @import 'runtime.scss';`,
 		outputStyle: 'compressed',
 		sourceComments: 'none'
 	}, (err, result) => {

@@ -60,6 +60,11 @@ let routes,
 		},
 		{
 			method: 'GET',
+			path: '/front/sass-runtime',
+			handler: sassHandler
+		},
+		{
+			method: 'GET',
 			path: '/front/{path*}',
 			handler: assetsHandler
 		},
@@ -72,11 +77,6 @@ let routes,
 			method: 'GET',
 			path: '/heartbeat',
 			handler: heartbeatHandler
-		},
-		{
-			method: 'GET',
-			path: '/styles',
-			handler: sassHandler
 		}
 	],
 	// routes where we want to know the user's auth status

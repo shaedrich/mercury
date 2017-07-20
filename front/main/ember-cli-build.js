@@ -43,11 +43,6 @@ module.exports = function (defaults) {
 			baseline: 'vendor/baseline.js',
 			$script: 'bower_components/script.js/dist/script.js',
 		},
-		sassOptions: {
-			includePaths: [
-				'app/styles'
-			]
-		},
 		svgstore: {
 			files: [
 				{
@@ -73,7 +68,6 @@ module.exports = function (defaults) {
 		outputPaths: {
 			app: {
 				css: {
-					app: 'assets/app.css',
 					'app-dark-theme': 'assets/app-dark-theme.css'
 				},
 				html: 'ember-main.hbs',
