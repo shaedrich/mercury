@@ -1,9 +1,3 @@
-$color-community-header: #003380;
-$color-text: #262626;
-$color-links: #262626;
-$color-page: #f6f6f6;
-$color-page-border: #cccccc;
-
 .wds-community-header {
 	@include community-header-theming(
 					$color-community-header,
