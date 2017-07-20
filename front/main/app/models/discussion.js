@@ -3,6 +3,8 @@ import Ember from 'ember';
 import DiscussionCategory from './discussion/domain/category';
 import request from 'ember-ajax/request';
 
+alert('Hello Discussions!');
+
 const DiscussionModel = Ember.Object.extend({
 	data: null,
 	wikiId: null,
