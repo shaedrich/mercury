@@ -18,9 +18,10 @@ body.dark-theme {
 		background-color: $dark-discussion-active-checkbox-background-color;
 	}
 
-		.discussion-content-wrapper {
+	.discussion-content-wrapper {
 		border-left: 1px solid $dark-discussion-border-wrapper-color;
 		border-right: 1px solid $dark-discussion-border-wrapper-color;
+		border-bottom: 1px solid $dark-discussion-border-wrapper-color;
 	}
 
 	button[type=submit][disabled] {
