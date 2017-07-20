@@ -1,9 +1,9 @@
 {{#if heliosFacebookConnectURL}}
-	<form id="{{formId}}" action="{{heliosLoginURL}}" method="POST" data-heliosFacebookConnectURL="{{heliosFacebookConnectURL}}">
+	<form id="{{formId}}" action="{{signinPostURL}}" method="POST" data-heliosFacebookConnectURL="{{heliosFacebookConnectURL}}">
 {{else}}
-	<form id="{{formId}}" action="{{heliosLoginURL}}" method="POST">
+	<form id="{{formId}}" action="{{signinPostURL}}" method="POST">
 	{{#if hasMobileFacebookSection}}
-		<a class="button signup-provider-facebook" href="#" data-helios-facebook-uri="{{{heliosFacebookURL}}}">
+		<a class="button signup-provider-facebook" href="#" data-crumb="{{crumb}}" data-helios-facebook-uri="{{signinFacebookURL}}">
 			<span>{{i18n 'auth:common.connect-with-facebook'}}</span>
 		</a>
 
@@ -28,5 +28,6 @@
 		<span class="input-icon password-toggler"></span>
 		<a class="forgotten-password" href="{{{forgotPasswordHref}}}" tabindex="-1">{{i18n "auth:signin.forgot-password"}}</a>
 	</div>
+	<input type="hidden" id="crumb" name="crumb" value="{{crumb}}" />
 	<button id="loginSubmit" type="submit" class="form-submit" disabled><span>{{i18n submitText}}</span></button>
 </form>

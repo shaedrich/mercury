@@ -678,18 +678,10 @@ body.dark-theme {
 			}
 		}
 
-		.post-list-view {
-			.rail {
-				.delete-all {
-					color: $dark-discussion-actions-color;
-				}
-			}
+	.discussion-categories-edit {
+		.move {
+			fill: $dark-discussion-move-icon-color;
 		}
-
-		.discussion-categories-edit {
-			.move {
-				fill: $dark-discussion-move-icon-color;
-			}
 
 			.is-dragging {
 				background-color: $dark-discussion-edit-list-item-color;

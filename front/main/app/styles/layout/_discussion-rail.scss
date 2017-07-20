@@ -16,6 +16,9 @@
 
 .post-list-view {
 	.rail {
+		.side-button {
+			border-width: 1px 0;
+		}
 
 		.delete-all {
 			border-top: none;
