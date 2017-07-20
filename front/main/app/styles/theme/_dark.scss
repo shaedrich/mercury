@@ -12,8 +12,8 @@ body.dark-theme {
 	}
 
 	.discussion-content-wrapper {
-		border-left: 1px solid $wds-color-dark-c4;
-		border-right: 1px solid $wds-color-dark-c4;
+		border-left: 1px solid $dark-discussion-border-wrapper-color;
+		border-right: 1px solid $dark-discussion-border-wrapper-color;
 	}
 
 	button[type=submit][disabled] {
