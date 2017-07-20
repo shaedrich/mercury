@@ -10,9 +10,10 @@ body.dark-theme {
 	.discussion-wrapper {
 		background-color: $dark-discussion-desktop-post-detail-bg-color;
 	}
+
 	.discussion-content-wrapper {
-		border-left: 1px solid #ccc;
-		border-right: 1px solid #ccc;
+		border-left: 1px solid $wds-color-dark-c4;
+		border-right: 1px solid $wds-color-dark-c4;
 	}
 
 	button[type=submit][disabled] {
