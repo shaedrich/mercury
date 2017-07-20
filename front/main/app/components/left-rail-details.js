@@ -9,7 +9,6 @@ export default Component.extend({
 	userProfile: reads('users.0'),
 
 	didInsertElement() {
-		console.log("DUPA");
 		this.$().on('click', '[data-tracking-label]', (event) => {
 			const label = event.currentTarget.dataset.trackingLabel;
 

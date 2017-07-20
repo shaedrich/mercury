@@ -11,11 +11,11 @@ body.dark-theme {
 		background-color: $dark-discussion-desktop-post-detail-bg-color;
 
 	.fancy-checkbox-span {
-		background-color: #262626;
+		background-color: $dark-discussion-checkbox-background-color;
 	}
 
 	.fancy-checkbox-span.active-element-background-color {
-		background-color: #006cb0;
+		background-color: $dark-discussion-active-checkbox-background-color;
 	}
 
 		.discussion-content-wrapper {
