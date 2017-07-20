@@ -15,10 +15,10 @@
 }
 
 .guidelines-page {
-	margin: 22px 18px;
+	align-items: center;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	margin: 22px 18px;
 
 	.discussions-links {
 		color: $discussion-guidelines-discussions-links-color;
@@ -56,7 +56,7 @@
 	.standalone-page-view {
 		.rail {
 			width: 12.5%;
-			padding-right: 0px;
+			padding-right: 0;
 		}
 
 		.standalone-content {

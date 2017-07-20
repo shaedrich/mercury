@@ -27,9 +27,9 @@
 						{{i18n 'main.contributors-title' ns='discussion'}}
 					</div>
 					{{discussion-contributors
-							users=model.contributors.users
-							maxContributorDisplayCount=7
-							totalContributorCount=model.contributors.count
+						users=model.contributors.users
+						maxContributorDisplayCount=7
+						totalContributorCount=model.contributors.count
 					}}
 				{{/unless}}
 				{{discussion-side-button
@@ -41,12 +41,12 @@
 			</div>
 			<div class="rail large-2 columns">
 				{{discussion-community-unit
-						canModerate=model.canModerate
-						displayGuidelinesLink=true
-						displayWikiaHomeLink=true
-						showAppPromotion=false
-						guidelines=attributes.guidelines
-						listPage=true
+					canModerate=model.canModerate
+					displayGuidelinesLink=true
+					displayWikiaHomeLink=true
+					showAppPromotion=false
+					guidelines=attributes.guidelines
+					listPage=true
 				}}
 			</div>
 		</div>
