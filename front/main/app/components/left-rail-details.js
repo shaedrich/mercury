@@ -23,6 +23,7 @@ export default Component.extend({
 				category: 'DesktopWebDiscussions',
 				label
 			});
+
 		});
 	}
 });

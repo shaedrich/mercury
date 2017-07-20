@@ -9,7 +9,7 @@ body.dark-theme {
 .dark-theme {
 	.discussion-wrapper {
 		background-color: $dark-discussion-desktop-post-detail-bg-color;
-	}
+
 
 	.discussion-content-wrapper {
 		border-left: 1px solid $dark-discussion-border-wrapper-color;
@@ -535,7 +535,6 @@ body.dark-theme {
 		color: $dark-discussion-upload-image-error-text-color;
 	}
 
-
 	.user-activity-title {
 		color: $dark-discussion-user-activity-title-color;
 	}
@@ -613,6 +612,7 @@ body.dark-theme {
 		}
 	}
 }
+}
 
 @media #{$desktop-range} {
 	body.dark-theme {
@@ -620,120 +620,122 @@ body.dark-theme {
 	}
 
 	.dark-theme {
-		.discussion {
-			background-color: transparent;
+		.discussion-wrapper {
+			.discussion {
+				background-color: transparent;
 
-			&.forum {
-				.post-detail {
-					border-bottom-color: $dark-discussion-reply-border-color;
+				&.forum {
+					.post-detail {
+						border-color: $dark-discussion-border-post-color;
+					}
+
+					.discussion-content {
+						a {
+							color: $dark-discussion-content-color;
+						}
+					}
 				}
 
-				.discussion-content {
-					a {
-						color: $dark-discussion-content-color;
+				&.post {
+					.post-detail {
+						background-color: transparent;
+						border-bottom-color: $dark-discussion-reply-border-color;
+					}
+				}
+
+				.discussion-no-replies {
+					color: $dark-discussion-no-replies-text-color;
+				}
+			}
+
+			.discussion-forum-tabs {
+				li {
+					&.not-active {
+						border-bottom-color: $dark-discussion-sort-color;
+						color: $dark-discussion-sort-color;
 					}
 				}
 			}
 
-			&.post {
-				.post-detail {
-					background-color: transparent;
-					border-bottom-color: $dark-discussion-reply-border-color;
-				}
-			}
-
 			.discussion-no-replies {
-				color: $dark-discussion-no-replies-text-color;
+				border-bottom-color: $dark-discussion-reply-border-color;
 			}
-		}
 
-		.discussion-forum-tabs {
-			li {
-				&.not-active {
-					border-bottom-color: $dark-discussion-sort-color;
-					color: $dark-discussion-sort-color;
+			.discussions {
+				.large-image-card-desktop {
+					.og-image {
+						border-bottom-color: $dark-discussion-open-graph-border-color;
+					}
 				}
 			}
 		}
 
-		.discussion-no-replies {
-			border-bottom-color: $dark-discussion-reply-border-color;
-		}
-
-		.discussions {
-			.large-image-card-desktop {
-				.og-image {
-					border-bottom-color: $dark-discussion-open-graph-border-color;
+		.post-list-view {
+			.rail {
+				.delete-all {
+					color: $dark-discussion-actions-color;
 				}
 			}
 		}
-	}
 
-	.post-list-view {
-		.rail {
-			.delete-all {
-				color: $dark-discussion-actions-color;
+		.discussion-categories-edit {
+			.move {
+				fill: $dark-discussion-move-icon-color;
+			}
+
+			.is-dragging {
+				background-color: $dark-discussion-edit-list-item-color;
+			}
+
+			input[type=text] {
+				border-bottom-color: $dark-discussion-categories-edit-border-bottom-color;
+				color: $dark-discussion-content-color;
+
+				&[disabled] {
+					color: $dark-discussion-disabled-text-color;
+					-webkit-text-fill-color: $dark-discussion-disabled-text-color;
+				}
+			}
+
+			.categories-loading-overlay {
+				background-color: rgba($dark-highlight-overlay-background-color, 0.9);
+			}
+
+			.categories-edit-info-message {
+				color: $dark-discussion-content-color;
 			}
 		}
-	}
 
-	.discussion-categories-edit {
-		.move {
-			fill: $dark-discussion-move-icon-color;
-		}
-
-		.is-dragging {
-			background-color: $dark-discussion-edit-list-item-color;
-		}
-
-		input[type=text] {
-			border-bottom-color: $dark-discussion-categories-edit-border-bottom-color;
-			color: $dark-discussion-content-color;
-
-			&[disabled] {
-				color: $dark-discussion-disabled-text-color;
-				-webkit-text-fill-color: $dark-discussion-disabled-text-color;
-			}
-		}
-
-		.categories-loading-overlay {
-			background-color: rgba($dark-highlight-overlay-background-color, 0.9);
-		}
-
-		.categories-edit-info-message {
-			color: $dark-discussion-content-color;
-		}
-	}
-
-	.discussion-sort {
-		.sort-options {
-			.sort-option {
-				.sort-option-label {
-					.radio-fancy {
-						.inside {
-							border-color: $dark-body-background;
+		.discussion-sort {
+			.sort-options {
+				.sort-option {
+					.sort-option-label {
+						.radio-fancy {
+							.inside {
+								border-color: $dark-body-background;
+							}
 						}
 					}
 				}
 			}
 		}
-	}
 
-	.discussion-user-activity-list {
-		color: $dark-discussion-content-color;
+		.discussion-user-activity-list {
+			color: $dark-discussion-content-color;
 
-		.row {
-			.user {
-				.username {
-					color: $dark-discussion-content-color;
+			.row {
+				.user {
+					.username {
+						color: $dark-discussion-content-color;
+					}
 				}
 			}
 		}
-	}
 
-	.standalone-page-view {
-		.standalone-content {
-			border-color: $dark-discussion-standalone-content-border-color;
+		.standalone-page-view {
+			.standalone-content {
+				border-color: $dark-discussion-standalone-content-border-color;
+			}
 		}
 	}
 }
