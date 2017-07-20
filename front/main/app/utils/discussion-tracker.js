@@ -90,7 +90,7 @@ const trackActions = {
 	DiscussionsHeaderSaveFailure: 'DiscussionsHeaderSaveFailure',
 	DiscussionsHeaderTextClicked: 'DiscussionsHeaderTextClicked',
 	DiscussionsHeaderPostcountClicked: 'DiscussionsHeaderPostcountClicked',
-	DiscussionsHeaderAvatarClicked: 'DiscussionsHeaderAvatarClicked',
+	LeftRailHeaderAvatarClicked: 'LeftRailHeaderAvatarClicked',
 	PostCategoryAdded: 'PostCategoryAdded',
 	PostCategoryEdited: 'PostCategoryEdited',
 	WikiHomeLinkClicked: 'WikiHomeLinkClicked',

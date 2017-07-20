@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {track, trackActions} from 'common/utils/track';
+import {track, trackActions} from '../utils/discussion-tracker';
 
 const {Component, computed: {reads}} = Ember;
 
@@ -8,21 +8,9 @@ export default Component.extend({
 
 	userProfile: reads('users.0'),
 
-	didInsertElement() {
-		this.$().on('click', '[data-tracking-label]', (event) => {
-			const label = event.currentTarget.dataset.trackingLabel;
-
-			event.stopPropagation();
-
-			if (!label) {
-				return;
-			}
-
-			track({
-				action: trackActions.click,
-				category: 'DesktopWebDiscussions',
-				label
-			});
-		});
+	actions: {
+		trackAvatarClick() {
+			track(trackActions.LeftRailHeaderAvatarClicked);
+		}
 	}
 });
