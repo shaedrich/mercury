@@ -32,9 +32,9 @@
 			<div class="rail left large-3 extra-large-2 columns">
 				{{#if reportedContent}}
 					{{left-rail-details
-							headerText=(i18n 'main.reported-content' ns='discussion')
-							wdsIcon='wds-icons-alert'
-							numberOfPosts=model.postCount
+						headerText=(i18n 'main.reported-content' ns='discussion')
+						wdsIcon='wds-icons-alert'
+						numberOfPosts=model.postCount
 					}}
 				{{/if}}
 
@@ -82,7 +82,6 @@
 				{{discussion-community-unit
 					canModerate=model.canModerate
 					displayGuidelinesLink=true
-					displayWikiaHomeLink=true
 					guidelines=attributes.guidelines
 					listPage=true
 					openGuidelines=(action this.attrs.openGuidelines)
