@@ -29,25 +29,8 @@ $desktop-content-width: 768px;
 	.standalone-page-view {
 		height: auto;
 
-		.discussion-hero-unit-content {
-			align-items: center;
-			display: flex;
-			justify-content: center;
-		}
-
 		.standalone-content {
 			margin: 25px auto;
-		}
-
-		.discussion-hero-unit {
-			height: 150px;
-		}
-
-		.discussion-hero-unit-content {
-			h1 {
-				font-size: $type-larger;
-				line-height: $line-height-larger;
-			}
 		}
 	}
 
