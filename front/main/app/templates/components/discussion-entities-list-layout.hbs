@@ -42,9 +42,7 @@
 					{{discussion-side-button
 						route='discussion'
 					}}
-				{{/unless}}
-
-				{{#if mainPage}}
+				{{else}}
 					{{#if categoriesInRail}}
 						{{#if canShowCategories}}
 							{{discussion-categories
@@ -73,7 +71,7 @@
 						sortBy=sortBy
 						setSortBy=(action 'setSortBy')
 					}}
-				{{/if}}
+				{{/unless}}
 			</div>
 			<div class="small-12 large-6 extra-large-6 columns">
 				{{yield}}
