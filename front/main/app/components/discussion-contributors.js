@@ -19,8 +19,8 @@ export default Ember.Component.extend({
 	}),
 
 	actions: {
-		clickDiscussionsHeaderAvatar() {
-			track(trackActions.DiscussionsHeaderAvatarClicked);
+		clickLeftRailHeaderAvatar() {
+			track(trackActions.LeftRailHeaderAvatarClicked);
 		}
 	}
 });

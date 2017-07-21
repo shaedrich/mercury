@@ -9,13 +9,8 @@
 
 	margin: 0 auto;
 
-	// z-index needs to be at least 5 to avoid appearing avatars from avatar_stack component (in community rail module)
-	// above the local nav dropdowns
-	z-index: 5;
-
-	.wds-avatar-stack .user-avatar .avatar .user-avatar__image {
+	.wds-avatar-stack .user-avatar .avatar .user-avatar__image { // This will be cleaned in XW-3785
 		background-color: $wds-color-white;
-		border-color: $wds-color-white; // TODO: remove this line and color avatar borders in community-header-theming mixin
 		height: 30px;
 		width: 30px;
 	}

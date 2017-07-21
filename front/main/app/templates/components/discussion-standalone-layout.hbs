@@ -25,7 +25,11 @@
 	<div class="discussion-content-wrapper">
 		<div class="discussion-page row">
 			<div class="rail left large-3 extra-large-2 columns">
-				{{left-rail-user-guidelines}}
+				{{left-rail-details
+					headerText=(i18n 'main.guidelines-link-title' ns='discussion')
+					subHeaderText=(i18n 'main.discussions-header-title' ns='discussion')
+					wdsIcon='wds-icons-clipboard'
+				}}
 				{{#link-to 'discussion' class="side-button back-button active-element-theme-color"}}
 					{{svg 'discussion-back-arrow' role='img' class='icon arrow-left fill-theme-color'}}
 					{{i18n 'main.back-to-discussions-link' ns='discussion'}}
@@ -33,8 +37,6 @@
 			</div>
 			<div class="standalone-content small-12 large-9 columns">
 				{{yield}}
-			</div>
-			<div class="rail columns">
 			</div>
 		</div>
 	</div>

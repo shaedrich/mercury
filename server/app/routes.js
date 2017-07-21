@@ -13,7 +13,7 @@ import {validateRedirect} from './facets/auth/auth-view';
 import * as forgotPasswordHandler from './facets/auth/forgot-password';
 import registerHandler from './facets/auth/register';
 import * as resetPasswordHandler from './facets/auth/reset-password';
-import signinHandler from './facets/auth/signin';
+import * as signinHandler from './facets/auth/signin';
 import * as piggybackHandler from './facets/auth/piggyback';
 import confirmEmailHandler from './facets/auth/confirm-email';
 import showApplication from './facets/show-application';
@@ -97,7 +97,19 @@ let routes,
 		{
 			method: 'GET',
 			path: '/signin',
-			handler: signinHandler,
+			handler: signinHandler.get,
+			config: {
+				pre: [
+					{
+						method: validateRedirect
+					}
+				]
+			}
+		},
+		{
+			method: 'POST',
+			path: '/signin',
+			handler: signinHandler.post,
 			config: {
 				pre: [
 					{

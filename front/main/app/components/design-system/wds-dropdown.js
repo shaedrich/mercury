@@ -3,7 +3,6 @@ import Ember from 'ember';
 const {Component, computed} = Ember;
 
 export default Component.extend({
-	attributeBindings: ['trackingLabel:data-tracking-label'],
 	classNameBindings: [
 		'isClicked:wds-is-clicked',
 		'dropdownExpanded:wds-is-active',

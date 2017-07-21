@@ -1,6 +1,8 @@
-{{#unless responsive.isMobile}}
-	{{design-system.community-header
-		numberOfPosts=model.categories.threadCount
-	}}
-{{/unless}}
-{{outlet}}
+<div class="discussion-wrapper">
+	{{#unless responsive.isMobile}}
+		{{design-system.community-header
+			numberOfPosts=model.categories.threadCount
+		}}
+	{{/unless}}
+	{{outlet}}
+</div>

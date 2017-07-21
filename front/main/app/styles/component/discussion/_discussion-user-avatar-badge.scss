@@ -66,23 +66,6 @@ $post-reply-with-label-user-avatar-badge-top: 38px;
 }
 
 @media #{$desktop-range} {
-	// Hide user avatar badges under "Discussion" label on forum.
-	.post-list-view {
-		.discussion-hero-unit {
-			.user-avatar-badge {
-				display: none;
-			}
-		}
-	}
-
-	.discussion-user-list {
-		.discussion-hero-unit {
-			.user-avatar-badge {
-				display: inherit;
-			}
-		}
-	}
-
 	.post-detail {
 		.user-avatar-badge {
 			left: 24px;

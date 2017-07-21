@@ -172,18 +172,6 @@ $discussion-category-pill-hover-color: #fff;
 
 $discussion-tooltip-color: #fff;
 
-$discussion-edit-image-button-text-color: #fff;
-$discussion-edit-image-button-background-color: #333;
-$discussion-edit-image-camera: #fff;
-$discussion-edit-image-hint-text-color: #fff;
-$discussion-edit-image-transparent-layer-light-color: rgba(255, 255, 255, 0.8);
-$discussion-edit-image-transparent-layer-dark-color: rgba(0, 0, 0, 0.8);
-$discussion-edit-image-upload-background-color: rgba(26, 26, 26, 0.7);
-$discussion-upload-image-button-text-color: #fff;
-$discussion-upload-image-approve-buttons-border: #ccc;
-$discussion-upload-image-error-warning-color: #f00;
-$discussion-upload-image-error-text-color: #39424D;
-
 $discussion-no-followed-posts-color: #666;
 $discussion-no-followed-posts-header-color: #333;
 $discussion-no-followed-posts-icon-color: #999;
@@ -359,5 +347,17 @@ $dark-discussion-user-activity-glossary-text-color: #ccc;
 $dark-discussion-dropdown-color: #ccc;
 $dark-discussion-header-dropdown-color: #fff;
 
+$dark-discussion-border-wrapper-color: #666;
+$dark-discussion-border-post-color: #666;
+$dark-discussion-active-checkbox-background-color: #5c92cd;
+$dark-discussion-checkbox-background-color: #262626;
+$dark-discussion-left-rail-text-color: #fff;
+$dark-discussion-left-rail-circle-color: #484848;
+$dark-discussion-left-rail-icon-color: #5c92cd;
+$dark-discussion-left-rail-side-button-border: #666;
+$dark-discussion-moderator-tools-border-color: #666;
+
 $wikia-ui-components-sub-head-height: 48px;
 $wikia-ui-components-sub-head-height-large: 66px;
+
+$breakpoint-l-plus-up: "(min-width:1063px)";

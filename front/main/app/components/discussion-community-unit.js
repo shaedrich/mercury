@@ -6,7 +6,6 @@ export default Ember.Component.extend({
 	discussionsSplashPageConfig: M.prop('discussionsSplashPageConfig'),
 	currentUser: Ember.inject.service(),
 
-	displayWikiaHomeLink: false,
 	displayGuidelinesLink: false,
 
 	androidAppLink: Ember.computed('discussionsSplashPageConfig', function () {
@@ -24,11 +23,6 @@ export default Ember.Component.extend({
 	displayAppPromotion: Ember.computed('androidAppLink', 'iosAppLink', 'showAppPromotion', function () {
 		return (this.get('androidAppLink') || this.get('iosAppLink')) && this.get('showAppPromotion');
 	}),
-	wikiName: Ember.computed(function () {
-		if (this.get('displayWikiaHomeLink') || this.get('displayGuidelinesLink')) {
-			return Ember.get(Mercury, 'wiki.siteName');
-		}
-	}),
 
 	/**
 	 * TREK INITIATIVE EXPERIMENT
@@ -38,21 +32,6 @@ export default Ember.Component.extend({
 	displayMemoryAlphaLink: Ember.computed(() => {
 		return Boolean(Ember.get(Mercury, 'wiki.id') === 734209);
 	}),
-
-	/**
-	 * TREK INITIATIVE EXPERIMENT
-	 *
-	 * @returns {string}
-	 */
-	wikiHomeLinkText: Ember.computed('displayMemoryAlphaLink', function () {
-		if (this.get('displayMemoryAlphaLink') === true) {
-			return 'The Trek Initiative';
-		} else {
-			return i18n.t('main.wiki-home', {ns: 'discussion'});
-		}
-	}),
-
-	wikiHomeLink: window.location.origin,
 
 	actions: {
 
