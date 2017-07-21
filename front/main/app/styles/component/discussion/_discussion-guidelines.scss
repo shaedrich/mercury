@@ -29,6 +29,7 @@
 
 	.guidelines-text {
 		color: $discussion-guidelines-text-color;
+		word-break: break-all;
 		font-size: $type-base;
 		line-height: $line-height-base;
 		min-height: 200px;
