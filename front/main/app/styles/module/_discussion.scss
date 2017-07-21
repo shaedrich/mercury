@@ -147,7 +147,8 @@ body.discussions {
 	line-height: $line-height-smallest;
 	max-width: inherit;
 	margin-bottom: 0;
-	@media (min-width:1063px) {
+
+	@media #{$breakpoint-l-plus-up} {
 		margin-bottom: 30px;
 	}
 
