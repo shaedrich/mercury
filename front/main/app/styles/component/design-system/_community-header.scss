@@ -3,7 +3,7 @@
 					$color-community-header,
 					$color-text,
 					$color-links,
-					$color-page,
+					$color-page, // should be here bg color of discussions instead of wiki article?
 					$color-page-border
 	);
 
@@ -15,7 +15,7 @@
 
 	.wds-avatar-stack .user-avatar .avatar .user-avatar__image {
 		background-color: $wds-color-white;
-		border-color: $wds-color-white; // TODO: should it be CH text color?
+		border-color: $wds-color-white; // TODO: remove this line and color avatar borders in community-header-theming mixin
 		height: 30px;
 		width: 30px;
 	}
