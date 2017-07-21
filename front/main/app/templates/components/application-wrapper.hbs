@@ -41,9 +41,7 @@
 		toggleVisibility=attrs.toggleSmartBanner
 	}}
 	{{#if noMargins}}
-		<div class="discussion-wrapper">
-			{{outlet}}
-		</div>
+		{{outlet}}
 	{{else}}
 		<div class="page-wrapper row" lang={{language.content}} dir={{language.contentDir}}>
 			{{outlet}}
