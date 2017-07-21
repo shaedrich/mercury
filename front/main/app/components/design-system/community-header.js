@@ -15,6 +15,9 @@ export default Component.extend({
 
 	model: EmberObject.create(M.prop('communityHeader')),
 	contributors: M.prop('discussionsContributors') || [],
+	contributorsCount: computed('contributors', function () {
+		return this.get('contributors').length
+	}),
 
 	style: computed('model.background_image', function () {
 		const backgroundImage = this.get('model.background_image'),
