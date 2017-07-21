@@ -60,7 +60,7 @@ let routes,
 		},
 		{
 			method: 'GET',
-			path: '/front/sass-runtime',
+			path: '/front/styles-themed.css',
 			handler: sassHandler
 		},
 		{

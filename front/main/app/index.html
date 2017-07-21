@@ -26,10 +26,9 @@
 	{{/if}}
 
 	{{#if isRtl}}
-		{{!FIXME}}
-		<link rel="stylesheet" href="/front/main/assets/app.rtl.css">
+		<link rel="stylesheet" href="/front/styles-themed.css?dir=rtl&cb=@@timestamp&{{sassParams}}">
 	{{else}}
-		<link rel="stylesheet" href="/front/sass-runtime?{{sassParams}}">
+		<link rel="stylesheet" href="/front/styles-themed.css?cb=@@timestamp&{{sassParams}}">
 	{{/if}}
 
 	{{> apple-touch-icon}}
