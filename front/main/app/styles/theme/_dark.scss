@@ -19,12 +19,30 @@ body.dark-theme {
 	}
 
 	.discussion-content-wrapper {
+		$kjsd: kjsdf;
 		border-left: 1px solid $dark-discussion-border-wrapper-color;
 		border-right: 1px solid $dark-discussion-border-wrapper-color;
 		border-bottom: 1px solid $dark-discussion-border-wrapper-color;
 	}
 
-	.discussion-left-rail {
+	.discussion-left-rail__header {
+		color: $dark-discussion-left-rail-text-color;
+	}
+
+	.discussion-left-rail__circle {
+		background-color: $dark-discussion-left-rail-circle-color;
+	}
+
+	.discussion-left-rail__icon-guidelines {
+		color: $dark-discussion-left-rail-icon-color;
+	}
+
+	.discussion-user-entities-list-layout__side-button-border {
+		border-color: $dark-discussion-left-rail-side-button-border;
+	}
+
+	.discussion-moderator-tools h3 {
+		border-color: $dark-discussion-moderator-tools-border-color;
 		color: $dark-discussion-left-rail-text-color;
 	}
 
