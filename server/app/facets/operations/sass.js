@@ -37,7 +37,11 @@ export default (request, reply) => {
 		Logger.info('sass parsing time:', result.stats.duration);
 		const timeBeforeAutoprefixer = Date.now();
 
-		postcss([autoprefixer]).process(result.css).then((result) => {
+		postcss([autoprefixer({
+			browsers: ['last 2 version', 'last 3 iOS versions', '> 1%'],
+			cascade: false,
+			map: false
+		})]).process(result.css).then((result) => {
 			console.log('autoprefixer time: ', Date.now() - timeBeforeAutoprefixer);
 
 			result.warnings().forEach((warn) => {
