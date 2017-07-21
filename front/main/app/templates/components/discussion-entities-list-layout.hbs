@@ -48,14 +48,14 @@
 					{{#if categoriesInRail}}
 						{{#if canShowCategories}}
 							{{discussion-categories
-							categories=categories
-							inputIdPrefix='rail'
-							disabled=isCategoryFilterDisabled
-							triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
-							updateCategories=(action this.attrs.updateCategories)
-							updateCategoriesSelection=(action this.attrs.updateCategoriesSelection)
-							validatePostsOnForum=(action this.attrs.validatePostsOnForum)
-							visibleCategoriesCount=10
+								categories=categories
+								inputIdPrefix='rail'
+								disabled=isCategoryFilterDisabled
+								triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
+								updateCategories=(action this.attrs.updateCategories)
+								updateCategoriesSelection=(action this.attrs.updateCategoriesSelection)
+								validatePostsOnForum=(action this.attrs.validatePostsOnForum)
+								visibleCategoriesCount=10
 							}}
 						{{/if}}
 					{{/if}}
