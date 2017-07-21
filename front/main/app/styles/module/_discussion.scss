@@ -746,13 +746,13 @@ body.discussions {
 
 	.discussion-wrapper {
 		margin: 20px auto 0;
-		background-color: #fff;
+		background-color: $wds-color-light-c1;
 	}
 
 	.discussion-content-wrapper {
-		border-bottom: 1px solid #ccc;
-		border-left: 1px solid #ccc;
-		border-right: 1px solid #ccc;
+		border-bottom: 1px solid $wds-color-light-c4;
+		border-left: 1px solid $wds-color-light-c4;
+		border-right: 1px solid $wds-color-light-c4;
 	}
 
 	.discussion {

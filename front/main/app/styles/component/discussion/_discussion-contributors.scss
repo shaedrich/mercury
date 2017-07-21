@@ -43,7 +43,7 @@ $discussion-contributors-border-width: 2px;
 		display: flex;
 		flex-wrap: wrap;
 		padding-bottom: 12px;
-		border: solid #ccc;
+		border: solid $wds-color-light-c4;
 		border-width: 0 0 1px;
 
 		.user-avatar {
