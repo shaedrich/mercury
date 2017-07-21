@@ -12,13 +12,12 @@ export default (request, reply) => {
 		sassVariables = Object.keys(request.query)
 			.filter((key) => {
 				return whitelist.indexOf(key) > -1 &&
-					request.query[key].length > 0;
+					request.query[key].length > 0 &&
+					// validate if value is valid color hex (this is the only format that comes from wikiWariables
+					/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(request.query[key]);
 			})
 			.map((key) => {
-				// validate if value is valid color hex (this is the only format that comes from wikiWariables
-				// if not valid, fallback to black
-				let value = /^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(request.query[key]) ? request.query[key] : '#000000';
-				return `$${key}: ${value};`;
+				return `$${key}: ${request.query[key]};`;
 			})
 			.join('');
 

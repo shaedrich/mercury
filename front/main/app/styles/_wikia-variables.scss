@@ -34,6 +34,11 @@ $z-pop-over: $z-max;
 // Global Variables
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// theme defaults
+$color-page: #ffffff !default;
+$color-links: #006CB0 !default;
+$color-community-header: #006CB0 !default;
+
 // Border Radius
 $border-radius-global: rem-calc(2);
 
