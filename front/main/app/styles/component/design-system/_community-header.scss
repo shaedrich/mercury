@@ -17,7 +17,6 @@ $color-page-border: #cccccc;
 
 	.wds-avatar-stack .user-avatar .avatar .user-avatar__image { // This will be cleaned in XW-3785
 		background-color: $wds-color-white;
-		border-color: $wds-color-white; // TODO: should it be CH text color?
 		height: 30px;
 		width: 30px;
 	}
