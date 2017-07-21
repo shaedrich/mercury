@@ -42,7 +42,12 @@
 		text-align: center;
 	}
 
-	&__icon-guidelines {
+	&__side-button-border {
+		border: solid $wds-color-light-c4;
+		border-width: 0 0 1px;
+	}
+
+	&__icon {
 		color: $wds-color-dark-blue;
 		display: block;
 		height: 100%;

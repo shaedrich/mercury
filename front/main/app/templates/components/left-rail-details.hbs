@@ -7,11 +7,11 @@
 	}}
 {{else}}
 	<div class="discussion-left-rail__circle">
-		{{svg wdsIcon role='img' class='wds-icon discussion-left-rail__icon-guidelines'}}
+		{{svg wdsIcon role='img' class='wds-icon discussion-left-rail__icon'}}
 	</div>
 {{/if}}
 <p class="discussion-left-rail__header">{{headerText}}</p>
-<div class="discussion-user-entities-list-layout__side-button-border">
+<div class="discussion-left-rail__side-button-border">
 	{{#if numberOfPosts}}
 		<p class="discussion-left-rail__postcounter">{{numberOfPosts}} {{i18n 'user-activity.posts' ns='discussion'}}</p>
 	{{/if}}
