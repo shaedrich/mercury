@@ -4,7 +4,6 @@ import * as Tracking from '../lib/tracking';
 import * as OpenGraph from '../lib/open-graph';
 import Promise from 'bluebird';
 import Logger from '../lib/logger';
-import settings from '../../config/settings';
 import discussionsSplashPageConfig from '../../config/discussionsSplashPageConfig';
 import {gaUserIdHash} from '../lib/hashing';
 import {
@@ -59,7 +58,8 @@ function getDistilledDiscussionsSplashPageConfig(hostName) {
  * @returns {void}
  */
 export default function showApplication(request, reply, wikiVariables, context = {}, showGlobalFooter = false) {
-	const wikiDomain = Utils.getCachedWikiDomainName(settings, request),
+	const settings = getSettings(),
+		wikiDomain = Utils.getCachedWikiDomainName(settings, request),
 		hostName = Utils.getWikiaSubdomain(request.info.host);
 
 	if (!(wikiVariables instanceof Promise)) {
@@ -69,10 +69,11 @@ export default function showApplication(request, reply, wikiVariables, context =
 	// @todo These transforms could be better abstracted, as such, this is a lot like prepareWikiPageData
 	context.server = Utils.createServerData(settings, wikiDomain);
 	context.queryParams = Utils.parseQueryParams(request.query, ['noexternals', 'buckysampling']);
-	context.settings = getSettings();
+	context.settings = settings;
 	context.userId = getUserId(request);
 	context.gaUserIdHash = gaUserIdHash(context.userId);
 	context.discussionsSplashPageConfig = getDistilledDiscussionsSplashPageConfig(hostName);
+	context.wwwWikiHost = Utils.getCorporatePageUrlFromWikiDomain(settings, wikiDomain);
 
 	wikiVariables
 		/**
