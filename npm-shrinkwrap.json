@@ -1203,9 +1203,9 @@
       "dev": true
     },
     "design-system-i18n": {
-      "version": "0.10.2",
-      "from": "git://github.com/wikia/design-system-i18n.git#df55d731ed3230a2892ebfd045c01e438fd29a36",
-      "resolved": "git://github.com/wikia/design-system-i18n.git#df55d731ed3230a2892ebfd045c01e438fd29a36",
+      "version": "0.11.0",
+      "from": "git://github.com/wikia/design-system-i18n.git#8a9c00b5ab373da10701442ad1a147b5062d7360",
+      "resolved": "git://github.com/wikia/design-system-i18n.git#8a9c00b5ab373da10701442ad1a147b5062d7360",
       "dev": true
     },
     "detect-file": {
@@ -3904,13 +3904,6 @@
             }
           }
         },
-        "esprima": {
-          "version": "1.1.0-dev-harmony",
-          "from": "git://github.com/ariya/esprima.git#a65a3eb93b9a5dce9a1184ca2d1bd0b184c6b8fd",
-          "resolved": "git://github.com/ariya/esprima.git#a65a3eb93b9a5dce9a1184ca2d1bd0b184c6b8fd",
-          "dev": true,
-          "optional": true
-        },
         "estraverse": {
           "version": "1.5.1",
           "dev": true,
@@ -3930,7 +3923,16 @@
           "version": "0.2.5",
           "resolved": "https://github.com/gotwarlost/istanbul/tarball/harmony",
           "dev": true,
-          "optional": true
+          "optional": true,
+          "dependencies": {
+            "esprima": {
+              "version": "1.1.0-dev-harmony",
+              "from": "git://github.com/ariya/esprima.git#a65a3eb93b9a5dce9a1184ca2d1bd0b184c6b8fd",
+              "resolved": "git://github.com/ariya/esprima.git#a65a3eb93b9a5dce9a1184ca2d1bd0b184c6b8fd",
+              "dev": true,
+              "optional": true
+            }
+          }
         },
         "mkdirp": {
           "version": "0.3.5",
