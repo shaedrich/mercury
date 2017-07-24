@@ -2,6 +2,7 @@ import autoprefixer from 'autoprefixer';
 import postcss from 'postcss';
 import sass from 'node-sass';
 import Logger from '../../lib/logger';
+import settings from '../../../config/settings';
 
 export default (request, reply) => {
 	const whitelist = [
@@ -26,7 +27,7 @@ export default (request, reply) => {
 			'www/styles/',
 		],
 		data: `${sassVariables} @import 'main/app/styles/runtime.scss';`,
-		outputStyle: 'compressed',
+		outputStyle: (settings.environment === 'prod') ? 'compressed' : 'expanded',
 		sourceComments: false,
 	}, (err, result) => {
 		if (err) {
