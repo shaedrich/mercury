@@ -39,7 +39,7 @@ export default (request, reply) => {
 			return response.code(503);
 		}
 
-		Logger.info('sass parsing time:', result.stats.duration);
+		Logger.info('Sass parsing time:', result.stats.duration);
 		const timeBeforeAutoprefixer = Date.now();
 
 		postcss([autoprefixer({
@@ -47,10 +47,10 @@ export default (request, reply) => {
 			cascade: false,
 			map: false
 		})]).process(result.css).then((result) => {
-			console.log('autoprefixer time: ', Date.now() - timeBeforeAutoprefixer);
+			Logger.info('Sass autoprefixer time: ', Date.now() - timeBeforeAutoprefixer);
 
 			result.warnings().forEach((warn) => {
-				console.warn(warn.toString());
+				Logger.warn('Sass autoprefixer warning', warn.toString());
 			});
 
 			let css = result.css;
