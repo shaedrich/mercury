@@ -1,17 +1,13 @@
 import autoprefixer from 'autoprefixer';
+import flip from 'css-flip';
 import postcss from 'postcss';
 import sass from 'node-sass';
 import Logger from '../../lib/logger';
+import {whitelist} from '../../lib/sass-variables';
 import settings from '../../../config/settings';
-import flip from 'css-flip';
 
 export default (request, reply) => {
-	const whitelist = [
-			'color-community-header',
-			'color-links',
-			'color-page'
-		],
-		sassVariables = Object.keys(request.query)
+	const sassVariables = Object.keys(request.query)
 			.filter((key) => {
 				return whitelist.indexOf(key) > -1 &&
 					request.query[key].length > 0 &&
