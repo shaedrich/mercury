@@ -28,7 +28,7 @@ export default (request, reply) => {
 		],
 		data: `${sassVariables} @import 'runtime.scss';`,
 		outputStyle: 'compressed',
-		sourceComments: 'none'
+		sourceComments: false,
 	}, (err, result) => {
 		if (err) {
 			Logger.fatal(err, 'Sass parsing error');

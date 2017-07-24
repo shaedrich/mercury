@@ -83,10 +83,6 @@ module.exports = function (defaults) {
 		},
 		'ember-cli-qunit': {
 			useLintTree: false
-		},
-		sourcemaps: {
-			enabled: EmberApp.env() !== 'production',
-			extensions: ['js']
 		}
 	});
 
