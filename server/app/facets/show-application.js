@@ -13,6 +13,7 @@ import {
 import {isRtl, getUserId, getSettings} from './operations/page-data-helper';
 import showServerErrorPage from './operations/show-server-error-page';
 import injectDesignSystemData from '../lib/inject-design-system-data';
+import {injectSassVariables} from '../lib/sass-variables';
 
 /**
  * @typedef {Object} CommunityAppConfig
@@ -101,6 +102,7 @@ export default function showApplication(request, reply, wikiVariables, context =
 			request,
 			showFooter: showGlobalFooter
 		}))
+		.then((templateData) => injectSassVariables(templateData))
 		/**
 		 * @param {*} contextData
 		 * @returns {void}

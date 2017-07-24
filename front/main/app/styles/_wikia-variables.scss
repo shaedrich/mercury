@@ -34,6 +34,11 @@ $z-pop-over: $z-max;
 // Global Variables
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// theme defaults
+$color-page: #ffffff !default;
+$color-links: #006CB0 !default;
+$color-community-header: #006CB0 !default;
+
 // Border Radius
 $border-radius-global: rem-calc(2);
 
@@ -41,9 +46,31 @@ $border-radius-global: rem-calc(2);
 $article-horizontal-padding: 1.125rem;
 
 // Colors
-
+$color-black: #000;
+$color-white: #fff;
 $color-blue-brand: $color-blue-light;
 $color-gray-semi: $color-blue-gray;
+
+// Is dark wiki
+$is-dark-wiki: false;
+@if lightness($color-page) < 50 {
+	$is-dark-wiki: true;
+}
+
+// Text color
+$color-text-dark: #3a3a3a;
+$color-text-light: #d5d4d4;
+
+$color-text: $color-text-dark;
+@if $is-dark-wiki {
+	$color-text: $color-text-light;
+}
+
+// Page Borders
+$color-page-border: mix($color-page, $color-black, 80%);
+@if $is-dark-wiki {
+	$color-page-border: mix($color-page, $color-white, 80%);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Module Variables
