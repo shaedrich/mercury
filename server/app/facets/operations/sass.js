@@ -3,6 +3,7 @@ import postcss from 'postcss';
 import sass from 'node-sass';
 import Logger from '../../lib/logger';
 import settings from '../../../config/settings';
+import flip from 'css-flip';
 
 export default (request, reply) => {
 	const whitelist = [
@@ -52,7 +53,13 @@ export default (request, reply) => {
 				console.warn(warn.toString());
 			});
 
-			const response = reply(result.css);
+			let css = result.css;
+
+			if (request.query.dir === 'rtl') {
+				css = flip(result.css);
+			}
+
+			const response = reply(css);
 			response.code(200);
 			response.type('text/css; charset=utf-8');
 		});
