@@ -20,14 +20,15 @@ export default (request, reply) => {
 			.map((key) => {
 				return `$${key}: ${request.query[key]};`;
 			})
-			.join('');
+			.join(''),
+		isDev = settings.environment === 'dev';
 
 	sass.render({
 		includePaths: [
-			'www/styles/',
+			isDev ? 'www/styles/' : 'styles/'
 		],
 		data: `${sassVariables} @import 'main/app/styles/runtime.scss';`,
-		outputStyle: (settings.environment !== 'dev') ? 'compressed' : 'expanded',
+		outputStyle: isDev ? 'expanded' : 'compressed',
 		sourceComments: false,
 	}, (err, result) => {
 		if (err) {
