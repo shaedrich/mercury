@@ -15,6 +15,7 @@ export default (request, reply) => {
 					/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(request.query[key]);
 			})
 			.map((key) => {
+				//Generate SASS variable - e.g. $color: #000;
 				return `$${key}: ${request.query[key]};`;
 			})
 			.join(''),
