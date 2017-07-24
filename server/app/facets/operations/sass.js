@@ -27,7 +27,7 @@ export default (request, reply) => {
 			'www/styles/',
 		],
 		data: `${sassVariables} @import 'main/app/styles/runtime.scss';`,
-		outputStyle: (settings.environment === 'prod') ? 'compressed' : 'expanded',
+		outputStyle: (settings.environment !== 'dev') ? 'compressed' : 'expanded',
 		sourceComments: false,
 	}, (err, result) => {
 		if (err) {
