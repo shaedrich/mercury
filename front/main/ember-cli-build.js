@@ -1,12 +1,11 @@
 /* global module */
-/* eslint-env es5, node */
-/* eslint prefer-template: 0, prefer-arrow-callback: 0, no-var: 0, one-var: 0, vars-on-top: 0 */
+/* eslint-env es6, node */
 
-var EmberApp = require('ember-cli/lib/broccoli/ember-app'),
+const EmberApp = require('ember-cli/lib/broccoli/ember-app'),
 	Funnel = require('broccoli-funnel');
 
 module.exports = function (defaults) {
-	var app = new EmberApp(defaults, {
+	const app = new EmberApp(defaults, {
 		autoprefixer: {
 			browsers: ['last 2 version', 'last 3 iOS versions', '> 1%'],
 			cascade: false,
@@ -107,7 +106,7 @@ module.exports = function (defaults) {
 	}
 
 	// Assets which are lazy loaded
-	var cropperAssets = new Funnel(app.bowerDirectory + '/cropper/dist', {
+	const cropperAssets = new Funnel(app.bowerDirectory + '/cropper/dist', {
 			include: ['*.min.*'],
 			destDir: 'assets/vendor/cropper'
 		}),

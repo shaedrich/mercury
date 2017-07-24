@@ -23,17 +23,19 @@ export default (request, reply) => {
 
 	sass.render({
 		includePaths: [
-			'front/main/app/styles/',
-			'front/'
+			'www/styles/',
 		],
-		data: `${sassVariables} @import 'runtime.scss';`,
+		data: `${sassVariables} @import 'main/app/styles/runtime.scss';`,
 		outputStyle: 'compressed',
 		sourceComments: false,
 	}, (err, result) => {
 		if (err) {
 			Logger.fatal(err, 'Sass parsing error');
-			return reply('error');
+
+			const response = reply('Sass parsing error');
+			return response.code(503);
 		}
+
 		Logger.info('sass parsing time:', result.stats.duration);
 		const timeBeforeAutoprefixer = Date.now();
 
