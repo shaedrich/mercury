@@ -25,6 +25,10 @@ body.dark-theme {
 			border-bottom: 1px solid $dark-discussion-border-wrapper-color;
 		}
 
+		.discussion-left-rail {
+			border-color: $dark-discussion-left-rail-side-button-border;
+		}
+
 		.discussion-left-rail__header {
 			color: $dark-discussion-left-rail-text-color;
 		}
@@ -35,10 +39,6 @@ body.dark-theme {
 
 		.discussion-left-rail__icon-guidelines {
 			color: $dark-discussion-left-rail-icon-color;
-		}
-
-		.discussion-left-rail__side-button-border {
-			border-color: $dark-discussion-left-rail-side-button-border;
 		}
 
 		.discussion-moderator-tools h3 {

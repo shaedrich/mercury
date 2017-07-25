@@ -1,4 +1,7 @@
 .discussion-left-rail {
+	border: solid $wds-color-light-c4;
+	border-width: 0 0 1px;
+	padding-bottom: 18px;
 	text-align: center;
 
 	.avatar {
@@ -20,7 +23,7 @@
 		font-size: 14px;
 		font-weight: bold;
 		line-height: 1;
-		margin: 10px 0 18px 0;
+		margin: 10px 0 0;
 		text-align: center;
 	}
 
@@ -29,7 +32,7 @@
 		font-size: 18px;
 		font-weight: bold;
 		line-height: 0.67;
-		margin:16px 0 0 0;
+		margin: 16px 0 0;
 		text-align: center;
 	}
 
@@ -38,13 +41,8 @@
 		font-size: 12px;
 		font-weight: bold;
 		line-height: 1;
-		margin: 10px 0 18px 0;
+		margin: 10px 0 0;
 		text-align: center;
-	}
-
-	&__side-button-border {
-		border: solid $wds-color-light-c4;
-		border-width: 0 0 1px;
 	}
 
 	&__icon {
