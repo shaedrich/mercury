@@ -122,6 +122,10 @@ gulp.task('watch-server', function () {
 		gulp.start('build-server-views');
 	}).on('error', exitOnError);
 
+	watch(paths.styles.src, function () {
+		gulp.start('build-server-styles');
+	}).on('error', exitOnError);
+
 	watch(paths.scripts.src, function () {
 		gulp.start('build-server-scripts');
 	}).on('error', exitOnError);
