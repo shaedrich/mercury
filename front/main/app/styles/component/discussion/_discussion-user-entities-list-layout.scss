@@ -3,3 +3,22 @@
 		margin-left: 48px;
 	}
 }
+
+.post-list-header-content {
+	margin-top: 28px;
+	text-align: center;
+
+	h1 {
+		color: $discussion-post-list-text-color;
+		font-size: 48px;
+		margin: 0;
+
+		&.post-list-header {
+			font-size: $type-large;
+		}
+	}
+	p {
+		color: $discussion-post-list-text-color;
+		font-weight: bold;
+	}
+}
