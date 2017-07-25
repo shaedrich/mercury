@@ -6,6 +6,7 @@ import request from 'ember-ajax/request';
 const DiscussionCategoriesModel = Ember.Object.extend({
 	categories: new Ember.A(),
 	data: null,
+	threadCount: 0,
 	wikiId: null,
 
 	renamingErrorsMap: {
@@ -36,6 +37,7 @@ const DiscussionCategoriesModel = Ember.Object.extend({
 
 		Ember.get(apiData, '_embedded.doc:forum').forEach((categoryData) => {
 			categories.pushObject(DiscussionCategory.create(categoryData));
+			this.incrementProperty('threadCount', categoryData.threadCount);
 		});
 
 		this.set('categories', categories.sortBy('displayOrder'));

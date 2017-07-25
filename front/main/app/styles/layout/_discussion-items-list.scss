@@ -7,20 +7,6 @@ $discussion-lists-post-margin-bottom: 10px;
 
 .discussion-user-list,
 .discussion-reported-posts {
-	.discussion-hero-unit {
-		.post-list-header {
-			font-size: $h1-font-size-small;
-			font-weight: $subheader-font-weight;
-		}
-
-		.discussion-contributors {
-			.avatar img {
-				height: $discussion-user-list-hero-unit-avatar-size;
-				width: $discussion-user-list-hero-unit-avatar-size;
-			}
-		}
-	}
-
 	.post-reply {
 		margin-bottom: $discussion-lists-post-margin-bottom;
 
@@ -85,6 +71,14 @@ $discussion-lists-post-margin-bottom: 10px;
 					margin-left: 0;
 				}
 			}
+		}
+	}
+}
+
+@media #{$desktop-range} {
+	.discussion-user-list {
+		.left {
+			margin-top: 0;
 		}
 	}
 }

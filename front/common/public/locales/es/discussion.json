@@ -14,6 +14,7 @@
   "main":{
     "action-general-error":"Fallo en la acción, por favor inténtalo de nuevo.",
     "discussions-header-title":"Discusiones",
+    "discussions-links":"Enlaces importantes",
     "pagination-post-show-more":"Ver respuestas más antiguas",
     "pagination-post-show-newer-replies":"Ver respuestas más antiguas",
     "pagination-post-show-new-replies":"Nuevas respuestas",
@@ -35,8 +36,8 @@
     "load-more-posts-button":"Cargar más",
     "load-previous-posts-button":"Al principio",
     "number-of-posts":"__numberOfPosts__ discusiones",
-    "connection-error":"No se puede conectar, por favor inténtalo de nuevo.",
-    "not-found-error":"¡Uh oh, parece que esta página no existe!",
+    "connection-error":"Ha ocurrido un problema de conexión. Por favor, inténtalo de nuevo.",
+    "not-found-error":"La página que buscas no existe.",
     "action-retry-title":"Volver a intentar",
     "all-discussions-link-desktop":"Muéstrame todas las discusiones",
     "all-discussions-link-mobile":"Todas las discusiones",
@@ -91,7 +92,7 @@
     "unlock-post":"Reabrir discusión",
     "edit-reply":"Editar respuesta",
     "edit-post":"Editar discusión",
-    "edit-guidelines":"Editar",
+    "edit-guidelines":"Editar guía comunitaria",
     "upvote-label":"Votar",
     "reply-label":"Responder",
     "share-header":"Comparte",
@@ -153,7 +154,7 @@
     "report-post-confirm-text":"¿Reportar esta discusión a los moderadores?",
     "report-reply-confirm-text":"¿Reportar esta respuesta a los moderadores?",
     "report-permanent-action-text":"No se puede deshacer esta acción.",
-    "view-discussions-log":"Ver registro"
+    "view-discussions-log":"Registro de discusiones"
   },
   "user-activity":{
     "active-users-toggle-option":"Usuarios<br>activos",

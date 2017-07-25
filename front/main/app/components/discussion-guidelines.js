@@ -9,7 +9,6 @@ export default Ember.Component.extend(
 		currentUser: Ember.inject.service(),
 		shouldActivateLinks: true,
 		shouldTruncateContent: false,
-		wikiName: Ember.get(Mercury, 'wiki.siteName'),
 
 		actions: {
 			openGuidelinesEditor() {

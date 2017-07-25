@@ -1,0 +1,34 @@
+{{#design-system.wds-dropdown as |dropdown|}}
+	{{#dropdown.toggle class='wds-tabs__tab-label'}}
+		{{#if item.href}}
+			<a href="{{item.href}}">
+				{{partial 'partials/nav-item-with-icon'}}
+			</a>
+		{{else}}
+			{{partial 'partials/nav-item-with-icon'}}
+		{{/if}}
+	{{/dropdown.toggle}}
+	{{#dropdown.content isNotScrollable=true}}
+		<ul class="wds-list wds-is-linked wds-has-bolded-items">
+			{{#each item.items as |secondLevelItem index|}}
+				{{#if secondLevelItem.items}}
+					{{design-system.local-navigation-dropdown-level-2
+						item=secondLevelItem
+						currentIndex=index
+						trackingLabel=secondLevelItem.tracking_label
+					}}
+				{{else}}
+					<li>
+						<a href="{{secondLevelItem.href}}" data-tracking-label="{{secondLevelItem.tracking_label}}">
+							{{#if (equal secondLevelItem.title.type 'translatable-text')}}
+								{{i18n secondLevelItem.title.key ns='design-system'}}
+							{{else}}
+								{{secondLevelItem.title.value}}
+							{{/if}}
+						</a>
+					</li>
+				{{/if}}
+			{{/each}}
+		</ul>
+	{{/dropdown.content}}
+{{/design-system.wds-dropdown}}
