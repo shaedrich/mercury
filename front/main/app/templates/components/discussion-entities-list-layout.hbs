@@ -27,69 +27,65 @@
 	redirectUrl=redirectUrl
 }}
 <div class="site-body-discussion post-list-view">
-	{{discussion-hero-unit
-		contributors=model.contributors
-		editingPossible=true
-		heroImage=attributes.heroImage
-		numberOfPosts=model.postCount
-		triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
-		uploadMethod=(action this.attrs.uploadDiscussionsHeader)
-	}}
-	<div class="discussion-page row">
-		<div class="rail left large-3 extra-large-2 columns">
-			{{discussion-community-badge
-				badgeImage=attributes.badgeImage
-				editingPossible=true
-				triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
-				uploadMethod=(action this.attrs.uploadCommunityBadge)
-			}}
-			{{#unless mainPage}}
-				{{discussion-side-button
-					route='discussion'
-				}}
-			{{/unless}}
+	<div class="discussion-content-wrapper">
+		<div class="discussion-page row">
+			<div class="rail left large-3 extra-large-2 columns">
+				{{#if reportedContent}}
+					{{left-rail-details
+						headerText=(i18n 'main.reported-content' ns='discussion')
+						wdsIcon='wds-icons-alert'
+						numberOfPosts=model.postCount
+					}}
+				{{/if}}
 
-			{{#if categoriesInRail}}
-				{{#if canShowCategories}}
-					{{discussion-categories
-						categories=categories
-						inputIdPrefix='rail'
-						disabled=isCategoryFilterDisabled
-						triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
-						updateCategories=(action this.attrs.updateCategories)
-						updateCategoriesSelection=(action this.attrs.updateCategoriesSelection)
-						validatePostsOnForum=(action this.attrs.validatePostsOnForum)
-						visibleCategoriesCount=10
+				{{#unless mainPage}}
+					{{discussion-side-button
+						route='discussion'
 					}}
-				{{/if}}
-			{{/if}}
-			{{#unless responsive.isMobile}}
-				{{#if model.canModerate}}
-					{{discussion-hide-deleted
-						disabled=false
-						hideDeleted=hideDeleted
-						toggleHideDeleted=(action 'toggleHideDeleted')
+				{{else}}
+					{{#if categoriesInRail}}
+						{{#if canShowCategories}}
+							{{discussion-categories
+								categories=categories
+								inputIdPrefix='rail'
+								disabled=isCategoryFilterDisabled
+								triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
+								updateCategories=(action this.attrs.updateCategories)
+								updateCategoriesSelection=(action this.attrs.updateCategoriesSelection)
+								validatePostsOnForum=(action this.attrs.validatePostsOnForum)
+								visibleCategoriesCount=10
+							}}
+						{{/if}}
+					{{/if}}
+					{{#unless responsive.isMobile}}
+						{{#if model.canModerate}}
+							{{discussion-hide-deleted
+								disabled=false
+								hideDeleted=hideDeleted
+								toggleHideDeleted=(action 'toggleHideDeleted')
+							}}
+						{{/if}}
+					{{/unless}}
+					{{discussion-sort
+						disabled=isSortingDisabled
+						sortBy=sortBy
+						setSortBy=(action 'setSortBy')
 					}}
-				{{/if}}
-			{{/unless}}
-			{{discussion-sort
-				disabled=isSortingDisabled
-				sortBy=sortBy
-				setSortBy=(action 'setSortBy')
-			}}
-		</div>
-		<div class="small-12 large-6 extra-large-6 columns">
-			{{yield}}
-		</div>
-		<div class="rail right large-3 extra-large-2 columns">
-			{{discussion-community-unit
-				canModerate=model.canModerate
-				displayGuidelinesLink=true
-				displayWikiaHomeLink=true
-				guidelines=attributes.guidelines
-				listPage=true
-				openGuidelines=(action this.attrs.openGuidelines)
-			}}
+				{{/unless}}
+			</div>
+			<div class="small-12 large-6 extra-large-6 columns">
+				{{yield}}
+			</div>
+			<div class="rail right large-3 extra-large-2 columns">
+				{{discussion-community-unit
+					canModerate=model.canModerate
+					displayGuidelinesLink=true
+					guidelines=attributes.guidelines
+					listPage=true
+					openGuidelines=(action this.attrs.openGuidelines)
+					mainPage=mainPage
+				}}
+			</div>
 		</div>
 	</div>
 </div>

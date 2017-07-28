@@ -239,16 +239,6 @@
           },
           "href": "#",
           "tracking_label": "fandom-overview.tv"
-        },
-        {
-          "type": "link-branded",
-          "brand": "fan-communities",
-          "title": {
-            "type": "translatable-text",
-            "key": "global-footer-fandom-overview-link-fan-communities"
-          },
-          "href": "#",
-          "tracking_label": "fandom-overview.explore-wikis"
         }
       ]
     },

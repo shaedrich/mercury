@@ -105,9 +105,7 @@ export default Ember.Mixin.create({
 		styles += `.discussions .border-theme-color {border-color: ${this.get('themeColors.color-buttons')};}`;
 		styles += `.discussions .background-theme-color {background-color: ${this.get('themeColors.color-buttons')};}`;
 		styles += `.discussions .background-alpha-theme-color {background-color: ${heroImageRgbColor.toRgbString()};}`;
-		styles += '.discussions .discussion-hero-unit .discussion-hero-unit-content h1,' +
-			'.discussions .discussion-hero-unit .discussion-hero-unit-content p,' +
-			`.discussion-header h1 {color: ${discussionHeaderColor};}`;
+		styles += `.discussion-header h1 {color: ${discussionHeaderColor};}`;
 		styles += `.discussions .discussion-tooltip {color: ${tooltipLabelColor};}`;
 		styles += `.discussion a, .discussion .url, .discussions .header-text-theme-color,
 			.discussion-standalone-editor a, .discussion-user-activity-list a 

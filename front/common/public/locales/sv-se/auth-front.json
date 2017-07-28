@@ -1,8 +1,8 @@
 {
   "errors":{
-    "email_already_exists":"Email is already registered on Fandom",
+    "email_already_exists":"Email is already registered on FANDOM",
     "email_invalid":"Email is not valid",
-    "invalid-email":"It seems you have no e-mail associated with your Fandom account. Please __contactFandomLink__",
+    "invalid-email":"It seems you have no e-mail associated with your FANDOM account. Please __contactFandomLink__",
     "registration_error":"We cannot complete your registration at this time",
     "username_already_exists":"Username is taken",
     "username_blocked":"You can't request a new password because your username has been blocked.",
@@ -15,8 +15,8 @@
     "password_equal_name":"Password and username cannot match",
     "passwords_not_match":"Passwords do not match",
     "reset-password-email-sent":"We've already sent a password reminder to this account in the last 24 hours. Please check your email.",
-    "user_already_linked":"This Fandom account is already connected to Facebook",
-    "fb_account_already_linked":"This Facebook account is already connected to another Fandom user account",
+    "user_already_linked":"This FANDOM account is already connected to Facebook",
+    "fb_account_already_linked":"This Facebook account is already connected to another FANDOM user account",
     "birthdate_invalid":"Birthdate isn't a valid date",
     "wrong-credentials":"We don't recognize these credentials. Try again or register a new account.",
     "server-error":"There was an error processing your request. Please try again later."

@@ -2,11 +2,12 @@ $pointer-size: 14px;
 
 .pop-over {
 	position: relative;
+	z-index: $z-pop-over;
 }
 
 .pop-over-compass {
 	position: absolute;
-	z-index: $z-6;
+	z-index: $z-pop-over-compass;
 }
 
 .pop-over-compass-invisible {
