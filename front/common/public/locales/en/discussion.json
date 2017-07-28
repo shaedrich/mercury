@@ -153,7 +153,13 @@
     "report-post-confirm-text": "Report this post to the moderators?",
     "report-reply-confirm-text": "Report this reply to the moderators?",
     "report-permanent-action-text": "This action can't be undone.",
-    "view-discussions-log": "View Discussions Log"
+    "view-discussions-log": "View Discussions Log",
+    "phalanx-block-header": "The text you just wanted to save was blocked by the spam filter",
+    "phalanx-block-message-part1-singular": "The block ID is",
+    "phalanx-block-message-part1-plural": "The block IDs are",
+    "phalanx-block-message-part2-singular": "Please include it in your message if you would like to report this problem to FANDOM support.",
+    "phalanx-block-message-part2-plural": "Please include them in your message if you would like to report this problem to FANDOM support."
+
   },
   "user-activity":{
     "active-users-toggle-option": "Active Users",
