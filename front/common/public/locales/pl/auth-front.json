@@ -1,5 +1,6 @@
 {
   "errors":{
+    "access-denied":"Odmowa dostępu",
     "email_already_exists":"E-mail jest już zarejestrowany na portalu FANDOM",
     "email_invalid":"Niepoprawny adres e-mail",
     "invalid-email":"Wygląda na to, że z twoim kontem nie jest powiązany żaden adres e-mail. Prosimy o __contactFandomLink__.",
@@ -16,7 +17,7 @@
     "passwords_not_match":"Podane hasła nie są identyczne",
     "reset-password-email-sent":"Wysłaliśmy już przypomnienie hasła do tego konta w ciągu ostatnich 24 godzin. Sprawdź swoją skrzynkę odbiorczą.",
     "user_already_linked":"To konto na portalu FANDOM jest już połączone z profilem na Facebooku",
-    "fb_account_already_linked":"To konto na Facebooku jest już połączone z innym kontem użytkownika Fandomu",
+    "fb_account_already_linked":"To konto na Facebooku jest już połączone z innym kontem użytkownika FANDOMU",
     "birthdate_invalid":"Data urodzenia nie jest prawidłowa",
     "wrong-credentials":"Nie rozpoznajemy tych danych uwierzytelniania. Spróbuj ponownie lub zarejestruj nowe konto.",
     "server-error":"Wystąpił błąd podczas przetwarzania twojego żądania. Prosimy spróbować ponownie później."
