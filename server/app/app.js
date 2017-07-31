@@ -299,7 +299,8 @@ server.register(plugins, (err) => {
 	server.state('access_token', {
 		isHttpOnly: true,
 		clearInvalid: true,
-		domain: settings.authCookieDomain
+		domain: settings.authCookieDomain,
+		ttl: settings.authCookieExpiry
 	});
 });
 

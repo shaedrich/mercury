@@ -235,6 +235,7 @@ export default {
 	// auth pages aren't supported on custom domains, so this value should only be used for auth features
 	// once we phase out custom domains, we can change this to "cookieDomain" and use it for more features
 	authCookieDomain: '.wikia.com',
+	authCookieExpiry: 315360000000,
 	maxRequestsPerChild: parseInt(process.env.MAX_REQUEST_PER_CHILD, 10) || 50000,
 	optimizely: {
 		enabled: true,
