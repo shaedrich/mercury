@@ -1,6 +1,7 @@
 {
   "errors":{
-    "email_already_exists":"このメールアドレスはFandomに登録済みです",
+    "access-denied":"アクセスが拒否されました。",
+    "email_already_exists":"このメールアドレスはFANDOMに登録済みです",
     "email_invalid":"メールアドレスが無効です",
     "invalid-email":"記入されたユーザー名にはメールアドレスが登録されていません。__contactFandomLink__にお問い合わせください。",
     "registration_error":"現在、登録を完了できません",
@@ -15,8 +16,8 @@
     "password_equal_name":"パスワードとユーザー名を同じにすることはできません",
     "passwords_not_match":"パスワードが一致しません",
     "reset-password-email-sent":"新しいパスワードに関するお知らせは過去24時間以内に送信済みです。メールの受信をご確認ください。",
-    "user_already_linked":"このFandomアカウントはすでにFacebookにコネクトされています",
-    "fb_account_already_linked":"このFacebookアカウントはすでに別のFandomアカウントにコネクトされています",
+    "user_already_linked":"このFANDOMアカウントはすでにFacebookにコネクトされています",
+    "fb_account_already_linked":"このFacebookアカウントはすでに別のFANDOMアカウントにコネクトされています",
     "birthdate_invalid":"生年月日が無効な日付です",
     "wrong-credentials":"入力されたログイン情報を認識できません。もう一度お試しになるか、新しいアカウントをご登録ください。",
     "server-error":"リクエストの処理中にエラーが発生しました。しばらくしてから、もう一度お試しください。"
