@@ -199,7 +199,9 @@ export default Ember.Mixin.create({
 	onContributionError(editorType, err, generalErrorKey) {
 		if (isInvalidError(err.jqXHR.status)) {
 			this.setEditorError(editorType, generalErrorKey);
-			this.displayPhalanxError(err);
+			if (err.jqXHR.responseJSON.hasOwnProperty('brokenRuleIds')) {
+				this.displayPhalanxError(err.jqXHR.responseJSON.brokenRuleIds);
+			}
 		} else if (isUnauthorizedError(err.jqXHR.status)) {
 			this.setEditorError('editor.post-error-not-authorized');
 		} else {
@@ -207,8 +209,7 @@ export default Ember.Mixin.create({
 		}
 	},
 
-	displayPhalanxError(err) {
-		let brokenRuleIds = err.jqXHR.responseJSON.brokenRuleIds;
+	displayPhalanxError(brokenRuleIds) {
 		let part1, part2;
 
 		if (brokenRuleIds.length > 1) {
@@ -219,17 +220,7 @@ export default Ember.Mixin.create({
 			part2 = i18n.t('main.phalanx-block-message-part2-singular', {ns: 'discussion'});
 		}
 
-		brokenRuleIds = brokenRuleIds.map(id => `#${id}`);
-
-		let formattedBrokenRuleIds = '';
-		if (brokenRuleIds.length === 1) {
-			formattedBrokenRuleIds = brokenRuleIds[0];
-		} else if (brokenRuleIds.length === 2) {
-			formattedBrokenRuleIds = brokenRuleIds.join(' and ');
-		} else if (brokenRuleIds.length > 2) {
-			formattedBrokenRuleIds = `${brokenRuleIds.slice(0, -1).join(', ')}, and ${brokenRuleIds.slice(-1)}`;
-		}
-
+		let formattedBrokenRuleIds = brokenRuleIds.map(id => `#${id}`).join(', ');
 
 		const message = `${part1} ${formattedBrokenRuleIds}. ${part2}`;
 		this.openDialog({
