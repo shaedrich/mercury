@@ -1,5 +1,6 @@
 {
   "errors":{
+    "access-denied":"Accès refusé",
     "email_already_exists":"Adresse e-mail d'un utilisateur déjà inscrit sur FANDOM",
     "email_invalid":"Adresse e-mail non valide",
     "invalid-email":"Il semblerait que vous n'ayez pas d'adresse e-mail associée à votre compte FANDOM. Veuillez __contactFandomLink__",

@@ -1,5 +1,6 @@
 {
   "errors":{
+    "access-denied":"Access denied.",
     "email_already_exists":"이 이메일은 이미 팬덤에 가입되어 있습니다.",
     "email_invalid":"이메일이 유효하지 않습니다.",
     "invalid-email":"해당 계정에 연결된 이메일 주소가 없습니다. 도움을 받으시려면 __contactFandomLink__해 주세요.",
