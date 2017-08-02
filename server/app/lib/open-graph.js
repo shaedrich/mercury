@@ -2,6 +2,7 @@ import Promise from 'bluebird';
 import settings from '../../config/settings';
 import * as MW from './mediawiki';
 import {getStaticAssetPath} from './utils';
+import injectDesignSystemData from '../lib/inject-design-system-data';
 
 /**
  * @typedef {Object} OpenGraphAttributes
@@ -16,11 +17,11 @@ import {getStaticAssetPath} from './utils';
 
 /**
  * @param {OpenGraphAttributes} openGraphData
- * @param {*} response
- * @param {Object} wikiVars
+ * @param {*} data
  * @param {Hapi.Request} request
  */
-function selectOpenGraphImage(openGraphData, response, wikiVars, request) {
+function selectOpenGraphImage(openGraphData, data, request) {
+	const response = data.response;
 	const postsWithOpenGraph = response.payload._embedded['doc:posts']
 			? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
 			: [];
@@ -38,9 +39,9 @@ function selectOpenGraphImage(openGraphData, response, wikiVars, request) {
 		openGraphData.image = largestOpenGraph.imageUrl;
 		openGraphData.imageHeight = largestOpenGraph.imageHeight;
 		openGraphData.imageWidth = largestOpenGraph.imageWidth;
-	} else if (wikiVars.wordmark.image !== null) {
+	} else if (data.communityHeader !== null) {
 		// Use the wordmark image
-		openGraphData.image = wikiVars.wordmark.image.url;
+		openGraphData.image = data.communityHeader.wordmark['image-data'].url;
 	} else {
 		// Use Fandom logo as default image
 		openGraphData.image = `http:${getStaticAssetPath(settings, request)}` +
@@ -79,11 +80,19 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 			return new Promise((resolve, reject) => {
 				// Fetch discussion post data from the API to complete the OG data
 				MW.fetch(apiUrl)
+					.then((response) => injectDesignSystemData({
+						data: {
+							response,
+							wikiVariables: wikiVars
+						},
+						request
+					}))
 					/**
-					 * @param {*} response
+					 * @param {*} data
 					 * @returns {void}
 					 */
-					.then((response) => {
+					.then((data) => {
+						const response = data.response;
 						const content = response.payload._embedded.firstPost[0].rawContent;
 
 						openGraphData.title = response.payload.title ?
@@ -92,7 +101,7 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 						// Keep description to 175 characters or less
 						openGraphData.description = content.substr(0, 175);
 
-						selectOpenGraphImage(openGraphData, response, wikiVars, request);
+						selectOpenGraphImage(openGraphData, data, request);
 
 						resolve(openGraphData);
 					})
