@@ -1,6 +1,4 @@
-{{#if wikiName}}
-	<h4 class="wiki-name">{{wikiName}}</h4>
-{{/if}}
+<h4 class="discussions-links">{{i18n 'main.discussions-links' ns='discussion'}}</h4>
 {{#if displayGuidelinesLink}}
 	<div class="guidelines-link-section">
 		{{#link-to 'discussion.guidelines' class='guidelines-link active-element-theme-color' click=(action 'openGuidelines')}}
@@ -21,14 +19,25 @@
 		<span>Memory Alpha</span>
 	</a>
 {{/if}}
-{{#if displayWikiaHomeLink}}
-	<a href="{{wikiHomeLink}}" class="wikia-home-link active-element-theme-color" {{action 'clickWikiaHomeLink' on='mouseDown' preventDefault=false}}>
-		{{svg 'home-small' role='img' class='icon wikia-home'}}
-		<span>{{wikiHomeLinkText}}</span>
-	</a>
-{{/if}}
 
-{{discussion-moderator-tools}}
+{{#discussion-moderator-tools
+	mainPage=mainPage
+}}
+	<li>
+		{{#link-to 'discussion.reported-posts' class='text-link active-element-theme-color'
+			click=params.trackReportedContentTap}}
+			{{svg 'wds-icons-alert-small' role='img' class='wds-icon wds-icon-small icon'}}
+			<span>{{i18n 'main.reported-content' ns='discussion'}}</span>
+		{{/link-to}}
+	</li>
+	<li>
+		{{#link-to 'discussion.moderator.user-activity' (query-params days="30")
+			class='text-link active-element-theme-color' click=params.trackUserActivityTap}}
+			{{svg 'wds-icons-activity' role='img' class='wds-icon wds-icon-small user-activity icon'}}
+			<span>{{i18n 'main.user-activity' ns='discussion'}}</span>
+		{{/link-to}}
+	</li>
+{{/discussion-moderator-tools}}
 
 {{#if displayAppPromotion}}
 	<p class="discussion-app-join-text">

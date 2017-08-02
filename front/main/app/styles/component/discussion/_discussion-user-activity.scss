@@ -12,12 +12,14 @@
 	width: 100%;
 }
 
-.discussion-user-activity-layout {
-	.discussion-hero-unit {
-		.discussion-hero-unit-content {
-			padding-top: 50px;
-		}
-	}
+.user-activity-wikiname {
+	color: $discussion-user-activity-title-color;
+	font-size: $wds-typescale-size-base;
+	font-weight: bold;
+	line-height: 12px;
+	margin: 0 0 10px;
+	text-align: center;
+	width: 100%;
 }
 
 .discussion-user-activity {

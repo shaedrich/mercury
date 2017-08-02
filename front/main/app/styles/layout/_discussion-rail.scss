@@ -1,37 +1,23 @@
 .rail {
 	&.left {
 		padding-right: 48px;
+		margin-top: 45px;
 	}
 
 	&.right {
 		padding-left: 48px;
-		margin-top: 85px;
+		margin-top: 70px;
 	}
 
-	.side-button {
-		border: solid $discussion-rail-separator-color;
+	&.right-noavatar {
+		padding-left: 48px;
 	}
 }
-.post-details-view {
-	.rail {
-		.back-button {
-			border-width: 0 0 1px;
-		}
-	}
-}
+
 .post-list-view {
 	.rail {
 		.side-button {
 			border-width: 1px 0;
-		}
-
-		.delete-all {
-			border-top: none;
-			color: $discussion-actions-color;
-			display: flex;
-			font-weight: $paragraph-font-weight;
-			justify-content: center;
-			margin-left: 45px;
 		}
 	}
 }

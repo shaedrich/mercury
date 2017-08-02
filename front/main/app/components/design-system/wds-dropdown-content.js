@@ -3,6 +3,10 @@ import Ember from 'ember';
 const {Component} = Ember;
 
 export default Component.extend({
-	classNames: ['wds-dropdown__content'],
-	classNameBindings: ['dropdownRightAligned:wds-is-right-aligned']
+	classNameBindings: [
+		'dropdownLeftAligned:wds-is-left-aligned',
+		'dropdownRightAligned:wds-is-right-aligned',
+		'isNotScrollable:wds-is-not-scrollable',
+		'isLevel2:wds-dropdown-level-2__content:wds-dropdown__content'
+	]
 });

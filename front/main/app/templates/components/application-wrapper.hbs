@@ -3,42 +3,42 @@
 {{else}}
 	{{#if responsive.isMobile}}
 		{{site-head
-			smartBannerVisible=smartBannerVisible
-			toggleDrawer=this.attrs.toggleDrawer
-			themeBar=themeBar
-			drawerContent=activeDrawerContent
-			drawerVisible=drawerVisible
-			setDrawerContent=(action 'setDrawerContent')
+				smartBannerVisible=smartBannerVisible
+				toggleDrawer=this.attrs.toggleDrawer
+				themeBar=themeBar
+				drawerContent=activeDrawerContent
+				drawerVisible=drawerVisible
+				setDrawerContent=(action 'setDrawerContent')
 		}}
 	{{else}}
 		{{design-system.global-navigation
-			isGlobalNavigationPositionFixed=isGlobalNavigationPositionFixed
-			triggerGlobalNavigationHeadroomStateChange=(route-action 'triggerGlobalNavigationHeadroomStateChange')
-			currentUrl=currentUrl
+				isGlobalNavigationPositionFixed=isGlobalNavigationPositionFixed
+				triggerGlobalNavigationHeadroomStateChange=(route-action 'triggerGlobalNavigationHeadroomStateChange')
+				currentUrl=currentUrl
 		}}
 	{{/if}}
 
 	{{#wikia-drawer
-		shouldBeVisible=drawerVisible
+			shouldBeVisible=drawerVisible
 	}}
 		{{#if activeDrawerContent}}
 			{{component
-				drawerContentComponent
-				onEnterHandler=(action 'closeDrawer')
-				suggestionClickAction=(action 'closeDrawer')
-				closeDrawer=(action 'closeDrawer')
-				outsideSuggestionsClickAction=(action 'closeDrawer')
-				goToSearchResults=this.attrs.goToSearchResults
-				setDrawerContent=(action 'setDrawerContent')
-				noScroll=true
-				focusInput=true
+					drawerContentComponent
+					onEnterHandler=(action 'closeDrawer')
+					suggestionClickAction=(action 'closeDrawer')
+					closeDrawer=(action 'closeDrawer')
+					outsideSuggestionsClickAction=(action 'closeDrawer')
+					goToSearchResults=this.attrs.goToSearchResults
+					setDrawerContent=(action 'setDrawerContent')
+					noScroll=true
+					focusInput=true
 			}}
 		{{/if}}
 	{{/wikia-drawer}}
 
 	{{smart-banner-android
-		isVisible=smartBannerVisible
-		toggleVisibility=attrs.toggleSmartBanner
+			isVisible=smartBannerVisible
+			toggleVisibility=attrs.toggleSmartBanner
 	}}
 	{{#if noMargins}}
 		{{outlet}}

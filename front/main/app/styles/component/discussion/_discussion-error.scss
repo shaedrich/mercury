@@ -40,7 +40,7 @@
 }
 
 .error-message-container {
-	color: $discussion-upload-image-error-text-color;
+	color: #39424D;
 	display: none;
 
 	&.is-visible {
@@ -53,6 +53,6 @@
 	}
 
 	.icon.error {
-		fill: $discussion-upload-image-error-warning-color;
+		fill: #f00;
 	}
 }

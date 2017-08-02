@@ -1,0 +1,15 @@
+<ul class="wds-tabs">
+	{{#each model as |item|}}
+		<li class="wds-tabs__tab{{if (equal item.href '/d/f') ' wds-is-current'}}" data-tracking-label="{{item.tracking_label}}">
+			{{#if item.items}}
+				{{design-system.local-navigation-dropdown item=item}}
+			{{else}}
+				<div class="wds-tabs__tab-label">
+					<a href="{{item.href}}">
+						{{partial 'partials/nav-item-with-icon'}}
+					</a>
+				</div>
+			{{/if}}
+		</li>
+	{{/each}}
+</ul>

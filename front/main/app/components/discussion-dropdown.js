@@ -1,13 +1,11 @@
 import Ember from 'ember';
-import {track, trackActions} from '../utils/discussion-tracker';
 
 export default Ember.Component.extend(
 	{
-		classNames: ['discussion-days-toggle'],
+		classNames: ['discussion-dropdown'],
 
 		isDropdownActive: false,
-
-		days: null,
+		hasLinesBetween: true,
 
 		closeDropdown() {
 			this.set('isDropdownActive', false);
@@ -26,10 +24,6 @@ export default Ember.Component.extend(
 				if (!this.get('isDropdownActive')) {
 					this.openDropdown();
 				}
-			},
-
-			setDays(days) {
-				this.sendAction('setDays', days);
 			}
 		}
 	}
