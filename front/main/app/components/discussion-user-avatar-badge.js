@@ -32,7 +32,7 @@ export default Ember.Component.extend({
 			icon: 'wds-avatar-badges-vstf',
 			tooltip: i18n.t('main.user-avatar-badge-vstf-tooltip', {ns: 'discussion'})
 		},
-		'badge:globaldiscussionsmoderator': {
+		'badge:global-discussions-moderator': {
 			icon: 'wds-avatar-badges-global-discussions-moderator',
 			tooltip: i18n.t('main.user-avatar-badge-globaldiscussionsmoderator-tooltip', {ns: 'discussion'})
 		}
