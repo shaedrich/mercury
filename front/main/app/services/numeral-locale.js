@@ -7,16 +7,16 @@ export default Ember.Service.extend({
 	isLoading: false,
 	// Path to all supported locales, so they can be fingerprinted
 	localePath: {
-		de: '/front/vendor/assets/numeral/de.js',
-		es: '/front/vendor/assets/numeral/es.js',
-		fr: '/front/vendor/assets/numeral/fr.js',
-		it: '/front/vendor/assets/numeral/it.js',
-		ja: '/front/vendor/assets/numeral/ja.js',
-		pl: '/front/vendor/assets/numeral/pl.js',
-		'pt-br': '/front/vendor/assets/numeral/pt-br.js',
-		ru: '/front/vendor/assets/numeral/ru.js',
-		'zh-cn': '/front/vendor/assets/numeral/zh-cn.js',
-		'zh-tw': '/front/vendor/assets/numeral/zh-tw.js'
+		de: '/front/main/assets/vendor/numeral/de.js',
+		es: '/front/main/assets/vendor/numeral/es.js',
+		fr: '/front/main/assets/vendor/numeral/fr.js',
+		it: '/front/main/assets/vendor/numeral/it.js',
+		ja: '/front/main/assets/vendor/numeral/ja.js',
+		pl: '/front/main/assets/vendor/numeral/pl.js',
+		'pt-br': '/front/main/assets/vendor/numeral/pt-br.js',
+		ru: '/front/main/assets/vendor/numeral/ru.js',
+		'zh-cn': '/front/main/assets/vendor/numeral/zh-cn.js',
+		'zh-tw': '/front/main/assets/vendor/numeral/zh-tw.js'
 	},
 	/**
 	 * Changes status of downloading numeral's locale to trigger helper's observers
