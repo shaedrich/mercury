@@ -19,6 +19,11 @@ DiscussionContributor.reopenClass({
 			title: name
 		});
 	},
+	getUserActivityUrl(id) {
+		return M.buildUrl({
+		    path: `/d/u/${id}`
+		});
+	}
 	/**
 	 * @param {object} data
 	 *
@@ -30,7 +35,8 @@ DiscussionContributor.reopenClass({
 			badgePermission: data.badgePermission,
 			id: data.id,
 			name: data.name,
-			profileUrl: DiscussionContributor.getProfileUrl(data.name)
+			profileUrl: DiscussionContributor.getProfileUrl(data.name),
+			activityUrl: DiscussionContributor.getUserActivityUrl(data.id),
 		});
 	},
 });
