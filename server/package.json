@@ -35,7 +35,6 @@
     "node-esapi": "0.0.1",
     "node-sass": "4.5.3",
     "node-uuid": "1.4.7",
-    "numeral": "2.0.4",
     "postcss": "6.0.8",
     "vignette": "wikia/vignette-js#2.6.0",
     "vision": "3.0.0",
