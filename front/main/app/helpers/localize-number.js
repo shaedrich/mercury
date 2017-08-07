@@ -9,7 +9,10 @@ import Ember from 'ember';
 export default Ember.Helper.extend({
 	numeralLocale: Ember.inject.service(),
 	onLocaleChange: Ember.observer('numeralLocale.isLoaded', function () {
-		this.recompute();
+		// It won't recompute if we don't wait
+		Ember.run.schedule('afterRender', () => {
+			this.recompute();
+		});
 	}),
 
 	/**

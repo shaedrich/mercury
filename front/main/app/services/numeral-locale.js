@@ -37,7 +37,7 @@ export default Ember.Service.extend({
 	 * @return {void}
 	 */
 	setLocale(locale = 'en') {
-		numeral.language(locale);
+		numeral.locale(locale);
 		this.changeLoadingStatus();
 	},
 	/**
@@ -51,6 +51,7 @@ export default Ember.Service.extend({
 				lang = this.localePath.hasOwnProperty(contentLanguage) ? contentLanguage : this.defaultLanguage;
 
 			this.changeLoadingStatus(false);
+
 			if (lang === 'en') {
 				this.setLocale();
 			} else {
