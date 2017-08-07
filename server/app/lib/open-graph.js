@@ -16,47 +16,55 @@ import injectDesignSystemData from '../lib/inject-design-system-data';
  */
 
 /**
- * @param {OpenGraphAttributes} openGraphData
- * @param {*} data
+ * @param {*} response
  * @param {Hapi.Request} request
+ * @param {*} context
  */
-function selectOpenGraphImage(openGraphData, data, request) {
-	const response = data.response;
+function fetchOpenGraphImage(response, request, context) {
 	const postsWithOpenGraph = response.payload._embedded['doc:posts']
 			? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
 			: [];
 	if (response.payload._embedded.openGraph) {
 		// Use OpenGraph in main post
 		const openGraph = response.payload._embedded.openGraph[0];
-		openGraphData.image = openGraph.imageUrl;
-		openGraphData.imageHeight = openGraph.imageHeight;
-		openGraphData.imageWidth = openGraph.imageWidth;
+		return {
+			image: openGraph.imageUrl,
+			imageHeight: openGraph.imageHeight,
+			imageWidth: openGraph.imageWidth
+		};
 	} else if (postsWithOpenGraph.length > 0) {
 		// Use largest OpenGraph image in replies
 		let postOpenGraphData = postsWithOpenGraph.map(post => post._embedded.openGraph[0]);
 		postOpenGraphData.sort((a, b) => b.imageWidth * b.imageHeight - a.imageWidth * a.imageHeight);
 		const largestOpenGraph = postOpenGraphData[0];
-		openGraphData.image = largestOpenGraph.imageUrl;
-		openGraphData.imageHeight = largestOpenGraph.imageHeight;
-		openGraphData.imageWidth = largestOpenGraph.imageWidth;
-	} else if (data.communityHeader !== null) {
+		return {
+			image: largestOpenGraph.imageUrl,
+			imageHeight: largestOpenGraph.imageHeight,
+			imageWidth: largestOpenGraph.imageWidth
+		};
+	} else if (context.communityHeader !== null) {
 		// Use the wordmark image
-		openGraphData.image = data.communityHeader.wordmark['image-data'].url;
+		return {
+			image: context.communityHeader.wordmark['image-data'].url
+		};
 	} else {
 		// Use Fandom logo as default image
-		openGraphData.image = `http:${getStaticAssetPath(settings, request)}` +
-				'common/images/og-fandom-logo.jpg';
-		openGraphData.imageWidth = 1200;
-		openGraphData.imageHeight = 1200;
+		return {
+			image: `http:${getStaticAssetPath(settings, request)}` +
+			'common/images/og-fandom-logo.jpg',
+			imageHeight: 1200,
+			imageWidth: 1200
+		};
 	}
 }
 
 /**
  * @param {Hapi.Request} request
- * @param {*} wikiVars
+ * @param {*} context
  * @returns {Promise}
  */
-export function getPromiseForDiscussionData(request, wikiVars) {
+export function getPromiseForDiscussionData(request, context) {
+	const wikiVars = context.wikiVariables;
 	const i18n = request.server.methods.i18n.getInstance(),
 		openGraphData = {};
 
@@ -80,19 +88,11 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 			return new Promise((resolve, reject) => {
 				// Fetch discussion post data from the API to complete the OG data
 				MW.fetch(apiUrl)
-					.then((response) => injectDesignSystemData({
-						data: {
-							response,
-							wikiVariables: wikiVars
-						},
-						request
-					}))
 					/**
 					 * @param {*} data
 					 * @returns {void}
 					 */
-					.then((data) => {
-						const response = data.response;
+					.then((response) => {
 						const content = response.payload._embedded.firstPost[0].rawContent;
 
 						openGraphData.title = response.payload.title ?
@@ -101,7 +101,7 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 						// Keep description to 175 characters or less
 						openGraphData.description = content.substr(0, 175);
 
-						selectOpenGraphImage(openGraphData, data, request);
+						Object.assign(openGraphData, fetchOpenGraphImage(response, request, context));
 
 						resolve(openGraphData);
 					})
@@ -126,13 +126,13 @@ export function getPromiseForDiscussionData(request, wikiVars) {
 
 /**
  * @param {Hapi.Request} request
- * @param {*} wikiVars
+ * @param {*} context
  * @returns {Promise}
  */
-export function getAttributes(request, wikiVars) {
+export function getAttributes(request, context) {
 	// Discussions path
 	if (request.path.split('/')[1] === 'd') {
-		return getPromiseForDiscussionData(request, wikiVars);
+		return getPromiseForDiscussionData(request, context);
 	}
 
 	return Promise.resolve({});
