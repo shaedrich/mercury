@@ -1,6 +1,5 @@
 .discussion-moderator-tools {
 	margin-bottom: 20px;
-	margin-top: 20px;
 
 	.wds-list {
 		padding: 2px 0;
@@ -15,7 +14,6 @@
 
 @media #{$desktop-range} {
 	.discussion-moderator-tools {
-		margin-top: 18px;
 
 		h3 {
 			border-bottom: 1px solid $discussion-right-rail-line-color;

@@ -2,6 +2,7 @@
 	M.prop('initialPageView', true, true);
 	M.prop('gaUrl', '{{server.gaUrl}}');
 	M.prop('globalNavigation', {{{json globalNavigation}}});
+	M.prop('communityHeader', {{{json communityHeader}}});
 	M.prop('optimizelyScript', '{{server.optimizelyScript}}');
 	M.prop('qualarooScript', '{{server.qualarooScript}}');
 	M.prop('environment', '{{server.environment}}');
@@ -29,6 +30,9 @@
 	M.prop('clickstream', {{{json settings.clickstream}}});
 	{{#if discussionsSplashPageConfig}}
 		M.prop('discussionsSplashPageConfig', {{{json discussionsSplashPageConfig}}});
+	{{/if}}
+	{{#if discussionsContributors}}
+		M.prop('discussionsContributors', {{{json discussionsContributors}}});
 	{{/if}}
 	M.provide('wiki', {{{json wikiVariables}}});
 	{{#if server.mediawikiDomain}}

@@ -1,9 +1,10 @@
 {{#each latestContributors as |contributor|}}
-	{{#track-click action='clickDiscussionsHeaderAvatar'}}
+	{{#track-click action='clickLeftRailHeaderAvatar'}}
 		{{user-avatar
 			avatarUrl=contributor.avatarUrl
 			badgePermission=contributor.badgePermission
 			username=contributor.name
+			userId=contributor.id
 		}}
 	{{/track-click}}
 {{else}}

@@ -1,8 +1,9 @@
 {
   "errors":{
-    "email_already_exists":"该电子邮箱已在Fandom上注册了",
+    "access-denied":"拒绝访问",
+    "email_already_exists":"该电子邮箱已在FANDOM上注册了",
     "email_invalid":"电子邮件无效",
-    "invalid-email":"看起来您的Fandom帐户并未与任何电子邮件绑定。请__contactFandomLink__",
+    "invalid-email":"看起来您的FANDOM帐户并未与任何电子邮件绑定。请__contactFandomLink__",
     "registration_error":"我们现在暂时无法完成您的注册",
     "username_already_exists":"用户名已有人使用",
     "username_blocked":"由于您的用户名被封禁，您不能申请新的密码。",
@@ -15,8 +16,8 @@
     "password_equal_name":"用户名和密码不能一样",
     "passwords_not_match":"密码不匹配",
     "reset-password-email-sent":"密码提醒已在24小时内发送到该帐户，请查收您的电子邮件。",
-    "user_already_linked":"这个Fandom帐户已经连接到Facebook",
-    "fb_account_already_linked":"这个Facebook帐户已经连接到另一个Fandom帐户",
+    "user_already_linked":"这个FANDOM帐户已经连接到Facebook",
+    "fb_account_already_linked":"这个Facebook帐户已经连接到另一个FANDOM帐户",
     "birthdate_invalid":"出生日期无效",
     "wrong-credentials":"我们无法识别这些登入信息。请再试一次或注册一个新帐户。",
     "server-error":"处理您的请求时出错。请稍后再试。"

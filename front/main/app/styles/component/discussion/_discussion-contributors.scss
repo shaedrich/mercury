@@ -40,8 +40,11 @@ $discussion-contributors-border-width: 2px;
 
 .rail {
 	.discussion-contributors {
-		display: inline-block;
-		margin-right: 30px;
+		display: flex;
+		flex-wrap: wrap;
+		padding-bottom: 12px;
+		border: solid $wds-color-light-c4;
+		border-width: 0 0 1px;
 
 		.user-avatar {
 			margin-bottom: 5px;
@@ -50,11 +53,11 @@ $discussion-contributors-border-width: 2px;
 
 	.discussion-contributors-title {
 		color: $discussion-contributors-rail-title;
-		font-size: $discussion-post-type-smaller-than-min;
+		font-size: $type-smallest;
 		font-weight: bold;
 		line-height: 18px;
 		margin-bottom: 5px;
-		padding-top: 40px;
+		padding-top: 84px;
 	}
 }
 

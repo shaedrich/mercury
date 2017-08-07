@@ -1,24 +1,32 @@
 import Ember from 'ember';
+import {isAnonymousUser} from '../utils/user-utils';
 
-export default Ember.Component.extend({
+const {Component, computed} = Ember;
+
+export default Component.extend({
 	classNames: ['user-avatar'],
-	profileName: Ember.computed('username', function () {
+
+	profileName: computed('username', function () {
 		const userName = this.get('username') || '';
 
 		return userName.trim();
 	}),
+
+	userId: null,
 	/**
 	 * Returns link to the post author's user page
 	 * @returns {string}
 	 */
-	profileUrl: Ember.computed('profileName', function () {
+	profileUrl: computed('profileName', function () {
 		return M.buildUrl({
 			namespace: 'User',
 			title: this.get('profileName'),
 		});
 	}),
-	displayName: Ember.computed('profileName', function () {
-		return this.get('anonymous') ? i18n.t('app.username-anonymous') : this.get('profileName');
+	displayName: Ember.computed('profileName', 'userId', function () {
+		return isAnonymousUser(this.get('userId')) ? i18n.t('app.username-anonymous') : this.get('profileName');
 	}),
-	shouldWrapInHref: true
+	shouldWrapInHref: Ember.computed('userId', function () {
+		return !isAnonymousUser(this.get('userId'));
+	})
 });

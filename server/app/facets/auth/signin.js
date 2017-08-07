@@ -2,6 +2,10 @@ import * as authUtils from '../../lib/auth-utils';
 import settings from '../../../config/settings';
 import * as authView from './auth-view';
 import deepExtend from 'deep-extend';
+import HttpStatus from 'http-status-codes';
+import querystring from 'querystring';
+import translateError from './translate-error';
+import {signinUser, signinFacebookUser} from '../operations/signin';
 
 /**
  * @typedef {Object} SignInViewContext
@@ -9,8 +13,8 @@ import deepExtend from 'deep-extend';
  * @property {string} headerText
  * @property {string} [headerSlogan]
  * @property {string} [forgotPasswordHref]
- * @property {string} heliosLoginURL
- * @property {string} heliosFacebookURL
+ * @property {string} signinPostURL
+ * @property {string} signinFacebookURL
  */
 
 /**
@@ -28,8 +32,8 @@ function getSignInViewContext(request) {
 			forgotPasswordHref: authUtils.getForgotPasswordUrl(request),
 			bodyClasses: 'signin-page',
 			pageType: 'signin-page',
-			heliosLoginURL: authUtils.getHeliosUrl('/token'),
-			heliosFacebookURL: authUtils.getHeliosUrl('/facebook/token'),
+			signinPostURL: '/signin',
+			signinFacebookURL: '/signin?method=facebook',
 			submitText: 'auth:signin.submit-text',
 			formId: 'loginForm',
 			pageParams: {
@@ -54,7 +58,7 @@ function getFBSignInViewContext(request) {
 			forgotPasswordHref: authUtils.getForgotPasswordUrl(request),
 			bodyClasses: 'fb-connect-page',
 			pageType: 'fb-connect-page',
-			heliosLoginURL: authUtils.getHeliosUrl('/token'),
+			signinPostURL: '/signin',
 			heliosFacebookConnectURL: authUtils.getHeliosUrl('/users/'),
 			submitText: 'auth:fb-connect.submit-text',
 			formId: 'facebookConnectForm',
@@ -96,15 +100,54 @@ function getFacebookSignInPage(request, reply) {
 	return authView.view('signin-fb', context, request, reply);
 }
 
+function doSignin(request, reply) {
+	const username = querystring.escape(request.payload.username),
+		password = querystring.escape(request.payload.password);
+
+	signinUser(username, password, request)
+		.then(data => {
+			const accessToken = JSON.parse(data.payload).access_token;
+			if (accessToken && accessToken.length) {
+				reply.state('access_token', accessToken);
+			}
+			reply({payload: data.payload}).code(HttpStatus.OK);
+		}).catch(data => {
+			reply({payload: data.payload}).code(data.response.statusCode);
+		});
+}
+
+function doFacebookSignin(request, reply) {
+	const fbAccessToken = querystring.escape(request.payload.fb_access_token);
+
+	signinFacebookUser(fbAccessToken, request)
+		.then(data => {
+			const accessToken = JSON.parse(data.payload).access_token;
+			if (accessToken && accessToken.length) {
+				reply.state('access_token', accessToken);
+			}
+			reply({payload: data.payload}).code(HttpStatus.OK);
+		}).catch(data => {
+			reply({payload: data.payload}).code(data.response.statusCode);
+		});
+}
+
 /**
  * @param {Hapi.Request} request
  * @param {*} reply
  * @returns {void}
  */
-export default function get(request, reply) {
+export function get(request, reply) {
 	if (request.query.method === 'facebook') {
 		getFacebookSignInPage(request, reply);
 	} else {
 		getSignInPage(request, reply);
+	}
+}
+
+export function post(request, reply) {
+	if (request.query.method === 'facebook') {
+		doFacebookSignin(request, reply);
+	} else {
+		doSignin(request, reply);
 	}
 }

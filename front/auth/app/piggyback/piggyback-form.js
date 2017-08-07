@@ -133,7 +133,7 @@ export default class PiggybackForm {
 	 * @returns {void}
 	 */
 	clearErrors() {
-		this.form.querySelectorAll('small.error').forEach(element => {
+		[].forEach.call(this.form.querySelectorAll('small.error'), element => {
 			element.parentNode.removeChild(element);
 		});
 	}

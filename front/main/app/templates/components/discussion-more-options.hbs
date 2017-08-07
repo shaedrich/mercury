@@ -1,9 +1,11 @@
-<li>
-	{{#link-to 'discussion.user' post.createdBy.id}}
-		{{svg 'wds-icons-eye-small' viewBox='0 0 18 18' class='wds-icon-small'}}
-		{{i18n 'main.all-posts-by-username' userName=post.createdBy.name ns='discussion'}}
-	{{/link-to}}
-</li>
+{{#if displayAllPostsLink}}
+	<li>
+		{{#link-to 'discussion.user' userId}}
+			{{svg 'wds-icons-eye-small' viewBox='0 0 18 18' class='wds-icon-small'}}
+			{{i18n 'main.all-posts-by-username' userName=userName ns='discussion'}}
+		{{/link-to}}
+	</li>
+{{/if}}
 {{#if canShare}}
 	<li>
 		<a class="share-link" {{action 'share' post}} >

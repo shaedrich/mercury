@@ -1,8 +1,9 @@
 import Hoek from 'hoek';
-import {Policy} from './lib/caching';
+import {Interval, Policy} from './lib/caching';
 import {getRedirectUrlWithQueryString} from './lib/auth-utils';
 import proxyMW from './facets/operations/proxy-mw';
 import {handler as assetsHandler} from './facets/operations/assets';
+import sassHandler from './facets/operations/sass';
 import heartbeatHandler from './facets/operations/heartbeat';
 import discussionsHandler from './facets/show-discussions';
 import logoutHandler from './facets/auth/logout';
@@ -12,7 +13,7 @@ import {validateRedirect} from './facets/auth/auth-view';
 import * as forgotPasswordHandler from './facets/auth/forgot-password';
 import registerHandler from './facets/auth/register';
 import * as resetPasswordHandler from './facets/auth/reset-password';
-import signinHandler from './facets/auth/signin';
+import * as signinHandler from './facets/auth/signin';
 import * as piggybackHandler from './facets/auth/piggyback';
 import confirmEmailHandler from './facets/auth/confirm-email';
 import showApplication from './facets/show-application';
@@ -59,6 +60,18 @@ let routes,
 		},
 		{
 			method: 'GET',
+			path: '/front/styles-themed.css',
+			handler: sassHandler,
+			config: {
+				cache: {
+					privacy: Policy.Public,
+					// Hapi uses miliseconds
+					expiresIn: Interval.long * 1000
+				}
+			}
+		},
+		{
+			method: 'GET',
 			path: '/front/{path*}',
 			handler: assetsHandler
 		},
@@ -91,7 +104,19 @@ let routes,
 		{
 			method: 'GET',
 			path: '/signin',
-			handler: signinHandler,
+			handler: signinHandler.get,
+			config: {
+				pre: [
+					{
+						method: validateRedirect
+					}
+				]
+			}
+		},
+		{
+			method: 'POST',
+			path: '/signin',
+			handler: signinHandler.post,
 			config: {
 				pre: [
 					{
