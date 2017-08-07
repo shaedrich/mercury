@@ -42,13 +42,11 @@ export default Ember.Service.extend({
 		// Patch locales for consistency with MediaWiki
 		switch (locale) {
 			case 'de':
-				numeral.locales.de.delimiters.thousands = '.';
+				numeral.locales[locale].delimiters.thousands = '.';
 				break;
 			case 'it':
-				numeral.locales.it.delimiters.thousands = ' ';
-				break;
 			case 'pt-br':
-				numeral.locales['pt-br'].delimiters.thousands = ' ';
+				numeral.locales[locale].delimiters.thousands = ' ';
 				break;
 			default:
 				break;
