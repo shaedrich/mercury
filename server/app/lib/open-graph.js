@@ -2,7 +2,6 @@ import Promise from 'bluebird';
 import settings from '../../config/settings';
 import * as MW from './mediawiki';
 import {getStaticAssetPath} from './utils';
-import injectDesignSystemData from '../lib/inject-design-system-data';
 
 /**
  * @typedef {Object} OpenGraphAttributes
@@ -17,45 +16,81 @@ import injectDesignSystemData from '../lib/inject-design-system-data';
 
 /**
  * @param {*} response
+ **/
+function getThreadOpenGraph(response) {
+	const openGraph = response.payload._embedded.openGraph[0];
+	return {
+		image: openGraph.imageUrl,
+		imageHeight: openGraph.imageHeight,
+		imageWidth: openGraph.imageWidth
+	};
+}
+
+/**
+ * @param {Object[]} postsWithOpenGraph
+ **/
+function getLargestOpenGraph(postsWithOpenGraph) {
+	let postOpenGraphData = postsWithOpenGraph.map(post => post._embedded.openGraph[0]);
+	postOpenGraphData.sort((a, b) => b.imageWidth * b.imageHeight - a.imageWidth * a.imageHeight);
+	const largestOpenGraph = postOpenGraphData[0];
+	return {
+		image: largestOpenGraph.imageUrl,
+		imageHeight: largestOpenGraph.imageHeight,
+		imageWidth: largestOpenGraph.imageWidth
+	};
+}
+
+/**
+ * @param {*} response
+ **/
+function getPostsWithOpenGraph(response) {
+	return response.payload._embedded['doc:posts']
+			? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
+			: [];
+}
+
+/**
+ * @param {*} context
+ **/
+function generateWordmarkOpenGraph(context) {
+	return {
+		image: context.communityHeader.wordmark['image-data'].url
+	};
+}
+
+/**
+ * @param {Hapi.Request} request
+ **/
+function generateFandomLogoOpenGraph(request) {
+	return {
+		image: `http:${getStaticAssetPath(settings, request)}` +
+		'common/images/og-fandom-logo.jpg',
+		imageHeight: 1200,
+		imageWidth: 1200
+	};
+}
+
+/**
+ * @param {*} response
  * @param {Hapi.Request} request
  * @param {*} context
  */
 function fetchOpenGraphImage(response, request, context) {
-	const postsWithOpenGraph = response.payload._embedded['doc:posts']
-			? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
-			: [];
+
 	if (response.payload._embedded.openGraph) {
-		// Use OpenGraph in main post
-		const openGraph = response.payload._embedded.openGraph[0];
-		return {
-			image: openGraph.imageUrl,
-			imageHeight: openGraph.imageHeight,
-			imageWidth: openGraph.imageWidth
-		};
-	} else if (postsWithOpenGraph.length > 0) {
-		// Use largest OpenGraph image in replies
-		let postOpenGraphData = postsWithOpenGraph.map(post => post._embedded.openGraph[0]);
-		postOpenGraphData.sort((a, b) => b.imageWidth * b.imageHeight - a.imageWidth * a.imageHeight);
-		const largestOpenGraph = postOpenGraphData[0];
-		return {
-			image: largestOpenGraph.imageUrl,
-			imageHeight: largestOpenGraph.imageHeight,
-			imageWidth: largestOpenGraph.imageWidth
-		};
-	} else if (context.communityHeader !== null) {
-		// Use the wordmark image
-		return {
-			image: context.communityHeader.wordmark['image-data'].url
-		};
-	} else {
-		// Use Fandom logo as default image
-		return {
-			image: `http:${getStaticAssetPath(settings, request)}` +
-			'common/images/og-fandom-logo.jpg',
-			imageHeight: 1200,
-			imageWidth: 1200
-		};
+		return getThreadOpenGraph(response);
 	}
+
+	const postsWithOpenGraph = getPostsWithOpenGraph(response);
+	if (postsWithOpenGraph.length > 0) {
+		return getLargestOpenGraph(postsWithOpenGraph);
+	}
+
+	if (context.communityHeader !== null) {
+		return generateWordmarkOpenGraph(context);
+	}
+
+	return generateFandomLogoOpenGraph(request);
 }
 
 /**
