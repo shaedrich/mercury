@@ -1,28 +1,28 @@
 {
-  "errors":{
-    "access-denied":"crwdns69455:0crwdne69455:0",
-    "email_already_exists":"crwdns69456:0crwdne69456:0",
-    "email_invalid":"crwdns19838:0crwdne19838:0",
-    "invalid-email":"crwdns69457:0__contactFandomLink__crwdne69457:0",
-    "registration_error":"crwdns21363:0crwdne21363:0",
-    "username_already_exists":"crwdns21364:0crwdne21364:0",
-    "username_blocked":"crwdns57388:0crwdne57388:0",
-    "username_unavailable":"crwdns22178:0crwdne22178:0",
-    "username_ip_address":"crwdns21366:0crwdne21366:0",
-    "username_exceeds_max_length":"crwdns21367:0crwdne21367:0",
-    "username_illegal_characters":"crwdns21368:0crwdne21368:0",
-    "username-not-recognized":"crwdns57389:0crwdne57389:0",
-    "password_exceeds_max_length":"crwdns21369:0crwdne21369:0",
-    "password_equal_name":"crwdns21370:0crwdne21370:0",
-    "passwords_not_match":"crwdns57390:0crwdne57390:0",
-    "reset-password-email-sent":"crwdns57391:0crwdne57391:0",
-    "user_already_linked":"crwdns69458:0crwdne69458:0",
-    "fb_account_already_linked":"crwdns69459:0crwdne69459:0",
-    "birthdate_invalid":"crwdns21371:0crwdne21371:0",
-    "wrong-credentials":"crwdns21372:0crwdne21372:0",
-    "server-error":"crwdns21373:0crwdne21373:0"
-  },
-  "labels":{
-    "terms-of-use-and-privacy-policy-text":"crwdns21424:0__termsOfUseLink__crwdnd21424:0__privacyPolicyLink__crwdne21424:0"
+  "errors": {
+    "access-denied": "crwdns69455:0crwdne69455:0", 
+    "birthdate_invalid": "crwdns21371:0crwdne21371:0", 
+    "email_already_exists": "crwdns69456:0crwdne69456:0", 
+    "email_invalid": "crwdns19838:0crwdne19838:0", 
+    "fb_account_already_linked": "crwdns69459:0crwdne69459:0", 
+    "invalid-email": "crwdns69457:0__contactFandomLink__crwdne69457:0", 
+    "password_equal_name": "crwdns21370:0crwdne21370:0", 
+    "password_exceeds_max_length": "crwdns21369:0crwdne21369:0", 
+    "passwords_not_match": "crwdns57390:0crwdne57390:0", 
+    "registration_error": "crwdns21363:0crwdne21363:0", 
+    "reset-password-email-sent": "crwdns57391:0crwdne57391:0", 
+    "server-error": "crwdns21373:0crwdne21373:0", 
+    "user_already_linked": "crwdns69458:0crwdne69458:0", 
+    "username-not-recognized": "crwdns57389:0crwdne57389:0", 
+    "username_already_exists": "crwdns21364:0crwdne21364:0", 
+    "username_blocked": "crwdns57388:0crwdne57388:0", 
+    "username_exceeds_max_length": "crwdns21367:0crwdne21367:0", 
+    "username_illegal_characters": "crwdns21368:0crwdne21368:0", 
+    "username_ip_address": "crwdns21366:0crwdne21366:0", 
+    "username_unavailable": "crwdns22178:0crwdne22178:0", 
+    "wrong-credentials": "crwdns21372:0crwdne21372:0"
+  }, 
+  "labels": {
+    "terms-of-use-and-privacy-policy-text": "crwdns21424:0__termsOfUseLink__crwdnd21424:0__privacyPolicyLink__crwdne21424:0"
   }
 }
