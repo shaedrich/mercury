@@ -31,6 +31,6 @@ export default {
 		}
 	},
 	helios: {
-		internalUrl: 'http://dev.${devEnvironment}.k8s.wikia.net/helios',
+		internalUrl: `http://dev.${devEnvironment}.k8s.wikia.net/helios`,
 	},
 };
