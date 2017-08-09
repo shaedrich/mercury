@@ -19,7 +19,6 @@ body.dark-theme {
 		}
 
 		.discussion-content-wrapper {
-			$kjsd: kjsdf;
 			border-left: 1px solid $dark-discussion-border-wrapper-color;
 			border-right: 1px solid $dark-discussion-border-wrapper-color;
 			border-bottom: 1px solid $dark-discussion-border-wrapper-color;
@@ -171,6 +170,10 @@ body.dark-theme {
 					.post-details-link {
 						color: $dark-discussion-post-title-color;
 					}
+				}
+
+				h1,h2,h3,h4,h5,h6 {
+					color: $dark-discussion-post-title-color;
 				}
 			}
 

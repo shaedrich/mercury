@@ -1,5 +1,5 @@
 .discussions div.quote {
-	border-left: 4px solid grey;
+	border-left: 4px solid $color-links;
 	font-size: 1rem;
 	font-weight: 400;
 	margin-bottom: 1rem;
@@ -11,4 +11,12 @@
 	-webkit-margin-after: 1em;
 	-webkit-margin-start: 0;
 	-webkit-margin-end: 0;
+}
+
+.discussions blockquote {
+	border-left: 4px solid $color-links;
+	color: #999;
+	p {
+		color: #999;
+	}
 }
