@@ -156,6 +156,7 @@
     "upvote-label": "Votar", 
     "user-activity": "Estadísticas", 
     "user-avatar-badge-admin-tooltip": "Administrador", 
+    "user-avatar-badge-globaldiscussionsmoderator-tooltip": "Moderador global de discusiones", 
     "user-avatar-badge-helper-tooltip": "Helper", 
     "user-avatar-badge-moderator-tooltip": "Moderador", 
     "user-avatar-badge-staff-tooltip": "Staff", 
