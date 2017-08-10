@@ -2,32 +2,33 @@ import Ember from 'ember';
 
 /**
  * A helper allowing you to localize numbers in your templates. Usage: {{localize-number 1234}}.
- * If you pass true as the second parameter, the number will be signed
- * so for positive numbers it will have a `+` sign. Useful for diffs and byte changes.
- * Example: {{localize-number 1234 true}} will result in +1,234 in English.
+ * If you pass format as the second parameter, it will override the default one
  * @param {Array} params
  * @returns {string}
  */
 export default Ember.Helper.extend({
 	numeralLocale: Ember.inject.service(),
 	onLocaleChange: Ember.observer('numeralLocale.isLoaded', function () {
-		this.recompute();
+		// It won't recompute if we don't wait
+		Ember.run.schedule('afterRender', () => {
+			this.recompute();
+		});
 	}),
 
 	/**
 	 * Until a local configuration is loaded it returns a raw number and then applies the localization.
 	 * @param {number} number
-	 * @param {bool} signed If a `+` should be added to positive numbers
+	 * @param {string|null} format See http://numeraljs.com/#format
 	 * @returns {number|string}
 	 */
-	compute([number, signed = false]) {
+	compute([number, format = null]) {
 		const numeralLocaleService = this.get('numeralLocale');
 
-		if (!numeralLocaleService.get('isLoaded')) {
+		if (format) {
+			return numeral(number).format(format);
+		} else if (!numeralLocaleService.get('isLoaded')) {
 			numeralLocaleService.loadLocale();
 			return number;
-		} else if (signed && number > 0) {
-			return `+${numeral(number).format()}`;
 		} else {
 			return numeral(number).format();
 		}

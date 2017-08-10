@@ -26,7 +26,7 @@ function sanitizeHTML(rawHTML) {
 
 describe('global-footer', function () {
 	var requestParams = {
-			url: '/d',
+			url: '/image-review',
 			method: 'GET',
 			headers: {
 				host: 'starwars.wikia.com'

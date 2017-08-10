@@ -1,0 +1,17 @@
+.wds-community-header {
+	@include community-header-theming(
+					$color-community-header,
+					$color-text,
+					$color-links,
+					$color-page,
+					$color-page-border
+	);
+
+	margin: 0 auto;
+
+	.wds-avatar-stack .user-avatar .avatar .user-avatar__image { // This will be cleaned in XW-3785
+		background-color: $wds-color-white;
+		height: 30px;
+		width: 30px;
+	}
+}

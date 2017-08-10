@@ -3,7 +3,8 @@ var path = require('path'),
 	outputFront = output + '/front',
 	outputServer = output + '/server',
 	hbsPattern = '**/*.hbs',
-	jsPattern = '**/*.js';
+	jsPattern = '**/*.js',
+	scssPattern = '**/*.scss';
 
 module.exports = {
 	base: output,
@@ -84,6 +85,18 @@ module.exports = {
 				'server/config/' + jsPattern
 			],
 			dest: output
+		},
+		styles: {
+			src: [
+				'front/auth/app/styles/' + scssPattern,
+				'front/common/styles/' + scssPattern,
+				'front/main/app/styles/' + scssPattern,
+				'front/main/bower_components/design-system/' + scssPattern,
+				'front/main/bower_components/foundation/' + scssPattern,
+				'front/main/bower_components/wikia-style-guide/' + scssPattern,
+			],
+			base: 'front',
+			dest: output + '/styles'
 		},
 		views: {
 			src: 'server/app/views/' + hbsPattern,

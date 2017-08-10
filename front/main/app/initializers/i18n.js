@@ -1,16 +1,20 @@
 /**
- * @returns {void}
+ * If the server loads translations partly and for the rest falls back to EN,
+ * we need to find the primary loaded language
+ * i18n will handle the EN fallback itself
+ *
+ * @param {Object} translations
+ * @returns {string}
  */
+function getPrimaryLoadedLanguage(translations) {
+	return Object.keys(translations).filter((code) => {
+		return code !== 'en';
+	})[0] || 'en';
+}
+
 export function initialize() {
-	const
-		/**
-		 * prevents fail if transitions are empty
-		 */
-		loadedTranslations = M.prop('translations') || {},
-		/**
-		 * loaded language name is the first key of the Mercury.state.translations object
-		 */
-		loadedLanguage = Object.keys(loadedTranslations)[0] || 'en';
+	const loadedTranslations = M.prop('translations') || {},
+		loadedLanguage = getPrimaryLoadedLanguage(loadedTranslations);
 
 	i18n.init({
 		detectLngQS: 'uselang',
@@ -22,7 +26,6 @@ export function initialize() {
 		useLocalStorage: false
 	});
 }
-
 
 export default {
 	name: 'i18n',
