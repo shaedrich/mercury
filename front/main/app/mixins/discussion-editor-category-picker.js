@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {track, trackActions} from '../utils/discussion-tracker';
+import {track} from '../utils/discussion-tracker';
 
 export default Ember.Mixin.create({
 	categorySetter: Ember.observer('isActive', 'editEntity', 'categories', 'isEdit', function () {
@@ -37,6 +37,10 @@ export default Ember.Mixin.create({
 
 	shouldShowCategoryPicker: Ember.computed('isActivePostEditor', 'hasOneCategory', 'category', function () {
 		return !this.get('hasOneCategory') && this.get('isActivePostEditor') && !this.get('cannotEditCategory');
+	}),
+
+	showImageUpload: Ember.computed('isActive', 'Mercury', function () {
+		return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('isActive')
 	}),
 
 	categoryPickerClassname:

@@ -1,0 +1,14 @@
+.discussions {
+
+	.discussion-image-upload {
+		$color: #cccccc;
+
+		&__button {
+			background: transparent;
+			border: dashed 1px $color;
+			color: $color;
+			width: 100%;
+			height: 46px;
+		}
+	}
+}
