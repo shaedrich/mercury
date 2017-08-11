@@ -1,22 +1,27 @@
-.discussions div.quote {
-	border-left: 4px solid $color-links;
-	font-size: 1rem;
-	font-weight: 400;
-	margin-bottom: 1rem;
-	padding: 0 0 0 1rem;
-	font-style: italic;
-	display: block;
-	color: #999;
-	-webkit-margin-before: 1em;
-	-webkit-margin-after: 1em;
-	-webkit-margin-start: 0;
-	-webkit-margin-end: 0;
-}
+.discussions {
+	$quoted-text-color: #999;
 
-.discussions blockquote {
-	border-left: 4px solid $color-links;
-	color: #999;
-	p {
-		color: #999;
+	div.quote {
+		border-left: 4px solid $color-links;
+		font-size: 1rem;
+		font-weight: 400;
+		margin-bottom: 1rem;
+		padding: 0 0 0 1rem;
+		font-style: italic;
+		display: block;
+		color: $quoted-text-color;
+		-webkit-margin-before: 1em;
+		-webkit-margin-after: 1em;
+		-webkit-margin-start: 0;
+		-webkit-margin-end: 0;
 	}
+
+	blockquote {
+		border-left: 4px solid $color-links;
+		color: $quoted-text-color;
+		p {
+			color: $quoted-text-color;
+		}
+	}
+
 }
