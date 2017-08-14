@@ -119,11 +119,11 @@ if (typeof window.M.tracker === 'undefined') {
 			1;
 
 		expireDate = new Date(expireDate.getTime() + 1000 * 60 * 30);
-		document.cookie = `tracking_session_id=${window.sessionId}; expires=${expireDate.toGMTString()};
-			domain=${cookieDomain}; path=/;`;
+		document.cookie = `tracking_session_id=${window.sessionId}; expires=${expireDate.toGMTString()};` +
+			`domain=${cookieDomain}; path=/;`;
 		document.cookie = `pv_number=${window.pvNumber}; expires=${expireDate.toGMTString()}; path=/;`;
-		document.cookie = `pv_number_global=${window.pvNumberGlobal}; expires=${expireDate.toGMTString()};
-			domain=${cookieDomain}; path=/;`;
+		document.cookie = `pv_number_global=${window.pvNumberGlobal}; expires=${expireDate.toGMTString()};` +
+			`domain=${cookieDomain}; path=/;`;
 
 		track('view', $.extend({
 			ga_category: 'view',
