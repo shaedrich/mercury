@@ -182,6 +182,7 @@
     "reply-edit-action-button-label": "Save",
     "overlay-message-text": "Before posting, be sure to check out the __guidelinesLinkTitle__.",
     "overlay-message-button": "Done",
-    "guidelines-link-title": "Discussion Guidelines"
+    "guidelines-link-title": "Discussion Guidelines",
+    "add-image": "Add image"
   }
 }
