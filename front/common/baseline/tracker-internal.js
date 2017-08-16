@@ -33,13 +33,7 @@ if (typeof window.M.tracker === 'undefined') {
 	 */
 	function getConfig() {
 		const mercury = window.Mercury,
-			beaconCookieSplit = `; ${document.cookie}`.split('; wikia_beacon_id=');
-
-		let beacon = '';
-
-		if (beaconCookieSplit.length === 2) {
-			beacon = beaconCookieSplit.pop().split(';').shift();
-		}
+			beacon = M.cookie.get('wikia_beacon_id');
 
 		return {
 			c: mercury.wiki.id,
@@ -102,22 +96,19 @@ if (typeof window.M.tracker === 'undefined') {
 	 * @returns {void}
 	 */
 	function trackPageView(context) {
-		const sessionCookieSplit = `; ${document.cookie}`.split('; tracking_session_id='),
-			pvNumberCookieSplit = `; ${document.cookie}`.split('; pv_number='),
-			pvNumberGlobalCookieSplit = `; ${document.cookie}`.split('; pv_number_global='),
+		const sessionId = M.cookie.get('tracking_session_id'),
+			pvNumber = M.cookie.get('pv_number'),
+			pvNumberGlobal = M.cookie.get('pv_number_global'),
 			cookieDomain = M.prop('cookieDomain');
 
 		let expireDate = new Date();
 
 		window.pvUID = genUID();
-		window.sessionId = sessionCookieSplit.length === 2 ? sessionCookieSplit.pop().split(';').shift() : genUID();
-		window.pvNumber = pvNumberCookieSplit.length === 2 ?
-			parseInt(pvNumberCookieSplit.pop().split(';').shift(), 10) + 1 :
-			1;
-		window.pvNumberGlobal = pvNumberGlobalCookieSplit.length === 2 ?
-			parseInt(pvNumberGlobalCookieSplit.pop().split(';').shift(), 10) + 1 :
-			1;
+		window.sessionId = sessionId ? sessionId : genUID();
+		window.pvNumber = pvNumber ? parseInt(pvNumber, 10) + 1 : 1;
+		window.pvNumberGlobal = pvNumberGlobal ? parseInt(pvNumberGlobal, 10) + 1 : 1;
 
+		// Cookie expire date: 30m
 		expireDate = new Date(expireDate.getTime() + 1000 * 60 * 30);
 		document.cookie = `tracking_session_id=${window.sessionId}; expires=${expireDate.toGMTString()};` +
 			`domain=${cookieDomain}; path=/;`;
