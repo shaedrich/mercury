@@ -113,7 +113,6 @@ export default Ember.Mixin.create({
 		styles += `.discussions .active-element-background-color {background-color: ${
 			this.get('themeColors.color-links')};}`;
 		styles += `.discussions .active-element-theme-color {color: ${this.get('themeColors.color-links')};}`;
-		styles += `.discussions div.quote {border-left: 4px solid ${this.get('themeColors.color-links')};}`;
 		styles += `.discussions .active-element-border-theme-color {border-color: ${this.get('themeColors.color-links')};}`;
 		styles += `.discussions .active-element-hover-theme-color:hover,
 			.discussions .active-element-hover-theme-color:focus {color: ${activeElementHoverColor};}`;
