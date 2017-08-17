@@ -117,7 +117,7 @@ module.exports = function (defaults) {
 		pontoAssets = new Funnel(`${app.bowerDirectory}/ponto/web/src`, {
 			destDir: 'assets/vendor/ponto'
 		}),
-		numeralAssets = new Funnel(`${app.bowerDirectory}/numeral/languages`, {
+		numeralAssets = new Funnel(`${app.bowerDirectory}/numeral/locales`, {
 			destDir: 'assets/vendor/numeral'
 		}),
 		designSystemAssets = new Funnel(`${app.bowerDirectory}/design-system/dist/svg/sprite.svg`, {

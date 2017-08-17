@@ -15,7 +15,6 @@ import inert from 'inert';
 import path from 'path';
 import url from 'url';
 import vision from 'vision';
-import numeral from 'numeral';
 
 /* eslint no-process-env: 0 */
 
@@ -251,8 +250,6 @@ plugins = [
 	}
 ];
 
-server.method('numeral', numeral);
-
 /**
  * This has to run after server.connection
  *
@@ -290,8 +287,7 @@ server.register(plugins, (err) => {
 			i18n: {
 				translateWithCache: server.methods.i18n.translateWithCache,
 				getInstance: server.methods.i18n.getInstance
-			},
-			numeral: server.methods.numeral
+			}
 		}
 	});
 
