@@ -3,7 +3,7 @@
 	const geoCookie = M.cookie.get('Geo');
 
 	if (geoCookie) {
-		M.prop('geo', JSON.parse(geoCookie));
+		M.prop('geo', JSON.parse(decodeURIComponent(geoCookie)));
 	} else if (M.prop('environment') === 'dev') {
 		M.prop('geo', {
 			country: 'wikia-dev-country',
