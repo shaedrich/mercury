@@ -5,8 +5,8 @@ const {Route} = Ember;
 
 export default Route.extend({
 
-	model(params) {
-		return ImageReviewModel.reserveNewBatch(params.status, params.order, params.source);
+	model({status, order, source}) {
+		return ImageReviewModel.reserveNewBatch(status || 'UNREVIEWED', order, source);
 	},
 
 	redirect(model) {

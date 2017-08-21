@@ -1,25 +1,9 @@
 /* eslint no-console: 0 */
 (function () {
-	/**
-	 * Normally we would use $.cookie
-	 * but this is loaded in head and we don't have jQuery there yet
-	 *
-	 * @param {String} name
-	 * @returns {String}
-	 */
-	function getCookie(name) {
-		const value = `; ${document.cookie}`,
-			parts = value.split(`; ${name}=`);
-
-		if (parts.length === 2) {
-			return decodeURIComponent(parts.pop().split(';').shift());
-		}
-	}
-
-	const geoCookie = getCookie('Geo');
+	const geoCookie = M.cookie.get('Geo');
 
 	if (geoCookie) {
-		M.prop('geo', JSON.parse(geoCookie));
+		M.prop('geo', JSON.parse(decodeURIComponent(geoCookie)));
 	} else if (M.prop('environment') === 'dev') {
 		M.prop('geo', {
 			country: 'wikia-dev-country',
