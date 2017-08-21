@@ -114,6 +114,7 @@ export function getDefaultContext(request) {
 	return {
 		title: null,
 		canonicalUrl: getCanonicalUrl(request),
+		cookieDomain: settings.authCookieDomain,
 		exitTo: getValidRedirectUrl(request),
 		mainPage: 'http://www.wikia.com',
 		language: request.server.methods.i18n.getInstance().lng(),
