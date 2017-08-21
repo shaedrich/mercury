@@ -33,15 +33,12 @@ export default Ember.Component.extend(
 
 				this.uploadImage(imageFile)
 					.then((event) => {
-						console.log(event);
 						this.setProperties({
 							isLoadingMode: false,
 							isImagePreviewMode: true,
 							newImageUrl: event.target.result,
 							uploadedFile: imageFile,
 						});
-
-						track(this.get('trackedActions.EditImagePreview'));
 					})
 					.then(() => {
 					})

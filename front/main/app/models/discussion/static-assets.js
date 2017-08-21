@@ -20,7 +20,6 @@ const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 			contentType: false,
 			mimeType: 'multipart/form-data',
 		}).then((data) => {
-			console.log("result", data);
 			this.set(`data.${data.name}.value`, data.value);
 
 			return this.get(`data.${data.name}`);

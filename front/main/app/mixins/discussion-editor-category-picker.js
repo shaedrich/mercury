@@ -40,7 +40,7 @@ export default Ember.Mixin.create({
 	}),
 
 	showImageUpload: Ember.computed('isActive', 'Mercury', function () {
-		return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('isActive')
+		return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('isActive');
 	}),
 
 	categoryPickerClassname:
