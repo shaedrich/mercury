@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend(
 	{
 		classNames: ['discussion-image-upload'],
-		currentUser: Ember.inject.service(),
+		staticAssets: Ember.inject.service(),
 
 		isImagePreviewMode: false,
 		isLoadingMode: false,
@@ -31,18 +31,24 @@ export default Ember.Component.extend(
 					errorMessage: null,
 				});
 
-				this.uploadImage(imageFile).then((event) => {
-					this.setProperties({
-						isLoadingMode: false,
-						isImagePreviewMode: true,
-						newImageUrl: event.target.result,
-						uploadedFile: imageFile,
+				this.uploadImage(imageFile)
+					.then((event) => {
+						console.log(event);
+						this.setProperties({
+							isLoadingMode: false,
+							isImagePreviewMode: true,
+							newImageUrl: event.target.result,
+							uploadedFile: imageFile,
+						});
+
+						track(this.get('trackedActions.EditImagePreview'));
+					})
+					.then(() => {
+					})
+					.catch((err) => {
+						this.set('isLoadingMode', false);
+						this.setErrorMessage(this.get('errorsMessages.saveFailed'));
 					});
-					track(this.get('trackedActions.EditImagePreview'));
-				}).catch((err) => {
-					this.set('isLoadingMode', false);
-					this.setErrorMessage(this.get('errorsMessages.saveFailed'));
-				});
 			} else {
 				this.setErrorMessage(this.get('errorsMessages.fileType'));
 			}
@@ -53,12 +59,7 @@ export default Ember.Component.extend(
 		},
 
 		uploadImage(imageFile) {
-			return new Ember.RSVP.Promise((resolve, reject) => {
-				const fileReader = new FileReader();
-
-				fileReader.addEventListener('load', resolve);
-				fileReader.readAsDataURL(imageFile);
-			});
+			return this.get('staticAssets').saveImage(imageFile);
 		},
 
 	});
