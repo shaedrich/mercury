@@ -33,13 +33,7 @@ if (typeof window.M.tracker === 'undefined') {
 	 */
 	function getConfig() {
 		const mercury = window.Mercury,
-			beaconCookieSplit = `; ${document.cookie}`.split('; wikia_beacon_id=');
-
-		let beacon = '';
-
-		if (beaconCookieSplit.length === 2) {
-			beacon = beaconCookieSplit.pop().split(';').shift();
-		}
+			beacon = M.cookie.get('wikia_beacon_id');
 
 		return {
 			c: mercury.wiki.id,
@@ -50,6 +44,18 @@ if (typeof window.M.tracker === 'undefined') {
 			beacon,
 			cb: Math.floor(Math.random() * 99999)
 		};
+	}
+
+	/**
+	 * @returns {string}
+	 */
+	function genUID() {
+		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+			const r = Math.random() * 16 | 0,
+				v = c === 'x' ? r : (r & 0x3 | 0x8);
+
+			return v.toString(16);
+		});
 	}
 
 
@@ -90,8 +96,32 @@ if (typeof window.M.tracker === 'undefined') {
 	 * @returns {void}
 	 */
 	function trackPageView(context) {
+		const sessionId = M.cookie.get('tracking_session_id'),
+			pvNumber = M.cookie.get('pv_number'),
+			pvNumberGlobal = M.cookie.get('pv_number_global'),
+			cookieDomain = M.prop('cookieDomain');
+
+		let expireDate = new Date();
+
+		window.pvUID = genUID();
+		window.sessionId = sessionId ? sessionId : genUID();
+		window.pvNumber = pvNumber ? parseInt(pvNumber, 10) + 1 : 1;
+		window.pvNumberGlobal = pvNumberGlobal ? parseInt(pvNumberGlobal, 10) + 1 : 1;
+
+		// Cookie expire date: 30m
+		expireDate = new Date(expireDate.getTime() + 1000 * 60 * 30);
+		document.cookie = `tracking_session_id=${window.sessionId}; expires=${expireDate.toGMTString()};` +
+			`domain=${cookieDomain}; path=/;`;
+		document.cookie = `pv_number=${window.pvNumber}; expires=${expireDate.toGMTString()}; path=/;`;
+		document.cookie = `pv_number_global=${window.pvNumberGlobal}; expires=${expireDate.toGMTString()};` +
+			`domain=${cookieDomain}; path=/;`;
+
 		track('view', $.extend({
-			ga_category: 'view'
+			ga_category: 'view',
+			session_id: window.sessionId,
+			pv_unique_id: window.pvUID,
+			pv_number: window.pvNumber,
+			pv_number_global: window.pvNumberGlobal
 		}, context));
 
 		console.info('Track pageView: Internal');
