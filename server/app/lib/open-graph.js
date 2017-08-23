@@ -45,17 +45,20 @@ function getLargestOpenGraph(postsWithOpenGraph) {
  **/
 function getPostsWithOpenGraph(response) {
 	return response.payload._embedded['doc:posts']
-			? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
-			: [];
+		? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
+		: [];
 }
 
 /**
- * @param {*} context
+ * @param {*} communityHeader
  **/
-function generateWordmarkOpenGraph(context) {
-	return {
-		image: context.communityHeader.wordmark['image-data'].url
-	};
+function getCommunityHeaderImage(communityHeader) {
+	try {
+		return {image: communityHeader.wordmark['image-data'].url}
+	} catch (e) {
+		// there was a null in the chain
+		return null;
+	}
 }
 
 /**
@@ -76,7 +79,6 @@ function generateFandomLogoOpenGraph(request) {
  * @param {*} context
  */
 function fetchOpenGraphImage(response, request, context) {
-
 	if (response.payload._embedded.openGraph) {
 		return getThreadOpenGraph(response);
 	}
@@ -86,8 +88,9 @@ function fetchOpenGraphImage(response, request, context) {
 		return getLargestOpenGraph(postsWithOpenGraph);
 	}
 
-	if (context.communityHeader !== null) {
-		return generateWordmarkOpenGraph(context);
+	const communityHeaderImage = getCommunityHeaderImage(context.communityHeader);
+	if (communityHeaderImage !== null) {
+		return communityHeaderImage;
 	}
 
 	return generateFandomLogoOpenGraph(request);
@@ -123,10 +126,10 @@ export function getPromiseForDiscussionData(request, context) {
 			return new Promise((resolve, reject) => {
 				// Fetch discussion post data from the API to complete the OG data
 				MW.fetch(apiUrl)
-					/**
-					 * @param {*} data
-					 * @returns {void}
-					 */
+				/**
+				 * @param {*} data
+				 * @returns {void}
+				 */
 					.then((response) => {
 						const content = response.payload._embedded.firstPost[0].rawContent;
 
