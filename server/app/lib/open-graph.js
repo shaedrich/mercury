@@ -54,7 +54,7 @@ function getPostsWithOpenGraph(response) {
  **/
 function getCommunityHeaderImage(communityHeader) {
 	try {
-		return {image: communityHeader.wordmark['image-data'].url}
+		return {image: communityHeader.wordmark['image-data'].url};
 	} catch (e) {
 		// there was a null in the chain
 		return null;
