@@ -184,6 +184,8 @@ body.dark-theme {
 
 			.post-reply,
 			.post-detail {
+				border-color: $dark-discussion-border-post-color;
+
 				&.is-deleted,
 				&.is-parent-deleted {
 					.discussion-content {
@@ -265,7 +267,6 @@ body.dark-theme {
 
 			.post-detail {
 				background-color: $dark-discussion-desktop-post-detail-bg-color;
-				border-top-color: $dark-discussion-post-detail-border-color;
 
 				&.is-locked {
 					.replies-area {
@@ -653,10 +654,6 @@ body.dark-theme {
 				background-color: transparent;
 
 				&.forum {
-					.post-detail {
-						border-color: $dark-discussion-border-post-color;
-					}
-
 					.discussion-content {
 						a {
 							color: $dark-discussion-content-color;
