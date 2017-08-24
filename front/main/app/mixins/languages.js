@@ -27,16 +27,16 @@ export default Ember.Mixin.create({
 
 		if (!lang) {
 			return this.get('defaultLanguage');
-		} else {
-			lang = Ember.String.dasherize(lang);
-
-			// pt-br is the only one supported share-feature language with dash and 5 characters
-			if (lang !== 'pt-br') {
-				lang = lang.split('-')[0];
-			}
-
-			return lang;
 		}
+
+		lang = Ember.String.dasherize(lang);
+
+		// pt-br is the only one supported share-feature language with dash and 5 characters
+		if (lang !== 'pt-br') {
+			return lang.split('-')[0];
+		}
+
+		return lang;
 	},
 
 	/**

@@ -5,6 +5,7 @@ import DiscussionContributors from './domain/contributors';
 import DiscussionPost from './domain/post';
 import DiscussionReply from './domain/reply';
 import {track, trackActions} from '../../utils/discussion-tracker';
+import raw from 'ember-ajax/raw';
 import request from 'ember-ajax/request';
 
 const DiscussionPostModel = DiscussionBaseModel.extend(
@@ -110,10 +111,11 @@ const DiscussionPostModel = DiscussionBaseModel.extend(
 		 * @returns {Ember.RSVP.Promise}
 		 */
 		editReply(replyData) {
-			return request(M.getDiscussionServiceUrl(`/${this.wikiId}/posts/${replyData.id}`), {
+			return raw(M.getDiscussionServiceUrl(`/${this.wikiId}/posts/${replyData.id}`), {
 				method: 'POST',
 				data: JSON.stringify(replyData),
-			}).then((reply) => {
+			}).then((response) => {
+				const reply = response.payload;
 				let editedReply;
 
 				reply.threadCreatedBy = reply.createdBy;
@@ -138,10 +140,11 @@ const DiscussionPostModel = DiscussionBaseModel.extend(
 		createReply(replyData) {
 			replyData.threadId = this.get('threadId');
 
-			return request(M.getDiscussionServiceUrl(`/${this.wikiId}/posts`), {
+			return raw(M.getDiscussionServiceUrl(`/${this.wikiId}/posts`), {
 				method: 'POST',
 				data: JSON.stringify(replyData),
-			}).then((reply) => {
+			}).then((response) => {
+				const reply = response.payload;
 				reply.isNew = true;
 				reply.threadCreatedBy = this.get('data.createdBy');
 				this.incrementProperty('data.repliesCount');

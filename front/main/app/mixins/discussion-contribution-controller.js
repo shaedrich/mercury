@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {isUnauthorizedError} from 'ember-ajax/errors';
+import {isUnauthorizedError, isInvalidError} from 'ember-ajax/errors';
 import {track, trackActions} from '../utils/discussion-tracker';
 import localStorageConnector from '../utils/local-storage-connector';
 
@@ -197,11 +197,36 @@ export default Ember.Mixin.create({
 	 * @returns {void}
 	 */
 	onContributionError(editorType, err, generalErrorKey) {
-		if (isUnauthorizedError(editorType, err.status)) {
+		if (isInvalidError(err.jqXHR.status)) {
+			this.setEditorError(editorType, generalErrorKey);
+			if (err.jqXHR.responseJSON.hasOwnProperty('brokenRuleIds')) {
+				this.displayPhalanxError(err.jqXHR.responseJSON.brokenRuleIds);
+			}
+		} else if (isUnauthorizedError(err.jqXHR.status)) {
 			this.setEditorError('editor.post-error-not-authorized');
 		} else {
 			this.setEditorError(editorType, generalErrorKey);
 		}
+	},
+
+	displayPhalanxError(brokenRuleIds) {
+		let part1, part2;
+
+		if (brokenRuleIds.length > 1) {
+			part1 = i18n.t('main.phalanx-block-message-part1-plural', {ns: 'discussion'});
+			part2 = i18n.t('main.phalanx-block-message-part2-plural', {ns: 'discussion'});
+		} else {
+			part1 = i18n.t('main.phalanx-block-message-part1-singular', {ns: 'discussion'});
+			part2 = i18n.t('main.phalanx-block-message-part2-singular', {ns: 'discussion'});
+		}
+
+		let formattedBrokenRuleIds = brokenRuleIds.map(id => `#${id}`).join(', ');
+
+		const message = `${part1} ${formattedBrokenRuleIds}. ${part2}`;
+		this.openDialog({
+			header: i18n.t('main.phalanx-block-header', {ns: 'discussion'}),
+			message
+		});
 	},
 
 	/**
