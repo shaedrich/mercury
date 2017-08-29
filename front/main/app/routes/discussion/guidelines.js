@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DiscussionBaseRoute from './base';
 import RouteWithBodyClassNameMixin from '../../mixins/route-with-body-class-name';
+import DiscussionSiteAttributesModel from '../../models/discussion/site-attributes';
 
 export default DiscussionBaseRoute.extend(
 	RouteWithBodyClassNameMixin,
@@ -8,10 +9,8 @@ export default DiscussionBaseRoute.extend(
 		bodyClassNames: ['standalone-page'],
 
 		model() {
-			const indexModel = this.modelFor('discussion');
-
 			return Ember.RSVP.hash({
-				attributes: indexModel.attributes,
+				attributes: DiscussionSiteAttributesModel.find(Mercury.wiki.id),
 			});
 		},
 	}
