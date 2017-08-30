@@ -482,7 +482,7 @@ export default Ember.Mixin.create({
 
 		/**
 		 * This saves the new Guidelines.
-		 * @param {Object} text
+		 * @param {string} text
 		 * @returns {void}
 		 */
 		saveGuidelines(text) {
@@ -492,11 +492,11 @@ export default Ember.Mixin.create({
 			editorState.set('isLoading', true);
 			this.setEditorError(editorType, null);
 
-			this.get('discussion.model').attributes.saveTextAttribute('guidelines', text).then(() => {
+			this.get('model').attributes.saveTextAttribute('guidelines', text).then(() => {
 				track(trackActions.GuidelinesEditSave);
 			}).catch((err) => {
 				this.onContributionError(err, 'editor.save-error-general-error', true);
-			}).finally(() => {
+			}).then(() => {
 				editorState.set('isLoading', false);
 			});
 		},
