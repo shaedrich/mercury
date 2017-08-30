@@ -86,11 +86,7 @@ export default function showApplication(request, reply, wikiVariables, context =
 			context.wikiVariables = wikiVariables;
 			context.isRtl = isRtl(wikiVariables);
 
-			return OpenGraph.getAttributes(request, context.wikiVariables).then((openGraphData) => {
-				// Add OpenGraph attributes to context
-				context.openGraph = openGraphData;
-				return context;
-			});
+			return context;
 		})
 		/**
 		 * Get data for Global Footer
@@ -98,11 +94,22 @@ export default function showApplication(request, reply, wikiVariables, context =
 		 * @returns {MediaWikiPageData}
 		 *
 		 */
-		.then((templateData) => injectDesignSystemData({
-			data: templateData,
+		.then((context) => injectDesignSystemData({
+			data: context,
 			request,
 			showFooter: showGlobalFooter
 		}))
+		/**
+		 * @param {MediaWikiPageData} templateData
+		 * @returns {Promise}
+		 */
+		.then((context) => OpenGraph.getAttributes(request, context)
+			.then((openGraphData) => {
+				// Add OpenGraph attributes to context
+				context.openGraph = openGraphData;
+				return context;
+			})
+		)
 		.then((templateData) => injectSassVariables(templateData))
 		/**
 		 * @param {*} contextData

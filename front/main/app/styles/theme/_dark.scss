@@ -184,6 +184,8 @@ body.dark-theme {
 
 			.post-reply,
 			.post-detail {
+				border-color: $dark-discussion-border-post-color;
+
 				&.is-deleted,
 				&.is-parent-deleted {
 					.discussion-content {
@@ -265,7 +267,6 @@ body.dark-theme {
 
 			.post-detail {
 				background-color: $dark-discussion-desktop-post-detail-bg-color;
-				border-top-color: $dark-discussion-post-detail-border-color;
 
 				&.is-locked {
 					.replies-area {
@@ -402,36 +403,34 @@ body.dark-theme {
 			}
 		}
 
-		&.discussions {
-			.discussion-category-picker-required-message {
-				color: $dark-discussion-category-picker-button-background-color;
+		.discussion-category-picker-required-message {
+			color: $dark-discussion-category-picker-button-background-color;
+		}
+
+		.og-container {
+			background-color: $dark-discussion-open-graph-background-color;
+			border-color: $dark-discussion-open-graph-border-color;
+		}
+
+		.og-title {
+			color: $dark-discussion-open-graph-title-color;
+		}
+
+		.og-site-name {
+			color: $dark-discussion-open-graph-domain-color;
+		}
+
+		.is-loading {
+			.wds-spinner__overlay {
+				background-color: transparent;
 			}
 
-			.og-container {
-				background-color: $dark-discussion-open-graph-background-color;
-				border-color: $dark-discussion-open-graph-border-color;
+			.og-image-placeholder {
+				background-color: $dark-discussion-open-graph-placeholder-background-color;
 			}
 
-			.og-title {
-				color: $dark-discussion-open-graph-title-color;
-			}
-
-			.og-site-name {
-				color: $dark-discussion-open-graph-domain-color;
-			}
-
-			.is-loading {
-				.wds-spinner__overlay {
-					background-color: transparent;
-				}
-
-				.og-image-placeholder {
-					background-color: $dark-discussion-open-graph-placeholder-background-color;
-				}
-
-				.og-text-placeholder {
-					background-color: $dark-discussion-open-graph-placeholder-background-color;
-				}
+			.og-text-placeholder {
+				background-color: $dark-discussion-open-graph-placeholder-background-color;
 			}
 		}
 
@@ -655,10 +654,6 @@ body.dark-theme {
 				background-color: transparent;
 
 				&.forum {
-					.post-detail {
-						border-color: $dark-discussion-border-post-color;
-					}
-
 					.discussion-content {
 						a {
 							color: $dark-discussion-content-color;
