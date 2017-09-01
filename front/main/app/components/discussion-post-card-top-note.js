@@ -185,7 +185,7 @@ export default Component.extend({
 				header,
 				name: 'modal-dialog-delete',
 				confirmButtonText: i18n.t('main.modal-dialog-delete', {ns: 'discussion'}),
-				confirmCallback: (() => this.get('delete')(item)),
+				confirmCallback: ((confirmed) => confirmed && this.get('delete')(item)),
 			});
 		},
 
@@ -221,7 +221,7 @@ export default Component.extend({
 				header,
 				name: 'modal-dialog-approve',
 				confirmButtonText: i18n.t('main.modal-dialog-approve', {ns: 'discussion'}),
-				confirmCallback: (() => this.get('approve')(item)),
+				confirmCallback: ((confirmed) => confirmed && this.get('approve')(item)),
 			});
 		},
 
