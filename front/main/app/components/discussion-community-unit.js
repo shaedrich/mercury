@@ -24,14 +24,6 @@ export default Ember.Component.extend({
 		return (this.get('androidAppLink') || this.get('iosAppLink')) && this.get('showAppPromotion');
 	}),
 
-	/**
-	 * TREK INITIATIVE EXPERIMENT
-	 *
-	 * @returns {boolean}
-	 */
-	displayMemoryAlphaLink: Ember.computed(() => {
-		return Boolean(Ember.get(Mercury, 'wiki.id') === 734209);
-	}),
 
 	actions: {
 
