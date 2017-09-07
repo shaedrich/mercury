@@ -27,14 +27,6 @@ export default DiscussionBaseController.extend(
 
 		wikiName: Ember.get(Mercury, 'wiki.siteName'),
 
-		displayedWikiName: Ember.computed(function () {
-			if (Ember.get(Mercury, 'wiki.id') === 734209) {
-				return 'Star Trek';
-			} else {
-				return this.get('wikiName');
-			}
-		}),
-
 		actions: {
 			setDays(days) {
 				this.get('target').send('setDays', days);

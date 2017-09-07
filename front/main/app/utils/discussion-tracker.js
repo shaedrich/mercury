@@ -107,7 +107,7 @@ function getGACategory() {
 
 /**
  * @param {string} action
- * @param {string} params
+ * @param {object|null} params
  *
  * @returns {Object}
  */
@@ -121,7 +121,7 @@ function getTrackingContext(action, params) {
 
 /**
  * @param {string} action
- * @param {object} params
+ * @param {object|null} params
  *
  * @returns {void}
  */

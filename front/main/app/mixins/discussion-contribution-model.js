@@ -1,5 +1,7 @@
 import Ember from 'ember';
+import raw from 'ember-ajax/raw';
 import request from 'ember-ajax/request';
+import isInvalidError from 'ember-ajax/errors';
 import {track, trackActions} from '../utils/discussion-tracker';
 import AlertNotificationsMixin from './alert-notifications';
 import DiscussionPost from '../models/discussion/domain/post';
@@ -13,10 +15,12 @@ export default Ember.Mixin.create(AlertNotificationsMixin, {
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	createPost(postData, forumId) {
-		return request(M.getDiscussionServiceUrl(`/${this.wikiId}/forums/${forumId}/threads`), {
+		return raw(M.getDiscussionServiceUrl(`/${this.wikiId}/forums/${forumId}/threads`), {
 			data: JSON.stringify(postData),
 			method: 'POST',
-		}).then((thread) => {
+		}).then((response) => {
+			const thread = response.payload;
+
 			const newPost = DiscussionPost.createFromThreadData(thread);
 
 			newPost.set('isNew', true);
@@ -49,7 +53,7 @@ export default Ember.Mixin.create(AlertNotificationsMixin, {
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	editPostContent(postData) {
-		return request(M.getDiscussionServiceUrl(`/${this.wikiId}/threads/${postData.threadId}`), {
+		return raw(M.getDiscussionServiceUrl(`/${this.wikiId}/threads/${postData.threadId}`), {
 			data: JSON.stringify(postData),
 			method: 'POST',
 		});
@@ -76,7 +80,7 @@ export default Ember.Mixin.create(AlertNotificationsMixin, {
 		}
 
 		return Ember.RSVP.all(promisesList).then((data) => {
-			const editedPost = shouldEditContent ? DiscussionPost.createFromThreadData(data[0]) :
+			const editedPost = shouldEditContent ? DiscussionPost.createFromThreadData(data[0].payload) :
 				Ember.Object.create({});
 
 			if (wasMoved) {
@@ -110,10 +114,11 @@ export default Ember.Mixin.create(AlertNotificationsMixin, {
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	editReply(replyData) {
-		return request(M.getDiscussionServiceUrl(`/${this.wikiId}/posts/${replyData.id}`), {
+		return raw(M.getDiscussionServiceUrl(`/${this.wikiId}/posts/${replyData.id}`), {
 			data: JSON.stringify(replyData),
 			method: 'POST',
-		}).then((reply) => {
+		}).then((response) => {
+			const reply = response.payload;
 			let editedReply;
 
 			reply.threadCreatedBy = reply.createdBy;

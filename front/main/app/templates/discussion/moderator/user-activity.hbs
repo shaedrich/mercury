@@ -9,7 +9,7 @@
 }}
 	<div class="discussion-user-activity">
 		{{#if responsive.isMobile}}
-			<h2 class="user-activity-wikiname">{{#track-click action='clickCommunityName'}}{{displayedWikiName}}{{/track-click}}</h2>
+			<h2 class="user-activity-wikiname">{{#track-click action='clickCommunityName'}}{{wikiName}}{{/track-click}}</h2>
 			<p class="user-activity-title">{{i18n 'user-activity.hero-unit-subtitle' ns='discussion'}}</p>
 		{{/if}}
 		{{discussion-user-activity-toggle
