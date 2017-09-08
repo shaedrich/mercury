@@ -104,8 +104,7 @@ export default Ember.Mixin.create({
 			return;
 		}
 
-		setupTheme();
-
+		this.setupTheme();
 		if (!this.get('themeColors')) {
 			return;
 		}
