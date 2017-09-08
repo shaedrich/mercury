@@ -69,11 +69,13 @@
 					<tr>
 						<td>Source type</td>
 						<td>Uploads</td>
+						<td>Reviewed</td>
 					</tr>
 					{{#each model.summary.sourceStatistics as |source|}}
 						<tr>
 							<td>{{source.type}}</td>
 							<td>{{source.total}}</td>
+							<td>{{source.reviewed}}</td>
 						</tr>
 					{{/each}}
 				</table>
