@@ -6,13 +6,6 @@ export const whitelist = [
 	'color-page'
 ];
 
-export function injectSassVariables(templateData) {
-	templateData.sassParams = stringify(
-		getSassParams(templateData.wikiVariables.theme, templateData.wikiVariables.discussionColorOverride)
-	);
-	return templateData;
-}
-
 function getSassParams(theme, override) {
 	let variables = {};
 
@@ -29,4 +22,12 @@ function getSassParams(theme, override) {
 	}
 
 	return variables;
+}
+
+
+export function injectSassVariables(templateData) {
+	templateData.sassParams = stringify(
+		getSassParams(templateData.wikiVariables.theme, templateData.wikiVariables.discussionColorOverride)
+	);
+	return templateData;
 }
