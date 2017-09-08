@@ -90,7 +90,13 @@ export default Ember.Mixin.create({
 			return;
 		}
 
-		this.set('themeColors', Ember.get(Mercury, 'wiki.theme'));
+		let theme = Ember.get(Mercury, 'wiki.theme');
+		let override = Ember.get(Mercury, 'wiki.discussionColorOverride');
+		if (override) {
+			theme['color-links'] = override;
+		}
+
+		this.set('themeColors', theme);
 
 		if (!this.get('themeColors')) {
 			return;

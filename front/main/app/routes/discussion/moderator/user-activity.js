@@ -7,6 +7,8 @@ export default Ember.Route.extend({
 		}
 	},
 
+	
+
 	allowedDaysValues: [30, 90],
 
 	isValidDaysValue(days) {
