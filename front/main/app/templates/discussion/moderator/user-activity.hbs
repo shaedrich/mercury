@@ -5,18 +5,11 @@
 		setDays=(action 'setDays')
 		setEditorActive=(action 'setEditorActive')
 		updateCategories=(action 'updateCategories')
-		uploadCommunityBadge=(action 'uploadCommunityBadge')
-		uploadDiscussionsHeader=(action 'uploadDiscussionsHeader')
 		validatePostsOnForum=(action 'validatePostsOnForum')
 }}
 	<div class="discussion-user-activity">
 		{{#if responsive.isMobile}}
-			{{discussion-community-badge
-				badgeImage=model.attributes.data.badgeImage
-				editingPossible=false
-				triggerHighlightOverlayStateChange=(route-action 'triggerHighlightOverlayStateChange')
-				uploadMethod=(action 'uploadCommunityBadge')
-			}}
+			<h2 class="user-activity-wikiname">{{#track-click action='clickCommunityName'}}{{wikiName}}{{/track-click}}</h2>
 			<p class="user-activity-title">{{i18n 'user-activity.hero-unit-subtitle' ns='discussion'}}</p>
 		{{/if}}
 		{{discussion-user-activity-toggle

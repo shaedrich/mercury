@@ -25,14 +25,12 @@ UserImagesModel.reopenClass({
 	imagesFor(username) {
 		return request(M.getImageReviewServiceUrl(`/user/${capitalize(username)}/images`))
 			.then((payload) => {
-				const linkRegexp = new RegExp('(http|https)?:\/\/[^\s]+');
 				const images = payload.images.map((img) => Ember.Object.create({
 					imageId: img.imageId,
 					fullSizeImageUrl: img.imageUrl,
 					context: img.context,
 					source: img.source,
 					isContextProvided: Boolean(img.context),
-					isContextLink: linkRegexp.test(img.context),
 					status: coppaStatus(img.currentStatus)
 				}));
 				return UserImagesModel.create({images, username});

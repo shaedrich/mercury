@@ -81,16 +81,7 @@ const trackActions = {
 	CommunityBadgeSaveFailure: 'CommunityBadgeSaveFailure',
 	CommunityBadgeClicked: 'CommunityBadgeClicked',
 	CommunityNameClicked: 'CommunityNameClicked',
-	EditDiscussionsHeaderButtonTapped: 'EditDiscussionsHeaderButtonTapped',
-	EditDiscussionsHeaderFileDropped: 'EditDiscussionsHeaderFileDropped',
-	EditDiscussionsHeaderFilePasted: 'EditDiscussionsHeaderFilePasted',
-	EditDiscussionsHeaderImagePreview: 'EditDiscussionsHeaderImagePreview',
-	EditDiscussionsHeaderEscapeKeyHit: 'EditDiscussionsHeaderEscapeKeyHit',
-	DiscussionsHeaderSave: 'DiscussionsHeaderSave',
-	DiscussionsHeaderSaveFailure: 'DiscussionsHeaderSaveFailure',
-	DiscussionsHeaderTextClicked: 'DiscussionsHeaderTextClicked',
-	DiscussionsHeaderPostcountClicked: 'DiscussionsHeaderPostcountClicked',
-	DiscussionsHeaderAvatarClicked: 'DiscussionsHeaderAvatarClicked',
+	LeftRailHeaderAvatarClicked: 'LeftRailHeaderAvatarClicked',
 	PostCategoryAdded: 'PostCategoryAdded',
 	PostCategoryEdited: 'PostCategoryEdited',
 	WikiHomeLinkClicked: 'WikiHomeLinkClicked',
@@ -116,7 +107,7 @@ function getGACategory() {
 
 /**
  * @param {string} action
- * @param {string} params
+ * @param {object|null} params
  *
  * @returns {Object}
  */
@@ -130,7 +121,7 @@ function getTrackingContext(action, params) {
 
 /**
  * @param {string} action
- * @param {object} params
+ * @param {object|null} params
  *
  * @returns {void}
  */

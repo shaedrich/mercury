@@ -8,25 +8,16 @@
 
 // z-min
 // z-1
-$z-ads-top-leaderboard: $z-1;
-$z-spinner-before: $z-1;
-$z-video-provider-ooyala-override: $z-1;
-$z-portable-infobox-collapse: $z-1;
-$z-discussion-sticky-editor: $z-7;
 // z-2
-$z-spinner-after: $z-2;
 // z-3
 // z-4
 // z-5
 // z-6
-$z-header-badge-image: $z-6;
+$z-pop-over-compass: $z-6;
 // z-7
-$z-ads-floor: $z-7;
+$z-discussion-sticky-editor: $z-7;
 $z-site-head: $z-7;
 // z-8
-$z-lightbox-footer: $z-8;
-$z-lightbox-header: $z-8;
-$z-lightbox-wrapper: $z-8;
 $z-side-nav-overlay: $z-8;
 $z-discussion-editor: $z-8;
 $z-highlight-overlay: $z-8;
@@ -37,10 +28,16 @@ $z-side-nav: $z-9;
 $z-highlight-overlay-content: $z-9;
 $z-global-navigation: $z-9;
 // z-max
+$z-pop-over: $z-max;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Global Variables
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// theme defaults
+$color-page: #ffffff !default;
+$color-links: #006CB0 !default;
+$color-community-header: #006CB0 !default;
 
 // Border Radius
 $border-radius-global: rem-calc(2);
@@ -49,9 +46,31 @@ $border-radius-global: rem-calc(2);
 $article-horizontal-padding: 1.125rem;
 
 // Colors
-
+$color-black: #000;
+$color-white: #fff;
 $color-blue-brand: $color-blue-light;
 $color-gray-semi: $color-blue-gray;
+
+// Is dark wiki
+$is-dark-wiki: false;
+@if lightness($color-page) < 50 {
+	$is-dark-wiki: true;
+}
+
+// Text color
+$color-text-dark: #3a3a3a;
+$color-text-light: #d5d4d4;
+
+$color-text: $color-text-dark;
+@if $is-dark-wiki {
+	$color-text: $color-text-light;
+}
+
+// Page Borders
+$color-page-border: mix($color-page, $color-black, 80%);
+@if $is-dark-wiki {
+	$color-page-border: mix($color-page, $color-white, 80%);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Module Variables

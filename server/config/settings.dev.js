@@ -4,6 +4,7 @@
 
 // These variables are used in multiple places in config
 const devDomain = (process.env.WIKIA_DATACENTER === 'poz') ? 'pl' : 'us',
+	devEnvironment = (process.env.WIKIA_DATACENTER === 'poz') ? 'poz-dev' : 'sjc-dev',
 	servicesDomain = `services.wikia-dev.${devDomain}`;
 
 export default {
@@ -30,6 +31,6 @@ export default {
 		}
 	},
 	helios: {
-		internalUrl: 'http://dev.helios.service.consul:9500/',
+		internalUrl: `http://dev.${devEnvironment}.k8s.wikia.net/helios`,
 	},
 };

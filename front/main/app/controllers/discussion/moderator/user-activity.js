@@ -2,6 +2,7 @@ import DiscussionModerationControllerMixin from '../../../mixins/discussion-mode
 import DiscussionContributionControllerMixin from '../../../mixins/discussion-contribution-controller';
 import ResponsiveMixin from '../../../mixins/responsive';
 import DiscussionBaseController from '../base';
+import {track, trackActions} from '../../../utils/discussion-tracker';
 
 export default DiscussionBaseController.extend(
 	DiscussionModerationControllerMixin,
@@ -24,9 +25,19 @@ export default DiscussionBaseController.extend(
 
 		currentRouteName: Ember.computed.alias('applicationController.currentRouteName'),
 
+		wikiName: Ember.get(Mercury, 'wiki.siteName'),
+
 		actions: {
 			setDays(days) {
 				this.get('target').send('setDays', days);
+			},
+
+			clickCommunityName() {
+				track(trackActions.CommunityNameClicked);
+			},
+
+			clickCommunityBadge() {
+				track(trackActions.CommunityBadgeClicked);
 			}
 		}
 	}

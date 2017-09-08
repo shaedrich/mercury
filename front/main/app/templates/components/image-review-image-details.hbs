@@ -10,13 +10,9 @@
 	<div class="image-review-context">
 		<p>
 			{{#if thumbnailModel.context}}
-				{{#if thumbnailModel.isContextLink}}
-					<a href="{{thumbnailModel.context}}" target="_blank">
-						{{i18n 'main.image-context' ns='image-review'}}
-					</a>
-				{{else}}
+				<a href="{{thumbnailModel.context}}" target="_blank">
 					{{i18n 'main.image-context' ns='image-review'}}
-				{{/if}}
+				</a>
 			{{/if}}
 
 		</p>

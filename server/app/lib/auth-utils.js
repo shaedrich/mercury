@@ -87,7 +87,11 @@ export function getHeliosUrl(path) {
 export function getHeliosInternalUrl(path, query = null) {
 	const heliosUrlObj = url.parse(settings.helios.internalUrl);
 
-	heliosUrlObj.pathname = path;
+	if (heliosUrlObj.pathname === '/') {
+		heliosUrlObj.pathname = path;
+	} else {
+		heliosUrlObj.pathname += path;
+	}
 	heliosUrlObj.search = querystring.stringify(query);
 
 	return url.format(heliosUrlObj);
