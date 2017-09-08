@@ -7,8 +7,6 @@ export default Ember.Route.extend({
 		}
 	},
 
-	
-
 	allowedDaysValues: [30, 90],
 
 	isValidDaysValue(days) {
@@ -29,9 +27,11 @@ export default Ember.Route.extend({
 
 	actions: {
 		setDays(days) {
-			this.transitionTo({queryParams: {
-				days
-			}});
+			this.transitionTo({
+				queryParams: {
+					days
+				}
+			});
 		}
 	}
 });
