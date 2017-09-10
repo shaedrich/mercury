@@ -229,7 +229,11 @@ plugins = [
 				detectLngFromHeaders: false,
 				detectLngFromQueryString: true,
 				detectLngQS: 'uselang',
-				lowerCaseLng: true
+				lowerCaseLng: true,
+				interpolation: {
+					prefix: '{',
+					suffix: '}'
+				}
 			}
 		}
 	},

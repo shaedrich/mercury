@@ -5,7 +5,7 @@
     "email_already_exists": "该电子邮箱已在FANDOM上注册了", 
     "email_invalid": "电子邮件无效", 
     "fb_account_already_linked": "这个Facebook帐户已经连接到另一个FANDOM帐户", 
-    "invalid-email": "看起来您的FANDOM帐户并未与任何电子邮件绑定。请__contactFandomLink__", 
+    "invalid-email": "看起来您的FANDOM帐户并未与任何电子邮件绑定。请{contactFandomLink}",
     "password_equal_name": "用户名和密码不能一样", 
     "password_exceeds_max_length": "密码不能超过50个字符", 
     "passwords_not_match": "密码不匹配", 
@@ -23,6 +23,6 @@
     "wrong-credentials": "我们无法识别这些登入信息。请再试一次或注册一个新帐户。"
   }, 
   "labels": {
-    "terms-of-use-and-privacy-policy-text": "我同意 __termsOfUseLink__ 和 __privacyPolicyLink__ (必填)"
+    "terms-of-use-and-privacy-policy-text": "我同意 {termsOfUseLink} 和 {privacyPolicyLink} (必填)"
   }
 }

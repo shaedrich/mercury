@@ -15,6 +15,6 @@
     "server-error":"处理您的请求时出错。请稍后再试。"
   },
   "labels":{
-    "terms-of-use-and-privacy-policy-text":"我同意 __termsOfUseLink__ 和 __privacyPolicyLink__ (必填)"
+    "terms-of-use-and-privacy-policy-text":"我同意 {termsOfUseLink} 和 {privacyPolicyLink} (必填)"
   }
 }

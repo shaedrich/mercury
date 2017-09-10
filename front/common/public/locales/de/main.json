@@ -15,7 +15,7 @@
     "curated-content-editor-done": "Fertig", 
     "curated-content-editor-edit-community-data-button": "Bearbeiten", 
     "curated-content-editor-edit-main-page": "Hauptseite bearbeiten", 
-    "curated-content-editor-editing-header": "Bearbeiten: __label__", 
+    "curated-content-editor-editing-header": "Bearbeiten: {label}",
     "curated-content-editor-empty-section-error": "Abschnitte dürfen nicht leer sein. Bitte füge diesem Abschnitt Einträge hinzu.", 
     "curated-content-editor-enter-category-name": "Gib einen Kategorienamen ein", 
     "curated-content-editor-enter-category-name-tooltip": "Wenn du in Curated Content einen Kategorienamen eingibst, verwende dasselbe Format, das du zur Verlinkung von Inhalten auf FANDOM nutzen würdest (z. B. Category:Name_der_Kategorie).", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "Empfohlene Inhalte können dazu verwendet werden, bestimmte Inhalte in deiner Community, wie Artikel, Videos oder Blogbeiträge zu markieren. Idealerweise sind diese Inhalte aktuell und von Relevanz für deine Leser. Außerdem sollten sie häufig aktualisiert werden.", 
     "curated-content-editor-general-section-error": "Bitte Fehler in diesem Abschnitt beheben.", 
     "curated-content-editor-image-missing-error": "Bitte hinterlege ein Bild", 
-    "curated-content-editor-items-count": "__count__ Eintrag", 
-    "curated-content-editor-items-count_plural": "__count__ Einträge", 
+    "curated-content-editor-items-count": "{count} Eintrag",
+    "curated-content-editor-items-count_plural": "{count} Einträge",
     "curated-content-editor-label-in-use-error": "Dieser Anzeigenname wird bereits verwendet", 
     "curated-content-editor-main-page": "Hauptseite", 
     "curated-content-editor-missing-category-title-error": "Kategoriename fehlt", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "Bereich wurde nicht gefunden.", 
     "curated-content-image-upload-error": "Bei deinem Upload ist etwas schief gelaufen. Bitte versuche es noch einmal.", 
     "curated-content-load-more-items": "Mehr anzeigen", 
-    "explore-wiki": "__wikiName__ erkunden", 
+    "explore-wiki": "{wikiName} erkunden",
     "header-in-wiki-name-label-prefix": "in:", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "Die Bildüberprüfungs-API hat ungültige Daten zurückgegeben", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "Aktualisieren"
   }, 
   "userStatus": {
-    "anon-cta": "__registerLink__ oder __loginLink__", 
+    "anon-cta": "{registerLink} oder {loginLink}",
     "login-text": "Anmelden", 
     "register-text": "Registrieren"
   }

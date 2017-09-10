@@ -23,7 +23,11 @@ export function initialize() {
 		lowerCaseLng: true,
 		ns: 'main',
 		resStore: loadedTranslations,
-		useLocalStorage: false
+		useLocalStorage: false,
+		interpolation: {
+			prefix: '{',
+			suffix: '}'
+		}
 	});
 }
 

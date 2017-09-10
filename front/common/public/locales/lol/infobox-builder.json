@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "crwdns28385:0crwdne28385:0", 
     "edit-title-placeholder": "crwdns27035:0crwdne27035:0", 
     "first-title-default": "crwdns26422:0crwdne26422:0", 
-    "header": "crwdns27026:0__title__crwdne27026:0", 
+    "header": "crwdns27026:0{title}crwdne27026:0",
     "help-row": "crwdns26431:0crwdne26431:0", 
     "help-section-collapsible": "crwdns27023:0crwdne27023:0", 
     "help-section-header": "crwdns27029:0crwdne27029:0", 
@@ -39,7 +39,7 @@
     "source-editor-tooltip": "crwdns26447:0crwdne26447:0", 
     "success": "crwdns26435:0crwdne26435:0", 
     "title-article-name": "crwdns26424:0crwdne26424:0", 
-    "title-default": "crwdns26423:0__index__crwdne26423:0", 
+    "title-default": "crwdns26423:0{index}crwdne26423:0",
     "title-naming-conflict-error": "crwdns27037:0crwdne27037:0", 
     "title-use-article-name": "crwdns25363:0crwdne25363:0", 
     "untitled-infobox-template": "crwdns27036:0crwdne27036:0"

@@ -15,7 +15,7 @@
     "curated-content-editor-done":"Done",
     "curated-content-editor-edit-community-data-button":"Edit",
     "curated-content-editor-edit-main-page":"Edit Main Page",
-    "curated-content-editor-editing-header":"Editing: __label__",
+    "curated-content-editor-editing-header":"Editing: {label}",
     "curated-content-editor-empty-section-error":"Sections can't be empty. Please add items to this section.",
     "curated-content-editor-enter-category-name":"Enter a category name",
     "curated-content-editor-enter-category-name-tooltip":"When entering a category name in Curated Content use the same format you would use to link to a piece of content on a wiki (e.g. Category:Name_of_category).",
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description":"Featured Content can be used to highlight a specific piece of content on your community such as an article, video, or blog post. Ideally this content is timely and relevant to your readers and should be updated frequently.",
     "curated-content-editor-general-section-error":"Please fix errors in this section.",
     "curated-content-editor-image-missing-error":"Please provide an image",
-    "curated-content-editor-items-count":"__count__ item",
-    "curated-content-editor-items-count_plural":"__count__ items",
+    "curated-content-editor-items-count":"{count} item",
+    "curated-content-editor-items-count_plural":"{count} items",
     "curated-content-editor-label-in-use-error":"This display name is already in use",
     "curated-content-editor-main-page":"Main Page",
     "curated-content-editor-missing-category-title-error":"Category name is missing",
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found":"Section not found.",
     "curated-content-image-upload-error":"Something went wrong with your upload. Please try again.",
     "curated-content-load-more-items":"Load more",
-    "explore-wiki":"Explore __wikiName__",
+    "explore-wiki":"Explore {wikiName}",
     "image-review-error-invalid-data":"Invalid data was returned from Image Review API",
     "header-in-wiki-name-label-prefix":"in:",
     "header-in-wiki-name-label-suffix":"",
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button":"Atualizar"
   },
   "userStatus":{
-    "anon-cta":"__registerLink__ or __loginLink__",
+    "anon-cta":"{registerLink} or {loginLink}",
     "login-text":"Sign In",
     "register-text":"Register"
   }

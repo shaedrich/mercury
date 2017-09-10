@@ -3,7 +3,7 @@
     "access-denied": "Access denied.",
     "email_already_exists": "Email is already registered on FANDOM",
     "email_invalid": "Email is not valid",
-    "invalid-email": "It seems you have no e-mail associated with your FANDOM account. Please __contactFandomLink__",
+    "invalid-email": "It seems you have no e-mail associated with your FANDOM account. Please {contactFandomLink}",
     "registration_error": "We cannot complete your registration at this time",
     "username_already_exists": "Username is taken",
     "username_blocked": "You can't request a new password because your username has been blocked.",
@@ -23,6 +23,6 @@
     "server-error": "There was an error processing your request. Please try again later."
   },
   "labels": {
-    "terms-of-use-and-privacy-policy-text": "I agree to __termsOfUseLink__ and __privacyPolicyLink__ (required)"
+    "terms-of-use-and-privacy-policy-text": "I agree to {termsOfUseLink} and {privacyPolicyLink} (required)"
   }
 }
