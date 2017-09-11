@@ -27,9 +27,11 @@ export default Ember.Route.extend({
 
 	actions: {
 		setDays(days) {
-			this.transitionTo({queryParams: {
-				days
-			}});
+			this.transitionTo({
+				queryParams: {
+					days
+				}
+			});
 		}
 	}
 });
