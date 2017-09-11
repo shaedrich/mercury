@@ -47,6 +47,7 @@
 				<table class="image-review-modal-history">
 					<tr>
 						<td>User name</td>
+						<td>Total Reviewed</td>
 						{{#each model.summary.reviewsCountPerStatus as |countStatus|}}
 							<td>{{countStatus.status}}</td>
 						{{/each}}
@@ -54,6 +55,7 @@
 					{{#each model.summary.userStatistics as |user|}}
 						<tr>
 							<td>{{user.userName}}</td>
+							<td>{{user.total}}</td>
 							{{#each user.reviewsCountPerStatus as |countPerStatus|}}
 								<td>{{countPerStatus.count}}</td>
 							{{/each}}
