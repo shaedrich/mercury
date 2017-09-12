@@ -31,10 +31,8 @@ export function init() {
 		ns: 'auth-front',
 		resStore: window.translations,
 		useLocalStorage: false,
-		interpolation: {
-			prefix: '{',
-			suffix: '}'
-		}
+		interpolationPrefix: '{',
+		interpolationSuffix: '}'
 	});
 
 	window.document.addEventListener('DOMContentLoaded', () => {

@@ -230,10 +230,8 @@ plugins = [
 				detectLngFromQueryString: true,
 				detectLngQS: 'uselang',
 				lowerCaseLng: true,
-				interpolation: {
-					prefix: '{',
-					suffix: '}'
-				}
+				interpolationPrefix: '{',
+				interpolationSuffix: '}'
 			}
 		}
 	},

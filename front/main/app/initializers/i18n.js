@@ -24,10 +24,8 @@ export function initialize() {
 		ns: 'main',
 		resStore: loadedTranslations,
 		useLocalStorage: false,
-		interpolation: {
-			prefix: '{',
-			suffix: '}'
-		}
+		interpolationPrefix: '{',
+		interpolationSuffix: '}'
 	});
 }
 
