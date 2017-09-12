@@ -33,7 +33,12 @@ export default DiscussionMultipleInputsEditor.extend(
 			return !this.get('isActive') ? 'readonly' : undefined;
 		}),
 
-		contentImages: new DiscussionContentImages(),
+		contentImages: null,
+
+		init() {
+			this._super(...arguments);
+			this.set('contentImages',  new DiscussionContentImages());
+		},
 
 		/**
 		 * Returns true if textarea is the only textarea in editor and should appear as first/only one in

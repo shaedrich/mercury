@@ -2,13 +2,23 @@ import Ember from 'ember';
 
 const {Object, A} = Ember,
 	DiscussionContentImages = Object.extend({
-		images: new A(),
+		images: null,
+
+		init(images) {
+			this._super(...arguments);
+			if (images) {
+				this.set('images', images);
+			} else {
+				this.set('images', new A());
+			}
+		},
 
 		addContentImage(url) {
-			console.log('adding', url);
-			this.images.pushObject(Object.create({
+			const images = this.get('images');
+			const position = images.reduce((previous, item) => Math.max(previous, item.position), 0);
+			images.pushObject(Object.create({
 				height: 200,
-				position: 1,
+				position: position + 1,
 				url: url,
 				visible: true,
 				width: 300,
@@ -53,7 +63,7 @@ DiscussionContentImages.reopenClass({
 				})
 			);
 
-		return this._super({images});
+		return new DiscussionContentImages(images);
 	},
 });
 

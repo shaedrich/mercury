@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {isEmpty, A, computed} = Ember;
+const {isEmpty} = Ember;
 
 export default Ember.Component.extend(
 	{
@@ -29,8 +29,6 @@ export default Ember.Component.extend(
 		},
 
 		uploadFile(imageFile) {
-			console.log("starting to upload", imageFile);
-
 			if (!this.get(`allowedFileTypes.${imageFile.type}`)) {
 				this.setErrorMessage(this.get('errorsMessages.fileType'));
 				return;
@@ -43,7 +41,6 @@ export default Ember.Component.extend(
 
 			this.uploadImage(imageFile)
 				.then((result) => {
-					console.log("upload finished", result);
 					this.setProperties({
 						isLoadingMode: false,
 						isImagePreviewMode: true,
