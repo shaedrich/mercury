@@ -30,7 +30,11 @@ export function init() {
 		lowerCaseLng: true,
 		ns: 'auth-front',
 		resStore: window.translations,
-		useLocalStorage: false
+		useLocalStorage: false,
+		interpolation: {
+			prefix: '{',
+			suffix: '}'
+		}
 	});
 
 	window.document.addEventListener('DOMContentLoaded', () => {
