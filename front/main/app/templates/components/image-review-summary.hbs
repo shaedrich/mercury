@@ -24,6 +24,7 @@
 			<button>Download CSV</button>
 		</a>
 		{{#if model.summary}}
+			<h5>Review summary</h5>
 			<table class="image-review-modal-history">
 				<tr>
 					<td>Total Uploaded</td>
@@ -44,6 +45,7 @@
 			</table>
 			<br>
 			{{#if model.summary.userStatistics}}
+				<h5>Users review statistics</h5>
 				<table class="image-review-modal-history">
 					<tr>
 						<td>User name</td>
@@ -65,6 +67,7 @@
 				<br>
 			{{/if}}
 			{{#if model.summary.sourceStatistics}}
+				<h5>Image uploads and reviews by source</h5>
 				<table class="image-review-modal-history">
 					<tr>
 						<td>Source type</td>
