@@ -13,6 +13,10 @@ const {Object, A} = Ember,
 			}
 		},
 
+		setImages(images) {
+			this.get('images').setObjects(images);
+		},
+
 		addContentImage(url) {
 			const images = this.get('images');
 			const position = images.reduce((previous, item) => Math.max(previous, item.position), 0);

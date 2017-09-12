@@ -5,6 +5,7 @@ import DiscussionEditorOpengraph from '../mixins/discussion-editor-opengraph';
 import DiscussionMultipleInputsEditor from './discussion-multiple-inputs-editor';
 import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category-picker';
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
+import DiscussionContentImages from '../models/discussion/domain/content-images';
 
 const {$, A, computed, inject, isEmpty, observer, run} = Ember;
 
@@ -22,6 +23,8 @@ export default DiscussionMultipleInputsEditor.extend(
 		hasTitle: false,
 
 		isEdit: false,
+
+		contentImages: null,
 
 		isReply: computed.bool('editEntity.isReply'),
 
@@ -43,10 +46,6 @@ export default DiscussionMultipleInputsEditor.extend(
 
 		editImagePermitted: computed('isEdit', 'editEntity.userData.permissions.canEdit', function () {
 			return this.get('isEdit') && this.get('editEntity.userData.permissions.canEdit');
-		}),
-
-		contentImages: computed('editEntity.contentImages', function () {
-			return this.get('editEntity.contentImages');
 		}),
 
 		imageWidthMultiplier: computed('isReply', 'responsive.isMobile', function () {
@@ -73,11 +72,17 @@ export default DiscussionMultipleInputsEditor.extend(
 				content: editEntity.get('rawContent'),
 				openGraph: editEntity.get('openGraph'),
 				showsOpenGraphCard: Boolean(editEntity.get('openGraph')),
-				title: editEntity.get('title')
+				title: editEntity.get('title'),
 			});
+			this.get('contentImages').setImages(editEntity.get('contentImages.images'));
 
 			this.focusFirstTextareaWhenRendered();
 		}),
+
+		init() {
+			this._super(...arguments);
+			this.set('contentImages', new DiscussionContentImages());
+		},
 
 		click(event) {
 			this.focusOnNearestTextarea(event);
@@ -134,9 +139,7 @@ export default DiscussionMultipleInputsEditor.extend(
 						discussionEntityData.openGraph = this.get('openGraph');
 					}
 
-					if (!isEmpty(this.get('contentImages'))) {
-						discussionEntityData.contentImages = this.get('contentImages').toData();
-					}
+					discussionEntityData.contentImages = this.get('contentImages').toData();
 
 					if (!this.get('isEdit')) {
 						actionName = 'create';

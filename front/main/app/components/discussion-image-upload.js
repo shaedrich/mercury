@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {isEmpty} = Ember;
+const {isEmpty, A, computed} = Ember;
 
 export default Ember.Component.extend(
 	{
@@ -50,13 +50,11 @@ export default Ember.Component.extend(
 				})
 				.then(() => {
 					const url = this.get('newImageUrl');
-					console.log("calling action");
 					if (!isEmpty(url)) {
 						this.get('contentImages').addContentImage(url);
 					}
 				})
 				.catch((err) => {
-					console.log("error", err);
 					this.set('isLoadingMode', false);
 					this.setErrorMessage(this.get('errorsMessages.saveFailed'));
 				});
