@@ -5,6 +5,7 @@ import DiscussionEditorOpengraph from '../mixins/discussion-editor-opengraph';
 import DiscussionMultipleInputsEditor from './discussion-multiple-inputs-editor';
 import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category-picker';
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
+import DiscussionContentImages from '../models/discussion/domain/content-images';
 
 export default DiscussionMultipleInputsEditor.extend(
 	DiscussionEditorOpengraph,
@@ -32,6 +33,8 @@ export default DiscussionMultipleInputsEditor.extend(
 			return !this.get('isActive') ? 'readonly' : undefined;
 		}),
 
+		contentImages: new DiscussionContentImages(),
+
 		/**
 		 * Returns true if textarea is the only textarea in editor and should appear as first/only one in
 		 * collapsed inline editor.
@@ -53,7 +56,8 @@ export default DiscussionMultipleInputsEditor.extend(
 						body: this.get('content'),
 						creatorId: this.get('currentUser.userId'),
 						siteId: Mercury.wiki.id,
-						title: this.get('title')
+						title: this.get('title'),
+						contentImages: this.get('contentImages').toData(),
 					};
 					if (this.get('showsOpenGraphCard')) {
 						newDiscussionEntityData.openGraph = this.get('openGraph');

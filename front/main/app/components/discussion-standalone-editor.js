@@ -134,7 +134,7 @@ export default DiscussionMultipleInputsEditor.extend(
 					}
 
 					if (!isEmpty(this.get('images'))) {
-						discussionEntityData.contentImages = DiscussionContentImages.toData(this.get('images'));
+						discussionEntityData.contentImages = this.get('editEntity.contentImages').toData();
 					}
 
 					if (!this.get('isEdit')) {

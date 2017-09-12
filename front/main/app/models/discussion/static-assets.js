@@ -4,7 +4,6 @@ import DiscussionBaseModel from './base';
 import DiscussionSiteAttributes from './domain/site-attributes';
 
 const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
-	data: null,
 
 	/**
 	 * Save attribute in static-assets service
@@ -19,10 +18,6 @@ const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 			processData: false,
 			contentType: false,
 			mimeType: 'multipart/form-data',
-		}).then((data) => {
-			this.set(`data.${data.name}.value`, data.value);
-
-			return this.get(`data.${data.name}`);
 		});
 	},
 

@@ -18,7 +18,6 @@ export default Ember.Component.extend(
 		 */
 		change(event) {
 			const input = event.target;
-
 			if (!Ember.isEmpty(input.files)) {
 				this.sendAction('fileUpload', input.files);
 			}

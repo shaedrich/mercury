@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+const {isEmpty, A, computed} = Ember;
+
 export default Ember.Component.extend(
 	{
 		classNames: ['discussion-image-upload'],
@@ -14,6 +16,8 @@ export default Ember.Component.extend(
 			'image/gif': true,
 		},
 
+		contentImages: null,
+
 		actions: {
 			emptyClickForFileInput() {
 
@@ -25,30 +29,40 @@ export default Ember.Component.extend(
 		},
 
 		uploadFile(imageFile) {
-			if (this.get(`allowedFileTypes.${imageFile.type}`)) {
-				this.setProperties({
-					isLoadingMode: true,
-					errorMessage: null,
-				});
+			console.log("starting to upload", imageFile);
 
-				this.uploadImage(imageFile)
-					.then((event) => {
-						this.setProperties({
-							isLoadingMode: false,
-							isImagePreviewMode: true,
-							newImageUrl: event.target.result,
-							uploadedFile: imageFile,
-						});
-					})
-					.then(() => {
-					})
-					.catch((err) => {
-						this.set('isLoadingMode', false);
-						this.setErrorMessage(this.get('errorsMessages.saveFailed'));
-					});
-			} else {
+			if (!this.get(`allowedFileTypes.${imageFile.type}`)) {
 				this.setErrorMessage(this.get('errorsMessages.fileType'));
+				return;
 			}
+
+			this.setProperties({
+				isLoadingMode: true,
+				errorMessage: null,
+			});
+
+			this.uploadImage(imageFile)
+				.then((result) => {
+					console.log("upload finished", result);
+					this.setProperties({
+						isLoadingMode: false,
+						isImagePreviewMode: true,
+						newImageUrl: result.url,
+						uploadedFile: imageFile,
+					});
+				})
+				.then(() => {
+					const url = this.get('newImageUrl');
+					console.log("calling action");
+					if (!isEmpty(url)) {
+						this.get('contentImages').addContentImage(url);
+					}
+				})
+				.catch((err) => {
+					console.log("error", err);
+					this.set('isLoadingMode', false);
+					this.setErrorMessage(this.get('errorsMessages.saveFailed'));
+				});
 		},
 
 		setErrorMessage(msgKey) {
