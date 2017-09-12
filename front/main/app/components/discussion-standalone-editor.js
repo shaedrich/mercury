@@ -45,8 +45,8 @@ export default DiscussionMultipleInputsEditor.extend(
 			return this.get('isEdit') && this.get('editEntity.userData.permissions.canEdit');
 		}),
 
-		images: computed('editEntity.contentImages.images', function () {
-			return this.get('editEntity.contentImages.images');
+		contentImages: computed('editEntity.contentImages', function () {
+			return this.get('editEntity.contentImages');
 		}),
 
 		imageWidthMultiplier: computed('isReply', 'responsive.isMobile', function () {
@@ -55,6 +55,10 @@ export default DiscussionMultipleInputsEditor.extend(
 
 		showMultipleInputs: computed('hasTitle', 'isReply', function () {
 			return this.get('hasTitle') && !this.get('isReply');
+		}),
+
+		showImageUpload: Ember.computed('Mercury', function () {
+			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload');
 		}),
 
 		// first time it is triggered by the 'editEntity' property, and later by the 'isActive' property
@@ -130,9 +134,8 @@ export default DiscussionMultipleInputsEditor.extend(
 						discussionEntityData.openGraph = this.get('openGraph');
 					}
 
-					if (!isEmpty(this.get('images'))) {
-						console.log("standalone",this.get('images'));
-						discussionEntityData.contentImages = this.get('editEntity.contentImages').toData();
+					if (!isEmpty(this.get('contentImages'))) {
+						discussionEntityData.contentImages = this.get('contentImages').toData();
 					}
 
 					if (!this.get('isEdit')) {

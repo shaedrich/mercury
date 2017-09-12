@@ -39,10 +39,6 @@ export default Ember.Mixin.create({
 		return !this.get('hasOneCategory') && this.get('isActivePostEditor') && !this.get('cannotEditCategory');
 	}),
 
-	showImageUpload: Ember.computed('isActive', 'Mercury', function () {
-		return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('isActive');
-	}),
-
 	categoryPickerClassname:
 		Ember.computed('category', 'shouldShowCategoryPicker', function () {
 			let classname = '';

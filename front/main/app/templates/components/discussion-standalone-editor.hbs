@@ -83,11 +83,17 @@
 			}}
 		{{/if}}
 		{{discussion-post-images
-			images=images
+			images=contentImages.images
 			mode='edit'
 			permittedToEdit=editImagePermitted
 			widthMultiplier=imageWidthMultiplier
 		}}
+
+		{{#if showImageUpload}}
+			{{discussion-image-upload
+					contentImages=contentImages
+			}}
+		{{/if}}
 	{{/if}}
 </div>
 
