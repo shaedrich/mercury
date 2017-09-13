@@ -25,7 +25,7 @@ const {Object, A} = Ember,
 			images.pushObject(Object.create({
 				height: 200,
 				position: position + 1,
-				url: url,
+				url,
 				visible: true,
 				width: 300,
 			}));
@@ -56,12 +56,12 @@ DiscussionContentImages.reopenClass({
 		return new A(contentImages)
 			.sortBy('position')
 			.map(data => Object.create({
-					id: data.id,
-					height: data.height,
-					position: data.position,
-					url: data.url,
-					visible: true,
-					width: data.width
+				id: data.id,
+				height: data.height,
+				position: data.position,
+				url: data.url,
+				visible: true,
+				width: data.width
 				})
 			);
 	},
