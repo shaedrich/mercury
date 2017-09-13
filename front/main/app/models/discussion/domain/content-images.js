@@ -62,8 +62,7 @@ DiscussionContentImages.reopenClass({
 				url: data.url,
 				visible: true,
 				width: data.width
-				})
-			);
+			}));
 	},
 
 	/**
