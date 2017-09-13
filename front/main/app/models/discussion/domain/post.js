@@ -67,7 +67,7 @@ DiscussionPost.reopenClass({
 		} else {
 			post.set('contentImages', new DiscussionContentImages());
 		}
-		
+
 		return post;
 	},
 
