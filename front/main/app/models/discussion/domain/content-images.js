@@ -19,7 +19,9 @@ const {Object, A} = Ember,
 
 		addContentImage(url) {
 			const images = this.get('images');
-			const position = images.reduce((previous, item) => Math.max(previous, item.position), 0);
+			const position = images.filterBy('visible')
+				.reduce((previous, item) => Math.max(previous, item.position), 0);
+			// TODO BE should send the height and width
 			images.pushObject(Object.create({
 				height: 200,
 				position: position + 1,
@@ -50,12 +52,8 @@ const {Object, A} = Ember,
 
 DiscussionContentImages.reopenClass({
 
-	/**
-	 * @param {object[]} contentImages
-	 * @returns {Ember.Object}
-	 */
-	create(contentImages) {
-		const images = new A(contentImages)
+	toImages(contentImages) {
+		return new A(contentImages)
 			.sortBy('position')
 			.map(data => Object.create({
 					id: data.id,
@@ -66,8 +64,14 @@ DiscussionContentImages.reopenClass({
 					width: data.width
 				})
 			);
+	},
 
-		return new DiscussionContentImages(images);
+	/**
+	 * @param {object[]} contentImages
+	 * @returns {Ember.Object}
+	 */
+	create(contentImages) {
+		return new DiscussionContentImages(DiscussionContentImages.toImages(contentImages));
 	},
 });
 

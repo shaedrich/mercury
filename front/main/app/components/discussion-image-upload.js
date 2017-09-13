@@ -16,8 +16,6 @@ export default Ember.Component.extend(
 			'image/gif': true,
 		},
 
-		contentImages: null,
-
 		actions: {
 			emptyClickForFileInput() {
 
@@ -51,6 +49,7 @@ export default Ember.Component.extend(
 				.then(() => {
 					const url = this.get('newImageUrl');
 					if (!isEmpty(url)) {
+						this.sendAction('addImage', url);
 						this.get('contentImages').addContentImage(url);
 					}
 				})

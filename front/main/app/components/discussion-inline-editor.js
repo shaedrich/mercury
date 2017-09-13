@@ -25,6 +25,18 @@ export default DiscussionMultipleInputsEditor.extend(
 
 		layoutName: 'components/discussion-inline-editor',
 
+		init() {
+			this._super(...arguments);
+			if (!this.get('isEdit')) {
+				this.set('contentImages', new DiscussionContentImages());
+			}
+		},
+
+		afterSuccess() {
+			this._super();
+			this.set('contentImages', new DiscussionContentImages());
+		},
+
 		isPostEditor: Ember.computed('isReply', function () {
 			return !this.get('isReply');
 		}),
@@ -36,13 +48,6 @@ export default DiscussionMultipleInputsEditor.extend(
 		showImageUpload: Ember.computed('isActive', 'Mercury', function () {
 			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('isActive');
 		}),
-
-		contentImages: null,
-
-		init() {
-			this._super(...arguments);
-			this.set('contentImages',  new DiscussionContentImages());
-		},
 
 		/**
 		 * Returns true if textarea is the only textarea in editor and should appear as first/only one in
@@ -59,6 +64,10 @@ export default DiscussionMultipleInputsEditor.extend(
 		},
 
 		actions: {
+			addImage(imageUrl) {
+				this.get('contentImages').addContentImage(imageUrl);
+			},
+
 			submit() {
 				if (!this.get('submitDisabled')) {
 					const newDiscussionEntityData = {

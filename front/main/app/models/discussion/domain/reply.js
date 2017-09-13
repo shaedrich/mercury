@@ -8,6 +8,7 @@ const {get} = Ember,
 	DiscussionReply = DiscussionEntity.extend({
 		position: null,
 		threadCreatedBy: null,
+		contentImages: null,
 	});
 
 DiscussionReply.reopenClass({
@@ -52,7 +53,11 @@ DiscussionReply.reopenClass({
 			reply.set('userData', DiscussionUserData.create(userData));
 		}
 
-		reply.set('contentImages', DiscussionContentImages.create(contentImagesData));
+		if (contentImagesData) {
+			reply.set('contentImages', DiscussionContentImages.create(contentImagesData));
+		} else {
+			reply.set('contentImages', new DiscussionContentImages());
+		}
 
 		return reply;
 	}

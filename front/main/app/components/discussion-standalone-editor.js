@@ -24,8 +24,6 @@ export default DiscussionMultipleInputsEditor.extend(
 
 		isEdit: false,
 
-		contentImages: null,
-
 		isReply: computed.bool('editEntity.isReply'),
 
 		pageYOffsetCache: 0,
@@ -44,10 +42,6 @@ export default DiscussionMultipleInputsEditor.extend(
 			return this.get('isEdit') && !this.get('editEntity.userData.permissions.canEdit');
 		}),
 
-		editImagePermitted: computed('isEdit', 'editEntity.userData.permissions.canEdit', function () {
-			return this.get('isEdit') && this.get('editEntity.userData.permissions.canEdit');
-		}),
-
 		imageWidthMultiplier: computed('isReply', 'responsive.isMobile', function () {
 			return this.get('responsive.isMobile') || this.get('isReply') ? 1 : 2;
 		}),
@@ -56,8 +50,13 @@ export default DiscussionMultipleInputsEditor.extend(
 			return this.get('hasTitle') && !this.get('isReply');
 		}),
 
-		showImageUpload: Ember.computed('Mercury', function () {
-			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload');
+		editImagePermitted: computed('isEdit', 'editEntity.userData.permissions.canEdit', function () {
+			// the user can edit images if s/he's got a permission or we're in creation mode
+			return !this.get('isEdit') || this.get('editEntity.userData.permissions.canEdit');
+		}),
+
+		showImageUpload: Ember.computed('Mercury', 'editImagePermitted', function () {
+			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('editImagePermitted');
 		}),
 
 		// first time it is triggered by the 'editEntity' property, and later by the 'isActive' property
@@ -73,14 +72,21 @@ export default DiscussionMultipleInputsEditor.extend(
 				openGraph: editEntity.get('openGraph'),
 				showsOpenGraphCard: Boolean(editEntity.get('openGraph')),
 				title: editEntity.get('title'),
+				contentImages: editEntity.get('contentImages'),
 			});
-			this.get('contentImages').setImages(editEntity.get('contentImages.images'));
 
 			this.focusFirstTextareaWhenRendered();
 		}),
 
 		init() {
-			this._super(...arguments);
+			this._super();
+			if (!this.get('isEdit')) {
+				this.set('contentImages', new DiscussionContentImages());
+			}
+		},
+
+		afterSuccess() {
+			this._super();
 			this.set('contentImages', new DiscussionContentImages());
 		},
 
@@ -139,7 +145,9 @@ export default DiscussionMultipleInputsEditor.extend(
 						discussionEntityData.openGraph = this.get('openGraph');
 					}
 
-					discussionEntityData.contentImages = this.get('contentImages').toData();
+					if (this.get('contentImages')) {
+						discussionEntityData.contentImages = this.get('contentImages').toData();
+					}
 
 					if (!this.get('isEdit')) {
 						actionName = 'create';

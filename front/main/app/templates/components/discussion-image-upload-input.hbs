@@ -1,8 +1,6 @@
-<label id="browseButton"
-	   class="discussion-image-upload__button"
-	   for="discussionImageUpload">
+<label class="discussion-image-upload__button">
 	{{svg 'wds-icons-image-add' viewBox='0 0 40 40' class='icon'}}
 	<span>{{i18n 'editor.add-image' ns='discussion'}}</span>
+	<input style="display:none" type="file" accept="image/*"/>
 </label>
 
-<input style="display:none" id="discussionImageUpload" type="file" accept="image/*"/>
