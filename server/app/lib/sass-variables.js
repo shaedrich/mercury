@@ -6,19 +6,28 @@ export const whitelist = [
 	'color-page'
 ];
 
-export function injectSassVariables(templateData) {
-	const rawData = templateData.wikiVariables.theme;
+function getSassParams(theme, override) {
 	let variables = {};
 
-	if (rawData) {
-		for (let key in rawData) {
-			if (rawData.hasOwnProperty(key) && whitelist.indexOf(key) > -1) {
-				variables[key] = rawData[key];
+	if (theme) {
+		for (let key in theme) {
+			if (theme.hasOwnProperty(key) && whitelist.indexOf(key) > -1) {
+				variables[key] = theme[key];
 			}
 		}
 	}
 
-	templateData.sassParams = stringify(variables);
+	if (override) {
+		variables['color-links'] = override;
+	}
 
+	return variables;
+}
+
+
+export function injectSassVariables(templateData) {
+	templateData.sassParams = stringify(
+		getSassParams(templateData.wikiVariables.theme, templateData.wikiVariables.discussionColorOverride)
+	);
 	return templateData;
 }

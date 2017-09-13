@@ -72,6 +72,20 @@ export default Ember.Mixin.create({
 
 		return (color.getLuminance() < luminanceThreshold) ? defaultColor : fallbackColor;
 	},
+
+	/**
+	 * @private
+	 */
+	setupTheme() {
+		let theme = Ember.get(Mercury, 'wiki.theme');
+		let override = Ember.get(Mercury, 'wiki.discussionColorOverride');
+		if (override) {
+			theme['color-links'] = override;
+		}
+
+		this.set('themeColors', theme);
+	},
+
 	/**
 	 * Sets inline styles with the theme colors
 	 * @returns {void}
@@ -90,8 +104,7 @@ export default Ember.Mixin.create({
 			return;
 		}
 
-		this.set('themeColors', Ember.get(Mercury, 'wiki.theme'));
-
+		this.setupTheme();
 		if (!this.get('themeColors')) {
 			return;
 		}
