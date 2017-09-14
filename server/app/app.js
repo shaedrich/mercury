@@ -218,7 +218,7 @@ plugins = [
 		register: i18next,
 		options: {
 			i18nextOptions: {
-				resGetPath: path.join(localesPath, '/__lng__/__ns__.json'),
+				resGetPath: path.join(localesPath, '/{lng}/{ns}.json'),
 				ns: {
 					namespaces: ['main', 'auth', 'design-system', 'discussion'],
 					defaultNs: 'main'
