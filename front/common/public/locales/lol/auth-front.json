@@ -5,7 +5,7 @@
     "email_already_exists": "crwdns69456:0crwdne69456:0", 
     "email_invalid": "crwdns19838:0crwdne19838:0", 
     "fb_account_already_linked": "crwdns69459:0crwdne69459:0", 
-    "invalid-email": "crwdns69457:0__contactFandomLink__crwdne69457:0", 
+    "invalid-email": "crwdns69457:0{contactFandomLink}crwdne69457:0",
     "password_equal_name": "crwdns21370:0crwdne21370:0", 
     "password_exceeds_max_length": "crwdns21369:0crwdne21369:0", 
     "passwords_not_match": "crwdns57390:0crwdne57390:0", 
@@ -23,6 +23,6 @@
     "wrong-credentials": "crwdns21372:0crwdne21372:0"
   }, 
   "labels": {
-    "terms-of-use-and-privacy-policy-text": "crwdns21424:0__termsOfUseLink__crwdnd21424:0__privacyPolicyLink__crwdne21424:0"
+    "terms-of-use-and-privacy-policy-text": "crwdns21424:0{termsOfUseLink}crwdnd21424:0{privacyPolicyLink}crwdne21424:0"
   }
 }

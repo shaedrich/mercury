@@ -1,11 +1,11 @@
 {
   "main": {
     "leave-confirmation": "All unsaved changes will be lost.",
-    "header": "Editing template: __title__",
+    "header": "Editing template: {title}",
     "sidebar-header": "Add infobox elements",
     "title-use-article-name": "Use article name",
     "first-title-default": "Infobox Title",
-    "title-default": "Infobox Title __index__",
+    "title-default": "Infobox Title {index}",
     "title-article-name": "Article Name",
     "label-default": "Label",
     "section-header-default": "Section Header",

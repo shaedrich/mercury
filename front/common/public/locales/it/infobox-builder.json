@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "Fornisci un nome per il template infobox.", 
     "edit-title-placeholder": "Template senza titolo", 
     "first-title-default": "Titolo Infobox", 
-    "header": "Modifica del template: __title__", 
+    "header": "Modifica del template: {title}",
     "help-row": "Una riga consente di aggiungere informazioni al tuo infobox. Usare il campo etichetta per specificare il nome della riga (come colore occhi, famiglia, ecc.).", 
     "help-section-collapsible": "Se si seleziona l'opzione \"comprimibile\", si potrà comprimere o espandere le sezioni quando l'infobox sarà usato su una pagina.", 
     "help-section-header": "L'intestazione organizza l'infobox in sezioni. Usare il campo etichetta per specificare il nome della sezione (ad es., descrizione fisica). Ogni riga aggiunta sotto intestazione farà automaticamente parte della sua sezione. Se si seleziona l'opzione \"comprimibile\", si potrà comprimere o espandere le sezioni quando l'infobox sarà usato su una pagina.", 
@@ -39,7 +39,7 @@
     "source-editor-tooltip": "Editor sorgente", 
     "success": "Successo!", 
     "title-article-name": "Nome articolo", 
-    "title-default": "Titolo infobox __index__", 
+    "title-default": "Titolo infobox {index}",
     "title-naming-conflict-error": "Questo nome è già utilizzato", 
     "title-use-article-name": "Utilizza il nome dell'articolo", 
     "untitled-infobox-template": "Template infobox senza titolo"

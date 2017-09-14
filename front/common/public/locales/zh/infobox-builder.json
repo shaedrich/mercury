@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "提供您的訊息框模版名稱。", 
     "edit-title-placeholder": "無標題的模板", 
     "first-title-default": "訊息框標題", 
-    "header": "編輯模版: __title__", 
+    "header": "編輯模版: {title}",
     "help-row": "行允許您將在訊息框中添加訊息。標籤用於特別說明行的名稱（比如眼睛的顏色、族譜等訊息）。", 
     "help-section-collapsible": "如果您選中\"折疊\"選項，當文章頁面使用訊息框時，您將能夠展開或者折疊每個大類。", 
     "help-section-header": "標題可以將訊息框分成不同的大類。使用標籤指定每一大類的名稱 (比如，體征描述)。在標題下添加行將自動成為這一大類的一部分。如果您選中\"折疊\"選項，當文章頁面使用訊息框時，您將能夠展開或者折疊每個大類。", 
@@ -39,7 +39,7 @@
     "source-editor-tooltip": "原始碼編輯器", 
     "success": "操作成功！", 
     "title-article-name": "文章名稱", 
-    "title-default": "訊息框標題 __index__", 
+    "title-default": "訊息框標題 {index}",
     "title-naming-conflict-error": "此名稱已被使用", 
     "title-use-article-name": "使用文章名稱", 
     "untitled-infobox-template": "未添加標題的訊息框模版"
