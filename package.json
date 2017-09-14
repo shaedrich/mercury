@@ -48,7 +48,7 @@
   "devDependencies": {
     "babel-core": "6.7.2",
     "babel-eslint": "6.0.4",
-    "babel-plugin-rename-define": "wikia/babel-plugin-rename-define#v2.0.0",
+    "babel-plugin-rename-define": "github:wikia/babel-plugin-rename-define#v2.0.0",
     "babel-plugin-rewire": "1.0.0-rc-1",
     "babel-plugin-transform-es2015-modules-amd": "6.3.13",
     "babel-preset-es2015": "6.3.13",
@@ -56,7 +56,7 @@
     "babel-types": "6.7.2",
     "code": "1.5.0",
     "design-system-i18n": "github:wikia/design-system-i18n#1.0.0",
-    "ember-template-compiler": "toranb/ember-template-compiler#b924608fb9652850d6e297b61b9bd116fe157faa",
+    "ember-template-compiler": "github:toranb/ember-template-compiler#b924608fb9652850d6e297b61b9bd116fe157faa",
     "eslint": "2.9.0",
     "eslint-config-airbnb": "9.0.1",
     "eslint-plugin-import": "1.7.0",
