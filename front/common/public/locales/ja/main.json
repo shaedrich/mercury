@@ -15,7 +15,7 @@
     "curated-content-editor-done": "完了", 
     "curated-content-editor-edit-community-data-button": "編集", 
     "curated-content-editor-edit-main-page": "メインページの編集", 
-    "curated-content-editor-editing-header": "編集中：__label__", 
+    "curated-content-editor-editing-header": "編集中：{label}",
     "curated-content-editor-empty-section-error": "セクションを空白にすることはできません。このセクションに項目を追加してください。", 
     "curated-content-editor-enter-category-name": "カテゴリ名を入力", 
     "curated-content-editor-enter-category-name-tooltip": "キュレーション・コンテンツのカテゴリ名は、Wiki上でコンテンツにリンクする時と同じフォーマットをお使いください（例：カテゴリ:Name_of_category）。", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "注目のコンテンツでは、記事、動画、ブログの記事など、コミュニティの特定のコンテンツをハイライトして紹介することができます。注目のコンテンツで紹介する内容は閲覧者にとってタイムリーでコミュニティとの関連性の高いものにし、頻繁に更新するようにしましょう。", 
     "curated-content-editor-general-section-error": "このセクションのエラーを修正してください。", 
     "curated-content-editor-image-missing-error": "画像を指定してください", 
-    "curated-content-editor-items-count": "項目__count__個", 
-    "curated-content-editor-items-count_plural": "項目 __count__個", 
+    "curated-content-editor-items-count": "項目{count}個",
+    "curated-content-editor-items-count_plural": "項目 {count}個",
     "curated-content-editor-label-in-use-error": "この表示名は他で使用されています", 
     "curated-content-editor-main-page": "メインページ", 
     "curated-content-editor-missing-category-title-error": "カテゴリ名を入力してください", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "セクションが見つかりません。", 
     "curated-content-image-upload-error": "アップロード中に問題が発生したようです。もう一度お試しください。", 
     "curated-content-load-more-items": "もっと見る", 
-    "explore-wiki": "__wikiName__", 
+    "explore-wiki": "{wikiName}",
     "header-in-wiki-name-label-prefix": " ", 
     "header-in-wiki-name-label-suffix": "内", 
     "image-review-error-invalid-data": "Image Review APIから無効なデータが返されました", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "更新"
   }, 
   "userStatus": {
-    "anon-cta": "__registerLink__または__loginLink__", 
+    "anon-cta": "{registerLink}または{loginLink}",
     "login-text": "ログイン", 
     "register-text": "登録"
   }

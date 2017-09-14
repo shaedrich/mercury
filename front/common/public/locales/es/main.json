@@ -15,7 +15,7 @@
     "curated-content-editor-done": "Hecho", 
     "curated-content-editor-edit-community-data-button": "Editar", 
     "curated-content-editor-edit-main-page": "Editar la portada", 
-    "curated-content-editor-editing-header": "Editando: __label__", 
+    "curated-content-editor-editing-header": "Editando: {label}",
     "curated-content-editor-empty-section-error": "Las secciones no pueden estar vacías. Por favor agrega artículos a esta sección.", 
     "curated-content-editor-enter-category-name": "Ingresa un nombre de categoría", 
     "curated-content-editor-enter-category-name-tooltip": "Al ingresar un nombre de categoría en Mantenimiento de contenido, usa el mismo formato que usarías para vincularlo a un contenido en FANDOM (por ejemplo, Categoría:Nombre_del_artículo).", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "El contenido destacado se puede usar para resaltar un contenido específico en tu comunidad como un artículo, video o entrada de blog. Idealmente, este contenido es oportuno y pertinente para tus lectores, y debe actualizarse con frecuencia.", 
     "curated-content-editor-general-section-error": "Arregla los errores en esta sección.", 
     "curated-content-editor-image-missing-error": "Proporciona una imagen", 
-    "curated-content-editor-items-count": "__count__ elemento", 
-    "curated-content-editor-items-count_plural": "__count__ elementos", 
+    "curated-content-editor-items-count": "{count} elemento",
+    "curated-content-editor-items-count_plural": "{count} elementos",
     "curated-content-editor-label-in-use-error": "Este nombre para visualización ya se encuentra en uso", 
     "curated-content-editor-main-page": "Portada", 
     "curated-content-editor-missing-category-title-error": "Falta nombre de categoría", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "Sección no encontrada.", 
     "curated-content-image-upload-error": "Algo salió mal con lo que subiste. Inténtalo de nuevo.", 
     "curated-content-load-more-items": "Cargar más", 
-    "explore-wiki": "Explora __wikiName__", 
+    "explore-wiki": "Explora {wikiName}",
     "header-in-wiki-name-label-prefix": "en:", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "Datos no válidos han sido devueltos desde revisión de imagen API", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "Actualizar"
   }, 
   "userStatus": {
-    "anon-cta": "__registerLink__ o __loginLink__", 
+    "anon-cta": "{registerLink} o {loginLink}",
     "login-text": "Iniciar sesión", 
     "register-text": "Regístrate"
   }

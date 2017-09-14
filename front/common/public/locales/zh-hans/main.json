@@ -15,7 +15,7 @@
     "curated-content-editor-done": "完成", 
     "curated-content-editor-edit-community-data-button": "编辑", 
     "curated-content-editor-edit-main-page": "编辑主页", 
-    "curated-content-editor-editing-header": "编辑： __label__", 
+    "curated-content-editor-editing-header": "编辑： {label}",
     "curated-content-editor-empty-section-error": "群组不能为空。请将项目添加到此群组。", 
     "curated-content-editor-enter-category-name": "输入类别名称", 
     "curated-content-editor-enter-category-name-tooltip": "在此输入类别名称时，请使用和维基内容链接相同的格式(例如，Category:Name_of_category)。", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "精选内容可以用来突出显示与您的社区上的的某一特定内容，如一篇文章、 一段视频、 或一个博客帖子。内容最好及时且为读者所关注，而且应经常更新。", 
     "curated-content-editor-general-section-error": "请修复此群组中的错误。", 
     "curated-content-editor-image-missing-error": "请提供图片", 
-    "curated-content-editor-items-count": "__count__ 个项目", 
-    "curated-content-editor-items-count_plural": "__count__个项目", 
+    "curated-content-editor-items-count": "{count} 个项目",
+    "curated-content-editor-items-count_plural": "{count}个项目",
     "curated-content-editor-label-in-use-error": "此显示名称已被使用", 
     "curated-content-editor-main-page": "主页", 
     "curated-content-editor-missing-category-title-error": "类别名称缺失", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "找不到此段落。", 
     "curated-content-image-upload-error": "上传时出错。请再试一次。", 
     "curated-content-load-more-items": "加载更多", 
-    "explore-wiki": "浏览__wikiName__", 
+    "explore-wiki": "浏览{wikiName}",
     "header-in-wiki-name-label-prefix": "来源:", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "图片审核API拒绝无效数据", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "刷新"
   }, 
   "userStatus": {
-    "anon-cta": "__registerLink__或__loginLink__", 
+    "anon-cta": "{registerLink}或{loginLink}",
     "login-text": "登入", 
     "register-text": "注册"
   }

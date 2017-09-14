@@ -15,7 +15,7 @@
     "curated-content-editor-done": "Terminé", 
     "curated-content-editor-edit-community-data-button": "Modifier", 
     "curated-content-editor-edit-main-page": "Modification de la page d'accueil", 
-    "curated-content-editor-editing-header": "Modification de : __label__", 
+    "curated-content-editor-editing-header": "Modification de : {label}",
     "curated-content-editor-empty-section-error": "Veuillez ajouter des éléments à la section. Elle ne peut pas être vide.", 
     "curated-content-editor-enter-category-name": "Saisir un nom de catégorie", 
     "curated-content-editor-enter-category-name-tooltip": "Lorsque vous saisissez un nom de catégorie dans le Contenu de l'application communautaire, utilisez le même format que pour créer un lien vers du contenu sur un wiki (par ex., Catégorie : Nom_catégorie).", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "Cette fonctionnalité permet de mettre en valeur un contenu spécifique de la communauté (article, vidéo ou billet de blog, par exemple). Choisissez un contenu pertinent au moment de sa parution et mettez cette section à jour régulièrement.", 
     "curated-content-editor-general-section-error": "Veuillez corriger les erreurs dans cette section.", 
     "curated-content-editor-image-missing-error": "Veuillez ajouter une image", 
-    "curated-content-editor-items-count": "__count__ élément", 
-    "curated-content-editor-items-count_plural": "__count__ éléments", 
+    "curated-content-editor-items-count": "{count} élément",
+    "curated-content-editor-items-count_plural": "{count} éléments",
     "curated-content-editor-label-in-use-error": "Nom d'affichage déjà utilisé", 
     "curated-content-editor-main-page": "Page d'accueil", 
     "curated-content-editor-missing-category-title-error": "Nom de catégorie manquant", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "Section introuvable.", 
     "curated-content-image-upload-error": "Un problème est survenu lors de l'importation. Veuillez réessayer.", 
     "curated-content-load-more-items": "Importer plus", 
-    "explore-wiki": "Explorer __wikiName__", 
+    "explore-wiki": "Explorer {wikiName}",
     "header-in-wiki-name-label-prefix": "dans :", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "Données non valides renvoyées par l'API de vérification des images", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "Actualiser"
   }, 
   "userStatus": {
-    "anon-cta": "__registerLink__ ou __loginLink__", 
+    "anon-cta": "{registerLink} ou {loginLink}",
     "login-text": "Se connecter", 
     "register-text": "S'inscrire"
   }

@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "Forneça um nome para a predefinição de sua infobox.", 
     "edit-title-placeholder": "Predefinição sem título", 
     "first-title-default": "Título de Infobox", 
-    "header": "Editando predefinição: __título__", 
+    "header": "Editando predefinição: {título}",
     "help-row": "Uma linha permite que você adicione informações em sua infobox. Use o campo de etiqueta para especificar o nome da linha (como a cor dos olhos, família, etc.).", 
     "help-section-collapsible": "Ao marcar a opção \"dobrável\", você será capaz de fechar e abrir seções quando a infobox for usada em uma página do artigo.", 
     "help-section-header": "O cabeçalho organiza sua infobox em seções. Use o campo de etiqueta para especificar o nome da seção (ex: descrição física). Cada linha adicionada sob um cabeçalho será automaticamente uma parte da seção. Se você marcar a opção \"dobrável\", você poderá fechar e abrir seções quando a infobox for usada em uma página do artigo.", 
@@ -39,7 +39,7 @@
     "source-editor-tooltip": "Editor Clássico", 
     "success": "Sucesso!", 
     "title-article-name": "Nome do artigo", 
-    "title-default": "Título de Infobox __index__", 
+    "title-default": "Título de Infobox {index}",
     "title-naming-conflict-error": "Este nome já está sendo usado", 
     "title-use-article-name": "Usar o nome do artigo", 
     "untitled-infobox-template": "Predefinição de infobox sem título"
