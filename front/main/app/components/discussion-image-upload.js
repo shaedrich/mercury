@@ -1,14 +1,17 @@
 import Ember from 'ember';
+import AlertNotificationsMixin from '../mixins/alert-notifications';
 
-const {isEmpty, A, computed} = Ember;
+const {isEmpty, Logger} = Ember;
 
 export default Ember.Component.extend(
+	AlertNotificationsMixin,
 	{
 		classNames: ['discussion-image-upload'],
 		staticAssets: Ember.inject.service(),
 
-		isImagePreviewMode: false,
 		isLoadingMode: false,
+		isDragActive: false,
+		resetFileInput: false,
 
 		allowedFileTypes: {
 			'image/jpeg': true,
@@ -16,32 +19,45 @@ export default Ember.Component.extend(
 			'image/gif': true,
 		},
 
-		actions: {
-			emptyClickForFileInput() {
+		dragLeave(event) {
+			event.preventDefault();
+			this.set('isDragActive', false);
+		},
 
+		dragOver(event) {
+			event.preventDefault();
+			this.set('isDragActive', true);
+		},
+
+		drop(event) {
+			event.preventDefault();
+			this.send('fileUpload', event.dataTransfer.files);
+			this.set('isDragActive', false);
+		},
+
+		actions: {
+			/**
+			 * Empty method for the file-input helper required click method.
+			 * @return {void}
+			 */
+			emptyClickForFileInput() {
 			},
-			fileUpload(files) {
-				const imageFile = files[0];
-				this.uploadFile(imageFile);
+			onImageSelected(files) {
+				this.handleImageSelected(files[0]);
 			},
 		},
 
-		uploadFile(imageFile) {
+		handleImageSelected(imageFile) {
 			if (!this.get(`allowedFileTypes.${imageFile.type}`)) {
-				this.setErrorMessage(this.get('errorsMessages.fileType'));
+				this.showErrorMessage('image-upload.invalid-file-type');
 				return;
 			}
 
-			this.setProperties({
-				isLoadingMode: true,
-				errorMessage: null,
-			});
+			this.set('isLoadingMode', true);
 
 			this.uploadImage(imageFile)
 				.then((result) => {
 					this.setProperties({
-						isLoadingMode: false,
-						isImagePreviewMode: true,
 						newImageUrl: result.url,
 						uploadedFile: imageFile,
 					});
@@ -49,18 +65,28 @@ export default Ember.Component.extend(
 				.then(() => {
 					const url = this.get('newImageUrl');
 					if (!isEmpty(url)) {
-						this.sendAction('addImage', url);
 						this.get('contentImages').addContentImage(url);
 					}
 				})
 				.catch((err) => {
+					Logger.error('Error uploading image', err);
+					this.showErrorMessage('image-upload.upload-failed');
+				})
+				.then(() => {
+					this.set('resetFileInput', true);
 					this.set('isLoadingMode', false);
-					this.setErrorMessage(this.get('errorsMessages.saveFailed'));
 				});
 		},
 
-		setErrorMessage(msgKey) {
-			this.set('errorMessage', i18n.t(msgKey, {ns: 'discussion'}));
+		showErrorMessage(msgKey) {
+			this.addAlert({
+				message: this.getErrorMessage(msgKey),
+				type: 'alert'
+			});
+		},
+
+		getErrorMessage(msgKey) {
+			return i18n.t(msgKey, {ns: 'discussion'});
 		},
 
 		uploadImage(imageFile) {

@@ -7,7 +7,7 @@ import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
 import DiscussionContentImages from '../models/discussion/domain/content-images';
 
-const {$, A, computed, inject, isEmpty, observer, run} = Ember;
+const {$, computed, inject, observer, run} = Ember;
 
 export default DiscussionMultipleInputsEditor.extend(
 	DiscussionEditorOpengraph,

@@ -160,6 +160,10 @@
     "hero-unit-subtitle": "Discussions Insights",
     "no-activity-yet": "No activity yet."
   },
+  "image-upload": {
+    "upload-failed": "Upload failed.",
+    "invalid-file-type": "Invalid image type, please try one of: jpeg, png and gif."
+  },
   "editor": {
     "post-failed-error": "Post failed.",
     "post-error-anon-cant-post": "Sign in to join the discussion!",
