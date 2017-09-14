@@ -162,7 +162,8 @@
   },
   "image-upload": {
     "upload-failed": "Upload failed.",
-    "invalid-file-type": "Invalid image type, please try one of: jpeg, png and gif."
+    "invalid-file-type": "Invalid image type, please try one of: jpeg, png and gif.",
+    "add-image": "Add image"
   },
   "editor": {
     "post-failed-error": "Post failed.",
@@ -193,7 +194,6 @@
     "reply-edit-action-button-label": "Save",
     "overlay-message-text": "Before posting, be sure to check out the __guidelinesLinkTitle__.",
     "overlay-message-button": "Done",
-    "guidelines-link-title": "Discussion Guidelines",
-    "add-image": "Add image"
+    "guidelines-link-title": "Discussion Guidelines"
   }
 }
