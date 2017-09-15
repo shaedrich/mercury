@@ -162,7 +162,7 @@
   },
   "image-upload": {
     "upload-failed": "Upload failed.",
-    "invalid-file-type": "Invalid image type, please try one of: jpeg, png and gif.",
+    "invalid-file-type": "Invalid image type, please use jpeg, png or gif.",
     "add-image": "Add image"
   },
   "editor": {
