@@ -31,7 +31,7 @@ export default Component.extend(
 
 		drop(event) {
 			event.preventDefault();
-			this.send('fileUpload', event.dataTransfer.files);
+			this.send('onImageSelected', event.dataTransfer.files);
 			this.set('isDragActive', false);
 		},
 
