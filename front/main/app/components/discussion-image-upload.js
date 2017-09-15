@@ -1,13 +1,13 @@
 import Ember from 'ember';
 import AlertNotificationsMixin from '../mixins/alert-notifications';
 
-const {isEmpty, Logger} = Ember;
+const {isEmpty, inject, Component, Logger} = Ember;
 
-export default Ember.Component.extend(
+export default Component.extend(
 	AlertNotificationsMixin,
 	{
 		classNames: ['discussion-image-upload'],
-		staticAssets: Ember.inject.service(),
+		staticAssets: inject.service(),
 
 		isLoadingMode: false,
 		isDragActive: false,

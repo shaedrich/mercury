@@ -7,7 +7,7 @@ export default Ember.Component.extend(
 
 		resetObserver: Ember.observer('reset', function () {
 			if (this.get('reset')) {
-				this.$().find('input').val(null);
+				this.$('input').val(null);
 				this.set('reset', false);
 			}
 		}),
