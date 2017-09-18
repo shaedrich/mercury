@@ -17,17 +17,16 @@ const {Object, A} = Ember,
 			this.get('images').setObjects(images);
 		},
 
-		addContentImage(url) {
+		addContentImage(image) {
 			const images = this.get('images');
 			const position = images.filterBy('visible')
 				.reduce((previous, item) => Math.max(previous, item.position), 0);
-			// TODO BE should send the height and width
 			images.pushObject(Object.create({
-				height: 200,
+				height: image.height,
 				position: position + 1,
-				url,
+				url: image.url,
 				visible: true,
-				width: 300,
+				width: image.width,
 			}));
 		},
 

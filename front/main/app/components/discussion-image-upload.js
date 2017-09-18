@@ -57,15 +57,8 @@ export default Component.extend(
 
 			this.uploadImage(imageFile)
 				.then((result) => {
-					this.setProperties({
-						newImageUrl: result.url,
-						uploadedFile: imageFile,
-					});
-				})
-				.then(() => {
-					const url = this.get('newImageUrl');
-					if (!isEmpty(url)) {
-						this.get('contentImages').addContentImage(url);
+					if (!isEmpty(result)) {
+						this.get('contentImages').addContentImage(result);
 					}
 				})
 				.catch((err) => {
