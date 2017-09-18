@@ -1,0 +1,33 @@
+.discussions {
+
+	.discussion-image-upload {
+		$color: $wds-color-light-c4;
+
+		&__drag-n-drop-placeholder {
+			align-items: center;
+			background-color: rgba(26, 26, 26, 0.7);
+			display: flex;
+			height: 236px;
+			justify-content: center;
+			width: 100%;
+		}
+
+		&__drag-n-drop-icon {
+			width: 42px;
+			height: 42px;
+		}
+
+		&__button {
+			align-items: center;
+			background: transparent;
+			border: dashed 1px $color;
+			color: $color;
+			display: inline-flex;
+			height: 46px;
+			justify-content: center;
+			margin: 0 0 24px;
+			padding: 0;
+			width: 100%;
+		}
+	}
+}

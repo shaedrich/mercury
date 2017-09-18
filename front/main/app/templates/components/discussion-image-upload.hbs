@@ -1,0 +1,17 @@
+{{#if isDragActive}}
+	<div class="discussion-image-upload__drag-n-drop-placeholder">
+		{{svg 'wds-icons-image' role='img' class='wds-icon icon discussion-image-upload__drag-n-drop-icon'}}
+	</div>
+{{else}}
+	{{discussion-image-upload-input
+			onImageSelected=(action 'onImageSelected')
+			reset=resetFileInput
+			click=(action 'emptyClickForFileInput')
+	}}
+{{/if}}
+
+{{wds-spinner
+		active=isLoadingMode
+		class='categories-loading-overlay'
+		radius=32
+		strokeWidth=2}}

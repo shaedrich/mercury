@@ -64,7 +64,7 @@ const DiscussionReportedPostsModel = DiscussionBaseModel.extend(
 DiscussionReportedPostsModel.reopenClass({
 	/**
 	 * @param {number} wikiId
-	 *
+	 * @param {number} page
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	find(wikiId, page = 1) {

@@ -49,7 +49,6 @@ DiscussionPost.reopenClass({
 				userBlockDetails: DiscussionUserBlockDetails.create(data.userBlockDetails),
 				userData: null,
 				openGraph: null,
-				contentImages: null
 			}),
 			userData = get(data, '_embedded.userData.0'),
 			openGraphData = get(data, '_embedded.openGraph'),
@@ -63,7 +62,11 @@ DiscussionPost.reopenClass({
 			post.set('openGraph', OpenGraph.create(openGraphData));
 		}
 
-		post.set('contentImages', DiscussionContentImages.create(contentImagesData));
+		if (contentImagesData) {
+			post.set('contentImages', DiscussionContentImages.create(contentImagesData));
+		} else {
+			post.set('contentImages', new DiscussionContentImages());
+		}
 
 		return post;
 	},
@@ -84,7 +87,8 @@ DiscussionPost.reopenClass({
 			isFollowed: Ember.get(postData, '_embedded.thread.0.isFollowed'),
 			isLocked: !get(postData, '_embedded.thread.0.isEditable'),
 			repliesCount: parseInt(get(postData, '_embedded.thread.0.postCount'), 10),
-			threadId: postData.threadId
+			threadId: postData.threadId,
+
 		});
 
 		return post;

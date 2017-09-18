@@ -7,7 +7,7 @@ import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
 import DiscussionContentImages from '../models/discussion/domain/content-images';
 
-const {$, A, computed, inject, isEmpty, observer, run} = Ember;
+const {$, computed, inject, observer, run} = Ember;
 
 export default DiscussionMultipleInputsEditor.extend(
 	DiscussionEditorOpengraph,
@@ -42,22 +42,21 @@ export default DiscussionMultipleInputsEditor.extend(
 			return this.get('isEdit') && !this.get('editEntity.userData.permissions.canEdit');
 		}),
 
-		editImagePermitted: computed('isEdit', 'editEntity.userData.permissions.canEdit', function () {
-			return this.get('isEdit') && this.get('editEntity.userData.permissions.canEdit');
-		}),
-
-		images: computed('editEntity.contentImages.images', function () {
-			const images = this.get('editEntity.contentImages.images');
-
-			return isEmpty(images) ? new A() : images.map(image => Ember.Object.create({...image}));
-		}),
-
 		imageWidthMultiplier: computed('isReply', 'responsive.isMobile', function () {
 			return this.get('responsive.isMobile') || this.get('isReply') ? 1 : 2;
 		}),
 
 		showMultipleInputs: computed('hasTitle', 'isReply', function () {
 			return this.get('hasTitle') && !this.get('isReply');
+		}),
+
+		editImagePermitted: computed('isEdit', 'editEntity.userData.permissions.canEdit', function () {
+			// the user can edit images if s/he's got a permission or we're in creation mode
+			return !this.get('isEdit') || this.get('editEntity.userData.permissions.canEdit');
+		}),
+
+		showImageUpload: Ember.computed('Mercury', 'editImagePermitted', function () {
+			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('editImagePermitted');
 		}),
 
 		// first time it is triggered by the 'editEntity' property, and later by the 'isActive' property
@@ -72,11 +71,24 @@ export default DiscussionMultipleInputsEditor.extend(
 				content: editEntity.get('rawContent'),
 				openGraph: editEntity.get('openGraph'),
 				showsOpenGraphCard: Boolean(editEntity.get('openGraph')),
-				title: editEntity.get('title')
+				title: editEntity.get('title'),
+				contentImages: editEntity.get('contentImages'),
 			});
 
 			this.focusFirstTextareaWhenRendered();
 		}),
+
+		init() {
+			this._super();
+			if (!this.get('isEdit')) {
+				this.set('contentImages', new DiscussionContentImages());
+			}
+		},
+
+		afterSuccess() {
+			this._super();
+			this.set('contentImages', new DiscussionContentImages());
+		},
 
 		click(event) {
 			this.focusOnNearestTextarea(event);
@@ -133,8 +145,8 @@ export default DiscussionMultipleInputsEditor.extend(
 						discussionEntityData.openGraph = this.get('openGraph');
 					}
 
-					if (!isEmpty(this.get('images'))) {
-						discussionEntityData.contentImages = DiscussionContentImages.toData(this.get('images'));
+					if (this.get('contentImages')) {
+						discussionEntityData.contentImages = this.get('contentImages').toData();
 					}
 
 					if (!this.get('isEdit')) {
