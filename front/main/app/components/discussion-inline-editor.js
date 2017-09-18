@@ -45,7 +45,7 @@ export default DiscussionMultipleInputsEditor.extend(
 			return !this.get('isActive') ? 'readonly' : undefined;
 		}),
 
-		showImageUpload: Ember.computed('isActive', 'Mercury', function () {
+		showImageUpload: Ember.computed('isActive', function () {
 			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('isActive');
 		}),
 

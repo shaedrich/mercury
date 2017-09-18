@@ -55,7 +55,7 @@ export default DiscussionMultipleInputsEditor.extend(
 			return !this.get('isEdit') || this.get('editEntity.userData.permissions.canEdit');
 		}),
 
-		showImageUpload: Ember.computed('Mercury', 'editImagePermitted', function () {
+		showImageUpload: Ember.computed('editImagePermitted', function () {
 			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('editImagePermitted');
 		}),
 
@@ -79,14 +79,14 @@ export default DiscussionMultipleInputsEditor.extend(
 		}),
 
 		init() {
-			this._super();
+			this._super(...arguments);
 			if (!this.get('isEdit')) {
 				this.set('contentImages', new DiscussionContentImages());
 			}
 		},
 
 		afterSuccess() {
-			this._super();
+			this._super(...arguments);
 			this.set('contentImages', new DiscussionContentImages());
 		},
 
@@ -102,7 +102,7 @@ export default DiscussionMultipleInputsEditor.extend(
 		},
 
 		toggleActiveState(isActive) {
-			this._super();
+			this._super(...arguments);
 
 			if (isActive) {
 				this.set('pageYOffsetCache', window.pageYOffset);
@@ -126,7 +126,7 @@ export default DiscussionMultipleInputsEditor.extend(
 
 		actions: {
 			close() {
-				this._super();
+				this._super(...arguments);
 
 				this.set('editEntity', null);
 				this.sendAction('setEditorActive', this.get('isEdit') ? 'editEditor' : 'contributeEditor', false);
