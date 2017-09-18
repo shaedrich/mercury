@@ -41,11 +41,7 @@ $success-icon-size: 80px;
 		flex-grow: 1;
 		margin: 0;
 		overflow: auto;
-
-		.post-image {
-			margin-left: 15px;
-			margin-right: 15px;
-		}
+		padding: 0 12px;
 
 		.post-image-editor-tools-wrapper {
 			display: inline-block;
@@ -54,7 +50,7 @@ $success-icon-size: 80px;
 
 	.discussion-standalone-editor-title,
 	.discussion-standalone-editor-message {
-		margin: 10px 15px 0;
+		margin: 10px 0;
 	}
 
 	.discussion-standalone-editor-title {
