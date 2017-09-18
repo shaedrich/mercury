@@ -7,7 +7,7 @@ import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
 import DiscussionContentImages from '../models/discussion/domain/content-images';
 
-const {$, computed, inject, observer, run} = Ember;
+const {$, computed, get, inject, observer, run} = Ember;
 
 export default DiscussionMultipleInputsEditor.extend(
 	DiscussionEditorOpengraph,
@@ -17,18 +17,14 @@ export default DiscussionMultipleInputsEditor.extend(
 		classNames: ['discussion-standalone-editor'],
 
 		currentUser: inject.service(),
+		responsive: inject.service(),
 
 		editEntity: null,
-
 		hasTitle: false,
-
 		isEdit: false,
-
-		isReply: computed.bool('editEntity.isReply'),
-
 		pageYOffsetCache: 0,
 
-		responsive: inject.service(),
+		isReply: computed.bool('editEntity.isReply'),
 
 		categoryTrackingAction: computed('isEdit', function () {
 			return this.get('isEdit') ? trackActions.PostCategoryEdited : trackActions.PostCategoryAdded;
@@ -55,8 +51,13 @@ export default DiscussionMultipleInputsEditor.extend(
 			return !this.get('isEdit') || this.get('editEntity.userData.permissions.canEdit');
 		}),
 
-		showImageUpload: Ember.computed('editImagePermitted', function () {
-			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('editImagePermitted');
+		showImageUpload: computed('contentImages.images.[]', 'editImagePermitted', function () {
+			const contentImages = this.get('contentImages');
+			const hasImages = contentImages && contentImages.hasImages();
+
+			return get(Mercury, 'wiki.enableDiscussionsImageUpload') &&
+				!hasImages &&
+				this.get('editImagePermitted');
 		}),
 
 		// first time it is triggered by the 'editEntity' property, and later by the 'isActive' property

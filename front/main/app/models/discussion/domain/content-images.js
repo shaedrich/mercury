@@ -13,6 +13,10 @@ const {Object, A} = Ember,
 			}
 		},
 
+		hasImages() {
+			return this.get('images.length');
+		},
+
 		setImages(images) {
 			this.get('images').setObjects(images);
 		},
