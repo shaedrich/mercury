@@ -1,11 +1,12 @@
 import Ember from 'ember';
 
-export default Ember.Component.extend(
-	Ember.Evented,
+const {Component, isEmpty, observer} = Ember;
+
+export default Component.extend(
 	{
 		reset: false,
 
-		resetObserver: Ember.observer('reset', function () {
+		resetObserver: observer('reset', function () {
 			if (this.get('reset')) {
 				this.$('input').val(null);
 				this.set('reset', false);
@@ -18,7 +19,7 @@ export default Ember.Component.extend(
 		 */
 		change(event) {
 			const input = event.target;
-			if (!Ember.isEmpty(input.files)) {
+			if (!isEmpty(input.files)) {
 				this.get('onImageSelected')(input.files);
 			}
 		},
