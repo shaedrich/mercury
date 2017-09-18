@@ -15,7 +15,7 @@
     "curated-content-editor-done": "Gotowe", 
     "curated-content-editor-edit-community-data-button": "Edytuj", 
     "curated-content-editor-edit-main-page": "Edycja strony głównej", 
-    "curated-content-editor-editing-header": "Edycja: {label}",
+    "curated-content-editor-editing-header": "Edycja: {label}", 
     "curated-content-editor-empty-section-error": "Sekcje nie mogą być puste. Dodaj elementy do tej sekcji.", 
     "curated-content-editor-enter-category-name": "Wprowadź nazwę kategorii", 
     "curated-content-editor-enter-category-name-tooltip": "Wprowadzając nazwę kategorii w Curated Content używaj tego samego formatu, który byłby przez ciebie wykorzystany, aby podlinkować treść na wiki (np. Nazwa_kategorii).", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "Wyróżniona Treść może być wykorzystana do wyróżnienia określonej treści w twojej społeczności, takiej jak artykuł, wideo lub blog post. Najlepiej jeśli ta treść jest aktualna i istotna dla czytelników i powinna być często aktualizowana.", 
     "curated-content-editor-general-section-error": "Popraw błędy w tej sekcji.", 
     "curated-content-editor-image-missing-error": "Dodaj obraz", 
-    "curated-content-editor-items-count": "{count} element",
-    "curated-content-editor-items-count_plural": "{count} elementy/-ów",
+    "curated-content-editor-items-count": "{count} element", 
+    "curated-content-editor-items-count_plural": "{count} elementy/-ów", 
     "curated-content-editor-label-in-use-error": "Ta nazwa wyświetlana jest już wykorzystywana", 
     "curated-content-editor-main-page": "Strona główna", 
     "curated-content-editor-missing-category-title-error": "Brak nazwy kategorii", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "Sekcja nie została znaleziona.", 
     "curated-content-image-upload-error": "Coś poszło nie tak przy przesyłaniu. Spróbuj ponownie.", 
     "curated-content-load-more-items": "Załaduj więcej", 
-    "explore-wiki": "Przeglądaj {wikiName}",
+    "explore-wiki": "Przeglądaj {wikiName}", 
     "header-in-wiki-name-label-prefix": "na:", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "Image Review API zwróciło błędne dane", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "Odśwież"
   }, 
   "userStatus": {
-    "anon-cta": "{registerLink} lub {loginLink}",
+    "anon-cta": "{registerLink} lub {loginLink}", 
     "login-text": "Zaloguj się", 
     "register-text": "Zarejestruj się"
   }

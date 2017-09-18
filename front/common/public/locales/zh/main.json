@@ -15,7 +15,7 @@
     "curated-content-editor-done": "完成", 
     "curated-content-editor-edit-community-data-button": "編輯", 
     "curated-content-editor-edit-main-page": "編輯首頁面", 
-    "curated-content-editor-editing-header": "編輯: {label}",
+    "curated-content-editor-editing-header": "編輯: {label}", 
     "curated-content-editor-empty-section-error": "群組不能沒有內容。請將項目添加到這個群組中。", 
     "curated-content-editor-enter-category-name": "輸入分類名稱", 
     "curated-content-editor-enter-category-name-tooltip": "在這裡輸入分類名稱時，使用與在Wiki中的連結同樣的格式（例如 Category:分類名稱）", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "精選內容可以用來突出顯示你的社區中的特定内容，如一篇文章、 一段影片或一篇網誌文章。內容最好是即時的且是讀者關注的內容，而且應經常更新。", 
     "curated-content-editor-general-section-error": "請修復這個群組中的錯誤。", 
     "curated-content-editor-image-missing-error": "請提供圖片", 
-    "curated-content-editor-items-count": "{count}個項目",
-    "curated-content-editor-items-count_plural": "{count}個項目",
+    "curated-content-editor-items-count": "{count}個項目", 
+    "curated-content-editor-items-count_plural": "{count}個項目", 
     "curated-content-editor-label-in-use-error": "這個顯示名稱已被使用", 
     "curated-content-editor-main-page": "首頁", 
     "curated-content-editor-missing-category-title-error": "找不到分類名稱", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "找不到此群組。", 
     "curated-content-image-upload-error": "上傳時發生錯誤。請再試一次。", 
     "curated-content-load-more-items": "加載更多", 
-    "explore-wiki": "瀏覽{wikiName}",
+    "explore-wiki": "瀏覽{wikiName}", 
     "header-in-wiki-name-label-prefix": "來自:", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "Image Review API拒絕了無效的數據", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "刷新"
   }, 
   "userStatus": {
-    "anon-cta": "{registerLink}或{loginLink}",
+    "anon-cta": "{registerLink}或{loginLink}", 
     "login-text": "登入", 
     "register-text": "註冊"
   }
