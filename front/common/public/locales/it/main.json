@@ -15,7 +15,7 @@
     "curated-content-editor-done": "Fatto", 
     "curated-content-editor-edit-community-data-button": "Modifica", 
     "curated-content-editor-edit-main-page": "Modifica pagina principale", 
-    "curated-content-editor-editing-header": "Modifica: {label}",
+    "curated-content-editor-editing-header": "Modifica: {label}", 
     "curated-content-editor-empty-section-error": "Le sezioni non possono essere vuote. Aggiungi elementi a questa sezione.", 
     "curated-content-editor-enter-category-name": "Inserisci un nome per la categoria", 
     "curated-content-editor-enter-category-name-tooltip": "Quando inserisci il nome di una categoria in Contenuti curati, usa lo stesso formato che useresti per collegare dei contenuti su una wiki (es.: Categoria:Nome_della_categoria).", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "I Contenuti in primo piano possono essere utilizzati per evidenziare un contenuto specifico come un articolo, un video o un blog post nella tua community. Idealmente questo contenuto è attuale e rilevante per i tuoi lettori, per cui dovresti aggiornarlo frequentemente.", 
     "curated-content-editor-general-section-error": "Correggi gli errori in questa sezione.", 
     "curated-content-editor-image-missing-error": "Si prega di fornire un'immagine", 
-    "curated-content-editor-items-count": "{count} elemento",
-    "curated-content-editor-items-count_plural": "{count} elementi",
+    "curated-content-editor-items-count": "{count} elemento", 
+    "curated-content-editor-items-count_plural": "{count} elementi", 
     "curated-content-editor-label-in-use-error": "Questo nome visualizzato è già in uso", 
     "curated-content-editor-main-page": "Pagina principale", 
     "curated-content-editor-missing-category-title-error": "Nome della categoria mancante", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "Sezione non trovata.", 
     "curated-content-image-upload-error": "Qualcosa è andato storto con il caricamento. Riprova.", 
     "curated-content-load-more-items": "Carica altro", 
-    "explore-wiki": "Esplora {wikiName}",
+    "explore-wiki": "Esplora {wikiName}", 
     "header-in-wiki-name-label-prefix": "su:", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "Ricevuti dati invalidi dall'API della revisione immagini", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "Aggiorna"
   }, 
   "userStatus": {
-    "anon-cta": "{registerLink} o {loginLink}",
+    "anon-cta": "{registerLink} o {loginLink}", 
     "login-text": "Accedi", 
     "register-text": "Iscriviti"
   }

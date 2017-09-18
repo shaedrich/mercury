@@ -5,7 +5,7 @@
     "email_already_exists": "該電子信箱已經在FANDOM上註冊了", 
     "email_invalid": "電子郵件無效", 
     "fb_account_already_linked": "這個Facebook帳戶已經連接到另一個FANDOM帳戶", 
-    "invalid-email": "看起來您的FANDOM帳戶並未與任何電子郵件連結。請{contactFandomLink}",
+    "invalid-email": "看起來您的FANDOM帳戶並未與任何電子郵件連結。請{contactFandomLink}", 
     "password_equal_name": "用戶名和密碼不匹配", 
     "password_exceeds_max_length": "密碼不能超過50個字元", 
     "passwords_not_match": "密碼不合", 
