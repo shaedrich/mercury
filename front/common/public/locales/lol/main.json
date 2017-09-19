@@ -15,7 +15,7 @@
     "curated-content-editor-done": "crwdns21636:0crwdne21636:0", 
     "curated-content-editor-edit-community-data-button": "crwdns25358:0crwdne25358:0", 
     "curated-content-editor-edit-main-page": "crwdns21645:0crwdne21645:0", 
-    "curated-content-editor-editing-header": "crwdns21638:0{label}crwdne21638:0",
+    "curated-content-editor-editing-header": "crwdns71115:0{label}crwdne71115:0", 
     "curated-content-editor-empty-section-error": "crwdns21657:0crwdne21657:0", 
     "curated-content-editor-enter-category-name": "crwdns22499:0crwdne22499:0", 
     "curated-content-editor-enter-category-name-tooltip": "crwdns46976:0crwdne46976:0", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "crwdns21647:0crwdne21647:0", 
     "curated-content-editor-general-section-error": "crwdns21659:0crwdne21659:0", 
     "curated-content-editor-image-missing-error": "crwdns21626:0crwdne21626:0", 
-    "curated-content-editor-items-count": "crwdns22421:0{count}crwdne22421:0",
-    "curated-content-editor-items-count_plural": "crwdns22422:0{count}crwdne22422:0",
+    "curated-content-editor-items-count": "crwdns71116:0{count}crwdne71116:0", 
+    "curated-content-editor-items-count_plural": "crwdns71117:0{count}crwdne71117:0", 
     "curated-content-editor-label-in-use-error": "crwdns22496:0crwdne22496:0", 
     "curated-content-editor-main-page": "crwdns22230:0crwdne22230:0", 
     "curated-content-editor-missing-category-title-error": "crwdns22498:0crwdne22498:0", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "crwdns20369:0crwdne20369:0", 
     "curated-content-image-upload-error": "crwdns21617:0crwdne21617:0", 
     "curated-content-load-more-items": "crwdns20353:0crwdne20353:0", 
-    "explore-wiki": "crwdns24184:0{wikiName}crwdne24184:0",
+    "explore-wiki": "crwdns71118:0{wikiName}crwdne71118:0", 
     "header-in-wiki-name-label-prefix": "crwdns27845:0crwdne27845:0", 
     "header-in-wiki-name-label-suffix": "crwdns27846:0crwdne27846:0", 
     "image-review-error-invalid-data": "crwdns35354:0crwdne35354:0", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "crwdns25940:0crwdne25940:0"
   }, 
   "userStatus": {
-    "anon-cta": "crwdns22424:0{registerLink}crwdnd22424:0{loginLink}crwdne22424:0",
+    "anon-cta": "crwdns71119:0{registerLink}crwdnd71119:0{loginLink}crwdne71119:0", 
     "login-text": "crwdns22505:0crwdne22505:0", 
     "register-text": "crwdns22425:0crwdne22425:0"
   }

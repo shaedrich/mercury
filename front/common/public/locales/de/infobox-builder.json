@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "Gib einen Namen für deine Infobox-Vorlage an.", 
     "edit-title-placeholder": "Unbenannte Vorlage", 
     "first-title-default": "Titel der Infobox", 
-    "header": "Vorlage bearbeiten: {title}",
+    "header": "Vorlage bearbeiten: {title}", 
     "help-row": "In einer Zeile hast du die Möglichkeit, deiner Infobox Informationen hinzuzufügen. Verwende das Beschriftungsfeld, um die Bezeichnung der Zeile (wie zum Beispiel Augenfarbe, Familie etc.) festzulegen.", 
     "help-section-collapsible": "Wenn du die Option „reduzierbar“ aktivierst, kannst du Abschnitte öffnen und schließen, wenn die Infobox auf einer Artikelseite verwendet wird.", 
     "help-section-header": "Der Header teilt deine Infobox in Abschnitte ein. Verwende das Beschriftungsfeld, um die Bezeichnung des Abschnitts (z. B. physische Beschreibung) festzulegen. Jede unter einem Header hinzugefügte Zeile wird automatisch Teil seines Abschnitts. Wenn du die Option „reduzierbar“ aktivierst, kannst du Abschnitte öffnen und schließen, wenn die Infobox auf einer Artikelseite verwendet wird.", 
@@ -39,8 +39,9 @@
     "source-editor-tooltip": "Quelltext-Editor", 
     "success": "Fertig!", 
     "title-article-name": "Artikelname", 
-    "title-default": "Titel der Infobox {index}",
+    "title-default": "Titel der Infobox {index}", 
     "title-naming-conflict-error": "Dieser Name ist bereits vergeben", 
+    "title-naming-invalid-title-error": "Sorry, the page title was invalid. Please use a different title.", 
     "title-use-article-name": "Artikelnamen verwenden", 
     "untitled-infobox-template": "Unbenannte Infobox-Vorlage"
   }

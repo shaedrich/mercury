@@ -5,7 +5,7 @@
     "email_already_exists": "Email is already registered on FANDOM", 
     "email_invalid": "Email is not valid", 
     "fb_account_already_linked": "This Facebook account is already connected to another FANDOM user account", 
-    "invalid-email": "It seems you have no e-mail associated with your FANDOM account. Please {contactFandomLink}",
+    "invalid-email": "It seems you have no e-mail associated with your FANDOM account. Please {contactFandomLink}", 
     "password_equal_name": "Password and username cannot match", 
     "password_exceeds_max_length": "Password cannot exceed 50 characters", 
     "passwords_not_match": "Passwords do not match", 

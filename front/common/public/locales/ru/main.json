@@ -15,7 +15,7 @@
     "curated-content-editor-done": "Готово", 
     "curated-content-editor-edit-community-data-button": "Править", 
     "curated-content-editor-edit-main-page": "Править Заглавную страницу", 
-    "curated-content-editor-editing-header": "Редактирование: {label}",
+    "curated-content-editor-editing-header": "Редактирование: {label}", 
     "curated-content-editor-empty-section-error": "Раздел не может быть пустым. Пожалуйста, добавьте пункты в этот раздел.", 
     "curated-content-editor-enter-category-name": "Введите название категории", 
     "curated-content-editor-enter-category-name-tooltip": "При добавлении названия категории в список курируемого контента оформляйте текст так же, как и ссылку — заменяйте пробелы знаками подчёркивания (пример: Категория:Название_категории).", 
@@ -34,8 +34,8 @@
     "curated-content-editor-featured-description": "Избранный контент может использоваться для акцентирования важной части содержимого на вашей вики: избранных статей, видео или записей в блоге. Предполагается, что этот контент касается текущих событий на вики и предоставляет читателям важную информацию, поэтому его важно часто обновлять.", 
     "curated-content-editor-general-section-error": "Пожалуйста, исправьте ошибки в этой секции.", 
     "curated-content-editor-image-missing-error": "Пожалуйста, добавьте изображение", 
-    "curated-content-editor-items-count": "{count} пункт",
-    "curated-content-editor-items-count_plural": "{count} пункт.",
+    "curated-content-editor-items-count": "{count} пункт", 
+    "curated-content-editor-items-count_plural": "{count} пункт.", 
     "curated-content-editor-label-in-use-error": "Это отображаемое название уже используется", 
     "curated-content-editor-main-page": "Заглавная страница", 
     "curated-content-editor-missing-category-title-error": "Отсутствует название категории", 
@@ -66,7 +66,7 @@
     "curated-content-error-section-not-found": "Секция не найдена.", 
     "curated-content-image-upload-error": "Во время загрузки произошла ошибка. Пожалуйста, попробуйте снова.", 
     "curated-content-load-more-items": "Загрузить ещё", 
-    "explore-wiki": "Исследовать {wikiName}",
+    "explore-wiki": "Исследовать {wikiName}", 
     "header-in-wiki-name-label-prefix": "в:", 
     "header-in-wiki-name-label-suffix": "", 
     "image-review-error-invalid-data": "API проверки изображений вернул недопустимые данные", 
@@ -86,7 +86,7 @@
     "wiki-page-error-reload-button": "Обновить"
   }, 
   "userStatus": {
-    "anon-cta": "{registerLink} или {loginLink}",
+    "anon-cta": "{registerLink} или {loginLink}", 
     "login-text": "Войти", 
     "register-text": "Зарегистрироваться"
   }
