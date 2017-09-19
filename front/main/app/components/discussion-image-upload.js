@@ -49,6 +49,7 @@ export default Component.extend(
 
 		handle400Response(response) {
 			// TODO this should be refactored to use Problem's type, when it becomes available
+			Logger.error('Handling 400 response', response);
 			if (response && response.title === 'Max image size exceeded') {
 				this.showErrorMessage('image-upload.max-size-exceeded');
 			} else {
@@ -70,8 +71,8 @@ export default Component.extend(
 				})
 				.catch((err) => {
 					Logger.error('Error uploading image', err);
-					if (err.response && err.response && err.response.status === 400) {
-						this.handle400Response(err.response.json());
+					if (err.response && err.response.status === 400) {
+						this.handle400Response(err.response);
 					} else {
 						this.showErrorMessage('image-upload.upload-failed');
 					}
