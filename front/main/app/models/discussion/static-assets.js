@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import request from 'ember-ajax/request';
+import fetch from 'fetch';
 import DiscussionBaseModel from './base';
-import DiscussionSiteAttributes from './domain/site-attributes';
 
 const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 
@@ -12,12 +11,20 @@ const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 	 * @returns {Ember.RSVP.Promise}
 	 */
 	save(data) {
-		return request(M.getDiscussionServiceUrl(`/${this.wikiId}/images`), {
-			data,
+		return fetch(M.getDiscussionServiceUrl(`/${this.wikiId}/images`), {
+			body:data,
 			method: 'POST',
-			processData: false,
-			contentType: false,
-			mimeType: 'multipart/form-data',
+			mode: 'cors',
+			credentials: 'include',
+			headers: new Headers({mimeType: 'multipart/form-data'}),
+		}).then((response) => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				let error = new Error(response.statusText);
+				error.response = response;
+				throw error;
+			}
 		});
 	},
 

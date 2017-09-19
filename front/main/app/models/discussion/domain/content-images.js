@@ -22,11 +22,11 @@ const {Object, A} = Ember,
 			const position = images.filterBy('visible')
 				.reduce((previous, item) => Math.max(previous, item.position), 0);
 			images.pushObject(Object.create({
-				height: image.height,
+				height: image.height || 200,
 				position: position + 1,
 				url: image.url,
 				visible: true,
-				width: image.width,
+				width: image.width || 200,
 			}));
 		},
 

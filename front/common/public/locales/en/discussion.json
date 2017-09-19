@@ -161,9 +161,11 @@
     "no-activity-yet": "No activity yet."
   },
   "image-upload": {
+    "add-image": "Add image",
     "upload-failed": "Upload failed.",
     "invalid-file-type": "Invalid image type, please use jpeg, png or gif.",
-    "add-image": "Add image"
+    "max-size-exceeded": "Maximum image size of 10MB has been exceeded.",
+    "invalid-image": "Invalid image."
   },
   "editor": {
     "post-failed-error": "Post failed.",

@@ -47,6 +47,15 @@ export default Component.extend(
 			},
 		},
 
+		handle400Response(response) {
+			// TODO this should be refactored to use Problem's type, when it becomes available
+			if (response && response.title === 'Max image size exceeded') {
+				this.showErrorMessage('image-upload.max-size-exceeded');
+			} else {
+				this.showErrorMessage('image-upload.invalid-image');
+			}
+		},
+
 		handleImageSelected(imageFile) {
 			if (!this.get(`allowedFileTypes.${imageFile.type}`)) {
 				this.showErrorMessage('image-upload.invalid-file-type');
@@ -57,13 +66,15 @@ export default Component.extend(
 
 			this.uploadImage(imageFile)
 				.then((result) => {
-					if (!isEmpty(result)) {
-						this.get('contentImages').addContentImage(result);
-					}
+					this.get('contentImages').addContentImage(result);
 				})
 				.catch((err) => {
 					Logger.error('Error uploading image', err);
-					this.showErrorMessage('image-upload.upload-failed');
+					if (err.response && err.response && err.response.status === 400) {
+						this.handle400Response(err.response.json());
+					} else {
+						this.showErrorMessage('image-upload.upload-failed');
+					}
 				})
 				.then(() => {
 					this.set('resetFileInput', true);
