@@ -15,10 +15,10 @@ const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 			method: 'POST',
 			mode: 'cors',
 			credentials: 'include',
-			headers: new Headers({mimeType: 'multipart/form-data'}),
 		})
 			.then((response) => {
-				return response.json().then((json) => {
+				return response.json()
+					.then((json) => {
 					return {response, json}
 				})
 			})
@@ -27,7 +27,7 @@ const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 					return json;
 				}
 
-				let error = new Error(response.statusText);
+				let error = new Error();
 				error.response = json;
 				throw error;
 			});
