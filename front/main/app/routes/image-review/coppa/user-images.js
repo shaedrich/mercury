@@ -22,7 +22,13 @@ export default Route.extend({
 		reviewUserImages() {
 			const images = this.controller.get('model.images');
 			UserImagesModel.reviewUserImages(images).then(() => {
-				this.refresh();
+				this.controllerFor('application').addAlert({
+					message: i18n.t('main.coppa-success-review', {
+						ns: 'image-review'
+					}),
+					type: 'success',
+					persistent: true
+				});
 			}, (data) => {
 				this.controllerFor('application').addAlert({
 					message: data,

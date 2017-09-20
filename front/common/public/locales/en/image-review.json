@@ -36,6 +36,8 @@
     "waiting-for-count": "waiting for count",
     "image-order-newest": "get newest",
     "image-order-oldest": "get oldest",
-    "image-source": "Source of images"
+    "image-source": "Source of images",
+    "coppa-success-review": "Changes saved. There are no more images to review.",
+    "review": "Review"
   }
 }
