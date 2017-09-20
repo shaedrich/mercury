@@ -7,6 +7,8 @@ import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
 import DiscussionContentImages from '../models/discussion/domain/content-images';
 
+const {computed, get, inject} = Ember;
+
 export default DiscussionMultipleInputsEditor.extend(
 	DiscussionEditorOpengraph,
 	DiscussionEditorConfiguration,
@@ -18,7 +20,7 @@ export default DiscussionMultipleInputsEditor.extend(
 		classNameBindings: ['isSticky', 'isActive'],
 		tagName: 'form',
 
-		currentUser: Ember.inject.service(),
+		currentUser: inject.service(),
 
 		isActive: false,
 		isSticky: false,
@@ -37,16 +39,18 @@ export default DiscussionMultipleInputsEditor.extend(
 			this.set('contentImages', new DiscussionContentImages());
 		},
 
-		isPostEditor: Ember.computed('isReply', function () {
+		isPostEditor: computed('isReply', function () {
 			return !this.get('isReply');
 		}),
 
-		isReadonly: Ember.computed('isActive', function () {
+		isReadonly: computed('isActive', function () {
 			return !this.get('isActive') ? 'readonly' : undefined;
 		}),
 
-		showImageUpload: Ember.computed('isActive', 'Mercury', function () {
-			return Ember.get(Mercury, 'wiki.enableDiscussionsImageUpload') && this.get('isActive');
+		showImageUpload: computed('contentImages.images.[]', 'isActive', function () {
+			return get(Mercury, 'wiki.enableDiscussionsImageUpload') &&
+				!this.get('contentImages').hasImages() &&
+				this.get('isActive');
 		}),
 
 		/**
@@ -54,7 +58,7 @@ export default DiscussionMultipleInputsEditor.extend(
 		 * collapsed inline editor.
 		 * @returns {boolean}
 		 */
-		showTextareaAsFirstIfAlone: Ember.computed('isActive', 'isReply', function () {
+		showTextareaAsFirstIfAlone: computed('isActive', 'isReply', function () {
 			return this.get('isReply') || this.get('isActive');
 		}),
 
