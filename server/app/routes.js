@@ -279,6 +279,14 @@ let routes,
 		},
 		{
 			method: 'GET',
+			path: '/image-review/error',
+			handler: showApplication,
+			config: {
+				cache: routeCacheConfig
+			}
+		},
+		{
+			method: 'GET',
 			path: '/image-review/coppa',
 			handler: showApplication,
 			config: {
