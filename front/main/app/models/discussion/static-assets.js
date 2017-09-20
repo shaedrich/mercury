@@ -1,6 +1,8 @@
 import fetch from 'fetch';
 import DiscussionBaseModel from './base';
 
+const {Logger} = Ember;
+
 const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 
 	/**
@@ -16,19 +18,31 @@ const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 			mode: 'cors',
 			credentials: 'include',
 		})
-			.then((response) => {
-				return response.json()
-					.then((json) => {
-					return {response, json}
-				})
-			})
-			.then(({response, json}) => {
+			.then(response => {
 				if (response.ok) {
-					return json;
+					return response.json();
 				}
+				return this.deserializeErrorResponse(response);
+			});
+	},
 
-				let error = new Error();
+	/**
+	 * @private
+	 * @param response
+	 * @returns {Promise.<T>}
+	 */
+	deserializeErrorResponse(response) {
+		let error = new Error(response.statusText);
+		error.status = response.status;
+
+		return response.json()
+			.then(json => {
+				Logger.info('Deserialized error response', response, json);
 				error.response = json;
+				throw error;
+			})
+			.catch(err => {
+				Logger.warn('Failed to deserialize JSON', response, err);
 				throw error;
 			});
 	},

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import AlertNotificationsMixin from '../mixins/alert-notifications';
 
-const {isEmpty, inject, Component, Logger} = Ember;
+const {inject, Component, Logger} = Ember;
 
 export default Component.extend(
 	AlertNotificationsMixin,
@@ -71,7 +71,7 @@ export default Component.extend(
 				})
 				.catch((err) => {
 					Logger.error('Error uploading image', err);
-					if (err.response && err.response.status === 400) {
+					if (err.status === 400) {
 						this.handle400Response(err.response);
 					} else {
 						this.showErrorMessage('image-upload.upload-failed');
