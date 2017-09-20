@@ -14,8 +14,20 @@ export default Route.extend({
 
 	actions: {
 		error(error) {
-			Logger.error('image-review.user-images route error', error);
-			this.transitionTo('notFound');
+			Logger.error('image-review route error', error);
+			let errorMessage = i18n.t('main.error-other', {ns: 'image-review'});
+
+			if (error.errors.some((e) => e.status === "401")) {
+				errorMessage = i18n.t('main.error-no-access-permissions', {ns: 'image-review'});
+			}
+
+			this.controllerFor('application').addAlert({
+				message: errorMessage,
+				type: 'warning',
+				persistent: true
+			});
+
+			this.transitionTo('image-review.error');
 			return false;
 		},
 
