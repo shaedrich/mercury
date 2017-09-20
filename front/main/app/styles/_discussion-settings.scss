@@ -8,10 +8,10 @@ $discussion-header-height: 50px;
 $discussion-post-type-smaller-than-min: .7rem;
 
 // COLORS
-$discussion-editor-image-upload-placeholder-background-color: #666;
+$discussion-editor-image-upload-placeholder-background-color: #e6e6e6;
 
 @if ($is-dark-wiki) {
-	$discussion-editor-image-upload-placeholder-background-color: #e6e6e6;
+	$discussion-editor-image-upload-placeholder-background-color: #666;
 }
 
 $discussion-bg-color: $color-white;
