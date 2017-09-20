@@ -13,11 +13,11 @@ export default Component.extend(
 		isDragActive: false,
 		resetFileInput: false,
 
-		allowedFileTypes: {
-			'image/jpeg': true,
-			'image/png': true,
-			'image/gif': true,
-		},
+		allowedFileTypes: [
+			'image/jpeg',
+			'image/png',
+			'image/gif'
+		],
 
 		dragLeave(event) {
 			event.preventDefault();
@@ -58,7 +58,7 @@ export default Component.extend(
 		},
 
 		handleImageSelected(imageFile) {
-			if (!this.get(`allowedFileTypes.${imageFile.type}`)) {
+			if (this.get('allowedFileTypes').indexOf(imageFile.type) === -1) {
 				this.showErrorMessage('image-upload.invalid-file-type');
 				return;
 			}

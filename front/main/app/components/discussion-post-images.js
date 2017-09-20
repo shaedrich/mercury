@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import {track, trackActions} from '../utils/discussion-tracker';
 
-const {A, Component, computed} = Ember;
+const {A, Component, computed, isEmpty} = Ember;
 
 export default Component.extend({
 	classNames: ['post-images'],
@@ -44,7 +44,7 @@ export default Component.extend({
 		const images = this.get('images'),
 			noImages = new A();
 
-		return Ember.isEmpty(images) ? noImages : this.computeImagesToDisplay(images);
+		return isEmpty(images) ? noImages : this.computeImagesToDisplay(images);
 	}),
 
 	/**
@@ -76,6 +76,10 @@ export default Component.extend({
 
 		onLightboxOpen() {
 			track(trackActions.PostLightboxOpen);
+		},
+
+		removeImage(image) {
+			this.get('images').removeObject(image);
 		}
 	}
 });
