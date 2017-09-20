@@ -68,10 +68,6 @@ export default DiscussionMultipleInputsEditor.extend(
 		},
 
 		actions: {
-			addImage(imageUrl) {
-				this.get('contentImages').addContentImage(imageUrl);
-			},
-
 			submit() {
 				if (!this.get('submitDisabled')) {
 					const newDiscussionEntityData = {
