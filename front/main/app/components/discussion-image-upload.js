@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import AlertNotificationsMixin from '../mixins/alert-notifications';
 
-const {isEmpty, inject, Component, Logger} = Ember;
+const {inject, Component, Logger} = Ember;
 
 export default Component.extend(
 	AlertNotificationsMixin,
@@ -9,7 +9,6 @@ export default Component.extend(
 		classNames: ['discussion-image-upload'],
 		staticAssets: inject.service(),
 
-		isLoadingMode: false,
 		isDragActive: false,
 		resetFileInput: false,
 
@@ -53,21 +52,18 @@ export default Component.extend(
 				return;
 			}
 
-			this.set('isLoadingMode', true);
-
-			this.uploadImage(imageFile)
-				.then((result) => {
-					if (!isEmpty(result)) {
-						this.get('contentImages').addContentImage(result);
+			this.get('contentImages')
+				.addContentImage(imageFile, this.get('staticAssets'))
+				.catch((err) => {
+					if (!this.get('isDestroyed')) {
+						Logger.error('Error uploading image', err);
+						this.showErrorMessage('image-upload.upload-failed');
 					}
 				})
-				.catch((err) => {
-					Logger.error('Error uploading image', err);
-					this.showErrorMessage('image-upload.upload-failed');
-				})
 				.then(() => {
-					this.set('resetFileInput', true);
-					this.set('isLoadingMode', false);
+					if (!this.get('isDestroyed')) {
+						this.set('resetFileInput', true);
+					}
 				});
 		},
 
@@ -81,9 +77,5 @@ export default Component.extend(
 		getErrorMessage(msgKey) {
 			return i18n.t(msgKey, {ns: 'discussion'});
 		},
-
-		uploadImage(imageFile) {
-			return this.get('staticAssets').saveImage(imageFile);
-		},
-
-	});
+	}
+	);
