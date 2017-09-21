@@ -65,14 +65,16 @@ export default Component.extend(
 			this.get('contentImages')
 				.addContentImage(imageFile, this.get('staticAssets'))
 				.catch((err) => {
-					if (!this.get('isDestroyed')) {
-						Logger.error('Error uploading image', err);
+					if (this.get('isDestroyed')) {
+						return;
+					}
 
-						if (err.status === 400) {
-							this.handle400Response(err.response);
-						} else {
-							this.showErrorMessage('image-upload.upload-failed');
-						}
+					Logger.error('Error uploading image', err);
+
+					if (err.status === 400) {
+						this.handle400Response(err.response);
+					} else {
+						this.showErrorMessage('image-upload.upload-failed');
 					}
 				})
 				.then(() => {
@@ -93,4 +95,4 @@ export default Component.extend(
 			return i18n.t(msgKey, {ns: 'discussion'});
 		},
 	}
-	);
+);
