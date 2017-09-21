@@ -163,7 +163,7 @@
   "image-upload": {
     "upload-failed": "Upload failed.",
     "invalid-file-type": "Invalid image type, please use jpeg, png or gif.",
-    "add-image": "Add image"
+    "add-image": "Add Image"
   },
   "editor": {
     "post-failed-error": "Post failed.",
