@@ -245,7 +245,7 @@ export default Component.extend(
 
 		actions: {
 			remove() {
-				this.set('image.visible', false);
+				this.sendAction('removeImage', this.get('image'));
 			}
 		}
 	});

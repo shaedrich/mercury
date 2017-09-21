@@ -13,8 +13,14 @@
 		}
 
 		&__drag-n-drop-icon {
-			width: 42px;
+			color: $discussion-editor-image-upload-drag-n-drop-icon-color;
 			height: 42px;
+			width: 42px;
+		}
+
+		&__icon {
+			fill: $discussion-editor-image-upload-icon-color;
+			margin-right: 6px;
 		}
 
 		&__button {

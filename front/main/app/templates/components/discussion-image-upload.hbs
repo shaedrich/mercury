@@ -4,14 +4,15 @@
 	</div>
 {{else}}
 	{{discussion-image-upload-input
-			onImageSelected=(action 'onImageSelected')
-			reset=resetFileInput
-			click=(action 'emptyClickForFileInput')
+		click=(action 'emptyClickForFileInput')
+		onImageSelected=(action 'onImageSelected')
+		reset=resetFileInput
 	}}
 {{/if}}
 
 {{wds-spinner
-		active=isLoadingMode
-		class='categories-loading-overlay'
-		radius=32
-		strokeWidth=2}}
+	active=isLoadingMode
+	class='categories-loading-overlay'
+	radius=32
+	strokeWidth=2
+}}

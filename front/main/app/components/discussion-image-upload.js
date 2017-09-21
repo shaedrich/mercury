@@ -13,11 +13,11 @@ export default Component.extend(
 		isDragActive: false,
 		resetFileInput: false,
 
-		allowedFileTypes: {
-			'image/jpeg': true,
-			'image/png': true,
-			'image/gif': true,
-		},
+		allowedFileTypes: [
+			'image/jpeg',
+			'image/png',
+			'image/gif'
+		],
 
 		dragLeave(event) {
 			event.preventDefault();
@@ -48,7 +48,7 @@ export default Component.extend(
 		},
 
 		handleImageSelected(imageFile) {
-			if (!this.get(`allowedFileTypes.${imageFile.type}`)) {
+			if (this.get('allowedFileTypes').indexOf(imageFile.type) === -1) {
 				this.showErrorMessage('image-upload.invalid-file-type');
 				return;
 			}
@@ -57,15 +57,8 @@ export default Component.extend(
 
 			this.uploadImage(imageFile)
 				.then((result) => {
-					this.setProperties({
-						newImageUrl: result.url,
-						uploadedFile: imageFile,
-					});
-				})
-				.then(() => {
-					const url = this.get('newImageUrl');
-					if (!isEmpty(url)) {
-						this.get('contentImages').addContentImage(url);
+					if (!isEmpty(result)) {
+						this.get('contentImages').addContentImage(result);
 					}
 				})
 				.catch((err) => {
