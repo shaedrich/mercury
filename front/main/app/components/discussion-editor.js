@@ -58,7 +58,7 @@ export default Ember.Component.extend(
 
 		submitDisabled: Ember.computed(
 			'content', 'title', 'currentUser.isAuthenticated', 'showOverlayMessage',
-			'isReply', 'category', 'isGuidelinesEditor', 'contentImages.images.@each.isUploading',
+			'isReply', 'category', 'isGuidelinesEditor', 'contentImages.isUploading',
 			function () {
 				return this.getWithDefault('content.length', 0) === 0 ||
 					this.get('currentUser.isAuthenticated') === false ||
@@ -72,7 +72,7 @@ export default Ember.Component.extend(
 		 * @return boolean
 		 */
 		failsPostConstraints() {
-			if (this.get('contentImages.images.0.isUploading')) {
+			if (this.get('contentImages.isUploading')) {
 				return true;
 			}
 

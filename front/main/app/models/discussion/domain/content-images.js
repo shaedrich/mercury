@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {A, Object} = Ember,
+const {A, Object, computed} = Ember,
 	DiscussionContentImages = Object.extend({
 		images: null,
 
@@ -12,6 +12,10 @@ const {A, Object} = Ember,
 				this.set('images', new A());
 			}
 		},
+
+		isUploading: computed('images.@each.isUploading', function () {
+			return this.get('images.0.isUploading');
+		}),
 
 		hasImages() {
 			return this.get('images.length');
