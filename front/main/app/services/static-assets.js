@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import StaticAssetsModel from '../models/discussion/static-assets';
 
-const {Service, Logger, computed, inject, RSVP} = Ember;
+const {Service} = Ember;
 
 export default Service.extend({
 	model: StaticAssetsModel.create(),

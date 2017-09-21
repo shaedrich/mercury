@@ -1,7 +1,7 @@
-import Ember from 'ember';
-import request from 'ember-ajax/request';
+import fetch from 'fetch';
 import DiscussionBaseModel from './base';
-import DiscussionSiteAttributes from './domain/site-attributes';
+
+const {Logger} = Ember;
 
 const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 
@@ -9,21 +9,47 @@ const DiscussionStaticAssetsModel = DiscussionBaseModel.extend({
 	 * Save attribute in static-assets service
 	 * @private
 	 * @param {String|Object} data
-	 * @returns {Ember.RSVP.Promise}
+	 * @returns {Promise}
 	 */
 	save(data) {
-		return request(M.getDiscussionServiceUrl(`/${this.wikiId}/images`), {
-			data,
+		return fetch(M.getDiscussionServiceUrl(`/${this.wikiId}/images`), {
+			body: data,
 			method: 'POST',
-			processData: false,
-			contentType: false,
-			mimeType: 'multipart/form-data',
-		});
+			mode: 'cors',
+			credentials: 'include',
+		})
+			.then(response => {
+				if (response.ok) {
+					return response.json();
+				}
+				return this.deserializeErrorResponse(response);
+			});
+	},
+
+	/**
+	 * @private
+	 * @param response
+	 * @returns {Promise.<T>}
+	 */
+	deserializeErrorResponse(response) {
+		let error = new Error(response.statusText);
+		error.status = response.status;
+
+		return response.json()
+			.then(json => {
+				Logger.info('Deserialized error response', response, json);
+				error.response = json;
+				throw error;
+			})
+			.catch(err => {
+				Logger.warn('Failed to deserialize JSON', response, err);
+				throw error;
+			});
 	},
 
 	/**
 	 * @param {Object} imageFile
-	 * @returns {Ember.RSVP.Promise}
+	 * @returns {Promise}
 	 */
 	saveImage(imageFile) {
 		const data = new FormData();
