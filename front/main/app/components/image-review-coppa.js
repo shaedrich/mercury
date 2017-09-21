@@ -10,22 +10,22 @@ export default Ember.Component.extend({
 		showModal(popupModel) {
 			ImageReviewItemModel.getImageHistory(
 				popupModel.imageId).then((data) => {
-				this.set('thumbnailModel.history', data);
-			});
+					this.set('thumbnailModel.history', data);
+				});
 
 			ImageReviewItemModel.getImageInfo(
 				popupModel.imageId).then((data) => {
-				this.set('thumbnailModel.fullSizeImageUrl', popupModel.fullSizeImageUrl);
-				this.set('thumbnailModel.context', popupModel.context);
-				this.set('thumbnailModel.source', popupModel.source);
-				this.set('thumbnailModel.originalFilename', data.originalFilename);
-				this.set('thumbnailModel.size', data.size);
-				this.set('thumbnailModel.dimensions', data.dimensions);
-				this.set('thumbnailModel.ownerId', data.ownerId);
-				this.set('thumbnailModel.ownerLookupUrl',
-						 ImageReviewItemModel.getOwnerLookupUrl(data.ownerId));
-				this.set('isModalVisible', true);
-			});
+					this.set('thumbnailModel.fullSizeImageUrl', popupModel.fullSizeImageUrl);
+					this.set('thumbnailModel.context', popupModel.context);
+					this.set('thumbnailModel.source', popupModel.source);
+					this.set('thumbnailModel.originalFilename', data.originalFilename);
+					this.set('thumbnailModel.size', data.size);
+					this.set('thumbnailModel.dimensions', data.dimensions);
+					this.set('thumbnailModel.ownerId', data.ownerId);
+					this.set('thumbnailModel.ownerLookupUrl',
+							ImageReviewItemModel.getOwnerLookupUrl(data.ownerId));
+					this.set('isModalVisible', true);
+				});
 		},
 
 		closeModal() {

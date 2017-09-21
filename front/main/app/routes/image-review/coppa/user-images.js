@@ -17,7 +17,7 @@ export default Route.extend({
 			Logger.error('image-review route error', error);
 			let errorMessage = i18n.t('main.error-other', {ns: 'image-review'});
 
-			if (error.errors.some((e) => e.status === "401")) {
+			if (error.errors.some((e) => e.status === '401')) {
 				errorMessage = i18n.t('main.error-no-access-permissions', {ns: 'image-review'});
 			}
 
