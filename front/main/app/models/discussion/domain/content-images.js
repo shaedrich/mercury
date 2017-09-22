@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {Object, A} = Ember,
+const {A, Object, computed} = Ember,
 	DiscussionContentImages = Object.extend({
 		images: null,
 
@@ -13,6 +13,10 @@ const {Object, A} = Ember,
 			}
 		},
 
+		isUploading: computed('images.@each.isUploading', function () {
+			return this.get('images.0.isUploading');
+		}),
+
 		hasImages() {
 			return this.get('images.length');
 		},
@@ -21,17 +25,25 @@ const {Object, A} = Ember,
 			this.get('images').setObjects(images);
 		},
 
-		addContentImage(image) {
-			const images = this.get('images');
-			const position = images.filterBy('visible')
-				.reduce((previous, item) => Math.max(previous, item.position), 0);
-			images.pushObject(Object.create({
-				height: image.height,
-				position: position + 1,
-				url: image.url,
-				visible: true,
-				width: image.width,
-			}));
+		addContentImage(imageFile, staticAssets) {
+			const image = Object.create({
+				isUploading: true,
+				position: 0,
+				visible: true
+			});
+
+			this.get('images').pushObject(image);
+
+			return staticAssets
+				.saveImage(imageFile)
+				.then(({height, url, width}) => {
+					image.setProperties({
+						height,
+						isUploading: false,
+						url,
+						width
+					});
+				});
 		},
 
 		/**
@@ -50,11 +62,9 @@ const {Object, A} = Ember,
 					};
 				});
 		}
-
 	});
 
 DiscussionContentImages.reopenClass({
-
 	toImages(contentImages) {
 		return new A(contentImages)
 			.sortBy('position')

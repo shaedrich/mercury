@@ -1,7 +1,7 @@
 .discussions {
 
 	.discussion-image-upload {
-		$color: $wds-color-light-c4;
+		$color: $discussion-editor-image-upload-color;
 
 		&__drag-n-drop-placeholder {
 			align-items: center;
@@ -19,7 +19,6 @@
 		}
 
 		&__icon {
-			fill: $discussion-editor-image-upload-icon-color;
 			margin-right: 6px;
 		}
 
