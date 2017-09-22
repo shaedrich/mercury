@@ -125,7 +125,7 @@ function getTrackingContext(action, params) {
  *
  * @returns {void}
  */
-export function track(action, params) {
+export function track(action, params = {}) {
 	mercuryTrack(
 		getTrackingContext(action, params),
 	);

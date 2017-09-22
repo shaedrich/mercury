@@ -9,7 +9,6 @@ export default Component.extend(
 		classNames: ['discussion-image-upload'],
 		staticAssets: inject.service(),
 
-		isLoadingMode: false,
 		isDragActive: false,
 		resetFileInput: false,
 
@@ -63,14 +62,15 @@ export default Component.extend(
 				return;
 			}
 
-			this.set('isLoadingMode', true);
-
-			this.uploadImage(imageFile)
-				.then((result) => {
-					this.get('contentImages').addContentImage(result);
-				})
+			this.get('contentImages')
+				.addContentImage(imageFile, this.get('staticAssets'))
 				.catch((err) => {
+					if (this.get('isDestroyed')) {
+						return;
+					}
+
 					Logger.error('Error uploading image', err);
+
 					if (err.status === 400) {
 						this.handle400Response(err.response);
 					} else {
@@ -78,8 +78,9 @@ export default Component.extend(
 					}
 				})
 				.then(() => {
-					this.set('resetFileInput', true);
-					this.set('isLoadingMode', false);
+					if (!this.get('isDestroyed')) {
+						this.set('resetFileInput', true);
+					}
 				});
 		},
 
@@ -93,9 +94,5 @@ export default Component.extend(
 		getErrorMessage(msgKey) {
 			return i18n.t(msgKey, {ns: 'discussion'});
 		},
-
-		uploadImage(imageFile) {
-			return this.get('staticAssets').saveImage(imageFile);
-		},
-
-	});
+	}
+);
