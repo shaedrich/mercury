@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import AlertNotificationsMixin from '../mixins/alert-notifications';
 
-const {isEmpty, inject, Component, Logger} = Ember;
+const {inject, Component, Logger} = Ember;
 
 export default Component.extend(
 	AlertNotificationsMixin,
@@ -47,6 +47,16 @@ export default Component.extend(
 			},
 		},
 
+		handle400Response(response) {
+			// TODO this should be refactored to use Problem's type, when it becomes available
+			Logger.error('Handling 400 response', response);
+			if (response && response.title === 'Max image size exceeded') {
+				this.showErrorMessage('image-upload.max-size-exceeded');
+			} else {
+				this.showErrorMessage('image-upload.invalid-image');
+			}
+		},
+
 		handleImageSelected(imageFile) {
 			if (this.get('allowedFileTypes').indexOf(imageFile.type) === -1) {
 				this.showErrorMessage('image-upload.invalid-file-type');
@@ -57,13 +67,15 @@ export default Component.extend(
 
 			this.uploadImage(imageFile)
 				.then((result) => {
-					if (!isEmpty(result)) {
-						this.get('contentImages').addContentImage(result);
-					}
+					this.get('contentImages').addContentImage(result);
 				})
 				.catch((err) => {
 					Logger.error('Error uploading image', err);
-					this.showErrorMessage('image-upload.upload-failed');
+					if (err.status === 400) {
+						this.handle400Response(err.response);
+					} else {
+						this.showErrorMessage('image-upload.upload-failed');
+					}
 				})
 				.then(() => {
 					this.set('resetFileInput', true);
