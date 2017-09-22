@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
-const {A, Object, computed} = Ember,
-	DiscussionContentImages = Object.extend({
+const {A, Copyable, Object, computed} = Ember;
+const DiscussionContentImages = Object.extend(
+	Copyable,
+	{
 		images: null,
 
 		init(images) {
@@ -61,8 +63,13 @@ const {A, Object, computed} = Ember,
 						width: image.width
 					};
 				});
+		},
+
+		copy() {
+			return new DiscussionContentImages(DiscussionContentImages.toImages(this.get('images')));
 		}
-	});
+	}
+);
 
 DiscussionContentImages.reopenClass({
 	toImages(contentImages) {
@@ -84,7 +91,7 @@ DiscussionContentImages.reopenClass({
 	 */
 	create(contentImages) {
 		return new DiscussionContentImages(DiscussionContentImages.toImages(contentImages));
-	},
+	}
 });
 
 export default DiscussionContentImages;

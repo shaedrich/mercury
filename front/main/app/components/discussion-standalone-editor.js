@@ -73,7 +73,7 @@ export default DiscussionMultipleInputsEditor.extend(
 				openGraph: editEntity.get('openGraph'),
 				showsOpenGraphCard: Boolean(editEntity.get('openGraph')),
 				title: editEntity.get('title'),
-				contentImages: editEntity.get('contentImages'),
+				contentImages: editEntity.get('contentImages').copy(),
 			});
 
 			this.focusFirstTextareaWhenRendered();
@@ -105,12 +105,14 @@ export default DiscussionMultipleInputsEditor.extend(
 		toggleActiveState(isActive) {
 			this._super(...arguments);
 
+			const $htmlBody = $('html, body');
+
 			if (isActive) {
 				this.set('pageYOffsetCache', window.pageYOffset);
 				this.focusFirstTextareaWhenRendered();
 			}
 
-			$('html, body').toggleClass('mobile-full-screen', isActive);
+			$htmlBody.toggleClass('mobile-full-screen', isActive);
 
 			if (navigator.userAgent.indexOf('iPhone') > -1) {
 				this.$(`#${this.get('textAreaId')}`).toggleClass('no-overflow', isActive);
@@ -120,7 +122,7 @@ export default DiscussionMultipleInputsEditor.extend(
 				if (this.get('responsive.isMobile')) {
 					window.scroll(0, this.get('pageYOffsetCache'));
 				} else {
-					$('html, body').animate({scrollTop: this.get('pageYOffsetCache')});
+					$htmlBody.animate({scrollTop: this.get('pageYOffsetCache')});
 				}
 			}
 		},
