@@ -56,8 +56,10 @@ export default Ember.Component.extend(
 			}
 		}),
 
-		submitDisabled: Ember.computed('content', 'title', 'currentUser.isAuthenticated', 'showOverlayMessage',
-			'isReply', 'category', 'isGuidelinesEditor', function () {
+		submitDisabled: Ember.computed(
+			'content', 'title', 'currentUser.isAuthenticated', 'showOverlayMessage',
+			'isReply', 'category', 'isGuidelinesEditor', 'contentImages.isUploading',
+			function () {
 				return this.getWithDefault('content.length', 0) === 0 ||
 					this.get('currentUser.isAuthenticated') === false ||
 					this.get('showOverlayMessage') ||
@@ -70,9 +72,18 @@ export default Ember.Component.extend(
 		 * @return boolean
 		 */
 		failsPostConstraints() {
-			if (!this.get('isReply') && !this.get('isGuidelinesEditor')) { // is a post
-				return !this.get('category.id') || // does not have a category
-						(this.get('title') || '').trim().length === 0; // does not have a title
+			if (this.get('contentImages.isUploading')) {
+				return true;
+			}
+
+			// is a post
+			if (!this.get('isReply') && !this.get('isGuidelinesEditor')) {
+				return (
+					// does not have a category
+					!this.get('category.id') ||
+					// does not have a title
+					(this.get('title') || '').trim().length === 0
+				);
 			}
 			return false;
 		},
