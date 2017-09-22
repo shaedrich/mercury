@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
 	actions: {
 		reviewUserImages() {
 			this.get('target').send('reviewUserImages');
+			this.transitionToRoute('image-review.coppa');
 		}
 	}
 });

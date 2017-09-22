@@ -113,6 +113,10 @@ Router.map(function () {
 			path: '/summary'
 		});
 
+		this.route('error', {
+			path: '/error'
+		});
+
 		this.route('coppa', function () {
 			this.route('index', {
 				path: '/'
