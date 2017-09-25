@@ -192,7 +192,7 @@ export function getWikiBaseUrlFromWikiDomain(settings, wikiDomain, wiki) {
 			return `${wiki}.${settings.devboxDomain}.wikia-dev.${settings.devDomain}`;
 		default:
 			environmentPrefix = wikiDomain.substring(0, wikiDomain.indexOf('.'));
-			return `${environmentPrefix}-${wiki}.wikia.com`;
+			return `${environmentPrefix}.${wiki}.wikia.com`;
 	}
 }
 
