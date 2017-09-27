@@ -6,7 +6,7 @@ import {convertToTimestamp} from '../../utils/iso-date-time';
 
 
 const {Object: EmberObject, A} = Ember,
-	avatar = 'http://static.wikia.nocookie.net/messaging/images/1/19/Avatar.jpg/revision/latest/scale-to-width-down/50';
+	avatar = 'https://static.wikia.nocookie.net/messaging/images/1/19/Avatar.jpg/revision/latest/scale-to-width-down/50';
 
 const NotificationModel = EmberObject.extend({
 	title: null,

@@ -49,7 +49,7 @@ module.exports = function (defaults) {
 			extensions: ['js', 'css', 'svg', 'png', 'jpg', 'gif', 'map'],
 			generateAssetMap: true,
 			replaceExtensions: ['html', 'css', 'js', 'hbs'],
-			prepend: 'http://mercury.nocookie.net/mercury-static/main/'
+			prepend: 'https://mercury.nocookie.net/mercury-static/main/'
 		},
 		replace: {
 			files: [
