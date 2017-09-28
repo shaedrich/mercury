@@ -1204,8 +1204,8 @@
     },
     "design-system-i18n": {
       "version": "0.11.0",
-      "from": "git://github.com/wikia/design-system-i18n.git#8a9c00b5ab373da10701442ad1a147b5062d7360",
-      "resolved": "git://github.com/wikia/design-system-i18n.git#8a9c00b5ab373da10701442ad1a147b5062d7360",
+      "from": "git://github.com/wikia/design-system-i18n.git#9675ed7229760c8fcd2f14bb6e554b7d21095d9f",
+      "resolved": "git://github.com/wikia/design-system-i18n.git#9675ed7229760c8fcd2f14bb6e554b7d21095d9f",
       "dev": true
     },
     "detect-file": {
