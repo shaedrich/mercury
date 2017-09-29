@@ -1,49 +1,96 @@
 import Ember from 'ember';
 
-const {Object, A} = Ember,
-	DiscussionContentImages = Object.extend({
-		images: null
-	});
+const {A, Copyable, Object, computed} = Ember;
+const DiscussionContentImages = Object.extend(
+	Copyable,
+	{
+		images: null,
 
-DiscussionContentImages.reopenClass({
-	/**
-	 * @param {object[]} contentImagesData
-	 * @returns {Ember.Object}
-	 */
-	create(contentImagesData) {
-		const images = new A(contentImagesData)
-			.sortBy('position')
-			.map(data => {
-				return Object.create({
-					id: data.id,
-					height: data.height,
-					position: data.position,
-					url: data.url,
-					visible: true,
-					width: data.width
-				});
+		init(images) {
+			this._super(...arguments);
+			if (images) {
+				this.set('images', images);
+			} else {
+				this.set('images', new A());
+			}
+		},
+
+		isUploading: computed('images.@each.isUploading', function () {
+			return this.get('images.0.isUploading');
+		}),
+
+		hasImages() {
+			return this.get('images.length');
+		},
+
+		setImages(images) {
+			this.get('images').setObjects(images);
+		},
+
+		addContentImage(imageFile, staticAssets) {
+			const image = Object.create({
+				isUploading: true,
+				position: 0,
+				visible: true
 			});
 
-		return this._super({images});
+			this.get('images').pushObject(image);
+
+			return staticAssets
+				.saveImage(imageFile)
+				.then(({height, url, width}) => {
+					image.setProperties({
+						height,
+						isUploading: false,
+						url,
+						width
+					});
+				});
+		},
+
+		/**
+		 * Converts to API representation
+		 * @returns object[]
+		 */
+		toData() {
+			return this.get('images')
+				.filterBy('visible')
+				.map(image => {
+					return {
+						height: image.height,
+						position: image.position,
+						url: image.url,
+						width: image.width
+					};
+				});
+		},
+
+		copy() {
+			return new DiscussionContentImages(DiscussionContentImages.toImages(this.get('images')));
+		}
+	}
+);
+
+DiscussionContentImages.reopenClass({
+	toImages(contentImages) {
+		return new A(contentImages)
+			.sortBy('position')
+			.map(data => Object.create({
+				id: data.id,
+				height: data.height,
+				position: data.position,
+				url: data.url,
+				visible: true,
+				width: data.width
+			}));
 	},
 
 	/**
-	 * Converts array of Ember.Object (images) to data representation
-	 *
 	 * @param {object[]} contentImages
-	 *
-	 * @returns object[]
+	 * @returns {Ember.Object}
 	 */
-	toData(contentImages) {
-		return contentImages.filterBy('visible')
-			.map(image => {
-				return {
-					height: image.height,
-					position: image.position,
-					url: image.url,
-					width: image.width
-				};
-			});
+	create(contentImages) {
+		return new DiscussionContentImages(DiscussionContentImages.toImages(contentImages));
 	}
 });
 

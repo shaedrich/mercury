@@ -83,6 +83,17 @@
 						openGraphData=openGraph
 					}}
 				{{/if}}
+				{{discussion-post-images
+					images=contentImages.images
+					mode='edit'
+					permittedToEdit=isActive
+					widthMultiplier=imageWidthMultiplier
+				}}
+				{{#if showImageUpload}}
+					{{discussion-image-upload
+						contentImages=contentImages
+					}}
+				{{/if}}
 			</div>
 		{{/if}}
 	</div>

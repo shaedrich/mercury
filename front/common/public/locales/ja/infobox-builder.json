@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "インフォボックス・テンプレートの名前を指定してください。", 
     "edit-title-placeholder": "無題のテンプレート", 
     "first-title-default": "インフォボックスのタイトル", 
-    "header": "テンプレートの編集：__title__", 
+    "header": "テンプレートの編集：{title}", 
     "help-row": "行を使用するとインフォボックスに情報を追加できます。ラベル欄を使用して行の名前（例：目の色、家族）を指定できます。", 
     "help-section-collapsible": "「折りたたみ可能にする」オプションをオンにすると、インフォボックスが記事ページで使用された場合にセクションを閉じたり開いたりできます。", 
     "help-section-header": "見出しは、インフォボックスをセクションに分けて整理するためのものです。ラベル欄を使用してセクションの名前（例：体の特徴）を指定できます。見出しの下に追加した各行は自動的にそのセクションの一部になります。「折りたたみ可能にする」オプションをオンにすると、インフォボックスが記事ページで使用された場合にセクションを閉じたり開いたりできます。", 
@@ -39,8 +39,9 @@
     "source-editor-tooltip": "ソースエディタ", 
     "success": "保存しました", 
     "title-article-name": "記事名", 
-    "title-default": "インフォボックスのタイトル__index__", 
+    "title-default": "インフォボックスのタイトル{index}", 
     "title-naming-conflict-error": "この名前はすでに使用されています", 
+    "title-naming-invalid-title-error": "Sorry, the page title was invalid. Please use a different title.", 
     "title-use-article-name": "記事名を使用する", 
     "untitled-infobox-template": "無題のインフォボックス・テンプレート"
   }

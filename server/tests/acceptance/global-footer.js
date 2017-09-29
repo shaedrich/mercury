@@ -12,7 +12,6 @@ var Lab = require('lab'),
 	clone = require('../utils/clone'),
 	server = require('../../../www/server/app/app'),
 	mediawiki = require('../../../www/server/app/lib/mediawiki'),
-	article = require('../fixtures/article'),
 	wikiVariables = require('../fixtures/wiki-variables'),
 	footer = require('../fixtures/design-system/global-footer'),
 	jsdom = require('jsdom');

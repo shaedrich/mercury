@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {track, trackActions} from '../utils/discussion-tracker';
+import {track} from '../utils/discussion-tracker';
 
 export default Ember.Mixin.create({
 	categorySetter: Ember.observer('isActive', 'editEntity', 'categories', 'isEdit', function () {

@@ -8,10 +8,20 @@ export default Route.extend({
 	model() {
 		return request(M.getImageReviewServiceUrl('/info')).then(({userAllowedToAuditReviews}) => {
 			if (!userAllowedToAuditReviews) {
-				this.transitionTo('wiki-page', '');
+				this.controllerFor('application').addAlert({
+					message: i18n.t('main.error-no-access-permissions', {ns: 'image-review'}),
+					type: 'warning',
+					persistent: true
+				});
+				this.transitionTo('image-review.error');
 			}
 		}, () => {
-			this.transitionTo('wiki-page', '');
+			this.controllerFor('application').addAlert({
+				message: i18n.t('main.error-other', {ns: 'image-review'}),
+				type: 'warning',
+				persistent: true
+			});
+			this.transitionTo('image-review.error');
 		});
 	},
 

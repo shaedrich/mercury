@@ -239,7 +239,7 @@ export default {
 	maxRequestsPerChild: parseInt(process.env.MAX_REQUEST_PER_CHILD, 10) || 50000,
 	optimizely: {
 		enabled: true,
-		scriptPath: '//cdn.optimizely.com/js/',
+		scriptPath: 'https://cdn.optimizely.com/js/',
 		account: '2449650414'
 	},
 	qualaroo: {
@@ -268,7 +268,7 @@ export default {
 				id: 'UA-32132943-1',
 				sampleRate: 100
 			},
-			scriptUrl: '//www.google-analytics.com/analytics.js'
+			scriptUrl: 'https://www.google-analytics.com/analytics.js'
 		},
 		quantserve: 'p-8bG6eLqkH6Avk',
 		comscore: {

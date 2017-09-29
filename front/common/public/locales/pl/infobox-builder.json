@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "Podaj nazwę dla szablonu infoboksu.", 
     "edit-title-placeholder": "Szablon bez nazwy", 
     "first-title-default": "Tytuł infoboksu", 
-    "header": "Edycja szablonu: __title__", 
+    "header": "Edycja szablonu: {title}", 
     "help-row": "Wiersz pozwala na dodanie informacji do infoboksa. Korzystaj z pola etykiety, aby sprecyzować nazwę wiersza (np. kolor oczu, rodzina, etc.).", 
     "help-section-collapsible": "Jeśli zaznaczysz opcję \"rozwijany\", będzie można zamykać i otwierać sekcje, kiedy infoboks będzie wykorzystywany na stronie artykułu.", 
     "help-section-header": "Nagłówek pozwala organizować infoboks według sekcji. Użyj etykiety pola, aby określić nazwę sekcji (np. wygląd zewnętrzny). Każdy wiersz dodany do danego nagłówka będzie automatycznie stanowił część danej sekcji. Jeśli zaznaczysz opcję \"rozwijany\", będziesz mógł otwierać i zamykać sekcje, kiedy infoboks będzie wykorzystywany na stronie artykułu.", 
@@ -39,8 +39,9 @@
     "source-editor-tooltip": "Edytor źródłowy", 
     "success": "Udało się!", 
     "title-article-name": "Nazwa artykułu", 
-    "title-default": "__index__ tytułu infoboksu", 
+    "title-default": "{index} tytułu infoboksu", 
     "title-naming-conflict-error": "Ta nazwa jest już wykorzystywana", 
+    "title-naming-invalid-title-error": "Sorry, the page title was invalid. Please use a different title.", 
     "title-use-article-name": "Użyj nazwy artykułu", 
     "untitled-infobox-template": "Szablon Infoboksu bez nazwy"
   }

@@ -5,7 +5,7 @@
     "email_already_exists": "Этот адрес электронной почты уже зарегистрирован на ФЭНДОМЕ", 
     "email_invalid": "Адрес электронной почты недействителен", 
     "fb_account_already_linked": "Этот аккаунт Facebook уже подключён к другой учётной записи на ФЭНДОМЕ", 
-    "invalid-email": "Похоже, у вас нет электронной почты, связанной с вашей учётной записью на ФЭНДОМЕ. Пожалуйста, __contactFandomLink__", 
+    "invalid-email": "Похоже, у вас нет электронной почты, связанной с вашей учётной записью на ФЭНДОМЕ. Пожалуйста, {contactFandomLink}", 
     "password_equal_name": "Пароль и имя пользователя не должны совпадать", 
     "password_exceeds_max_length": "Длина пароля не может превышать 50 символов", 
     "passwords_not_match": "Пароли не совпадают", 
@@ -23,6 +23,6 @@
     "wrong-credentials": "Мы не можем распознать эти учётные данные. Пожалуйста, попробуйте снова или зарегистрируйте новый аккаунт."
   }, 
   "labels": {
-    "terms-of-use-and-privacy-policy-text": "Я соглашаюсь с __termsOfUseLink__ и __privacyPolicyLink__ (обязательно)"
+    "terms-of-use-and-privacy-policy-text": "Я соглашаюсь с {termsOfUseLink} и {privacyPolicyLink} (обязательно)"
   }
 }

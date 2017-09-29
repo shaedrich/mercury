@@ -5,7 +5,7 @@
     "email_already_exists": "このメールアドレスはFANDOMに登録済みです", 
     "email_invalid": "メールアドレスが無効です", 
     "fb_account_already_linked": "このFacebookアカウントはすでに別のFANDOMアカウントにコネクトされています", 
-    "invalid-email": "記入されたユーザー名にはメールアドレスが登録されていません。__contactFandomLink__にお問い合わせください。", 
+    "invalid-email": "記入されたユーザー名にはメールアドレスが登録されていません。{contactFandomLink}にお問い合わせください。", 
     "password_equal_name": "パスワードとユーザー名を同じにすることはできません", 
     "password_exceeds_max_length": "パスワードは50文字以下でご指定ください", 
     "passwords_not_match": "パスワードが一致しません", 
@@ -23,6 +23,6 @@
     "wrong-credentials": "入力されたログイン情報を認識できません。もう一度お試しになるか、新しいアカウントをご登録ください。"
   }, 
   "labels": {
-    "terms-of-use-and-privacy-policy-text": "__termsOfUseLink__と__privacyPolicyLink__に同意します（必須）"
+    "terms-of-use-and-privacy-policy-text": "{termsOfUseLink}と{privacyPolicyLink}に同意します（必須）"
   }
 }

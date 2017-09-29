@@ -1,6 +1,12 @@
 .post-image-editor-tools-wrapper {
 	position: relative;
 
+	.image-placeholder {
+		background-color: $discussion-editor-image-upload-placeholder-background-color;
+		height: 300px;
+		width: 100%;
+	}
+
 	.delete-image {
 		align-items: center;
 		background-color: $wds-color-dark-c3;
@@ -11,6 +17,8 @@
 		right: 0;
 		top: 0;
 		width: 40px;
+		// show it over loading overlay
+		z-index: $z-9;
 
 		svg {
 			fill: $wds-color-white;

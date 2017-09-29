@@ -7,7 +7,7 @@ import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
 import DiscussionContentImages from '../models/discussion/domain/content-images';
 
-const {$, A, computed, inject, isEmpty, observer, run} = Ember;
+const {$, computed, get, inject, observer, run} = Ember;
 
 export default DiscussionMultipleInputsEditor.extend(
 	DiscussionEditorOpengraph,
@@ -17,18 +17,14 @@ export default DiscussionMultipleInputsEditor.extend(
 		classNames: ['discussion-standalone-editor'],
 
 		currentUser: inject.service(),
+		responsive: inject.service(),
 
 		editEntity: null,
-
 		hasTitle: false,
-
 		isEdit: false,
-
-		isReply: computed.bool('editEntity.isReply'),
-
 		pageYOffsetCache: 0,
 
-		responsive: inject.service(),
+		isReply: computed.bool('editEntity.isReply'),
 
 		categoryTrackingAction: computed('isEdit', function () {
 			return this.get('isEdit') ? trackActions.PostCategoryEdited : trackActions.PostCategoryAdded;
@@ -42,22 +38,26 @@ export default DiscussionMultipleInputsEditor.extend(
 			return this.get('isEdit') && !this.get('editEntity.userData.permissions.canEdit');
 		}),
 
-		editImagePermitted: computed('isEdit', 'editEntity.userData.permissions.canEdit', function () {
-			return this.get('isEdit') && this.get('editEntity.userData.permissions.canEdit');
-		}),
-
-		images: computed('editEntity.contentImages.images', function () {
-			const images = this.get('editEntity.contentImages.images');
-
-			return isEmpty(images) ? new A() : images.map(image => Ember.Object.create({...image}));
-		}),
-
 		imageWidthMultiplier: computed('isReply', 'responsive.isMobile', function () {
 			return this.get('responsive.isMobile') || this.get('isReply') ? 1 : 2;
 		}),
 
 		showMultipleInputs: computed('hasTitle', 'isReply', function () {
 			return this.get('hasTitle') && !this.get('isReply');
+		}),
+
+		editImagePermitted: computed('isEdit', 'editEntity.userData.permissions.canEdit', function () {
+			// the user can edit images if s/he's got a permission or we're in creation mode
+			return !this.get('isEdit') || this.get('editEntity.userData.permissions.canEdit');
+		}),
+
+		showImageUpload: computed('contentImages.images.[]', 'editImagePermitted', function () {
+			const contentImages = this.get('contentImages');
+			const hasImages = contentImages && contentImages.hasImages();
+
+			return get(Mercury, 'wiki.enableDiscussionsImageUpload') &&
+				!hasImages &&
+				this.get('editImagePermitted');
 		}),
 
 		// first time it is triggered by the 'editEntity' property, and later by the 'isActive' property
@@ -72,11 +72,24 @@ export default DiscussionMultipleInputsEditor.extend(
 				content: editEntity.get('rawContent'),
 				openGraph: editEntity.get('openGraph'),
 				showsOpenGraphCard: Boolean(editEntity.get('openGraph')),
-				title: editEntity.get('title')
+				title: editEntity.get('title'),
+				contentImages: editEntity.get('contentImages').copy(),
 			});
 
 			this.focusFirstTextareaWhenRendered();
 		}),
+
+		init() {
+			this._super(...arguments);
+			if (!this.get('isEdit')) {
+				this.set('contentImages', new DiscussionContentImages());
+			}
+		},
+
+		afterSuccess() {
+			this._super(...arguments);
+			this.set('contentImages', new DiscussionContentImages());
+		},
 
 		click(event) {
 			this.focusOnNearestTextarea(event);
@@ -90,14 +103,16 @@ export default DiscussionMultipleInputsEditor.extend(
 		},
 
 		toggleActiveState(isActive) {
-			this._super();
+			this._super(...arguments);
+
+			const $htmlBody = $('html, body');
 
 			if (isActive) {
 				this.set('pageYOffsetCache', window.pageYOffset);
 				this.focusFirstTextareaWhenRendered();
 			}
 
-			$('html, body').toggleClass('mobile-full-screen', isActive);
+			$htmlBody.toggleClass('mobile-full-screen', isActive);
 
 			if (navigator.userAgent.indexOf('iPhone') > -1) {
 				this.$(`#${this.get('textAreaId')}`).toggleClass('no-overflow', isActive);
@@ -107,14 +122,14 @@ export default DiscussionMultipleInputsEditor.extend(
 				if (this.get('responsive.isMobile')) {
 					window.scroll(0, this.get('pageYOffsetCache'));
 				} else {
-					$('html, body').animate({scrollTop: this.get('pageYOffsetCache')});
+					$htmlBody.animate({scrollTop: this.get('pageYOffsetCache')});
 				}
 			}
 		},
 
 		actions: {
 			close() {
-				this._super();
+				this._super(...arguments);
 
 				this.set('editEntity', null);
 				this.sendAction('setEditorActive', this.get('isEdit') ? 'editEditor' : 'contributeEditor', false);
@@ -133,8 +148,8 @@ export default DiscussionMultipleInputsEditor.extend(
 						discussionEntityData.openGraph = this.get('openGraph');
 					}
 
-					if (!isEmpty(this.get('images'))) {
-						discussionEntityData.contentImages = DiscussionContentImages.toData(this.get('images'));
+					if (this.get('contentImages')) {
+						discussionEntityData.contentImages = this.get('contentImages').toData();
 					}
 
 					if (!this.get('isEdit')) {

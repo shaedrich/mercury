@@ -15,7 +15,7 @@
     "edit-title-modal-text-on-rename": "Provide name for your infobox template.", 
     "edit-title-placeholder": "Untitled template", 
     "first-title-default": "Infobox Title", 
-    "header": "Editing template: __title__", 
+    "header": "Editing template: {title}", 
     "help-row": "A row allows you to add information to your infobox. Use label field to specify the name of the row (like eye color, family, etc.).", 
     "help-section-collapsible": "If you check the “collapsible” option, you will be able to close and open sections when the infobox will be used on an article page.", 
     "help-section-header": "Header organizes your infobox into sections. Use label field to specify the name of the section (eg. physical description). Each row added under a header will automatically be a part of its section. If you check the “collapsible” option, you will be able to close and open sections when the infobox will be used on an article page.", 
@@ -39,8 +39,9 @@
     "source-editor-tooltip": "Source Editor", 
     "success": "Success!", 
     "title-article-name": "Article Name", 
-    "title-default": "Infobox Title __index__", 
+    "title-default": "Infobox Title {index}", 
     "title-naming-conflict-error": "This name is already taken", 
+    "title-naming-invalid-title-error": "Sorry, the page title was invalid. Please use a different title.", 
     "title-use-article-name": "Use article name", 
     "untitled-infobox-template": "Untitled Infobox Template"
   }

@@ -5,7 +5,7 @@
     "email_already_exists": "L'email è già registrata su FANDOM", 
     "email_invalid": "Indirizzo email non valido", 
     "fb_account_already_linked": "Questo account di Facebook è già connesso a un altro account di FANDOM", 
-    "invalid-email": "Sembra che tu non disponga di un indirizzo e-mail associato al tuo account FANDOM. Ti preghiamo di __contactFandomLink__", 
+    "invalid-email": "Sembra che tu non disponga di un indirizzo e-mail associato al tuo account FANDOM. Ti preghiamo di {contactFandomLink}", 
     "password_equal_name": "Password e nome utente non possono essere identici", 
     "password_exceeds_max_length": "La password non può contenere più di 50 caratteri", 
     "passwords_not_match": "Le password non corrispondono", 
@@ -23,6 +23,6 @@
     "wrong-credentials": "Queste credenziali non sono state riconosciute. Riprova o iscriviti con un nuovo account."
   }, 
   "labels": {
-    "terms-of-use-and-privacy-policy-text": "Accetto i __termsOfUseLink__ e l' __privacyPolicyLink__ (obbligatorio)"
+    "terms-of-use-and-privacy-policy-text": "Accetto i {termsOfUseLink} e l' {privacyPolicyLink} (obbligatorio)"
   }
 }

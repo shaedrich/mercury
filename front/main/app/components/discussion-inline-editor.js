@@ -5,6 +5,9 @@ import DiscussionEditorOpengraph from '../mixins/discussion-editor-opengraph';
 import DiscussionMultipleInputsEditor from './discussion-multiple-inputs-editor';
 import DiscussionEditorCategoryPicker from '../mixins/discussion-editor-category-picker';
 import DiscussionEditorConfiguration from '../mixins/discussion-editor-configuration';
+import DiscussionContentImages from '../models/discussion/domain/content-images';
+
+const {computed, get, inject} = Ember;
 
 export default DiscussionMultipleInputsEditor.extend(
 	DiscussionEditorOpengraph,
@@ -17,19 +20,37 @@ export default DiscussionMultipleInputsEditor.extend(
 		classNameBindings: ['isSticky', 'isActive'],
 		tagName: 'form',
 
-		currentUser: Ember.inject.service(),
+		currentUser: inject.service(),
 
 		isActive: false,
 		isSticky: false,
 
 		layoutName: 'components/discussion-inline-editor',
 
-		isPostEditor: Ember.computed('isReply', function () {
+		init() {
+			this._super(...arguments);
+			if (!this.get('isEdit')) {
+				this.set('contentImages', new DiscussionContentImages());
+			}
+		},
+
+		afterSuccess() {
+			this._super();
+			this.set('contentImages', new DiscussionContentImages());
+		},
+
+		isPostEditor: computed('isReply', function () {
 			return !this.get('isReply');
 		}),
 
-		isReadonly: Ember.computed('isActive', function () {
+		isReadonly: computed('isActive', function () {
 			return !this.get('isActive') ? 'readonly' : undefined;
+		}),
+
+		showImageUpload: computed('contentImages.images.[]', 'isActive', function () {
+			return get(Mercury, 'wiki.enableDiscussionsImageUpload') &&
+				!this.get('contentImages').hasImages() &&
+				this.get('isActive');
 		}),
 
 		/**
@@ -37,7 +58,7 @@ export default DiscussionMultipleInputsEditor.extend(
 		 * collapsed inline editor.
 		 * @returns {boolean}
 		 */
-		showTextareaAsFirstIfAlone: Ember.computed('isActive', 'isReply', function () {
+		showTextareaAsFirstIfAlone: computed('isActive', 'isReply', function () {
 			return this.get('isReply') || this.get('isActive');
 		}),
 
@@ -53,7 +74,8 @@ export default DiscussionMultipleInputsEditor.extend(
 						body: this.get('content'),
 						creatorId: this.get('currentUser.userId'),
 						siteId: Mercury.wiki.id,
-						title: this.get('title')
+						title: this.get('title'),
+						contentImages: this.get('contentImages').toData(),
 					};
 					if (this.get('showsOpenGraphCard')) {
 						newDiscussionEntityData.openGraph = this.get('openGraph');
