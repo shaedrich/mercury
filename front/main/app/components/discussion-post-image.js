@@ -1,38 +1,32 @@
 import Ember from 'ember';
-import ViewportMixin from '../mixins/viewport';
 
-const {Component, computed, String, observer} = Ember,
-	SCALE_HEIGHT = 'scale-to-height-down',
-	SCALE_WIDTH = 'scale-to-width-down';
+const SCALE_WIDTH = 'scale-to-width-down',
+	ZOOM_CROP = 'zoom-crop-down',
+	{
+		Component,
+		computed
+	} = Ember;
 
 export default Component.extend(
-	ViewportMixin,
 	{
 		/**
-		 * Important !!! Please adjust those values when breakpoints change.
-		 * Desktop breakpoint is the same as middle mobile breakpoint. It would be enough to set it to 640.
-		 * However to not hold too much images in static assets, breakpoint was repeated.
+		 * Important! Adjust these values when breakpoints change.
 		 * @private
 		 */
-		breakpoints: {
-			desktop: 767,
-			mobile: [420, 767, 1063]
-		},
+		availableThumbSizes: [
+			420,
+			// Desktop < 1575px
+			520,
+			// Desktop >= 1575px
+			640,
+			767,
+			1063
+		],
 
 		/**
 		 * @public
 		 */
 		crop: false,
-
-		/**
-		 * @private
-		 */
-		croppedSources: null,
-
-		/**
-		 * @private
-		 */
-		croppedStyle: null,
 
 		/**
 		 * @public
@@ -44,203 +38,50 @@ export default Component.extend(
 		 */
 		image: null,
 
-		/**
-		 * @private
-		 */
-		sources: null,
+		srcset: computed('crop', 'image', function () {
+			const image = this.get('image');
 
-		/**
-		 * @private
-		 */
-		srcset: null,
+			if (!image.url) {
+				return '';
+			}
 
-		/**
-		 * @public
-		 *
-		 * Accepts null or undefined, fallbacks to 1.
-		 */
-		widthMultiplier: 1,
+			const sources = this.get('crop') ? this.getCroppedSources(image) : this.getUncroppedSources(image);
 
-		displayedSources: computed('crop', function () {
-			return this.get('crop') ? this.get('croppedSources') : this.get('sources');
+			return sources.join(', ');
 		}),
 
-		viewportChangeObserver: observer('viewportDimensions.width', function () {
-			this.cropImage();
-		}),
+		// On desktop image width is limited by column width, on mobile it can take almost 100% of viewport width
+		sizes: '(min-width: 1575px) 640px, (min-width: 1064px) 520px, 100vw',
 
-		/**
-		 * @private
-		 */
-		init() {
-			this._super(...arguments);
+		getUncroppedSources(image) {
+			const sources = [];
 
-			this.setProperties({
-				croppedSources: [],
-				sources: []
-			});
-		},
-
-		/**
-		 * @private
-		 *
-		 * Crops image to 16:9 ratio.
-		 */
-		computeCroppedWidthAndHeight() {
-			const imageHeight = this.get('image.height'),
-				imageWidth = this.get('image.width'),
-				// it is more efficient to use .css('width') than .width()
-				componentWidth = parseInt(this.$().css('width'), 10),
-				componentHeight = Math.floor(componentWidth * 9 / 16);
-
-			let croppedStyle = null;
-
-			if (imageWidth > componentWidth || imageHeight > componentHeight) {
-				const useImageWidthWithoutScaling = imageHeight > componentHeight && imageWidth <= componentWidth;
-
-				let width = useImageWidthWithoutScaling ? imageWidth : componentWidth;
-
-				croppedStyle = String.htmlSafe(`height: ${componentHeight}px; width: ${width}px; object-fit: cover;`);
-			}
-
-			this.set('croppedStyle', croppedStyle);
-		},
-
-		/**
-		 * @private
-		 */
-		cropImage() {
-			if (this.get('crop')) {
-				// because img style might be modified here it has to be done after rendering
-				Ember.run.scheduleOnce('afterRender', this, () => {
-					this.computeCroppedWidthAndHeight();
-				});
-			}
-		},
-
-		/**
-		 * @private
-		 */
-		didInsertElement() {
-			this._super(...arguments);
-
-			this.cropImage();
-		},
-
-		/**
-		 * @private
-		 */
-		didReceiveAttrs() {
-			this._super(...arguments);
-
-			this.generateSourcesFromBreakpoints();
-			this.generateSourceFromImageDimensions();
-		},
-
-		/**
-		 * @private
-		 */
-		generateLink(operation, resolution, density = 1) {
-			const densitySuffix = density === 1 ? '' : ` ${density}x`;
-
-			return `${this.get('image.url')}/${operation}/${resolution}${densitySuffix}`;
-		},
-
-		/**
-		 * @private
-		 *
-		 * Constructs sources for picture tag. Does not create unnecessary url when image is smaller than breakpoint.
-		 */
-		generateSourcesFromBreakpoints() {
-			const croppedSources = this.get('croppedSources'),
-				imageHeight = this.get('image.height'),
-				imageWidth = this.get('image.width'),
-				sources = this.get('sources');
-
-			this.get('breakpoints.mobile').forEach(breakpoint => {
-				const media = `(max-width: ${breakpoint}px)`,
-					operation = imageHeight > imageWidth ? SCALE_HEIGHT : SCALE_WIDTH,
-					multiplier = 2;
-
-				let srcs = this.generateSourceFragment(operation, breakpoint),
-					croppedSrcs = this.generateSourceFragment(SCALE_WIDTH, breakpoint);
-
-				srcs = srcs.concat(this.generateSourceFragment(operation, breakpoint, multiplier));
-				croppedSrcs = croppedSrcs.concat(this.generateSourceFragment(SCALE_WIDTH, breakpoint, multiplier));
-
-				sources.push({
-					media,
-					src: this.joinSources(srcs)
-				});
-				croppedSources.push({
-					media,
-					src: this.joinSources(croppedSrcs)
-				});
-			});
-		},
-
-		/**
-		 * @private
-		 * @returns {Array}
-		 */
-		generateSourceFragment(operation, breakpoint, multiplier = 1) {
-			const imageHeight = this.get('image.height'),
-				imageWidth = this.get('image.width'),
-				result = [];
-
-			if (Math.max(imageWidth, imageHeight) > breakpoint * multiplier) {
-				result.push(this.generateLink(operation, breakpoint * multiplier, multiplier));
-			}
-
-			return result;
-		},
-
-		/**
-		 * @private
-		 *
-		 * When image height is larger than image width it will scale the image according to widthMultiplier property.
-		 * Cropping is enabled only on mobile devices, that is why it does not matter for this method.
-		 */
-		generateSourceFromImageDimensions() {
-			const imageWidth = this.get('image.width'),
-				widthMultiplier = this.getWithDefault('widthMultiplier', 1),
-				maxImageWidth = this.get('breakpoints.desktop'),
-				maxImageHeight = Math.min(maxImageWidth * widthMultiplier, imageWidth * widthMultiplier);
-
-			let srcset = this.generateSrcsetFragment(maxImageWidth, maxImageHeight);
-			srcset = srcset.concat(this.generateSrcsetFragment(maxImageWidth, maxImageHeight, 2));
-
-			this.set('srcset', this.joinSources(srcset));
-		},
-
-		/**
-		 * @param maxImageWidth
-		 * @param maxImageHeight
-		 * @param multiplier - used to generate for 1x, 1.5x, 2x multipliers for screens with higher density
-		 * @returns {Array}
-		 */
-		generateSrcsetFragment(maxImageWidth, maxImageHeight, multiplier = 1) {
-			const imageHeight = this.get('image.height'),
-				imageWidth = this.get('image.width'),
-				result = [];
-
-			if (imageWidth > maxImageWidth * multiplier || imageHeight > maxImageHeight * multiplier) {
-				if (imageWidth > imageHeight) {
-					result.push(this.generateLink(SCALE_WIDTH, maxImageWidth * multiplier, multiplier));
-				} else {
-					result.push(this.generateLink(SCALE_HEIGHT, maxImageHeight * multiplier, multiplier));
+			this.get('availableThumbSizes').forEach((width) => {
+				if (width <= image.width) {
+					sources.push(`${image.url}/${SCALE_WIDTH}/${width} ${width}w`);
 				}
-			}
+			});
 
-			return result;
+			sources.push(`${image.url} ${image.width}w`);
+
+			return sources;
 		},
 
-		/**
-		 * @private
-		 * @param {Array} sources
-		 */
-		joinSources(sources) {
-			return sources.length === 0 ? this.get('image.url') : sources.join(', ');
+		getCroppedSources(image) {
+			const sources = [];
+
+			this.get('availableThumbSizes').forEach((width) => {
+				if (width <= image.width) {
+					const height = Math.floor(width * 9 / 16);
+
+					sources.push(`${image.url}/${ZOOM_CROP}/width/${width}/height/${height} ${width}w`);
+				}
+			});
+
+			const height = Math.floor(image.width * 9 / 16);
+			sources.push(`${image.url}/${ZOOM_CROP}/width/${image.width}/height/${height} ${image.width}w`);
+
+			return sources;
 		},
 
 		actions: {
@@ -248,4 +89,5 @@ export default Component.extend(
 				this.sendAction('removeImage', this.get('image'));
 			}
 		}
-	});
+	}
+);
