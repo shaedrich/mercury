@@ -4,7 +4,8 @@ const SCALE_WIDTH = 'scale-to-width-down',
 	ZOOM_CROP = 'zoom-crop-down',
 	{
 		Component,
-		computed
+		computed,
+		String
 	} = Ember;
 
 export default Component.extend(
@@ -50,8 +51,26 @@ export default Component.extend(
 			return sources.join(', ');
 		}),
 
-		// On desktop image width is limited by column width, on mobile it can take almost 100% of viewport width
+		/**
+		 * Desktop image width is limited by column width,
+		 * on mobile it can take almost 100% of viewport width
+		 * Browsers will pick the best image based on this info
+		 */
 		sizes: '(min-width: 1575px) 640px, (min-width: 1064px) 520px, 100vw',
+
+		/**
+		 * Using 100vw in sizes attribute causes images to be upscaled if too small
+		 * Prevent it
+		 */
+		wrapperStyle: computed('image.width', function () {
+			return String.htmlSafe(`max-width: ${this.get('image.width')}px`);
+		}),
+
+		actions: {
+			remove() {
+				this.sendAction('removeImage', this.get('image'));
+			}
+		},
 
 		getUncroppedSources(image) {
 			const sources = [];
@@ -82,12 +101,6 @@ export default Component.extend(
 			sources.push(`${image.url}/${ZOOM_CROP}/width/${image.width}/height/${height} ${image.width}w`);
 
 			return sources;
-		},
-
-		actions: {
-			remove() {
-				this.sendAction('removeImage', this.get('image'));
-			}
 		}
 	}
 );
