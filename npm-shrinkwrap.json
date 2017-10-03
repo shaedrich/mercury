@@ -1203,7 +1203,7 @@
       "dev": true
     },
     "design-system-i18n": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "from": "git://github.com/wikia/design-system-i18n.git#2ec4cf7fecb5dd0647bdbeef4de56ed0d7d3bbd5",
       "resolved": "git://github.com/wikia/design-system-i18n.git#2ec4cf7fecb5dd0647bdbeef4de56ed0d7d3bbd5",
       "dev": true
