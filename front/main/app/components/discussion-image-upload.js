@@ -65,6 +65,7 @@ export default Component.extend(
 			this.get('contentImages')
 				.addContentImage(imageFile, this.get('staticAssets'))
 				.catch((err) => {
+					// FIXME this is true on network error so we never show it
 					if (this.get('isDestroyed')) {
 						return;
 					}
@@ -85,10 +86,7 @@ export default Component.extend(
 		},
 
 		showErrorMessage(msgKey) {
-			this.addAlert({
-				message: this.getErrorMessage(msgKey),
-				type: 'alert'
-			});
+			this.sendAction('showError', msgKey);
 		},
 
 		getErrorMessage(msgKey) {
