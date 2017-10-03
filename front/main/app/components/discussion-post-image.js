@@ -86,6 +86,11 @@ export default Component.extend(
 			return sources;
 		},
 
+		/**
+		 * Crop to 16:9 aspect ratio
+		 * @param {Object} image
+		 * @returns {Array}
+		 */
 		getCroppedSources(image) {
 			const sources = [];
 
