@@ -11,6 +11,7 @@
 			isLoading=editorState.isLoading
 			isVisible=editorState.isOpen
 			setEditorActive=(action this.attrs.setEditorActive)
+			showError=(action this.attrs.showError 'contributeEditor')
 	}}
 {{/if}}
 {{#modal-dialog
@@ -32,6 +33,7 @@
 			isEdit=true
 			isLoading=editEditorState.isLoading
 			setEditorActive=(action this.attrs.setEditorActive)
+			showError=(action this.attrs.showError 'editEditor')
 	}}
 {{/modal-dialog}}
 
@@ -78,6 +80,7 @@
 			postsDisplayed=model.entities.length
 			report=(action this.attrs.report)
 			setEditorActive=(action this.attrs.setEditorActive)
+			showError=(action this.attrs.showError 'contributeEditor')
 			shareTooltipSeen=shareTooltipSeen
 			stickEditorToGlobalNav=stickEditorToGlobalNav
 			totalPosts=model.postCount
