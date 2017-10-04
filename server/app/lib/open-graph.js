@@ -25,7 +25,7 @@ function fromContentImage(contentImage) {
 		image: contentImage.url,
 		imageHeight: contentImage.height,
 		imageWidth: contentImage.width
-	}
+	};
 }
 
 function getLargestImage(images) {
@@ -42,11 +42,11 @@ function getPostOpenGraphImages(posts) {
 }
 
 function getPostContentImages(posts) {
-		return posts
-			.map(post => post._embedded.contentImages)
-			.filter(contentImages => contentImages && contentImages.length > 0)
-			.map(contentImages => contentImages[0])
-			.map(contentImage => fromContentImage(contentImage));
+	return posts
+		.map(post => post._embedded.contentImages)
+		.filter(contentImages => contentImages && contentImages.length > 0)
+		.map(contentImages => contentImages[0])
+		.map(contentImage => fromContentImage(contentImage));
 }
 
 /**
