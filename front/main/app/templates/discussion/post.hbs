@@ -11,7 +11,7 @@
 		isReply=true
 		isVisible=editorState.isOpen
 		setEditorActive=(action 'setEditorActive')
-		showError=(action 'showError')
+		showError=(action 'showError' 'contributeEditor')
 	}}
 {{/if}}
 
@@ -34,7 +34,7 @@
 		isEdit=true
 		isLoading=editEditorState.isLoading
 		setEditorActive=(action 'setEditorActive')
-		showError=(action 'showError')
+		showError=(action 'showError' 'editEditor')
 	}}
 {{/modal-dialog}}
 
