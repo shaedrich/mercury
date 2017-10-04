@@ -13,13 +13,6 @@ export default Component.extend(
 			if (!isEmpty(input.files)) {
 				this.get('onImageSelected')(input.files);
 			}
-		},
-
-		/**
-		 * @returns {void}
-		 */
-		click() {
-			this.sendAction('click');
-		},
+		}
 	}
 );

@@ -32,12 +32,6 @@ export default Component.extend(
 		},
 
 		actions: {
-			/**
-			 * Empty method for the file-input helper required click method.
-			 * @return {void}
-			 */
-			emptyClickForFileInput() {
-			},
 			onImageSelected(files) {
 				this.handleImageSelected(files[0]);
 			},
