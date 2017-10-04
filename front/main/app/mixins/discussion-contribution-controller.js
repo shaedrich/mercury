@@ -495,7 +495,7 @@ export default Ember.Mixin.create({
 			this.get('model').attributes.saveTextAttribute('guidelines', text).then(() => {
 				track(trackActions.GuidelinesEditSave);
 			}).catch((err) => {
-				this.onContributionError(err, 'editor.save-error-general-error', true);
+				this.onContributionError(editorType, err, 'editor.save-error-general-error');
 			}).then(() => {
 				editorState.set('isLoading', false);
 			});
@@ -518,5 +518,9 @@ export default Ember.Mixin.create({
 				this.get('target').transitionTo('discussion.follow');
 			}
 		},
+
+		showError(editorType, messageKey) {
+			this.setEditorError(editorType, messageKey);
+		}
 	},
 });

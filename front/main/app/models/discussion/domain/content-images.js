@@ -45,6 +45,10 @@ const DiscussionContentImages = Object.extend(
 						url,
 						width
 					});
+				})
+				.catch((err) => {
+					this.get('images').removeObject(image);
+					throw err;
 				});
 		},
 
