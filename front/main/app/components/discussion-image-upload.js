@@ -1,5 +1,13 @@
 import Ember from 'ember';
 import AlertNotificationsMixin from '../mixins/alert-notifications';
+import {
+	gestureLabels,
+	trackGesture,
+	trackImageSelected,
+	trackImageUploadFailure,
+	trackImageUploadSuccess,
+	trackInvalidFileType
+} from '../utils/image-upload-tracker';
 
 const {inject, Component, Logger} = Ember;
 
@@ -21,17 +29,20 @@ export default Component.extend(
 		dragLeave(event) {
 			event.preventDefault();
 			this.set('isDragActive', false);
+			trackGesture(gestureLabels.fileDragLeft);
 		},
 
 		dragOver(event) {
 			event.preventDefault();
 			this.set('isDragActive', true);
+			trackGesture(gestureLabels.fileDraggedOver);
 		},
 
 		drop(event) {
 			event.preventDefault();
-			this.send('onImageSelected', event.dataTransfer.files);
 			this.set('isDragActive', false);
+			this.handleImageSelected(event.dataTransfer.files[0]);
+			trackGesture(gestureLabels.fileDropped);
 		},
 
 		actions: {
@@ -42,6 +53,7 @@ export default Component.extend(
 			emptyClickForFileInput() {
 			},
 			onImageSelected(files) {
+				trackImageSelected();
 				this.handleImageSelected(files[0]);
 			},
 		},
@@ -59,11 +71,13 @@ export default Component.extend(
 		handleImageSelected(imageFile) {
 			if (this.get('allowedFileTypes').indexOf(imageFile.type) === -1) {
 				this.showErrorMessage('image-upload.invalid-file-type');
+				trackInvalidFileType(imageFile.type);
 				return;
 			}
 
 			this.get('contentImages')
 				.addContentImage(imageFile, this.get('staticAssets'))
+				.then(trackImageUploadSuccess)
 				.catch((err) => {
 					if (this.get('isDestroyed')) {
 						return;
@@ -85,6 +99,7 @@ export default Component.extend(
 		},
 
 		showErrorMessage(msgKey) {
+			trackImageUploadFailure(msgKey);
 			this.addAlert({
 				message: this.getErrorMessage(msgKey),
 				type: 'alert'

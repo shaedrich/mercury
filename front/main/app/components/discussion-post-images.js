@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import {track, trackActions} from '../utils/discussion-tracker';
+import {trackImageRemoved} from '../utils/image-upload-tracker';
 
 const {A, Component, computed, isEmpty} = Ember;
 
@@ -80,6 +81,7 @@ export default Component.extend({
 
 		removeImage(image) {
 			this.get('images').removeObject(image);
+			trackImageRemoved();
 		}
 	}
 });
