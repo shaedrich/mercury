@@ -10,7 +10,6 @@ export default Component.extend(
 		staticAssets: inject.service(),
 
 		isDragActive: false,
-		resetFileInput: false,
 
 		allowedFileTypes: [
 			'image/jpeg',
@@ -65,22 +64,12 @@ export default Component.extend(
 			this.get('contentImages')
 				.addContentImage(imageFile, this.get('staticAssets'))
 				.catch((err) => {
-					// FIXME this is true on network error so we never show it
-					if (this.get('isDestroyed')) {
-						return;
-					}
-
 					Logger.error('Error uploading image', err);
 
 					if (err.status === 400) {
 						this.handle400Response(err.response);
 					} else {
 						this.showErrorMessage('image-upload.upload-failed');
-					}
-				})
-				.then(() => {
-					if (!this.get('isDestroyed')) {
-						this.set('resetFileInput', true);
 					}
 				});
 		},
