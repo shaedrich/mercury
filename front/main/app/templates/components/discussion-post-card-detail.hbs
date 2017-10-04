@@ -85,7 +85,7 @@
 		{{#if post.contentImages.images}}
 			<a href="{{href-to 'discussion.post' post.threadId}}">
 				{{discussion-post-images
-					cropImages=responsive.isMobile
+					shouldCrop=responsive.isMobile
 					images=post.contentImages.images
 				}}
 			</a>
