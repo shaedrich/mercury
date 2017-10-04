@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import {
-	gestureLabels,
-	trackGesture,
+	trackFileDropped,
 	trackImageSelected,
 	trackImageUploadFailure,
 	trackImageUploadSuccess,
@@ -26,20 +25,18 @@ export default Component.extend(
 		dragLeave(event) {
 			event.preventDefault();
 			this.set('isDragActive', false);
-			trackGesture(gestureLabels.fileDragLeft);
 		},
 
 		dragOver(event) {
 			event.preventDefault();
 			this.set('isDragActive', true);
-			trackGesture(gestureLabels.fileDraggedOver);
 		},
 
 		drop(event) {
 			event.preventDefault();
 			this.set('isDragActive', false);
 			this.handleImageSelected(event.dataTransfer.files[0]);
-			trackGesture(gestureLabels.fileDropped);
+			trackFileDropped();
 		},
 
 		actions: {

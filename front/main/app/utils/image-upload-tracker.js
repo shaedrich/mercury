@@ -1,12 +1,7 @@
 import {track as mercuryTrack} from 'common/utils/track';
 
-export const gestureLabels = {
-	fileDropped: 'dropped',
-	fileDraggedOver: 'dragged-over',
-	fileDragLeft: 'drag-left',
-};
-
 const labels = {
+	fileDropped: 'dropped',
 	imageRemoved: 'removed',
 	imageSelected: 'selected',
 	invalidFileType: 'invalid-file-type',
@@ -27,8 +22,8 @@ function track(label, action) {
 	});
 }
 
-export function trackGesture(gestureLabel) {
-	track(gestureLabel, 'gesture');
+export function trackFileDropped() {
+	track(labels.fileDropped, 'gesture');
 }
 
 export function trackImageSelected() {
