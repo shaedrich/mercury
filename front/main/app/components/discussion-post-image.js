@@ -42,7 +42,7 @@ export default Component.extend(
 		srcset: computed('crop', 'image', function () {
 			const image = this.get('image');
 
-			if (!image.url) {
+			if (!image || !image.url) {
 				return '';
 			}
 
