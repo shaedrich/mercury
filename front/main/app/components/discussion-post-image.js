@@ -27,7 +27,7 @@ export default Component.extend(
 		/**
 		 * @public
 		 */
-		crop: false,
+		shouldCrop: false,
 
 		/**
 		 * @public
@@ -39,14 +39,14 @@ export default Component.extend(
 		 */
 		image: null,
 
-		srcset: computed('crop', 'image', function () {
+		srcset: computed('shouldCrop', 'image', function () {
 			const image = this.get('image');
 
 			if (!image || !image.url) {
 				return '';
 			}
 
-			const sources = this.get('crop') ? this.getCroppedSources(image) : this.getUncroppedSources(image);
+			const sources = this.get('shouldCrop') ? this.getCroppedSources(image) : this.getUncroppedSources(image);
 
 			return sources.join(', ');
 		}),
