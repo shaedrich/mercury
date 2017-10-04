@@ -1,4 +1,4 @@
-<div class="post-image-editor-tools-wrapper">
+<div class="post-image-editor-tools-wrapper" style={{wrapperStyle}}>
 	{{#if image.isUploading}}
 		<div class="image-placeholder">
 			{{wds-spinner
@@ -8,12 +8,11 @@
 			}}
 		</div>
 	{{else}}
-		<picture>
-			{{#each displayedSources as |source|}}
-				<source media="{{source.media}}" srcset="{{source.src}}">
-			{{/each}}
-			<img class="post-image-inner-image" alt="{{alt}}" src="{{image.url}}" srcset="{{srcset}}" style={{croppedStyle}}>
-		</picture>
+		<img class="post-image-inner-image"
+			 alt="{{alt}}"
+			 src="{{image.url}}"
+			 srcset="{{srcset}}"
+			 sizes="{{sizes}}">
 	{{/if}}
 
 	{{#if editorToolsVisible}}
