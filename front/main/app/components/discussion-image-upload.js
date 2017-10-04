@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import AlertNotificationsMixin from '../mixins/alert-notifications';
 import {
 	gestureLabels,
 	trackGesture,
@@ -12,13 +11,11 @@ import {
 const {inject, Component, Logger} = Ember;
 
 export default Component.extend(
-	AlertNotificationsMixin,
 	{
 		classNames: ['discussion-image-upload'],
 		staticAssets: inject.service(),
 
 		isDragActive: false,
-		resetFileInput: false,
 
 		allowedFileTypes: [
 			'image/jpeg',
@@ -46,12 +43,6 @@ export default Component.extend(
 		},
 
 		actions: {
-			/**
-			 * Empty method for the file-input helper required click method.
-			 * @return {void}
-			 */
-			emptyClickForFileInput() {
-			},
 			onImageSelected(files) {
 				trackImageSelected();
 				this.handleImageSelected(files[0]);
@@ -79,10 +70,6 @@ export default Component.extend(
 				.addContentImage(imageFile, this.get('staticAssets'))
 				.then(trackImageUploadSuccess)
 				.catch((err) => {
-					if (this.get('isDestroyed')) {
-						return;
-					}
-
 					Logger.error('Error uploading image', err);
 
 					if (err.status === 400) {
@@ -90,20 +77,12 @@ export default Component.extend(
 					} else {
 						this.showErrorMessage('image-upload.upload-failed');
 					}
-				})
-				.then(() => {
-					if (!this.get('isDestroyed')) {
-						this.set('resetFileInput', true);
-					}
 				});
 		},
 
 		showErrorMessage(msgKey) {
+			this.sendAction('showError', msgKey);
 			trackImageUploadFailure(msgKey);
-			this.addAlert({
-				message: this.getErrorMessage(msgKey),
-				type: 'alert'
-			});
 		},
 
 		getErrorMessage(msgKey) {

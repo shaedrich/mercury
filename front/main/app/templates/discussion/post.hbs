@@ -11,6 +11,7 @@
 		isReply=true
 		isVisible=editorState.isOpen
 		setEditorActive=(action 'setEditorActive')
+		showError=(action 'showError' 'contributeEditor')
 	}}
 {{/if}}
 
@@ -33,6 +34,7 @@
 		isEdit=true
 		isLoading=editEditorState.isLoading
 		setEditorActive=(action 'setEditorActive')
+		showError=(action 'showError' 'editEditor')
 	}}
 {{/modal-dialog}}
 
@@ -63,6 +65,7 @@
 		report=(action 'report')
 		showFollowingTooltip=showFollowingTooltip
 		setEditorActive=(action 'setEditorActive')
+		showError=(action 'showError')
 		undeletePost=(action 'undeletePost')
 		undeleteReply=(action 'undeleteReply')
 		unlockPost=(action 'unlockPost')
