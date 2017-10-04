@@ -4,7 +4,7 @@ moduleForComponent('discussion-post-image', 'Unit | Component | discussion post 
 	unit: true
 });
 
-test('uncropped sources', function (assert) {
+test('uncropped sources for post image are returned as expected', function (assert) {
 	const component = this.subject(),
 		cases = [
 			{
@@ -40,7 +40,7 @@ test('uncropped sources', function (assert) {
 	});
 });
 
-test('cropped sources', function (assert) {
+test('cropped sources for post image are returned as expected', function (assert) {
 	const component = this.subject(),
 		cases = [
 			{
