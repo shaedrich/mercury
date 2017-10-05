@@ -4,8 +4,6 @@
 	</div>
 {{else}}
 	{{discussion-image-upload-input
-		click=(action 'emptyClickForFileInput')
 		onImageSelected=(action 'onImageSelected')
-		reset=resetFileInput
 	}}
 {{/if}}
