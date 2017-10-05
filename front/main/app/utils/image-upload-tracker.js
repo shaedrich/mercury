@@ -1,4 +1,4 @@
-import {track as mercuryTrack} from 'common/utils/track';
+import {track as mercuryTrack, trackActions} from 'common/utils/track';
 
 const labels = {
 	fileDropped: 'dropped',
@@ -23,15 +23,15 @@ function track(label, action) {
 }
 
 export function trackFileDropped() {
-	track(labels.fileDropped, 'gesture');
+	track(labels.fileDropped, trackActions.drop);
 }
 
 export function trackImageSelected() {
-	track(labels.imageSelected, 'click');
+	track(labels.imageSelected, trackActions.click);
 }
 
 export function trackImageRemoved() {
-	track(labels.imageRemoved, 'click');
+	track(labels.imageRemoved, trackActions.click);
 }
 
 export function trackInvalidFileType(fileType) {
@@ -39,7 +39,7 @@ export function trackInvalidFileType(fileType) {
 }
 
 export function trackImageUploadSuccess() {
-	track(labels.imageUpload, 'success');
+	track(labels.imageUpload, trackActions.success);
 }
 
 export function trackImageUploadFailure(reason) {
