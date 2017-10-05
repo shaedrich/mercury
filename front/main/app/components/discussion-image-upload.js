@@ -4,7 +4,6 @@ import {
 	trackImageSelected,
 	trackImageUploadFailure,
 	trackImageUploadSuccess,
-	trackInvalidFileType
 } from '../utils/image-upload-tracker';
 
 const {inject, Component, Logger} = Ember;
@@ -59,7 +58,6 @@ export default Component.extend(
 		handleImageSelected(imageFile) {
 			if (this.get('allowedFileTypes').indexOf(imageFile.type) === -1) {
 				this.showErrorMessage('image-upload.invalid-file-type');
-				trackInvalidFileType(imageFile.type);
 				return;
 			}
 

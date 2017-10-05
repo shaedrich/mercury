@@ -4,7 +4,6 @@ const labels = {
 	fileDropped: 'dropped',
 	imageRemoved: 'removed',
 	imageSelected: 'selected',
-	invalidFileType: 'invalid-file-type',
 	imageUpload: 'image-upload',
 };
 
@@ -32,10 +31,6 @@ export function trackImageSelected() {
 
 export function trackImageRemoved() {
 	track(labels.imageRemoved, trackActions.click);
-}
-
-export function trackInvalidFileType(fileType) {
-	track(labels.invalidFileType, fileType);
 }
 
 export function trackImageUploadSuccess() {
