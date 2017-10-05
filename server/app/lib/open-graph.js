@@ -3,15 +3,6 @@ import settings from '../../config/settings';
 import * as MW from './mediawiki';
 import {getStaticAssetPath} from './utils';
 
-/**
- * @property {string} [description]
- * @property {string} [image]
- * @property {number} [imageHeight]
- * @property {number} [imageWidth]
- * @property {string} title
- * @property {string} type
- * @property {string} url
- */
 function fromOpenGraph(openGraph) {
 	return {
 		image: openGraph.imageUrl,
@@ -33,17 +24,17 @@ function getLargestImage(images) {
 	return images[0];
 }
 
-function getPostOpenGraphImages(posts) {
-	return posts
-		.map(post => post._embedded.openGraph)
+function getReplyOpenGraphImages(replies) {
+	return replies
+		.map(reply => reply._embedded.openGraph)
 		.filter(openGraphs => openGraphs && openGraphs.length > 0)
 		.map(openGraphs => openGraphs[0])
 		.map(openGraph => fromOpenGraph(openGraph));
 }
 
-function getPostContentImages(posts) {
-	return posts
-		.map(post => post._embedded.contentImages)
+function getReplyContentImages(replies) {
+	return replies
+		.map(reply => reply._embedded.contentImages)
 		.filter(contentImages => contentImages && contentImages.length > 0)
 		.map(contentImages => contentImages[0])
 		.map(contentImage => fromContentImage(contentImage));
@@ -79,24 +70,24 @@ function generateFandomLogoOpenGraph(request) {
  * @param {*} context
  */
 function fetchOpenGraphImage(response, request, context) {
-	const thread = response.payload._embedded;
+	const post = response.payload._embedded;
 
-	if (thread.contentImages && thread.contentImages.length > 0) {
-		return fromContentImage(thread.contentImages[0]);
+	if (post.contentImages && post.contentImages.length > 0) {
+		return fromContentImage(post.contentImages[0]);
 	}
 
-	if (thread.openGraph && thread.openGraph.length > 0) {
-		return fromOpenGraph(thread.openGraph[0]);
+	if (post.openGraph && post.openGraph.length > 0) {
+		return fromOpenGraph(post.openGraph[0]);
 	}
 
-	const posts = response.payload._embedded['doc:posts'] || [];
+	const replies = response.payload._embedded['doc:posts'] || [];
 
-	const contentImages = getPostContentImages(posts);
+	const contentImages = getReplyContentImages(replies);
 	if (contentImages.length > 0) {
 		return getLargestImage(contentImages);
 	}
 
-	const openGraphImages = getPostOpenGraphImages(posts);
+	const openGraphImages = getReplyOpenGraphImages(replies);
 	if (openGraphImages.length > 0) {
 		return getLargestImage(openGraphImages);
 	}
