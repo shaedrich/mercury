@@ -8,7 +8,6 @@ export default DiscussionStandaloneEditor.extend({
 	isReply: false,
 	openGraph: null,
 	shouldShowCategoryPicker: false,
-	showsOpenGraphCard: false,
 
 	layoutName: 'components/discussion-standalone-editor',
 

@@ -72,14 +72,12 @@ export default DiscussionMultipleInputsEditor.extend(
 				if (!this.get('submitDisabled')) {
 					const newDiscussionEntityData = {
 						body: this.get('content'),
-						creatorId: this.get('currentUser.userId'),
-						siteId: Mercury.wiki.id,
-						title: this.get('title'),
 						contentImages: this.get('contentImages').toData(),
+						creatorId: this.get('currentUser.userId'),
+						openGraph: this.get('openGraph'),
+						siteId: Mercury.wiki.id,
+						title: this.get('title')
 					};
-					if (this.get('showsOpenGraphCard')) {
-						newDiscussionEntityData.openGraph = this.get('openGraph');
-					}
 
 					this.get('create')(newDiscussionEntityData, {newCategoryId: this.get('category.id')});
 				}

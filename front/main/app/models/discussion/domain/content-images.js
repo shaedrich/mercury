@@ -20,7 +20,7 @@ const DiscussionContentImages = Object.extend(
 		}),
 
 		hasImages() {
-			return this.get('images.length');
+			return this.get('images.length') > 0;
 		},
 
 		setImages(images) {
