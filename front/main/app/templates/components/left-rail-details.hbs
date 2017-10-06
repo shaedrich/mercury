@@ -1,9 +1,10 @@
 {{#if users}}
 	{{user-avatar
 		avatarUrl=userProfile.avatarUrl
-		shouldWrapInHref=true
-		username=userName
 		click=(action 'trackAvatarClick')
+		username=userName
+		shouldWrapInHref=true
+		size=90
 	}}
 {{else}}
 	<div class="discussion-left-rail__circle">
