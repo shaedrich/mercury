@@ -19,8 +19,11 @@ export default Component.extend(
 		/**
 		 * @returns {void}
 		 */
-		click() {
-			trackButtonClicked();
+		click(event) {
+			// due to <label><input></label> there are two events broadcast - we don't want to track both
+			if (event.target.tagName !== 'INPUT') {
+				trackButtonClicked();
+			}
 		},
 	}
 );
