@@ -70,10 +70,9 @@ export default DiscussionMultipleInputsEditor.extend(
 
 			this.setProperties({
 				content: editEntity.get('rawContent'),
-				openGraph: editEntity.get('openGraph'),
-				showsOpenGraphCard: Boolean(editEntity.get('openGraph')),
-				title: editEntity.get('title'),
 				contentImages: editEntity.get('contentImages').copy(),
+				openGraph: editEntity.get('openGraph'),
+				title: editEntity.get('title'),
 			});
 
 			this.focusFirstTextareaWhenRendered();
@@ -141,11 +140,12 @@ export default DiscussionMultipleInputsEditor.extend(
 						body: this.get('content'),
 						title: this.get('title')
 					};
+					const openGraph = this.get('openGraph');
 					let actionName,
 						editedEntity;
 
-					if (this.get('showsOpenGraphCard')) {
-						discussionEntityData.openGraph = this.get('openGraph');
+					if (openGraph) {
+						discussionEntityData.openGraph = openGraph;
 					}
 
 					if (this.get('contentImages')) {

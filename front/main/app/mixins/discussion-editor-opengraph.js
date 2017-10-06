@@ -2,11 +2,40 @@ import Ember from 'ember';
 import {track, trackActions} from '../utils/discussion-tracker';
 import {getLastUrlFromText} from 'common/utils/string';
 
-export default Ember.Mixin.create({
+const {
+	Mixin,
+	computed,
+	get,
+	observer,
+	run
+} = Ember;
+
+export default Mixin.create({
 	isOpenGraphLoading: false,
 	openGraph: null,
-	showsOpenGraphCard: false,
 	contentLength: 0,
+
+	showOpenGraphCard: computed('openGraph', 'contentImages.images.@each', function () {
+		const contentImages = this.get('contentImages');
+
+		if (contentImages && contentImages.hasImages()) {
+			return false;
+		}
+
+		return this.get('isOpenGraphLoading') || Boolean(this.get('openGraph'));
+	}),
+
+	/**
+	 * Track content changed
+	 *
+	 * @returns {void}
+	 */
+	onContentChange: observer('content', function () {
+		this.handleTyping();
+
+		const length = this.getWithDefault('content.length', 0);
+		this.set('contentLength', length);
+	}),
 
 	didInsertElement() {
 		this._super(...arguments);
@@ -14,18 +43,6 @@ export default Ember.Mixin.create({
 		this.$().find('textarea:last')
 			.on('paste', this.onPaste.bind(this));
 	},
-
-	/**
-	 * Track content changed
-	 *
-	 * @returns {void}
-	 */
-	onContentChange: Ember.observer('content', function () {
-		this.handleTyping();
-
-		const length = this.getWithDefault('content.length', 0);
-		this.set('contentLength', length);
-	}),
 
 	/**
 	 * In some browsers (IE11) there's no support for event clipboard data, so there's a need to
@@ -36,7 +53,7 @@ export default Ember.Mixin.create({
 	 * @returns {void}
 	 */
 	onPaste(event) {
-		const clipboardData = Ember.get(event, 'originalEvent.clipboardData'),
+		const clipboardData = get(event, 'originalEvent.clipboardData'),
 			textType = 'text/plain';
 
 		let pastedText;
@@ -53,7 +70,7 @@ export default Ember.Mixin.create({
 				this.setOpenGraphProperties(pastedUrl);
 			}
 		} else {
-			Ember.run.later(() => {
+			run.later(() => {
 				const textarea = event.target,
 					pastedUrl = getLastUrlFromText(
 						textarea.value.substring(0, textarea.selectionEnd)
@@ -99,39 +116,31 @@ export default Ember.Mixin.create({
 	},
 
 	setOpenGraphProperties(url) {
-		if (this.get('showsOpenGraphCard')) {
+		if (this.get('openGraph') || this.get('contentImages').hasImages()) {
 			return;
 		}
 
-		this.setProperties({
-			isOpenGraphLoading: true,
-			showsOpenGraphCard: true
-		});
+		this.set('isOpenGraphLoading', true);
 
 		this.get('generateOpenGraph')(url)
 			.then((openGraph) => {
 				this.setProperties({
 					openGraph,
-					isOpenGraphLoading: false,
+					isOpenGraphLoading: false
 				});
 
 				track(trackActions.OGCreated);
 			}).catch(() => {
 				this.setProperties({
 					openGraph: null,
-					isOpenGraphLoading: false,
-					showsOpenGraphCard: false,
+					isOpenGraphLoading: false
 				});
 			});
 	},
 
 	afterSuccess() {
 		this._super();
-
-		this.setProperties({
-			openGraph: null,
-			showsOpenGraphCard: false,
-		});
+		this.set('openGraph', null);
 	},
 
 	actions: {
@@ -141,11 +150,7 @@ export default Ember.Mixin.create({
 		 * @returns {void}
 		 */
 		removeOpenGraph() {
-			this.setProperties({
-				showsOpenGraphCard: false,
-				openGraph: null,
-			});
-
+			this.set('openGraph', null);
 			track(trackActions.OGRemoved);
 		}
 	}
