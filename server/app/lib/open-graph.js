@@ -3,22 +3,7 @@ import settings from '../../config/settings';
 import * as MW from './mediawiki';
 import {getStaticAssetPath} from './utils';
 
-/**
- * @typedef {Object} OpenGraphAttributes
- * @property {string} [description]
- * @property {string} [image]
- * @property {number} [imageHeight]
- * @property {number} [imageWidth]
- * @property {string} title
- * @property {string} type
- * @property {string} url
- */
-
-/**
- * @param {*} response
- **/
-function getThreadOpenGraph(response) {
-	const openGraph = response.payload._embedded.openGraph[0];
+function fromOpenGraph(openGraph) {
 	return {
 		image: openGraph.imageUrl,
 		imageHeight: openGraph.imageHeight,
@@ -26,27 +11,33 @@ function getThreadOpenGraph(response) {
 	};
 }
 
-/**
- * @param {Object[]} postsWithOpenGraph
- **/
-function getLargestOpenGraph(postsWithOpenGraph) {
-	let postOpenGraphData = postsWithOpenGraph.map(post => post._embedded.openGraph[0]);
-	postOpenGraphData.sort((a, b) => b.imageWidth * b.imageHeight - a.imageWidth * a.imageHeight);
-	const largestOpenGraph = postOpenGraphData[0];
+function fromContentImage(contentImage) {
 	return {
-		image: largestOpenGraph.imageUrl,
-		imageHeight: largestOpenGraph.imageHeight,
-		imageWidth: largestOpenGraph.imageWidth
+		image: contentImage.url,
+		imageHeight: contentImage.height,
+		imageWidth: contentImage.width
 	};
 }
 
-/**
- * @param {*} response
- **/
-function getPostsWithOpenGraph(response) {
-	return response.payload._embedded['doc:posts']
-		? response.payload._embedded['doc:posts'].filter(post => post._embedded.openGraph)
-		: [];
+function getLargestImage(images) {
+	images.sort((a, b) => b.imageWidth * b.imageHeight - a.imageWidth * a.imageHeight);
+	return images[0];
+}
+
+function getReplyOpenGraphImages(replies) {
+	return replies
+		.map(reply => reply._embedded.openGraph)
+		.filter(openGraphs => openGraphs && openGraphs.length > 0)
+		.map(openGraphs => openGraphs[0])
+		.map(openGraph => fromOpenGraph(openGraph));
+}
+
+function getReplyContentImages(replies) {
+	return replies
+		.map(reply => reply._embedded.contentImages)
+		.filter(contentImages => contentImages && contentImages.length > 0)
+		.map(contentImages => contentImages[0])
+		.map(contentImage => fromContentImage(contentImage));
 }
 
 /**
@@ -79,13 +70,26 @@ function generateFandomLogoOpenGraph(request) {
  * @param {*} context
  */
 function fetchOpenGraphImage(response, request, context) {
-	if (response.payload._embedded.openGraph) {
-		return getThreadOpenGraph(response);
+	const post = response.payload._embedded;
+
+	if (post.contentImages && post.contentImages.length > 0) {
+		return fromContentImage(post.contentImages[0]);
 	}
 
-	const postsWithOpenGraph = getPostsWithOpenGraph(response);
-	if (postsWithOpenGraph.length > 0) {
-		return getLargestOpenGraph(postsWithOpenGraph);
+	if (post.openGraph && post.openGraph.length > 0) {
+		return fromOpenGraph(post.openGraph[0]);
+	}
+
+	const replies = response.payload._embedded['doc:posts'] || [];
+
+	const contentImages = getReplyContentImages(replies);
+	if (contentImages.length > 0) {
+		return getLargestImage(contentImages);
+	}
+
+	const openGraphImages = getReplyOpenGraphImages(replies);
+	if (openGraphImages.length > 0) {
+		return getLargestImage(openGraphImages);
 	}
 
 	const communityHeaderImage = getCommunityHeaderImage(context.communityHeader);
