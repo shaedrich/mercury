@@ -1,6 +1,7 @@
 import {track as mercuryTrack, trackActions} from 'common/utils/track';
 
 const labels = {
+	buttonClicked: 'button-clicked',
 	fileDropped: 'dropped',
 	imageRemoved: 'removed',
 	imageSelected: 'selected',
@@ -19,6 +20,10 @@ function track(label, action) {
 		action,
 		category: 'image-upload',
 	});
+}
+
+export function trackButtonClicked() {
+	track(labels.buttonClicked, trackActions.click)
 }
 
 export function trackFileDropped() {
