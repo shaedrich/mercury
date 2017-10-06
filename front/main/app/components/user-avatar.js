@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Thumbnailer from 'common/modules/thumbnailer';
 import {isAnonymousUser} from '../utils/user-utils';
 
 const {Component, computed} = Ember;
@@ -6,27 +7,40 @@ const {Component, computed} = Ember;
 export default Component.extend({
 	classNames: ['user-avatar'],
 
+	userId: null,
+	size: 30,
+
 	profileName: computed('username', function () {
 		const userName = this.get('username') || '';
 
 		return userName.trim();
 	}),
 
-	userId: null,
-	/**
-	 * Returns link to the post author's user page
-	 * @returns {string}
-	 */
 	profileUrl: computed('profileName', function () {
 		return M.buildUrl({
 			namespace: 'User',
 			title: this.get('profileName'),
 		});
 	}),
-	displayName: Ember.computed('profileName', 'userId', function () {
+
+	displayName: computed('profileName', 'userId', function () {
 		return isAnonymousUser(this.get('userId')) ? i18n.t('app.username-anonymous') : this.get('profileName');
 	}),
-	shouldWrapInHref: Ember.computed('userId', function () {
+
+	shouldWrapInHref: computed('userId', function () {
 		return !isAnonymousUser(this.get('userId'));
+	}),
+
+	avatarThumbnail: computed('avatarUrl', 'size', function () {
+		const size = this.get('size');
+
+		return Thumbnailer.getThumbURL(
+			this.get('avatarUrl'),
+			{
+				mode: Thumbnailer.mode.fixedAspectRatioDown,
+				height: size,
+				width: size
+			}
+		);
 	})
 });

@@ -17,6 +17,7 @@
 		{{user-avatar
 			avatarUrl=currentUser.avatarPath
 			shouldWrapInHref=false
+			size=40
 		}}
 		{{#if showOverlayMessage}}
 			{{discussion-editor-overlay-message
@@ -76,7 +77,7 @@
 						readonly=isReadonly
 					}}
 				</label>
-				{{#if showsOpenGraphCard}}
+				{{#if showOpenGraphCard}}
 					{{discussion-open-graph
 						close=(action 'removeOpenGraph')
 						isLoading=isOpenGraphLoading
