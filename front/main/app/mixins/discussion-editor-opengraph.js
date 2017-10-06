@@ -116,7 +116,10 @@ export default Mixin.create({
 	},
 
 	setOpenGraphProperties(url) {
-		if (this.get('openGraph') || this.get('contentImages').hasImages()) {
+		if (
+			this.get('openGraph') ||
+			this.get('contentImages').hasImages()
+		) {
 			return;
 		}
 
