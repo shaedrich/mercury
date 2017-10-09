@@ -30,6 +30,13 @@
     "reply-error-general-error": "Publikacja odpowiedzi nie powiodła się, spróbuj ponownie.", 
     "save-error-general-error": "Nie udało się zapisać, spróbuj ponownie."
   }, 
+  "image-upload": {
+    "add-image": "Dodaj obraz", 
+    "invalid-file-type": "Nieprawidłowy format obrazu, prosimy o korzystanie z formatów jpeg, png lub gif.", 
+    "invalid-image": "Nieprawidłowy obraz, spróbuj załadować inny.", 
+    "max-size-exceeded": "Przekroczony został maksymalny rozmiar obrazu wynoszący 10MB.", 
+    "upload-failed": "Przesyłanie nie powiodło się, spróbuj ponownie."
+  }, 
   "main": {
     "action-general-error": "Akcja nie powiodła się, spróbuj ponownie.", 
     "action-retry-title": "Ponów próbę", 

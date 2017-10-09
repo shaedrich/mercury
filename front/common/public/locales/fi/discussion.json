@@ -30,6 +30,13 @@
     "reply-error-general-error": "Reply failed, please try again.", 
     "save-error-general-error": "Save failed, please try again."
   }, 
+  "image-upload": {
+    "add-image": "Add Image", 
+    "invalid-file-type": "Invalid image type, please use jpeg, png or gif.", 
+    "invalid-image": "Invalid image, please try another one.", 
+    "max-size-exceeded": "Maximum image size of 10MB has been exceeded.", 
+    "upload-failed": "Upload failed, please try again."
+  }, 
   "main": {
     "action-general-error": "Action failed, please try again.", 
     "action-retry-title": "Retry", 

@@ -30,6 +30,13 @@
     "reply-error-general-error": "Risposta non riuscita, riprovare.", 
     "save-error-general-error": "Salvataggio non riuscito, riprovare."
   }, 
+  "image-upload": {
+    "add-image": "Aggiungi un'immagine", 
+    "invalid-file-type": "Formato immagine non valido, per favore usa JPEG, PNG o GIF.", 
+    "invalid-image": "Immagine non valida, prova con un'altra per favore.", 
+    "max-size-exceeded": "Si è superata la dimensione massima di 10MB.", 
+    "upload-failed": "Caricamento fallito, riprova per favore."
+  }, 
   "main": {
     "action-general-error": "Azione non riuscita, riprova per favore.", 
     "action-retry-title": "Riprova", 

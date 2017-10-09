@@ -30,6 +30,13 @@
     "reply-error-general-error": "回覆失敗，請再試一次。", 
     "save-error-general-error": "保存失敗，請再試一次。"
   }, 
+  "image-upload": {
+    "add-image": "添加圖像", 
+    "invalid-file-type": "圖像類型不正確，請使用jpeg、png或gif。", 
+    "invalid-image": "圖像不正確，請嘗試其他圖像。", 
+    "max-size-exceeded": "已超出允許的最大圖像範圍10MB。", 
+    "upload-failed": "上傳失敗，請再試一次。"
+  }, 
   "main": {
     "action-general-error": "操作失敗，請再試一次。", 
     "action-retry-title": "請再試一次", 
