@@ -23,7 +23,7 @@ function track(label, action) {
 }
 
 export function trackButtonClicked() {
-	track(labels.buttonClicked, trackActions.click)
+	track(labels.buttonClicked, trackActions.click);
 }
 
 export function trackFileDropped() {
