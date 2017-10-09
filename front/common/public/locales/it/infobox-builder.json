@@ -41,7 +41,7 @@
     "title-article-name": "Nome articolo", 
     "title-default": "Titolo infobox {index}", 
     "title-naming-conflict-error": "Questo nome è già utilizzato", 
-    "title-naming-invalid-title-error": "Sorry, the page title was invalid. Please use a different title.", 
+    "title-naming-invalid-title-error": "Spiacente, il titolo dell'articolo non era valido. Utilizza un titolo diverso per favore.", 
     "title-use-article-name": "Utilizza il nome dell'articolo", 
     "untitled-infobox-template": "Template infobox senza titolo"
   }

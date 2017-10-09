@@ -30,6 +30,13 @@
     "reply-error-general-error": "댓글 작성에 실패했습니다. 다시 시도해 주세요.", 
     "save-error-general-error": "저장에 실패했습니다. 다시 시도해 주세요."
   }, 
+  "image-upload": {
+    "add-image": "Add Image", 
+    "invalid-file-type": "Invalid image type, please use jpeg, png or gif.", 
+    "invalid-image": "Invalid image, please try another one.", 
+    "max-size-exceeded": "Maximum image size of 10MB has been exceeded.", 
+    "upload-failed": "Upload failed, please try again."
+  }, 
   "main": {
     "action-general-error": "작업 실패. 다시 시도해 주세요.", 
     "action-retry-title": "다시 시도", 

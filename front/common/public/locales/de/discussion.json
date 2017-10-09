@@ -30,6 +30,13 @@
     "reply-error-general-error": "Die Antwort konnte nicht erstellt werden, bitte versuche es noch einmal.", 
     "save-error-general-error": "Speichern war nicht möglich, bitte versuche es noch einmal."
   }, 
+  "image-upload": {
+    "add-image": "Bild hinzufügen", 
+    "invalid-file-type": "Ungültiger Bildtyp, verwende bitte jpeg, png oder gif.", 
+    "invalid-image": "Ungültiges Bild, bitte wähle ein anderes aus.", 
+    "max-size-exceeded": "Maximale Bildgröße von 10 MB wurde überschritten.", 
+    "upload-failed": "Fehler beim Hochladen, bitte versuche es noch einmal."
+  }, 
   "main": {
     "action-general-error": "Die Aktion konnte nicht ausgeführt werden, bitte versuche es noch einmal.", 
     "action-retry-title": "Noch einmal versuchen", 

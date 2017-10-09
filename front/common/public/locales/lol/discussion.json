@@ -30,6 +30,13 @@
     "reply-error-general-error": "crwdns28019:0crwdne28019:0", 
     "save-error-general-error": "crwdns28020:0crwdne28020:0"
   }, 
+  "image-upload": {
+    "add-image": "crwdns71937:0crwdne71937:0", 
+    "invalid-file-type": "crwdns71939:0crwdne71939:0", 
+    "invalid-image": "crwdns71941:0crwdne71941:0", 
+    "max-size-exceeded": "crwdns71940:0crwdne71940:0", 
+    "upload-failed": "crwdns71938:0crwdne71938:0"
+  }, 
   "main": {
     "action-general-error": "crwdns54049:0crwdne54049:0", 
     "action-retry-title": "crwdns23141:0crwdne23141:0", 

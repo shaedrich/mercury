@@ -30,6 +30,13 @@
     "reply-error-general-error": "A resposta falhou, por favor, tente novamente.", 
     "save-error-general-error": "Falha ao salvar, por favor, tente novamente."
   }, 
+  "image-upload": {
+    "add-image": "Adicionar imagem", 
+    "invalid-file-type": "Tipo de imagem inválido, por favor use jpeg, png ou gif.", 
+    "invalid-image": "Imagem inválida, por favor, tente outra.", 
+    "max-size-exceeded": "O tamanho máximo de 10MB da imagem foi excedido.", 
+    "upload-failed": "Falha ao carregar, por favor tente novamente."
+  }, 
   "main": {
     "action-general-error": "A ação falhou, por favor, tente novamente.", 
     "action-retry-title": "Tente novamente", 
