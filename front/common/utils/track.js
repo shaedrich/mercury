@@ -53,6 +53,8 @@ const trackActions = {
 	confirm: 'confirm',
 	// Generic disable
 	disable: 'disable',
+	// gesture drop
+	drop: 'drop',
 	// Generic enable
 	enable: 'enable',
 	// Generic error (generally AJAX)

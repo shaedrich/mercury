@@ -1,4 +1,10 @@
 import Ember from 'ember';
+import {
+	trackFileDropped,
+	trackImageSelected,
+	trackImageUploadFailure,
+	trackImageUploadSuccess,
+} from '../utils/image-upload-tracker';
 
 const {inject, Component, Logger} = Ember;
 
@@ -27,12 +33,14 @@ export default Component.extend(
 
 		drop(event) {
 			event.preventDefault();
-			this.send('onImageSelected', event.dataTransfer.files);
 			this.set('isDragActive', false);
+			this.handleImageSelected(event.dataTransfer.files[0]);
+			trackFileDropped();
 		},
 
 		actions: {
 			onImageSelected(files) {
+				trackImageSelected();
 				this.handleImageSelected(files[0]);
 			},
 		},
@@ -55,6 +63,7 @@ export default Component.extend(
 
 			this.get('contentImages')
 				.addContentImage(imageFile, this.get('staticAssets'))
+				.then(trackImageUploadSuccess)
 				.catch((err) => {
 					Logger.error('Error uploading image', err);
 
@@ -68,6 +77,7 @@ export default Component.extend(
 
 		showErrorMessage(msgKey) {
 			this.sendAction('showError', msgKey);
+			trackImageUploadFailure(msgKey);
 		},
 
 		getErrorMessage(msgKey) {
