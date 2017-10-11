@@ -32,9 +32,9 @@
   }, 
   "image-upload": {
     "add-image": "添加圖像", 
-    "invalid-file-type": "圖像類型不正確，請使用jpeg、png或gif。", 
+    "invalid-file-type": "無效的圖像檔案類型，請使用jpeg、png或gif檔案。", 
     "invalid-image": "圖像不正確，請嘗試其他圖像。", 
-    "max-size-exceeded": "已超出允許的最大圖像範圍10MB。", 
+    "max-size-exceeded": "已超出10MB的最大圖像檔案限制。", 
     "upload-failed": "上傳失敗，請再試一次。"
   }, 
   "main": {

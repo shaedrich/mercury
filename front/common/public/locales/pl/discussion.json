@@ -34,7 +34,7 @@
     "add-image": "Dodaj obraz", 
     "invalid-file-type": "Nieprawidłowy format obrazu, prosimy o korzystanie z formatów jpeg, png lub gif.", 
     "invalid-image": "Nieprawidłowy obraz, spróbuj załadować inny.", 
-    "max-size-exceeded": "Przekroczony został maksymalny rozmiar obrazu wynoszący 10MB.", 
+    "max-size-exceeded": "Przekroczony został maksymalny rozmiar obrazu wynoszący 10 MB.", 
     "upload-failed": "Przesyłanie nie powiodło się, spróbuj ponownie."
   }, 
   "main": {

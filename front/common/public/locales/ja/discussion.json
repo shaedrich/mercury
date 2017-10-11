@@ -32,9 +32,9 @@
   }, 
   "image-upload": {
     "add-image": "画像を追加", 
-    "invalid-file-type": "画像形式が無効です。JPEG・PNG・GIFのいずれかお使いください。", 
+    "invalid-file-type": "画像形式が無効です。JPEG・PNG・Gifのいずれかをご使用ください。", 
     "invalid-image": "画像が無効のため、別の画像でお試しください。", 
-    "max-size-exceeded": "画像サイズ最大10MBを超過しています。", 
+    "max-size-exceeded": "画像サイズが上限の10MBを超えています。", 
     "upload-failed": "アップロードできませんでした。もう一度やり直してください。"
   }, 
   "main": {
