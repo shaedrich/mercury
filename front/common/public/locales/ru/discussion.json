@@ -34,7 +34,7 @@
     "add-image": "Добавить изображение", 
     "invalid-file-type": "Неверный формат изображения. Выберите изображение в формате jpeg, png или gif.", 
     "invalid-image": "Недопустимое изображение. Пожалуйста, выберите другое.", 
-    "max-size-exceeded": "Превышен максимальный размер изображения в 10 МБ.", 
+    "max-size-exceeded": "Превышен максимальный вес изображения в 10 МБ.", 
     "upload-failed": "Ошибка загрузки. Повторите попытку."
   }, 
   "main": {
@@ -168,7 +168,7 @@
     "upvote-label": "Оценить", 
     "user-activity": "Исследования", 
     "user-avatar-badge-admin-tooltip": "Администратор сообщества", 
-    "user-avatar-badge-globaldiscussionsmoderator-tooltip": "Модератор Обсуждений Фэндома", 
+    "user-avatar-badge-globaldiscussionsmoderator-tooltip": "Модератор Обсуждений ФЭНДОМА", 
     "user-avatar-badge-helper-tooltip": "Помощник Фэндома", 
     "user-avatar-badge-moderator-tooltip": "Модератор обсуждений", 
     "user-avatar-badge-staff-tooltip": "Сотрудник Фэндома", 
