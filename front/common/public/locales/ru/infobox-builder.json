@@ -41,7 +41,7 @@
     "title-article-name": "Название статьи", 
     "title-default": "Заголовок инфобокса {index}", 
     "title-naming-conflict-error": "Шаблон с таким названием уже существует", 
-    "title-naming-invalid-title-error": "Sorry, the page title was invalid. Please use a different title.", 
+    "title-naming-invalid-title-error": "Название статьи недопустимо. Пожалуйста, используйте другое название.", 
     "title-use-article-name": "Использовать название статьи", 
     "untitled-infobox-template": "Безымянный инфобокс"
   }

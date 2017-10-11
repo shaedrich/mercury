@@ -34,7 +34,7 @@
     "add-image": "Ajouter une image", 
     "invalid-file-type": "Type d'image non valide. Veuillez utiliser une image jpeg, png ou gif.", 
     "invalid-image": "Image non valide. Veuillez essayer avec une autre.", 
-    "max-size-exceeded": "La taille du fichier d'image ne doit pas être supérieure à 10 Mo.", 
+    "max-size-exceeded": "La taille de l'image ne doit pas être supérieure à 10 Mo.", 
     "upload-failed": "Échec de l'importation. Veuillez réessayer."
   }, 
   "main": {
