@@ -7,9 +7,11 @@ const ImageReviewSummaryModel = Ember.Object.extend({
 	summary: null,
 	imageDetails: null,
 	imageId: null,
+	isLoading: false,
 
 	setSummaryModel() {
 		if (!Ember.isEmpty(this.get('startDate')) || !Ember.isEmpty(this.get('endDate'))) {
+			this.set('isLoading', true);
 			request(M.getImageReviewServiceUrl('/statistics', {
 				startDate: this.get('startDate'),
 				endDate: this.get('endDate')
@@ -17,6 +19,8 @@ const ImageReviewSummaryModel = Ember.Object.extend({
 				method: 'GET'
 			}).then((payload) => {
 				this.set('summary', payload);
+			}).finally(() => {
+				this.set('isLoading', false);
 			});
 		}
 	},
