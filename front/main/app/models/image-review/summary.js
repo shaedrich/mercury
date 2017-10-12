@@ -18,9 +18,8 @@ const ImageReviewSummaryModel = Ember.Object.extend({
 			}), {
 				method: 'GET'
 			}).then((payload) => {
-				this.set('isLoading', false);
 				this.set('summary', payload);
-			}, () => {
+			}).finally(() => {
 				this.set('isLoading', false);
 			});
 		}
