@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ImageReviewSummaryModel from '../../models/image-review/summary';
 
-const {Route} = Ember;
+const {Route, Logger} = Ember;
 
 export default Route.extend({
 	model() {
@@ -36,6 +36,25 @@ export default Route.extend({
 
 		openImageReview() {
 			this.transitionTo('image-review.index');
+		},
+
+		error(error) {
+			Logger.error('image-review route error', error);
+			let errorMessage = i18n.t('main.error-other', {ns: 'image-review'});
+
+			console.info(error);
+			if (error.errors.some((e) => e.status === '401')) {
+				errorMessage = i18n.t('main.error-no-access-permissions', {ns: 'image-review'});
+			}
+
+			this.controllerFor('application').addAlert({
+				message: errorMessage,
+				type: 'warning',
+				persistent: true
+			});
+
+			this.transitionTo('image-review.error');
+			return false;
 		}
 	}
 });
