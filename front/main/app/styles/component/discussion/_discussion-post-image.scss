@@ -1,6 +1,9 @@
 .post-image-editor-tools-wrapper {
-	border: 1px solid $discussion-post-image-border-color;
 	position: relative;
+
+	.post-image-inner-image {
+		border: 1px solid $discussion-post-image-border-color;
+	}
 
 	.image-placeholder {
 		background-color: $discussion-editor-image-upload-placeholder-background-color;
