@@ -5,16 +5,13 @@
 @import 'embedded-svgs';
 @import 'settings';
 @import 'foundation-imports';
-@import 'discussion-settings';
 @import 'mixin/index';
 
 @import 'common/styles/placeholder/index';
 @import 'base/index';
-@import 'layout/index';
 @import 'state/index';
 @import 'theme/index';
 @import 'component/index';
-@import 'module/index';
 
 // temporary solution while these inputs are not a part of the Style Guide
 @import 'auth/app/styles/base/input';

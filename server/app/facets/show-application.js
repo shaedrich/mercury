@@ -1,10 +1,8 @@
 import * as MW from '../lib/mediawiki';
 import * as Utils from '../lib/utils';
 import * as Tracking from '../lib/tracking';
-import * as OpenGraph from '../lib/open-graph';
 import Promise from 'bluebird';
 import Logger from '../lib/logger';
-import discussionsSplashPageConfig from '../../config/discussionsSplashPageConfig';
 import {gaUserIdHash} from '../lib/hashing';
 import {
 	RedirectedToCanonicalHost, NonJsonApiResponseError, WikiVariablesRequestError
@@ -34,22 +32,6 @@ function outputResponse(request, reply, context) {
 }
 
 /**
- * @param {string} hostName
- * @returns {CommunityAppConfig}
- */
-function getDistilledDiscussionsSplashPageConfig(hostName) {
-	const mainConfig = discussionsSplashPageConfig[hostName];
-
-	if (mainConfig) {
-		return {
-			androidAppLink: mainConfig.androidAppLink,
-			iosAppLink: mainConfig.iosAppLink
-		};
-	}
-	return {};
-}
-
-/**
  * @param {Hapi.Request} request
  * @param {Hapi.Response} reply
  * @param {Promise} wikiVariables
@@ -72,7 +54,6 @@ export default function showApplication(request, reply, wikiVariables, context =
 	context.settings = settings;
 	context.userId = getUserId(request);
 	context.gaUserIdHash = gaUserIdHash(context.userId);
-	context.discussionsSplashPageConfig = getDistilledDiscussionsSplashPageConfig(hostName);
 	context.wwwWikiHost = Utils.getCorporatePageUrlFromWikiDomain(settings, wikiDomain);
 
 	wikiVariables
@@ -99,17 +80,6 @@ export default function showApplication(request, reply, wikiVariables, context =
 			request,
 			showFooter: showGlobalFooter
 		}))
-		/**
-		 * @param {MediaWikiPageData} templateData
-		 * @returns {Promise}
-		 */
-		.then((context) => OpenGraph.getAttributes(request, context)
-			.then((openGraphData) => {
-				// Add OpenGraph attributes to context
-				context.openGraph = openGraphData;
-				return context;
-			})
-		)
 		.then((templateData) => injectSassVariables(templateData))
 		/**
 		 * @param {*} contextData

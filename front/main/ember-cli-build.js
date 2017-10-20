@@ -22,10 +22,6 @@ module.exports = function (defaults) {
 					outputFile: '/assets/main.svg'
 				},
 				{
-					sourceDirs: 'app/symbols/discussions',
-					outputFile: '/assets/discussions.svg'
-				},
-				{
 					sourceDirs: 'app/symbols/infobox-builder',
 					outputFile: '/assets/infobox-builder.svg'
 				},
@@ -40,7 +36,7 @@ module.exports = function (defaults) {
 		outputPaths: {
 			app: {
 				css: {
-					'app-dark-theme': 'assets/app-dark-theme.css'
+					app: 'assets/app.css'
 				},
 				html: 'ember-main.hbs',
 			}
@@ -93,7 +89,6 @@ module.exports = function (defaults) {
 	app.import(`${app.bowerDirectory}/ember-hammer/ember-hammer.js`);
 	app.import(`${app.bowerDirectory}/i18next/i18next.js`);
 	app.import(`${app.bowerDirectory}/vignette/dist/vignette.js`);
-	app.import(`${app.bowerDirectory}/numeral/numeral.js`);
 	app.import(`${app.bowerDirectory}/weppy/dist/weppy.js`);
 	app.import(`${app.bowerDirectory}/visit-source/dist/visit-source.js`);
 	app.import(`${app.bowerDirectory}/Autolinker.js/dist/Autolinker.min.js`);
@@ -117,9 +112,6 @@ module.exports = function (defaults) {
 		pontoAssets = new Funnel(`${app.bowerDirectory}/ponto/web/src`, {
 			destDir: 'assets/vendor/ponto'
 		}),
-		numeralAssets = new Funnel(`${app.bowerDirectory}/numeral/locales`, {
-			destDir: 'assets/vendor/numeral'
-		}),
 		designSystemAssets = new Funnel(`${app.bowerDirectory}/design-system/dist/svg/sprite.svg`, {
 			destDir: 'assets/design-system.svg'
 		});
@@ -128,7 +120,6 @@ module.exports = function (defaults) {
 		jQueryAssets,
 		cropperAssets,
 		pontoAssets,
-		numeralAssets,
 		designSystemAssets
 	]);
 };

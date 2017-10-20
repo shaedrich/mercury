@@ -25,11 +25,7 @@
 		<link data-server-head-tags-static rel="shortcut icon" href="{{wikiVariables.favicon}}">
 	{{/if}}
 
-	{{#if isRtl}}
-		<link rel="stylesheet" href="http://{{wwwWikiHost}}/front/styles-themed.css?dir=rtl&cb=@@timestamp&{{sassParams}}">
-	{{else}}
-		<link rel="stylesheet" href="http://{{wwwWikiHost}}/front/styles-themed.css?cb=@@timestamp&{{sassParams}}">
-	{{/if}}
+	<link rel="stylesheet" href="http://{{wwwWikiHost}}/front/styles-themed.css?cb=@@timestamp&{{sassParams}}">
 
 	{{> apple-touch-icon}}
 

@@ -5,7 +5,6 @@ import proxyMW from './facets/operations/proxy-mw';
 import {handler as assetsHandler} from './facets/operations/assets';
 import sassHandler from './facets/operations/sass';
 import heartbeatHandler from './facets/operations/heartbeat';
-import discussionsHandler from './facets/show-discussions';
 import logoutHandler from './facets/auth/logout';
 import signOutHandler from './facets/auth/signout';
 import joinHandler from './facets/auth/join';
@@ -73,11 +72,6 @@ let routes,
 		{
 			method: 'GET',
 			path: '/front/{path*}',
-			handler: assetsHandler
-		},
-		{
-			method: 'GET',
-			path: '/public/{path*}',
 			handler: assetsHandler
 		},
 		{
@@ -335,33 +329,6 @@ let routes,
 				cache: routeCacheConfig
 			}
 		},
-		// Discussion routes
-		{
-			// Discussion user page and post details page
-			method: 'GET',
-			path: '/d/{type}/{id}/{action*}',
-			handler: discussionsHandler
-		},
-		{
-			// Make sure old discussion post list URLs are redirected to discussion main page
-			method: 'GET',
-			path: '/d/f/{id}/{action*}',
-			handler(request, reply) {
-				return reply.redirect('/d/f').permanent(true);
-			}
-		},
-		{
-			// Discussion main page and list of reported posts
-			method: 'GET',
-			path: '/d/{type}',
-			handler: discussionsHandler
-		},
-		{
-			// Discussion index
-			method: 'GET',
-			path: '/d',
-			handler: discussionsHandler
-		}
 	];
 
 /**

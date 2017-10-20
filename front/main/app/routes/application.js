@@ -115,32 +115,6 @@ export default Route.extend(
 					Logger.error('unable to open link', target.href);
 				}
 			},
-
-			/**
-			 * @returns {void}
-			 * @param {string} query
-			 */
-			goToSearchResults(query) {
-				if (this.get('responsive.isMobile')) {
-					window.location.assign(`/search?query=${query}`);
-				} else {
-					window.location.assign(M.buildUrl({
-						namespace: 'Special',
-						title: 'Search',
-						query: {
-							search: query,
-							fulltext: 'Search'
-						}
-					}));
-				}
-			},
-
-			openNav() {
-				this.get('controller').setProperties({
-					drawerContent: 'nav',
-					drawerVisible: true
-				});
-			}
 		},
 	}
 );

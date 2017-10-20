@@ -52,8 +52,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {string} cdnBaseUrl
  * @property {string} [devboxDomain]
  * @property {string} domain
- * @property {*} [discussions]
- * @property {*} [siteAttribute]
  * @property {*} environments
  * @property {HeliosSettings} helios
  * @property {WhoAmIServiceSettings} whoAmIService
@@ -78,7 +76,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {number} workerDisconnectTimeout
  * @property {FacebookSettings} facebook
  * @property {PatternsSettings} patterns
- * @property {boolean} enableDiscussions
  * @property {ClickStreamConfig} clickstream
  */
 
@@ -192,29 +189,8 @@ export default {
 	userPreferencesService: {
 		baseAPIPath: 'user-preference'
 	},
-	discussions: {
-		baseAPIPath: 'discussion'
-	},
-	following: {
-		baseAPIPath: 'following'
-	},
-	openGraph: {
-		baseAPIPath: 'opengraph'
-	},
-	siteAttribute: {
-		baseAPIPath: 'site-attribute'
-	},
 	imageReview: {
 		baseAPIPath: 'image-review'
-	},
-	staticAssets: {
-		baseAPIPath: 'static-assets'
-	},
-	userPermissions: {
-		baseAPIPath: 'user-permissions'
-	},
-	onSiteNotifications: {
-		baseAPIPath: 'on-site-notifications'
 	},
 	whoAmIService: {
 		path: '/whoami',
@@ -312,7 +288,6 @@ export default {
 	facebook: {
 		appId: 112328095453510
 	},
-	enableDiscussions: true,
 	clickstream: {
 		social: {
 			enable: true,
@@ -325,6 +300,6 @@ export default {
 		samplingRate: 0.1,
 		aggregationInterval: 1000
 	},
-	translationFiles: ['main', 'design-system', 'discussion', 'image-review', 'infobox-builder', 'search'],
+	translationFiles: ['main', 'image-review', 'infobox-builder'],
 	inContextTranslationsEnabled: process.env.MERCURY_INCONTEXT_ENABLED === 'true',
 };

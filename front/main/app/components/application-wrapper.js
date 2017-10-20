@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import {trackPerf} from 'common/utils/track-perf';
-import ResponsiveMixin from '../mixins/responsive';
 
 const {Component, computed, Logger, $, observer} = Ember;
 
@@ -25,7 +24,7 @@ const {Component, computed, Logger, $, observer} = Ember;
  * @property {string} tagName
  */
 
-export default Component.extend(ResponsiveMixin, {
+export default Component.extend({
 	classNames: ['application-wrapper'],
 	classNameBindings: ['smartBannerVisible', 'verticalClass'],
 	scrollLocation: null,
@@ -40,11 +39,6 @@ export default Component.extend(ResponsiveMixin, {
 		const vertical = Ember.get(Mercury, 'wiki.vertical');
 
 		return `${vertical}-vertical`;
-	}),
-
-	viewChangeObserver: observer('responsive.isMobile', function () {
-		// Deregister click handlers for open discussion-dropdown components
-		this.$(window.document).off('click');
 	}),
 
 	/**
