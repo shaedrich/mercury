@@ -104,7 +104,7 @@ export function post(request, reply) {
 	} else {
 		updatePasswordFor(username, password, token, request)
 			.then(data => {
-				reply(JSON.parse(data.payload)).code(200);
+				reply(JSON.parse(data.payload)).code(HttpStatus.OK);
 			}).catch(data => {
 				const errors = translateError(data, (error) => {
 					let errorHandler = 'server-error';
