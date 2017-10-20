@@ -74,7 +74,7 @@ export function post(request, reply) {
 			if (accessToken && accessToken.length) {
 				reply.state('access_token', accessToken);
 			}
-			reply({payload}).code(HttpStatus.OK);
+			reply(payload).code(HttpStatus.OK);
 		}).catch(data => {
 			const errors = translateError(data, (error) => {
 				let errorHandler = 'server-error';

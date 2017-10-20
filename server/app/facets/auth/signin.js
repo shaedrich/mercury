@@ -112,10 +112,10 @@ function doSignin(request, reply) {
 			if (accessToken && accessToken.length) {
 				reply.state('access_token', accessToken);
 			}
-			reply({payload}).code(HttpStatus.OK);
+			reply(payload).code(HttpStatus.OK);
 		}).catch(data => {
 			const payload = JSON.parse(data.payload);
-			reply({payload}).code(data.response.statusCode);
+			reply(payload).code(data.response.statusCode);
 		});
 }
 
@@ -130,11 +130,11 @@ function doFacebookSignin(request, reply) {
 			if (accessToken && accessToken.length) {
 				reply.state('access_token', accessToken);
 			}
-			reply({payload}).code(HttpStatus.OK);
+			reply(payload).code(HttpStatus.OK);
 		}).catch(data => {
 			const payload = JSON.parse(data.payload);
 
-			reply({payload}).code(data.response.statusCode);
+			reply(payload).code(data.response.statusCode);
 		});
 }
 
