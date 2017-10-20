@@ -7,6 +7,7 @@ import settings from '../../../config/settings';
 import translateError from './translate-error';
 import updatePasswordFor from '../operations/update-password-with-token';
 import validateTokenFor from '../operations/validate-token';
+import HttpStatus from 'http-status-codes';
 
 function getResetPasswordViewContext(request) {
 	return deepExtend(authView.getDefaultContext(request),
