@@ -105,7 +105,7 @@ export function post(request, reply) {
 		updatePasswordFor(username, password, token, request)
 			.then(data => {
 				reply({
-					payload: data.payload
+					payload: JSON.parse(data.payload)
 				}).code(200);
 			}).catch(data => {
 				const errors = translateError(data, (error) => {
