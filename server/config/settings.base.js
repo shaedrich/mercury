@@ -28,13 +28,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  */
 
 /**
- * @typedef {Object} WeppyConfig
- * @property {number} aggregationInterval
- * @property {string} host
- * @property {number} samplingRate
- */
-
-/**
  * @typedef {Object} ClickStreamConfig
  * @property {ClickStreamConfigItem} auth
  */
@@ -71,7 +64,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {string} servicesDomain
  * @property {TrackingSettings} tracking
  * @property {*} verticalColors
- * @property {WeppyConfig} weppy
  * @property {number} workerCount
  * @property {number} workerDisconnectTimeout
  * @property {FacebookSettings} facebook
@@ -293,12 +285,6 @@ export default {
 			enable: true,
 			url: 'https://services.wikia.com/clickstream/events/social'
 		},
-	},
-	weppy: {
-		enabled: process.env.WIKIA_ENVIRONMENT === 'prod',
-		host: 'http://speed.wikia.net/__rum',
-		samplingRate: 0.1,
-		aggregationInterval: 1000
 	},
 	translationFiles: ['main', 'image-review', 'infobox-builder'],
 	inContextTranslationsEnabled: process.env.MERCURY_INCONTEXT_ENABLED === 'true',

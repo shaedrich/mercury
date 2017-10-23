@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import {trackPerf} from 'common/utils/track-perf';
 
 const {Component, computed, Logger, $, observer} = Ember;
 
@@ -29,7 +28,6 @@ export default Component.extend({
 	classNameBindings: ['smartBannerVisible', 'verticalClass'],
 	scrollLocation: null,
 	smartBannerVisible: false,
-	firstRender: true,
 
 	drawerContentComponent: computed('activeDrawerContent', function () {
 		return `wikia-${this.get('activeDrawerContent')}`;
@@ -46,20 +44,6 @@ export default Component.extend({
 	 */
 	willInsertElement() {
 		$('#preload').remove();
-	},
-
-	/**
-	 * @returns {void}
-	 */
-	didRender() {
-		if (this.firstRender === true) {
-			this.firstRender = false;
-
-			trackPerf({
-				name: 'appRendered',
-				type: 'mark'
-			});
-		}
 	},
 
 	actions: {

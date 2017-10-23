@@ -89,7 +89,6 @@ module.exports = function (defaults) {
 	app.import(`${app.bowerDirectory}/ember-hammer/ember-hammer.js`);
 	app.import(`${app.bowerDirectory}/i18next/i18next.js`);
 	app.import(`${app.bowerDirectory}/vignette/dist/vignette.js`);
-	app.import(`${app.bowerDirectory}/weppy/dist/weppy.js`);
 	app.import(`${app.bowerDirectory}/visit-source/dist/visit-source.js`);
 	app.import(`${app.bowerDirectory}/Autolinker.js/dist/Autolinker.min.js`);
 	app.import(`${app.bowerDirectory}/tinycolor/dist/tinycolor-min.js`);
