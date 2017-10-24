@@ -10,8 +10,7 @@ var Lab = require('lab'),
 	clone = require('../utils/clone'),
 	server = require('../../../www/server/app/app'),
 	mediawiki = require('../../../www/server/app/lib/mediawiki'),
-	wikiVariables = require('../fixtures/wiki-variables'),
-	footer = require('../fixtures/design-system/global-footer');
+	wikiVariables = require('../fixtures/wiki-variables');
 
 describe('application', function () {
 	var requestParams = {
@@ -38,7 +37,6 @@ describe('application', function () {
 
 	it('renders application when request for wiki variables succeeds', function (done) {
 		wreckGetStub.onCall(0).yields(null, {statusCode: 200}, clone(wikiVariables));
-		wreckGetStub.onCall(1).yields(null, {statusCode: 200}, clone(footer));
 
 		server.inject(requestParams, function (response) {
 			expect(response.statusCode).to.equal(200);
