@@ -66,7 +66,7 @@ function getDefaultRegistrationContext(request, i18n) {
 		}
 	);
 
-	return wikiRequest.getWikiVariables()
+	return wikiRequest.wikiVariables()
 		.then((wikiVariables) => {
 			context.entryPointWikiId = wikiVariables.id;
 			return context;
