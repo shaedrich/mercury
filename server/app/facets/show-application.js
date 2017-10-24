@@ -1,6 +1,6 @@
 import * as MW from '../lib/mediawiki';
 import * as Utils from '../lib/utils';
-import * as Tracking from '../lib/tracking';
+import {handleResponse as addTracking} from '../lib/tracking';
 import Promise from 'bluebird';
 import Logger from '../lib/logger';
 import {gaUserIdHash} from '../lib/hashing';
@@ -9,8 +9,6 @@ import {
 } from '../lib/custom-errors';
 import {isRtl, getUserId, getSettings} from './operations/page-data-helper';
 import showServerErrorPage from './operations/show-server-error-page';
-import injectDesignSystemData from '../lib/inject-design-system-data';
-import {injectSassVariables} from '../lib/sass-variables';
 
 /**
  * @typedef {Object} CommunityAppConfig
@@ -25,7 +23,7 @@ import {injectSassVariables} from '../lib/sass-variables';
  * @returns {void}
  */
 function outputResponse(request, reply, context) {
-	Tracking.handleResponse(context, request);
+	addTracking(context, request);
 	Utils.setI18nLang(request, context.wikiVariables).then(() => {
 		reply.view('application', context);
 	});
@@ -69,18 +67,6 @@ export default function showApplication(request, reply, wikiVariables, context =
 
 			return context;
 		})
-		/**
-		 * Get data for Global Footer
-		 * @param {MediaWikiPageData} templateData
-		 * @returns {MediaWikiPageData}
-		 *
-		 */
-		.then((context) => injectDesignSystemData({
-			data: context,
-			request,
-			showFooter: showGlobalFooter
-		}))
-		.then((templateData) => injectSassVariables(templateData))
 		/**
 		 * @param {*} contextData
 		 * @returns {void}

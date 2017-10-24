@@ -1,6 +1,5 @@
 import deepExtend from 'deep-extend';
 import settings from '../../../config/settings';
-import {gaUserIdHash} from '../../lib/hashing';
 
 /**
  * @typedef {Object} OpenGraphData
@@ -40,32 +39,6 @@ export function getUserId(request) {
 }
 
 /**
- * @param {Hapi.Request} request
- * @returns {boolean|String}
- */
-export function getQualarooScriptUrl(request) {
-	// we don't want to load Qualaroo on noexternals
-	if (!request.query.noexternals && settings.qualaroo.enabled) {
-		return settings.qualaroo.scriptUrl;
-	}
-
-	return false;
-}
-
-/**
- * @param {Hapi.Request} request
- * @returns {boolean|String}
- */
-export function getOptimizelyScriptUrl(request) {
-	// we don't want to load Optimizely on noexternals
-	if (!request.query.noexternals && settings.optimizely.enabled) {
-		return `${settings.optimizely.scriptPath}${settings.optimizely.account}.js`;
-	}
-
-	return false;
-}
-
-/**
  * @param {String} type
  * @param {String} title
  * @param {String} url
@@ -93,28 +66,6 @@ export function getOpenGraphData(type, title, url, pageData = {}) {
 }
 
 /**
- * @param {Object} wikiVariables
- * @returns {String} url for openGraph
- */
-export function getOpenGraphUrl(wikiVariables) {
-	return wikiVariables.basePath + wikiVariables.articlePath + wikiVariables.siteName.replace(/ /g, '_');
-}
-
-/**
- * Get vertical color from settings
- *
- * @param {string} vertical
- * @returns {string}
- */
-export function getVerticalColor(vertical) {
-	if (settings.verticalColors.hasOwnProperty(vertical)) {
-		return settings.verticalColors[vertical];
-	}
-
-	return null;
-}
-
-/**
  * @returns {Settings}
  */
 export function getSettings() {
@@ -136,30 +87,4 @@ export function getDisplayTitle(request, pageData) {
 	}
 
 	return request.params.title.replace(/_/g, ' ');
-}
-
-/**
- * @param {Hapi.Request} request
- * @param {MediaWikiPageData} data
- * @returns {object}
- */
-export function getBaseResult(request, data) {
-	const wikiVariables = data.wikiVariables,
-		htmlTitleSettings = wikiVariables.htmlTitle,
-		userId = getUserId(request);
-
-	return {
-		canonicalUrl: wikiVariables.basePath,
-		wikiHtmlTitle: htmlTitleSettings.parts.join(htmlTitleSettings.separator),
-		gaUserIdHash: gaUserIdHash(userId),
-		isRtl: isRtl(wikiVariables),
-		// clone object to avoid overriding real settings for future requests
-		settings: getSettings(),
-		optimizelyScript: getOptimizelyScriptUrl(request),
-		qualarooScript: getQualarooScriptUrl(request),
-		server: data.server,
-		themeColor: getVerticalColor(wikiVariables.vertical),
-		userId,
-		wikiVariables
-	};
 }

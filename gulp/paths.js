@@ -86,18 +86,6 @@ module.exports = {
 			],
 			dest: output
 		},
-		styles: {
-			src: [
-				'front/auth/app/styles/' + scssPattern,
-				'front/common/styles/' + scssPattern,
-				'front/main/app/styles/' + scssPattern,
-				'front/main/bower_components/design-system/' + scssPattern,
-				'front/main/bower_components/foundation/' + scssPattern,
-				'front/main/bower_components/wikia-style-guide/' + scssPattern,
-			],
-			base: 'front',
-			dest: output + '/styles'
-		},
 		views: {
 			src: 'server/app/views/' + hbsPattern,
 			dest: outputServer + '/app/views',

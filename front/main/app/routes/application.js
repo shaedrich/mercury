@@ -1,11 +1,9 @@
 import Ember from 'ember';
 import HeadTagsStaticMixin from '../mixins/head-tags-static';
-import ResponsiveMixin from '../mixins/responsive';
 import {track, trackActions} from 'common/utils/track';
 import {activate as variantTestingActivate} from 'common/utils/variant-testing';
 
 const {
-	$,
 	Logger,
 	Route,
 	TargetActionSupport,
@@ -14,25 +12,8 @@ const {
 export default Route.extend(
 	TargetActionSupport,
 	HeadTagsStaticMixin,
-	ResponsiveMixin,
 	{
 		actions: {
-			/**
-			 * @param {boolean} state
-			 * @returns {void}
-			 */
-			triggerHighlightOverlayStateChange(state) {
-				this.controller.set('isGlobalNavigationPositionFixed', !state);
-			},
-
-			/**
-			 * @param {boolean} state
-			 * @returns {void}
-			 */
-			triggerGlobalNavigationHeadroomStateChange(state) {
-				this.controller.set('isGlobalNavigationHeadroomPinnedOrDisabled', state);
-			},
-
 			/**
 			 * @returns {void}
 			 */

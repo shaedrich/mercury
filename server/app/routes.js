@@ -3,7 +3,6 @@ import {Interval, Policy} from './lib/caching';
 import {getRedirectUrlWithQueryString} from './lib/auth-utils';
 import proxyMW from './facets/operations/proxy-mw';
 import {handler as assetsHandler} from './facets/operations/assets';
-import sassHandler from './facets/operations/sass';
 import heartbeatHandler from './facets/operations/heartbeat';
 import logoutHandler from './facets/auth/logout';
 import signOutHandler from './facets/auth/signout';
@@ -56,18 +55,6 @@ let routes,
 			method: 'GET',
 			path: '/robots.txt',
 			handler: proxyMW
-		},
-		{
-			method: 'GET',
-			path: '/front/styles-themed.css',
-			handler: sassHandler,
-			config: {
-				cache: {
-					privacy: Policy.Public,
-					// Hapi uses miliseconds
-					expiresIn: Interval.long * 1000
-				}
-			}
 		},
 		{
 			method: 'GET',

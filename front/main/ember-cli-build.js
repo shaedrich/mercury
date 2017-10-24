@@ -15,6 +15,11 @@ module.exports = function (defaults) {
 			baseline: 'vendor/baseline.js',
 			$script: 'bower_components/script.js/dist/script.js',
 		},
+		sassOptions: {
+			includePaths: [
+				'app/styles'
+			]
+		},
 		svgstore: {
 			files: [
 				{
@@ -46,15 +51,6 @@ module.exports = function (defaults) {
 			generateAssetMap: true,
 			replaceExtensions: ['html', 'css', 'js', 'hbs'],
 			prepend: 'https://mercury.nocookie.net/mercury-static/main/'
-		},
-		replace: {
-			files: [
-				'ember-main.hbs'
-			],
-			patterns: [{
-				match: 'timestamp',
-				replacement: new Date().getTime()
-			}]
 		},
 		derequire: {
 			patterns: [

@@ -260,10 +260,6 @@ export function createServerData(settings, wikiDomain = '') {
 			gaUrl: settings.tracking.ua.scriptUrl
 		};
 
-	if (settings.qualaroo.enabled) {
-		data.qualarooScript = settings.qualaroo.scriptUrl;
-	}
-
 	if (settings.optimizely.enabled) {
 		data.optimizelyScript = `${settings.optimizely.scriptPath}${settings.optimizely.account}.js`;
 	}

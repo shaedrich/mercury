@@ -58,8 +58,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {number} port
  * @property {PrerenderSettings} prerender
  * @property {number} proxyMaxRedirects
- * @property {QualarooSettings} [qualaroo]
- * @property {string} [qualaroo]
  * @property {string} redirectUrlOnNoData
  * @property {string} servicesDomain
  * @property {TrackingSettings} tracking
@@ -97,18 +95,10 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  */
 
 /**
- * @typedef {Object} QualarooSettings
- * @property {boolean} enabled
- * @property {string} scriptUrl
- */
-
-/**
  * @typedef {Object} TrackingSettings
  * @property {GAAccountConfig} ua
  * @property {string} quantserve
  * @property {ComscoreTrackingSettings} comscore
- * @property {IVW3TrackingSettings} ivw3
- * @property {NielsenTrackingSettings} nielsen
  * @property {KruxTrackingSettings} krux
  */
 
@@ -118,21 +108,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {string} id
  * @property {string} c7
  * @property {string} c7Value
- */
-
-/**
- * @typedef {Object} IVW3TrackingSettings
- * @property {string} cmKey
- * @property {boolean} enabled
- * @property {string[]} countries
- */
-
-/**
- * @typedef {Object} NielsenTrackingSettings
- * @property {string} apid
- * @property {string} clientId
- * @property {string} section
- * @property {boolean} enabled
  */
 
 /**
@@ -210,10 +185,6 @@ export default {
 		scriptPath: 'https://cdn.optimizely.com/js/',
 		account: '2449650414'
 	},
-	qualaroo: {
-		enabled: true,
-		scriptUrl: '//s3.amazonaws.com/ki.js/52510/bgJ.js'
-	},
 	port: process.env.PORT || 8000,
 	prerender: {
 		token: process.env.PRERENDER_TOKEN
@@ -244,16 +215,6 @@ export default {
 			id: '6177433',
 			c7: '',
 			c7Value: ''
-		},
-		ivw3: {
-			cmKey: '',
-			countries: []
-		},
-		nielsen: {
-			apid: 'FIXME',
-			dbName: '',
-			section: '',
-			enabled: false
 		},
 		krux: {
 			mobileId: 'JTKzTN3f'

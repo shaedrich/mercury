@@ -1,6 +1,6 @@
 import BirthdateInput from './birthdate-input';
 import * as authUtils from '../../lib/auth-utils';
-import {PageRequestHelper} from '../../lib/mediawiki-page';
+import {WikiRequest} from '../../lib/mediawiki';
 import Logger from '../../lib/logger';
 import settings from '../../../config/settings';
 import authLocaleSettings from '../../../config/authLocaleSettings';
@@ -49,7 +49,7 @@ function getDefaultRegistrationContext(request, i18n) {
 	const lang = authUtils.getLanguageWithDefault(i18n),
 		defaultContext = authView.getDefaultContext(request),
 		wikiDomain = parse(defaultContext.exitTo).host || request.headers.host,
-		mediaWikiPageHelper = new PageRequestHelper({wikiDomain}),
+		wikiRequest = new WikiRequest({wikiDomain}),
 		context = deepExtend(defaultContext, {
 			usernameMaxLength: settings.userRegistationService.usernameMaxLength,
 			passwordMaxLength: settings.userRegistationService.passwordMaxLength,
@@ -66,7 +66,7 @@ function getDefaultRegistrationContext(request, i18n) {
 		}
 	);
 
-	return mediaWikiPageHelper.getWikiVariables()
+	return wikiRequest.getWikiVariables()
 		.then((wikiVariables) => {
 			context.entryPointWikiId = wikiVariables.id;
 			return context;
