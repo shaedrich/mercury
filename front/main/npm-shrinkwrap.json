@@ -2066,52 +2066,6 @@
         }
       }
     },
-    "ember-cli-replace": {
-      "version": "0.5.0",
-      "dev": true,
-      "dependencies": {
-        "amd-name-resolver": {
-          "version": "0.0.6",
-          "dev": true
-        },
-        "babel-core": {
-          "version": "6.25.0",
-          "dev": true
-        },
-        "babylon": {
-          "version": "6.17.4",
-          "dev": true
-        },
-        "broccoli-babel-transpiler": {
-          "version": "6.1.1",
-          "dev": true
-        },
-        "clone": {
-          "version": "2.1.1",
-          "dev": true
-        },
-        "ember-cli-babel": {
-          "version": "6.6.0",
-          "dev": true
-        },
-        "ember-cli-version-checker": {
-          "version": "2.0.0",
-          "dev": true
-        },
-        "json5": {
-          "version": "0.5.1",
-          "dev": true
-        },
-        "lodash": {
-          "version": "4.17.4",
-          "dev": true
-        },
-        "rsvp": {
-          "version": "3.6.2",
-          "dev": true
-        }
-      }
-    },
     "ember-cli-sass": {
       "version": "5.2.1",
       "dev": true

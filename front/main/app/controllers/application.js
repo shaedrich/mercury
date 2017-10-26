@@ -1,24 +1,10 @@
 import Ember from 'ember';
 import AlertNotificationsMixin from '../mixins/alert-notifications';
-import NoScrollMixin from '../mixins/no-scroll';
 import {track, trackActions} from 'common/utils/track';
 
 export default Ember.Controller.extend(
-	AlertNotificationsMixin, NoScrollMixin,
+	AlertNotificationsMixin,
 	{
-		smartBannerVisible: false,
-		drawerVisible: false,
-		drawerContent: null,
-		fullPage: false,
-		noMargins: false,
-		isGlobalNavigationPositionFixed: true,
-		isGlobalNavigationHeadroomPinnedOrDisabled: true,
-		isGlobalNavigationVisible: Ember.computed.and(
-			'isGlobalNavigationPositionFixed',
-			'isGlobalNavigationHeadroomPinnedOrDisabled'
-		),
-		currentUrl: null,
-
 		/**
 		 * @returns {void}
 		 */
@@ -39,12 +25,6 @@ export default Ember.Controller.extend(
 			this._super();
 		},
 
-		onPathChanged: Ember.observer('target.url', function () {
-			Ember.run.next(this, function () {
-				this.set('currentUrl', window.location.href);
-			});
-		}),
-
 		actions: {
 			/**
 			 * Bubbles up to ApplicationRoute
@@ -54,22 +34,6 @@ export default Ember.Controller.extend(
 			 */
 			handleLink(target) {
 				this.get('target').send('handleLink', target);
-			},
-
-			/**
-			 * @param {boolean} visible
-			 * @returns {void}
-			 */
-			toggleDrawer(visible) {
-				this.set('drawerVisible', visible);
-			},
-
-			/**
-			 * @param {boolean} visible
-			 * @returns {void}
-			 */
-			toggleSmartBanner(visible) {
-				this.set('smartBannerVisible', visible);
 			},
 		},
 	}

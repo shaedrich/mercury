@@ -14,18 +14,10 @@
 // z-6
 $z-pop-over-compass: $z-6;
 // z-7
-$z-discussion-sticky-editor: $z-7;
-$z-site-head: $z-7;
 // z-8
-$z-side-nav-overlay: $z-8;
-$z-discussion-editor: $z-8;
-$z-highlight-overlay: $z-8;
 // z-9
 $z-alert-notification: $z-9;
 $z-modal-dialog: $z-9;
-$z-side-nav: $z-9;
-$z-highlight-overlay-content: $z-9;
-$z-global-navigation: $z-9;
 // z-max
 $z-pop-over: $z-max;
 
@@ -92,15 +84,8 @@ $search-box-border-color: $color-blue-gray-light;
 $search-box-text-color: $color-blue-gray;
 $spinner-color: $color-blue-brand;
 
-$fancy-check-box-border: #999;
-$fancy-check-box-disabled-border: #ccc;
-$fancy-check-box-background: #fff;
-$highlight-overlay-background-color: #f6f6f6;
 $pop-over-background-color: $color-white;
 
-$side-nav-item-gutter: rem-calc(13);
-$side-nav-width: rem-calc(260);
-$side-nav-offset: $side-nav-width * -1;
 $transition-length: .1s;
 $wikia-ui-components-sub-head-height: 48px;
 $wikia-ui-components-sub-head-height-large: 66px;
@@ -129,19 +114,3 @@ $vertical-colors: (
 		$color-hub-music
 		$color-hub-tv
 );
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Smart banner
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$smart-banner-android-height: rem-calc(66);
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Site head
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-$site-head-top-border-height: rem-calc(6);
-$site-head-content-height: rem-calc(49);
-$site-head-fandom-bar-height: rem-calc(23);
-$site-head-height: $site-head-top-border-height + $site-head-content-height;
-$site-head-with-fandom-bar-height: $site-head-height + $site-head-fandom-bar-height;
-$icon-site-head-width: rem-calc(60);
-$icon-site-head-height: 50px;

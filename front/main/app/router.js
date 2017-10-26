@@ -53,53 +53,6 @@ Router.map(function () {
 		});
 	});
 
-	this.route('discussion', {
-		path: '/d'
-	}, function () {
-		this.route('forum', {
-			path: '/f'
-		});
-
-		this.route('follow');
-
-		this.route('reported-posts', {
-			path: '/reported'
-		});
-
-		this.route('post', {
-			path: '/p/:postId'
-		});
-
-		this.route('reply', {
-			path: '/p/:postId/r/:replyId'
-		});
-
-		this.route('user', {
-			path: '/u/:userId'
-		});
-
-		this.route('guidelines', {
-			path: '/g'
-		});
-
-		this.route('moderator', {
-			path: 'm'
-		}, function () {
-			this.route('user-activity', {
-				path: '/insights'
-			}, function () {
-				this.route('posts');
-				this.route('reports');
-				this.route('moderations');
-			});
-		});
-
-		// When user tries to load invalid path under /d* we render a not found page
-		this.route('not-found', {
-			path: '/*url'
-		});
-	});
-
 	this.route('image-review', function () {
 		this.route('index', {
 			path: '/'

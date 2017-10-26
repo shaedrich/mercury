@@ -28,13 +28,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  */
 
 /**
- * @typedef {Object} WeppyConfig
- * @property {number} aggregationInterval
- * @property {string} host
- * @property {number} samplingRate
- */
-
-/**
  * @typedef {Object} ClickStreamConfig
  * @property {ClickStreamConfigItem} auth
  */
@@ -52,8 +45,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {string} cdnBaseUrl
  * @property {string} [devboxDomain]
  * @property {string} domain
- * @property {*} [discussions]
- * @property {*} [siteAttribute]
  * @property {*} environments
  * @property {HeliosSettings} helios
  * @property {WhoAmIServiceSettings} whoAmIService
@@ -67,18 +58,14 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {number} port
  * @property {PrerenderSettings} prerender
  * @property {number} proxyMaxRedirects
- * @property {QualarooSettings} [qualaroo]
- * @property {string} [qualaroo]
  * @property {string} redirectUrlOnNoData
  * @property {string} servicesDomain
  * @property {TrackingSettings} tracking
  * @property {*} verticalColors
- * @property {WeppyConfig} weppy
  * @property {number} workerCount
  * @property {number} workerDisconnectTimeout
  * @property {FacebookSettings} facebook
  * @property {PatternsSettings} patterns
- * @property {boolean} enableDiscussions
  * @property {ClickStreamConfig} clickstream
  */
 
@@ -108,18 +95,10 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  */
 
 /**
- * @typedef {Object} QualarooSettings
- * @property {boolean} enabled
- * @property {string} scriptUrl
- */
-
-/**
  * @typedef {Object} TrackingSettings
  * @property {GAAccountConfig} ua
  * @property {string} quantserve
  * @property {ComscoreTrackingSettings} comscore
- * @property {IVW3TrackingSettings} ivw3
- * @property {NielsenTrackingSettings} nielsen
  * @property {KruxTrackingSettings} krux
  */
 
@@ -129,21 +108,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {string} id
  * @property {string} c7
  * @property {string} c7Value
- */
-
-/**
- * @typedef {Object} IVW3TrackingSettings
- * @property {string} cmKey
- * @property {boolean} enabled
- * @property {string[]} countries
- */
-
-/**
- * @typedef {Object} NielsenTrackingSettings
- * @property {string} apid
- * @property {string} clientId
- * @property {string} section
- * @property {boolean} enabled
  */
 
 /**
@@ -192,29 +156,8 @@ export default {
 	userPreferencesService: {
 		baseAPIPath: 'user-preference'
 	},
-	discussions: {
-		baseAPIPath: 'discussion'
-	},
-	following: {
-		baseAPIPath: 'following'
-	},
-	openGraph: {
-		baseAPIPath: 'opengraph'
-	},
-	siteAttribute: {
-		baseAPIPath: 'site-attribute'
-	},
 	imageReview: {
 		baseAPIPath: 'image-review'
-	},
-	staticAssets: {
-		baseAPIPath: 'static-assets'
-	},
-	userPermissions: {
-		baseAPIPath: 'user-permissions'
-	},
-	onSiteNotifications: {
-		baseAPIPath: 'on-site-notifications'
 	},
 	whoAmIService: {
 		path: '/whoami',
@@ -241,10 +184,6 @@ export default {
 		enabled: true,
 		scriptPath: 'https://cdn.optimizely.com/js/',
 		account: '2449650414'
-	},
-	qualaroo: {
-		enabled: true,
-		scriptUrl: '//s3.amazonaws.com/ki.js/52510/bgJ.js'
 	},
 	port: process.env.PORT || 8000,
 	prerender: {
@@ -277,16 +216,6 @@ export default {
 			c7: '',
 			c7Value: ''
 		},
-		ivw3: {
-			cmKey: '',
-			countries: []
-		},
-		nielsen: {
-			apid: 'FIXME',
-			dbName: '',
-			section: '',
-			enabled: false
-		},
 		krux: {
 			mobileId: 'JTKzTN3f'
 		},
@@ -312,19 +241,12 @@ export default {
 	facebook: {
 		appId: 112328095453510
 	},
-	enableDiscussions: true,
 	clickstream: {
 		social: {
 			enable: true,
 			url: 'https://services.wikia.com/clickstream/events/social'
 		},
 	},
-	weppy: {
-		enabled: process.env.WIKIA_ENVIRONMENT === 'prod',
-		host: 'http://speed.wikia.net/__rum',
-		samplingRate: 0.1,
-		aggregationInterval: 1000
-	},
-	translationFiles: ['main', 'design-system', 'discussion', 'image-review', 'infobox-builder', 'search'],
+	translationFiles: ['main', 'image-review', 'infobox-builder'],
 	inContextTranslationsEnabled: process.env.MERCURY_INCONTEXT_ENABLED === 'true',
 };

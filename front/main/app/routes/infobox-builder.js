@@ -90,10 +90,6 @@ export default Ember.Route.extend(ConfirmationMixin, {
 		 * @returns {Boolean}
 		 */
 		didTransition() {
-			// InfoboxBuilderRoute works in "fullPage mode" (unlike ArticleRoute) which means that it takes
-			// over whole page (so navigation, share feature, etc. are not displayed). To understand
-			// better take a look at application.hbs.
-			this.controllerFor('application').set('fullPage', true);
 			window.scrollTo(0, 0);
 
 			return true;
