@@ -21,28 +21,28 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 					expectedOutput: 'http://test.wikia.com'
 				},
 				{
-					host: 'sandbox-mercury.muppet.wikia.com',
-					expectedOutput: 'http://sandbox-mercury.test.wikia.com'
+					host: 'muppet.sandbox-mercury.wikia.com',
+					expectedOutput: 'http://test.sandbox-mercury.wikia.com'
 				},
 				{
-					host: 'sandbox-mercury.es.walkingdead.wikia.com',
-					expectedOutput: 'http://sandbox-mercury.test.wikia.com'
+					host: 'es.walkingdead.sandbox-mercury.wikia.com',
+					expectedOutput: 'http://test.sandbox-mercury.wikia.com'
 				},
 				{
-					host: 'preview.muppet.wikia.com',
-					expectedOutput: 'http://preview.test.wikia.com'
+					host: 'muppet.preview.wikia.com',
+					expectedOutput: 'http://test.preview.wikia.com'
 				},
 				{
-					host: 'preview.es.walkingdead.wikia.com',
-					expectedOutput: 'http://preview.test.wikia.com'
+					host: 'es.walkingdead.preview.wikia.com',
+					expectedOutput: 'http://test.preview.wikia.com'
 				},
 				{
-					host: 'verify.muppet.wikia.com',
-					expectedOutput: 'http://verify.test.wikia.com'
+					host: 'muppet.verify.wikia.com',
+					expectedOutput: 'http://test.verify.wikia.com'
 				},
 				{
-					host: 'verify.es.walkingdead.wikia.com',
-					expectedOutput: 'http://verify.test.wikia.com'
+					host: 'es.walkingdead.verify.wikia.com',
+					expectedOutput: 'http://test.verify.wikia.com'
 				},
 				{
 					host: 'muppet.mattk.wikia-dev.us',

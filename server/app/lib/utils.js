@@ -126,9 +126,14 @@ export function getWikiDomainName(settings, hostName = '') {
  * @returns {string}
  */
 export function getWikiaSubdomain(host) {
+	// Strip staging env from the host
+	host = host.replace(new RegExp(
+			'\\.((?:verify|preview|stable|sandbox-[^.]+)\\.)?wikia.com'
+		),
+		'.wikia.com'
+	);
 	return host.replace(new RegExp(
-			'^(?:(?:verify|preview|stable|sandbox-[^.]+)\\.)?' +
-			'([a-z\\d.]*[a-z\d])\\.' +
+			'^([a-z\\d.]*[a-z\d])\\.' +
 			'(?:wikia|wikia-staging|[a-z\\d]+\\.wikia-dev)?(?:\\.com|\\.pl|\\.us)'
 		),
 		'$1'
