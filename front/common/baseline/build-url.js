@@ -101,7 +101,6 @@ if (typeof window.M === 'undefined') {
 			} else {
 				urlParams.protocol = 'http';
 			}
-			urlParams.protocol = 'http';
 		}
 
 		let url = `${urlParams.protocol}://`;
