@@ -15,13 +15,11 @@
     "i18n": true,
     "M": true,
     "Mercury": true,
-    "numeral": true,
     "optimizely": true,
     "CryptoJS": true,
     "state": false,
     "tinycolor": true,
     "VisitSource": true,
-    "Weppy": true,
     "Wikia": true
   }
 }

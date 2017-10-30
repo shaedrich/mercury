@@ -3,10 +3,6 @@
  * @param {*} data
  */
 export class PageRequestError {
-	/**
-	 * @param {MediaWikiPageData} data
-	 * @returns {void}
-	 */
 	constructor(data) {
 		Error.apply(this, arguments);
 		this.data = data;

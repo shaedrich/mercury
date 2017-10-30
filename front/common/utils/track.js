@@ -170,14 +170,11 @@ export function trackPageView(uaDimensions, overrideUrl) {
 		M.prop('initialPageView', false);
 	} else {
 		window.trackQuantservePageView();
-		window.trackNielsenPageView();
 		window.trackComscorePageView();
 
 		M.tracker.Internal.trackPageView(context);
 		M.tracker.UniversalAnalytics.trackPageView(uaDimensions, overrideUrl);
 	}
-
-	window.trackIVW3PageView();
 }
 
 /**

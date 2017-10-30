@@ -234,12 +234,6 @@ export function post(url, formData, host = '', headers = {}) {
  * @property {*} redirects
  */
 class BaseRequest {
-	/**
-	 * Search request constructor
-	 *
-	 * @param {MWRequestParams} params
-	 * @returns {void}
-	 */
 	constructor(params) {
 		this.wikiDomain = params.wikiDomain;
 		this.headers = params.headers;
@@ -259,43 +253,6 @@ class BaseRequest {
 	}
 }
 
-export class DesignSystemRequest extends BaseRequest {
-
-	constructor(params) {
-		super(params);
-
-		this.corporatePageUrl = params.corporatePageUrl;
-		this.wikiId = params.wikiId;
-		this.language = params.language;
-		this.request = params.request;
-	}
-
-	getUrl() {
-		// mediawikiDomain is icache address
-		const apiDomain = settings.mediawikiDomain || this.corporatePageUrl;
-
-		return `http://${apiDomain}/api/v1/design-system/wikis/${this.wikiId}/${this.language}/`;
-	}
-
-	getDesignSystemData() {
-		const url = this.getUrl();
-
-		this.headers = {
-			Cookie: `access_token=${this.request.state.access_token}`
-		};
-
-		return this
-			.fetch(url, this.corporatePageUrl)
-			.then(({payload}) => {
-				if (payload) {
-					return payload;
-				} else {
-					throw new Error('No data returned from API');
-				}
-			});
-	}
-}
-
 /**
  * a wrapper for making API requests for info about the wiki
  *
@@ -312,6 +269,10 @@ export class WikiRequest extends BaseRequest {
 			controller: 'MercuryApi',
 			method: 'getWikiVariables'
 		});
+
+		Logger.debug({
+			wikiDomain: this.wikiDomain
+		}, 'Fetching wiki variables');
 
 		return this
 			.fetch(url)

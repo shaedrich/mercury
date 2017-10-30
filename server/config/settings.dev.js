@@ -20,9 +20,6 @@ export default {
 	optimizely: {
 		account: '2441440871'
 	},
-	qualaroo: {
-		scriptUrl: '//s3.amazonaws.com/ki.js/52510/dlS.js'
-	},
 	port: 7000,
 	clickstream: {
 		social: {

@@ -25,17 +25,11 @@
 		<link data-server-head-tags-static rel="shortcut icon" href="{{wikiVariables.favicon}}">
 	{{/if}}
 
-	{{#if isRtl}}
-		<link rel="stylesheet" href="http://{{wwwWikiHost}}/front/styles-themed.css?dir=rtl&cb=@@timestamp&{{sassParams}}">
-	{{else}}
-		<link rel="stylesheet" href="http://{{wwwWikiHost}}/front/styles-themed.css?cb=@@timestamp&{{sassParams}}">
-	{{/if}}
+	<link rel="stylesheet" href="/front/main/assets/app.css">
 
 	{{> apple-touch-icon}}
 
 	{{> dns-prefetch}}
-	{{> open-graph-tags}}
-	{{> smart-banner-ios}}
 
 	<link data-server-head-tags-dynamic rel="canonical" href="{{canonicalUrl}}">
 
@@ -54,17 +48,8 @@
 <body class="{{bodyClassName}}">
 {{content-for 'body'}}
 
-{{> first-render-time}}
-{{> qualaroo}}
-
-{{!--
-	Ember must render out to a specific div above the scripts, otherwise
-	Google PageSpeed will mistakenly believe that we have scripts loading and blocking content
-	DO NOT REMOVE THE FOLLOWING LINE:
---}}
 <div id="ember-container" class="ember-container">
 	<div id="preload">
-		{{> site-head}}
 		<div class="page-wrapper" lang="{{wikiVariables.language.content}}" dir="{{wikiVariables.language.contentDir}}">
 			{{{content}}}
 		</div>
@@ -73,11 +58,6 @@
 		{{/if}}
 	</div>
 </div>
-<div id="ember-component-constructor" style="display: none"></div>
-
-{{#if globalFooter}}
-	{{> global-footer/global-footer model=globalFooter}}
-{{/if}}
 
 <script>
 	M.loadScripts([
@@ -93,12 +73,10 @@
 <script src="//{{server.mediawikiDomain}}/__load/-/only=scripts/wikia.ext.instantGlobals,instantGlobalsOverride,abtesting,abtest"></script>
 {{> tracking-ua}}
 {{> tracking-internal}}
-{{> tracking-ivw3}}
 
 {{content-for 'body-footer'}}
 
 {{> tracking-pixels}}
-{{> tracking-nielsen}}
 {{> tracking-netzathleten}}
 {{#if settings.inContextTranslationsEnabled}}
 	{{> crowdin-incontext}}

@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import {trackPerf} from 'common/utils/track-perf';
-import ResponsiveMixin from '../mixins/responsive';
 
 const {Component, computed, Logger, $, observer} = Ember;
 
@@ -25,12 +23,11 @@ const {Component, computed, Logger, $, observer} = Ember;
  * @property {string} tagName
  */
 
-export default Component.extend(ResponsiveMixin, {
+export default Component.extend({
 	classNames: ['application-wrapper'],
 	classNameBindings: ['smartBannerVisible', 'verticalClass'],
 	scrollLocation: null,
 	smartBannerVisible: false,
-	firstRender: true,
 
 	drawerContentComponent: computed('activeDrawerContent', function () {
 		return `wikia-${this.get('activeDrawerContent')}`;
@@ -42,30 +39,11 @@ export default Component.extend(ResponsiveMixin, {
 		return `${vertical}-vertical`;
 	}),
 
-	viewChangeObserver: observer('responsive.isMobile', function () {
-		// Deregister click handlers for open discussion-dropdown components
-		this.$(window.document).off('click');
-	}),
-
 	/**
 	 * @returns {void}
 	 */
 	willInsertElement() {
 		$('#preload').remove();
-	},
-
-	/**
-	 * @returns {void}
-	 */
-	didRender() {
-		if (this.firstRender === true) {
-			this.firstRender = false;
-
-			trackPerf({
-				name: 'appRendered',
-				type: 'mark'
-			});
-		}
 	},
 
 	actions: {

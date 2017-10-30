@@ -80,15 +80,6 @@ gulp.task('build-server-views-auth', function () {
 });
 
 /*
- * Copy styles to www/styles so they can be compiled in runtime
- */
-gulp.task('build-server-styles', function () {
-	return gulp.src(paths.styles.src, {base: paths.styles.base})
-		.pipe(plumber())
-		.pipe(gulp.dest(paths.styles.dest));
-});
-
-/*
  * Copy view files
  */
 gulp.task('build-server-views', [
@@ -102,8 +93,7 @@ gulp.task('build-server-views', [
 gulp.task('build-server', [
 	'build-server-node-modules',
 	'build-server-scripts',
-	'build-server-views',
-	'build-server-styles'
+	'build-server-views'
 ]);
 
 /*
@@ -120,10 +110,6 @@ gulp.task('watch-server', function () {
 
 	watch(paths.views.src, function () {
 		gulp.start('build-server-views');
-	}).on('error', exitOnError);
-
-	watch(paths.styles.src, function () {
-		gulp.start('build-server-styles');
 	}).on('error', exitOnError);
 
 	watch(paths.scripts.src, function () {
