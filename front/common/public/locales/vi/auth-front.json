@@ -1,28 +1,28 @@
 {
   "errors": {
     "access-denied": "Truy cập bị từ chối.", 
-    "birthdate_invalid": "Birthdate isn't a valid date", 
+    "birthdate_invalid": "Ngày sinh không hợp lệ", 
     "email_already_exists": "Thư điện tử này đã được đăng ký trên FANDOM", 
     "email_invalid": "Thư điện tử không hợp lệ", 
-    "fb_account_already_linked": "This Facebook account is already connected to another FANDOM user account", 
+    "fb_account_already_linked": "Tài khoản Facebook này đã được kết nối với tài khoản người dùng FANDOM khác", 
     "invalid-email": "Có vẻ như bạn chưa có thư điện tử nào liên kết với tài khoản FANDOM của mình. Vui lòng {contactFandomLink}", 
-    "password_equal_name": "Password and username cannot match", 
-    "password_exceeds_max_length": "Password cannot exceed 50 characters", 
-    "passwords_not_match": "Passwords do not match", 
+    "password_equal_name": "Mật khẩu và tên người dùng không thể trùng nhau", 
+    "password_exceeds_max_length": "Mật khẩu không thể vượt quá 50 ký tự", 
+    "passwords_not_match": "Mật khẩu không khớp", 
     "registration_error": "Chúng tôi không thể hoàn tất đăng ký của bạn tại thời điểm này", 
-    "reset-password-email-sent": "We've already sent a password reminder to this account in the last 24 hours. Please check your email.", 
-    "server-error": "There was an error processing your request. Please try again later.", 
-    "user_already_linked": "This FANDOM account is already connected to Facebook", 
-    "username-not-recognized": "Hm, we don't recognize this name. Don't forget usernames are case sensitive.", 
+    "reset-password-email-sent": "Chúng tôi đã đã gửi lời nhắc mật khẩu cho tài khoản này trong vòng 24 giờ qua. Vui lòng kiểm tra thư điện tử của bạn.", 
+    "server-error": "Đã xảy ra lỗi khi xử lý yêu cầu của bạn. Bạn vui lòng thử lại sau.", 
+    "user_already_linked": "Tài khoản FANDOM này đã được kết nối với Facebook", 
+    "username-not-recognized": "Hừm, chúng tôi không nhận ra tên này. Đừng quên rằng tên người dùng có phân biệt chữ hoa chữ thường.", 
     "username_already_exists": "Tên người dùng này đã tồn tại", 
     "username_blocked": "Bạn không thể yêu cầu mật khẩu mới, bởi vì tên người dùng của bạn đã bị chặn.", 
-    "username_exceeds_max_length": "Username cannot exceed 50 characters", 
-    "username_illegal_characters": "Username can contain only letters and numbers from one alphabet and must include one letter", 
-    "username_ip_address": "Username must include at least one letter", 
+    "username_exceeds_max_length": "Tên người dùng không thể vượt quá 50 ký tự", 
+    "username_illegal_characters": "Tên người dùng chỉ có thể chứa chữ cái và số đếm từ một bảng chứ cái và phải có ít nhất một ký tự", 
+    "username_ip_address": "Tên người dùng phải phải có ít nhất một ký tự", 
     "username_unavailable": "Tên người dùng này đã tồn tại hoặc chứa những ký tự không hợp lệ. Tên người dùng có thể chứa chữ cái hoặc số đếm và phải bao gồm một chữ cái", 
-    "wrong-credentials": "We don't recognize these credentials. Try again or register a new account."
+    "wrong-credentials": "Chúng tôi không nhận ra những thông tin này. Hãy thử lại hoặc đăng ký một tài khoản mới."
   }, 
   "labels": {
-    "terms-of-use-and-privacy-policy-text": "I agree to {termsOfUseLink} and {privacyPolicyLink} (required)"
+    "terms-of-use-and-privacy-policy-text": "Tôi đồng ý với {termsOfUseLink} và {privacyPolicyLink} (bắt buộc)"
   }
 }
