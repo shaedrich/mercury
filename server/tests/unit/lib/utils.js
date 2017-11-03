@@ -250,19 +250,19 @@ QUnit.test('clearHost', function (assert) {
 			description: 'clears the port from the host'
 		},
 		{
-			host: 'externaltest.muppet.wikia.com',
+			host: 'muppet.externaltest.wikia.com',
 			expected: 'muppet.wikia.com',
 			description: 'clears the externaltest ad domain alias'
 		},
 		{
-			host: 'showcase.muppet.wikia.com',
+			host: 'muppet.showcase.wikia.com',
 			expected: 'muppet.wikia.com',
 			description: 'clears the showcase ad domain alias'
 		},
 		{
-			host: 'externaltest.muppet.wikia.com:8000',
+			host: 'muppet.externaltest.wikia.com:8000',
 			expected: 'muppet.wikia.com',
-			description: 'clears the showcase ad domain alias and port'
+			description: 'clears the externaltest ad domain alias and port'
 		},
 		{
 			host: 'muppet.wikia-staging.com:8000',
@@ -567,14 +567,14 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 			expected: 'www.wikia.com'
 		},
 		{
-			wikiDomain: 'preview.poznan.wikia.com',
+			wikiDomain: 'poznan.preview.wikia.com',
 			environment: global.environments.preview,
-			expected: 'preview.www.wikia.com'
+			expected: 'www.preview.wikia.com'
 		},
 		{
-			wikiDomain: 'preview.pl.gta.wikia.com',
+			wikiDomain: 'pl.gta.preview.wikia.com',
 			environment: global.environments.preview,
-			expected: 'preview.www.wikia.com'
+			expected: 'www.preview.wikia.com'
 		},
 		{
 			wikiDomain: 'poznan.hacker.wikia-dev.pl',

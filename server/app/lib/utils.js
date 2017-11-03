@@ -150,7 +150,7 @@ export function clearHost(host) {
 	// We use two special domain prefixes for Ad Operation and Sales reasons
 	// They behave similar to our staging prefixes but are not staging machines
 	// Talk to Ad Engineering Team if you want to learn more
-	const adDomainAliases = ['externaltest', 'showcase'];
+	const adDomainAliases = ['.externaltest.wikia.com', '.showcase.wikia.com'];
 
 	// get rid of port
 	host = host.split(':')[0];
@@ -161,8 +161,8 @@ export function clearHost(host) {
 	 * @returns {void}
 	 */
 	Object.keys(adDomainAliases).forEach((key) => {
-		if (host.indexOf(adDomainAliases[key]) === 0) {
-			host = host.replace(`${adDomainAliases[key]}.`, '');
+		if (host.endsWith(adDomainAliases[key])) {
+			host = host.replace(adDomainAliases[key], '.wikia.com');
 		}
 	});
 
@@ -196,8 +196,9 @@ export function getWikiBaseUrlFromWikiDomain(settings, wikiDomain, wiki) {
 		case environments.dev:
 			return `${wiki}.${settings.devboxDomain}.wikia-dev.${settings.devDomain}`;
 		default:
-			environmentPrefix = wikiDomain.substring(0, wikiDomain.indexOf('.'));
-			return `${environmentPrefix}.${wiki}.wikia.com`;
+			// extract env name from XXX.env.wikia.com string
+			environmentPrefix = wikiDomain.split('.').slice(-3, -2);
+			return `${wiki}.${environmentPrefix}.wikia.com`;
 	}
 }
 
