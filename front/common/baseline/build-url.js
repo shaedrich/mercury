@@ -96,7 +96,11 @@ if (typeof window.M === 'undefined') {
 			host = context.location.host;
 
 		if (!urlParams.protocol) {
-			urlParams.protocol = 'http';
+			if (window && window.location && window.location.protocol) {
+				urlParams.protocol = window.location.protocol.replace(':', '');
+			} else {
+				urlParams.protocol = 'http';
+			}
 		}
 
 		let url = `${urlParams.protocol}://`;
