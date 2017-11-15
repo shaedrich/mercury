@@ -4,7 +4,7 @@
   "main": "www/server/app/server.js",
   "scripts": {
     "clean": "rm -rf www/* node_modules/ front/auth/bower_components/ front/common/bower_components/ front/main/bower_components/ front/main/node_modules/ server/node_modules/",
-    "clean-deep": "npm run clean && npm cache clean && bower cache clean",
+    "clean-deep": "npm run clean && bower cache clean",
     "setup": "npm run setup-root && npm run setup-common && npm run setup-auth && npm run setup-main && npm run setup-server",
     "setup-for-local": "npm install -g bower@1.7.9 gulp@3.9.1 ember-cli@2.4.3",
     "setup-root": "npm install",
@@ -25,10 +25,6 @@
     "watch-server": "gulp watch-server",
     "start": "nodemon --delay 2",
     "start-on-change": "nodemon --delay 2 --on-change-only",
-    "shrinkwrap-all": "npm run shrinkwrap-root && npm run shrinkwrap-main && npm run shrinkwrap-server",
-    "shrinkwrap-root": "shonkwrap --dev",
-    "shrinkwrap-main": "cd front/main && shonkwrap --dev",
-    "shrinkwrap-server": "cd server && shonkwrap --dev",
     "test": "npm run build-dev && npm run test-front && npm run test-server",
     "test-front": "gulp test-common && gulp test-auth && cd front/main && ember test --path ../../www/front/main -tp $(($TEST_PORT + 7357))",
     "test-front-acceptance": "cd front/main && ember test --filter=acceptance",
@@ -105,7 +101,6 @@
     "qunit": "0.7.7",
     "qunitjs": "1.20.0",
     "run-sequence": "1.1.5",
-    "shonkwrap": "1.3.0",
     "sinon": "1.17.3",
     "svgo": "0.6.1",
     "through2": "0.6.5"
