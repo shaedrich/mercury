@@ -48,9 +48,9 @@ if (typeof window.M === 'undefined') {
 	M.replaceWikiInHost = function (host, wiki) {
 		let match;
 
-		if ((match = host.match(/^(sandbox-.+?|preview|verify)\.(.+?)\.wikia\.com($|\/|:)/)) !== null) {
+		if ((match = host.match(/^(.+?)\.(sandbox-.+?|preview|verify)\.wikia\.com($|\/|:)/)) !== null) {
 			// (1) Sandbox, preview, or verify hosts on wikia.com
-			host = host.replace(`${match[1]}.${match[2]}`, `${match[1]}.${wiki}`);
+			host = host.replace(`${match[1]}.${match[2]}`, `${wiki}.${match[2]}`);
 		} else if ((match = host.match(/^(.+?)\.wikia\.com($|\/|:)/)) !== null) {
 			// (2) Production wikia.com
 			// Domain is specified here in case subdomain is actually "wiki", "com", etc.

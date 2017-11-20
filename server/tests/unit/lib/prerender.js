@@ -19,7 +19,7 @@ QUnit.test('updateRequestedUrl', function (assert) {
 			out: 'http://muppet.wikia.com/wiki/Miss_Piggy?some=query&params=present&useskin=mercury'
 		},
 		{
-			in: 'http://sandbox-s3.muppet.wikia.com/wiki/Miss_Piggy',
+			in: 'http://muppet.sandbox-s3.wikia.com/wiki/Miss_Piggy',
 			out: 'http://muppet.wikia.com/wiki/Miss_Piggy?useskin=mercury'
 		},
 		{
