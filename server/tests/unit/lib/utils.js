@@ -58,68 +58,68 @@ QUnit.test('getWikiName', function (assert) {
 			description: 'Works for production sub-domains with language'
 		},
 		{
-			host: 'verify.poznan.wikia.com',
+			host: 'poznan.verify.wikia.com',
 			settings: {
 				environment: global.environments.verify
 			},
-			expected: 'verify.poznan.wikia.com',
+			expected: 'poznan.verify.wikia.com',
 			description: 'Works for verify sub-domains'
 		},
 		{
-			host: 'verify.bg.poznan.wikia.com',
+			host: 'bg.poznan.verify.wikia.com',
 			settings: {
 				environment: global.environments.verify
 			},
-			expected: 'verify.bg.poznan.wikia.com',
+			expected: 'bg.poznan.verify.wikia.com',
 			description: 'Works for verify sub-domains with language'
 		},
 		{
-			host: 'preview.poznan.wikia.com',
+			host: 'poznan.preview.wikia.com',
 			settings: {
 				environment: global.environments.preview
 			},
-			expected: 'preview.poznan.wikia.com',
+			expected: 'poznan.preview.wikia.com',
 			description: 'Works for preview sub-domains'
 		},
 		{
-			host: 'preview.bg.poznan.wikia.com',
+			host: 'bg.poznan.preview.wikia.com',
 			settings: {
 				environment: global.environments.preview
 			},
-			expected: 'preview.bg.poznan.wikia.com',
+			expected: 'bg.poznan.preview.wikia.com',
 			description: 'Works for preview sub-domains with language'
 		},
 		{
-			host: 'stable.poznan.wikia.com',
+			host: 'poznan.stable.wikia.com',
 			settings: {
 				environment: global.environments.stable
 			},
-			expected: 'stable.poznan.wikia.com',
+			expected: 'poznan.stable.wikia.com',
 			description: 'Works for stable sub-domains'
 		},
 		{
-			host: 'stable.bg.poznan.wikia.com',
+			host: 'bg.poznan.stable.wikia.com',
 			settings: {
 				environment: global.environments.stable
 			},
-			expected: 'stable.bg.poznan.wikia.com',
+			expected: 'bg.poznan.stable.wikia.com',
 			description: 'Works for stable sub-domains with language'
 		},
 		{
-			host: 'sandbox-test.poznan.wikia.com',
+			host: 'poznan.sandbox-test.wikia.com',
 			settings: {
 				host: 'sandbox-test',
 				environment: global.environments.sandbox
 			},
-			expected: 'sandbox-test.poznan.wikia.com',
+			expected: 'poznan.sandbox-test.wikia.com',
 			description: 'Works for sandbox sub-domains'
 		},
 		{
-			host: 'sandbox-test.bg.poznan.wikia.com',
+			host: 'bg.poznan.sandbox-test.wikia.com',
 			settings: {
 				environment: global.environments.sandbox
 			},
-			expected: 'sandbox-test.bg.poznan.wikia.com',
+			expected: 'bg.poznan.sandbox-test.wikia.com',
 			description: 'Works for sandbox sub-domains with language'
 		},
 		{
@@ -181,42 +181,42 @@ QUnit.test('getWikiaSubdomain', function (assert) {
 			description: 'Works for production sub-domains with language'
 		},
 		{
-			host: 'verify.poznan.wikia.com',
+			host: 'poznan.verify.wikia.com',
 			expected: 'poznan',
 			description: 'Works for verify sub-domains'
 		},
 		{
-			host: 'verify.bg.poznan.wikia.com',
+			host: 'bg.poznan.verify.wikia.com',
 			expected: 'bg.poznan',
 			description: 'Works for verify sub-domains with language'
 		},
 		{
-			host: 'preview.poznan.wikia.com',
+			host: 'poznan.preview.wikia.com',
 			expected: 'poznan',
 			description: 'Works for preview sub-domains'
 		},
 		{
-			host: 'preview.bg.muppet.wikia.com',
+			host: 'bg.muppet.preview.wikia.com',
 			expected: 'bg.muppet',
 			description: 'Works for preview sub-domains with language'
 		},
 		{
-			host: 'stable.poznan.wikia.com',
+			host: 'poznan.stable.wikia.com',
 			expected: 'poznan',
 			description: 'Works for stable sub-domains'
 		},
 		{
-			host: 'stable.bg.muppet.wikia.com',
+			host: 'bg.muppet.stable.wikia.com',
 			expected: 'bg.muppet',
 			description: 'Works for stable sub-domains with language'
 		},
 		{
-			host: 'sandbox-test.chess.wikia.com',
+			host: 'chess.sandbox-test.wikia.com',
 			expected: 'chess',
 			description: 'Works for sandbox sub-domains'
 		},
 		{
-			host: 'sandbox-test.ja.starwars.armon.wikia-dev.pl',
+			host: 'ja.starwars.sandbox-test.wikia.com',
 			expected: 'ja.starwars',
 			description: 'Works for sandbox sub-domains with language'
 		},
@@ -250,19 +250,19 @@ QUnit.test('clearHost', function (assert) {
 			description: 'clears the port from the host'
 		},
 		{
-			host: 'externaltest.muppet.wikia.com',
+			host: 'muppet.externaltest.wikia.com',
 			expected: 'muppet.wikia.com',
 			description: 'clears the externaltest ad domain alias'
 		},
 		{
-			host: 'showcase.muppet.wikia.com',
+			host: 'muppet.showcase.wikia.com',
 			expected: 'muppet.wikia.com',
 			description: 'clears the showcase ad domain alias'
 		},
 		{
-			host: 'externaltest.muppet.wikia.com:8000',
+			host: 'muppet.externaltest.wikia.com:8000',
 			expected: 'muppet.wikia.com',
-			description: 'clears the showcase ad domain alias and port'
+			description: 'clears the externaltest ad domain alias and port'
 		},
 		{
 			host: 'muppet.wikia-staging.com:8000',
@@ -567,14 +567,14 @@ QUnit.test('getCorporatePageUrlFromWikiDomain', function (assert) {
 			expected: 'www.wikia.com'
 		},
 		{
-			wikiDomain: 'preview.poznan.wikia.com',
+			wikiDomain: 'poznan.preview.wikia.com',
 			environment: global.environments.preview,
-			expected: 'preview.www.wikia.com'
+			expected: 'www.preview.wikia.com'
 		},
 		{
-			wikiDomain: 'preview.pl.gta.wikia.com',
+			wikiDomain: 'pl.gta.preview.wikia.com',
 			environment: global.environments.preview,
-			expected: 'preview.www.wikia.com'
+			expected: 'www.preview.wikia.com'
 		},
 		{
 			wikiDomain: 'poznan.hacker.wikia-dev.pl',
