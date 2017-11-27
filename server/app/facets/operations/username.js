@@ -27,7 +27,7 @@ export default function translateUserIdFrom(username, request) {
 					resolve({
 						response,
 						payload,
-						username: data.username,
+						username: username,
 					});
 				} else {
 					response.statusCode = 404;

@@ -3,6 +3,6 @@
  */
 export default {
   userRegistationService: {
-		internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/user-registration`
-	},
+    internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/user-registration`
+	}
 };
