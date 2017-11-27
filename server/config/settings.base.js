@@ -135,15 +135,10 @@ export default {
 	// This timeout is the same as the MW app timeout
 	backendRequestTimeout: 300000,
 	cookiePrefix: 'wikicities',
-	consul: {
-		internalUrl: 'http://localhost:8500/v1/health/service',
-		timeout: 3000
-	},
 	domain: 'wikia.com',
 	// Targeted environment [prod|preview|verify|dev|testing|staging]
 	environment: getEnvironment(process.env.WIKIA_ENVIRONMENT),
 	helios: {
-		internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/helios`,
 		path: '/auth',
 		timeout: 3000
 	},
@@ -158,10 +153,6 @@ export default {
 	},
 	imageReview: {
 		baseAPIPath: 'image-review'
-	},
-	whoAmIService: {
-		path: '/whoami',
-		timeout: 3000
 	},
 	ironSecret: 'TEST_SECRET_REPLACE_THIS',
 	// NOTE: On your devbox, use your eth0 address in able to bind route to something accessible
