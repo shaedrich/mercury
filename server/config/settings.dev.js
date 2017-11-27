@@ -4,7 +4,7 @@
 
 // These variables are used in multiple places in config
 const devDomain = (process.env.WIKIA_DATACENTER === 'poz') ? 'pl' : 'us',
-	devEnvironment = (process.env.WIKIA_DATACENTER === 'poz') ? 'poz-dev' : 'sjc-dev',
+	logicalDc = (process.env.WIKIA_DATACENTER === 'poz') ? 'poz-dev' : 'sjc-dev',
 	servicesDomain = `services.wikia-dev.${devDomain}`;
 
 export default {
@@ -15,7 +15,7 @@ export default {
 	authCookieDomain: `.wikia-dev.${devDomain}`,
 	servicesDomain,
 	userRegistationService: {
-		internalUrl: `http://dev.${devEnvironment}.k8s.wikia.net/user-registration`
+		internalUrl: `http://dev.${logicalDc}.k8s.wikia.net/user-registration`
 	},
 	facebook: {
 		appId: 881967318489580
@@ -31,6 +31,6 @@ export default {
 		}
 	},
 	helios: {
-		internalUrl: `http://dev.${devEnvironment}.k8s.wikia.net/helios`,
+		internalUrl: `http://dev.${logicalDc}.k8s.wikia.net/helios`,
 	},
 };
