@@ -122,17 +122,6 @@ export function getUserPreferencesUrl(path) {
 }
 
 /**
- * @returns {string}
- */
-export function getWhoAmIUrl() {
-	return url.format({
-		protocol: 'https',
-		host: settings.servicesDomain,
-		pathname: settings.whoAmIService.path
-	});
-}
-
-/**
  * @param {object} i18n
  * @returns {string}
  */
