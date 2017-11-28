@@ -105,7 +105,7 @@ export function getUserRegistrationUrl(path) {
 	return url.format({
 		protocol: 'https',
 		host: settings.servicesDomain,
-		pathname: settings.userRegistationService.path + path
+		pathname: settings.userRegistrationService.path + path
 	});
 }
 

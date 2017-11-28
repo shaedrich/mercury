@@ -20,7 +20,7 @@ function getResetPasswordViewContext(request) {
 				return 'auth/reset-password';
 			},
 			pageType: 'reset-password-page',
-			passwordMaxLength: settings.userRegistationService.passwordMaxLength,
+			passwordMaxLength: settings.userRegistrationService.passwordMaxLength,
 			secondCard: {
 				headerText: 'auth:confirm-reset-password.header',
 			},

@@ -142,7 +142,7 @@ export default {
 		path: '/auth',
 		timeout: 3000
 	},
-	userRegistationService: {
+	userRegistrationService: {
 		path: '/user-registration',
 		usernameMaxLength: 50,
 		passwordMaxLength: 50,
