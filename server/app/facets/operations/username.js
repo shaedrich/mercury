@@ -10,13 +10,13 @@ import Wreck from 'wreck';
  * @returns {Promise}
  */
 export default function translateUserIdFrom(username, request) {
-	const url = `http://${settings.userRegistationService.internalUrl}/users?username=${username}`;
+	const url = `http://${settings.userRegistrationService.internalUrl}/users?username=${username}`;
 	const options = {
 		headers: getInternalHeaders(request, {
 			'X-Wikia-Internal-Request': 'mercury',
 			'User-Agent': 'mercury'
 		}),
-		timeout: settings.userRegistationService.timeout
+		timeout: settings.userRegistrationService.timeout
 	};
 	return new Promise((resolve, reject) => {
 		Wreck.get(url, options, (error, response, payload) => {

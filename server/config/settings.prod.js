@@ -2,7 +2,7 @@
  * settings for the application, used by default by prod environments
  */
 export default {
-	userRegistationService: {
+	userRegistrationService: {
 		internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/user-registration`
 	},
 	helios: {

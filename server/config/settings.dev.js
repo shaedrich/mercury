@@ -14,7 +14,7 @@ export default {
 	devDomain,
 	authCookieDomain: `.wikia-dev.${devDomain}`,
 	servicesDomain,
-	userRegistationService: {
+	userRegistrationService: {
 		internalUrl: `http://dev.${logicalDc}.k8s.wikia.net/user-registration`
 	},
 	facebook: {

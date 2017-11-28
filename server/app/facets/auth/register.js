@@ -51,8 +51,8 @@ function getDefaultRegistrationContext(request, i18n) {
 		wikiDomain = parse(defaultContext.exitTo).host || request.headers.host,
 		wikiRequest = new WikiRequest({wikiDomain}),
 		context = deepExtend(defaultContext, {
-			usernameMaxLength: settings.userRegistationService.usernameMaxLength,
-			passwordMaxLength: settings.userRegistationService.passwordMaxLength,
+			usernameMaxLength: settings.userRegistrationService.usernameMaxLength,
+			passwordMaxLength: settings.userRegistrationService.passwordMaxLength,
 			langCode: lang,
 			defaultBirthdate: '1970-01-01',
 			pageParams: {
