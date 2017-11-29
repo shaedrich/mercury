@@ -139,6 +139,7 @@ export default {
 	// Targeted environment [prod|preview|verify|dev|testing|staging]
 	environment: getEnvironment(process.env.WIKIA_ENVIRONMENT),
 	helios: {
+		internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/helios`,
 		path: '/auth',
 		timeout: 3000
 	},
