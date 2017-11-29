@@ -10,7 +10,8 @@ import Wreck from 'wreck';
  * @returns {Promise}
  */
 export default function translateUserIdFrom(username, request) {
-	const url = `http://${settings.userRegistrationService.internalUrl}/users?username=${username}`;
+	const url = `${settings.userRegistrationService.internalUrl}/users?username=${username}`;
+
 	const options = {
 		headers: getInternalHeaders(request, {
 			'X-Wikia-Internal-Request': 'mercury',
@@ -20,7 +21,7 @@ export default function translateUserIdFrom(username, request) {
 	};
 	return new Promise((resolve, reject) => {
 		Wreck.get(url, options, (error, response, payload) => {
-			if (response.statusCode === 200) {
+			if (!error && response.statusCode === 200) {
 				const userInfo = JSON.parse(payload);
 
 				if (userInfo.length) {
@@ -40,7 +41,7 @@ export default function translateUserIdFrom(username, request) {
 					});
 				}
 			} else {
-				Logger.error({url}, 'Error while discovering user info.');
+				Logger.error('Error while discovering user info.', {url});
 
 				reject({
 					step: 'user-discovery',

@@ -94,7 +94,7 @@ export function post(request, reply) {
 
 				reply({
 					errors,
-				}).code(data.response.statusCode);
+				}).code(data.response && data.response.statusCode || 503);
 			});
 	}
 }
