@@ -144,6 +144,7 @@ export default {
 		timeout: 3000
 	},
 	userRegistrationService: {
+		internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/user-registration`,
 		path: '/user-registration',
 		usernameMaxLength: 50,
 		passwordMaxLength: 50,
