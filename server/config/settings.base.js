@@ -139,10 +139,12 @@ export default {
 	// Targeted environment [prod|preview|verify|dev|testing|staging]
 	environment: getEnvironment(process.env.WIKIA_ENVIRONMENT),
 	helios: {
+		internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/helios`,
 		path: '/auth',
 		timeout: 3000
 	},
 	userRegistrationService: {
+		internalUrl: `http://prod.${process.env.WIKIA_DATACENTER}.k8s.wikia.net/user-registration`,
 		path: '/user-registration',
 		usernameMaxLength: 50,
 		passwordMaxLength: 50,
