@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
 	groupItems: [],
 	lastGroupItem: null,
 	isVEContext: false,
+	isCKContext: false,
 
 	actions: {
 		/**
@@ -16,6 +17,8 @@ export default Ember.Controller.extend({
 		cancel() {
 			if (this.get('isVEContext')) {
 				this.get('target').send('returnToVE');
+			} else if (this.get('isCKContext')) {
+				this.get('target').send('returnToCK');
 			} else {
 				this.get('target').send('redirectToPage');
 			}
@@ -59,6 +62,10 @@ export default Ember.Controller.extend({
 		 */
 		returnToVE(title = null) {
 			this.get('target').send('returnToVE', title);
+		},
+
+		returnToCK(title = null) {
+			this.get('target').send('returnToCK', title);
 		},
 
 		redirectToPage(url) {

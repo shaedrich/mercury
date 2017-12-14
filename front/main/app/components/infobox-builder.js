@@ -433,6 +433,9 @@ export default Ember.Component.extend(
 				if (this.get('isVEContext')) {
 					this.get('returnToVE')(this.get('title'));
 					this.set('showSuccess', false);
+				} else if (this.get('isCKContext')) {
+					this.get('returnToCK')(this.get('title'));
+					this.set('showSuccess', false);
 				} else if (shouldRedirectToPage) {
 					this.get('redirectToPageAction')(data.urls.templatePageUrl);
 				}

@@ -148,6 +148,30 @@ export default Ember.Route.extend(ConfirmationMixin, {
 			});
 		},
 
+		returnToCK(title = null) {
+			return new Ember.RSVP.Promise((resolve, reject) => {
+				const ponto = window.Ponto;
+
+				this.refresh()
+					.then(() => {
+						ponto.invoke(
+							'wikia.infoboxBuilder.ponto',
+							'returnToCK',
+							title,
+							(data) => {
+								resolve(data);
+							},
+							(data) => {
+								reject(data);
+								this.showPontoError(data);
+							},
+							false
+						);
+					})
+					.catch(reject);
+			});
+		},
+
 		/**
 		 * redirects to source editor
 		 * @param {String} title
@@ -249,8 +273,10 @@ export default Ember.Route.extend(ConfirmationMixin, {
 				'isWikiaContext',
 				null,
 				(data) => {
+					debugger;
 					if (data && data.isWikiaContext && data.isLoggedIn) {
 						this.setVEContext(data.isVEContext);
+						this.setCKContext(data.isCKContext);
 						resolve();
 					} else {
 						reject('Builder launched not in Wikia context');
@@ -377,5 +403,14 @@ export default Ember.Route.extend(ConfirmationMixin, {
 	 */
 	setVEContext(isVEContext = false) {
 		this.controllerFor('infobox-builder').set('isVEContext', isVEContext);
+	},
+
+	/**
+	 * set CK context - true if IB opened inside CK EDITOR
+	 * @param {Boolean} isCKContext
+	 * @returns {void}
+	 */
+	setCKContext(isCKContext = false) {
+		this.controllerFor('infobox-builder').set('isCKContext', isCKContext);
 	}
 });
