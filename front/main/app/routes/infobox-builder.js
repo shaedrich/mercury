@@ -273,7 +273,6 @@ export default Ember.Route.extend(ConfirmationMixin, {
 				'isWikiaContext',
 				null,
 				(data) => {
-					debugger;
 					if (data && data.isWikiaContext && data.isLoggedIn) {
 						this.setVEContext(data.isVEContext);
 						this.setCKContext(data.isCKContext);
