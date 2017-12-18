@@ -10,7 +10,9 @@ export default Ember.Component.extend(
 		tooltipPosX: null,
 		tooltipPosY: null,
 		tooltipDistanceFromCursor: 20,
-		isGoToSourceEnabled: Ember.computed.not('isVEContext'),
+		isGoToSourceEnabled: Ember.computed('isVEContext', 'isCKContext', function () {
+			return !this.get('isVEContext') && !this.get('isCKContext');
+		}),
 		isPreviewItemHovered: false,
 		isPreviewItemDragged: false,
 		isGroupTooltipVisible: false,
