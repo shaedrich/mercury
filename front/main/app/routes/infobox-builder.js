@@ -12,6 +12,12 @@ export default Ember.Route.extend(ConfirmationMixin, {
 	isEnvironmentSet: false,
 	cssLoaded: false,
 
+	canUnload() {
+		const controller = this.controllerFor('infobox-builder');
+
+		return !controller.get('isCKContext') && !!controller.get('isDirty');
+	},
+
 	/**
 	 * Load infobox data and additional assets with AJAX request and run methods that will handle them
 	 *
@@ -148,6 +154,30 @@ export default Ember.Route.extend(ConfirmationMixin, {
 			});
 		},
 
+		returnToCK(title = null) {
+			return new Ember.RSVP.Promise((resolve, reject) => {
+				const ponto = window.Ponto;
+
+				this.refresh()
+					.then(() => {
+						ponto.invoke(
+							'wikia.infoboxBuilder.ponto',
+							'returnToCK',
+							title,
+							(data) => {
+								resolve(data);
+							},
+							(data) => {
+								reject(data);
+								this.showPontoError(data);
+							},
+							false
+						);
+					})
+					.catch(reject);
+			});
+		},
+
 		/**
 		 * redirects to source editor
 		 * @param {String} title
@@ -215,7 +245,8 @@ export default Ember.Route.extend(ConfirmationMixin, {
 					Ember.$('body').addClass('infobox-builder-body-wrapper');
 				}
 			})
-			.then(this.isWikiaContext.bind(this));
+			.then(this.isWikiaContext.bind(this))
+			.then(this.setupInfoboxReloading.bind(this));
 	},
 
 	/**
@@ -251,6 +282,7 @@ export default Ember.Route.extend(ConfirmationMixin, {
 				(data) => {
 					if (data && data.isWikiaContext && data.isLoggedIn) {
 						this.setVEContext(data.isVEContext);
+						this.setCKContext(data.isCKContext);
 						resolve();
 					} else {
 						reject('Builder launched not in Wikia context');
@@ -262,6 +294,36 @@ export default Ember.Route.extend(ConfirmationMixin, {
 				},
 				false
 			);
+		});
+	},
+
+	/**
+	 * Allow CKE on parent window for reloading infobox builder on demand
+	 *
+	 * @returns {Ember.RSVP.Promise}
+	 */
+	setupInfoboxReloading() {
+		return new Ember.RSVP.Promise((resolve, reject) => {
+			if (!this.controllerFor('infobox-builder').get('isCKContext')) {
+				return resolve();
+			}
+
+			const ponto = window.Ponto;
+
+			ponto.invoke(
+				'wikia.infoboxBuilder.ponto',
+				'exposeForReloading',
+				null,
+				(data) => {
+					this.refresh();
+				},
+				(data) => {
+					this.showPontoError(data);
+				},
+				true
+			);
+
+			resolve();
 		});
 	},
 
@@ -304,7 +366,6 @@ export default Ember.Route.extend(ConfirmationMixin, {
 	setupInfoboxData(serverResponse) {
 		const infoboxData = serverResponse.data,
 			controller = this.controllerFor('infobox-builder');
-
 		let infoboxDataParsed = null;
 
 		if (infoboxData) {
@@ -377,5 +438,22 @@ export default Ember.Route.extend(ConfirmationMixin, {
 	 */
 	setVEContext(isVEContext = false) {
 		this.controllerFor('infobox-builder').set('isVEContext', isVEContext);
+	},
+
+	/**
+	 * set CK context - true if IB opened inside CK EDITOR
+	 * @param {Boolean} isCKContext
+	 * @returns {void}
+	 */
+	setCKContext(isCKContext = false) {
+		this.controllerFor('infobox-builder').set('isCKContext', isCKContext);
+	},
+
+	/**
+	 * reload the whole application to get a clean, fresh state
+	 * @returns {void}
+	 */
+	reloadBuilder() {
+		this.reload();
 	}
 });
