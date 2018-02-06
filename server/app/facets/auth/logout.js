@@ -10,7 +10,7 @@ export default function logout(request, reply) {
 	Logger.warn({
 		message: 'Legacy logout endpoint called via GET',
 		referrer: request.info.referrer
-	});
+	}, 'Legacy logout endpoint called via GET');
 
 	const userLogoutURL = '/wiki/Special:UserLogout';
 	reply.redirect(userLogoutURL);
