@@ -32,7 +32,7 @@ function getForgotPasswordViewContext(request) {
 			},
 			title: 'auth:forgot-password.title',
 			username: request.query.username || '',
-			usernameMaxLength: settings.userRegistationService.usernameMaxLength
+			usernameMaxLength: settings.userRegistrationService.usernameMaxLength
 		}
 	);
 
@@ -94,7 +94,7 @@ export function post(request, reply) {
 
 				reply({
 					errors,
-				}).code(data.response.statusCode);
+				}).code(data.response && data.response.statusCode || 503);
 			});
 	}
 }

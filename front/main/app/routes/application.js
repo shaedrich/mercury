@@ -1,11 +1,9 @@
 import Ember from 'ember';
 import HeadTagsStaticMixin from '../mixins/head-tags-static';
-import ResponsiveMixin from '../mixins/responsive';
 import {track, trackActions} from 'common/utils/track';
 import {activate as variantTestingActivate} from 'common/utils/variant-testing';
 
 const {
-	$,
 	Logger,
 	Route,
 	TargetActionSupport,
@@ -14,25 +12,8 @@ const {
 export default Route.extend(
 	TargetActionSupport,
 	HeadTagsStaticMixin,
-	ResponsiveMixin,
 	{
 		actions: {
-			/**
-			 * @param {boolean} state
-			 * @returns {void}
-			 */
-			triggerHighlightOverlayStateChange(state) {
-				this.controller.set('isGlobalNavigationPositionFixed', !state);
-			},
-
-			/**
-			 * @param {boolean} state
-			 * @returns {void}
-			 */
-			triggerGlobalNavigationHeadroomStateChange(state) {
-				this.controller.set('isGlobalNavigationHeadroomPinnedOrDisabled', state);
-			},
-
 			/**
 			 * @returns {void}
 			 */
@@ -115,32 +96,6 @@ export default Route.extend(
 					Logger.error('unable to open link', target.href);
 				}
 			},
-
-			/**
-			 * @returns {void}
-			 * @param {string} query
-			 */
-			goToSearchResults(query) {
-				if (this.get('responsive.isMobile')) {
-					window.location.assign(`/search?query=${query}`);
-				} else {
-					window.location.assign(M.buildUrl({
-						namespace: 'Special',
-						title: 'Search',
-						query: {
-							search: query,
-							fulltext: 'Search'
-						}
-					}));
-				}
-			},
-
-			openNav() {
-				this.get('controller').setProperties({
-					drawerContent: 'nav',
-					drawerVisible: true
-				});
-			}
 		},
 	}
 );

@@ -126,9 +126,14 @@ export function getWikiDomainName(settings, hostName = '') {
  * @returns {string}
  */
 export function getWikiaSubdomain(host) {
+	// Strip staging env from the host
+	host = host.replace(new RegExp(
+			'\\.((?:verify|preview|stable|sandbox-[^.]+)\\.)?wikia.com'
+		),
+		'.wikia.com'
+	);
 	return host.replace(new RegExp(
-			'^(?:(?:verify|preview|stable|sandbox-[^.]+)\\.)?' +
-			'([a-z\\d.]*[a-z\d])\\.' +
+			'^([a-z\\d.]*[a-z\d])\\.' +
 			'(?:wikia|wikia-staging|[a-z\\d]+\\.wikia-dev)?(?:\\.com|\\.pl|\\.us)'
 		),
 		'$1'
@@ -145,7 +150,7 @@ export function clearHost(host) {
 	// We use two special domain prefixes for Ad Operation and Sales reasons
 	// They behave similar to our staging prefixes but are not staging machines
 	// Talk to Ad Engineering Team if you want to learn more
-	const adDomainAliases = ['externaltest', 'showcase'];
+	const adDomainAliases = ['.externaltest.wikia.com', '.showcase.wikia.com'];
 
 	// get rid of port
 	host = host.split(':')[0];
@@ -156,8 +161,8 @@ export function clearHost(host) {
 	 * @returns {void}
 	 */
 	Object.keys(adDomainAliases).forEach((key) => {
-		if (host.indexOf(adDomainAliases[key]) === 0) {
-			host = host.replace(`${adDomainAliases[key]}.`, '');
+		if (host.endsWith(adDomainAliases[key])) {
+			host = host.replace(adDomainAliases[key], '.wikia.com');
 		}
 	});
 
@@ -191,8 +196,9 @@ export function getWikiBaseUrlFromWikiDomain(settings, wikiDomain, wiki) {
 		case environments.dev:
 			return `${wiki}.${settings.devboxDomain}.wikia-dev.${settings.devDomain}`;
 		default:
-			environmentPrefix = wikiDomain.substring(0, wikiDomain.indexOf('.'));
-			return `${environmentPrefix}.${wiki}.wikia.com`;
+			// extract env name from XXX.env.wikia.com string
+			environmentPrefix = wikiDomain.split('.').slice(-3, -2);
+			return `${wiki}.${environmentPrefix}.wikia.com`;
 	}
 }
 
@@ -259,10 +265,6 @@ export function createServerData(settings, wikiDomain = '') {
 			cdnBaseUrl: getCDNBaseUrl(settings),
 			gaUrl: settings.tracking.ua.scriptUrl
 		};
-
-	if (settings.qualaroo.enabled) {
-		data.qualarooScript = settings.qualaroo.scriptUrl;
-	}
 
 	if (settings.optimizely.enabled) {
 		data.optimizelyScript = `${settings.optimizely.scriptPath}${settings.optimizely.account}.js`;

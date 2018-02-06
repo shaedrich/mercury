@@ -8,10 +8,6 @@ export default Route.extend({
 		return UserImagesModel.imagesFor(username);
 	},
 
-	afterModel() {
-		this.controllerFor('application').set('fullPage', true);
-	},
-
 	actions: {
 		error(error) {
 			Logger.error('image-review route error', error);

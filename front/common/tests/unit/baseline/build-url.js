@@ -21,28 +21,28 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 					expectedOutput: 'http://test.wikia.com'
 				},
 				{
-					host: 'sandbox-mercury.muppet.wikia.com',
-					expectedOutput: 'http://sandbox-mercury.test.wikia.com'
+					host: 'muppet.sandbox-mercury.wikia.com',
+					expectedOutput: 'http://test.sandbox-mercury.wikia.com'
 				},
 				{
-					host: 'sandbox-mercury.es.walkingdead.wikia.com',
-					expectedOutput: 'http://sandbox-mercury.test.wikia.com'
+					host: 'es.walkingdead.sandbox-mercury.wikia.com',
+					expectedOutput: 'http://test.sandbox-mercury.wikia.com'
 				},
 				{
-					host: 'preview.muppet.wikia.com',
-					expectedOutput: 'http://preview.test.wikia.com'
+					host: 'muppet.preview.wikia.com',
+					expectedOutput: 'http://test.preview.wikia.com'
 				},
 				{
-					host: 'preview.es.walkingdead.wikia.com',
-					expectedOutput: 'http://preview.test.wikia.com'
+					host: 'es.walkingdead.preview.wikia.com',
+					expectedOutput: 'http://test.preview.wikia.com'
 				},
 				{
-					host: 'verify.muppet.wikia.com',
-					expectedOutput: 'http://verify.test.wikia.com'
+					host: 'muppet.verify.wikia.com',
+					expectedOutput: 'http://test.verify.wikia.com'
 				},
 				{
-					host: 'verify.es.walkingdead.wikia.com',
-					expectedOutput: 'http://verify.test.wikia.com'
+					host: 'es.walkingdead.verify.wikia.com',
+					expectedOutput: 'http://test.verify.wikia.com'
 				},
 				{
 					host: 'muppet.mattk.wikia-dev.us',
@@ -217,46 +217,6 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 		);
 	});
 
-	QUnit.test('Discussion url is computed properly', function (assert) {
-		var testCases = [
-			{
-				path: '',
-				expectedOutput: 'https://services.wikia.com/discussion'
-			},
-			{
-				path: '/147/forums',
-				expectedOutput: 'https://services.wikia.com/discussion/147/forums'
-			}
-		];
-
-		M.prop('servicesDomain', 'services.wikia.com');
-		M.prop('discussionBaseRoute', 'discussion');
-
-		testCases.forEach(function (testCase) {
-			assert.equal(M.getDiscussionServiceUrl(testCase.path, testCase.query), testCase.expectedOutput);
-		});
-	});
-
-	QUnit.test('Site Attributes url is computed properly', function (assert) {
-		var testCases = [
-			{
-				path: '',
-				expectedOutput: 'https://services.wikia.com/site-attribute'
-			},
-			{
-				path: '/3035/attr/guidelines',
-				expectedOutput: 'https://services.wikia.com/site-attribute/3035/attr/guidelines'
-			}
-		];
-
-		M.prop('servicesDomain', 'services.wikia.com');
-		M.prop('siteAttributeBaseRoute', 'site-attribute');
-
-		testCases.forEach(function (testCase) {
-			assert.equal(M.getAttributeServiceUrl(testCase.path, testCase.query), testCase.expectedOutput);
-		});
-	});
-
 	QUnit.test('Image-review url is computed properly', function (assert) {
 		var testCases = [
 			{
@@ -276,28 +236,6 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 
 		testCases.forEach(function (testCase) {
 			assert.equal(M.getImageReviewServiceUrl(testCase.path, testCase.query), testCase.expectedOutput);
-		});
-	});
-
-	QUnit.test('static-assets url is computed properly', function (assert) {
-		var testCases = [
-			{
-				path: '',
-				query: {},
-				expectedOutput: 'https://services.wikia.com/static-assets'
-			},
-			{
-				path: '/image/de305d54-75b4-431b-adb2-eb6b9e546014',
-				query: {},
-				expectedOutput: 'https://services.wikia.com/static-assets/image/de305d54-75b4-431b-adb2-eb6b9e546014'
-			}
-		];
-
-		M.prop('servicesDomain', 'services.wikia.com');
-		M.prop('staticAssetsBaseRoute', 'static-assets');
-
-		testCases.forEach(function (testCase) {
-			assert.equal(M.getStaticAssetsServiceUrl(testCase.path, testCase.query), testCase.expectedOutput);
 		});
 	});
 });

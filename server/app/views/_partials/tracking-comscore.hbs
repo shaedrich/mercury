@@ -1,7 +1,7 @@
 <script>
 	(function () {
 		var prefix = (document.location.protocol === 'https:' ? 'https://sb' : 'http://b'),
-				externalsAllowed = !M.prop('queryParams.noexternals');
+			externalsAllowed = !M.prop('queryParams.noexternals');
 
 		if (externalsAllowed) {
 			M.loadScripts([prefix + '.scorecardresearch.com/beacon.js']);

@@ -70,65 +70,6 @@ QUnit.test('getUserId', function (assert) {
 	});
 });
 
-
-QUnit.test('getQualarooScriptUrl', function (assert) {
-	var testCases = [
-		{
-			request: {
-				query: {
-					noexternals: true
-				}
-			},
-			settings: {
-				qualaroo: {}
-			},
-			expected: false,
-			description: 'Returns false when noexternals in query params'
-		}, {
-			request: {
-				query: {
-					noexternals: false
-				}
-			},
-			settings: {
-				qualaroo: {
-					enabled: false
-				}
-			},
-			expected: false,
-			description: 'Returns false when qualaroo disabled in local settings'
-		}, {
-			request: {
-				query: {
-					noexternals: false
-				}
-			},
-			settings: {
-				qualaroo: {
-					enabled: true,
-					scriptUrl: 'http://url-to-quaraloo.com'
-				},
-			},
-			expected: 'http://url-to-quaraloo.com',
-			description: 'Returns quaraloo script url when qualaroo enabled in local settings'
-		}
-	];
-
-	testCases.forEach(function (testCase) {
-		var settingsDefault = global.settings.default;
-
-		global.settings.default.qualaroo = testCase.settings.qualaroo;
-
-		assert.equal(
-			global.getQualarooScriptUrl(testCase.request),
-			testCase.expected,
-			testCase.description
-		);
-
-		global.settings.default = settingsDefault;
-	});
-});
-
 QUnit.test('getOpenGraphData', function (assert) {
 	var testCases = [
 		{

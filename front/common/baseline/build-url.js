@@ -48,9 +48,9 @@ if (typeof window.M === 'undefined') {
 	M.replaceWikiInHost = function (host, wiki) {
 		let match;
 
-		if ((match = host.match(/^(sandbox-.+?|preview|verify)\.(.+?)\.wikia\.com($|\/|:)/)) !== null) {
+		if ((match = host.match(/^(.+?)\.(sandbox-.+?|preview|verify)\.wikia\.com($|\/|:)/)) !== null) {
 			// (1) Sandbox, preview, or verify hosts on wikia.com
-			host = host.replace(`${match[1]}.${match[2]}`, `${match[1]}.${wiki}`);
+			host = host.replace(`${match[1]}.${match[2]}`, `${wiki}.${match[2]}`);
 		} else if ((match = host.match(/^(.+?)\.wikia\.com($|\/|:)/)) !== null) {
 			// (2) Production wikia.com
 			// Domain is specified here in case subdomain is actually "wiki", "com", etc.
@@ -96,7 +96,11 @@ if (typeof window.M === 'undefined') {
 			host = context.location.host;
 
 		if (!urlParams.protocol) {
-			urlParams.protocol = 'http';
+			if (window && window.location && window.location.protocol) {
+				urlParams.protocol = window.location.protocol.replace(':', '');
+			} else {
+				urlParams.protocol = 'http';
+			}
 		}
 
 		let url = `${urlParams.protocol}://`;
@@ -132,75 +136,10 @@ if (typeof window.M === 'undefined') {
 
 	/**
 	 * @param {string} [path='']
-	 * @returns {string}
-	 */
-	M.getDiscussionServiceUrl = function (path = '') {
-		return `https://${M.prop('servicesDomain')}/${M.prop('discussionBaseRoute')}${path}`;
-	};
-
-	/**
-	 * @param {string} [path='']
-	 * @returns {string}
-	 */
-	M.getFollowingServiceUrl = function (path = '') {
-		return `https://${M.prop('servicesDomain')}/${M.prop('followingBaseRoute')}${path}`;
-	};
-
-	/**
-	 * @param {string} [path='']
-	 * @returns {string}
-	 */
-	M.getOpenGraphServiceUrl = function (path = '') {
-		return `https://${M.prop('servicesDomain')}/${M.prop('openGraphBaseRoute')}${path}`;
-	};
-
-	/**
-	 * @param {string} [path='']
-	 * @returns {string}
-	 */
-	M.getAttributeServiceUrl = function (path = '') {
-		return `https://${M.prop('servicesDomain')}/${M.prop('siteAttributeBaseRoute')}${path}`;
-	};
-
-	/**
-	 * @param {string} [path='']
 	 * @param {Object} [query={}]
 	 * @returns {string}
 	 */
 	M.getImageReviewServiceUrl = function (path = '', query = {}) {
 		return `https://${M.prop('servicesDomain')}/${M.prop('imageReviewBaseRoute')}${path}${getQueryString(query)}`;
-	};
-
-	/**
-	 * @param {string} [path='']
-	 * @param {Object} [query={}]
-	 * @returns {string}
-	 */
-	M.getStaticAssetsServiceUrl = function (path = '', query = {}) {
-		return `https://${M.prop('servicesDomain')}/${M.prop('staticAssetsBaseRoute')}${path}${getQueryString(query)}`;
-	};
-
-	/**
-	 * @param {string} [path='']
-	 * @returns {string}
-	 */
-	M.getUserPermissionsServiceUrl = function (path = '') {
-		return `https://${M.prop('servicesDomain')}/${M.prop('userPermissionsBaseRoute')}${path}`;
-	};
-
-	/**
-	 * @param {string} [path='']
-	 * @returns {string}
-	 */
-	M.getOnSiteNotificationsServiceUrl = function (path = '') {
-		return `https://${M.prop('servicesDomain')}/${M.prop('onSiteNotificationsBaseRoute')}${path}`;
-	};
-
-	/**
-	 * @param {string} [path='']
-	 * @returns {string}
-	 */
-	M.getUserPreferencesServiceURL = function (path = '') {
-		return `https://${M.prop('servicesDomain')}/${M.prop('userPreferencesBaseRoute')}${path}`;
 	};
 })(M);

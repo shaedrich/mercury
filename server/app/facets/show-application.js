@@ -1,18 +1,14 @@
 import * as MW from '../lib/mediawiki';
 import * as Utils from '../lib/utils';
-import * as Tracking from '../lib/tracking';
-import * as OpenGraph from '../lib/open-graph';
+import {handleResponse as addTracking} from '../lib/tracking';
 import Promise from 'bluebird';
 import Logger from '../lib/logger';
-import discussionsSplashPageConfig from '../../config/discussionsSplashPageConfig';
 import {gaUserIdHash} from '../lib/hashing';
 import {
 	RedirectedToCanonicalHost, NonJsonApiResponseError, WikiVariablesRequestError
 } from '../lib/custom-errors';
 import {isRtl, getUserId, getSettings} from './operations/page-data-helper';
 import showServerErrorPage from './operations/show-server-error-page';
-import injectDesignSystemData from '../lib/inject-design-system-data';
-import {injectSassVariables} from '../lib/sass-variables';
 
 /**
  * @typedef {Object} CommunityAppConfig
@@ -27,26 +23,10 @@ import {injectSassVariables} from '../lib/sass-variables';
  * @returns {void}
  */
 function outputResponse(request, reply, context) {
-	Tracking.handleResponse(context, request);
+	addTracking(context, request);
 	Utils.setI18nLang(request, context.wikiVariables).then(() => {
 		reply.view('application', context);
 	});
-}
-
-/**
- * @param {string} hostName
- * @returns {CommunityAppConfig}
- */
-function getDistilledDiscussionsSplashPageConfig(hostName) {
-	const mainConfig = discussionsSplashPageConfig[hostName];
-
-	if (mainConfig) {
-		return {
-			androidAppLink: mainConfig.androidAppLink,
-			iosAppLink: mainConfig.iosAppLink
-		};
-	}
-	return {};
 }
 
 /**
@@ -72,7 +52,6 @@ export default function showApplication(request, reply, wikiVariables, context =
 	context.settings = settings;
 	context.userId = getUserId(request);
 	context.gaUserIdHash = gaUserIdHash(context.userId);
-	context.discussionsSplashPageConfig = getDistilledDiscussionsSplashPageConfig(hostName);
 	context.wwwWikiHost = Utils.getCorporatePageUrlFromWikiDomain(settings, wikiDomain);
 
 	wikiVariables
@@ -88,29 +67,6 @@ export default function showApplication(request, reply, wikiVariables, context =
 
 			return context;
 		})
-		/**
-		 * Get data for Global Footer
-		 * @param {MediaWikiPageData} templateData
-		 * @returns {MediaWikiPageData}
-		 *
-		 */
-		.then((context) => injectDesignSystemData({
-			data: context,
-			request,
-			showFooter: showGlobalFooter
-		}))
-		/**
-		 * @param {MediaWikiPageData} templateData
-		 * @returns {Promise}
-		 */
-		.then((context) => OpenGraph.getAttributes(request, context)
-			.then((openGraphData) => {
-				// Add OpenGraph attributes to context
-				context.openGraph = openGraphData;
-				return context;
-			})
-		)
-		.then((templateData) => injectSassVariables(templateData))
 		/**
 		 * @param {*} contextData
 		 * @returns {void}

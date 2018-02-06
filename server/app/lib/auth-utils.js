@@ -105,7 +105,7 @@ export function getUserRegistrationUrl(path) {
 	return url.format({
 		protocol: 'https',
 		host: settings.servicesDomain,
-		pathname: settings.userRegistationService.path + path
+		pathname: settings.userRegistrationService.path + path
 	});
 }
 
@@ -118,17 +118,6 @@ export function getUserPreferencesUrl(path) {
 		protocol: 'https',
 		host: settings.servicesDomain,
 		pathname: settings.userPreferencesService.baseAPIPath + path
-	});
-}
-
-/**
- * @returns {string}
- */
-export function getWhoAmIUrl() {
-	return url.format({
-		protocol: 'https',
-		host: settings.servicesDomain,
-		pathname: settings.whoAmIService.path
 	});
 }
 

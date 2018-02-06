@@ -4,38 +4,31 @@ import settings from '../../../config/settings';
 import {getInternalHeaders} from '../../lib/utils';
 import Wreck from 'wreck';
 
-function getUserRegistrationServiceUrlFrom(services) {
-	const service = services[Math.floor(Math.random() * services.length)].Service;
+/**
+ * @param {string} username
+ * @param {Object} request
+ * @returns {Promise}
+ */
+export default function translateUserIdFrom(username, request) {
+	const url = `${settings.userRegistrationService.internalUrl}/users?username=${username}`;
 
-	return `${service.Address}:${service.Port}`;
-}
-
-function createUserRegistrationContext(services, data, request) {
-	return {
-		url: `http://${getUserRegistrationServiceUrlFrom(services)}/users?username=${data.username}`,
-		options: {
-			headers: getInternalHeaders(request, {
-				'X-Wikia-Internal-Request': 'mercury'
-			}),
-			timeout: settings.userRegistationService.timeout
-		}
+	const options = {
+		headers: getInternalHeaders(request, {
+			'X-Wikia-Internal-Request': 'mercury',
+			'User-Agent': 'mercury'
+		}),
+		timeout: settings.userRegistrationService.timeout
 	};
-}
-
-function handleServiceDiscoveryResponse(data, request) {
-	const services = JSON.parse(data.payload),
-		userDiscovery = createUserRegistrationContext(services, data, request);
-
 	return new Promise((resolve, reject) => {
-		Wreck.get(userDiscovery.url, userDiscovery.options, (error, response, payload) => {
-			if (response.statusCode === 200) {
+		Wreck.get(url, options, (error, response, payload) => {
+			if (!error && response.statusCode === 200) {
 				const userInfo = JSON.parse(payload);
 
 				if (userInfo.length) {
 					resolve({
 						response,
 						payload,
-						username: data.username,
+						username
 					});
 				} else {
 					response.statusCode = 404;
@@ -48,10 +41,7 @@ function handleServiceDiscoveryResponse(data, request) {
 					});
 				}
 			} else {
-				Logger.error({
-					url: userDiscovery.url
-				},
-				'Error while discovering user info.');
+				Logger.error('Error while discovering user info.', {url});
 
 				reject({
 					step: 'user-discovery',
@@ -62,49 +52,4 @@ function handleServiceDiscoveryResponse(data, request) {
 			}
 		});
 	});
-}
-
-function createServiceDiscoveryContext() {
-	return {
-		url: `${settings.consul.internalUrl}${settings.userRegistationService.path}?tag=${settings.environment}`,
-		options: {
-			timeout: settings.consul.timeout
-		}
-	};
-}
-
-function fetchHealthyUserRegistrationServices(username) {
-	const serviceDiscovery = createServiceDiscoveryContext();
-
-	return new Promise((resolve, reject) => {
-		Wreck.get(serviceDiscovery.url, serviceDiscovery.options, (error, response, payload) => {
-			if (response.statusCode === 200) {
-				resolve({response, payload, username});
-			} else {
-				Logger.error({
-					url: serviceDiscovery.url
-				},
-				'Error while discovering user registration service.');
-
-				reject({
-					step: 'service-discovery',
-					error,
-					response,
-					payload
-				});
-			}
-		});
-	});
-}
-
-/**
- * @param {string} username
- * @param {Object} request
- * @returns {Promise}
- */
-export default function translateUserIdFrom(username, request) {
-	return fetchHealthyUserRegistrationServices(username)
-		.then((data) => {
-			return handleServiceDiscoveryResponse(data, request);
-		});
 }
