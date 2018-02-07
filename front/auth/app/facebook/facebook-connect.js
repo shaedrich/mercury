@@ -125,7 +125,7 @@ export default class FacebookConnect extends Login {
 				this.authLogger.xhrError(facebookConnectXhr);
 
 				// Logout user on connection error
-				logoutXhr.open('GET', '/logout', true);
+				logoutXhr.open('POST', '/logout', true);
 				logoutXhr.send();
 			}
 		};
