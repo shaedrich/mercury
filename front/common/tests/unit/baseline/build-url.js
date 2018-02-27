@@ -3,7 +3,8 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 		M.provide('wiki', {
 			language: {
 				content: 'en'
-			}
+			},
+			scriptPath: '/en'
 		});
 	});
 
@@ -99,7 +100,7 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 						wiki: 'www',
 						path: '/login'
 					},
-					expectedOutput: 'http://www.wikia.com/login'
+					expectedOutput: 'http://www.wikia.com/en/login'
 				},
 				{
 					urlParams: {
@@ -110,7 +111,7 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 							redirect: '/somePage'
 						}
 					},
-					expectedOutput: 'http://www.wikia.com/login?abc=123&redirect=%2FsomePage'
+					expectedOutput: 'http://www.wikia.com/en/login?abc=123&redirect=%2FsomePage'
 				},
 				{
 					urlParams: {
@@ -167,7 +168,7 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 						protocol: 'https',
 						path: '/uno/due/tre'
 					},
-					expectedOutput: 'https://agas.wikia.com/uno/due/tre'
+					expectedOutput: 'https://agas.wikia.com/en/uno/due/tre'
 				},
 				{
 					urlParams: {
@@ -179,7 +180,7 @@ QUnit.module('M.buildUrl helper function (loaded with baseline)', function (hook
 							complex: '1yry3!@##@$4234_423 423zo42&56'
 						}
 					},
-					expectedOutput: 'https://gta.wikia.com/sratatata?simple=' +
+					expectedOutput: 'https://gta.wikia.com/en/sratatata?simple=' +
 					'string&complex=1yry3!%40%23%23%40%244234_423%20423zo42%2656'
 				},
 				{
