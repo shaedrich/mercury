@@ -14,7 +14,7 @@
   "dependencies": {
     "bluebird": "2.10.2",
     "boom": "2.7.0",
-    "bunyan": "1.8.1",
+    "bunyan": "1.8.12",
     "bunyan-prettystream": "0.1.3",
     "bunyan-syslog": "mcavage/node-bunyan-syslog#9bdb9eb62a763c7d30e032a619138032d5ff8771",
     "crumb": "5.0.0",
