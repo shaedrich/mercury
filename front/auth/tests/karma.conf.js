@@ -3,7 +3,7 @@ module.exports = function (config) {
 		frameworks: ['qunit'],
 		autoWatch: true,
 		singleRun: true,
-		browsers: ['PhantomJS'],
+		browsers: ['ChromeHeadless'],
 
 		basePath: '../../../',
 		files: [
