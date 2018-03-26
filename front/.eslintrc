@@ -15,7 +15,6 @@
     "i18n": true,
     "M": true,
     "Mercury": true,
-    "optimizely": true,
     "CryptoJS": true,
     "state": false,
     "tinycolor": true,

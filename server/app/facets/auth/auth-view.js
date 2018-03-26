@@ -18,7 +18,6 @@ import {shouldServeMobileView} from '../../lib/utils';
  * @property {string} language
  * @property {string} exitTo
  * @property {string} mainPage
- * @property {string} optimizelyScript
  * @property {PageParams} pageParams
  * @property {string} [headerCallout]
  * @property {string} [headerCalloutLink]

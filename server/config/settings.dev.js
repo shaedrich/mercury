@@ -20,9 +20,6 @@ export default {
 	facebook: {
 		appId: 881967318489580
 	},
-	optimizely: {
-		account: '2441440871'
-	},
 	port: 7000,
 	clickstream: {
 		social: {

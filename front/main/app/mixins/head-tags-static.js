@@ -53,8 +53,7 @@ export default Ember.Mixin.create({
 		this.get('headData').setProperties({
 			favicon: wikiVariables.favicon,
 			themeColor: verticalColors[wikiVariables.vertical],
-			gaUrl: M.prop('gaUrl'),
-			optimizelyScript: M.prop('optimizelyScript')
+			gaUrl: M.prop('gaUrl')
 		});
 	}
 });

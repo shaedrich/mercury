@@ -1,7 +1,4 @@
 {{#unless queryParams.noexternals}}
-	{{#if optimizelyScript}}
-		<link data-server-head-tags-static rel="dns-prefetch" href="{{optimizelyScript}}">
-	{{/if}}
 	<link data-server-head-tags-static rel="dns-prefetch" href="{{server.gaUrl}}">
 	<link data-server-head-tags-static rel="dns-prefetch" href="http://edge.quantserve.com">
 	<link data-server-head-tags-static rel="dns-prefetch" href="http://b.scorecardresearch.com">

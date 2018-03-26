@@ -54,7 +54,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @property {string} gaUserSalt
  * @property {LoggerInterface} loggers
  * @property {number} maxRequestsPerChild
- * @property {OptimizelySettings} [optimizely]
  * @property {number} port
  * @property {PrerenderSettings} prerender
  * @property {number} proxyMaxRedirects
@@ -80,13 +79,6 @@ import {getEnvironment, stripDevboxDomain} from '../app/lib/utils';
  * @typedef {Object} WhoAmIServiceSettings
  * @property {string} path
  * @property {number} timeout
- */
-
-/**
- * @typedef {Object} OptimizelySettings
- * @property {boolean} enabled
- * @property {string} scriptPath
- * @property {string} account
  */
 
 /**
@@ -173,11 +165,6 @@ export default {
 	authCookieDomain: '.wikia.com',
 	authCookieExpiry: 315360000000,
 	maxRequestsPerChild: parseInt(process.env.MAX_REQUEST_PER_CHILD, 10) || 50000,
-	optimizely: {
-		enabled: true,
-		scriptPath: 'https://cdn.optimizely.com/js/',
-		account: '2449650414'
-	},
 	port: process.env.PORT || 8000,
 	prerender: {
 		token: process.env.PRERENDER_TOKEN
