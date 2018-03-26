@@ -4,23 +4,23 @@
 
 		function getQueryParam(name) {
 			var nameSanitized = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]'),
-							regex = new RegExp(`[\\?&]${nameSanitized}=([^&#]*)`),
-							results = regex.exec(location.search);
+					regex = new RegExp(`[\\?&]${nameSanitized}=([^&#]*)`),
+					results = regex.exec(location.search);
 
 			return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 		}
 
 		if (ua.initialize({
-							3: null,
-							4: 'mercury',
-							5: 'anon',
-							8: 'authPage',
-							10: getQueryParam('redirect'),
-							14: false,
-							15: 'No',
-							19: null,
-							25: null
-						})) {
+			3: null,
+			4: 'mercury',
+			5: 'anon',
+			8: 'authPage',
+			10: getQueryParam('redirect'),
+			14: false,
+			15: 'No',
+			19: null,
+			25: null
+		})) {
 			ua.trackPageView();
 		}
 	</script>
