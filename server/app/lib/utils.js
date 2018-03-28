@@ -16,7 +16,6 @@ import MobileDetect from 'mobile-detect';
  * @property {string} environments
  * @property {string} cdnBaseURL
  * @property {string} gaUrl
- * @property {string} [optimizelyScript]
  */
 
 // Environment types
@@ -265,10 +264,6 @@ export function createServerData(settings, wikiDomain = '') {
 			cdnBaseUrl: getCDNBaseUrl(settings),
 			gaUrl: settings.tracking.ua.scriptUrl
 		};
-
-	if (settings.optimizely.enabled) {
-		data.optimizelyScript = `${settings.optimizely.scriptPath}${settings.optimizely.account}.js`;
-	}
 
 	return data;
 }
