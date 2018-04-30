@@ -93,7 +93,8 @@ if (typeof window.M === 'undefined') {
 	 */
 	M.buildUrl = function (urlParams = {}, context = window) {
 		const mediawikiDomain = M.prop('mediawikiDomain'),
-			host = context.location.host;
+			host = context.location.host,
+			scriptPath = Mercury.wiki.scriptPath || '';
 
 		if (!urlParams.protocol) {
 			if (window && window.location && window.location.protocol) {
@@ -124,7 +125,7 @@ if (typeof window.M === 'undefined') {
 		}
 
 		if (urlParams.path) {
-			url += urlParams.path;
+			url += scriptPath + urlParams.path;
 		}
 
 		if (urlParams.query) {

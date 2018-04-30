@@ -35,10 +35,10 @@ QUnit.module('mercury/utils/browser', function (hooks) {
 		];
 
 		testCases.forEach(function (testCase) {
-			window.navigator = {
-				userAgent: testCase.userAgent
-			};
-
+			Object.defineProperty(window.navigator, 'userAgent', {
+				value: testCase.userAgent,
+				writable: true
+			});
 			require.unsee('common/utils/browser');
 			this.equal(require('common/utils/browser').system, testCase.expectedOutput);
 		});

@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import HeadTagsStaticMixin from '../mixins/head-tags-static';
 import {track, trackActions} from 'common/utils/track';
-import {activate as variantTestingActivate} from 'common/utils/variant-testing';
 
 const {
 	Logger,
@@ -27,9 +26,6 @@ export default Route.extend(
 			 * @returns {void}
 			 */
 			didTransition() {
-				// Activate any A/B tests for the new route
-				variantTestingActivate();
-
 				if (this.controller) {
 					this.controller.set('isLoading', false);
 				}
